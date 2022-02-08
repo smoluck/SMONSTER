@@ -103,19 +103,19 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
 
         # ############### 2 ARGUMENTS ###############
         args = lx.args()
-        lx.out(args)
+        #lx.out(args)
 
         # 0 = Similar Touching
         # 1 = Similar Object
         # 2 = Similar Layer
         # 3 = Current Polygons Only
         SimilarMode = IntSimilarMode
-        lx.out('Similar Selection Mode:', SimilarMode)
+        #lx.out('Similar Selection Mode:', SimilarMode)
 
         # 0 = Keep current selection
         # 1 = Select Loop
         SelectLoop = IntSelectLoop
-        lx.out('Select Loop Automatic:', SelectLoop)
+        #lx.out('Select Loop Automatic:', SelectLoop)
         # ############### ARGUMENTS ###############
 
         ################################
@@ -144,11 +144,11 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
 
         # Look at current Copy / Paste user Preferences:
         User_Pref_CopyDeselect = lx.eval('pref.value application.copyDeSelection ?')
-        lx.out('User Pref: Deselect Elements after Copying', User_Pref_CopyDeselect)
+        #lx.out('User Pref: Deselect Elements after Copying', User_Pref_CopyDeselect)
         User_Pref_PasteSelection = lx.eval('pref.value application.pasteSelection ?')
-        lx.out('User Pref: Select Pasted Elements', User_Pref_PasteSelection)
+        #lx.out('User Pref: Select Pasted Elements', User_Pref_PasteSelection)
         User_Pref_PasteDeselect = lx.eval('pref.value application.pasteDeSelection ?')
-        lx.out('User Pref: Deselect Elements Before Pasting', User_Pref_PasteDeselect)
+        #lx.out('User Pref: Deselect Elements Before Pasting', User_Pref_PasteDeselect)
         # Is Copy Deselect False ?
         if User_Pref_CopyDeselect == 0:
             lx.eval('pref.value application.copyDeSelection true')
@@ -233,7 +233,7 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
 
             SMO_SafetyCheck_ItemModeEnabled = 0
             SMO_SafetyCheck_PolygonModeEnabled = 1
-            lx.out('script Running: Correct Item Selection Mode')
+            #lx.out('script Running: Correct Item Selection Mode')
             # sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
         else:
             # This only fails if none of the three supported selection
@@ -242,7 +242,7 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
             # selection mode.
             SMO_SafetyCheck_ItemModeEnabled = 1
             SMO_SafetyCheck_PolygonModeEnabled = 0
-            lx.out('script Running: Correct Item Selection Mode')
+            #lx.out('script Running: Correct Item Selection Mode')
         #####--------------------  safety check 1: Polygon Selection Mode enabled --- END --------------------#####
 
         #####-------------------------------------------------------------------------------#####
@@ -260,10 +260,10 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
             # edge_under_mouse = lx.eval('query view3dservice element.over ? EDGE ')
             hitpos = lx.eval('query view3dservice mouse.hitpos ?')
 
-            lx.out('View under mouse:', view_under_mouse)
-            lx.out('Hit Position:', hitpos)
-            lx.out('Items under mouse:', Item_under_mouse)
-            lx.out('Polygon under mouse:', Poly_under_mouse)
+            #lx.out('View under mouse:', view_under_mouse)
+            #lx.out('Hit Position:', hitpos)
+            #lx.out('Items under mouse:', Item_under_mouse)
+            #lx.out('Polygon under mouse:', Poly_under_mouse)
 
             # lx.eval('select.drop polygon')
             # lx.eval('materials.underMouse')
@@ -434,7 +434,7 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
 
         elif CsPolys >= 1:
             SMO_SafetyCheck_min1PolygonSelected = 1
-            lx.out('script running: right amount of polygons in selection')
+            #lx.out('script running: right amount of polygons in selection')
         #####--------------------  safety check 2: at Least 1 Polygons is selected --- END --------------------#####
 
         #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####

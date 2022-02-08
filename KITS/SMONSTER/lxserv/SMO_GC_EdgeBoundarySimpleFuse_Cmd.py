@@ -1,10 +1,10 @@
 # python
 # ---------------------------------------
-# Name:         SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd.py
+# Name:         SMO_GC_EdgeBoundarySimpleFuse_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to:
-#               Extend the current Opened Boundary Edge Loop to nearest BG Mesh using BG Constraint and setting an Edge Bevel + applying a VertexNormalTransfer to fuse the border with BG Mesh normals.
+#               MakePoly + Bevel Inset Outside + applying a VertexNormalTransfer to fuse the border with BG Mesh normals.
 #
 # Author:       Franck ELISABETH
 # Website:      http://www.smoluck.com
@@ -16,10 +16,10 @@
 import lx, lxu, modo
 from math import degrees
 
-Command_Name = "smo.GC.EdgeBoundaryProjectToBGnFuse"
-# smo.GC.EdgeBoundaryProjectToBGnFuse [5mm]
+Command_Name = "smo.GC.EdgeBoundarySimpleFuse"
+# smo.GC.EdgeBoundarySimpleFuse [5mm]
 
-class SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd(lxu.command.BasicCommand):
+class SMO_GC_EdgeBoundarySimpleFuse_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Witdh Value", lx.symbol.sTYPE_DISTANCE)
@@ -52,19 +52,19 @@ class SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC EdgeBoundaryProjectToBGnFuse'
+        return 'SMO GC EdgeBoundarySimpleFuse'
 
     def cmd_Desc(self):
-        return 'Extend the current Opened Boundary Edge Loop to nearest BG Mesh using BG Constraint and setting an Edge Bevel + applying a VertexNormalTransfer to fuse the border with BG Mesh normals.'
+        return 'MakePoly + Bevel Inset Outside + applying a VertexNormalTransfer to fuse the border with BG Mesh normals.'
 
     def cmd_Tooltip(self):
-        return 'Extend the current Opened Boundary Edge Loop to nearest BG Mesh using BG Constraint and setting an Edge Bevel + applying a VertexNormalTransfer to fuse the border with BG Mesh normals.'
+        return 'MakePoly + Bevel Inset Outside + applying a VertexNormalTransfer to fuse the border with BG Mesh normals.'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC EdgeBoundaryProjectToBGnFuse'
+        return 'SMO GC EdgeBoundarySimpleFuse'
 
     def cmd_Flags(self):
         return lx.symbol.fCMD_UNDO
@@ -120,13 +120,13 @@ class SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd(lxu.command.BasicCommand):
 
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
-        lx.eval("user.defNew name:SMO_SafetyCheck_PolygonModeEnabled type:integer life:momentary")
+        lx.eval("user.defNew name:SMO_SafetyCheck_PolyModeOn_EdgeBoundSimpleFuse type:integer life:momentary")
 
-        lx.eval("user.defNew name:SMO_SafetyCheck_ItemModeEnabled type:integer life:momentary")
-        lx.eval("user.defNew name:SMO_SafetyCheck_min1PolygonSelected type:integer life:momentary")
+        lx.eval("user.defNew name:SMO_SafetyCheck_ItemModeOn_EdgeBoundSimpleFuse type:integer life:momentary")
+        lx.eval("user.defNew name:SMO_SafetyCheck_min1PolySel_EdgeBoundSimpleFuse type:integer life:momentary")
 
-        lx.eval("user.defNew name:SMO_SafetyCheck_EdgeModeEnabled type:integer life:momentary")
-        lx.eval("user.defNew name:SMO_SafetyCheck_min1EdgeSelected type:integer life:momentary")
+        lx.eval("user.defNew name:SMO_SafetyCheck_EdgeModeOn_EdgeBoundSimpleFuse type:integer life:momentary")
+        lx.eval("user.defNew name:SMO_SafetyCheck_min1EdgeSel_EdgeBoundSimpleFuse type:integer life:momentary")
         #####
         #####--- Define user value for all the different SafetyCheck --- END ---#####
 
@@ -143,9 +143,9 @@ class SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd(lxu.command.BasicCommand):
             selType = "vertex"
             attrType = "vert"
 
-            SMO_SafetyCheck_ItemModeEnabled = 0
-            SMO_SafetyCheck_PolygonModeEnabled = 0
-            SMO_SafetyCheck_EdgeModeEnabled = 0
+            SMO_SafetyCheck_ItemModeOn_EdgeBoundSimpleFuse = 0
+            SMO_SafetyCheck_PolyModeOn_EdgeBoundSimpleFuse = 0
+            SMO_SafetyCheck_EdgeModeOn_EdgeBoundSimpleFuse = 0
             lx.eval('dialog.setup info')
             lx.eval('dialog.title {SMO VeNom:}')
             lx.eval('dialog.msg {You must be in Item Mode and have 1 Mesh Layer selected to run that script.}')
@@ -158,18 +158,18 @@ class SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd(lxu.command.BasicCommand):
         elif lx.eval1("select.typeFrom typelist:edge;vertex;polygon;item ?"):
             selType = "edge"
             attrType = "edge"
-            SMO_SafetyCheck_ItemModeEnabled = 0
-            SMO_SafetyCheck_PolygonModeEnabled = 0
-            SMO_SafetyCheck_EdgeModeEnabled = 1
+            SMO_SafetyCheck_ItemModeOn_EdgeBoundSimpleFuse = 0
+            SMO_SafetyCheck_PolyModeOn_EdgeBoundSimpleFuse = 0
+            SMO_SafetyCheck_EdgeModeOn_EdgeBoundSimpleFuse = 1
             lx.out('script Running: Correct Item Selection Mode')
             # sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
 
         elif lx.eval1("select.typeFrom typelist:polygon;vertex;edge;item ?"):
             selType = "polygon"
             attrType = "poly"
-            SMO_SafetyCheck_ItemModeEnabled = 0
-            SMO_SafetyCheck_PolygonModeEnabled = 1
-            SMO_SafetyCheck_EdgeModeEnabled = 0
+            SMO_SafetyCheck_ItemModeOn_EdgeBoundSimpleFuse = 0
+            SMO_SafetyCheck_PolyModeOn_EdgeBoundSimpleFuse = 1
+            SMO_SafetyCheck_EdgeModeOn_EdgeBoundSimpleFuse = 0
             lx.out('script Running: Correct Item Selection Mode')
             # sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
 
@@ -178,16 +178,20 @@ class SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd(lxu.command.BasicCommand):
             # modes have yet been used since the program started, or
             # if "item" or "ptag" (ie: materials) is the current
             # selection mode.
-            SMO_SafetyCheck_ItemModeEnabled = 1
-            SMO_SafetyCheck_PolygonModeEnabled = 0
-            SMO_SafetyCheck_EdgeModeEnabled = 0
+            SMO_SafetyCheck_ItemModeOn_EdgeBoundSimpleFuse = 1
+            SMO_SafetyCheck_PolyModeOn_EdgeBoundSimpleFuse = 0
+            SMO_SafetyCheck_EdgeModeOn_EdgeBoundSimpleFuse = 0
             lx.out('script Running: Correct Item Selection Mode')
         #####--------------------  safety check 1: Polygon Selection Mode enabled --- END --------------------#####
+
+
+
+
 
         #####-------------------------------------------------------------------------------#####
         ####### Track Mouse Over Selection. Is there a polygon under Mouse and select it. #######
         #####-------------------------------------------------------------------------------#####
-        if SMO_SafetyCheck_EdgeModeEnabled == 1:
+        if SMO_SafetyCheck_EdgeModeOn_EdgeBoundSimpleFuse == 1:
             # mesh = scene.selectedByType('mesh')[0]
             lx.eval('select.type polygon')
             lx.eval('query view3dservice mouse ?')
@@ -226,30 +230,34 @@ class SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd(lxu.command.BasicCommand):
 
         # print(selected_mesh.id)
         # print(BGmesh)
+        if success == True:
+            if selected_mesh.id != BGmesh.id:
+                FGMeshAndBGMeshSame = False
+                # print(FGMeshAndBGMeshSame)
+                # print(selected_mesh.id)
+                # BGMesh = Item_under_mouse
+                # print(BGmesh.id)
 
-        if selected_mesh.id != BGmesh.id:
-            FGMeshAndBGMeshSame = False
-            # print(FGMeshAndBGMeshSame)
+            if selected_mesh.id == BGmesh.id:
+                FGMeshAndBGMeshSame = True
+                lx.eval('select.type item')
+                scene.select(selected_mesh)
+                lx.eval('select.type polygon')
+                lx.eval('select.3DElementUnderMouse')
+                lx.eval('select.polygonConnect m3d false')
+                lx.eval('smo.CAD.CopyCutAsChildOfCurrentMesh 0 1 4 true')
+                BGmesh = scene.selectedByType('mesh')[0]
+                del Item_under_mouse
+                lx.eval('select.type item')
+
             # print(selected_mesh.id)
-            # BGMesh = Item_under_mouse
             # print(BGmesh.id)
 
-        if selected_mesh.id == BGmesh.id:
-            FGMeshAndBGMeshSame = True
-            lx.eval('select.type item')
-            scene.select(selected_mesh)
-            lx.eval('select.type polygon')
-            lx.eval('select.3DElementUnderMouse')
-            lx.eval('select.polygonConnect m3d false')
-            lx.eval('smo.CAD.CopyCutAsChildOfCurrentMesh 0 1 4 true')
-            BGmesh = scene.selectedByType('mesh')[0]
-            del Item_under_mouse
-            lx.eval('select.type item')
 
-        # print(selected_mesh.id)
-        # print(BGmesh.id)
 
-        if SMO_SafetyCheck_EdgeModeEnabled == 1:
+
+
+        if SMO_SafetyCheck_EdgeModeOn_EdgeBoundSimpleFuse == 1:
             lx.eval('select.type item')
             lx.eval('smo.GC.DeselectAll')
             scene.select(selected_mesh)
@@ -290,7 +298,7 @@ class SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd(lxu.command.BasicCommand):
         # lx.out('Count Selected Edge', CsEdges)
 
         if CsEdges < 1:
-            SMO_SafetyCheck_min1EdgeSelected = 0
+            SMO_SafetyCheck_min1EdgeSel_EdgeBoundSimpleFuse = 0
             lx.eval('dialog.setup info')
             lx.eval('dialog.title {SMO GC EdgeBoundaryProjectToBGnFuse:}')
             lx.eval('dialog.msg {You must mouse over an edge to run that script}')
@@ -299,7 +307,7 @@ class SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd(lxu.command.BasicCommand):
             sys.exit
 
         elif CsEdges >= 1:
-            SMO_SafetyCheck_min1EdgeSelected = 1
+            SMO_SafetyCheck_min1EdgeSel_EdgeBoundSimpleFuse = 1
             # lx.out('script running: right amount of Edges in selection')
         #####--------------------  safety check 2: at Least 1 Edge is selected --- END --------------------#####
 
@@ -307,12 +315,12 @@ class SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd(lxu.command.BasicCommand):
         #####
         TotalSafetyCheckTrueValue = 2
         # lx.out('Desired Value', TotalSafetyCheckTrueValue)
-        if SMO_SafetyCheck_ItemModeEnabled == 1:
-            TotalSafetyCheck = (SMO_SafetyCheck_ItemModeEnabled + SMO_SafetyCheck_min1EdgeSelected)
+        if SMO_SafetyCheck_ItemModeOn_EdgeBoundSimpleFuse == 1:
+            TotalSafetyCheck = (SMO_SafetyCheck_ItemModeOn_EdgeBoundSimpleFuse + SMO_SafetyCheck_min1EdgeSel_EdgeBoundSimpleFuse)
             # lx.out('Current Value', TotalSafetyCheck)
 
-        if SMO_SafetyCheck_EdgeModeEnabled == 1:
-            TotalSafetyCheck = (SMO_SafetyCheck_EdgeModeEnabled + SMO_SafetyCheck_min1EdgeSelected)
+        if SMO_SafetyCheck_EdgeModeOn_EdgeBoundSimpleFuse == 1:
+            TotalSafetyCheck = (SMO_SafetyCheck_EdgeModeOn_EdgeBoundSimpleFuse + SMO_SafetyCheck_min1EdgeSel_EdgeBoundSimpleFuse)
             # lx.out('Current Value', TotalSafetyCheck)
 
         #####
@@ -328,13 +336,14 @@ class SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd(lxu.command.BasicCommand):
         # Isolate the 2 Targeted Meshes (FG and BG)
         lx.eval('select.type item')
         scene.select(selected_mesh)
-        BGmesh.select(replace=False)
+        if success == True:
+            BGmesh.select(replace=False)
         lx.eval('hide.unsel')
         lx.eval('smo.GC.DeselectAll')
         scene.select(selected_mesh)
 
         # # Manual Selection Mode via a set of edges
-        if SMO_SafetyCheck_EdgeModeEnabled == 1:
+        if SMO_SafetyCheck_EdgeModeOn_EdgeBoundSimpleFuse == 1:
             scene.select(selected_mesh)
             lx.eval('select.type edge')
 
@@ -351,38 +360,7 @@ class SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd(lxu.command.BasicCommand):
             lx.eval('select.edge remove bond equal (none)')
             # lx.eval('workPlane.state true')
             lx.eval('select.useSet GC_ProjectBGnFuseEdgeLoop replace')
-            lx.eval('meshConstraint.state true')
-            lx.eval('tool.attr const.bg geometry vector')
-            lx.eval('tool.attr const.bg dblSided true')
 
-            # Transform solution for Projection
-            # lx.eval('select.convert vertex')
-            # lx.eval('tool.set TransformMove on')
-            # lx.eval('tool.set actr.origin on')
-            # lx.eval('tool.attr xfrm.transform TX %s' % EdgeSlideValue)
-            # lx.eval('tool.setAttr xfrm.transform TX %s' % EdgeSlideValue)
-            # lx.eval('tool.doApply')
-            # lx.eval('meshConstraint.state false')
-            # lx.eval('workPlane.state false')
-            # lx.eval('tool.set actr.origin off')
-
-            # EdgeSlide solution  for Projection
-            lx.eval('tool.set edge.Slide on')
-            lx.eval('tool.setAttr edge.slide mode radial')
-            lx.eval('tool.setAttr edge.slide interpolation distance')
-
-            lx.eval('tool.setAttr edge.slide merge false')
-            lx.eval('tool.setAttr edge.slide stop false')
-            lx.eval('tool.setAttr edge.slide duplicate false')
-            lx.eval('tool.setAttr edge.slide loop true')
-            lx.eval('tool.setAttr edge.slide curvature false')
-
-            lx.eval('tool.setAttr edge.slide dist %s' % EdgeSlideValue)
-            lx.eval('tool.doApply')
-            lx.eval('meshConstraint.state false')
-
-            lx.eval('select.type edge')
-            lx.eval('select.useSet GC_ProjectBGnFuseEdgeLoop replace')
             lx.eval('poly.make auto')
             lx.eval('select.convert polygon')
             lx.eval('tool.set *.bevel on')
@@ -411,11 +389,17 @@ class SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd(lxu.command.BasicCommand):
             lx.eval('select.expand')
             lx.eval('select.convert polygon')
             lx.eval('select.createSet GC_ProjectBGnFusePolyFuse')
-
             lx.eval('select.convert vertex')
-            if TransfVNormBG == True:
-                lx.eval('vertMap.transferNormals false')
             lx.eval('select.convert polygon')
+
+            if TransfVNormBG == True and success == False:
+                lx.out('EdgeBoundarySimpleFuse VN at Boundary Set by self')
+                lx.eval('smo.VENOM.MainCommand 0 0')
+            if TransfVNormBG == True and success == True:
+                lx.out('EdgeBoundarySimpleFuse VN transfer from BG Mesh')
+                lx.eval('vertMap.transferNormals false')
+
+            lx.eval('select.useSet GC_ProjectBGnFusePolyFuse replace')
             lx.eval('delete')
             lx.eval('select.deleteSet GC_ProjectBGnFusePolyLoop')
             lx.eval('select.deleteSet GC_ProjectBGnFusePolyExtended')
@@ -446,15 +430,15 @@ class SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd(lxu.command.BasicCommand):
         #     lx.eval('channel.value {%s} channel:{%s:rot.Z}' % (TargetOutputRot[2], TargetRotXfrm))
         #     lx.eval('smo.GC.DeselectAll')
 
-        if SMO_SafetyCheck_EdgeModeEnabled == 1:
+        if SMO_SafetyCheck_EdgeModeOn_EdgeBoundSimpleFuse == 1:
             lx.eval('select.type item')
             lx.eval('unhide')
             lx.eval('smo.GC.DeselectAll')
-            if FGMeshAndBGMeshSame == True:
+            if FGMeshAndBGMeshSame == True and success == True:
                 scene.select(BGmesh)
                 lx.eval('select.type item')
                 lx.eval('!delete')
             scene.select(selected_mesh)
             lx.eval('select.type edge')
 
-lx.bless(SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd, Command_Name)
+lx.bless(SMO_GC_EdgeBoundarySimpleFuse_Cmd, Command_Name)
