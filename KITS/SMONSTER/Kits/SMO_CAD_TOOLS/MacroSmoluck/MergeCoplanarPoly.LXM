@@ -1,0 +1,4 @@
+#LXMacro#
+@kit_SMO_CAD_TOOLS:MacroSmoluck/SelectSimilarTouchingAccurate2Deg.LXM
+poly.merge
+select.contract

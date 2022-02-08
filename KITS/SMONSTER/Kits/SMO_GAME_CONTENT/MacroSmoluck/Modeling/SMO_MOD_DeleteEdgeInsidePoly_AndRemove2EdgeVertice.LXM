@@ -1,0 +1,30 @@
+#LXMacro#
+#-----------------------------------------
+# Name:         SMO_MOD_DeleteEdgeInsidePoly_AndRemove2EdgeVertice.LXM
+# Version:      1.0
+#
+# Purpose:      This script is designed to:
+#       Delete all the Edges inside a Polygon 
+#       selection and remove 2 edges Vertices
+#
+#
+# Author:       Franck ELISABETH
+# Website:      http://www.smoluck.com
+#
+# Created:      XX/XX/2018-2019
+# Copyright:    (c) Franck Elisabeth 2019
+#-----------------------------------------
+
+# replay name:"DeleteEdgeInsidePoly.LXM"
+script.implicit name:"kit_SMO_GAME_CONTENT:MacroSmoluck/Modeling/SMO_MOD_DeleteEdgeInsidePoly.LXM"
+select.convert type:vertex
+# replay name:"Select Vertices"
+select.vertex action:remove test:edge mode:equal value:3
+# replay name:"Select Vertices"
+select.vertex action:remove test:edge mode:equal value:4
+# replay name:"Select Vertices"
+select.vertex action:remove test:edge mode:more value:4
+# replay name:"Delete Selection"
+!delete
+select.typeFrom typelist:"polygon;edge;vertex;item;pivot;center;ptag" enable:true
+select.convert type:vertex

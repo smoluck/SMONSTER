@@ -1,0 +1,20 @@
+#LXMacro#
+# ARG 1:
+# Fix Flipped = 0
+# Fix Flipped = 1
+# ARG 2:
+# Orient preprocess OFF = 0
+# Orient preprocess ON = 1
+# Orient 2 Passes = 2
+
+@kit_SMO_UV:MacroSmoluck/UV/SMO_UV_Normalize_Pack_byArea.py %1 %2 0 -1
+@kit_SMO_UV:MacroSmoluck/UV/SMO_UV_Normalize_Pack_byArea.py %1 %2 1 -1
+@kit_SMO_UV:MacroSmoluck/UV/SMO_UV_Normalize_Pack_byArea.py %1 %2 0 -2
+@kit_SMO_UV:MacroSmoluck/UV/SMO_UV_Normalize_Pack_byArea.py %1 %2 -2 1
+@kit_SMO_UV:MacroSmoluck/UV/SMO_UV_Normalize_Pack_byArea.py %1 %2 -2 0
+@kit_SMO_UV:MacroSmoluck/UV/SMO_UV_Normalize_Pack_byArea.py %1 %2 -1 0
+@kit_SMO_UV:MacroSmoluck/UV/SMO_UV_Normalize_Pack_byArea.py %1 %2 -1 1
+@kit_SMO_UV:MacroSmoluck/UV/SMO_UV_Normalize_Pack_byArea.py %1 %2 -2 -1
+@kit_SMO_UV:MacroSmoluck/UV/SMO_UV_Normalize_Pack_byArea.py %1 %2 -2 -2
+@kit_SMO_UV:MacroSmoluck/UV/SMO_UV_Normalize_Pack_byArea.py %1 %2 -1 -2
+@kit_SMO_UV:MacroSmoluck/UV/SMO_UV_Normalize_Pack_byArea.py %1 %2 -1 -1

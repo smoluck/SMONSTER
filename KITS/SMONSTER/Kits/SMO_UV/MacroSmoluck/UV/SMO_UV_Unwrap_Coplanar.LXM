@@ -1,0 +1,10 @@
+#LXMacro#
+@kit_SMO_GAME_CONTENT:MacroSmoluck/Modeling/SMO_MOD_PolyLazySelect.py 1 2
+workPlane.fitSelect
+@kit_SMO_UV:MacroSmoluck/UV/SMO_UV_Unwrap_PlanarPosY_512px10cm.py
+tool.noChange
+tool.doApply
+select.nextMode
+select.editSet UV_Unwraped add
+hide.sel
+workPlane.reset

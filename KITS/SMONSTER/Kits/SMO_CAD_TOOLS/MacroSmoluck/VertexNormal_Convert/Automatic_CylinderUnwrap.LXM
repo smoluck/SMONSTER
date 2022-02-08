@@ -1,0 +1,30 @@
+#LXMacro#
+# Made with Replay
+# mechanicalcolor.com
+
+item.componentMode type:polygon enable:true
+# replay name:"Hide Unselected"
+hide.unsel
+select.typeFrom typelist:"edge;vertex;polygon;item;pivot;center;ptag" enable:true
+# replay name:"Align Work Plane to Selected"
+workPlane.fitSelect
+item.componentMode type:polygon enable:true
+tool.set preset:"uv.create" mode:on
+tool.set preset:"uv.create" mode:on
+tool.setAttr tool:"uv.create" attr:proj value:cylindrical
+tool.setAttr tool:"uv.create" attr:world value:true
+tool.apply
+viewport.fitSelected
+tool.set preset:"uv.viewProj" mode:off
+# replay name:"Unhide"
+unhide
+# replay name:"Set Texel Density"
+texeldensity.set per:island mode:all
+# replay name:"User Value"
+user.value name:"texeldensity.sizeUV" value:"32.0"
+# replay name:"Set Texel Density"
+texeldensity.set per:island mode:all
+# replay name:"Reset Work Plane"
+workPlane.reset
+# replay name:"Unhide"
+unhide

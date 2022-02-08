@@ -1,0 +1,17 @@
+#LXMacro#
+#---------------------------------------
+# Name: SMO_MOD_MirrorX.LXM
+# Version: 1.0
+#
+# Purpose: This Macro  set the auto axis of the FallOff via arguments
+#
+# Author:       Franck ELISABETH
+# Website:      http://www.smoluck.com
+#
+# Created:      16/09/2019
+# Copyright:    (c) Franck Elisabeth 2019
+#---------------------------------------
+
+# For FallOff Linear Set the current axis 
+# Argument are 0 for X / 1 for Y / 2 for Z
+falloff.axisAutoSize axis:%1

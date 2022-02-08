@@ -1,0 +1,52 @@
+#LXMacro#
+#-----------------------------------------
+# Name:         SMO_EXP_FreezeMeshOpsAndRepli_Export_PART4_CONVERTINSTANCEFROMREPLICATOR.LXM
+# Version:      1.0
+#
+# Purpose:
+# 
+# This script is designed to:
+#       CONVERT INSTANCE FROM REPLICATOR TO MESH
+#
+#
+# Author:       Franck ELISABETH
+# Website:      http://www.smoluck.com
+#
+# Created:      XX/XX/2018-2019
+# Copyright:    (c) Franck Elisabeth 2019
+#-----------------------------------------
+
+# // START // OOOOOKKKKK
+# // Select The INSTANCES in current selection //
+
+# Disable "Limit to current Selection Child Only"
+selectPattern.lookAtSelect select:true
+
+# Clear Selection Pattern filter
+selectPattern.none
+
+# Change the Label of the filter
+selectPattern.pattern label:"*"
+
+# Add Instances to the Selection filter
+selectPattern.toggleInstance true
+
+# Add By Color to the Selection filter
+selectPattern.toggleColor enable:true
+# White
+selectPattern.color color:17
+
+# Select by Filter (Locator with "*" in it)
+selectPattern.apply mode:set
+
+# // Select The INSTANCES in current selection //
+# // FINISH //
+
+# // START // OOOOOKKKKK
+# // Convert INSTANCES to MESHES //
+
+# Convert INSTANCES to MESHES
+item.setType Mesh
+
+# // Convert INSTANCES to MESHES //
+# // FINISH //

@@ -1,0 +1,41 @@
+#LXMacro#
+#-----------------------------------------
+# Name:         SMO_EXP_FreezeMeshOpsAndRepli_Export.LXM
+# Version:      1.0
+#
+# Purpose:
+# 
+# This script is designed to:
+#       CONVERT MESHOPS TO MESHES
+#       Then CONVERT INSTANCE of this Mesh TO MESH
+#       FREEZE REPLICATOR TO INSTANCES
+#       CONVERT INSTANCE FROM REPLICATOR TO MESH
+#       Select Back the Items and Export to FBX & Revert
+#       Back to the State before launching the Macro
+#
+# Author:       Franck ELISABETH
+# Website:      http://www.smoluck.com
+#
+# Created:      XX/XX/2018-2019
+# Copyright:    (c) Franck Elisabeth 2019
+#-----------------------------------------
+
+### Load 1st Part of the Script ##
+# FreezeFBXSETUP - PART 1 - CONVERT MESHOPS TO MESHES
+@{kit_SMO_GAME_CONTENT:MacroSmoluck/Export/SMO_EXP_FreezeMeshOpsAndRepli_Export_PART1_FREEZEMESHOP.LXM}">
+
+### Load 2nd Part of the Script ##
+# FreezeFBXSETUP - PART 2 - CONVERT INSTANCE TO MESH
+@{kit_SMO_GAME_CONTENT:MacroSmoluck/Export/SMO_EXP_FreezeMeshOpsAndRepli_Export_PART2_CONVERTINSTANCE.LXM}">
+
+### Load 3rd Part of the Script ##
+# FreezeFBXSETUP - PART 3 - FREEZE REPLICATOR TO INSTANCES
+@{kit_SMO_GAME_CONTENT:MacroSmoluck/Export/SMO_EXP_FreezeMeshOpsAndRepli_Export_PART3_FREEZEREPLICATOR.LXM}">
+
+### Load 4th Part of the Script ##
+# FreezeFBXSETUP - PART 4 - CONVERT INSTANCE FROM REPLICATOR TO MESH
+@{kit_SMO_GAME_CONTENT:MacroSmoluck/Export/SMO_EXP_FreezeMeshOpsAndRepli_Export_PART4_CONVERTINSTANCEFROMREPLICATOR.LXM}">
+
+### Load 5th Part of the Script ##
+# FreezeFBXSETUP - PART 5 - Select Back the Items and Export to FBX & Revert Back to the State before launching the Macro
+@{kit_SMO_GAME_CONTENT:MacroSmoluck/Export/SMO_EXP_FreezeMeshOpsAndRepli_Export_PART5_SELECTBACKANDEXPORTTOFBX.LXM}">

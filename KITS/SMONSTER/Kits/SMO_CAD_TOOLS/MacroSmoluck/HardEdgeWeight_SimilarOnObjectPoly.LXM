@@ -1,0 +1,13 @@
+#LXMacro#
+# Made with Replay
+# mechanicalcolor.com
+
+# replay name:"User Value"
+## user.value name:sene_LS_facingRatio value:"0.5"
+# replay name:"lazySelect.pl"
+## script.implicit name:"lazySelect.pl" args:selectOnObject
+smo.GC.SelectCoPlanarPoly 1 1 1000
+# replay name:"PolyBoundaryEdgeWeight.LXM"
+script.implicit name:"kit_SMO_GAME_CONTENT:MacroSmoluck/PolyBoundaryEdgeWeight.LXM"
+# replay name:"Drop Selection"
+select.drop type:polygon

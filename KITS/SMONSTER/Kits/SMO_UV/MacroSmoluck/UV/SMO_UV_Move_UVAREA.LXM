@@ -1,0 +1,10 @@
+#LXMacro#
+tool.set preset:TransformMove mode:on
+tool.noChange
+# Command Block Begin:
+    tool.setAttr tool:"xfrm.transform" attr:U value:%1
+    tool.setAttr tool:"xfrm.transform" attr:V value:%2
+# Command Block End:
+# Launch the Move Tool
+tool.doapply
+tool.set preset:TransformMove mode:off

@@ -1,0 +1,15 @@
+#LXMacro#
+# Select the mesh to rotate (in item mode)
+# and it will add the deisred value to the current transform value.
+#
+# If an item as RY 58.2 deg
+# using SMO_RotateXYZ_Item.LXM Y 180
+# will add 180 degree to the current value of the item
+# ending in a RY of 238.2 deg
+#
+# 
+# Arguments properties
+# arg1 = Axis X, Y or Z
+# arg2 = Rotation Value in degree
+
+transform.channel rot.%1 %2 shift

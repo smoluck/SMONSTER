@@ -1,0 +1,9 @@
+#LXMacro#
+hardedge.set hard
+select.convert edge
+select.contract uv
+select.contract
+!delete
+select.nextMode
+uv.rectangle false
+select.editSet RECTANGLE add {}

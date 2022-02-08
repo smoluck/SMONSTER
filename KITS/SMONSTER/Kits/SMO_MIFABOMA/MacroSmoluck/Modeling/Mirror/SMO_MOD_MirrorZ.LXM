@@ -1,0 +1,29 @@
+#LXMacro#
+#---------------------------------------
+# Name: SMO_MOD_MirrorZ.LXM
+# Version: 1.0
+#
+# Purpose: This Macro  set the mirror setting for Z mode
+#
+# Author:       Franck ELISABETH
+# Website:      http://www.smoluck.com
+#
+# Created:      16/09/2019
+# Copyright:    (c) Franck Elisabeth 2019
+#---------------------------------------
+
+tool.set *.mirror on
+#Command Block Begin:  ToolAdjustment
+   tool.setAttr gen.mirror frot axis
+   tool.setAttr gen.mirror cenX 0.0
+   tool.setAttr gen.mirror cenY 0.0
+   tool.setAttr gen.mirror cenZ 0.0
+   tool.setAttr gen.mirror axis 0
+   tool.setAttr gen.mirror leftX 0.0
+   tool.setAttr gen.mirror leftY 1
+   tool.setAttr gen.mirror leftZ 0.0
+   tool.setAttr gen.mirror upX 0.0
+   tool.setAttr gen.mirror upY 0.0
+   tool.setAttr gen.mirror upZ 1
+#Command Block End:  ToolAdjustment
+tool.doApply

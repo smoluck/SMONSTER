@@ -1,0 +1,14 @@
+#LXMacro#
+# Select the mesh to rotate (in Component mode)
+# Argument are RX RY RZ
+# SMO_RotateXYZ_Component.LXM 180 0 180
+tool.set TransformRotate on
+tool.noChange
+#Command Block Begin:  ToolAdjustment
+   tool.setAttr xfrm.transform RX %1
+   tool.setAttr xfrm.transform RY %2
+   tool.setAttr xfrm.transform RZ %3
+#Command Block End:  ToolAdjustment
+tool.doApply
+tool.set TransformRotate off 0
+tool.clearTask snap

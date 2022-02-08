@@ -1,0 +1,28 @@
+#LXMacro#
+#-----------------------------------------
+# Name:         SMO_SET_MoveCenterHereAndRotate.LXM
+# Version:      1.0
+#
+# Purpose:      This script is designed to:
+#       Move and Rotate the center of the current
+#       Mesh Item using a Polygon selection
+#
+#
+# Author:       Franck ELISABETH
+# Website:      http://www.smoluck.com
+#
+# Created:      XX/XX/2018-2019
+# Copyright:    (c) Franck Elisabeth 2019
+#-----------------------------------------
+
+select.typeFrom typelist:"polygon;edge;vertex;item;pivot;center;ptag" enable:true
+select.all
+smo.GC.Setup.MoveRotateCenterToSelection 1 0
+select.typeFrom typelist:"polygon;edge;vertex;item;pivot;center;ptag" enable:true
+select.all
+workPlane.fitSelect
+select.typeFrom typelist:"item;pivot;center;edge;polygon;vertex;ptag" enable:true
+select.convert type:center
+matchWorkplaneRot
+workPlane.reset
+select.typeFrom typelist:"item;pivot;center;edge;polygon;vertex;ptag" enable:true

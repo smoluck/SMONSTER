@@ -1,0 +1,28 @@
+#LXMacro#
+#-----------------------------------------
+# Name:         SMO_SET_MoveCenterToWorkplanePos_v11.LXM
+# Version:      1.0
+#
+# Purpose:      This script is designed to:
+#       Move the center of the current
+#       Mesh Item to Worplane Position
+#
+#
+# Author:       Franck ELISABETH
+# Website:      http://www.smoluck.com
+#
+# Created:      XX/XX/2018-2019
+# Copyright:    (c) Franck Elisabeth 2019
+#-----------------------------------------
+
+select.typeFrom typelist:"polygon;edge;vertex;item;pivot;center;ptag" enable:true
+select.all
+cut
+select.typeFrom typelist:"item;pivot;center;edge;polygon;vertex;ptag" enable:true
+select.convert type:center
+matchWorkplanePos
+select.typeFrom typelist:"item;pivot;center;edge;polygon;vertex;ptag" enable:true
+select.typeFrom typelist:"polygon;edge;vertex;item;pivot;center;ptag" enable:true
+paste
+workPlane.reset
+select.typeFrom item;pivot;center;edge;polygon;vertex;ptag true

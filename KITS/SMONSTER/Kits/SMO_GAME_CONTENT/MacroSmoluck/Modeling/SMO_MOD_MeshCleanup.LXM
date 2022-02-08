@@ -1,0 +1,31 @@
+#LXMacro#
+#-----------------------------------------
+# Name:         SMO_MOD_MeshCleanup.LXM
+# Version:      1.0
+#
+# Purpose:      This script is designed to:
+#               Merge all vertices of the current Mesh Item
+#               and launch a Mesh CleanUp with all option On Except the Merge Vertice.
+#               this way it prevent any merge vertice to happen on small unit.
+#               It will also run a Polygon Alignat the end.
+#               /!/ You need to be in Item Mode to run it. /!/
+#
+#
+# Author:       Franck ELISABETH
+# Website:      http://www.smoluck.com
+#
+# Created:      XX/XX/2018-2019
+# Copyright:    (c) Franck Elisabeth 2019
+#-----------------------------------------
+
+select.convert type:vertex
+select.all
+# Merge vertices at a value of 100um 
+vert.merge range:fixed keep:false dist:"5e-05" morph:false disco:false
+select.typeFrom typelist:"item;pivot;center;edge;polygon;vertex;ptag" enable:true
+# Mesh Cleanup
+mesh.cleanup floatingVertex:true onePointPolygon:true twoPointPolygon:true dupPointPolygon:true colinear:true faceNormal:true mergeVertex:false mergeDisco:true unifyPolygon:true forceUnify:true removeDiscoWeight:true
+select.typeFrom typelist:"polygon;edge;vertex;item;pivot;center;ptag" enable:true
+select.all
+poly.align
+select.typeFrom typelist:"item;pivot;center;edge;polygon;vertex;ptag" enable:true

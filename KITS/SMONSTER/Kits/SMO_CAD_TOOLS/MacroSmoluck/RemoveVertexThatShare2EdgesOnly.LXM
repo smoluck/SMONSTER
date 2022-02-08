@@ -1,0 +1,17 @@
+#LXMacro#
+# Made with Replay
+# mechanicalcolor.com
+
+item.componentMode type:vertex enable:true
+# replay name:"Selection All"
+select.all
+# replay name:"Select Vertices"
+select.vertex action:remove test:edge mode:equal value:3
+# replay name:"Select Vertices"
+select.vertex action:remove test:edge mode:equal value:4
+# replay name:"Delete Selection"
+!delete
+# replay name:"Select Next Mode"
+select.nextMode
+# replay name:"Item"
+select.typeFrom typelist:"item;pivot;center;edge;polygon;vertex;ptag" enable:true

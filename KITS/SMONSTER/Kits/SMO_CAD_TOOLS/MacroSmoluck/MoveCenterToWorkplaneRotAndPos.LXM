@@ -1,0 +1,14 @@
+#LXMacro#
+# Made with Replay
+# mechanicalcolor.com
+
+# replay name:"Align Work Plane to Selected"
+workPlane.fitSelect
+# replay name:"Item"
+select.typeFrom typelist:"item;pivot;center;edge;polygon;vertex;ptag" enable:true
+select.convert type:center
+matchWorkplanePos
+matchWorkplaneRot
+workPlane.reset
+# replay name:"Item"
+select.typeFrom typelist:"item;pivot;center;edge;polygon;vertex;ptag" enable:true

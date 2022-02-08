@@ -1,0 +1,21 @@
+#LXMacro#
+#-----------------------------------------
+# Name:         Set_Color_Scheme_Dark.LXM
+# Version:      1.0
+#
+# Purpose:      This script is designed to:
+#           Activate the SMOLUCK_ZEN_Style ColorScheme
+#           to the current Viewport.
+#
+# Author:       Franck ELISABETH
+# Website:      http://www.smoluck.com
+#
+# Created:      XX/XX/2018-2019
+# Copyright:    (c) Franck Elisabeth 2019
+#-----------------------------------------
+
+!viewport.scheme SMOLUCK_Dark_ColorScheme.3d
+view3d.bgEnvironment background solid
+view3d.showCenters select
+view3d.drawFur false
+view3d.sameAsActive true

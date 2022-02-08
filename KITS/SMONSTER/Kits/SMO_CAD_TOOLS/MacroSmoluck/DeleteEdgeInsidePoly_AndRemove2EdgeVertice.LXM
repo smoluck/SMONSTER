@@ -1,0 +1,17 @@
+#LXMacro#
+# Made with Replay
+# mechanicalcolor.com
+
+# replay name:"DeleteEdgeInsidePoly.LXM"
+script.implicit name:"kit_SMO_GAME_CONTENT:MacroSmoluck/DeleteEdgeInsidePoly.LXM"
+select.convert type:vertex
+# replay name:"Select Vertices"
+select.vertex action:remove test:edge mode:equal value:3
+# replay name:"Select Vertices"
+select.vertex action:remove test:edge mode:equal value:4
+# replay name:"Select Vertices"
+select.vertex action:remove test:edge mode:more value:4
+# replay name:"Delete Selection"
+!delete
+select.typeFrom typelist:"polygon;edge;vertex;item;pivot;center;ptag" enable:true
+select.convert type:vertex

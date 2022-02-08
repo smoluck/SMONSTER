@@ -1,0 +1,15 @@
+#LXMacro#
+# Made with Replay
+# mechanicalcolor.com
+
+item.componentMode type:polygon enable:true
+# replay name:"Delete Selection Set"
+select.deleteSet all:true
+item.componentMode type:edge enable:true
+# replay name:"Delete Selection Set"
+select.deleteSet all:true
+item.componentMode type:vertex enable:true
+# replay name:"Delete Selection Set"
+select.deleteSet all:true
+# replay name:"Item"
+select.typeFrom typelist:"item;center;edge;polygon;vertex;ptag" enable:true

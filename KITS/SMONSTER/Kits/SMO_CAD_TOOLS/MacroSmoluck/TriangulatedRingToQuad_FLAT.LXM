@@ -1,0 +1,61 @@
+#LXMacro#
+# Made with Replay
+# mechanicalcolor.com
+
+# replay name:"Edit Selection Set"
+select.editSet name:Temp_CtrlPoly mode:add
+# select.convert type:edge
+# # replay name:"Contract Selection"
+# select.contract
+# # replay name:"Delete Selection"
+# delete
+# item.componentMode type:polygon enable:true
+# replay name:"SelectSimilarTouchingAccurate2Deg.LXM"
+script.implicit name:"kit_SMO_CAD_TOOLS:MacroSmoluck/SelectSimilarTouchingAccurate2Deg.LXM"
+# replay name:"Hide Unselected"
+hide.unsel
+# replay name:"Use Selection Set"
+select.useSet name:Temp_CtrlPoly mode:replace
+# replay name:"Hide Selected"
+hide.sel
+# replay name:"Selection All"
+select.all
+# replay name:"Add Boundary"
+script.run hash:"macro.scriptservice:92663570022:macro"
+# replay name:"Edit Selection Set"
+select.editSet name:TEMP_Boundary mode:add
+# replay name:"Invert Selection"
+select.invert
+# replay name:"Edit Selection Set"
+select.editSet name:TEMP_InnerEdge mode:add
+# replay name:"Delete Selection"
+!delete
+item.componentMode type:polygon enable:true
+# replay name:"Selection All"
+select.all
+# replay name:"Quadruple"
+poly.quadruple
+item.componentMode type:edge enable:true
+# replay name:"Delete Selection Set"
+select.deleteSet name:TEMP_Boundary
+# replay name:"Delete Selection Set"
+select.deleteSet name:TEMP_InnerEdge all:false
+# replay name:"Delete Selection Set"
+select.deleteSet name:Temp_PreservedEdgeCut all:false
+# replay name:"Unhide"
+unhide
+item.componentMode type:polygon enable:true
+# replay name:"Use Selection Set"
+select.useSet name:Temp_CtrlPoly mode:replace
+select.convert type:edge
+# replay name:"Contract Selection"
+select.contract
+# replay name:"Delete Selection"
+!delete
+select.typeFrom typelist:"polygon;edge;vertex;item;pivot;center;ptag" enable:true
+# replay name:"Delete Selection Set"
+select.deleteSet name:Temp_CtrlPoly all:false
+item.componentMode type:edge enable:true
+# replay name:"Edit Selection Set"
+select.deleteSet name:TEMP_InnerEdge  all:false
+select.typeFrom typelist:"polygon;edge;vertex;item;pivot;center;ptag" enable:true

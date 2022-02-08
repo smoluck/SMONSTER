@@ -1,0 +1,4 @@
+#LXMacro#
+x_channel.set(%1), % FrameSizeX
+y_channel.set(%2), % FrameSizeY
+pref.value render.bakeBorder %3

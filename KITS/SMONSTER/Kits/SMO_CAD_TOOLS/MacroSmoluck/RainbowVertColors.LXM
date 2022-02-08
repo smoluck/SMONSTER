@@ -1,0 +1,30 @@
+#LXMacro#
+# Made with Replay
+# mechanicalcolor.com
+
+# replay name:"Select Item by Type"
+select.itemType type:mesh
+# replay name:"Random Vertex Colour"
+ffr.randomRGBA
+select.drop type:item
+# replay name:"Make Inactive Same As Active"
+view3d.sameAsActive state:false
+viewport.settings
+# replay name:"Make Inactive Same As Active"
+view3d.sameAsActive state:false
+# replay name:"Display Weightmaps"
+view3d.showweights state:true bgmesh:inactive
+# replay name:"Shading Style"
+view3d.shadingStyle style:advgl bgmesh:inactive
+# replay name:"Shading Style"
+view3d.shadingStyle style:shd3 bgmesh:active
+# replay name:"Shading Style"
+view3d.shadingStyle style:shd1 bgmesh:active
+# replay name:"Display Weightmaps"
+view3d.showweights state:false bgmesh:active
+# replay name:"Wireframe Overlay"
+view3d.wireframeOverlay mode:none bgmesh:inactive
+# replay name:"Display Weightmaps"
+view3d.showweights state:true bgmesh:active
+# replay name:"Select Vertex Map"
+select.vertexMap name:Color type:rgba mode:replace

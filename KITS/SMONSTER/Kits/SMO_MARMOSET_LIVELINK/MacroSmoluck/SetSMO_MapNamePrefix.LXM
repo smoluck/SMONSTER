@@ -1,0 +1,11 @@
+#LXMacro#
+user.value SMO_UseVal_MARMOSET_TagString_TSNRM TSNRM
+user.value SMO_UseVal_MARMOSET_TagString_OSNRM OSNRM
+user.value SMO_UseVal_MARMOSET_TagString_POS POS
+user.value SMO_UseVal_MARMOSET_TagString_CUR CUR
+user.value SMO_UseVal_MARMOSET_TagString_THI THI
+user.value SMO_UseVal_MARMOSET_TagString_AO AO
+user.value SMO_UseVal_MARMOSET_TagString_MATID MATID
+user.value SMO_UseVal_MARMOSET_TagString_ALBEDO ALBEDO
+user.value SMO_UseVal_MARMOSET_TagString_UVID UVID
+user.value SMO_UseVal_MARMOSET_TagString_OBJID OBJID

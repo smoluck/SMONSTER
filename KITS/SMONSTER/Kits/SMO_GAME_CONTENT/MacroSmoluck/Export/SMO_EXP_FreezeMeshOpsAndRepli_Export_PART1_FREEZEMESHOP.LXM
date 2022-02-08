@@ -1,0 +1,86 @@
+#LXMacro#
+#-----------------------------------------
+# Name:         SMO_EXP_FreezeMeshOpsAndRepli_Export_PART1_FREEZEMESHOP.LXM
+# Version:      1.0
+#
+# Purpose:
+# 
+# This script is designed to:
+#       CONVERT MESHOPS TO MESHES
+#
+#
+# Author:       Franck ELISABETH
+# Website:      http://www.smoluck.com
+#
+# Created:      XX/XX/2018-2019
+# Copyright:    (c) Franck Elisabeth 2019
+#-----------------------------------------
+
+# // START //  OOOOOKKKKK
+# // Change Item Color of the Selected Hierarchy //
+# Select Hierarchy
+select.itemHierarchy
+
+# Enable "Limit to current Selection Child Only"
+selectPattern.lookAtSelect true
+
+# Change Item Color to white
+item.editorColor color:white
+
+# // Change Item Color of the Selected Hierarchy //
+# // FINISH //
+
+# // START // OOOOOKKKKK
+# // SELECT GROUP "_SOURCES" and all is his Hierarchy //
+
+# Clear Selection Pattern filter
+selectPattern.none
+
+# Add Group to the Selection filter
+selectPattern.toggleGroup enable:true
+
+# Add By Color to the Selection filter
+selectPattern.toggleColor enable:true
+# White
+selectPattern.color color:17
+
+# Change the Label of the filter
+selectPattern.pattern label:"*_SOURCES"
+
+# Select by Filter (Group with "_SOURCES" in it)
+selectPattern.apply mode:set
+
+# Select Group Hierarchy of all sources
+select.itemHierarchy
+
+# // SELECT GROUP "_SOURCES" and all is his Hierarchy //
+# // FINISH //
+
+# // START // OOOOOKKKKK
+# // SELECT SOURCES MESHES And Freeze Deformer //
+
+# Clear Selection Pattern filter
+selectPattern.none
+
+# Disable "Limit to current Selection Child Only"
+selectPattern.lookAtSelect false
+
+# Add By Color to the Selection filter
+selectPattern.toggleColor enable:true
+# White
+selectPattern.color color:17
+
+# Add Mesh to the Selection filter
+selectPattern.toggleMesh enable:true
+
+# Change the Label of the filter
+selectPattern.pattern label:"*"
+
+# Select by Filter (Only Meshes)
+selectPattern.apply mode:set
+
+# Freeze Meshops in SOURCES Meshes
+deformer.freeze duplicate:false
+
+# // SELECT SOURCES MESHES And Freeze Deformer //
+# // FINISH //

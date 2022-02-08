@@ -1,0 +1,6 @@
+#LXMacro#
+@UVBlockAligner_11.py U Center
+@UVBlockAligner_11.py V Center
+uv.orient auto
+@UVBlockAligner_11.py U Center
+@UVBlockAligner_11.py V Center

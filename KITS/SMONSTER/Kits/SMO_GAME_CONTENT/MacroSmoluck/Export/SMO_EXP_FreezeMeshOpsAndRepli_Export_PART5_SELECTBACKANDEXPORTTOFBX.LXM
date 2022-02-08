@@ -1,0 +1,59 @@
+#LXMacro#
+#-----------------------------------------
+# Name:         SMO_EXP_FreezeMeshOpsAndRepli_Export_PART5_SELECTBACKANDEXPORTTOFBX.LXM
+# Version:      1.0
+#
+# Purpose:
+# 
+# This script is designed to:
+#       Select Back the Items and Export to FBX & Revert
+#       Back to the State before launching the Macro
+#
+#
+# Author:       Franck ELISABETH
+# Website:      http://www.smoluck.com
+#
+# Created:      XX/XX/2018-2019
+# Copyright:    (c) Franck Elisabeth 2019
+#-----------------------------------------
+
+# // START // OOOOOKKKKK
+# // Select back the Locator Parent of the Setup //
+
+# Disable "Limit to current Selection Child Only"
+selectPattern.lookAtSelect select:false
+
+# Clear Selection Pattern filter
+selectPattern.none
+
+# Change the Label of the filter
+selectPattern.pattern label:"*_FBX_SETUP"
+
+# Add Locator to the Selection filter
+selectPattern.toggleLocator enable:true
+
+# Add By Color to the Selection filter
+selectPattern.toggleColor enable:true
+# White
+selectPattern.color color:17
+
+# Select by Filter (Locator with "_FBX_SETUP" in it)
+selectPattern.apply mode:set
+
+# Enable "Limit to current Selection Child Only"
+selectPattern.lookAtSelect select:true
+
+# // Select back the Locator Parent of the Setup //
+# // FINISH //
+
+# Export to FBX
+scene.save mode:export
+
+# Clear Selection Pattern filter
+selectPattern.all
+
+# Add By Color to the Selection filter
+selectPattern.toggleColor enable:false
+
+# Revert to Step before Macro Launch
+!scene.revert

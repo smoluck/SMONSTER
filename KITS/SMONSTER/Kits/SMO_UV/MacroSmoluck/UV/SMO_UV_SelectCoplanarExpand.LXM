@@ -1,0 +1,3 @@
+#LXMacro#
+smo.GC.SelectCoPlanarPoly 0 2
+select.expand

@@ -1,0 +1,6 @@
+#LXMacro#
+uv.selectBorder
+seam.add
+uv.selectBorder
+select.invert
+seam.clear

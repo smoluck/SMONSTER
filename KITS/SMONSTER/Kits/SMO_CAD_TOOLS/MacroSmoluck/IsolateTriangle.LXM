@@ -1,0 +1,13 @@
+#LXMacro#
+# Made with Replay
+# mechanicalcolor.com
+
+# replay name:"Selection All"
+select.all
+# replay name:"Invert Selection"
+select.invert
+# replay name:"Select Polygons"
+select.polygon action:add test:vertex mode:curve value:3
+# replay name:"Hide Unselected"
+hide.unsel
+viewport.fitSelected

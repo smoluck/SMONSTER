@@ -1,0 +1,67 @@
+#LXMacro#
+#-----------------------------------------
+# Name:         SMO_SET_MoveCentertoGeoBoundaryBorderViaPolygonAtBorder.LXM
+# Version:      1.0
+#
+# Purpose:      This script is designed to:
+#
+#
+# Author:       Franck ELISABETH
+# Website:      http://www.smoluck.com
+#
+# Created:      XX/XX/2018-2019
+# Copyright:    (c) Franck Elisabeth 2019
+#-----------------------------------------
+
+select.convert type:edge
+# replay name:"Edit Selection Set"
+select.editSet name:FaceEdge mode:add
+# replay name:"Select Edges"
+select.edge action:add test:bond mode:equal value:"(none)"
+# replay name:"Select Edges"
+select.edge action:remove test:0 mode:all value:0
+# replay name:"Select Edges"
+select.edge action:add test:bond mode:equal value:"(none)"
+# replay name:"Edit Selection Set"
+select.editSet name:Boundary mode:add
+# replay name:"Select Edges"
+select.edge action:remove test:0 mode:all value:0
+# replay name:"Use Selection Set"
+select.useSet name:Boundary mode:select
+# replay name:"Use Selection Set"
+select.useSet name:FaceEdge mode:deselect
+# replay name:"Edit Selection Set"
+select.editSet name:temp mode:add
+# replay name:"Select Edges"
+select.edge action:remove test:0 mode:all value:0
+# replay name:"Use Selection Set"
+select.useSet name:Boundary mode:select
+# replay name:"Use Selection Set"
+select.useSet name:temp mode:deselect
+select.typeFrom typelist:"polygon;edge;vertex;item;pivot;center;ptag" enable:true
+# replay name:"Hide Unselected"
+hide.unsel
+select.typeFrom typelist:"edge;vertex;polygon;item;pivot;center;ptag" enable:true
+# replay name:"Ring Selection"
+select.ring
+# replay name:"MoveCenterHereAndRotate.LXM"
+smo.GC.Setup.MoveRotateCenterToSelection 1 1
+select.typeFrom typelist:"edge;vertex;polygon;item;pivot;center;ptag" enable:true
+# replay name:"Select Edges"
+select.edge action:remove test:0 mode:all value:0
+# replay name:"Select Edges"
+select.edge action:add test:bond mode:equal value:"(none)"
+# replay name:"RepositionCenter.LXM"
+smo.GC.Setup.MoveRotateCenterToSelection 1 0
+select.typeFrom typelist:"polygon;edge;vertex;item;pivot;center;ptag" enable:true
+# replay name:"Unhide"
+unhide
+select.typeFrom typelist:"edge;vertex;polygon;item;pivot;center;ptag" enable:true
+# replay name:"Delete Selection Set"
+select.deleteSet name:Boundary all:false
+# replay name:"Delete Selection Set"
+select.deleteSet name:FaceEdge all:false
+# replay name:"Delete Selection Set"
+select.deleteSet name:temp all:false
+# replay name:"Item"
+select.typeFrom typelist:"item;pivot;center;edge;polygon;vertex;ptag" enable:true

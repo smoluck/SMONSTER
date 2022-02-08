@@ -1,0 +1,12 @@
+#LXMacro#
+# Same as SMO_GC_TransformMoveString_Cmd.py and SMO_BAS_TransformMoveSetValueXYZ.py 
+tool.noChange
+tool.reset xfrm.transform
+tool.flag xfrm.transform auto 0
+tool.doApply
+# Command Block Begin:
+   tool.setAttr xfrm.transform TX %1
+   tool.setAttr xfrm.transform TY %2
+   tool.setAttr xfrm.transform TZ %3
+# Command Block Begin:
+tool.doApply

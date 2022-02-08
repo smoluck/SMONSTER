@@ -1,0 +1,11 @@
+#LXMacro#
+user.value SMO_UseVal_MARMOSET_TagString_TSNRM normal_base
+user.value SMO_UseVal_MARMOSET_TagString_OSNRM world_space_normals
+user.value SMO_UseVal_MARMOSET_TagString_POS position
+user.value SMO_UseVal_MARMOSET_TagString_CUR curvature
+user.value SMO_UseVal_MARMOSET_TagString_THI thickness
+user.value SMO_UseVal_MARMOSET_TagString_AO ambient_occlusion
+user.value SMO_UseVal_MARMOSET_TagString_MATID id
+user.value SMO_UseVal_MARMOSET_TagString_ALBEDO albedo
+user.value SMO_UseVal_MARMOSET_TagString_UVID uvid
+user.value SMO_UseVal_MARMOSET_TagString_OBJID objectid

@@ -1,0 +1,25 @@
+#LXMacro#
+#-----------------------------------------
+# Name:         SMO_MOD_PolyBoundaryEdgeWeight.LXM
+# Version:      1.0
+#
+# Purpose:      This script is designed to:
+#               Set edge weight to 100 % on the Edge Boundary
+#               of the current Polygon selection.
+#               /!/ You need to be in Polygon Mode to run it. /!/
+#
+#
+# Author:       Franck ELISABETH
+# Website:      http://www.smoluck.com
+#
+# Created:      XX/XX/2018-2019
+# Copyright:    (c) Franck Elisabeth 2019
+#-----------------------------------------
+
+# Add Edge Boundary
+script.run hash:"macro.scriptservice:92663570022:macro"
+# replay name:"Edge Weight Tool"
+script.run hash:"macro.scriptservice:3223571edge:macro"
+tool.setAttr tool:"vertMap.setWeight" attr:weight value:"1.0"
+tool.doApply
+select.typeFrom typelist:"polygon;edge;vertex;item;pivot;center;ptag" enable:true

@@ -1,0 +1,18 @@
+#LXMacro#
+tool.set util.udim on
+tool.noChange
+#Command Block Begin:
+    tool.attr util.udim manual true
+    tool.attr util.udim posU %1
+    tool.attr util.udim posV %2
+    tool.attr util.udim width 1.0
+    tool.attr util.udim height 1.0
+#Command Block End:
+
+tool.doApply
+udim.select
+hide.unsel
+uv.pack true true true auto 0.2 true 8.0 region:manual regionX:%1 regionY:%2 regionW:1.0 regionH:1.0
+tool.set util.udim off
+select.drop polygon
+unhide

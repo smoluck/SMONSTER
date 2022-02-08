@@ -1,0 +1,22 @@
+#LXMacro#
+# Made with Replay
+# mechanicalcolor.com
+
+# replay name:"User Value"
+user.value name:cs_item_name_to_channel value:false
+# replay name:"User Value"
+user.value name:cs_reconnect_swapped_inputs value:false
+# replay name:"User Value"
+user.value name:cs_reconnect_swapped_outputs value:false
+# replay name:"User Value"
+user.value name:cs_disconnect_source_inputs value:false
+# replay name:"User Value"
+user.value name:cs_disconnect_source_outputs value:false
+# replay name:"User Value"
+user.value name:cs_create_new_link_to_source value:false
+# replay name:"User Value"
+user.value name:cs_create_new_link_to_swapped value:false
+# replay name:"User Value"
+user.value name:cs_remove_source_channel_from_node value:false
+# replay name:"Channel Swapper.py"
+script.implicit name:"Channel Swapper.py"

@@ -1,0 +1,15 @@
+#LXMacro#
+select.type polygon
+select.drop polygon
+tool.set util.udim on
+tool.noChange
+#Command Block Begin:
+    tool.attr util.udim manual true
+    tool.attr util.udim posU %1
+    tool.attr util.udim posV %2
+    tool.attr util.udim width 1.0
+    tool.attr util.udim height 1.0
+#Command Block End:
+tool.doApply
+udim.select
+tool.set util.udim off

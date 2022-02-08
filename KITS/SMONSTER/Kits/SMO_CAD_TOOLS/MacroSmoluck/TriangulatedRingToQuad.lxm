@@ -1,0 +1,57 @@
+#LXMacro#
+# Made with Replay
+# mechanicalcolor.com
+
+# replay name:"SelectSimilarTouchingAccurate2Deg.LXM"
+script.implicit name:"kit_SMO_CAD_TOOLS:MacroSmoluck/SelectSimilarTouchingAccurate2Deg.LXM"
+# replay name:"Hide Unselected"
+hide.unsel
+# replay name:"Add Boundary"
+script.run hash:"macro.scriptservice:92663570022:macro"
+# replay name:"Edit Selection Set"
+select.editSet name:TEMP_Boundary mode:add
+# replay name:"Invert Selection"
+select.invert
+# replay name:"Edit Selection Set"
+select.editSet name:TEMP_InnerEdge mode:add
+# replay name:"Delete Selection"
+!delete
+# replay name:"Selection All"
+select.all
+# replay name:"Use Selection Set"
+select.useSet name:TEMP_Boundary mode:deselect
+# replay name:"Edit Selection Set"
+select.editSet name:Temp_PreservedEdgeCut mode:add
+select.typeFrom typelist:"polygon;edge;vertex;item;pivot;center;ptag" enable:true
+item.componentMode type:edge enable:true
+# replay name:"Delete Selection Set"
+select.deleteSet name:TEMP_Boundary
+# replay name:"Delete Selection Set"
+select.deleteSet name:TEMP_InnerEdge all:false
+# replay name:"Delete Selection Set"
+select.deleteSet name:Temp_PreservedEdgeCut all:false
+select.typeFrom typelist:"polygon;edge;vertex;item;pivot;center;ptag" enable:true
+select.all
+# replay name:"Quadruple"
+poly.quadruple
+# replay name:"Edit Selection Set"
+select.editSet name:TEMP_QuadDone mode:add
+# replay name:"Unhide"
+unhide
+select.expand
+select.contract
+# replay name:"Use Selection Set"
+select.useSet name:TEMP_QuadDone mode:deselect
+
+select.convert type:edge
+# replay name:"Contract Selection"
+select.contract
+# replay name:"Delete Selection"
+!delete
+select.typeFrom typelist:"polygon;edge;vertex;item;pivot;center;ptag" enable:true
+# replay name:"Delete Selection Set"
+select.deleteSet name:TEMP_QuadDone all:false
+select.contract
+
+# replay name:"Edit Selection Set"
+select.deleteSet name:TEMP_InnerEdge  all:false

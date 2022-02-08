@@ -1,0 +1,3 @@
+#LXMacro#
+## @lazySelect.pl selectTouching 2
+smo.GC.SelectCoPlanarPoly 0 2 0

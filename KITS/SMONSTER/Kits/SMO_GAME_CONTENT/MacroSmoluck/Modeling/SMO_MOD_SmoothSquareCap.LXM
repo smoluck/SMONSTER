@@ -1,0 +1,39 @@
+#LXMacro#
+#---------------------------------------
+# Name: SMO_MOD_SmoothSquareCap.LXM
+# Version: 1.0
+#
+# Purpose: This script is designed to
+# Convert a Polygon selection to a SquareCap
+# and then Smooth the Topology of it.
+#
+# Author:		Franck ELISABETH
+# Website:		http://www.smoluck.com
+#
+# Copyright:	(c) Franck Elisabeth 2019
+#---------------------------------------
+
+
+
+script.run "macro.scriptservice:92663570022:macro"
+@perfectCircle.pl
+select.nextMode
+select.contract
+select.convert vertex
+tool.set xfrm.smooth on
+tool.doApply
+tool.doApply
+tool.doApply
+tool.doApply
+tool.doApply
+tool.doApply
+tool.doApply
+tool.doApply
+tool.doApply
+tool.doApply
+tool.doApply
+tool.doApply
+tool.doApply
+tool.doApply
+select.nextMode
+select.nextMode

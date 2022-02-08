@@ -1,0 +1,11 @@
+#LXMacro#
+##select.typeFrom vertex;edge;polygon;item;pivot;center;ptag true#
+##select.all#
+##vert.merge fixed false morph:false disco:false#
+##select.drop vertex#
+script.run "macro.scriptservice:92663570022:macro"
+poly.make auto
+select.nextMode
+edgesmooth.harden connected:true
+select.polygon remove vertex psubdiv 4
+@kit_SMO_GAME_CONTENT:MacroSmoluck/Modeling/SMO_MOD_NgonCircleToTriangle.LXM

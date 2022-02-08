@@ -1,0 +1,12 @@
+#LXMacro#
+tool.set uv.relax on
+tool.noChange
+
+tool.attr uv.relax mode lscm
+tool.attr uv.relax live false
+tool.attr uv.relax live true
+tool.attr uv.relax iter %1  # iteration count
+tool.attr uv.relax boundary smooth
+
+tool.doApply
+select.nextMode

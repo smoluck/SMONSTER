@@ -1,0 +1,9 @@
+#LXMacro#
+tool.set center.local on
+tool.set axis.origin on
+tool.set TransformScale on
+tool.noChange
+tool.attr xfrm.transform SX 1.0
+tool.attr xfrm.transform SY 0.0
+tool.doApply
+select.nextMode

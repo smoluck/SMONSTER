@@ -1,0 +1,25 @@
+#LXMacro#
+#---------------------------------------
+# Name: SMO_MOD_MirrorFromEdgeAxis.LXM
+# Version: 1.0
+#
+# Purpose: This Macro mirror the current Selection using 2 edges
+#
+# Author:       Franck ELISABETH
+# Website:      http://www.smoluck.com
+#
+# Created:      14/02/2019
+# Copyright:    (c) Franck Elisabeth 2019
+#---------------------------------------
+
+workPlane.reset
+select.type edge
+workPlane.fitSelect
+tool.set actr.origin on
+
+select.type polygon
+tool.set *.mirror on
+tool.attr gen.mirror axis 2
+tool.apply
+select.nextMode
+workPlane.reset

@@ -1,0 +1,39 @@
+#LXMacro#
+#-----------------------------------------
+# Name:         SMO_MOD_DeleteEdgeInsidePoly.LXM
+# Version:      1.0
+#
+# Purpose:      This script is designed to:
+#       Delete all the Edges inside a Polygon selection.
+#       It's basicly the same as the Polygon Merge command
+#
+#
+# Author:       Franck ELISABETH
+# Website:      http://www.smoluck.com
+#
+# Created:      XX/XX/2018-2019
+# Copyright:    (c) Franck Elisabeth 2019
+#-----------------------------------------
+
+# simple than old macro: PolyMerge command
+poly.merge
+
+##############
+## OLD CODE ##
+##############
+#select.convert type:edge
+## replay name:"Contract Selection"
+#select.contract
+## replay name:"Delete Selection"
+#delete
+## replay name:"Select Next Mode"
+#select.nextMode
+#select.convert type:edge
+## replay name:"Contract Selection"
+#select.contract
+## replay name:"Deselect Boundary Edges"
+#select.edge remove bond equal (none)
+## replay name:"Delete InsideEdges"
+#edge.remove true
+## replay name:"Polygon Mode"
+#select.typeFrom polygon;edge;vertex;item;pivot;center;ptag true

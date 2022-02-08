@@ -1,0 +1,22 @@
+#LXMacro#
+# Made with Replay
+# mechanicalcolor.com
+
+layer.mergeMeshes comp:true
+item.componentMode type:edge enable:true
+# replay name:"Add Boundary"
+script.run hash:"macro.scriptservice:92663570022:macro"
+select.convert type:vertex
+# replay name:"Merge Vertices"
+vert.merge range:fixed dist:"9.999999999999999e-06" disco:false
+# replay name:"Drop Selection"
+select.drop type:vertex
+# replay name:"Add Boundary"
+script.run hash:"macro.scriptservice:92663570022:macro"
+# replay name:"Item"
+select.typeFrom typelist:"item;pivot;center;edge;polygon;vertex;ptag" enable:true
+# replay name:"Random Vertex Colour"
+ffr.randomRGBA
+item.componentMode type:edge enable:true
+# replay name:"Select by Items"
+select.type item

@@ -1,0 +1,10 @@
+#LXMacro#
+smo.CLEANUP.DelCam
+smo.CLEANUP.DelLight
+smo.CLEANUP.DelEmptyMeshItem
+smo.CLEANUP.Del3DsMAX.FBXChannel
+smo.CLEANUP.UnparentInPlace
+smo.SSRUVMapByArg true UVChannel_1 TargetUVMap
+smo.CLEANUP.UpdateMat
+smo.CLEANUP.ConvertHardEdge 0 1
+smo.CLEANUP.DelPreTransform 1 1

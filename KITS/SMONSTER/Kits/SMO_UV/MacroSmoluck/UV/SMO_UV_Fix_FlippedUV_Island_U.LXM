@@ -1,0 +1,4 @@
+#LXMacro#
+select.uvOverlap 00_Texture false false true false false false
+uv.flip false u
+select.drop polygon

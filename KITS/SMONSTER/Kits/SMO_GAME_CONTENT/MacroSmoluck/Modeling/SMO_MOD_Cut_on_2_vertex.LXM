@@ -1,0 +1,35 @@
+#LXMacro#
+#-----------------------------------------
+# Name:         SMO_MOD_Cut_on_2_vertex.LXM
+# Version:      1.0
+#
+# Purpose: This script is designed to Cut the 
+# polygon selection between 2 vertex.
+#
+#
+# Author:       Franck ELISABETH
+# Website:      http://www.smoluck.com
+#
+# Created:      XX/XX/2018-2019
+# Copyright:    (c) Franck Elisabeth 2019
+#-----------------------------------------
+
+# replay name:"Align Work Plane to Selected"
+workPlane.fitSelect
+select.typeFrom typelist:"polygon;edge;vertex;item;pivot;center;ptag" enable:true
+tool.set preset:"poly.knife" mode:on
+# Command Block Begin: 
+    tool.setAttr tool:"poly.knife" attr:axis value:x
+    tool.setAttr tool:"poly.knife" attr:vectorX value:"1.0"
+    tool.setAttr tool:"poly.knife" attr:vectorY value:"0.0"
+    tool.setAttr tool:"poly.knife" attr:vectorZ value:"0.0"
+    tool.setAttr tool:"poly.knife" attr:startX value:"0.0"
+    tool.setAttr tool:"poly.knife" attr:endX value:"0.0"
+    tool.setAttr tool:"poly.knife" attr:endY value:"0.0"
+    tool.setAttr tool:"poly.knife" attr:startZ value:"10.0"
+    tool.setAttr tool:"poly.knife" attr:endZ value:"-10.0"
+    tool.setAttr tool:"poly.knife" attr:startY value:"0.0"
+# Command Block End:
+
+tool.doApply
+workPlane.reset

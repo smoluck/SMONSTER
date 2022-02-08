@@ -1,0 +1,10 @@
+# IDE
+.idea
+#.vscode
+
+# Build
+*.pyc
+build/
+
+# Mac crap
+#.DS_Store

@@ -1,0 +1,30 @@
+#LXMacro#
+
+tool.set actr.auto on
+
+tool.set poly.bevel on
+#Command Block Begin: ToolAdjustment
+tool.setAttr poly.bevel shift 0.0
+tool.setAttr poly.bevel inset 0.005
+#Command Block End: ToolAdjustment
+tool.doApply
+tool.drop
+
+poly.collapse
+
+#tool.set TransformScale on
+#tool.set actr.local on
+
+#tool.set center.local on
+#tool.set axis.local on
+
+#Command Block Begin: ToolAdjustment
+#tool.setAttr xfrm.transform SX 0.0
+#tool.setAttr xfrm.transform SY 0.0
+#tool.setAttr xfrm.transform SZ 1.0
+#Command Block End: ToolAdjustment
+#tool.doApply
+#tool.drop
+
+#select.convert vertex
+#vert.merge fixed false 0.0005 false true

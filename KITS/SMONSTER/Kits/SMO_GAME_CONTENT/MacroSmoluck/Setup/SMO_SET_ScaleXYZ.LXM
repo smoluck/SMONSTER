@@ -1,0 +1,10 @@
+#LXMacro#
+# Select the mesh to rotate, in item mode.
+tool.set TransformScale on
+tool.noChange
+#Command Block Begin:  ToolAdjustment
+   tool.setAttr xfrm.transform SX %1
+   tool.setAttr xfrm.transform SY %2
+   tool.setAttr xfrm.transform SZ %3
+#Command Block End:  ToolAdjustment
+tool.doApply

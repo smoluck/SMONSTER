@@ -1,0 +1,10 @@
+#LXMacro#
+# Made with Replay
+# mechanicalcolor.com
+
+## user.value sene_LS_facingRatio 5
+## @lazySelect.pl selectTouching
+smo.GC.SelectCoPlanarPoly 0 5 0
+poly.merge
+## replay name:"Contract Selection"
+select.contract

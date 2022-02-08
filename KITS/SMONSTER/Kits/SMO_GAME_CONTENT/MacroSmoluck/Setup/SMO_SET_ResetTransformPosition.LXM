@@ -1,0 +1,14 @@
+#LXMacro#
+select.typeFrom ptag;item;pivot;center;edge;polygon;vertex true
+select.typeFrom polygon;edge;vertex;item;pivot;center;ptag true
+select.all
+cut
+select.typeFrom item;pivot;center;edge;polygon;vertex;ptag true
+#Command Block Begin:  Ganged Edits
+   transform.channel pos.X 0.0
+   transform.channel pos.Y 0.0
+   transform.channel pos.Z 0.0
+#Command Block End:  Ganged Edits
+select.typeFrom polygon;edge;vertex;item;pivot;center;ptag true
+paste
+select.typeFrom item;pivot;center;edge;polygon;vertex;ptag true

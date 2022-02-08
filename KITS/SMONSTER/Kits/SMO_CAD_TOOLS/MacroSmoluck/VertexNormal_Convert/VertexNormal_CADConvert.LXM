@@ -1,0 +1,26 @@
+#LXMacro#
+# Made with Replay
+# mechanicalcolor.com
+
+# replay name:"Add Boundary"
+script.run hash:"macro.scriptservice:92663570022:macro"
+# replay name:"Edit Selection Set"
+select.editSet name:UV_Seam mode:add
+select.convert type:vertex
+# replay name:"Merge Vertices"
+vert.merge range:fixed dist:"0.0001" disco:false
+# replay name:"Set Selection"
+select.type type:edge
+# replay name:"Use Selection Set"
+select.useSet name:UV_Seam mode:select
+# replay name:"Item"
+select.typeFrom typelist:"item;center;edge;polygon;vertex;ptag" enable:true
+# replay name:"Convert to Hard Edge"
+hardedge.convert removeSMGP:true removeNorm:true
+item.componentMode type:edge enable:true
+# replay name:"Edge Hardness"
+hardedge.set type:hard
+# replay name:"Edge Hardness"
+hardedge.set type:hard clear:true
+# replay name:"Item"
+select.typeFrom typelist:"item;center;edge;polygon;vertex;ptag" enable:true

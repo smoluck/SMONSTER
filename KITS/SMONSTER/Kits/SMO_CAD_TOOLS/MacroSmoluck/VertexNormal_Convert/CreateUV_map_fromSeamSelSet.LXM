@@ -1,0 +1,14 @@
+#LXMacro#
+# Made with Replay
+# mechanicalcolor.com
+
+# replay name:"Create New Vertex Map"
+?vertMap.new name:00_Texture type:txuv init:true color:"0.78 0.78 0.78" value:"1.0"
+item.componentMode type:edge enable:true
+# replay name:"Use Selection Set"
+select.useSet name:UV_Seam mode:select
+tool.set preset:"uv.unwrap" mode:on
+tool.setAttr tool:"uv.unwrap" attr:mode value:abf
+tool.doApply
+tool.set preset:"uv.unwrap" mode:off
+item.componentMode type:polygon enable:true

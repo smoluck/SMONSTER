@@ -1,0 +1,8 @@
+#LXMacro#
+# SMO_ScaleZeroOut.lxm x
+# SMO_ScaleZeroOut.lxm y
+# SMO_ScaleZeroOut.lxm z
+workPlane.fitSelect
+workPlane.edit rotX:0.0 rotY:0.0 rotZ:0.0
+vert.set %1 0.0 true false
+workPlane.reset

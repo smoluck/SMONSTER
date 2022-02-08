@@ -1,0 +1,24 @@
+#LXMacro#
+# Made with Replay
+# mechanicalcolor.com
+
+# simple than old macro: PolyMerge command
+poly.merge
+
+#select.convert type:edge
+## replay name:"Contract Selection"
+#select.contract
+## replay name:"Delete Selection"
+#delete
+## replay name:"Select Next Mode"
+#select.nextMode
+
+#select.convert type:edge
+## replay name:"Contract Selection"
+#select.contract
+## replay name:"Deselect Boundary Edges"
+#select.edge remove bond equal (none)
+## replay name:"Delete InsideEdges"
+#edge.remove true
+## replay name:"Polygon Mode"
+#select.typeFrom polygon;edge;vertex;item;pivot;center;ptag true

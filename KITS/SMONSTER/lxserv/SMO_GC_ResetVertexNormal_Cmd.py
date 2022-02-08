@@ -1,0 +1,59 @@
+# python
+# ---------------------------------------
+# Name:         SMO_GC_ResetVertexNormal_Cmd
+# Version:      1.0
+#
+# Purpose:      This script is designed to:
+#               Clear Vertex Normals on current Selection using user preferences VertexNormalMap name string and set it again.
+#
+#
+# Author:       Franck ELISABETH
+# Website:      http://www.smoluck.com
+#
+# Created:      06/12/2021
+# Copyright:    (c) Franck Elisabeth 2017-2022
+# ---------------------------------------
+
+import lx, lxu, modo
+
+Command_Name = "smo.GC.ResetVertexNormal"
+# smo.GC.ResetVertexNormal
+
+class SMO_GC_ResetVertexNormal_Cmd(lxu.command.BasicCommand):
+    def __init__(self):
+        lxu.command.BasicCommand.__init__(self)
+
+    def cmd_Flags(self):
+        return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
+
+    def cmd_Interact(self):
+        pass
+
+    def cmd_UserName(self):
+        return 'SMO GC ResetVertexNormal'
+
+    def cmd_Desc(self):
+        return 'Clear Vertex Normals on current Selection using user preferences VertexNormalMap name string and set it again.'
+
+    def cmd_Tooltip(self):
+        return 'Clear Vertex Normals on current Selection using user preferences VertexNormalMap name string and set it again.'
+
+    def cmd_Help(self):
+        return 'https://twitter.com/sm0luck'
+
+    def basic_ButtonName(self):
+        return 'SMO GC ResetVertexNormal'
+
+    def cmd_Flags(self):
+        return lx.symbol.fCMD_UNDO
+
+    def basic_Enable(self, msg):
+        return True
+
+    def basic_Execute(self, msg, flags):
+        VNMapName = lx.eval('pref.value application.defaultVertexNormals ?')
+        # print(VNMapName)
+        lx.eval('select.vertexMap {%s} norm replace' % VNMapName)
+        lx.eval('vertMap.clear norm')
+        lx.eval('vertMap.normals {%s} normalize:false' % VNMapName)
+lx.bless(SMO_GC_ResetVertexNormal_Cmd, Command_Name)

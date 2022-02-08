@@ -1,0 +1,11 @@
+#LXMacro#
+cut
+paste
+hide.unsel
+script.run "macro.scriptservice:92663570022:macro"
+select.invert
+select.ring
+select.invert
+@unbevel.pl
+unhide
+select.type polygon

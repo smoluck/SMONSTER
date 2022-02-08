@@ -1,0 +1,15 @@
+#LXMacro#
+# Made with Replay
+# mechanicalcolor.com
+
+item.componentMode type:polygon enable:true
+# replay name:"Selection All"
+select.all
+# replay name:"Add Boundary"
+script.run hash:"macro.scriptservice:92663570022:macro"
+select.convert type:vertex
+# replay name:"Merge Vertices"
+!vert.merge range:fixed dist:"1e-07" disco:false
+# replay name:"Drop Selection"
+select.drop type:vertex
+item.componentMode type:polygon enable:true

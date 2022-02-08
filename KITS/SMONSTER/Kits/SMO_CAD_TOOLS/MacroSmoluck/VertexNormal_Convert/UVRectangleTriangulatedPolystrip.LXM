@@ -1,0 +1,27 @@
+#LXMacro#
+# Made with Replay
+# mechanicalcolor.com
+
+# replay name:"Hide Unselected"
+hide.unsel
+tool.set preset:"detriangulate.meshop" mode:on
+tool.setAttr tool:"detriangulate.meshop" attr:flatness value:"0.2"
+tool.doApply
+# replay name:"Select Next Mode"
+select.nextMode
+# replay name:"UV Rectangle"
+uv.rectangle pack:false gaps:"0.2" uniformX:false uniformY:false
+# replay name:"Unhide"
+unhide
+# replay name:"Move"
+tool.set preset:TransformMove mode:on
+# Command Block Begin: 
+    tool.setAttr tool:"xfrm.transform" attr:TX value:"-0.563"
+    tool.setAttr tool:"xfrm.transform" attr:TY value:"-0.007"
+    tool.setAttr tool:"xfrm.transform" attr:TZ value:"0.0"
+    tool.setAttr tool:"xfrm.transform" attr:U value:"-0.563"
+    tool.setAttr tool:"xfrm.transform" attr:V value:"-0.007"
+# Command Block End: 
+viewport.fitSelected
+# replay name:"Select Next Mode"
+select.nextMode

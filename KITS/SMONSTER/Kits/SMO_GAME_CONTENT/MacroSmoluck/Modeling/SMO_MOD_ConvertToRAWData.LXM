@@ -1,0 +1,11 @@
+#LXMacro#
+select.itemType camera
+!delete
+select.itemType meshInst
+item.parent parent:{} inPlace:1
+select.itemType mesh
+item.parent parent:{} inPlace:1
+select.itemType meshInst
+@itemTools.pl cnvInstToMeshWPart
+select.itemType mesh
+layer.groupSelected
