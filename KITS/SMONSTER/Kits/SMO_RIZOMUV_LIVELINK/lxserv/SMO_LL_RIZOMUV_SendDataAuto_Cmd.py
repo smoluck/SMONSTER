@@ -93,7 +93,7 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd (lxu.command.BasicCommand):
         else:
             try:
                 lx.eval ('dialog.setup fileOpen')
-                lx.eval ('dialog.title "Select RizomUV 2018.X or 2019.X or 2020.X executable file"')
+                lx.eval ('dialog.title "Select RizomUV 2018.X or 2019.X or 2022.X executable file"')
                 lx.eval ('dialog.fileTypeCustom format:exe username:{EXE} loadPattern:{*.exe} saveExtension:exe')
                 if self.modo_ver == 801:
                     lx.eval ('+dialog.open')
@@ -367,9 +367,9 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd (lxu.command.BasicCommand):
             # User has likely saved over the old file.
             if fbx_load_time > fbx_save_time:
                 if self.modo_ver > 1000:
-                    lx.eval ('!!loaderOptions.fbx mergeWithExistingItems:false loadGeometry:true loadNormals:false loadMeshSmoothing:false loadBlendShapes:false loadPolygonParts:false loadSelectionSets:false loadMaterials:false invertMatTranAmt:false useMatTranColAsTranAmt:false changeTextureEffect:false loadCameras:false loadLights:false loadAnimation:false loadSampleAnimation:false loadSampleAnimationRate:0 globalScalingFactor:1.0 importUnits:0')
+                    lx.eval ('!!loaderOptions.fbx mergeWithExistingItems:false loadGeometry:true loadNormals:true loadMeshSmoothing:false loadBlendShapes:false loadPolygonParts:false loadSelectionSets:false loadMaterials:false invertMatTranAmt:false useMatTranColAsTranAmt:false changeTextureEffect:false loadCameras:false loadLights:false loadAnimation:false loadSampleAnimation:false loadSampleAnimationRate:0 globalScalingFactor:1.0 importUnits:0')
                 else:
-                    lx.eval ('!!loaderOptions.fbx mergeWithExistingItems:false loadGeometry:true loadNormals:false loadMeshSmoothing:false loadBlendShapes:false loadPolygonParts:false loadSelectionSets:false loadMaterials:false invertMatTranAmt:false useMatTranColAsTranAmt:false loadCameras:false loadLights:false loadAnimation:false loadSampleAnimation:false loadSampleAnimationRate:0')
+                    lx.eval ('!!loaderOptions.fbx mergeWithExistingItems:false loadGeometry:true loadNormals:true loadMeshSmoothing:false loadBlendShapes:false loadPolygonParts:false loadSelectionSets:false loadMaterials:false invertMatTranAmt:false useMatTranColAsTranAmt:false loadCameras:false loadLights:false loadAnimation:false loadSampleAnimation:false loadSampleAnimationRate:0')
                 lx.eval ('!!scene.open "%s" import' % fbx_export_path)
             else:
                 try:
@@ -390,9 +390,9 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd (lxu.command.BasicCommand):
                     else:
                         fbx_file_name = os.path.splitext (os.path.basename (fbx_import_path))[0]
                         if self.modo_ver > 1000:
-                            lx.eval ('!!loaderOptions.fbx mergeWithExistingItems:false loadGeometry:true loadNormals:false loadMeshSmoothing:false loadBlendShapes:false loadPolygonParts:false loadSelectionSets:false loadMaterials:false invertMatTranAmt:false useMatTranColAsTranAmt:false changeTextureEffect:false loadCameras:false loadLights:false loadAnimation:false loadSampleAnimation:false loadSampleAnimationRate:0 globalScalingFactor:1.0 importUnits:0')
+                            lx.eval ('!!loaderOptions.fbx mergeWithExistingItems:false loadGeometry:true loadNormals:true loadMeshSmoothing:false loadBlendShapes:false loadPolygonParts:false loadSelectionSets:false loadMaterials:false invertMatTranAmt:false useMatTranColAsTranAmt:false changeTextureEffect:false loadCameras:false loadLights:false loadAnimation:false loadSampleAnimation:false loadSampleAnimationRate:0 globalScalingFactor:1.0 importUnits:0')
                         else:
-                            lx.eval ('!!loaderOptions.fbx mergeWithExistingItems:false loadGeometry:true loadNormals:false loadMeshSmoothing:false loadBlendShapes:false loadPolygonParts:false loadSelectionSets:false loadMaterials:false invertMatTranAmt:false useMatTranColAsTranAmt:false loadCameras:false loadLights:false loadAnimation:false loadSampleAnimation:false loadSampleAnimationRate:0')
+                            lx.eval ('!!loaderOptions.fbx mergeWithExistingItems:false loadGeometry:true loadNormals:true loadMeshSmoothing:false loadBlendShapes:false loadPolygonParts:false loadSelectionSets:false loadMaterials:false invertMatTranAmt:false useMatTranColAsTranAmt:false loadCameras:false loadLights:false loadAnimation:false loadSampleAnimation:false loadSampleAnimationRate:0')
                         lx.eval ('!scene.open "%s" import' % fbx_import_path)
             
             scene = lxu.select.SceneSelection ().current ()

@@ -217,8 +217,11 @@ class SMO_GC_TransferVNrmFromMouseOverSurface_Cmd(lxu.command.BasicCommand):
             except:
                 BGSuccess = False
             BG = scene.select(Item_under_mouse)
+            LockElem = bool(lx.eval('user.value SMO_UseVal_GC_TransVNFromBG_LockElem ?'))
             MeshBG = modo.Scene().selected
             lx.eval('smo.GC.DeselectAll')
+
+
             ##############################
             ## <----( Main Macro )----> ##
             ##############################
@@ -238,7 +241,8 @@ class SMO_GC_TransferVNrmFromMouseOverSurface_Cmd(lxu.command.BasicCommand):
                     lx.eval('select.type polygon')
                 lx.eval('select.useSet TransfVNrmFromMouseOverSurface select')
                 lx.eval('vertMap.transferNormals false')
-                lx.eval('lock.sel')
+                if LockElem == True:
+                    lx.eval('lock.sel')
                 lx.eval('select.type item')
                 lx.eval('unhide')
                 if SelModeVert == True:
@@ -281,7 +285,8 @@ class SMO_GC_TransferVNrmFromMouseOverSurface_Cmd(lxu.command.BasicCommand):
                     lx.eval('select.type polygon')
                 lx.eval('select.useSet TransfVNrmFromMouseOverSurface select')
                 lx.eval('vertMap.transferNormals false')
-                lx.eval('lock.sel')
+                if LockElem == True:
+                    lx.eval('lock.sel')
                 lx.eval('select.type item')
                 lx.eval('unhide')
                 if SelModeVert == True:
