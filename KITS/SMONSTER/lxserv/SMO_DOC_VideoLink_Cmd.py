@@ -251,7 +251,7 @@ class SMO_DOC_VideoLink_Cmd(lxu.command.BasicCommand):
         if KIT_ID == "RIZOMUV":
             if PAGE_ID == 1:
                 # RIZOMUV:
-                URL = "HSnbvu1EDww"
+                URL = "dttH0GtO-Zg"
 
         if KIT_ID == "PIXAFLUX":
             if PAGE_ID == 1:

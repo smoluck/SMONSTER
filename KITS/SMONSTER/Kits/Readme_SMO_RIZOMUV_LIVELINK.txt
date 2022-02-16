@@ -1,17 +1,24 @@
 Hi. Everyone
 
 
-Sinc e 2.2 Release:
+Since 2.2 Release:
 ======> You ALWAYS need to have SMO_MASTER ans SMOONSTER Kit up and running to use the commands in the kit <======
 
 
 ------------------
 --- UPDATE LOG ---
 ------------------
+- 2.6 -
+        • MODO 15.2v2  Support
+        • RizomUV 2022.0 Support
+        • Bugfix for those who also are using Vertex Normals maps in their workflow. In any case the kit won't update in Modo you could still open the Temp FBX File in order to get back all the data from Materials to VNrm to UV's of course..
+
 - 2.55 -
         • Addition of Pixel Margin / Spacing Mode On in Rizom UV Preferences Script.
 
 - 2.5 -
+        • MODO 15.1v1  Support
+        • RizomUV 2021.0 Support
         • Added support for material at Livelink Export to let you use materials for fast polygon selection in RizomUV
 
 - 2.4 -
@@ -119,6 +126,8 @@ then run the Livelink again.
 ----- VIDEOS -----
 ------------------
 
+https://youtu.be/dttH0GtO-Zg
+
 PLAYLIST:
 Overview of the Kit:
 https://www.youtube.com/playlist?list=PLN8BUs-BSLgnkUVuJgDnfIexkuzYdsUXG
@@ -143,7 +152,7 @@ OR
 --- DISCLAIMER ---
 ------------------
 
-(you need at least Modo 11.2v3 to run this kit)
+(you need at least Modo 13.0v1 to run this kit)
 
 ----------------------------------------------------------------------------
 As for every Product / Art piece / Assets that you do, like everyone of us,
@@ -167,4 +176,3 @@ on the Foundry Forums:
 https://community.foundry.com/discuss/topic/144251
 
 Best regards, Franck.
-
