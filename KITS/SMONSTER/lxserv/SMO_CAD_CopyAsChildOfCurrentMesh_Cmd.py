@@ -87,13 +87,13 @@ class SMO_CAD_CopyCutAsChildOfCurrentMesh_Cmd(lxu.command.BasicCommand):
         scene = modo.scene.current()
         if self.dyna_IsSet(0):
             CopyOrCut = self.dyna_Bool(0)
-            lx.out('Cut Mode:', CopyOrCut)
+            #lx.out('Cut Mode:', CopyOrCut)
         if self.dyna_IsSet(1):
             VisibleMode = self.dyna_Bool(1)
-            lx.out('Visibility Mode:', VisibleMode)
+            #lx.out('Visibility Mode:', VisibleMode)
         if self.dyna_IsSet(2):
             CoplanarConnectedMode = self.dyna_Int(2)
-            lx.out('Coplanar Mode / Connected Mode:', CoplanarConnectedMode)
+            #lx.out('Coplanar Mode / Connected Mode:', CoplanarConnectedMode)
             # 0/None    Cut Polygon Selection
             # 1         Cut Polygon Similar Touching
             # 2         Cut Polygon Similar Object
@@ -153,11 +153,11 @@ class SMO_CAD_CopyCutAsChildOfCurrentMesh_Cmd(lxu.command.BasicCommand):
 
         # Look at current Copy / Paste user Preferences:
         User_Pref_CopyDeselect = lx.eval('pref.value application.copyDeSelection ?')
-        lx.out('User Pref: Deselect Elements after Copying', User_Pref_CopyDeselect)
+        #lx.out('User Pref: Deselect Elements after Copying', User_Pref_CopyDeselect)
         User_Pref_PasteSelection = lx.eval('pref.value application.pasteSelection ?')
-        lx.out('User Pref: Select Pasted Elements', User_Pref_PasteSelection)
+        #lx.out('User Pref: Select Pasted Elements', User_Pref_PasteSelection)
         User_Pref_PasteDeselect = lx.eval('pref.value application.pasteDeSelection ?')
-        lx.out('User Pref: Deselect Elements Before Pasting', User_Pref_PasteDeselect)
+        #lx.out('User Pref: Deselect Elements Before Pasting', User_Pref_PasteDeselect)
         # Is Copy Deselect False ?
         if User_Pref_CopyDeselect == 0:
             lx.eval('pref.value application.copyDeSelection true')
