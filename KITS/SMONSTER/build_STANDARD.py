@@ -47,18 +47,18 @@ repo_dir = Path(__file__).parent
 
 # Get the kit directory
 kit_name = "SMONSTER_V3"
-kit_dir = repo_dir / "KITS"
-target_kit = kit_dir / "SMONSTER"
+kit_dir = repo_dir
+# target_kit = kit_dir / "SMONSTER"
 
 kit_files = []
-config_dir = target_kit / "Config"
-scripts_dir = target_kit / "scripts"
-smodule_dir = target_kit / "smodule"
-lxserv_dir = target_kit / "lxserv"
-training_dir = target_kit / "TRAINING_SCENES"
+config_dir = kit_dir / "Config"
+scripts_dir = kit_dir / "scripts"
+smodule_dir = kit_dir / "smodule"
+lxserv_dir = kit_dir / "lxserv"
+training_dir = kit_dir / "TRAINING_SCENES"
 
 ###### STANDARD KITS 
-kitsfolders_dir = target_kit / "Kits"
+kitsfolders_dir = kit_dir / "Kits"
 
 # kit_ai_dir = kitsfolders_dir / "SMO_AI_TOOLS"
 kit_bake_dir = kitsfolders_dir / "SMO_BAKE"
@@ -346,7 +346,7 @@ with ZipFile(lpk_path, mode="w", compression=ZIP_DEFLATED) as lpk:
 
     ###### STANDARD KITS
     # print("----- Copy Root/Kits/SMO_AI_TOOLS Folder Data -----")
-    # indexAI = m_ID_kitAI(folder=kit_dir, files=kitAI_fi())
+    # indexAI = m_ID_kitAI(folder=target_kit, files=kitAI_fi())
 
     print("----- Copy Root/Kits/SMO_BAKE Folder Data -----")
     indexBAKE = midkitbake(folder=kit_dir, files=kitBAKE_fi())
