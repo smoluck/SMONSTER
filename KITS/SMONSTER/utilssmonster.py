@@ -153,6 +153,19 @@ def midtraining(folder, files):
 
 
 ###### STANDARD KITS #########################################################
+def midkits(folder, files):
+    # For each file add target
+    xml_kits = f''
+    for file in files:  # type: Path
+        # Path including the kit directory
+        kits_full_path = file.relative_to(folder.parent)
+        # Path without kit directory
+        kits_rel_path = file.relative_to(folder)
+        xml_kits += f'\n\t\t<source target="{kits_full_path}">{kits_rel_path}</source>'
+    # print (xml_root)
+    # Return Text
+    return xml_kits
+
 # def m_ID_kitAI(folder, files):
 #     # For each file add target
 #     xml_kitAI = f''
@@ -367,6 +380,7 @@ def midkitllmarmo(folder, files):
     # For each file add target
     xml_kitLL_MARMO = f''
     for file in files:  # type: Path
+        # if file.is_file() and not f.name.endswith("_KeymapCommander.pyc") and not f.name.endswith("_Startup.pyc"):
         # Path including the kit directory
         kitLL_MARMO_full_path = file.relative_to(folder.parent)
         # Path without kit directory
