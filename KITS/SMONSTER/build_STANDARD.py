@@ -143,11 +143,7 @@ def lxserv_fi():
     for f in lxserv_dir.glob("**/*"):
         # Files that are compiled
         if f.is_file() and f.name.endswith(".pyc"):
-            if not f.name.startswith("SMO_SMONSTER_") and not f.name.endswith(
-                    "averageRGBA.pyc") and not f.name.endswith("createBBOX.pyc") and not f.name.endswith(
-                    "islandCount.pyc") and not f.name.endswith("randomRGBA.pyc") and not f.name.endswith(
-                    "renamePTag.pyc") and not f.name.endswith("resetMeshTransform.pyc") and not f.name.endswith(
-                    "selectByColor.pyc") and not f.name.endswith("SplitByMaterial.pyc"):
+            if not f.name.startswith(("SMO_SMONSTER_", "averageRGBA.pyc", "createBBOX.pyc", "islandCount.pyc", "randomRGBA.pyc", "renamePTag.pyc", "resetMeshTransform.pyc", "selectByColor.pyc", "SplitByMaterial.pyc")):
                 lxserv_files.append(f)
         # Files that must be compiled on user Device because of OS dependency
         if f.is_file() and f.name.endswith(".py"):
@@ -213,8 +209,7 @@ def kits_fi():
 # Files contained in "Kits/SMO_BAKE" folder
 def kit_bake_fi():
     kitBAKE_files = [f for f in kit_bake_dir.glob("**/*") if
-                     f.is_file() and not f.name.endswith("_KeymapCommander.pyc") and not f.name.endswith(
-                         "_Startup.pyc")]
+                     f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitBAKE_files)
     return kitBAKE_files
 
@@ -224,8 +219,7 @@ def kit_bake_fi():
 # Files contained in "Kits/SMO_BATCH" folder
 def kit_batch_fi():
     kitBATCH_files = [f for f in kit_batch_dir.glob("**/*") if
-                      f.is_file() and not f.name.endswith("_KeymapCommander.pyc") and not f.name.endswith(
-                          "_Startup.pyc")]
+                      f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitBATCH_files)
     return kitBATCH_files
 
@@ -235,7 +229,7 @@ def kit_batch_fi():
 # Files contained in "Kits/SMO_CAD_TOOLS" folder
 def kit_cad_fi():
     kitCAD_files = [f for f in kit_cad_dir.glob("**/*") if
-                    f.is_file() and not f.name.endswith("_KeymapCommander.pyc") and not f.name.endswith("_Startup.pyc")]
+                    f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitCAD_files)
     return kitCAD_files
 
@@ -245,8 +239,7 @@ def kit_cad_fi():
 # Files contained in "Kits/SMO_CLEANUP" folder
 def kit_cleanup_fi():
     kitCLEANUP_files = [f for f in kit_cleanup_dir.glob("**/*") if
-                        f.is_file() and not f.name.endswith("_KeymapCommander.pyc") and not f.name.endswith(
-                            "_Startup.pyc")]
+                        f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitCLEANUP_files)
     return kitCLEANUP_files
 
@@ -256,7 +249,7 @@ def kit_cleanup_fi():
 # Files contained in "Kits/SMO_COLOR_BAR" folder
 def kit_colorbar_fi():
     kitCB_files = [f for f in kit_cb_dir.glob("**/*") if
-                   f.is_file() and not f.name.endswith("_KeymapCommander.pyc") and not f.name.endswith("_Startup.pyc")]
+                   f.is_file() and not f.name.endswith("_KeymapCommander.pyc") and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitCB_files)
     return kitCB_files
 
@@ -265,7 +258,7 @@ def kit_colorbar_fi():
 
 # Files contained in "Kits/SMO_DOC" folder
 def kit_doc_fi():
-    kitDOC_files = [f for f in kit_doc_dir.glob("**/*") if f.is_file() and not f.name.endswith("_KeymapCommander.pyc") and not f.name.endswith("_Startup.pyc")]
+    kitDOC_files = [f for f in kit_doc_dir.glob("**/*") if f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitDOC_files)
     return kitDOC_files
 
@@ -274,7 +267,7 @@ def kit_doc_fi():
 
 # Files contained in "Kits/SMO_GAME_CONTENT" folder
 def kit_gamecontent_fi():
-    kitGC_files = [f for f in kit_gc_dir.glob("**/*") if f.is_file() and not f.name.endswith("_KeymapCommander.pyc") and not f.name.endswith("_Startup.pyc")]
+    kitGC_files = [f for f in kit_gc_dir.glob("**/*") if f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitGC_files)
     return kitGC_files
 
@@ -283,7 +276,7 @@ def kit_gamecontent_fi():
 
 # Files contained in "Kits/SMO_MASTER" folder
 def kit_master_fi():
-    kitMASTER_files = [f for f in kit_master_dir.glob("**/*") if f.is_file() and not f.name.endswith("_KeymapCommander.pyc") and not f.name.endswith("_Startup.pyc")]
+    kitMASTER_files = [f for f in kit_master_dir.glob("**/*") if f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitMASTER_files)
     return kitMASTER_files
 
@@ -293,8 +286,7 @@ def kit_master_fi():
 # Files contained in "Kits/SMO_MATH_TOOLS" folder
 def kit_mathtools_fi():
     kitMATH_files = [f for f in kit_math_dir.glob("**/*") if
-                     f.is_file() and not f.name.endswith("_KeymapCommander.pyc") and not f.name.endswith(
-                         "_Startup.pyc")]
+                     f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitMATH_files)
     return kitMATH_files
 
@@ -304,8 +296,7 @@ def kit_mathtools_fi():
 # Files contained in "Kits/SMO_MESHOPS" folder
 def kit_meshops_fi():
     kitMESHOPS_files = [f for f in kit_meshops_dir.glob("**/*") if
-                        f.is_file() and not f.name.endswith("_KeymapCommander.pyc") and not f.name.endswith(
-                            "_Startup.pyc")]
+                        f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitMESHOPS_files)
     return kitMESHOPS_files
 
@@ -315,8 +306,7 @@ def kit_meshops_fi():
 # Files contained in "Kits/SMO_MIFABOMA" folder
 def kit_mifaboma_fi():
     kitMIFABOMA_files = [f for f in kit_mifaboma_dir.glob("**/*") if
-                         f.is_file() and not f.name.endswith("_KeymapCommander.pyc") and not f.name.endswith(
-                             "_Startup.pyc")]
+                         f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitMIFABOMA_files)
     return kitMIFABOMA_files
 
@@ -332,9 +322,7 @@ def kit_mifaboma_fi():
 
 # Files contained in "Kits/SMO_QUICK_TAG" folder
 def kit_qtag_fi():
-    kitQTAG_files = [f for f in kit_qt_dir.glob("**/*") if
-                     f.is_file() and not f.name.endswith("_KeymapCommander.pyc") and not f.name.endswith(
-                         "_Startup.pyc")]
+    kitQTAG_files = [f for f in kit_qt_dir.glob("**/*") if f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitQTAG_files)
     return kitQTAG_files
 
@@ -344,7 +332,7 @@ def kit_qtag_fi():
 # Files contained in "Kits/SMO_UV" folder
 def kit_uv_fi():
     kitUV_files = [f for f in kit_uv_dir.glob("**/*") if
-                   f.is_file() and not f.name.endswith("_KeymapCommander.pyc") and not f.name.endswith("_Startup.pyc")]
+                   f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitUV_files)
     return kitUV_files
 
@@ -354,8 +342,7 @@ def kit_uv_fi():
 # Files contained in "Kits/SMO_VENOM" folder
 def kit_venom_fi():
     kitVENOM_files = [f for f in kit_venom_dir.glob("**/*") if
-                      f.is_file() and not f.name.endswith("_KeymapCommander.pyc") and not f.name.endswith(
-                          "_Startup.pyc")]
+                      f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitVENOM_files)
     return kitVENOM_files
 
@@ -367,13 +354,7 @@ def kit_venom_fi():
 # Files contained in "Kits/SMO_MARMOSET_LIVELINK" folder
 def kit_ll_marmosettoolbag_fi():
     # Files that doesn't include the source code py files, but only the one that remains to the KeymapCommander and Startup scripts.
-    kitLLMARMO_files = [f for f in kit_marmo_dir.glob("**/*") if
-                        f.is_file() and not f.name.endswith("_KeymapCommander.pyc") and not f.name.endswith(
-                            "_Startup.pyc") and not f.name.endswith(
-                            "SMO_LL_MARMOSET_AutoSegmentedExport_Cmd.py") and not f.name.endswith(
-                            "SMO_LL_MARMOSET_CreateMikkTangentBasisMap_Cmd.py") and not f.name.endswith(
-                            "SMO_LL_MARMOSET_ExportFBXBakes_Cmd.py") and not f.name.endswith(
-                            "SMO_LL_MARMOSET_SetExePath_Cmd.py")]
+    kitLLMARMO_files = [f for f in kit_marmo_dir.glob("**/*") if f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc", "SMO_LL_MARMOSET_AutoSegmentedExport_Cmd.py", "SMO_LL_MARMOSET_CreateMikkTangentBasisMap_Cmd.py", "SMO_LL_MARMOSET_ExportFBXBakes_Cmd.py", "SMO_LL_MARMOSET_SetExePath_Cmd.py"))]
     print("Files in Marmoset Toolbag LL kit folder:")
     print(kitLLMARMO_files)
     print("--------------")
@@ -385,14 +366,7 @@ def kit_ll_marmosettoolbag_fi():
 # Files contained in "Kits/SMO_PIXAFLUX_LIVELINK" folder
 def kit_ll_pixaflux_fi():
     # Files that doesn't include the source code py files, but only the one that remains to the KeymapCommander and Startup scripts.
-    kitLLPIXA_files = [f for f in kit_pixa_dir.glob("**/*") if
-                       f.is_file() and not f.name.endswith("_KeymapCommander.pyc") and not f.name.endswith(
-                           "_Startup.pyc") and not f.name.endswith(
-                           "SMO_LL_PIXAFLUX_CreateTSNMap_Cmd.py") and not f.name.endswith(
-                           "SMO_LL_PIXAFLUX_DupAndExplodeByDist_Cmd.py") and not f.name.endswith(
-                           "SMO_LL_PIXAFLUX_ScaleUniformRecenter_Cmd.py") and not f.name.endswith(
-                           "SMO_LL_PIXAFLUX_SendDataAuto_Cmd.py") and not f.name.endswith(
-                           "SMO_LL_PIXAFLUX_SetExePath_Cmd.py")]
+    kitLLPIXA_files = [f for f in kit_pixa_dir.glob("**/*") if f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc", "SMO_LL_PIXAFLUX_CreateTSNMap_Cmd.py", "SMO_LL_PIXAFLUX_DupAndExplodeByDist_Cmd.py", "SMO_LL_PIXAFLUX_ScaleUniformRecenter_Cmd.py", "SMO_LL_PIXAFLUX_SendDataAuto_Cmd.py", "SMO_LL_PIXAFLUX_SetExePath_Cmd.py"))]
     print("Files in Pixaflux LL kit folder:")
     print(kitLLPIXA_files)
     print("--------------")
@@ -404,12 +378,7 @@ def kit_ll_pixaflux_fi():
 # Files contained in "Kits/SMO_RIZOMUV_LIVELINK" folder
 def kit_ll_rizomuv_fi():
     # Files that doesn't include the source code py files, but only the one that remains to the KeymapCommander and Startup scripts.
-    kitLLRIZOM_files = [f for f in kit_rizom_dir.glob("**/*") if
-                        f.is_file() and not f.name.endswith("_KeymapCommander.pyc") and not f.name.endswith(
-                            "_Startup.pyc") and not f.name.endswith(
-                            "SMO_LL_RIZOMUV_Basic_Cmd.py") and not f.name.endswith(
-                            "SMO_LL_RIZOMUV_SendDataAuto_Cmd.py") and not f.name.endswith(
-                            "SMO_LL_RIZOMUV_SetExePath_Cmd.py")]
+    kitLLRIZOM_files = [f for f in kit_rizom_dir.glob("**/*") if f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc", "SMO_LL_RIZOMUV_Basic_Cmd.py", "SMO_LL_RIZOMUV_SendDataAuto_Cmd.py", "SMO_LL_RIZOMUV_SetExePath_Cmd.py"))]
     print("Files in RizomUV LL kit folder:")
     print(kitLLRIZOM_files)
     print("--------------")
@@ -434,12 +403,12 @@ mkdir(build_dir)
 
 # Format the lpk file name with the version number from the VERSION file
 version = utilssmonster.get_version()
-lpk_path = build_dir / f"SMONSTER_{version}.lpk"
+lpk_standard_path = build_dir / f"SMONSTER_{version}_Standard.lpk"
 # Message to display to the users
-message = f"Successfully installed SMONSTER: v{version}"
+message = f"You successfully installed SMONSTER (Standard edition): v{version}"
 
 # Build the LPK file.
-with ZipFile(lpk_path, mode="w", compression=ZIP_DEFLATED) as lpk:
+with ZipFile(lpk_standard_path, mode="w", compression=ZIP_DEFLATED) as lpk:
     index_data = []
     index_data_slash = []
     # Add the license
@@ -550,7 +519,7 @@ with ZipFile(lpk_path, mode="w", compression=ZIP_DEFLATED) as lpk:
     print("----------------")
     print("-------------------------------")
     print("----- Resulting INDEX.XML (with Forward Slash) -----")
-    # Convert String path to Absolute Path using OS formating
+    # Convert String path to Absolute Path using OS formatting
     index_data_slash = index_data.replace('\\', '/')
     print(index_data_slash)
     print("-------------------------------")
