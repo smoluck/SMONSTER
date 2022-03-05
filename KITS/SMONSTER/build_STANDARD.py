@@ -82,7 +82,7 @@ kit_pixa_dir = kitsfolders_dir / "SMO_PIXAFLUX_LIVELINK"
 kit_rizom_dir = kitsfolders_dir / "SMO_RIZOMUV_LIVELINK"
 
 # Get the build directory
-build_dir = repo_dir / "build"
+build_dir = repo_dir / "build_StandardEdition"
 # Get the license file
 license_file = repo_dir / "LICENSE"
 
@@ -92,7 +92,7 @@ license_file = repo_dir / "LICENSE"
 def root_fi():
     # Get Base files in folders "Config" "scripts" "TRAINING_SCENES" and make sure no pyc files come along
     root_files = []
-    files = [f for f in os.listdir(kit_dir) if f.endswith(".cfg") or f.endswith(".txt")]
+    files = [f for f in os.listdir(kit_dir) if f.endswith((".cfg", ".txt", "LICENSE"))]
     for f in files:
         f = kit_dir / f
         root_files.append(f)
@@ -403,16 +403,16 @@ mkdir(build_dir)
 
 # Format the lpk file name with the version number from the VERSION file
 version = utilssmonster.get_version()
-lpk_standard_path = build_dir / f"SMONSTER_{version}_Standard.lpk"
+lpk_standard_path = build_dir / f"SMONSTER_v{version}_StandardEdition.lpk"
 # Message to display to the users
-message = f"You successfully installed SMONSTER (Standard edition): v{version}"
+message = f"You successfully installed SMONSTER (Standard Edition): v{version} &#10;Please refer to the ReadmeFirst_SMONSTER.txt for more information. &#10;Remember to join our dedicated Slack server for support and updates.&#10; &#10;Best regards,&#10;Franck Elisabeth&#10; &#10;"
 
 # Build the LPK file.
 with ZipFile(lpk_standard_path, mode="w", compression=ZIP_DEFLATED) as lpk:
     index_data = []
     index_data_slash = []
     # Add the license
-    # lpk.write(license_file, "license")
+    lpk.write(license_file, "license")
     # Generate the index.xml file data
     indexheader = midheader(name=kit_name)
 
@@ -657,3 +657,5 @@ with ZipFile(lpk_standard_path, mode="w", compression=ZIP_DEFLATED) as lpk:
     for file in kit_ll_rizomuv_fi():
         print(file.relative_to(kit_dir))
         lpk.write(file, file.relative_to(kit_dir))
+
+    lpk.close()
