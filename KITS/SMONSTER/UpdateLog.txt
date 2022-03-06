@@ -4,7 +4,7 @@
 v3.00 - 2022/03/03
         • Initial Commit to New Release V3.
         • It now support Modo 15.0 to 16.X releases with 100% Compatibility.
-        • All further developements will focus on support from Modo 15.0v1 to 16.X.
+        • All further developments will focus on support from Modo 15.0v1 to 16.X.
         • You're free to load it on earlier releases of Modo (from 14.0), but i won't provide any bugfix on earlier release of Modo than 15.0v1 from 2022 March 2th in order to get my focus on Future plans for Modo 16.X series.
 
 GC:
@@ -18,7 +18,7 @@ RIZOMUV Livelink:
 
         • MODO 15.2v2 Support
         • RizomUV 2022.0 Support
-        • Bugfix for those who also are using Vertex Normals maps in their workflow. In any case the kit won't update in Modo you could still open the Temp FBX File in order to get back all the data from Materials to VNrm to UV's of course..
+        • Bugfix for those who also are using Vertex Normals maps in their workflow. In any case the kit won't update in Modo you could still open the Temp FBX File in order to get back all the data from Materials to VNrm to UV's of course.
 
 
 v2.756 - 2022/01/28
