@@ -143,6 +143,10 @@ class SMO_UV_UnwrapCylindrical_Cmd(lxu.command.BasicCommand):
         UVRelaxIterCount = lx.eval('user.value SMO_UseVal_UV_RelaxIterCount ?')
         lx.out('RelaxUV iteration count:',UVRelaxIterCount)
 
+        # Bugfix to disable Auto RelaxUV Island if the Unwrap Rectangle was True, in order to keep Rectangle result in output.
+        if IsRectangle == 1:
+            RelaxUV = 0
+
         
         # Relocate in Area = 0
         # Relocate in Area = 1
