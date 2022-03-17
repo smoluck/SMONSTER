@@ -228,14 +228,15 @@ class SMO_GC_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
                 # Command Block End:  ToolAdjustment
                 lx.eval('tool.set select.polygonCoplanar off')
 
-                if RefSystemActive == False:
-                    lx.eval('item.refSystem {}')
-                else:
-                    # print('Ref System activated')
-                    lx.eval('item.refSystem %s' % SelItems[0])
-
-        if RefSystemActive == False:
-            lx.eval('item.refSystem {}')
+        # Bugfix to remove a reset of Item Reference system to be set while a Workplane was set. It prevent the 3D view to be offset from current viewpoint.
+        #         if RefSystemActive == False:
+        #             lx.eval('item.refSystem {}')
+        #         else:
+        #             # print('Ref System activated')
+        #             lx.eval('item.refSystem %s' % SelItems[0])
+        #
+        # if RefSystemActive == False:
+        #     lx.eval('item.refSystem {}')
         if RefSystemActive == True:
             lx.eval('item.refSystem %s' % CurrentRefSystemItem)
 
