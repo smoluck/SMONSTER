@@ -62,17 +62,12 @@ class SMO_GC_LoadViewportPreset_Cmd(lxu.command.BasicCommand):
         # print('Modo Version:',Modo_ver)
         if Modo_ver >= 1500:
             if Preset_ID == 0:
-                # Bugfix Setting 2 times that line force Modo to keep previous Viewpoint instead of Offsetting Camera/Viewport Position when switching from one Shading style to another.
-                lx.eval('attr.formPresetLoad "SMONSTERAVPGame:formPreset" {27036209057:sheet} contextForm:{27036209057:sheet}')
-                lx.eval('attr.formPresetLoad "SMONSTERAVPGame:formPreset" {27036209057:sheet} contextForm:{27036209057:sheet}')
+                # lx.eval('attr.formPresetLoad "SMONSTERAVPGame:formPreset" {27036209057:sheet} contextForm:{27036209057:sheet}')
+                lx.eval('attr.formPresetLoad "SMONSTERAVPGame:formPreset"')
             if Preset_ID == 1:
-                # Bugfix Setting 2 times that line force Modo to keep previous Viewpoint instead of Offsetting Camera/Viewport Position when switching from one Shading style to another.
-                lx.eval('attr.formPresetLoad "SMONSTERAVPGameAA:formPreset" {27036209057:sheet} contextForm:{27036209057:sheet}')
-                lx.eval('attr.formPresetLoad "SMONSTERAVPGameAA:formPreset" {27036209057:sheet} contextForm:{27036209057:sheet}')
+                lx.eval('attr.formPresetLoad "SMONSTERAVPGameAA:formPreset"')
             if Preset_ID == 2:
-                # Bugfix Setting 2 times that line force Modo to keep previous Viewpoint instead of Offsetting Camera/Viewport Position when switching from one Shading style to another.
-                lx.eval('attr.formPresetLoad "SMONSTERAVPGameRef:formPreset" {27036209057:sheet} contextForm:{27036209057:sheet}')
-                lx.eval('attr.formPresetLoad "SMONSTERAVPGameRef:formPreset" {27036209057:sheet} contextForm:{27036209057:sheet}')
+                lx.eval('attr.formPresetLoad "SMONSTERAVPGameRef:formPreset"')
         if Modo_ver < 1500:
             if Preset_ID == 0:
                 lx.eval('view3d.presetload AVP_Game')

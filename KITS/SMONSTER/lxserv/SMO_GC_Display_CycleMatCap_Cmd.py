@@ -70,89 +70,89 @@ class SMO_GC_Display_CycleMatCap_Cmd(lxu.command.BasicCommand):
         # ############### ARGUMENTS ###############
         SMO_MatCapId = lx.eval('user.value SMO_MatCapId ?')
         # lx.out('MatCap Current Index:', SMO_MatCapId)
-        
+
         MatCapKitPath = lx.eval("query platformservice alias ? {kit_SMO_GAME_CONTENT:Matcaps}")
         # lx.out('MatCap Path', MatCapKitPath)
-        
+
         MatCapFilePath = []
         for MatCap in os.listdir(MatCapKitPath):
             if ".png" in MatCap:
                 MatCapFilePath.append(os.path.join(MatCapKitPath + "\\" + MatCap))
             # print(MatCapFilePath)
-        
+
         MaxId = len(MatCapFilePath)
         # print(MaxId)
         MinId = 0
-        
-        
-        
+
+
+
         if ReverseDirection == 0 :
-            
+
             if SMO_MatCapId == (MaxId - 1):
                 SMO_MatCapId = -1
                 # lx.out('MatCap Current Index arrive at End:', SMO_MatCapId)
-            
-            
-            
+
+
+
             if SMO_MatCapId == None :
                 SMO_MatCapId = lx.eval('user.value SMO_MatCapId 0')
                 # lx.out('MatCap Current Index:', SMO_MatCapId)
-            
+
             if SMO_MatCapId != None :
                 SMO_MatCapId = lx.eval('user.value SMO_MatCapId ?')
                 # print(SMO_MatCapId)
-                
+
                 MatCapIndex = (SMO_MatCapId + 1)
                 # print(MatCapIndex)
-                
+
                 lx.eval('smo.GC.LoadViewportPreset 1')
                 # print(MatCapFilePath[0])
                 # print(MatCapFilePath[1])
-                
+
                 MaxId = len(MatCapFilePath)
                 # print(MaxId)
-                
+
                 # Get back to lowest Value if we are off the file count in the folder
                 if MatCapIndex > (MaxId - 1):
                     MatCapIndex = 0
-                
-                lx.eval('smo.GC.LoadViewportPreset 1')
+
                 # lx.out('MatCap Path List:', MatCapFilePath[MatCapIndex] )
+                lx.eval('vpover.enable true')
                 lx.eval('vpover.setOverride {%s} matcap' % MatCapFilePath[MatCapIndex])
                 lx.eval('user.value SMO_MatCapId %i' % MatCapIndex)
                 lx.eval('@av_smartWireToggle.pl')
-                
+
         if ReverseDirection == 1 :
             if SMO_MatCapId == (MaxId - 1):
                 SMO_MatCapId = (MaxId - 1)
                 # lx.out('MatCap Current Index arrive at End:', SMO_MatCapId)
-            
-            
-            
+
+
+
             if SMO_MatCapId == None :
                 SMO_MatCapId = lx.eval('user.value SMO_MatCapId 0')
                 # lx.out('MatCap Current Index:', SMO_MatCapId)
-            
+
             if SMO_MatCapId != None :
                 SMO_MatCapId = lx.eval('user.value SMO_MatCapId ?')
                 # print(SMO_MatCapId)
-                
+
                 MatCapIndex = (SMO_MatCapId - 1)
                 # print(MatCapIndex)
-                
+
                 lx.eval('smo.GC.LoadViewportPreset 1')
                 # print(MatCapFilePath[0])
                 # print(MatCapFilePath[1])
-                
+
                 MaxId = len(MatCapFilePath)
                 # print(MaxId)
-                
+
                 # Get back to lowest Value if we are off the file count in the folder
                 if MatCapIndex > (MaxId - 1):
                     MatCapIndex = 0
-                
-                lx.eval('smo.GC.LoadViewportPreset 1')
+
                 # lx.out('MatCap Path List:', MatCapFilePath[MatCapIndex] )
+                lx.eval('vpover.enable true')
                 lx.eval('vpover.setOverride {%s} matcap' % MatCapFilePath[MatCapIndex])
                 lx.eval('user.value SMO_MatCapId %i' % MatCapIndex)
                 lx.eval('@av_smartWireToggle.pl')
