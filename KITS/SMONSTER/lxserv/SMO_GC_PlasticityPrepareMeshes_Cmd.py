@@ -234,7 +234,7 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.type polygon')
                 lx.eval('select.all')
                 lx.eval('smo.UV.UnwrapSmart 0 1 0 0')
-                # lx.eval('smo.UV.SmartProjectionClearTag')
+                lx.eval('smo.UV.SmartProjectionClearTag')
 
             if Airtight == True:
                 # Merge Vertex Boundary
@@ -247,6 +247,9 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
         if RepackAll == True and UVUnwrap == True:
             scene.select(resultingmesh_list)
             lx.eval('smo.UV.NormalizePack 0 0')
+
+        scene.select(resultingmesh_list)
+        lx.eval('!mesh.cleanup true mergeVertex:false')
 
         # lx.eval('smo.UV.EnableUVTextureChecker 4096')
         
