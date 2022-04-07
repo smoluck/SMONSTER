@@ -46,9 +46,6 @@ class SMO_PixaFlux_DupAndExplodeByDist_Cmd(lxu.command.BasicCommand):
     def basic_ButtonName (self):
         return 'SMO PixaFlux DupAndExplodeByDist'
 
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
-
     def basic_Enable (self, msg):
         return True
 

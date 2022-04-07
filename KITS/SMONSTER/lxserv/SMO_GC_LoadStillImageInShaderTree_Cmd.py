@@ -43,9 +43,6 @@ class SMO_GC_LoadStillImageInShaderTree_Cmd(lxu.command.BasicCommand):
     def basic_ButtonName (self):
         return 'SMO GC SelectStillImageItem'
     
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
-    
     def basic_Enable (self, msg):
         return True
         

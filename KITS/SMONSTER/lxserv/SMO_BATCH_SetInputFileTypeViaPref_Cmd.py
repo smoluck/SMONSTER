@@ -43,9 +43,6 @@ class SMO_BATCH_SetInputFileTypeViaPref_Cmd(lxu.command.BasicCommand):
     def basic_ButtonName (self):
         return 'SMO Batch Set Input File Type ia Pref'
     
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
-    
     def basic_Enable (self, msg):
         return True
         

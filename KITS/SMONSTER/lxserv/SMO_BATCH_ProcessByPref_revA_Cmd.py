@@ -41,9 +41,6 @@ class SMO_Batch_ProcessByPref_revA_Cmd(lxu.command.BasicCommand):
     def basic_ButtonName (self):
         return 'SMO Batch Process'
     
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
-    
     def basic_Enable (self, msg):
         return True
         

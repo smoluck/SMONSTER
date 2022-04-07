@@ -43,9 +43,6 @@ class SMO_CLEANUP_RenameUVMapToDefaultSceneWise_Cmd(lxu.command.BasicCommand):
     def basic_ButtonName(self):
         return 'SMO CLEANUP RenameUVMapToDefaultSceneWise'
 
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
-
     def basic_Enable(self, msg):
         return True
 

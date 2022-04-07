@@ -43,9 +43,6 @@ class SMO_MARMOSET_LIVELINK_SetExePath_Cmd(lxu.command.BasicCommand):
     def basic_ButtonName (self):
         return 'SMO Marmoset Toolbag LiveLink Set EXE Path'
     
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
-    
     def basic_Enable (self, msg):
         return True
     

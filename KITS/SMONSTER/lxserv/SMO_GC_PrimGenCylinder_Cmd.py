@@ -52,9 +52,6 @@ class SMO_GC_PrimGenCylinder_Cmd(lxu.command.BasicCommand):
     def basic_ButtonName(self):
         return 'SMO PrimGenCylinder'
 
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
-
     def basic_Enable(self, msg):
         return True
 

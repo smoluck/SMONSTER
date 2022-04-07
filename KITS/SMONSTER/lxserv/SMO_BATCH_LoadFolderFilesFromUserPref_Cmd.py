@@ -45,8 +45,7 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
     
     def basic_Enable (self, msg):
         return True
-        
-    
+
     def basic_Execute(self, msg, flags):
         
         

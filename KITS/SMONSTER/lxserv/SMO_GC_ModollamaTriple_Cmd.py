@@ -46,9 +46,6 @@ class SMO_GC_ModollamaTriple_Cmd(lxu.command.BasicCommand):
     def basic_ButtonName(self):
         return 'SMO Modollama Triple'
 
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
-
     def basic_Enable(self, msg):
         return True
 

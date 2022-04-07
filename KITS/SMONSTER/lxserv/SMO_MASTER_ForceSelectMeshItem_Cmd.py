@@ -52,9 +52,6 @@ class SMO_MASTER_ForceSelectMeshItem_Cmd(lxu.command.BasicCommand):
     def basic_ButtonName(self):
         return 'SMO MASTER Force Select Mesh Item Only'
 
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
-
     def basic_Enable(self, msg):
         return True
 

@@ -58,9 +58,6 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
     def basic_ButtonName (self):
         return 'SMO UV Unwrap Smart'
     
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
-    
     def basic_Enable (self, msg):
         return True
         
@@ -721,7 +718,13 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
                     lx.eval('select.type polygon')
 
 
+                # ## 2022_04_07 Bug with Unhide that can't be recorded as undoable.
+                # lx.eval('tool.viewType xyz')
+                # lx.eval('unhide')
+                # lx.eval('tool.viewType uv')
+
                 lx.eval('unhide')
+
                 lx.eval('select.drop polygon')
 
                 if RePack == True and UnwrapMethod == 0 and IsRectangle == 0 and RelocateInArea == True:
@@ -855,7 +858,13 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
                 # lx.eval ('select.type polygon')
                 # lx.eval ('select.drop polygon')
 
+                # ## 2022_04_07 Bug with Unhide that can't be recorded as undoable.
+                # lx.eval('tool.viewType xyz')
+                # lx.eval('unhide')
+                # lx.eval('tool.viewType uv')
+
                 lx.eval('unhide')
+
                 lx.eval('select.drop polygon')
 
                 if RePack == True and UnwrapMethod == 0 and IsRectangle == 0 and RelocateInArea == True:

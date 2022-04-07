@@ -40,9 +40,6 @@ class SMO_CAD_AllMesh_PolylineToNGon_Cmd(lxu.command.BasicCommand):
     def basic_ButtonName (self):
         return 'SMO CAD All Mesh Polyline To NGon'
     
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
-    
     def basic_Enable (self, msg):
         return True
     

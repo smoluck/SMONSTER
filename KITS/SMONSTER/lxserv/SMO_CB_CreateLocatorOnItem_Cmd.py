@@ -49,9 +49,6 @@ class SMO_CB_CreateLocatorOnMesh_Cmd(lxu.command.BasicCommand):
     def basic_ButtonName(self):
         return 'SMO CB CreateLocatorOnMesh'
 
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
-
     def basic_Enable(self, msg):
         return True
 

@@ -45,9 +45,6 @@ class SMO_MIFABOMA_RADIALSWEEP_TagsProcessFromHighPolyMeshData_Cmd(lxu.command.B
     def basic_ButtonName (self):
         return 'SMO MIFABOMA TagsProcessForRadialSweepFromHighPolyMeshData'
 
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
-
     def basic_Enable (self, msg):
         return True
 

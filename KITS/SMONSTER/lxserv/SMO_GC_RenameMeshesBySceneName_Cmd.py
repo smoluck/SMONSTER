@@ -45,9 +45,6 @@ class SMO_GC_RenameMeshesBySceneName_Cmd(lxu.command.BasicCommand):
     def basic_ButtonName (self):
         return 'SMO GC Rename Meshes By Scene Name'
     
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
-    
     def basic_Enable (self, msg):
         return True
         

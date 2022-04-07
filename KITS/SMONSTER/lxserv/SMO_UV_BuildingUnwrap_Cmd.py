@@ -18,6 +18,7 @@ import lx, lxu, modo
 class SMO_UV_BuildingUnwrap_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
+
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
     
@@ -38,9 +39,6 @@ class SMO_UV_BuildingUnwrap_Cmd(lxu.command.BasicCommand):
     
     def basic_ButtonName (self):
         return 'SMO UV Building Unwrap'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
     
     def basic_Enable (self, msg):
         return True

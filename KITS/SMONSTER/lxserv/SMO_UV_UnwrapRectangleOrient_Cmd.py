@@ -21,6 +21,7 @@ class SMO_UV_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Orient Direction", lx.symbol.sTYPE_INTEGER)
         self.basic_SetFlags (0, lx.symbol.fCMDARG_OPTIONAL)                 # here the (0) define the argument index.
+
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
     
@@ -41,9 +42,6 @@ class SMO_UV_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
     
     def basic_ButtonName (self):
         return 'SMO UV Unwrap Rectangle & Orient'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
     
     def basic_Enable (self, msg):
         return True

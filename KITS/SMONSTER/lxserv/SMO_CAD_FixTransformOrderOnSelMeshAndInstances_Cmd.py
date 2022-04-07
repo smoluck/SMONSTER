@@ -46,9 +46,6 @@ class SMO_CAD_FixTransformOrderOnSelMeshAndInstances_Cmd(lxu.command.BasicComman
     def basic_ButtonName(self):
         return 'SMO CAD FixTransformOrderOnSelMeshAndInstances'
 
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
-
     def basic_Enable(self, msg):
         return True
 

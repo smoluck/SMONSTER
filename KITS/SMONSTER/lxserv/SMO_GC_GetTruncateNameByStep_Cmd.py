@@ -76,9 +76,6 @@ class SMO_GC_GetTruncateNameByStep_Cmd(lxu.command.BasicCommand):
     def basic_ButtonName (self):
         return 'SMO GC GetTruncateNameByStep'
     
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
-    
     def basic_Enable(self, msg):
         # Perform the checks for when the command is supposed to be enabled,
         # so users will be informed the command is unavailable by the button being

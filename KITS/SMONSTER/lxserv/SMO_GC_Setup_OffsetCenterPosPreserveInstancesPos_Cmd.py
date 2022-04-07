@@ -43,9 +43,6 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
     def basic_ButtonName (self):
         return 'SMO GC Setup OffsetCenterPosPreserveInstancesPos'
     
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
-    
     def basic_Enable (self, msg):
         return True
     

@@ -42,9 +42,6 @@ class SMO_UV_SetGridAndColorScheme_Cmd(lxu.command.BasicCommand):
     def basic_ButtonName (self):
         return 'SMO UV Set Grid And Color Scheme'
     
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
-    
     def basic_Enable (self, msg):
         return True
         

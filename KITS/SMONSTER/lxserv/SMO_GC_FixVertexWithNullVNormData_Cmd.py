@@ -119,9 +119,6 @@ class SMO_GC_FixVertexWithNullVNormData_Cmd(lxu.command.BasicCommand):
     def basic_ButtonName(self):
         return 'SMO GC FixVertexWithNullVNormData'
 
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
-
     def basic_Enable(self, msg):
         return True
 

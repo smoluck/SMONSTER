@@ -44,9 +44,6 @@ class SMO_Cleanup_ConvertItemIndexStyleSceneWise_Cmd(lxu.command.BasicCommand):
     def basic_ButtonName (self):
         return 'SMO Cleanup ConvertItemIndexStyleSceneWise'
     
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
-    
     def basic_Enable (self, msg):
         return True
     

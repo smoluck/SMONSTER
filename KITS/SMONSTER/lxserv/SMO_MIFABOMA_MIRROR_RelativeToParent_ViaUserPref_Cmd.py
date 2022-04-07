@@ -57,9 +57,6 @@ class SMO_MIFABOMA_Mirror_RelativeToParent_ViaUserPref_Cmd(lxu.command.BasicComm
     def basic_ButtonName (self):
         return 'SMO Mirror Relative To Parent via User Prefs'
 
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
-
     def basic_Enable (self, msg):
         return True
 

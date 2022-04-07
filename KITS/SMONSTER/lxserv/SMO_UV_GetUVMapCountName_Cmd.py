@@ -27,6 +27,7 @@ class SMO_UV_GetUVMapCountName_Cmd(lxu.command.BasicCommand):
         self.basic_SetFlags (1, lx.symbol.fCMDARG_OPTIONAL)
         self.dyna_Add("Set and Store Selected UV Map Name", lx.symbol.sTYPE_INTEGER)
         self.basic_SetFlags (1, lx.symbol.fCMDARG_OPTIONAL)
+
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
     
@@ -47,9 +48,6 @@ class SMO_UV_GetUVMapCountName_Cmd(lxu.command.BasicCommand):
     
     def basic_ButtonName (self):
         return 'SMO UV Get UVMap Count & Name'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
     
     def basic_Enable (self, msg):
         return True

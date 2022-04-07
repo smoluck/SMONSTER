@@ -48,9 +48,6 @@ class SMO_CAD_Rebevel_Cmd(lxu.command.BasicCommand):
     def basic_ButtonName(self):
         return 'SMO CAD Rebevel'
 
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
-
     def basic_Enable(self, msg):
         return True
 
