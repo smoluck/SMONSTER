@@ -153,7 +153,7 @@ def lxserv_fi():
             if f.name.endswith("averageRGBA.py") or f.name.endswith("createBBOX.py") or f.name.endswith(
                     "islandCount.py") or f.name.endswith("randomRGBA.py") or f.name.endswith(
                     "renamePTag.py") or f.name.endswith("resetMeshTransform.py") or f.name.endswith(
-                    "selectByColor.py") or f.name.endswith("SplitByMaterial.py"):
+                    "selectByColor.py"):
                 lxserv_files.append(f)
     print("Files in lxserv folder:")
     print(lxserv_files)

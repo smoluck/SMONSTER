@@ -17,7 +17,7 @@
 import lx, lxu, modo
 
 Command_Name = "smo.GC.DeselectAll"
-# smo.GC.smo.GC.DeselectAll
+# smo.GC.DeselectAll
 
 class SMO_GC_DeselectAll_Cmd(lxu.command.BasicCommand):
     def __init__(self):
