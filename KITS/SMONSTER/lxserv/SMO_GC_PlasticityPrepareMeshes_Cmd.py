@@ -57,7 +57,7 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
             # # print(self.TargetMeshList)
 
     def cmd_Flags(self):
-        return lx.symbol.fCMD_MODEL
+        return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
 
     def cmd_Interact(self):
         pass
@@ -216,7 +216,7 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
             
 
         if PTTMdiff == True:
-            lx.eval('select.ptagType %s' % PolygonTagMode)
+            lx.eval('select.ptagType %s' % PolygonTagTypeMode)
 
 
         ### Generate UV maps and Create Airtight Mesh by merging Vertex Boundary
@@ -245,6 +245,7 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
             scene.select(resultingmesh_list)
             lx.eval('smo.UV.NormalizePack 0 0')
 
+        # Mesh Cleanup passes
         scene.select(resultingmesh_list)
         lx.eval('!mesh.cleanup true mergeVertex:false')
 
