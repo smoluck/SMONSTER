@@ -23,7 +23,7 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
         lxu.command.BasicCommand.__init__(self)
     
     def cmd_Flags(self):
-        return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
+        return lx.symbol.fCMD_MODEL
     
     def cmd_Interact (self):
         pass
@@ -47,8 +47,7 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
         return True
 
     def basic_Execute(self, msg, flags):
-        
-        
+
         ################################
         #<----[ DEFINE VARIABLES ]---->#
         ################################

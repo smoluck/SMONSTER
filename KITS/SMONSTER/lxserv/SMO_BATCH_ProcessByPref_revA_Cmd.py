@@ -21,8 +21,8 @@ class SMO_Batch_ProcessByPref_revA_Cmd(lxu.command.BasicCommand):
         lxu.command.BasicCommand.__init__(self)
     
     def cmd_Flags(self):
-        return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
-    
+        return lx.symbol.fCMD_MODEL
+
     def cmd_Interact (self):
         pass
     

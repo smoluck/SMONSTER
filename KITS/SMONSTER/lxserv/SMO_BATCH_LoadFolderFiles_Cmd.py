@@ -28,7 +28,7 @@ class SMO_BATCH_LoadFolderFiles_Cmd(lxu.command.BasicCommand):
         self.basic_SetFlags(1, lx.symbol.fCMDARG_OPTIONAL)
 
     def cmd_Flags(self):
-        return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
+        return lx.symbol.fCMD_MODEL # | lx.symbol.fCMD_UNDO
 
     def cmd_Interact(self):
         pass

@@ -19,10 +19,10 @@ import lx, lxu, os, modo
 class SMO_BATCH_ProcessByPref_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
-    
+
     def cmd_Flags(self):
-        return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
-    
+        return lx.symbol.fCMD_MODEL
+
     def cmd_Interact (self):
         pass
     
@@ -40,9 +40,6 @@ class SMO_BATCH_ProcessByPref_Cmd(lxu.command.BasicCommand):
     
     def basic_ButtonName (self):
         return 'SMO Batch Process By Pref'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
     
     def basic_Enable (self, msg):
         return True

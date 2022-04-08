@@ -57,7 +57,7 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
             # # print(self.TargetMeshList)
 
     def cmd_Flags(self):
-        return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
+        return lx.symbol.fCMD_MODEL
 
     def cmd_Interact(self):
         pass
@@ -76,9 +76,6 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
 
     def basic_ButtonName(self):
         return 'SMO GC PlasticityPrepareMeshes'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
 
     def basic_Enable(self, msg):
         return True
