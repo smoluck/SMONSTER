@@ -66,7 +66,7 @@ class SMO_UV_RelaxUV_Cmd(lxu.command.BasicCommand):
         # Conformal= 0
         # Angle Based = 1
         RelaxUV_Iter = IntRelaxCount
-        lx.out('Relax UV iteration Count: {%s}' % RelaxUV_Iter)
+        lx.out('Relax UV iteration Count: %s' % RelaxUV_Iter)
         ############### ARGUMENTS ###############
         
         # ############### ARGUMENT Test ###############

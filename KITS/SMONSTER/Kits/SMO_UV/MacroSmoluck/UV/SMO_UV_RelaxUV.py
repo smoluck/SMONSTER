@@ -21,7 +21,7 @@ lx.out(args)
 # Conformal= 0
 # Angle Based = 1
 RelaxUV_Iter = int(args[0])
-lx.out('Relax UV iteration Count: {%s}' % RelaxUV_Iter)
+lx.out('Relax UV iteration Count: %s' % RelaxUV_Iter)
 ############### ARGUMENTS ###############
 
 # ############### ARGUMENT Test ###############
