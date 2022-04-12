@@ -20,8 +20,6 @@ import modo, lx, lxu, random
 Command_Name = "smo.QT.SetSelSetColorIDByNumber"
 # smo.QT.SetSelSetColorIDByNumber 1
 
-ColorID_Suffix = "ColorID"
-
 # def ListPSelSet():
 #     # scene service, reference of the scene and a channel read object
 #     scene_svc = lx.service.Scene()
@@ -58,25 +56,61 @@ ColorID_Suffix = "ColorID"
 
 def SetColorIDByNumberCheckSceneMaxColorID():
     # Select the Base Shader to create and place ColorID group on top of current Material Groups
-    lx.eval('smo.QT.SelectBaseShader')
+    scene = modo.scene.current()
+    # lx.eval('smo.QT.SelectBaseShader')
+    SceneShaderItemList = []
+    SceneShaderItemName = []
+    for item in scene.items(itype='defaultShader', superType=True):
+        # lx.out('Default Base Shader found:',item)
+        SceneShaderItemList.append(item)
+        print(item.id)
+        SceneShaderItemName.append(item.id)
+    scene.select(SceneShaderItemList[0])
+    print(SceneShaderItemName)
+
     QTChannelExist = bool()
     NewID = int()
     IDNum = int()
+
+    # Test the Base Shader item and check if the needed Channel exist
     try:
-        lx.eval('!channel.create SelSetColorIDConstantGlobalCount integer useMin:true default:(1) username:SelSetColorIDConstantGlobalCount')
-        SceneConstantID = 1
+        lx.eval(
+            '!channel.create SelSetColorIDConstantGlobalCount integer useMin:true default:(-1.0) username:SelSetColorIDConstantGlobalCount')
+        SceneConstantID = (-1)
         QTChannelExist = False
     except RuntimeError:  # diffuse amount is zero.
-        lx.eval('select.channel {BaseShader:SelSetColorIDConstantGlobalCount@lmb=x} set')
+        lx.eval('select.channel {%s:SelSetColorIDConstantGlobalCount@lmb=x} set' % SceneShaderItemName[0])
+        QTChannelExist = True
+        print('ColorID  Global Count channel already created')
+        pass
+
+    # Now that we're sure we have a channel created, we select it
+    try:
+        lx.eval(
+            '!channel.create SelSetColorIDConstantGlobalCount integer useMin:true default:(-1.0) username:SelSetColorIDConstantGlobalCount')
+        SceneConstantID = (-1)
+        QTChannelExist = False
+    except RuntimeError:  # diffuse amount is zero.
+        lx.eval('select.channel {%s:SelSetColorIDConstantGlobalCount@lmb=x} set' % SceneShaderItemName[0])
         QTChannelExist = True
         lx.out('ColorID  Global Count channel already created')
         pass
     if QTChannelExist == True:
+        print('Quick Tag Channel is defined:', QTChannelExist)
         SceneConstantID = lx.eval('!item.channel SelSetColorIDConstantGlobalCount ?')
-        lx.out('Constant ID Max in scene', SceneConstantID)
-        # print(QTChannelExist)
-        # print(SceneConstantID)
-        return (SceneConstantID)
+        if SceneConstantID < 0:
+            SceneConstantID_Int = int(0)
+        if SceneConstantID >= 0:
+            SceneConstantID_Int = int(SceneConstantID)
+        lx.out('Constant ID Max in scene', SceneConstantID_Int)
+        print(QTChannelExist)
+        print(SceneConstantID_Int)
+    if QTChannelExist == False:
+        SceneConstantID_Int == 0
+        print('Quick Tag Channel is not set')
+    return (SceneConstantID_Int)
+
+# print(SetColorIDByNumberCheckSceneMaxColorID())
 
 
 class SMO_QT_SetSelSetColorID_ByNumber_Cmd(lxu.command.BasicCommand):
@@ -123,6 +157,7 @@ class SMO_QT_SetSelSetColorID_ByNumber_Cmd(lxu.command.BasicCommand):
 
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
+        ColorID_Suffix = "ColorID"
 
         if self.dyna_Int(0):
             IDNum = self.dyna_Int(0)
@@ -144,11 +179,11 @@ class SMO_QT_SetSelSetColorID_ByNumber_Cmd(lxu.command.BasicCommand):
         # lx.out('Item Unique Name:', ItemUniqueName)
 
         lx.eval('smo.QT.SelectBaseShader')
-        PresetMaxID = lx.eval('!item.channel SelSetColorIDConstantGlobalCount ?')
+        # PresetMaxID = lx.eval('!item.channel SelSetColorIDConstantGlobalCount ?')
 
-
-        # PresetMaxID = SetColorIDByNumberCheckSceneMaxColorID()
-        CheckSceneMaxColor = int(PresetMaxID) + 1
+        PresetMaxID = SetColorIDByNumberCheckSceneMaxColorID()
+        print(PresetMaxID)
+        CheckSceneMaxColor = PresetMaxID + 1
         # PresetMaxID = int(PresetMaxID)
         lx.out('number of ColorID Tags: %s' % PresetMaxID)
         scene.select(meshes)

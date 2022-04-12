@@ -58,19 +58,32 @@ ColorID_Suffix = "ColorID"
 
 def SetColorIDByNumberCheckSceneMaxColorID():
     # Select the Base Shader to create and place ColorID group on top of current Material Groups
-    lx.eval('smo.QT.SelectBaseShader')
+    scene = modo.scene.current()
+    # lx.eval('smo.QT.SelectBaseShader')
+    SceneShaderItemList = []
+    SceneShaderItemName = []
+    for item in scene.items(itype='defaultShader', superType=True):
+        # lx.out('Default Base Shader found:',item)
+        SceneShaderItemList.append(item)
+        print(item.id)
+        SceneShaderItemName.append(item.id)
+    scene.select(SceneShaderItemList[0])
+    print(SceneShaderItemName)
+
     QTChannelExist = bool()
     NewID = int()
     IDNum = int()
+
     try:
-        lx.eval('!channel.create SelSetColorIDConstantGlobalCount integer useMin:true default:(1) username:SelSetColorIDConstantGlobalCount')
-        SceneConstantID = 1
+        lx.eval('!channel.create SelSetColorIDConstantGlobalCount integer useMin:true default:(-1.0) username:SelSetColorIDConstantGlobalCount')
+        SceneConstantID = (-1)
         QTChannelExist = False
     except RuntimeError:  # diffuse amount is zero.
-        lx.eval('select.channel {BaseShader:SelSetColorIDConstantGlobalCount@lmb=x} set')
+        lx.eval('select.channel {%s:SelSetColorIDConstantGlobalCount@lmb=x} set' % SceneShaderItemName[0])
         QTChannelExist = True
         lx.out('ColorID  Global Count channel already created')
         pass
+
     if QTChannelExist == True:
         SceneConstantID = lx.eval('!item.channel SelSetColorIDConstantGlobalCount ?')
         lx.out('Constant ID Max in scene', SceneConstantID)
@@ -154,10 +167,10 @@ class SMO_QT_SetSelSetColorID_ByUser_Cmd(lxu.command.BasicCommand):
         # lx.out('Item Unique Name:', ItemUniqueName)
         
         lx.eval('smo.QT.SelectBaseShader')
-        PresetMaxID = lx.eval('!item.channel SelSetColorIDConstantGlobalCount ?')
+        # PresetMaxID = lx.eval('!item.channel SelSetColorIDConstantGlobalCount ?')
         
         
-        # PresetMaxID = SetColorIDByNumberCheckSceneMaxColorID()
+        PresetMaxID = SetColorIDByNumberCheckSceneMaxColorID()
         CheckSceneMaxColor = int(PresetMaxID) + 1
         # PresetMaxID = int(PresetMaxID)
         lx.out('number of ColorID Tags: %s' % PresetMaxID)

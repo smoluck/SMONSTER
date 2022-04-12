@@ -57,6 +57,7 @@ def ListPSelSet():
 class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
+
         self.SelModeVert = bool(lx.eval1("select.typeFrom typelist:vertex;polygon;edge;item;ptag ?"))
         self.SelModeEdge = bool(lx.eval1("select.typeFrom typelist:edge;vertex;polygon;item ?"))
         self.SelModePoly = bool(lx.eval1("select.typeFrom typelist:polygon;vertex;edge;item ?"))
@@ -89,12 +90,21 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
     
     def basic_Enable (self, msg):
         return True
-    
-    
+
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
+        ByItemMode = bool()
+
+        if self.SelModeItem == True:
+            lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
+            lx.eval('select.type polygon')
+            lx.eval('select.all')
+            ByItemMode = True
+
         if self.SelModePoly == True:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
+            ByItemMode = False
+
 
         # mesh = scene.selectedByType('mesh')[0]
         # CsPolys = len(mesh.geometry.polygons.selected)
@@ -246,35 +256,48 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         ##############################
         ## <----( Main Macro )----> ##
         ##############################
-        
+
         # #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
         # if TotalSafetyCheck == TotalSafetyCheckTrueValue:
         # Select the Base Shader to create and place ColorID group on top of current Material Groups
-        lx.eval('smo.QT.SelectBaseShader')
+
+        # lx.eval('smo.QT.SelectBaseShader')
+        SceneShaderItemList = []
+        SceneShaderItemName = []
+        for item in scene.items(itype='defaultShader', superType=True):
+            # lx.out('Default Base Shader found:',item)
+            SceneShaderItemList.append(item)
+            # print(item.id)
+            SceneShaderItemName.append(item.id)
+        scene.select(SceneShaderItemList[0])
+        # print(SceneShaderItemName)
+
         QTChannelExist = bool()
         NewID = int()
+
         try:
             lx.eval('!channel.create SelSetColorIDConstantGlobalCount integer useMin:true default:(-1.0) username:SelSetColorIDConstantGlobalCount')
             SceneConstantID = (-1)
             QTChannelExist = False
         except RuntimeError:  # diffuse amount is zero.
-            lx.eval('select.channel {BaseShader:SelSetColorIDConstantGlobalCount@lmb=x} set')
+            lx.eval('select.channel {%s:SelSetColorIDConstantGlobalCount@lmb=x} set' % SceneShaderItemName[0])
             QTChannelExist = True
             # lx.out('ColorID  Global Count channel already created')
             pass
+
         if QTChannelExist == True:
             SceneConstantID = lx.eval('!item.channel SelSetColorIDConstantGlobalCount ?')
             lx.out('Constant ID Max in scene', SceneConstantID)
-        print(QTChannelExist)
+        # print(QTChannelExist)
 
         ColorID_Suffix = "ColorID"
-        print(SceneConstantID)
+        # print(SceneConstantID)
 
         if SceneConstantID == (-1):
             NewID = 0
         if SceneConstantID >= 0:
             NewID = int(SceneConstantID) + 1
-        print(NewID)
+         # print(NewID)
         lx.eval('!item.channel SelSetColorIDConstantGlobalCount %i' % NewID)
         ColorIDSelSetName = ("%s_%s" % (ColorID_Suffix, NewID))
         lx.out('Color ID Selection set name:', ColorIDSelSetName)
@@ -424,15 +447,16 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         scene.select(meshes)
         lx.eval('select.type polygon')
 
-        print(len(ListPSelSet()))
-        if len(ListPSelSet()) > 1:
-            for i in ListPSelSet():
-                print(i)
-                if i != ColorIDSelSetName:
-                    # print("Good")
-                    lx.eval('select.pickWorkingSet %s' % i)
-                    lx.eval('select.editSet %s remove' % i)
-        lx.eval('select.useSet %s replace' % ColorIDSelSetName)
+        if ByItemMode == False:
+            print(len(ListPSelSet()))
+            if len(ListPSelSet()) > 1:
+                for i in ListPSelSet():
+                    print(i)
+                    if i != ColorIDSelSetName:
+                        # print("Good")
+                        lx.eval('select.pickWorkingSet %s' % i)
+                        lx.eval('select.editSet %s remove' % i)
+            lx.eval('select.useSet %s replace' % ColorIDSelSetName)
             
         # elif TotalSafetyCheck != TotalSafetyCheckTrueValue:
         #     lx.out('script Stopped: your mesh does not match the requirement for that script.')
