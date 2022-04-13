@@ -1,6 +1,6 @@
 # python
 # ---------------------------------------
-# Name:         SMO_QT_Automatic_SetSelSetColorID_ByMeshIslands_Cmd.py
+# Name:         SMO_QT_SetSelSetColorID_ByMeshIslands_Cmd.py
 # Version:      1.00
 #
 # Purpose:      This script is designed to
@@ -54,7 +54,7 @@ def mesh_layer_poly_list():
     return modo.Mesh(item_id()).geometry.polygons
 
 
-class SMO_QT_Automatic_SetSelSetColorID_ByMeshIslands_Cmd(lxu.command.BasicCommand):
+class SMO_QT_SetSelSetColorID_ByMeshIslands_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
 
@@ -142,4 +142,4 @@ class SMO_QT_Automatic_SetSelSetColorID_ByMeshIslands_Cmd(lxu.command.BasicComma
         if self.SelModeEdge == True:
             lx.eval('select.type edge')
 
-lx.bless(SMO_QT_Automatic_SetSelSetColorID_ByMeshIslands_Cmd, Command_Name)
+lx.bless(SMO_QT_SetSelSetColorID_ByMeshIslands_Cmd, Command_Name)

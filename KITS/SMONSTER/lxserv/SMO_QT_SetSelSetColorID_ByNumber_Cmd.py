@@ -74,8 +74,7 @@ def SetColorIDByNumberCheckSceneMaxColorID():
 
     # Test the Base Shader item and check if the needed Channel exist
     try:
-        lx.eval(
-            '!channel.create SelSetColorIDConstantGlobalCount integer useMin:true default:(-1.0) username:SelSetColorIDConstantGlobalCount')
+        lx.eval('!channel.create SelSetColorIDConstantGlobalCount integer useMin:true default:(-1.0) username:SelSetColorIDConstantGlobalCount')
         SceneConstantID = (-1)
         QTChannelExist = False
     except RuntimeError:  # diffuse amount is zero.
@@ -86,8 +85,7 @@ def SetColorIDByNumberCheckSceneMaxColorID():
 
     # Now that we're sure we have a channel created, we select it
     try:
-        lx.eval(
-            '!channel.create SelSetColorIDConstantGlobalCount integer useMin:true default:(-1.0) username:SelSetColorIDConstantGlobalCount')
+        lx.eval('!channel.create SelSetColorIDConstantGlobalCount integer useMin:true default:(-1.0) username:SelSetColorIDConstantGlobalCount')
         SceneConstantID = (-1)
         QTChannelExist = False
     except RuntimeError:  # diffuse amount is zero.

@@ -1,6 +1,6 @@
 # python
 # ---------------------------------------
-# Name:         SMO_QT_SetSelSetColorIDSceneWideByIsland_Cmd.py
+# Name:         SMO_QT_Batch_SetSelSetColorIDRandomConstant_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to:
@@ -16,11 +16,10 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.QT.SetSelSetColorIDRandomConstantSceneWideByIsland"
+Command_Name = "smo.QT.Batch.SetSelSetColorIDRandomConstant"
+# smo.QT.Batch.SetSelSetColorIDRandomConstant 1 1
 
-# smo.QT.SetSelSetColorIDRandomConstantSceneWideByIsland
-
-class SMO_QT_SetSelSetColorIDSceneWideByIsland_Cmd(lxu.command.BasicCommand):
+class SMO_QT_Batch_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Mode: SceneWide (not Current Selected Meshes)", lx.symbol.sTYPE_BOOLEAN)  # SceneWide (True) or Current Selected Meshes (False)
@@ -86,4 +85,4 @@ class SMO_QT_SetSelSetColorIDSceneWideByIsland_Cmd(lxu.command.BasicCommand):
             lx.eval('select.type item')
             lx.eval('smo.GC.DeselectAll')
 
-lx.bless(SMO_QT_SetSelSetColorIDSceneWideByIsland_Cmd, Command_Name)
+lx.bless(SMO_QT_Batch_SetSelSetColorIDRandomConstant_Cmd, Command_Name)

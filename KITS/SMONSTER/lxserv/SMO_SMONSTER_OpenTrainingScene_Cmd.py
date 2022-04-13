@@ -163,9 +163,9 @@ class SMO_SMONSTER_OpenTrainingScene_Cmd(lxu.command.BasicCommand):
             
         if SCENE_ID == 71 :
             filePathToOpen = lx.eval("query platformservice alias ? {kit_SMONSTER:TRAINING_SCENES/SMO_QUICK_TAG/Demo.lxo}")
-            
+
         if SCENE_ID == 72 :
-            filePathToOpen = lx.eval("query platformservice alias ? {kit_SMONSTER:TRAINING_SCENES/SMO_QUICK_TAG/test.lxo}")
+            filePathToOpen = lx.eval("query platformservice alias ? {kit_SMONSTER:TRAINING_SCENES/SMO_QUICK_TAG/ColorID_Empty.lxo}")
             
             
             
