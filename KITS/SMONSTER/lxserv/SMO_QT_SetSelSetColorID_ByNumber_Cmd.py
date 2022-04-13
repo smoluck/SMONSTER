@@ -63,10 +63,10 @@ def SetColorIDByNumberCheckSceneMaxColorID():
     for item in scene.items(itype='defaultShader', superType=True):
         # lx.out('Default Base Shader found:',item)
         SceneShaderItemList.append(item)
-        print(item.id)
+        # print(item.id)
         SceneShaderItemName.append(item.id)
     scene.select(SceneShaderItemList[0])
-    print(SceneShaderItemName)
+    # print(SceneShaderItemName)
 
     QTChannelExist = bool()
     NewID = int()
@@ -94,18 +94,18 @@ def SetColorIDByNumberCheckSceneMaxColorID():
         lx.out('ColorID  Global Count channel already created')
         pass
     if QTChannelExist == True:
-        print('Quick Tag Channel is defined:', QTChannelExist)
+        # print('Quick Tag Channel is defined:', QTChannelExist)
         SceneConstantID = lx.eval('!item.channel SelSetColorIDConstantGlobalCount ?')
         if SceneConstantID < 0:
             SceneConstantID_Int = int(0)
         if SceneConstantID >= 0:
             SceneConstantID_Int = int(SceneConstantID)
         lx.out('Constant ID Max in scene', SceneConstantID_Int)
-        print(QTChannelExist)
-        print(SceneConstantID_Int)
+        # print(QTChannelExist)
+        # print(SceneConstantID_Int)
     if QTChannelExist == False:
         SceneConstantID_Int == 0
-        print('Quick Tag Channel is not set')
+        # print('Quick Tag Channel is not set')
     return (SceneConstantID_Int)
 
 # print(SetColorIDByNumberCheckSceneMaxColorID())
