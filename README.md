@@ -66,22 +66,22 @@ The zip file will not be loaded at modo start, you're also free to save it somew
 
 # KIT LIST
     BAKE (v 1.60)
-    BATCH (v 1.40)
-    CAD TOOLS (v 3.50)
+    BATCH (v 1.70)
+    CAD TOOLS (v 3.70)
     CLEANUP (v 1.80)
-    COLOR BAR (v 1.70)
-    GAME CONTENT (v 5.00)
+    COLOR BAR (v 1.80)
+    GAME CONTENT (v 9.00)
     MASTER (v 1.30)
     MATH TOOLS (v 1.30)
     MESHOPS (Total Pack v1 + v2 + POLY FUSE 2D) (v 2.30)
-    MIFABOMA (v 2.90)
-    QUICK TAG (v 1.30)
-    UV (v 2.80)
-    VENOM (v 1.60)	`(Only on Mdoo14.1 and Up)`
+    MIFABOMA (v 3.50)
+    QUICK TAG (v 2.50)
+    UV (v 3.00)
+    VENOM (v 2.10)
 --- LIVELINK KIT LIST ---
     MARMOSET TOOLBAG (v2.50)
     PIXAFLUX (v 1.30)
-    RIZOM UV (v 2.5)
+    RIZOM UV (v 2.55)
 
 
 
