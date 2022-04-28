@@ -3,6 +3,13 @@ Hi. Everyone
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 2.50 -
+        • Introduced functions to process the color ID attribution Scene Wide and / or even By Mesh Islands (Polygon Continuity)
+        • New Command -->	smo.QT.Batch.SetSelSetColorIDRandomConstant	(Set a random Diffuse Color override using Selection Set (polygons) and Constant item. It can runs over Selected Meshes or SceneWide, By Items or by Polygon Islands.)
+        • New Command -->	smo.QT.SetSelSetColorIDByMeshIslands		(Set a Diffuse Color override using Selection Set (polygons) on the selected Mesh Layers by Polygons Continuity (Islands). Named the new Mat using "ColorID" as Prefix.)
+        • Bugfix on the main command that where not processing the data correctly with specific user scene behavior.
+
+
 - 2.00 -
         • Whole new commands added:
                 • Set ColorID (by SelectionSet and Constant item override)	---> For ColorID Bakes from LowPoly.

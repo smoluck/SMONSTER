@@ -3,6 +3,9 @@ Hi. Everyone
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 3.00 -
+        • Bugfix on UnwrapCylindrical to disable Auto RelaxUV Island if the Unwrap Rectangle was True and AutoRelax was True, in order to keep Rectangle result in output.
+
 - 2.80 -
         • UV Kit now support Micro Bevel Workflow by letting you use Auto Expand Option on SmartUnwrap and PlanarUnwrap
         • Added 2 Toggles to Main UV Pie menu to switch Auto Hide Unwrapped Poly and Auto Expand Poly

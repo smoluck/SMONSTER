@@ -1,10 +1,10 @@
 # python
 # ---------------------------------------
-# Name:         SMO_GC_SplitUDIMtoMesh_Cmd.py
+# Name:         SMO_GC_SplitMeshByUDIM_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to
-#               Create New Mesh Layers, using target Mesh Name + PrefixName + UDIM ID from selected Mesh.
+#               Split the current Mesh into multiple one using UDIM IDs. Create New Mesh Layers, using target Mesh Name + PrefixName + UDIM ID from selected Mesh.
 #
 #
 # Author:       Franck ELISABETH
@@ -16,10 +16,10 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.SplitUDIMtoMesh"
-# smo.GC.SplitUDIMtoMesh {Boat} 1001 1014
+Command_Name = "smo.GC.SplitMeshByUDIM"
+# smo.GC.SplitMeshByUDIM {Boat} 1001 1014
 
-class SMO_GC_SplitUDIMtoMesh_Cmd(lxu.command.BasicCommand):
+class SMO_GC_SplitMeshByUDIM_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Prefix Name", lx.symbol.sTYPE_STRING)
@@ -36,7 +36,7 @@ class SMO_GC_SplitUDIMtoMesh_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC SplitUDIMtoMesh'
+        return 'SMO GC SplitMeshByUDIM'
 
     def cmd_Desc(self):
         return 'Create New Mesh Layers, using target Mesh Name + PrefixName + UDIM ID from selected Mesh.'
@@ -48,7 +48,7 @@ class SMO_GC_SplitUDIMtoMesh_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC SplitUDIMtoMesh'
+        return 'SMO GC SplitMeshByUDIM'
 
     def cmd_Flags(self):
         return lx.symbol.fCMD_UNDO
@@ -159,4 +159,4 @@ class SMO_GC_SplitUDIMtoMesh_Cmd(lxu.command.BasicCommand):
         # lx.out('Newly created and assigned: %s Material' % len(MATNameList))
         lx.out('-------------')
 
-lx.bless(SMO_GC_SplitUDIMtoMesh_Cmd, Command_Name)
+lx.bless(SMO_GC_SplitMeshByUDIM_Cmd, Command_Name)

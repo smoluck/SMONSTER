@@ -1,6 +1,25 @@
 -------------------------
 ---- UPDATES LOG----
 -------------------------
+v3.1 - 2022/04/28
+GC:
+        • New Command -->	smo.GC.SplitByPart
+        • New Command -->	smo.GC.SplitByMaterial
+        • New Command -->	smo.GC.PlasticityPrepareMeshes				(Command to preprocess data from OBJ import from Plasticity. Cleanup Meshes data from Plasticity creating Polygons Parts, Unwraped UVMaps and Merging Solid items.)
+        • Bugfix on smo.GC.EdgeSlideProjectToBG command that wasn't releasing the EdgeSlide tool at the end of his execution.
+        • Bugfix Switching to AVP Shading Style (The view should now not be offset or reset in terms of Point of view).
+
+QUICK TAG:
+        • Introduced functions to process the color ID attribution Scene Wide and / or even By Mesh Islands (Polygon Continuity)
+        • New Command -->	smo.QT.Batch.SetSelSetColorIDRandomConstant	(Set a random Diffuse Color override using Selection Set (polygons) and Constant item. It can runs over Selected Meshes or SceneWide, By Items or by Polygon Islands.)
+        • New Command -->	smo.QT.SetSelSetColorIDByMeshIslands		(Set a Diffuse Color override using Selection Set (polygons) on the selected Mesh Layers by Polygons Continuity (Islands). Named the new Mat using "ColorID" as Prefix.)
+        • Bugfix on the main command that where not processing the data correctly with specific user scene behavior.
+
+UV:
+        • Bugfix on UnwrapCylindrical to disable Auto RelaxUV Island if the Unwrap Rectangle was True and AutoRelax was True, in order to keep Rectangle result in output.
+
+
+-------------------------
 v3.00 - 2022/03/03
         • Initial Commit to New Release V3.
         • It now support Modo 15.0 to 16.X releases with 100% Compatibility.
@@ -9,7 +28,7 @@ v3.00 - 2022/03/03
 
 GC:
         • New Command -->	EdgeBoundarySimpleFuse to fuse (without Projection) an Open Edge Boundary loop ( V Norm data is kept from BG Mesh of set Self if mouse over empty area in viewport).
-        • New Command --> 	SplitUDIMtoMesh to separate a mesh based on UDIM Polygons layout. It create New Mesh Layers, using target Mesh Name + PrefixName + UDIM ID from current selected Mesh.
+        • New Command --> 	smo.GC.SplitMeshByUDIM to separate a mesh based on UDIM Polygons layout. It create New Mesh Layers, using target Mesh Name + PrefixName + UDIM ID from current selected Mesh.
         • Bugfixes on EdgeBoundaryProjectToBGnFuse to support Self Project onto same mesh. Also hiding other meshes for TransferVNData automatically
         • Transfer VNorm from BG Mesh now have an option to "Lock" edited component when the command is used. Toggle is set to off by default. It is located in the GC Options under Modo Preferences Window.
         • Layout change in right click Context Menus to add more options and commands.
@@ -21,6 +40,7 @@ RIZOMUV Livelink:
         • Bugfix for those who also are using Vertex Normals maps in their workflow. In any case the kit won't update in Modo you could still open the Temp FBX File in order to get back all the data from Materials to VNrm to UV's of course.
 
 
+-------------------------
 v2.756 - 2022/01/28
 MIFABOMA:
         • Improvement and Bugfix on RADIAL ARRAY and MIRROR commands that now support:
@@ -28,6 +48,7 @@ MIFABOMA:
                 • Multiple Items selected at once. They will now process duplication over multiple selected items as intended.
 
 
+-------------------------
 v2.755 - 2022/01/21
 QUICK TAG:
         • New Command -->	
@@ -52,12 +73,14 @@ GC:
         • Polygon and Edge (right click) Context Menu now have a Chamfer by User Value command for custom size.
 
 
+-------------------------
 v2.737 - 2022/01/05
 GC:
         • TransferVNrmFromPolyUnderMouse command added to Context Menus, in order to Transfer Vertex Normals from the Mesh under the mouse to the corresponding selected components (Vertex / Edges / Polygons)
           It works both on multiple meshes condition as well as self mesh transfer.
 
 
+-------------------------
 v2.730 - 2021/12/20
 GC:
         • EdgeboundaryProjectNFuse Bugfix.
@@ -66,6 +89,7 @@ VENOM:
         • added a toggle for Switching or not in Isolate Mode in Tail Menu and Preferences
 
 
+-------------------------
 v2.726 - 2021/12/15
 GC:
         • added more Chamfer presets to Polygon Context Menu
@@ -76,6 +100,7 @@ CB:
         • added a toggle to enable Disable Independent Drawing in current viewport to all Color Bar Menus
 
 
+-------------------------
 v2.724 - 2021/12/14
 GC:
         • BugFix on StraightenEdgeBoundary on specific condition

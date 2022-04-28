@@ -1,10 +1,10 @@
 # python
 # ---------------------------------------
-# Name:         SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd.py
+# Name:         SMO_GC_EdgeSlideProjectToBG_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to:
-#               Extend the current Opened Boundary Edge Loop to nearest BG Mesh using BG Constraint and setting an Edge Bevel + applying a VertexNormalTransfer to fuse the border with BG Mesh normals.
+#               Extend the current Opened Boundary Edge Loop to nearest BG Mesh using BG Constraint.
 #
 # Author:       Franck ELISABETH
 # Website:      http://www.smoluck.com
@@ -16,13 +16,12 @@
 import lx, lxu, modo
 from math import degrees
 
-Command_Name = "smo.GC.EdgeBoundaryProjectToBGnFuse"
-# smo.GC.EdgeBoundaryProjectToBGnFuse [5mm]
+Command_Name = "smo.GC.EdgeSlideProjectToBG"
+# smo.GC.EdgeSlideProjectToBG
 
-class SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd(lxu.command.BasicCommand):
+class SMO_GC_EdgeSlideProjectToBG_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
-        self.dyna_Add("Witdh Value", lx.symbol.sTYPE_DISTANCE)
 
         self.SelModeVert = bool(lx.eval1("select.typeFrom typelist:vertex;polygon;edge;item;ptag ?"))
         self.SelModeEdge = bool(lx.eval1("select.typeFrom typelist:edge;vertex;polygon;item ?"))
@@ -52,19 +51,19 @@ class SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC EdgeBoundaryProjectToBGnFuse'
+        return 'SMO GC EdgeSlideProjectToBG'
 
     def cmd_Desc(self):
-        return 'Extend the current Opened Boundary Edge Loop to nearest BG Mesh using BG Constraint and setting an Edge Bevel + applying a VertexNormalTransfer to fuse the border with BG Mesh normals.'
+        return 'Extend the current Opened Boundary Edge Loop to nearest BG Mesh using BG Constraint.'
 
     def cmd_Tooltip(self):
-        return 'Extend the current Opened Boundary Edge Loop to nearest BG Mesh using BG Constraint and setting an Edge Bevel + applying a VertexNormalTransfer to fuse the border with BG Mesh normals.'
+        return 'Extend the current Opened Boundary Edge Loop to nearest BG Mesh using BG Constraint.'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC EdgeBoundaryProjectToBGnFuse'
+        return 'SMO GC EdgeSlideProjectToBG'
 
     def cmd_Flags(self):
         return lx.symbol.fCMD_UNDO
@@ -84,7 +83,7 @@ class SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd(lxu.command.BasicCommand):
         if self.SelModeEdge == True:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
             lx.eval('select.type edge')
-            lx.eval('select.createSet GC_ProjectBGnFuseSource')
+            lx.eval('select.createSet GC_EdgeSlideToBGSource')
             selected_mesh = scene.selectedByType('mesh')[0]
             # print('TargetMesh:', selected_mesh)
             CSourceEdges = len(selected_mesh.geometry.edges.selected)
@@ -106,12 +105,8 @@ class SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd(lxu.command.BasicCommand):
         # ############### 1 ARGUMENTS ###############
         # args = lx.args()
         # #lx.out(args)
-
-        ChamferValue = self.dyna_Float(0)  # Width size
-        InsetValue = ChamferValue * (-1.5)
-        # EdgeSlideValue = ChamferValue * (-2000)
         EdgeSlideValue = -2
-        # lx.out('Chamfer Distance value:', ChamferValue)
+        # lx.out('Edge Slide Value:', EdgeSlideValue)
         # ############### ARGUMENTS ###############
 
         ################################
@@ -260,7 +255,7 @@ class SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd(lxu.command.BasicCommand):
 
         if self.SelModeEdge == True:
             lx.eval('select.type edge')
-            lx.eval('select.useSet GC_ProjectBGnFuseSource replace')
+            lx.eval('select.useSet GC_EdgeSlideToBGSource replace')
             lx.eval('select.type item')
 
         # BugFix to preserve the state of the RefSystem (item at origin in viewport)
@@ -339,18 +334,18 @@ class SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd(lxu.command.BasicCommand):
             lx.eval('select.type edge')
 
             lx.eval('select.edgeLoop base false m3d middle')
-            lx.eval('select.createSet GC_ProjectBGnFuseEdgeLoop')
+            lx.eval('select.createSet GC_EdgeSlideToBGEdgeLoop')
             lx.eval('select.convert vertex')
-            lx.eval('select.createSet GC_ProjectBGnFuseVertexLoop')
+            lx.eval('select.createSet GC_EdgeSlideToBGVertexLoop')
             lx.eval('select.type edge')
             lx.eval('select.expand')
             lx.eval('select.convert vertex')
             lx.eval('select.convert polygon')
-            lx.eval('select.createSet GC_ProjectBGnFusePolyLoop')
+            lx.eval('select.createSet GC_EdgeSlideToBGPolyLoop')
             lx.eval('select.type edge')
             lx.eval('select.edge remove bond equal (none)')
             # lx.eval('workPlane.state true')
-            lx.eval('select.useSet GC_ProjectBGnFuseEdgeLoop replace')
+            lx.eval('select.useSet GC_EdgeSlideToBGEdgeLoop replace')
             lx.eval('meshConstraint.state true')
             lx.eval('tool.attr const.bg geometry vector')
             lx.eval('tool.attr const.bg dblSided true')
@@ -381,50 +376,14 @@ class SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd(lxu.command.BasicCommand):
             lx.eval('tool.doApply')
             lx.eval('meshConstraint.state false')
 
-            lx.eval('select.type edge')
-            lx.eval('select.useSet GC_ProjectBGnFuseEdgeLoop replace')
-            lx.eval('poly.make auto')
-            lx.eval('select.convert polygon')
-            lx.eval('tool.set *.bevel on')
-            lx.eval('tool.noChange')
-            lx.eval('tool.attr poly.bevel autoWeld false')
-            lx.eval('tool.attr poly.bevel inset %s' % InsetValue)
-            lx.eval('tool.doApply')
-            lx.eval('tool.set *.bevel off')
-
-            lx.eval('script.run "macro.scriptservice:92663570022:macro"')
-            lx.eval('select.convert polygon')
-            lx.eval('delete')
-            lx.eval('select.type edge')
-            lx.eval('select.expand')
-            lx.eval('select.convert vertex')
-            lx.eval('select.convert polygon')
-            lx.eval('select.createSet GC_ProjectBGnFusePolyExtended')
-            lx.eval('script.run "macro.scriptservice:92663570022:macro"')
-            lx.eval('select.edge remove bond equal (none)')
-
-            lx.eval('smo.GC.ChamferEdgesByUnit %s' % ChamferValue)
-            lx.eval('select.type polygon')
-            lx.eval('select.useSet GC_ProjectBGnFusePolyExtended replace')
-            lx.eval('script.run "macro.scriptservice:92663570022:macro"')
-            lx.eval('select.vertex remove edge equal 4')
-            lx.eval('select.expand')
-            lx.eval('select.convert polygon')
-            lx.eval('select.createSet GC_ProjectBGnFusePolyFuse')
-
-            lx.eval('select.convert vertex')
-            if TransfVNormBG == True:
-                lx.eval('vertMap.transferNormals false')
-            lx.eval('select.convert polygon')
-            lx.eval('delete')
-            lx.eval('select.deleteSet GC_ProjectBGnFusePolyLoop')
-            lx.eval('select.deleteSet GC_ProjectBGnFusePolyExtended')
             lx.eval('select.type vertex')
-            lx.eval('select.deleteSet GC_ProjectBGnFuseVertexLoop')
+            lx.eval('select.deleteSet GC_EdgeSlideToBGVertexLoop')
             lx.eval('select.type edge')
-            lx.eval('select.deleteSet GC_ProjectBGnFuseEdgeLoop')
-            lx.eval('select.deleteSet GC_ProjectBGnFuseSource')
+            lx.eval('select.deleteSet GC_EdgeSlideToBGEdgeLoop')
+            lx.eval('select.deleteSet GC_EdgeSlideToBGSource')
             lx.eval('select.drop edge')
+            lx.eval('select.nextMode')
+            lx.eval('select.type edge')
 
         if RefSystemActive == False:
             lx.eval('item.refSystem {}')
@@ -457,4 +416,4 @@ class SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd(lxu.command.BasicCommand):
             scene.select(selected_mesh)
             lx.eval('select.type edge')
 
-lx.bless(SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd, Command_Name)
+lx.bless(SMO_GC_EdgeSlideProjectToBG_Cmd, Command_Name)

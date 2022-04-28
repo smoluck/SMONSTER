@@ -3,9 +3,16 @@ Hi. Everyone
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 9.00 -
+        • New Command -->	smo.GC.SplitByPart
+        • New Command -->	smo.GC.SplitByMaterial
+        • New Command -->	smo.GC.PlasticityPrepareMeshes				(Command to preprocess data from OBJ import from Plasticity. Cleanup Meshes data from Plasticity creating Polygons Parts, Unwraped UVMaps and Merging Solid items.)
+        • Bugfix on smo.GC.EdgeSlideProjectToBG command that wasn't releasing the EdgeSlide tool at the end of his execution.
+        • Bugfix Switching to AVP Shading Style (The view should now not be offset or reset in terms of Point of view).
+
 - 8.00 -
         • New Command -->	EdgeBoundarySimpleFuse to fuse (without Projection) an Open Edge Boundary loop ( V Norm data is kept from BG Mesh of set Self if mouse over empty area in viewport).
-        • New Command --> 	SplitUDIMtoMesh to separate a mesh based on UDIM Polygons layout. It create New Mesh Layers, using target Mesh Name + PrefixName + UDIM ID from current selected Mesh.
+        • New Command --> 	smo.GC.SplitMeshByUDIM to separate a mesh based on UDIM Polygons layout. It create New Mesh Layers, using target Mesh Name + PrefixName + UDIM ID from current selected Mesh.
         • Bugfixes on EdgeBoundaryProjectToBGnFuse to support Self Project onto same mesh. Also hiding other meshes for TransferVNData automatically
         • Transfer VNorm from BG Mesh now have an option to "Lock" edited component when the command is used. Toggle is set to off by default. It is located in the GC Options under Modo Preferences Window.
         • Layout change in right click Context Menus to add more options and commands.

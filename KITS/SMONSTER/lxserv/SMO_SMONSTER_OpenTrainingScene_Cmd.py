@@ -224,7 +224,7 @@ class SMO_SMONSTER_OpenTrainingScene_Cmd(lxu.command.BasicCommand):
             filePathToOpen = lx.eval("query platformservice alias ? {kit_SMONSTER:TRAINING_SCENES/SMO_GAME_CONTENT/SMO_GC_UDIMtoMaterial.lxo}")
 
         if SCENE_ID == 132:
-            filePathToOpen = lx.eval("query platformservice alias ? {kit_SMONSTER:TRAINING_SCENES/SMO_GAME_CONTENT/SMO_GC_SplitUDIMtoMesh.lxo}")
+            filePathToOpen = lx.eval("query platformservice alias ? {kit_SMONSTER:TRAINING_SCENES/SMO_GAME_CONTENT/SMO_GC_SplitMeshByUDIM.lxo}")
 
 
 
