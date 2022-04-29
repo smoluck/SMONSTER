@@ -297,7 +297,7 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
             NewID = 0
         if SceneConstantID >= 0:
             NewID = int(SceneConstantID) + 1
-         # print(NewID)
+        # print(NewID)
         lx.eval('!item.channel SelSetColorIDConstantGlobalCount %i' % NewID)
         ColorIDSelSetName = ("%s_%s" % (ColorID_Suffix, NewID))
         lx.out('Color ID Selection set name:', ColorIDSelSetName)

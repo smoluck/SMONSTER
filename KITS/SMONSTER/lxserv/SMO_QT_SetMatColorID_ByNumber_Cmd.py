@@ -20,8 +20,6 @@ import lx, lxu, modo
 Command_Name = "smo.QT.SetMatColorIDByNumber"
 # smo.QT.SetMatColorIDByNumber 2
 
-ColorID_Suffix = "ColorID"
-
 class SMO_GC_SetMatColorID_ByNumber_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -70,6 +68,7 @@ class SMO_GC_SetMatColorID_ByNumber_Cmd(lxu.command.BasicCommand):
 
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
+        ColorID_Suffix = "ColorID"
 
         if self.dyna_Int(0):
             IDNum = self.dyna_Int(0)
@@ -321,21 +320,20 @@ class SMO_GC_SetMatColorID_ByNumber_Cmd(lxu.command.BasicCommand):
         NewID = int()
 
         try:
-            lx.eval('!channel.create SelSetColorIDConstantGlobalCount integer useMin:true default:(-1.0) username:SelSetColorIDConstantGlobalCount')
+            lx.eval('!channel.create MatColorIDGlobalCount integer useMin:true default:(-1.0) username:MatColorIDGlobalCount')
             SceneConstantID = (-1)
             QTChannelExist = False
         except RuntimeError:  # diffuse amount is zero.
-            lx.eval('select.channel {%s:SelSetColorIDConstantGlobalCount@lmb=x} set' % SceneShaderItemName[0])
+            lx.eval('select.channel {%s:MatColorIDGlobalCount@lmb=x} set' % SceneShaderItemName[0])
             QTChannelExist = True
             # lx.out('ColorID  Global Count channel already created')
             pass
 
         if QTChannelExist == True:
-            SceneConstantID = lx.eval('!item.channel SelSetColorIDConstantGlobalCount ?')
+            SceneConstantID = lx.eval('!item.channel MatColorIDGlobalCount ?')
             lx.out('Constant ID Max in scene', SceneConstantID)
         print(QTChannelExist)
 
-        ColorID_Suffix = "ColorID"
         print(SceneConstantID)
 
         ColorIDMatName = ((Text))

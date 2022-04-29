@@ -70,7 +70,7 @@ The zip file will not be loaded at modo start, you're also free to save it somew
     MATH TOOLS (v 1.30)
     MESHOPS (Total Pack v1 + v2 + POLY FUSE 2D) (v 2.30)
     MIFABOMA (v 3.50)
-    QUICK TAG (v 2.50)
+    QUICK TAG (v 2.60)
     UV (v 3.00)
     VENOM (v 2.10)
 

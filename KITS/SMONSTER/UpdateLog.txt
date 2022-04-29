@@ -1,6 +1,14 @@
 -------------------------
 ---- UPDATES LOG----
 -------------------------
+v3.101 - 2022/04/29
+QUICK TAG:
+        • New Command -->	smo.QT.SetMatColorIDByMeshIslands		(Set Color ID by Material Tag, by Polygons Continuity (Islands) on current mesh.)
+        • New Command -->	smo.QT.Batch.SetMatColorIDRandom		(Set Color ID by Material Tag, by Polygons Continuity (Islands) over multiple MeshLayers or Scene wide.)
+        • Bugfix on smo.QT.SetMatColorIDRandom / smo.QT.SetMatColorIDByUser / smo.QT.SetMatColorIDByNumber.
+
+
+-------------------------
 v3.1 - 2022/04/28
 GC:
         • New Command -->	smo.GC.SplitByPart

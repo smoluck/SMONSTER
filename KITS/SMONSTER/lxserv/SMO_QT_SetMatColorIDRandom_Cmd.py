@@ -60,15 +60,25 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
 
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
+        ColorID_Suffix = "ColorID"
+        ByItemMode = bool()
+
+        if self.SelModeItem == True:
+            lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
+            lx.eval('select.type polygon')
+            lx.eval('select.all')
+            ByItemMode = True
 
         if self.SelModePoly == True:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
+            ByItemMode = False
 
         # mesh = scene.selectedByType('mesh')[0]
         # CsPolys = len(mesh.geometry.polygons.selected)
         meshes = scene.selectedByType('mesh')
         lx.eval('query layerservice layer.id ? main')  # select main layer
-        ItemUniqueName = lx.eval('query layerservice layer.id ? main')  # store the Unique name of the current mesh layer
+        ItemUniqueName = lx.eval(
+            'query layerservice layer.id ? main')  # store the Unique name of the current mesh layer
         # lx.out('Item Unique Name:', ItemUniqueName)
 
         PrstColorIDRed = 0
@@ -211,10 +221,11 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
         SceneShaderItemList = []
         SceneShaderItemName = []
         for item in scene.items(itype='defaultShader', superType=True):
-            # lx.out('Default Base Shader found:',item)
+            lx.out('Default Base Shader found:', item)
             SceneShaderItemList.append(item)
             print(item.id)
-            SceneShaderItemName.append(item.id)
+            print(item.name)
+            SceneShaderItemName.append(item.name)
         scene.select(SceneShaderItemList[0])
         print(SceneShaderItemName)
 
@@ -222,28 +233,28 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
         NewID = int()
 
         try:
-            lx.eval('!channel.create SelSetColorIDConstantGlobalCount integer useMin:true default:(-1.0) username:SelSetColorIDConstantGlobalCount')
+            lx.eval(
+                '!channel.create MatColorIDGlobalCount integer useMin:true default:(-1.0) username:MatColorIDGlobalCount')
             SceneConstantID = (-1)
             QTChannelExist = False
         except RuntimeError:  # diffuse amount is zero.
-            lx.eval('select.channel {%s:SelSetColorIDConstantGlobalCount@lmb=x} set' % SceneShaderItemName[0])
+            lx.eval('select.channel {%s:MatColorIDGlobalCount@lmb=x} set' % SceneShaderItemName[0])
             QTChannelExist = True
             # lx.out('ColorID  Global Count channel already created')
             pass
 
         if QTChannelExist == True:
-            SceneConstantID = lx.eval('!item.channel SelSetColorIDConstantGlobalCount ?')
+            SceneConstantID = lx.eval('!item.channel MatColorIDGlobalCount ?')
             lx.out('Constant ID Max in scene', SceneConstantID)
-        print(QTChannelExist)
+        # print(QTChannelExist)
 
-        ColorID_Suffix = "ColorID"
-        print(SceneConstantID)
+        # print(SceneConstantID)
 
         if SceneConstantID == (-1):
             NewID = 0
         if SceneConstantID >= 0:
             NewID = int(SceneConstantID) + 1
-        print(NewID)
+        # print(NewID)
         lx.eval('!item.channel MatColorIDGlobalCount %i' % NewID)
         ColorIDMatName = ("%s_%s" % (ColorID_Suffix, NewID))
         lx.out('Color ID Selection set name:', ColorIDMatName)
