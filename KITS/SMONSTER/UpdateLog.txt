@@ -1,6 +1,13 @@
 -------------------------
 ---- UPDATES LOG----
 -------------------------
+-------------------------
+v3.150 - 2022/04/29
+RIZOMUV Livelink:
+        • MODO 16.0v1 Support
+
+
+-------------------------
 v3.101 - 2022/04/29
 QUICK TAG:
         • New Command -->	smo.QT.SetMatColorIDByMeshIslands		(Set Color ID by Material Tag, by Polygons Continuity (Islands) on current mesh.)

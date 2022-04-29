@@ -77,7 +77,7 @@ The zip file will not be loaded at modo start, you're also free to save it somew
 --- LIVELINK KIT LIST ---
     MARMOSET TOOLBAG (v2.50)
     PIXAFLUX (v 1.30)
-    RIZOM UV (v 2.6)
+    RIZOM UV (v 2.7)
 
 
 --------------------

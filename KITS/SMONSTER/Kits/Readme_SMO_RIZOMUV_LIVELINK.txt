@@ -8,6 +8,9 @@ Since 2.2 Release:
 ------------------
 --- UPDATE LOG ---
 ------------------
+- 2.7 -
+        • MODO 16.0v1 Support
+
 - 2.6 -
         • MODO 15.2v2  Support
         • RizomUV 2022.0 Support

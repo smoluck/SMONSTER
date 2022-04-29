@@ -310,7 +310,7 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd (lxu.command.BasicCommand):
                 lx.eval ('user.value sceneio.fbx.save.format 4')
             except RuntimeError:
                 pass
-        if self.modo_ver >= 1500 and self.modo_ver <= 1599:
+        if self.modo_ver >= 1500 and self.modo_ver <= 1699:
             try:
                 lx.eval ('user.value sceneio.fbx.save.surfaceRefining FBXExportSubDiv')
                 lx.eval ('user.value sceneio.fbx.save.format FBX2013')
