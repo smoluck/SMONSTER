@@ -100,8 +100,6 @@ def root_fi():
     print(root_files)
     print("--------------")
     return root_files
-
-
 # root_fi()
 
 
@@ -111,8 +109,6 @@ def config_fi():
     config_files = [f for f in config_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
     print(config_files)
     return config_files
-
-
 # config_fi()
 
 
@@ -122,8 +118,6 @@ def scripts_fi():
     scripts_files = [f for f in scripts_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
     print(scripts_files)
     return scripts_files
-
-
 # scripts_fi()
 
 
@@ -132,8 +126,6 @@ def smodule_fi():
     smodule_files = [f for f in smodule_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
     print(smodule_files)
     return smodule_files
-
-
 # smodule_fi()
 
 
@@ -161,8 +153,6 @@ def lxserv_fi():
     # for f in lxserv_files:
     #     kit_files.append(lxserv_files)
     return lxserv_files
-
-
 # lxserv_fi()
 
 
@@ -177,8 +167,6 @@ def training_fi():
     #     if training_files.find(blacklistedstring) == False:
     #         clean_training_files.append(f)
     return training_files
-
-
 # training_fi()
 
 
@@ -195,8 +183,6 @@ def kits_fi():
     print(kits_files)
     print("--------------")
     return kits_files
-
-
 # kits_fi()
 
 # # Files contained in "Kits/SMO_BAKE" folder
@@ -212,8 +198,6 @@ def kit_bake_fi():
                      f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitBAKE_files)
     return kitBAKE_files
-
-
 # kit_bake_fi()
 
 # Files contained in "Kits/SMO_BATCH" folder
@@ -222,8 +206,6 @@ def kit_batch_fi():
                       f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitBATCH_files)
     return kitBATCH_files
-
-
 # kit_batch_fi()
 
 # Files contained in "Kits/SMO_CAD_TOOLS" folder
@@ -232,8 +214,6 @@ def kit_cad_fi():
                     f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitCAD_files)
     return kitCAD_files
-
-
 # kit_cad_fi()
 
 # Files contained in "Kits/SMO_CLEANUP" folder
@@ -242,8 +222,6 @@ def kit_cleanup_fi():
                         f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitCLEANUP_files)
     return kitCLEANUP_files
-
-
 # kit_cleanup_fi()
 
 # Files contained in "Kits/SMO_COLOR_BAR" folder
@@ -252,8 +230,6 @@ def kit_colorbar_fi():
                    f.is_file() and not f.name.endswith("_KeymapCommander.pyc") and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitCB_files)
     return kitCB_files
-
-
 # kit_colorbar_fi()
 
 # Files contained in "Kits/SMO_DOC" folder
@@ -261,8 +237,6 @@ def kit_doc_fi():
     kitDOC_files = [f for f in kit_doc_dir.glob("**/*") if f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitDOC_files)
     return kitDOC_files
-
-
 # kit_doc_fi()
 
 # Files contained in "Kits/SMO_GAME_CONTENT" folder
@@ -270,8 +244,6 @@ def kit_gamecontent_fi():
     kitGC_files = [f for f in kit_gc_dir.glob("**/*") if f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitGC_files)
     return kitGC_files
-
-
 # kit_gamecontent_fi()
 
 # Files contained in "Kits/SMO_MASTER" folder
@@ -279,8 +251,6 @@ def kit_master_fi():
     kitMASTER_files = [f for f in kit_master_dir.glob("**/*") if f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitMASTER_files)
     return kitMASTER_files
-
-
 # kit_master_fi()
 
 # Files contained in "Kits/SMO_MATH_TOOLS" folder
@@ -289,8 +259,6 @@ def kit_mathtools_fi():
                      f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitMATH_files)
     return kitMATH_files
-
-
 # kit_mathtools_fi()
 
 # Files contained in "Kits/SMO_MESHOPS" folder
@@ -299,8 +267,6 @@ def kit_meshops_fi():
                         f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitMESHOPS_files)
     return kitMESHOPS_files
-
-
 # kit_meshops_fi()
 
 # Files contained in "Kits/SMO_MIFABOMA" folder
@@ -309,8 +275,6 @@ def kit_mifaboma_fi():
                          f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitMIFABOMA_files)
     return kitMIFABOMA_files
-
-
 # kit_mifaboma_fi()
 
 # # Files contained in "Kits/SMO_PCLOUD_XYZ" folder
@@ -325,8 +289,6 @@ def kit_qtag_fi():
     kitQTAG_files = [f for f in kit_qt_dir.glob("**/*") if f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitQTAG_files)
     return kitQTAG_files
-
-
 # kit_qtag_fi()
 
 # Files contained in "Kits/SMO_UV" folder
@@ -335,8 +297,6 @@ def kit_uv_fi():
                    f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitUV_files)
     return kitUV_files
-
-
 # kit_uv_fi()
 
 # Files contained in "Kits/SMO_VENOM" folder
@@ -345,8 +305,6 @@ def kit_venom_fi():
                       f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc"))]
     print(kitVENOM_files)
     return kitVENOM_files
-
-
 # kit_venom_fi()
 
 
@@ -359,8 +317,6 @@ def kit_ll_marmosettoolbag_fi():
     print(kitLLMARMO_files)
     print("--------------")
     return kitLLMARMO_files
-
-
 # kit_ll_marmosettoolbag_fi()
 
 # Files contained in "Kits/SMO_PIXAFLUX_LIVELINK" folder
@@ -371,8 +327,6 @@ def kit_ll_pixaflux_fi():
     print(kitLLPIXA_files)
     print("--------------")
     return kitLLPIXA_files
-
-
 # kit_ll_pixaflux_fi()
 
 # Files contained in "Kits/SMO_RIZOMUV_LIVELINK" folder
@@ -383,8 +337,6 @@ def kit_ll_rizomuv_fi():
     print(kitLLRIZOM_files)
     print("--------------")
     return kitLLRIZOM_files
-
-
 # kit_ll_rizomuv_fi()
 
 
