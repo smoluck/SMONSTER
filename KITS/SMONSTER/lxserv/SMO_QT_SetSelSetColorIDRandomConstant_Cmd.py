@@ -446,6 +446,7 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         # lx.eval('select.subItem %s set mesh;replicator;meshInst;camera;light;txtrLocator;backdrop;groupLocator;replicator;surfGen;locator;falloff;deform;locdeform;weightContainer;morphContainer;deformGroup;deformMDD2;ABCStreamingDeformer;morphDeform;itemInfluence;genInfluence;deform.push;deform.wrap;softLag;ABCCurvesDeform.sample;ABCdeform.sample;force.root;baseVolume;chanModify;itemModify;meshoperation;chanEffect;defaultShader;defaultShader 0 0' % ItemUniqueName)
         scene.select(meshes)
         lx.eval('select.type polygon')
+        lx.eval('select.drop polygon')
 
         if ByItemMode == False:
             print(len(ListPSelSet()))
@@ -457,6 +458,9 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
                         lx.eval('select.pickWorkingSet %s' % i)
                         lx.eval('select.editSet %s remove' % i)
             lx.eval('select.useSet %s replace' % ColorIDSelSetName)
+
+        if ByItemMode == True:
+            lx.eval('select.type item')
             
         # elif TotalSafetyCheck != TotalSafetyCheckTrueValue:
         #     lx.out('script Stopped: your mesh does not match the requirement for that script.')
