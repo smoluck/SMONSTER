@@ -3,6 +3,11 @@ Hi. Everyone
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 2.60 -
+        • Solved a regression with latest update on Batch - Set Mat Color ID commands
+        • If the Color ID command is used while in Item Mode, it will switch back to item mode, after running it.
+
+
 - 2.50 -
         • Introduced functions to process the color ID attribution Scene Wide and / or even By Mesh Islands (Polygon Continuity)
         • New Command -->	smo.QT.Batch.SetSelSetColorIDRandomConstant	(Set a random Diffuse Color override using Selection Set (polygons) and Constant item. It can runs over Selected Meshes or SceneWide, By Items or by Polygon Islands.)

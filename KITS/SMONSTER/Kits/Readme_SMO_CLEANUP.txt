@@ -4,6 +4,10 @@ Hi. Everyone
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 2.00 -
+        • Added Rename Vertex Normal Map by Modo Default name for imported FBX files --> ( FBX_normals)
+        • Changed the Popup menu UI layout for better functions discoverability
+
 - 1.80 -
         • Added Rename All Instance by Source Mesh Name command.
 
