@@ -230,7 +230,7 @@ SMO_GC_MAIN_HOTKEYS = [
             [".global", "(stateless)", ".anywhere", "(contextless)", "smo.GC.SetNewMaterialSmartRename"]
         ],
         "key": "m",
-        "command": "smo.GC.SetNewMaterialSmartRename",
+        "command": "smo.GC.SetNewMaterialSmartRename 1",
         "name": "GAME CONTENT: Set Smart Material",
         "info": "M"
     }

@@ -221,13 +221,13 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
         SceneShaderItemList = []
         SceneShaderItemName = []
         for item in scene.items(itype='defaultShader', superType=True):
-            lx.out('Default Base Shader found:', item)
+            # lx.out('Default Base Shader found:', item)
             SceneShaderItemList.append(item)
-            print(item.id)
-            print(item.name)
+            # print(item.id)
+            # print(item.name)
             SceneShaderItemName.append(item.name)
         scene.select(SceneShaderItemList[0])
-        print(SceneShaderItemName)
+        # print(SceneShaderItemName)
 
         QTChannelExist = bool()
         NewID = int()
@@ -245,7 +245,7 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
 
         if QTChannelExist == True:
             SceneConstantID = lx.eval('!item.channel MatColorIDGlobalCount ?')
-            lx.out('Constant ID Max in scene', SceneConstantID)
+            # lx.out('Constant ID Max in scene', SceneConstantID)
         # print(QTChannelExist)
 
         # print(SceneConstantID)
@@ -257,60 +257,60 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
         # print(NewID)
         lx.eval('!item.channel MatColorIDGlobalCount %i' % NewID)
         ColorIDMatName = ("%s_%s" % (ColorID_Suffix, NewID))
-        lx.out('Color ID Selection set name:', ColorIDMatName)
+        # lx.out('Color ID Selection set name:', ColorIDMatName)
 
         if NewID <= 16:
             try:
                 if NewID == PrstColorIDRed:
-                    lx.eval('smo.GC.SetNewMaterialSmartRename {%s} {1.0 0.0844 0.0382}' % ColorIDMatName)
+                    lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {1.0 0.0844 0.0382}' % ColorIDMatName)
                     lx.eval('item.editorColor red')
                 elif NewID == PrstColorIDMagenta:
-                    lx.eval('smo.GC.SetNewMaterialSmartRename {%s} {0,8632 0,0802 0,3968}' % ColorIDMatName)
+                    lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {0,8632 0,0802 0,3968}' % ColorIDMatName)
                     lx.eval('item.editorColor magenta')
                 elif NewID == PrstColorIDPink:
-                    lx.eval('smo.GC.SetNewMaterialSmartRename {%s} {0.807 0.1946 0.1946}' % ColorIDMatName)
+                    lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {0.807 0.1946 0.1946}' % ColorIDMatName)
                     lx.eval('item.editorColor pink')
                 elif NewID == PrstColorIDBrown:
-                    lx.eval('smo.GC.SetNewMaterialSmartRename {%s} {0.402 0.2232 0.0704}' % ColorIDMatName)
+                    lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {0.402 0.2232 0.0704}' % ColorIDMatName)
                     lx.eval('item.editorColor brown')
                 elif NewID == PrstColorIDOrange:
-                    lx.eval('smo.GC.SetNewMaterialSmartRename {%s} {1.0 0.4793 0.0497}' % ColorIDMatName)
+                    lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {1.0 0.4793 0.0497}' % ColorIDMatName)
                     lx.eval('item.editorColor orange')
                 elif NewID == PrstColorIDYellow:
-                    lx.eval('smo.GC.SetNewMaterialSmartRename {%s} {1.0 0,8149 0,0452}' % ColorIDMatName)
+                    lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {1.0 0,8149 0,0452}' % ColorIDMatName)
                     lx.eval('item.editorColor yellow')
                 elif NewID == PrstColorIDGreen:
-                    lx.eval('smo.GC.SetNewMaterialSmartRename {%s} {0,0423 0,7682 0,0423}' % ColorIDMatName)
+                    lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {0,0423 0,7682 0,0423}' % ColorIDMatName)
                     lx.eval('item.editorColor green')
                 elif NewID == PrstColorIDLightGreen:
-                    lx.eval('smo.GC.SetNewMaterialSmartRename {%s} {0.2832 0.9131 0.2832}' % ColorIDMatName)
+                    lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {0.2832 0.9131 0.2832}' % ColorIDMatName)
                     lx.eval('item.editorColor lightgreen')
                 elif NewID == PrstColorIDCyan:
-                    lx.eval('smo.GC.SetNewMaterialSmartRename {%s} {0,0382 0,9911 0,7454}' % ColorIDMatName)
+                    lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {0,0382 0,9911 0,7454}' % ColorIDMatName)
                     lx.eval('item.editorColor cyan')
                 elif NewID == PrstColorIDBlue:
-                    lx.eval('smo.GC.SetNewMaterialSmartRename {%s} {0,0529 0,5029 1.0}' % ColorIDMatName)
+                    lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {0,0529 0,5029 1.0}' % ColorIDMatName)
                     lx.eval('item.editorColor blue')
                 elif NewID == PrstColorIDLightBlue:
-                    lx.eval('smo.GC.SetNewMaterialSmartRename {%s} {0,2232 0,624 1.0}' % ColorIDMatName)
+                    lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {0,2232 0,624 1.0}' % ColorIDMatName)
                     lx.eval('item.editorColor lightblue')
                 elif NewID == PrstColorIDUltramarine:
-                    lx.eval('smo.GC.SetNewMaterialSmartRename {%s} {0.1274 0.2502 1.0}' % ColorIDMatName)
+                    lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {0.1274 0.2502 1.0}' % ColorIDMatName)
                     lx.eval('item.editorColor ultramarine')
                 elif NewID == PrstColorIDPurple:
-                    lx.eval('smo.GC.SetNewMaterialSmartRename {%s} {0,3763 0,2423 0,8308}' % ColorIDMatName)
+                    lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {0,3763 0,2423 0,8308}' % ColorIDMatName)
                     lx.eval('item.editorColor purple')
                 elif NewID == PrstColorIDLightPurple:
-                    lx.eval('smo.GC.SetNewMaterialSmartRename {%s} {0.624 0.4179 1.0}' % ColorIDMatName)
+                    lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {0.624 0.4179 1.0}' % ColorIDMatName)
                     lx.eval('item.editorColor lightpurple')
                 elif NewID == PrstColorIDDarkGrey:
-                    lx.eval('smo.GC.SetNewMaterialSmartRename {%s} {0,2423 0,2423 0,2423}' % ColorIDMatName)
+                    lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {0,2423 0,2423 0,2423}' % ColorIDMatName)
                     lx.eval('item.editorColor darkgrey')
                 elif NewID == PrstColorIDGrey:
-                    lx.eval('smo.GC.SetNewMaterialSmartRename {%s} {0.4852 0.4852 0.4852}' % ColorIDMatName)
+                    lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {0.4852 0.4852 0.4852}' % ColorIDMatName)
                     lx.eval('item.editorColor grey')
                 elif NewID == PrstColorIDWhite:
-                    lx.eval('smo.GC.SetNewMaterialSmartRename {%s} {0.855 0.855 0.855}' % ColorIDMatName)
+                    lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {0.855 0.855 0.855}' % ColorIDMatName)
                     lx.eval('item.editorColor white')
             except RuntimeError:  # diffuse amount is zero.
                 pass
@@ -319,7 +319,7 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
             from random import randrange
             r, g, b = [randrange(0, 255, 10) / 255.0 for i in range(3)]
             try:
-                lx.eval('smo.GC.SetNewMaterialSmartRename {%s} {%s %s %s}' % (ColorIDMatName, r, g, b))
+                lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {%s %s %s}' % (ColorIDMatName, r, g, b))
             except RuntimeError:  # diffuse amount is zero.
                 pass
 

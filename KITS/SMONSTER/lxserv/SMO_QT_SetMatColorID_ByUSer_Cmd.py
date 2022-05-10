@@ -29,10 +29,10 @@ def SetColorIDByNumberCheckSceneMaxColorID():
     for item in scene.items(itype='defaultShader', superType=True):
         # lx.out('Default Base Shader found:',item)
         SceneShaderItemList.append(item)
-        print(item.id)
+        # print(item.id)
         SceneShaderItemName.append(item.id)
     scene.select(SceneShaderItemList[0])
-    print(SceneShaderItemName)
+    # print(SceneShaderItemName)
 
     QTChannelExist = bool()
     NewID = int()
@@ -209,9 +209,9 @@ class SMO_GC_SetMatColorID_ByUser_Cmd(lxu.command.BasicCommand):
         R = (TarCol.split(' ')[0])
         G = (TarCol.split(' ')[1])
         B = (TarCol.split(' ')[2])
-        print('Red Color is: %s' % R)
-        print('Green Color is: %s' % G)
-        print('Blue Color is: %s' % B)
+        # print('Red Color is: %s' % R)
+        # print('Green Color is: %s' % G)
+        # print('Blue Color is: %s' % B)
 
         if Separator == "none":
             Sep = ""
@@ -230,7 +230,7 @@ class SMO_GC_SetMatColorID_ByUser_Cmd(lxu.command.BasicCommand):
             SepA = " ("
             SepB = ") "
             Text = ColorID_Suffix + SepA + str(IDNum) + SepB
-        print(Text)
+        # print(Text)
 
         # #####--- Define user value for all the different SafetyCheck --- START ---#####
         # #####
@@ -351,10 +351,10 @@ class SMO_GC_SetMatColorID_ByUser_Cmd(lxu.command.BasicCommand):
         for item in scene.items(itype='defaultShader', superType=True):
             # lx.out('Default Base Shader found:',item)
             SceneShaderItemList.append(item)
-            print(item.id)
+            # print(item.id)
             SceneShaderItemName.append(item.id)
         scene.select(SceneShaderItemList[0])
-        print(SceneShaderItemName)
+        # print(SceneShaderItemName)
 
         QTChannelExist = bool()
         NewID = int()
@@ -372,15 +372,15 @@ class SMO_GC_SetMatColorID_ByUser_Cmd(lxu.command.BasicCommand):
         if QTChannelExist == True:
             SceneConstantID = lx.eval('!item.channel MatColorIDGlobalCount ?')
             lx.out('Constant ID Max in scene', SceneConstantID)
-        print(QTChannelExist)
+        # print(QTChannelExist)
 
-        print(SceneConstantID)
+        # print(SceneConstantID)
 
         if SceneConstantID == (-1):
             NewID = 0
         if SceneConstantID >= 0:
             NewID = int(SceneConstantID) + 1
-        print(NewID)
+        # print(NewID)
         lx.eval('!item.channel MatColorIDGlobalCount %i' % NewID)
         ColorIDMatName = ("%s_%s" % (ColorID_Suffix, NewID))
 
@@ -391,35 +391,35 @@ class SMO_GC_SetMatColorID_ByUser_Cmd(lxu.command.BasicCommand):
         ###### Modo
         if GC_MatShadingModel < 4:
             if GC_OriginalModoMaterialOverride == False:
-                lx.eval('smo.GC.SetNewMaterialSmartRename {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
+                lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
             if GC_OriginalModoMaterialOverride == True:
                 lx.eval('poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false type:default' % (ColorIDMatName, R, G, B))
                 lx.eval('material.new {} true false'.format(ColorIDMatName))
         ###### Unreal
         if GC_MatShadingModel == 4:
             if GC_OriginalModoMaterialOverride == False:
-                lx.eval('smo.GC.SetNewMaterialSmartRename {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
+                lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
             if GC_OriginalModoMaterialOverride == True:
                 lx.eval('poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false type:unreal' % (ColorIDMatName, R, G, B))
                 lx.eval('material.new {} true false unreal'.format(ColorIDMatName))
         ###### Unity
         if GC_MatShadingModel == 5:
             if GC_OriginalModoMaterialOverride == False:
-                lx.eval('smo.GC.SetNewMaterialSmartRename {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
+                lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
             if GC_OriginalModoMaterialOverride == True:
                 lx.eval('poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false false type:unity' % (ColorIDMatName, R, G, B))
                 lx.eval('material.new {} true false unity'.format(ColorIDMatName))
         ###### glTF
         if GC_MatShadingModel == 6:
             if GC_OriginalModoMaterialOverride == False:
-                lx.eval('smo.GC.SetNewMaterialSmartRename {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
+                lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
             if GC_OriginalModoMaterialOverride == True:
                 lx.eval('poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false false type:gltf' % (ColorIDMatName, R, G, B))
                 lx.eval('material.new {} true false gltf'.format(ColorIDMatName))
         ###### AxF
         if GC_MatShadingModel == 7:
             if GC_OriginalModoMaterialOverride == False:
-                lx.eval('smo.GC.SetNewMaterialSmartRename {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
+                lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
             if GC_OriginalModoMaterialOverride == True:
                 lx.eval('poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false type:axf' % (ColorIDMatName, R, G, B))
                 lx.eval('material.new {} true false axf'.format(ColorIDMatName))
@@ -464,17 +464,17 @@ class SMO_GC_SetMatColorID_ByUser_Cmd(lxu.command.BasicCommand):
                             lx.eval('material.smoothAreaWeight full')
 
         SelItem = lxu.select.ItemSelection().current()
-        print(SelItem)
+        # print(SelItem)
 
         for item in SelItem:
             itemType = modo.Item(item).type
-            print(itemType)
+            # print(itemType)
             Mat_Model = lx.object.Item(item)
-            print(Mat_Model)
+            # print(Mat_Model)
             Mat_ModelName = Mat_Model.UniqueName()
-            print(Mat_ModelName)
+            # print(Mat_ModelName)
             Mat_ModelID = Mat_Model.Ident()
-            print(Mat_ModelID)
+            # print(Mat_ModelID)
             #######################################################
             if GC_MatShadingModel == 3 and itemType != "principled":
                 scene.deselect(Mat_ModelName)

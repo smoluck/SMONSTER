@@ -128,7 +128,7 @@ class SMO_QT_SetMatColorID_ByMeshIslands_Cmd(lxu.command.BasicCommand):
                 del sel_poly [:]
                 AfterRemove = len(PolyPack)
                 print('After list cleanup:', AfterRemove)
-                lx.eval('smo.QT.SetMatColorIDRandom')
+                lx.eval('smo.QT.Batch.SetMatColorIDRandomKeepCurrentSelection')
                 lx.eval('hide.sel')
         lx.eval('unhide')
 

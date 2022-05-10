@@ -89,7 +89,7 @@ FORMS = [
     }, {
         "label": "GAME CONTENT: Set Smart Material",
         "recommended": "m",
-        "cmd": "smo.GC.SetNewMaterialSmartRename"
+        "cmd": "smo.GC.SetNewMaterialSmartRename 1"
     }
 
 ]

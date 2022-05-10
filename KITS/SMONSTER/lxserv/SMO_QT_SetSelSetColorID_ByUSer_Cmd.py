@@ -65,10 +65,10 @@ def SetColorIDByNumberCheckSceneMaxColorID():
     for item in scene.items(itype='defaultShader', superType=True):
         # lx.out('Default Base Shader found:',item)
         SceneShaderItemList.append(item)
-        print(item.id)
+        # print(item.id)
         SceneShaderItemName.append(item.id)
     scene.select(SceneShaderItemList[0])
-    print(SceneShaderItemName)
+    # print(SceneShaderItemName)
 
     QTChannelExist = bool()
     NewID = int()

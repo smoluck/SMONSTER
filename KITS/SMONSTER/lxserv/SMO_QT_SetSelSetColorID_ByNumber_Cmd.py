@@ -180,7 +180,7 @@ class SMO_QT_SetSelSetColorID_ByNumber_Cmd(lxu.command.BasicCommand):
         # PresetMaxID = lx.eval('!item.channel SelSetColorIDConstantGlobalCount ?')
 
         PresetMaxID = SetColorIDByNumberCheckSceneMaxColorID()
-        print(PresetMaxID)
+        # print(PresetMaxID)
         CheckSceneMaxColor = PresetMaxID + 1
         # PresetMaxID = int(PresetMaxID)
         lx.out('number of ColorID Tags: %s' % PresetMaxID)
