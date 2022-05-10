@@ -3,6 +3,11 @@ Hi. Everyone
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 9.10 -
+        • Fixed an issue with Error message populating the Event Log, while using the smo.GC.SetNewMaterialSmartRename command as well as the Quick Tag - Set Mat Color ID commands.
+        • (Remap the SMO GAME CONTENT MainKeymaps as the smo.GC.SetNewMaterialSmartRename now need a Boolean Argument at the end. --> "smo.GC.SetNewMaterialSmartRename 1" to show Modo Color Picker at launch)
+
+
 - 9.00 -
         • New Command -->	smo.GC.SplitByPart
         • New Command -->	smo.GC.SplitByMaterial
