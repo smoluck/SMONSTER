@@ -15,8 +15,8 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.Cleanup.RenameVNrmMapToDefaultSceneWise"
-# smo.Cleanup.RenameVNrmMapToDefaultSceneWise
+Command_Name = "smo.CLEANUP.RenameVNrmMapToDefaultSceneWise"
+# smo.CLEANUP.RenameVNrmMapToDefaultSceneWise
 
 class SMO_CLEANUP_RenameVNrmMapToDefaultSceneWise_Cmd(lxu.command.BasicCommand):
     def __init__(self):

@@ -70,7 +70,7 @@ Hi. Everyone
 
 - 5.50 -
         • PieSwitcher pie menu added for Viewport Borders management.
-        • smo.Cleanup.RenameUVMapToDefaultSceneWise added (Check for all Meshes in the current scene and rename their First UVMap (by Index = 0) to Modo/Preferences/Defaults/Application name.)
+        • smo.CLEANUP.RenameUVMapToDefaultSceneWise added (Check for all Meshes in the current scene and rename their First UVMap (by Index = 0) to Modo/Preferences/Defaults/Application name.)
         • Bugfix on OpenTrainingScene Command and Forms.
         • Bugfix Forms for Keymapping in GC Kit.
         • Bugfix on FullscreenMode command.

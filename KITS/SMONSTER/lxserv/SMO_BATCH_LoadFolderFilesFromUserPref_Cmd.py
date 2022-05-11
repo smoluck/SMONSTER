@@ -15,7 +15,7 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 #---------------------------------------
 
-import lx, lxu, os, modo, string
+import lx, lxu, os, modo, string, sys
 from os import path
 
 class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
@@ -55,11 +55,13 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
         lx.eval("user.defNew name:InputFileFormat_OBJ type:boolean life:momentary")
         lx.eval("user.defNew name:InputFileFormat_LXO type:boolean life:momentary")
         lx.eval("user.defNew name:InputFileFormat_FBX type:boolean life:momentary")
+        lx.eval("user.defNew name:InputFileFormat_SLDPRT type:boolean life:momentary")
 
         lx.eval("user.defNew name:OutputFileFormat_DXF type:boolean life:momentary")
         lx.eval("user.defNew name:OutputFileFormat_OBJ type:boolean life:momentary")
         lx.eval("user.defNew name:OutputFileFormat_LXO type:boolean life:momentary")
         lx.eval("user.defNew name:OutputFileFormat_FBX type:boolean life:momentary")
+        lx.eval("user.defNew name:OutputFileFormat_SLDPRT type:boolean life:momentary")
 
         lx.eval("user.defNew name:InputFileFormatTotal type:integer life:momentary")
         lx.eval("user.defNew name:OutputFileFormatTotal type:integer life:momentary")
@@ -128,6 +130,9 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
         InputFileFormat_FBX = lx.eval('user.value SMO_UseVal_BATCH_InputFiles_FBX ?')
         lx.out('Input File Format FBX State:', InputFileFormat_FBX)
 
+        InputFileFormat_SLDPRT = lx.eval('user.value SMO_UseVal_BATCH_InputFiles_SLDPRT ?')
+        lx.out('Input File Format SLDPRT State:', InputFileFormat_SLDPRT)
+        
 
         # Get Current Checkbox state for Output File format from Preferences / SMO_BATCH
         OutputFileFormat_DXF = lx.eval('user.value SMO_UseVal_BATCH_OutputFiles_DXF ?')
@@ -150,7 +155,7 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
 
 
         # Test Current Checkbox state for Input File format from Preferences / SMO_BATCH
-        InputFileFormatTotal = InputFileFormat_DXF + InputFileFormat_SVG + InputFileFormat_OBJ + InputFileFormat_LXO + InputFileFormat_FBX
+        InputFileFormatTotal = InputFileFormat_DXF + InputFileFormat_SVG + InputFileFormat_OBJ + InputFileFormat_LXO + InputFileFormat_FBX + InputFileFormat_SLDPRT
         if InputFileFormatTotal != 1 :
             sys(exit)
 
@@ -168,6 +173,9 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
 
         if InputFileFormat_FBX == 1 and InputFileFormatTotal == 1 :
             InputFileFormat = "FBX"
+            
+        if InputFileFormat_SLDPRT == 1 and InputFileFormatTotal == 1 :
+            InputFileFormat = "SLDPRT"
 
 
 
@@ -191,6 +199,7 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
 
         if OutputFileFormat_FBX == 1 and OutputFileFormatTotal == 1 :
             OutputFileFormat = "FBX"
+
         ###########################################################################################
 
 
@@ -1475,6 +1484,221 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
                     lx.out('Scene Closed')
 
             del (LXOPathList, CurratedLXOPathList)
+            
+            
+        ###########################################################################################
+        # Open SLDPRT Files
+        ###########################################################################################
+        if InputFileFormat == "SLDPRT":
+            SLDPRTPathList = []
+            CurratedSLDPRTPathList = []
+            for sldprt in os.listdir(Target_Path):
+                if ".sldprt" in sldprt or ".SLDPRT" in sldprt:  # this one will only accept .sldprt or .SLDPRT exactly
+                    finalPath = Target_Path + "/" + sldprt
+                    # print(finalPath)
+                    finalPath_AbsPath = os.path.abspath(finalPath)
+                    # print(finalPath_AbsPath)
+                    SLDPRTPathList.append(finalPath_AbsPath)
+
+            for item in SLDPRTPathList:
+                FileSize = os.path.getsize(item)
+                # print(FileSize)
+                if FileSize > 128:
+                    # print(item)
+                    # print('File Not Empty')
+                    CurratedSLDPRTPathList.append(item)
+                if FileSize <= 128:
+                    print('File Considered Empty')
+
+            if len(CurratedSLDPRTPathList) > 0:
+                for item in CurratedSLDPRTPathList:
+                    lx.eval("!!scene.open {%s} normal" % item)
+                    # lx.eval("!!scene.open {%s} import" % finalPath)
+
+                    scene = modo.Scene()
+                    FullScenePath = scene.filename
+                    # lx.out('Scene Full Path:', FullScenePath)
+                    SceneName = path.splitext(path.basename(scene.filename))[0]
+                    lx.out('Currently Opened Scene:', SceneName)
+
+                    if len(BPLine001) != 0:
+                        try:
+                            lx.eval('%s' % BPLine001)
+                        except:
+                            lx.out('ERROR: Impossible to run line 001')
+                    if len(BPLine001) == 0:
+                        lx.out('NOTIFICATION: line 001 Empty')
+
+                    if len(BPLine002) != 0:
+                        try:
+                            lx.eval('%s' % BPLine002)
+                        except:
+                            lx.out('ERROR: Impossible to run line 002')
+                    if len(BPLine002) == 0:
+                        lx.out('NOTIFICATION: line 002 Empty')
+
+                    if len(BPLine003) != 0:
+                        try:
+                            lx.eval('%s' % BPLine003)
+                        except:
+                            lx.out('ERROR: Impossible to run line 003')
+                    if len(BPLine003) == 0:
+                        lx.out('NOTIFICATION: line 003 Empty')
+
+                    if len(BPLine004) != 0:
+                        try:
+                            lx.eval('%s' % BPLine004)
+                        except:
+                            lx.out('ERROR: Impossible to run line 004')
+                    if len(BPLine004) == 0:
+                        lx.out('NOTIFICATION: line 004 Empty')
+
+                    if len(BPLine005) != 0:
+                        try:
+                            lx.eval('%s' % BPLine005)
+                        except:
+                            lx.out('ERROR: Impossible to run line 005')
+                    if len(BPLine005) == 0:
+                        lx.out('NOTIFICATION: line 005 Empty')
+
+                    if len(BPLine006) != 0:
+                        try:
+                            lx.eval('%s' % BPLine006)
+                        except:
+                            lx.out('ERROR: Impossible to run line 006')
+                    if len(BPLine006) == 0:
+                        lx.out('NOTIFICATION: line 006 Empty')
+
+                    if len(BPLine007) != 0:
+                        try:
+                            lx.eval('%s' % BPLine007)
+                        except:
+                            lx.out('ERROR: Impossible to run line 007')
+                    if len(BPLine007) == 0:
+                        lx.out('NOTIFICATION: line 007 Empty')
+
+                    if len(BPLine008) != 0:
+                        try:
+                            lx.eval('%s' % BPLine008)
+                        except:
+                            lx.out('ERROR: Impossible to run line 008')
+                    if len(BPLine008) == 0:
+                        lx.out('NOTIFICATION: line 008 Empty')
+
+                    if len(BPLine009) != 0:
+                        try:
+                            lx.eval('%s' % BPLine009)
+                        except:
+                            lx.out('ERROR: Impossible to run line 009')
+                    if len(BPLine009) == 0:
+                        lx.out('NOTIFICATION: line 009 Empty')
+
+                    if len(BPLine010) != 0:
+                        try:
+                            lx.eval('%s' % BPLine010)
+                        except:
+                            lx.out('ERROR: Impossible to run line 010')
+                    if len(BPLine010) == 0:
+                        lx.out('NOTIFICATION: line 010 Empty')
+
+                    if len(BPLine011) != 0:
+                        try:
+                            lx.eval('%s' % BPLine011)
+                        except:
+                            lx.out('ERROR: Impossible to run line 011')
+                    if len(BPLine011) == 0:
+                        lx.out('NOTIFICATION: line 011 Empty')
+
+                    if len(BPLine012) != 0:
+                        try:
+                            lx.eval('%s' % BPLine012)
+                        except:
+                            lx.out('ERROR: Impossible to run line 012')
+                    if len(BPLine012) == 0:
+                        lx.out('NOTIFICATION: line 012 Empty')
+
+                    if len(BPLine013) != 0:
+                        try:
+                            lx.eval('%s' % BPLine013)
+                        except:
+                            lx.out('ERROR: Impossible to run line 013')
+                    if len(BPLine013) == 0:
+                        lx.out('NOTIFICATION: line 013 Empty')
+
+                    if len(BPLine014) != 0:
+                        try:
+                            lx.eval('%s' % BPLine014)
+                        except:
+                            lx.out('ERROR: Impossible to run line 014')
+                    if len(BPLine014) == 0:
+                        lx.out('NOTIFICATION: line 014 Empty')
+
+                    if len(BPLine015) != 0:
+                        try:
+                            lx.eval('%s' % BPLine015)
+                        except:
+                            lx.out('ERROR: Impossible to run line 015')
+                    if len(BPLine015) == 0:
+                        lx.out('NOTIFICATION: line 015 Empty')
+
+                    if len(BPLine016) != 0:
+                        try:
+                            lx.eval('%s' % BPLine016)
+                        except:
+                            lx.out('ERROR: Impossible to run line 016')
+                    if len(BPLine016) == 0:
+                        lx.out('NOTIFICATION: line 016 Empty')
+
+                    if len(BPLine017) != 0:
+                        try:
+                            lx.eval('%s' % BPLine017)
+                        except:
+                            lx.out('ERROR: Impossible to run line 017')
+                    if len(BPLine017) == 0:
+                        lx.out('NOTIFICATION: line 017 Empty')
+
+                    if len(BPLine018) != 0:
+                        try:
+                            lx.eval('%s' % BPLine018)
+                        except:
+                            lx.out('ERROR: Impossible to run line 018')
+                    if len(BPLine018) == 0:
+                        lx.out('NOTIFICATION: line 018 Empty')
+
+                    if len(BPLine019) != 0:
+                        try:
+                            lx.eval('%s' % BPLine019)
+                        except:
+                            lx.out('ERROR: Impossible to run line 019')
+                    if len(BPLine019) == 0:
+                        lx.out('NOTIFICATION: line 019 Empty')
+
+                    if len(BPLine020) != 0:
+                        try:
+                            lx.eval('%s' % BPLine020)
+                        except:
+                            lx.out('ERROR: Impossible to run line 020')
+                    if len(BPLine020) == 0:
+                        lx.out('NOTIFICATION: line 020 Empty')
+
+                    # Converting Meshes to Static Meshes
+                    if OutputLXO_ConvertStaticMeshes == True and OutputFileFormat_LXO == 1:
+                        lx.eval('smo.CLEANUP.DelEmptyMeshItem')
+                        lx.eval('smo.CLEANUP.DelCam')
+                        lx.eval('smo.CLEANUP.DelLight')
+                        lx.eval('select.itemType mesh')
+                        lx.eval('item.setType triSurf locator')
+
+                    # lx.eval('smo.GC.ConvertSceneTo 1 LXO')
+                    # lx.eval('smo.GC.ConvertSceneTo 1 SLDPRT')
+                    # lx.eval('smo.GC.ConvertSceneTo 1 SVG')
+                    # lx.eval('smo.GC.ConvertSceneTo 1 OBJ')
+                    # lx.eval('smo.GC.ConvertSceneTo 1 FBX')
+                    lx.eval('smo.GC.ConvertSceneTo 1 %s' % OutputFileFormat)
+                    lx.eval('!scene.close')
+                    lx.out('Scene Closed')
+
+            del (SLDPRTPathList, CurratedSLDPRTPathList)
 
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()

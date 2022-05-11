@@ -7,7 +7,7 @@
 #               Set the Input Files Format using User Defined Preferences.
 #
 #
-# Author:       Franck ELISABETH (with the help of James O'Hare)
+# Author:       Franck ELISABETH
 # Website:      http://www.smoluck.com
 #
 # Created:      01/10/2020
@@ -68,6 +68,7 @@ class SMO_BATCH_SetInputFileTypeViaPref_Cmd(lxu.command.BasicCommand):
             lx.eval('user.value SMO_UseVal_BATCH_InputFiles_OBJ 0')
             lx.eval('user.value SMO_UseVal_BATCH_InputFiles_LXO 0')
             lx.eval('user.value SMO_UseVal_BATCH_InputFiles_FBX 0')
+            lx.eval('user.value SMO_UseVal_BATCH_InputFiles_SLDPRT 0')
             
         if InputFileFormat == "SVG" :
             lx.eval('user.value SMO_UseVal_BATCH_InputFiles_DXF 0')
@@ -75,6 +76,7 @@ class SMO_BATCH_SetInputFileTypeViaPref_Cmd(lxu.command.BasicCommand):
             lx.eval('user.value SMO_UseVal_BATCH_InputFiles_OBJ 0')
             lx.eval('user.value SMO_UseVal_BATCH_InputFiles_LXO 0')
             lx.eval('user.value SMO_UseVal_BATCH_InputFiles_FBX 0')
+            lx.eval('user.value SMO_UseVal_BATCH_InputFiles_SLDPRT 0')
             
         if InputFileFormat == "OBJ" :
             lx.eval('user.value SMO_UseVal_BATCH_InputFiles_DXF 0')
@@ -82,6 +84,7 @@ class SMO_BATCH_SetInputFileTypeViaPref_Cmd(lxu.command.BasicCommand):
             lx.eval('user.value SMO_UseVal_BATCH_InputFiles_OBJ 1')
             lx.eval('user.value SMO_UseVal_BATCH_InputFiles_LXO 0')
             lx.eval('user.value SMO_UseVal_BATCH_InputFiles_FBX 0')
+            lx.eval('user.value SMO_UseVal_BATCH_InputFiles_SLDPRT 0')
             
         if InputFileFormat == "LXO" :
             lx.eval('user.value SMO_UseVal_BATCH_InputFiles_DXF 0')
@@ -89,6 +92,7 @@ class SMO_BATCH_SetInputFileTypeViaPref_Cmd(lxu.command.BasicCommand):
             lx.eval('user.value SMO_UseVal_BATCH_InputFiles_OBJ 0')
             lx.eval('user.value SMO_UseVal_BATCH_InputFiles_LXO 1')
             lx.eval('user.value SMO_UseVal_BATCH_InputFiles_FBX 0')
+            lx.eval('user.value SMO_UseVal_BATCH_InputFiles_SLDPRT 0')
             
         if InputFileFormat == "FBX" :
             lx.eval('user.value SMO_UseVal_BATCH_InputFiles_DXF 0')
@@ -96,6 +100,15 @@ class SMO_BATCH_SetInputFileTypeViaPref_Cmd(lxu.command.BasicCommand):
             lx.eval('user.value SMO_UseVal_BATCH_InputFiles_OBJ 0')
             lx.eval('user.value SMO_UseVal_BATCH_InputFiles_LXO 0')
             lx.eval('user.value SMO_UseVal_BATCH_InputFiles_FBX 1')
+            lx.eval('user.value SMO_UseVal_BATCH_InputFiles_SLDPRT 0')
+
+        if InputFileFormat == "SLDPRT" :
+            lx.eval('user.value SMO_UseVal_BATCH_InputFiles_DXF 0')
+            lx.eval('user.value SMO_UseVal_BATCH_InputFiles_SVG 0')
+            lx.eval('user.value SMO_UseVal_BATCH_InputFiles_OBJ 0')
+            lx.eval('user.value SMO_UseVal_BATCH_InputFiles_LXO 0')
+            lx.eval('user.value SMO_UseVal_BATCH_InputFiles_FBX 0')
+            lx.eval('user.value SMO_UseVal_BATCH_InputFiles_SLDPRT 1')
             
 
     def cmd_Query(self, index, vaQuery):
