@@ -60,5 +60,12 @@ class SMO_CLEANUP_CleanupSolidWorksImport_Cmd(lxu.command.BasicCommand):
         lx.eval('smo.GC.SplitByPart')
         lx.eval('smo.CLEANUP.RemoveAllPartTags')
         lx.eval('select.itemType mesh')
-        lx.eval('smo.GC.ConvertToHardEdgeWorkflowUsingGeoBoundaryAsHardEdge 1')
+
+        # Keep VNrm Data and MergeEdgeBoundary Borders
+        lx.eval('smo.GC.ConvertToHardEdgeWorkflowUsingGeoBoundaryAsHardEdge 1 1')
+        lx.eval('select.itemType mesh')
+        lx.eval('select.type polygon')
+        lx.eval('select.deleteSet smonster_allpolygonselset true')
+        lx.eval('smo.GC.DeselectAll')
+        lx.eval('select.type item')
 lx.bless(SMO_CLEANUP_CleanupSolidWorksImport_Cmd, Command_Name)

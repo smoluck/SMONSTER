@@ -25,6 +25,8 @@ class SMO_GC_ConvertToHardEdgeWorkflowUsingGeoBoundaryAsHardEdge_Cmd(lxu.command
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Keep VertexNormals Data", lx.symbol.sTYPE_BOOLEAN)
         # self.basic_SetFlags(0, lx.symbol.fCMDARG_OPTIONAL)  # here the (0) define the argument index.
+        self.dyna_Add("Merge Vertex from GeoEdgeBoundary, to make mesh airtight", lx.symbol.sTYPE_BOOLEAN)
+        # self.basic_SetFlags(1, lx.symbol.fCMDARG_OPTIONAL)
 
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
@@ -57,7 +59,7 @@ class SMO_GC_ConvertToHardEdgeWorkflowUsingGeoBoundaryAsHardEdge_Cmd(lxu.command
         scene = modo.scene.current()
 
         KeepVNrmData = self.dyna_Bool(0)
-
+        MergeVertexBorders = self.dyna_Bool(1)
 
         meshes_list = scene.selectedByType(lx.symbol.sITYPE_MESH)
 
@@ -87,8 +89,11 @@ class SMO_GC_ConvertToHardEdgeWorkflowUsingGeoBoundaryAsHardEdge_Cmd(lxu.command
         lx.eval('layer.mergeMeshes true')
 
         # make the mesh airtight so every Geo Boundary vertex are merged by 1 um
-        lx.eval('select.convert vertex')
-        lx.eval('!vert.merge fixed false 0.000001 false false')
+        if MergeVertexBorders:
+            lx.eval('@AddBoundary.py')
+            lx.eval('select.convert vertex')
+            lx.eval('!vert.merge fixed false 0.000001 false false')
+
         lx.eval('select.type item')
         lx.eval('smo.GC.DeselectAll')
 

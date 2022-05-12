@@ -4,7 +4,8 @@
 # Version:      1.0
 #
 # Purpose:      This script is designed to:
-#               Export Mesh As MeshPreset LXL file into Target Path.
+#               Export current Mesh As MeshPreset LXL file into Target Path.
+#               (optional: Define Path destination as argument)
 #
 #
 # Author:       Franck ELISABETH
@@ -18,10 +19,13 @@ import lx, lxu, os, modo, string
 from os import path
 
 Command_Name = "smo.GC.ExportMeshAsMeshPreset"
+# smo.GC.ExportMeshAsMeshPreset {C:\TEMP\Target}
 
 class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
+        self.dyna_Add("Directory Path", lx.symbol.sTYPE_STRING)
+        self.basic_SetFlags(0, lx.symbol.fCMDARG_OPTIONAL)  # here the (0) define the argument index.
 
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
@@ -30,13 +34,13 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC Export Mesh as MeshPreset LXL files'
+        return 'SMO GC Export current Mesh as MeshPreset LXL files'
 
     def cmd_Desc(self):
-        return 'Export Mesh As MeshPreset LXL file into Target Path.'
+        return 'Export current Mesh As MeshPreset LXL file into Target Path. (optional: Define Path destination as argument)'
 
     def cmd_Tooltip(self):
-        return 'Export Mesh As MeshPreset LXL file into Target Path.'
+        return 'Export current Mesh As MeshPreset LXL file into Target Path. (optional: Define Path destination as argument)'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'
@@ -48,13 +52,23 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
         return True
 
     def basic_Execute(self, msg, flags):
+        scene = modo.scene.current()
+
+        DestinationPath = ""
+        # In case a Path is defined directly with the path argument we overwrite the path
+        TargetDirPath = ""
+
+        if self.dyna_IsSet(0):
+            TargetDirPath = self.dyna_String(0)
+            print('Destination Path is set by Argument')
+
         PBState = bool()
         Good = bool()
         PBState = bool(lx.eval('layout.createOrClose PresetBrowser presetBrowserPalette ?'))
         if PBState == False:
-            lx.eval('layout.createOrClose PresetBrowser presetBrowserPalette true Presets width:800 height:600 persistent:true style:palette')
+            lx.eval(
+                'layout.createOrClose PresetBrowser presetBrowserPalette true Presets width:800 height:600 persistent:true style:palette')
         Good = bool(lx.eval('layout.createOrClose PresetBrowser presetBrowserPalette ?'))
-
 
         # define function to convert Radian to Degree
         def rad(a):
@@ -85,39 +99,39 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
                 return ''
 
         if Good == True:
-            scene = modo.scene.current()
             ItemSelected = scene.selected
             selectedMeshes = [item for item in ItemSelected if item.type == 'mesh']
             print(selectedMeshes)
             sceneItem = [item for item in scene.items() if item.type == 'scene']
             print(sceneItem)
 
-
             SubFolderState = bool(lx.eval('user.value SMO_UseVal_GC_LXLMeshPresetToSubfolder ?'))
             SpecificFolderState = bool(lx.eval('user.value SMO_UseVal_GC_LXLMeshPresetToSpecificFolder ?'))
-            print (SubFolderState)
-            print (SpecificFolderState)
+            print(SubFolderState)
+            print(SpecificFolderState)
 
+            # In case a Path is defined directly with the path argument we overwrite the path
+            if self.dyna_IsSet(0):
+                DestinationPath = (TargetDirPath)
 
-            if SpecificFolderState == True:
-                MeshPresetKitPath = SetSpecificPathDialog()
+            if not self.dyna_IsSet(0) and SpecificFolderState == True:
+                DestinationPath = SetSpecificPathDialog()
 
-            if SpecificFolderState == False:
-                # Create path target
-                MeshPresetKitPath = lx.eval(
+            if not self.dyna_IsSet(0) and SpecificFolderState == False:
+                # Create path target , here it's the Kit Folder for Mesh Preset
+                DestinationPath = lx.eval(
                     "query platformservice alias ? {kit_SMO_GAME_CONTENT:SMOGC_Presets\Assets\Meshes}")
                 # lx.out('MatCap Path', MatCapKitPath)
-                print (MeshPresetKitPath)
-
+                print('SMO GC Kit preset path:', DestinationPath)
 
             if SubFolderState == True:
                 lx.eval('smo.GC.DeselectAll')
                 for item in sceneItem:
                     SceneID = item.Ident()
-                print (SceneID)
+                print('Current Scene ID:', SceneID)
                 lx.eval('select.subItem %s set scene' % SceneID)
                 LXLTag = lx.eval('item.tag mode:string tag:"LXLT" value:?')
-                print(LXLTag)
+                # print(LXLTag)
                 if len(LXLTag) == 0:
                     Subfolder = SetLXLTagDialog()
                     lx.eval('item.tag mode:string tag:LXLT value:"%s"' % Subfolder)
@@ -125,16 +139,16 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
                     print(LXLTag)
                 lx.eval('smo.GC.DeselectAll')
                 if len(LXLTag) == 0 and len(Subfolder) > 0:
-                    FinalPath = MeshPresetKitPath + "/" + Subfolder
+                    FinalPath = DestinationPath + "/" + Subfolder
                 if len(LXLTag) > 0:
-                    FinalPath = MeshPresetKitPath + "/" + LXLTag
+                    FinalPath = DestinationPath + "/" + LXLTag
 
             if SubFolderState == False:
-                FinalPath = MeshPresetKitPath
+                FinalPath = DestinationPath
 
-            print (FinalPath)
+            print(FinalPath)
             FinalPath_AbsPath = os.path.abspath(FinalPath)
-            print (FinalPath_AbsPath)
+            print(FinalPath_AbsPath)
 
             # Check / Create Directory
             # try:
@@ -151,23 +165,23 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
             else:
                 print("Directory ", FinalPath_AbsPath, " already exists")
 
-            print(selectedMeshes)
-            print(len(selectedMeshes))
+            # print(selectedMeshes)
+            print('Number of meshes selected', len(selectedMeshes))
 
             lx.eval('smo.GC.DeselectAll')
             scene.select(selectedMeshes)
             if len(selectedMeshes) == 1:
                 MeshName = lx.eval('item.name ? xfrmcore')
-                print (MeshName)
+                print('current mesh name', MeshName)
 
                 ItemIdent = lx.eval('smo.GC.GetItemUniqueName ?')
                 print('current Item Unique name is %s' % ItemIdent)
 
                 TargetPath = FinalPath_AbsPath + "/" + MeshName + ".lxl"
-                print (TargetPath)
+                print(TargetPath)
 
                 MeshPreset_AbsPath = os.path.abspath(TargetPath)
-                print (MeshPreset_AbsPath)
+                print('destination directory path for the mesh preset ', MeshPreset_AbsPath)
 
                 Target = modo.Scene().selected[0]
                 lx.eval('smo.GC.DeselectAll')
@@ -240,7 +254,8 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
                     lx.eval("transform.channel rot.Y 0.0")
                     lx.eval("transform.channel rot.Z 0.0")
 
-                lx.eval('mesh.presetSave filename:{%s} desc:"" "" reuseThumb:0 item:{%s}' % (MeshPreset_AbsPath, ItemIdent))
+                lx.eval(
+                    'mesh.presetSave filename:{%s} desc:"" "" reuseThumb:0 item:{%s}' % (MeshPreset_AbsPath, ItemIdent))
                 lx.eval('select.preset path:{%s} mode:set' % MeshPreset_AbsPath)
                 lx.eval('smo.GC.RenderThumbPreset')
                 lx.eval('select.preset path:{%s} mode:remove' % MeshPreset_AbsPath)
@@ -266,5 +281,6 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
                     lx.eval("transform.channel rot.X {%s}" % rad(WRX))
                     lx.eval("transform.channel rot.Y {%s}" % rad(WRY))
                     lx.eval("transform.channel rot.Z {%s}" % rad(WRZ))
+
 
 lx.bless(SMO_GC_ExportMeshAsMeshPreset_Cmd, Command_Name)
