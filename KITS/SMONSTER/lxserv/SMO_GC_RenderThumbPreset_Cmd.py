@@ -13,7 +13,7 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 # ---------------------------------------
 
-import lx, lxu, modo
+import lx, lxu, modo, time, sys
 
 Command_Name = "smo.GC.RenderThumbPreset"
 
@@ -47,9 +47,9 @@ class SMO_GC_RenderThumbPreset_Cmd(lxu.command.BasicCommand):
         return True
 
     def basic_Execute(self, msg, flags):
-        scene = modo.scene.current()
-
+        # scene = modo.scene.current()
         OriginalViewState = lx.eval('view3d.projection ?')
+        print(OriginalViewState)
         try:
             SelPrstPBPath = lxu.select.PresetPathSelection().current()[-1][0]
         except:
@@ -60,10 +60,9 @@ class SMO_GC_RenderThumbPreset_Cmd(lxu.command.BasicCommand):
             sys.exit()
         # lx.out(SelPrstPBPath)
 
-
-        kitpath = lx.eval("query platformservice alias ? {kit_SMO_GAME_CONTENT:Scenes/ThumbnailMaker_Template_ColoredBG.lxo}")
+        kitpath = lx.eval(
+            "query platformservice alias ? {kit_SMO_GAME_CONTENT:Scenes/ThumbnailMaker_Template_ColoredBG.lxo}")
         lx.eval('scene.open {%s} normal' % kitpath)
-
 
         BGColor = modo.Vector3(0.0, 0.0, 0.0)
         BGColor = lx.eval('user.value SMO_UseVal_ThumbBG_Color ?')
@@ -72,7 +71,6 @@ class SMO_GC_RenderThumbPreset_Cmd(lxu.command.BasicCommand):
         lx.eval('item.channel constant$color {%s}' % BGColor)
         lx.eval('smo.GC.DeselectAll')
 
-
         lx.eval('select.preset {%s} add' % SelPrstPBPath)
         lx.eval('select.filepath {%s} add' % SelPrstPBPath)
         lx.eval('preset.do')
@@ -80,7 +78,6 @@ class SMO_GC_RenderThumbPreset_Cmd(lxu.command.BasicCommand):
         lx.out('MeshPreset name', MeshPreset_Name)
         MeshPreset_ID = modo.Item().id
         lx.out('MeshPreset ID', MeshPreset_ID)
-
 
         # Move Center Position to Center of Available Polygons.
         lx.eval('select.type polygon')
@@ -92,10 +89,10 @@ class SMO_GC_RenderThumbPreset_Cmd(lxu.command.BasicCommand):
         lx.eval('!transform.channel pos.Y 0.0')
         lx.eval('!transform.channel pos.Z 0.0')
 
-
         lx.eval('view3d.projection cam')
         lx.eval('view3d.renderCamera')
         lx.eval('camera.fit true false')
+        lx.eval('view3d.projection psp')
 
         lx.eval('group.create TARGET std selItems')
         SelGroup_Name = modo.Item().name
@@ -121,6 +118,7 @@ class SMO_GC_RenderThumbPreset_Cmd(lxu.command.BasicCommand):
         # lx.eval('camera.autofocus')
 
         lx.eval('render')
+        time.sleep(0.5)
         lx.eval('preset.thumbReplace image:render')
         lx.eval('!render.clearAll')
         lx.eval('renderWindow.close')
