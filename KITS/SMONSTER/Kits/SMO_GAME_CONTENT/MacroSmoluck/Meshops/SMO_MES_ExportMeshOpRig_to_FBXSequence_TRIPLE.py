@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+# ---------------------------------------
 # Name:         SMO_ExportMeshOpRig_to_FBXSequence
 # Version: 1.01
 #
@@ -12,12 +12,10 @@
 # Created:      03/12/2018
 # Modified:		19/03/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+# ---------------------------------------
 
-#import the necessary Python libraries
-import lx
-import os
-import modo
+# import the necessary Python libraries
+import lx, os, modo
 
 scene = modo.Scene()
 
@@ -35,12 +33,12 @@ scene = modo.Scene()
 
 # # make sure the SMO_REBEVEL directory exists, if not create it
 # if not os.path.exists(os.path.dirname(temp_path)):
-    # # try to create the directory. 
-    # try:
-        # os.makedirs(os.path.dirname(temp_path))
-    # except:
-        # # if that fails for any reason print out the error
-        # print(traceback.format_exc())
+# # try to create the directory.
+# try:
+# os.makedirs(os.path.dirname(temp_path))
+# except:
+# # if that fails for any reason print out the error
+# print(traceback.format_exc())
 
 # # replay name:"Save Scene As"
 # # here we just call the save as command with our new custom
@@ -48,23 +46,25 @@ scene = modo.Scene()
 # lx.eval('!scene.saveAs filename:"{}" format:"$LXOB" export:false'.format(temp_path))
 
 
-
-
-
 # init File Dialog
 try:
-	# Get the directory to export to.
-	lx.eval('dialog.setup fileSave')
-	lx.eval('dialog.title \"Select path to export to ...\"')
-	lx.eval('dialog.fileTypeCustom fbx \'Fbx\' \'*.fbx\' fbx')
-	lx.eval('dialog.open')
-	fullPath = lx.eval('dialog.result ?')
-	(dirPath, filename) = os.path.split(fullPath)
-	(shortFileName, extension) = os.path.splitext(filename)
-	
+    # Get the directory to export to.
+    lx.eval('dialog.setup fileSave')
+    lx.eval('dialog.title \"Select path to export to ...\"')
+    lx.eval('dialog.fileTypeCustom fbx \'Fbx\' \'*.fbx\' fbx')
+    lx.eval('dialog.open')
+    fullPath = lx.eval('dialog.result ?')
+    (dirPath, filename) = os.path.split(fullPath)
+    (shortFileName, extension) = os.path.splitext(filename)
+    print(fullPath)
+    print(dirPath)
+    print(filename)
+    print(shortFileName)
+    print(extension)
+
 except RuntimeError:
-	lx.out('script Stopped')
-	sys.exit
+    lx.out('script Stopped')
+    sys.exit
 
 # # store current scene
 # oldscene = lx.eval('query sceneservice scene.index ? current')
@@ -80,7 +80,6 @@ frame = frameStart
 
 # get selected items
 selectedMeshes = scene.selected
-
 
 ##########################
 # Vertex Map Analysis pass
@@ -132,47 +131,45 @@ lx.out('-')
 # lx.out('Vertex Map Selected and Index Test')
 
 # if Vmap_FirstSelected == Vmap_UVIndex:
-	# # Select the first UV Map
-	# lx.out('Good')
+# # Select the first UV Map
+# lx.out('Good')
 # elif Vmap_FirstSelected != Vmap_UVIndex:
-	# # Select the first UV Map
-	# lx.out('Bad')
-	
+# # Select the first UV Map
+# lx.out('Bad')
+
 # lx.out('-')
 # ##########################
 lx.out('-')
 
-##########################
-lx.out('<------------- START -------------->')
-lx.out('<--- UV Map Safety Check --->')
-	
-# Get info about the selected UVMap.
-UVmap_Selected = lx.evalN('query layerservice vmaps ? selected')
-UVmap_SelectedN = len(lx.evalN('query layerservice vmaps ? selected'))
-lx.out('Selected UV Map Index:', UVmap_SelectedN)
-
-
-if UVmap_SelectedN <= 0:
-	lx.eval('dialog.setup info')
-	lx.eval('dialog.title {Smoluck: Export MeshOp Rig to FBX Sequence:}')
-	lx.eval('dialog.msg {You must have a UV map selected to run this script.}')
-	lx.eval('dialog.open')
-	sys.exit()
-
-if UVmap_SelectedN > 1:
-	lx.eval('dialog.setup info')
-	lx.eval('dialog.title {Smoluck: Export MeshOp Rig to FBX Sequence:}')
-	lx.eval('dialog.msg {Please select Only One Vertex Map and run that script again.}')
-	lx.eval('dialog.open')
-	sys.exit()
-	
-
-UserUVMapName = lx.eval1('query layerservice vmap.name ? %s' %UVmap_Selected)
-lx.out('USER UV Map Name:', UserUVMapName)	
-	
-lx.out('<- UV Map Safety Check ->')
-lx.out('<------------- END -------------->')
-##########################
+# ##########################
+# lx.out('<------------- START -------------->')
+# lx.out('<--- UV Map Safety Check --->')
+#
+# # Get info about the selected UVMap.
+# UVmap_Selected = lx.evalN('query layerservice vmaps ? selected')
+# UVmap_SelectedN = len(lx.evalN('query layerservice vmaps ? selected'))
+# lx.out('Selected UV Map Index:', UVmap_SelectedN)
+#
+# if UVmap_SelectedN <= 0:
+#     lx.eval('dialog.setup info')
+#     lx.eval('dialog.title {Smoluck: Export MeshOp Rig to FBX Sequence:}')
+#     lx.eval('dialog.msg {You must have a UV map selected to run this script.}')
+#     lx.eval('dialog.open')
+#     sys.exit()
+#
+# if UVmap_SelectedN > 1:
+#     lx.eval('dialog.setup info')
+#     lx.eval('dialog.title {Smoluck: Export MeshOp Rig to FBX Sequence:}')
+#     lx.eval('dialog.msg {Please select Only One Vertex Map and run that script again.}')
+#     lx.eval('dialog.open')
+#     sys.exit()
+#
+# UserUVMapName = lx.eval1('query layerservice vmap.name ? %s' % UVmap_Selected)
+# lx.out('USER UV Map Name:', UserUVMapName)
+#
+# lx.out('<- UV Map Safety Check ->')
+# lx.out('<------------- END -------------->')
+# ##########################
 
 
 #########################
@@ -191,76 +188,74 @@ lx.out('<------------- END -------------->')
 
 # Define a tag on the selected mesh item, in order to select it back during the process.
 try:
-	lx.eval('select.editSet SOURCE_MESH add')
-	lx.eval('select.drop item')
-	lx.eval('!scene.save')
-	
-except:
-	lx.eval('sys.exit()')
+    lx.eval('select.editSet SOURCE_MESH add')
+    lx.eval('select.drop item')
+    lx.eval('!scene.save')
 
-	
+except:
+    lx.eval('sys.exit()')
+
 ###########-LOOP START-############
 lx.out('<------------------ START ------------------->')
 lx.out('<--- Smoluck: Export MeshOp Rig to FBX Sequence Script --->')
 lx.out('-')
 
 while frame <= frameEnd:
-		lx.eval('select.useSet SOURCE_MESH select')
-		# Freeze the Meshop Stack
-		lx.eval('deformer.freeze false')
-		
-		# Set the active UV Map
-		lx.eval('select.vertexMap {%s} txuv replace' % UserUVMapName)
+    lx.eval('select.useSet SOURCE_MESH select')
+    # Freeze the Meshop Stack
+    lx.eval('deformer.freeze false')
 
-		# Create Mikk Tangent Space Map
-		# lx.eval('mesh.mikktspacegen')
-		# lx.out('Mikk Tangent Space Map for Mesh "%s" created' % frame )
-		
-		# Select all the Meshes in the Scene
-		lx.eval('select.itemType mesh')
-		# Deselect the Mesh to export
-		lx.eval('select.useSet SOURCE_MESH deselect')
-		# Delete Unnecessary Meshes
-		lx.eval('!delete')
-		# Select again the Mesh to Export
-		lx.eval('select.useSet SOURCE_MESH select')
-		# save result mesh to a file
-		fbxPath = dirPath + '\\' + shortFileName + '_' + str(frame) + '.fbx'
-		output_dir = lx.eval1 ('dialog.result ?')
-		
-		# Set the FBX Export seetings using Defined Preset for Unity.
-		lx.eval('preset.fbx SMO_MeshopsAnimToFBX_Triple')
-		
-		### DEFINE the FBX Export Type: Selection OR Selection with Hierarchy ###
-		###
-		# Get the current FBX Export setting.
-		# fbx_export_setting = lx.eval1 ('user.value sceneio.fbx.save.exportType ?')
-		# Set the FBX Export setting to export selection.	
-		# lx.eval('user.value sceneio.fbx.save.exportType FBXExportSelection')
-		# Set the FBX Export setting to export selection with hierarchy children.
-		# lx.eval('user.value sceneio.fbx.save.exportType FBXExportSelectionWithHierarchy')
-		
-		# Export to FBX.
-		lx.eval('!scene.saveAs "%s" fbx true' % fbxPath)
-		#lx.eval('!scene.saveAs {%s} FBX 2018' % {fbxPath})
+    # Set the active UV Map
+    # lx.eval('select.vertexMap {%s} txuv replace' % UserUVMapName)
 
+    # Create Mikk Tangent Space Map
+    # lx.eval('mesh.mikktspacegen')
+    # lx.out('Mikk Tangent Space Map for Mesh "%s" created' % frame )
 
-		# Revert to Scene Orignal State
-		lx.eval('!scene.revert')
-		
-		# go to a next frame 
-		timePos = lx.eval('select.time ?')
-		lx.eval('select.time %s' % timePos)
-		lx.eval('time.step frame next')
-		
-		# Save scene at frame 1
-		lx.eval('!scene.save')
-		
-		lx.out('Mesh "%s" Exported to FBX' % frame )
-		lx.out('-')
-	
-		frame += 1
-		
+    # Select all the Meshes in the Scene
+    lx.eval('select.itemType mesh')
+    # Deselect the Mesh to export
+    lx.eval('select.useSet SOURCE_MESH deselect')
+    # Delete Unnecessary Meshes
+    lx.eval('!delete')
+    # Select again the Mesh to Export
+    lx.eval('select.useSet SOURCE_MESH select')
+    # save result mesh to a file
+    fbxPath = dirPath + '\\' + shortFileName + '_' + str(frame) + '.fbx'
+    output_dir = lx.eval1('dialog.result ?')
+
+    # Set the FBX Export seetings using Defined Preset for Unity.
+    lx.eval('preset.fbx SMO_MeshopsAnimToFBX_Triple')
+
+    ### DEFINE the FBX Export Type: Selection OR Selection with Hierarchy ###
+    ###
+    # Get the current FBX Export setting.
+    # fbx_export_setting = lx.eval1 ('user.value sceneio.fbx.save.exportType ?')
+    # Set the FBX Export setting to export selection.
+    # lx.eval('user.value sceneio.fbx.save.exportType FBXExportSelection')
+    # Set the FBX Export setting to export selection with hierarchy children.
+    # lx.eval('user.value sceneio.fbx.save.exportType FBXExportSelectionWithHierarchy')
+
+    # Export to FBX.
+    lx.eval('!scene.saveAs "%s" fbx true' % fbxPath)
+    # lx.eval('!scene.saveAs {%s} FBX 2018' % {fbxPath})
+
+    # Revert to Scene Orignal State
+    lx.eval('!scene.revert')
+
+    # go to a next frame
+    timePos = lx.eval('select.time ?')
+    lx.eval('select.time %s' % timePos)
+    lx.eval('time.step frame next')
+
+    # Save scene at frame 1
+    lx.eval('!scene.save')
+
+    lx.out('Mesh "%s" Exported to FBX' % frame)
+    lx.out('-')
+
+    frame += 1
+
 ###########-LOOP END-############
 lx.out('<--- Smoluck: Export MeshOp Rig to FBX Sequence Script --->')
 lx.out('<------------------ END ------------------->')
