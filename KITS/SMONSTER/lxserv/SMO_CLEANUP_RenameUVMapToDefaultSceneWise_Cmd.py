@@ -76,7 +76,6 @@ class SMO_CLEANUP_RenameUVMapToDefaultSceneWise_Cmd(lxu.command.BasicCommand):
         #    UVMapCountList.append(DetectedVMapCount)
         #    lx.eval('smo.GC.ClearSelectionVmap 1 1')
 
-
         for mesh in scn.items('mesh'):
             mesh.select(True)
             lx.eval('smo.GC.ClearSelectionVmap 1 1')
@@ -85,31 +84,29 @@ class SMO_CLEANUP_RenameUVMapToDefaultSceneWise_Cmd(lxu.command.BasicCommand):
                 mapObj = lx.object.MeshMap(map)
                 VMap_Name = mapObj.Name()
                 VMap_Type = mapObj.Type()
-                if mapObj.Type() == 1415075158 :
-                    #print ('UVmap Name is %s' % VMap_Name)
+                if mapObj.Type() == 1415075158:
+                    # print ('UVmap Name is %s' % VMap_Name)
                     VMap_CountList.append("True")
                     VMap_NameList.append(VMap_Name)
                     UVMapNameList.append(VMap_Name)
             # print(VMap_NameList)
-            if VMap_NameList == CheckEmptyList and VMap_CountList == CheckEmptyList :
-        #        VMap_NameList.append("Empty")
-        #        UVMapCountList.append("Empty")
-                 print('No UVMap')
-                 ZeroUVMap = True
-            if VMap_NameList != CheckEmptyList and VMap_CountList != CheckEmptyList :
+            if VMap_NameList == CheckEmptyList and VMap_CountList == CheckEmptyList:
+                #        VMap_NameList.append("Empty")
+                #        UVMapCountList.append("Empty")
+                print('No UVMap')
+                ZeroUVMap = True
+            if VMap_NameList != CheckEmptyList and VMap_CountList != CheckEmptyList:
                 UVMapCountList.append(len(VMap_CountList))
                 ZeroUVMap = False
                 print('Detected UV Map count %s:' % (len(VMap_NameList)))
-                #print('UVmap Detected', VMap_CountList)
+                # print('UVmap Detected', VMap_CountList)
 
-            if ZeroUVMap == False :
+            if ZeroUVMap == False:
                 lx.eval('select.vertexMap {%s} txuv replace' % (VMap_NameList[0]))
                 DetectedVMapName = lx.eval('vertMap.list txuv ?')
-                if DetectedVMapName != DefaultUVMapName :
+                if DetectedVMapName != DefaultUVMapName:
                     lx.eval('vertMap.rename {%s} {%s} txuv active' % ((VMap_NameList[0]), DefaultUVMapName))
-                    lx.out('UVMap {%s} renamed to {%s}'% ((VMap_NameList[0]), DefaultUVMapName))
-            if ZeroUVMap == True :
-                lx.out('UVMap Renaming skipped, because not Detected')
+                    lx.out('UVMap {%s} renamed to {%s}' % ((VMap_NameList[0]), DefaultUVMapName))
             lx.eval('smo.GC.ClearSelectionVmap 1 1')
             del VMap_NameList[:]
             del VMap_CountList[:]
@@ -118,6 +115,12 @@ class SMO_CLEANUP_RenameUVMapToDefaultSceneWise_Cmd(lxu.command.BasicCommand):
             del UVMapCountList[:]
             # print('---------')
             # print('---------')
+
+            #Bugfix to create empty UV map if not present
+            if ZeroUVMap == True:
+                lx.out('UVMap Renaming skipped, because not Detected')
+                lx.eval('vertMap.new {%s} txuv' % DefaultUVMapName)
+                lx.out('New UVMap {%s} created as it was missing' % DefaultUVMapName)
         del CheckEmptyList[:]
         del ZeroUVMap
         lx.eval('smo.GC.DeselectAll')
