@@ -26,7 +26,9 @@ class SMO_UV_GetUVMapCountName_Cmd(lxu.command.BasicCommand):
         self.dyna_Add("Check UV Map Only on Selected Mesh", lx.symbol.sTYPE_INTEGER)
         self.basic_SetFlags (1, lx.symbol.fCMDARG_OPTIONAL)
         self.dyna_Add("Set and Store Selected UV Map Name", lx.symbol.sTYPE_INTEGER)
-        self.basic_SetFlags (1, lx.symbol.fCMDARG_OPTIONAL)
+        self.basic_SetFlags (2, lx.symbol.fCMDARG_OPTIONAL)
+        self.dyna_Add("Clear Other Vmap Selection", lx.symbol.sTYPE_INTEGER)
+        self.basic_SetFlags (3, lx.symbol.fCMDARG_OPTIONAL)
 
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
@@ -59,14 +61,15 @@ class SMO_UV_GetUVMapCountName_Cmd(lxu.command.BasicCommand):
         CheckUVMapSceneWise = self.dyna_Int (0)
         CheckUVMapOnlySelected = self.dyna_Int (1)
         SetSelectedUVMapName = self.dyna_Int (2)
+        ClearOtherVmapSelection  = self.dyna_Int (3)
         
-        
-        # lx.eval('smo.GC.ClearSelectionVmap 2 1')
-        # lx.eval('smo.GC.ClearSelectionVmap 3 1')
-        # lx.eval('smo.GC.ClearSelectionVmap 4 1')
-        # lx.eval('smo.GC.ClearSelectionVmap 5 1')
-        # lx.eval('smo.GC.ClearSelectionVmap 6 1')
-        # lx.eval('smo.GC.ClearSelectionVmap 7 1')
+        if ClearOtherVmapSelection == 1:
+            lx.eval('smo.GC.ClearSelectionVmap 2 1')
+            lx.eval('smo.GC.ClearSelectionVmap 3 1')
+            lx.eval('smo.GC.ClearSelectionVmap 4 1')
+            lx.eval('smo.GC.ClearSelectionVmap 5 1')
+            lx.eval('smo.GC.ClearSelectionVmap 6 1')
+            lx.eval('smo.GC.ClearSelectionVmap 7 1')
         
         
         if CheckUVMapSceneWise == 1 :
