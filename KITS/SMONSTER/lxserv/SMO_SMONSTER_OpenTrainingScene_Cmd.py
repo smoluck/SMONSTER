@@ -113,6 +113,9 @@ class SMO_SMONSTER_OpenTrainingScene_Cmd(lxu.command.BasicCommand):
 
         if SCENE_ID == 30 :
             filePathToOpen = lx.eval("query platformservice alias ? {kit_SMONSTER:TRAINING_SCENES/SMO_MARMOSET_TOOLBAG_LIVELINK/SMO_MARMOSET_TOOLBAG_LIVELINK_Send.lxo}")
+
+        if SCENE_ID == 31 :
+            filePathToOpen = lx.eval("query platformservice alias ? {kit_SMONSTER:TRAINING_SCENES/SMO_GAME_CONTENT/SMO_GC_SimplifyToNGon.lxo}")
             
             
             
