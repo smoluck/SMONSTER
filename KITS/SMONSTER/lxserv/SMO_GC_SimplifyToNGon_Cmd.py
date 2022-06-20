@@ -60,9 +60,6 @@ class SMO_GC_SimplifyToNGon_Cmd(lxu.command.BasicCommand):
         return True
         
     def basic_Execute(self, msg, flags):
-        scene = modo.scene.current()
-        mesh = modo.Mesh()
-
         def scene_info():
             return modo.scene.current()
             
@@ -91,8 +88,9 @@ class SMO_GC_SimplifyToNGon_Cmd(lxu.command.BasicCommand):
             return modo.Mesh(item_id()).geometry.polygons
             
         def prepare_hardsoft():
-            Mesh_Cible = scene.selectedByType('mesh')[0]
-            
+            scene_ph = modo.scene.current()
+            Mesh_Cible = scene_ph.selectedByType('mesh')[0]
+
             SetHardEdge = self.dyna_Bool (0)
             if SetHardEdge:
                 lx.eval('hardedge.select hard')
@@ -105,13 +103,14 @@ class SMO_GC_SimplifyToNGon_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.type item')
 
         def simplifytongon():
-            Mesh_A = scene.selectedByType('mesh')[0]
-            
+            scene_sngon = modo.scene.current()
+            Mesh_DataRaw = scene_sngon.selectedByType('mesh')[0]
+
             SetHardEdge = self.dyna_Bool (0)
-            
+
             # print "YOU GOT ME!! I'M A MESH ITEM !!" if item_is_a_mesh() else "PLEASE TRY AGAIN!!"
-            
-            
+
+
             # Create the monitor item
             mon = lx.Monitor()
             # mon.init(len(mesh_layer_visible_poly))
@@ -124,10 +123,10 @@ class SMO_GC_SimplifyToNGon_Cmd(lxu.command.BasicCommand):
                     # for p in mesh_layer_poly_list():
                     #     print p.index
                     #     #PolyPack.append(p.index)
-                    PolyPack = list(Mesh_A.geometry.polygons)
+                    PolyPack = list(Mesh_DataRaw.geometry.polygons)
             # print(PolyPack)
-            
-            
+
+
             # Selecting the first Polygon in the list, extend to connected, then try to Remove those polygons from the original list of Polygons "PolyPack".
             if item_is_a_mesh():
                 # print(mesh_layer_visible_poly())
@@ -136,22 +135,22 @@ class SMO_GC_SimplifyToNGon_Cmd(lxu.command.BasicCommand):
                     lx.eval('select.type polygon')
                     PolyPack[0].select()
                     lx.eval('smo.GC.SelectCoPlanarPoly 2 1')
-                    
-                    processed_poly = list(Mesh_A.geometry.polygons.selected)
+
+                    processed_poly = list(Mesh_DataRaw.geometry.polygons.selected)
                     # print(processed_poly)
                     # for item in processed_poly:
                     #     PolyPack.remove(item)
-                    
-                    if len(Mesh_A.geometry.polygons.selected) > 1:
+
+                    if len(Mesh_DataRaw.geometry.polygons.selected) > 1:
                         lx.eval('!poly.merge')
-                    
+
                     if SetHardEdge :
                         #HardEdge at all Geometry Boundary
-                        CountSoftPolys = len(Mesh_A.geometry.polygons.selected)
+                        CountSoftPolys = len(Mesh_DataRaw.geometry.polygons.selected)
                         if CountSoftPolys > 0:
                             lx.eval('select.editSet SimplifyData add')
                             lx.eval('script.run "macro.scriptservice:92663570022:macro"')
-                            CountSoftEdges = len(Mesh_A.geometry.edges.selected)
+                            CountSoftEdges = len(Mesh_DataRaw.geometry.edges.selected)
                             if CountSoftEdges > 0:
                                 lx.eval('hardedge.set hard')
                             lx.eval('select.drop edge')
@@ -164,47 +163,47 @@ class SMO_GC_SimplifyToNGon_Cmd(lxu.command.BasicCommand):
                             lx.eval('select.drop edge')
                             lx.eval('select.type polygon')
                             #lx.eval('!select.deleteSet SimplifyData')
-                        
+
                     # merged_poly = list(first_item_selected().geometry.polygons.selected)
                     # print(merged_poly)
                     lx.eval('smo.CAD.CopyCutAsChildOfCurrentMesh true true')
                     del PolyPack [:]
-                    
+
                     # Update the amount of polygons on mesh
                     if mesh_layer_poly_count() > 0:
                         # for p in mesh_layer_poly_list():
                         #     print p.index
                         # #PolyPack.append(p.index)
-                        PolyPack = list(Mesh_A.geometry.polygons)
+                        PolyPack = list(Mesh_DataRaw.geometry.polygons)
                     # print(PolyPack)
-                    
+
                     AfterProcessing = len(PolyPack)
                     # print('After Processing a set of Polygons, poly count left over:', AfterProcessing)
                     # for item in merged_poly:
                     #     PolyPack.remove(item)
                     del processed_poly [:]
                     # del merged_poly [:]
-                    
+
                     # mon.step(1)
                     mon.step()
-            
-            
+
+
             lx.eval('select.type item')
-            
+
             lx.eval('select.itemHierarchy')
-            scene.deselect(Mesh_A)
+            scene_sngon.deselect(Mesh_DataRaw)
             lx.eval('select.type polygon')
             lx.eval('select.all')
             lx.eval('cut')
-            scene.select(Mesh_A)
+            scene_sngon.select(Mesh_DataRaw)
             lx.eval('paste')
             lx.eval('script.run "macro.scriptservice:92663570022:macro"')
             lx.eval('select.convert vertex')
             lx.eval('!vert.merge fixed false 0.00001 false false')
             lx.eval('select.itemHierarchy')
-            scene.deselect(Mesh_A)
+            scene_sngon.deselect(Mesh_DataRaw)
             lx.eval('!delete')
-            scene.select(Mesh_A)
+            scene_sngon.select(Mesh_DataRaw)
 
             if SetHardEdge :
                 # HardEdge at all Geometry Boundary
@@ -214,7 +213,8 @@ class SMO_GC_SimplifyToNGon_Cmd(lxu.command.BasicCommand):
             # lx.eval('select.drop item')
 
         def update_hardsoft():
-            Mesh_Update = scene.selectedByType('mesh')[0]
+            scene_uh = modo.scene.current()
+            Mesh_Update = scene_uh.selectedByType('mesh')[0]
 
             lx.eval('select.type edge')
             lx.eval('select.useSet Softtttt select')
@@ -228,9 +228,43 @@ class SMO_GC_SimplifyToNGon_Cmd(lxu.command.BasicCommand):
             lx.eval('select.drop edge')
             lx.eval('select.type item')
 
+
+        scene_exec = modo.scene.current()
+        mesh = modo.Mesh()
+
         prepare_hardsoft()
+
+        Mesh_Source = scene_exec.selectedByType('mesh')[0]
+
+        lx.eval('select.type polygon')
+        lx.eval('select.all')
+        CountPolygons = len(Mesh_Source.geometry.polygons.selected)
+        if CountPolygons > 0:
+            lx.eval('cut')
+        lx.eval('smo.GC.CreateEmptyChildMeshMatchTransform true')
+        lx.eval('select.type polygon')
+        lx.eval('paste')
+        lx.eval('select.drop polygon')
+        lx.eval('select.type item')
+        Mesh_Data = scene_exec.selectedByType('mesh')[0]
+
         simplifytongon()
         update_hardsoft()
+
+        lx.eval('select.drop item')
+        scene_exec.select(Mesh_Data)
+        lx.eval('select.type polygon')
+        lx.eval('select.all')
+        lx.eval('cut')
+        lx.eval('select.type item')
+        scene_exec.select(Mesh_Source)
+        lx.eval('paste')
+        lx.eval('select.drop polygon')
+
+        lx.eval('select.type item')
+        scene_exec.select(Mesh_Data)
+        lx.eval('!delete')
+        scene_exec.select(Mesh_Source)
 
 
 lx.bless(SMO_GC_SimplifyToNGon_Cmd, Command_Name)

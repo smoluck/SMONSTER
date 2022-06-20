@@ -146,7 +146,9 @@ class SMO_GC_ChamferEdgesByUnit_Cmd(lxu.command.BasicCommand):
                 lx.eval('tool.setAttr edge.chamfer segments %s' % EdgeCount)
                 lx.eval('tool.setAttr edge.chamfer shape round')
                 lx.eval('tool.setAttr edge.chamfer edgeEnd profile')
-                lx.eval('tool.setAttr edge.chamfer stopAtEdge true')
+
+                # Disable the Bevel Clamping. If the value is higher than the smallest thickness it will clamp that value. Better to disable this.
+                lx.eval('tool.setAttr edge.chamfer stopAtEdge false')
                 lx.eval('tool.setAttr edge.chamfer autoWeld false')
                 lx.eval('tool.setAttr edge.chamfer parallel true')
                 lx.eval('tool.setAttr edge.chamfer coplanar false')

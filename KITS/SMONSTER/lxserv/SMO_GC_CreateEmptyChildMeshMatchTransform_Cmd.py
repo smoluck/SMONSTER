@@ -1,58 +1,30 @@
 # python
 # ---------------------------------------
-# Name:         SMO_CAD_CopyAsChildOfCurrentMesh_Cmd.py
+# Name:         SMO_GC_CreateEmptyChildMeshMatchTransform_Cmd.py.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to:
-#               Copy selected Polygons to a new mesh as a child of the current mesh item.
+#               Create a new child Mesh Item (empty) on current selected mesh item.
 #
 #
 # Author:       Franck ELISABETH
 # Website:      http://www.smoluck.com
 #
-# Created:      07/05/2021
+# Created:      20/06/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
 # ---------------------------------------
 
 import lx, lxu, modo
 
-Command_Name = "smo.CAD.CopyCutAsChildOfCurrentMesh"
-# 4th Argument set to "True" will select resulting mesh instead of source
-# smo.CAD.CopyCutAsChildOfCurrentMesh 0 1 1 true        Copy Polygon Similar Touching -- To Visible Mesh - And Select that new Mesh
+Command_Name = "smo.GC.CreateEmptyChildMeshMatchTransform"
 
-# smo.CAD.CopyCutAsChildOfCurrentMesh 0 1          Copy Polygon Selection -- To Visible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 0 1 1        Copy Polygon Similar Touching -- To Visible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 0 1 2        Copy Polygon Similar Object -- To Visible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 0 1 3        Copy Polygon Similar on Layer -- To Visible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 0 1 4        Copy Connected Polygons -- To Visible Mesh
+# smo.CAD.CreateEmptyChildMatchTransform true        Select that new child Mesh
 
-# smo.CAD.CopyCutAsChildOfCurrentMesh 1 1          Cut Polygon Selection -- To Visible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 1 1 1        Cut Polygon Similar Touching -- To Visible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 1 1 2        Cut Polygon Similar Object -- To Visible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 1 1 3        Cut Polygon Similar on Layer -- To Visible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 1 1 4        Cut Connected Polygons -- To Visible Mesh
-
-# smo.CAD.CopyCutAsChildOfCurrentMesh 0 0          Copy Polygon Selection -- To Invisible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 0 0 1        Copy Polygon Similar Touching -- To Invisible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 0 0 2        Copy Polygon Similar Object -- To Invisible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 0 0 3        Copy Polygon Similar on Layer -- To Invisible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 0 0 4        Copy Connected Polygons -- To Invisible Mesh
-
-# smo.CAD.CopyCutAsChildOfCurrentMesh 1 0          Cut Polygon Selection -- To Invisible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 1 0 1        Cut Polygon Similar Touching -- To Invisible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 1 0 2        Cut Polygon Similar Object -- To Invisible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 1 0 3        Cut Polygon Similar on Layer -- To Invisible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 1 0 4        Cut Connected Polygons -- To Invisible Mesh
-
-class SMO_CAD_CopyCutAsChildOfCurrentMesh_Cmd(lxu.command.BasicCommand):
+class SMO_GC_CreateEmptyChildMatchTransform_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
-        self.dyna_Add("Cut Mode", lx.symbol.sTYPE_BOOLEAN)
-        self.dyna_Add("Visibility Mode", lx.symbol.sTYPE_BOOLEAN)
-        self.dyna_Add("Coplanar Mode / Connected Mode", lx.symbol.sTYPE_INTEGER)
-        self.basic_SetFlags(2, lx.symbol.fCMDARG_OPTIONAL)
         self.dyna_Add("SelectCopyCutResultMesh Mode", lx.symbol.sTYPE_BOOLEAN)
-        self.basic_SetFlags(3, lx.symbol.fCMDARG_OPTIONAL)
+        self.basic_SetFlags(0, lx.symbol.fCMDARG_OPTIONAL)
 
         self.SelModePoly = bool(lx.eval1("select.typeFrom typelist:polygon;vertex;edge;item ?"))
 
@@ -63,47 +35,30 @@ class SMO_CAD_CopyCutAsChildOfCurrentMesh_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO CAD CopyAsChildOfCurrentMesh'
+        return 'SMO GC CreateEmptyChildMeshMatchTransform'
 
     def cmd_Desc(self):
-        return 'Copy selected Polygons to a new mesh as a child of the current mesh item.'
+        return 'Create a new child Mesh Item (empty) on current selected mesh item.'
 
     def cmd_Tooltip(self):
-        return 'Copy selected Polygons to a new mesh as a child of the current mesh item.'
+        return 'Create a new child Mesh Item (empty) on current selected mesh item.'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO CAD CopyAsChildOfCurrentMesh'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'smo.GC.CreateEmptyChildMeshMatchTransform'
 
     def basic_Enable(self, msg):
         return True
 
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
-        if self.dyna_IsSet(0):
-            CopyOrCut = self.dyna_Bool(0)
-            #lx.out('Cut Mode:', CopyOrCut)
-        if self.dyna_IsSet(1):
-            VisibleMode = self.dyna_Bool(1)
-            #lx.out('Visibility Mode:', VisibleMode)
-        if self.dyna_IsSet(2):
-            CoplanarConnectedMode = self.dyna_Int(2)
-            #lx.out('Coplanar Mode / Connected Mode:', CoplanarConnectedMode)
-            # 0/None    Cut Polygon Selection
-            # 1         Cut Polygon Similar Touching
-            # 2         Cut Polygon Similar Object
-            # 3         Cut Polygon Similar on Layer
-            # 4         Cut Connected Polygons
 
         SelectCopyCutResultMesh = bool()
-        if self.dyna_IsSet(3):
-            SelectCopyCutResultMesh = self.dyna_Bool(3)
-        elif self.dyna_Bool(3) == None:
+        if self.dyna_IsSet(0):
+            SelectCopyCutResultMesh = self.dyna_Bool(0)
+        elif self.dyna_Bool(0) == None:
             SelectCopyCutResultMesh = False
 
         if self.SelModePoly == True:
@@ -192,20 +147,6 @@ class SMO_CAD_CopyCutAsChildOfCurrentMesh_Cmd(lxu.command.BasicCommand):
         Mesh_Source_ID = Mesh_Source.Ident()
         # lx.out('Source Mesh:', Mesh_Source_ID)
 
-        if self.dyna_IsSet(2):
-            if CoplanarConnectedMode == 1:
-                lx.eval('smo.GC.SelectCoPlanarPoly 0 2 0.0')
-            if CoplanarConnectedMode == 2:
-                lx.eval('smo.GC.SelectCoPlanarPoly 1 2 1000')
-            if CoplanarConnectedMode == 3:
-                lx.eval('smo.GC.SelectCoPlanarPoly 2 2 1000')
-            if CoplanarConnectedMode == 4:
-                lx.eval('select.connect')
-
-        if CopyOrCut == False:
-            lx.eval('copy')
-        if CopyOrCut == True:
-            lx.eval('cut')
         lx.eval('layer.new')
 
         Mesh_Child = scene.selectedByType('mesh')[0]
@@ -216,20 +157,12 @@ class SMO_CAD_CopyCutAsChildOfCurrentMesh_Cmd(lxu.command.BasicCommand):
         lx.eval('smo.GC.DeselectAll')
 
         scene.select(Mesh_Child_ID)
-        lx.eval('paste')
-        lx.eval('select.drop polygon')
-
-        if VisibleMode == 0:
-            lx.eval('select.type item')
-            lx.eval('hide.sel')
-            lx.eval('select.type polygon')
-            #lx.eval('layer.setVisibility')
+        lx.eval('select.type item')
 
         if SelectCopyCutResultMesh == False:
             scene.select(Mesh_Source_ID)
         if SelectCopyCutResultMesh == True:
             scene.select(Mesh_Child_ID)
-        lx.eval('select.drop polygon')
 
 
 
@@ -256,4 +189,4 @@ class SMO_CAD_CopyCutAsChildOfCurrentMesh_Cmd(lxu.command.BasicCommand):
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_CAD_CopyCutAsChildOfCurrentMesh_Cmd, Command_Name)
+lx.bless(SMO_GC_CreateEmptyChildMatchTransform_Cmd, Command_Name)
