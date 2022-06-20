@@ -4,6 +4,10 @@ Hi. Everyone
 -----------------
 ---- UPDATES ----
 -----------------
+- 2.00 -
+        • PopUp menu updated
+        • Support for SLDPRT added as Input file format (CAD file - Solidworks)
+
 - 1.70 -
         • Bugfix on Opening SVG/DXF/FBX/LXO Files that was Empty. Causing Batch script to stop as there was no data to treat. (Load SVG/DXF/FBX/LXO) Now it's removing files that are empty from the conversion filepath list.
 

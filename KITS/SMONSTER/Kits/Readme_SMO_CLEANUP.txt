@@ -4,6 +4,20 @@ Hi. Everyone
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 2.50 -
+        • PopUp menu updated
+        • New Command -->	smo.CLEANUP.ConvertAllSolidWorksShape
+                    (Search for all Solidworks Shape Items in the scene and convert them to regular Meshes. Delete the empty meshes in the process as well.)
+        • New Command -->	smo.CLEANUP.CleanupSolidWorksImport
+                    (Cleanup SolidWorks Import (from McMaster Website Data) in order to save a new scene with only one Mesh item of the imported asset. It will also convert the VertexNormals Data to HardEdgeWorkflow if needed.)
+        • New Command -->	smo.CLEANUP.DelEverythingExceptMeshes
+                    • (Select everything in the current scene, except Meshes items and delete all other items / materials. It unparent in place the current Meshes to preserve their position in space in case they were part of a hierarchy.)
+        • New Command -->	smo.CLEANUP.RemoveAllPartTags
+                    (Check for all Meshes in the current scene remove any part tags in it.)
+        • New Command -->	smo.CLEANUP.DelPreTransform
+                    (Freeze Scale transform of all meshes in scene but if there is instances, it retain Instances scale to 100 percent or -100 percent as well.)
+        • Bugfix smo.CLEANUP.RenameUVMapToDefaultSceneWise - (That command now create an empty UV map if one is missing using Default UVMap name from Preferences)
+
 - 2.00 -
         • Added Rename Vertex Normal Map by Modo Default name for imported FBX files --> ( FBX_normals)
         • Changed the Popup menu UI layout for better functions discoverability

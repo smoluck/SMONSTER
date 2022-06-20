@@ -3,6 +3,24 @@ Hi. Everyone
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 10.00 -
+        • Update on FBX Preset Pop Up Menu to expose more options.
+        • New Command -->	smo.GC.ConvertToHardEdgeWorkflowUsingGeoBoundaryAsHardEdge
+                    (On current Mesh item, convert Shading Method to HardEdge Workflow using geometry boundary as "HardEdge" and set all other Edges as "Smooth".)
+        • New Command -->	smo.GC.ExportMeshAsMeshPreset
+                    (Export current Mesh As MeshPreset LXL file into Target Path. (optional: Define Path destination as argument))
+        • New Command -->	smo.GC.ExportSelectedMeshesAsMeshPreset
+                    (Export Selected Meshes As MeshPreset LXL file into Target Path. (optional: Define Path destination as argument))
+        • New commands for MicroBevel Workflow:
+              • New Command -->	smo.GC.SimplifyToNGon & smo.GC.MultiSimplifyToNGon
+                    (Merge every polygons that have same coplanar polygon direction to simplify a given set of meshes. Via argument you can also update the HardEdges data for a better end result.)
+              • New Command -->	smo.GC.MicroBevelHardEdgesAndUpdateToSoften & smo.GC.MultiMicroBevelHardEdgesAndUpdateToSoften
+                    (Micro Bevel HardEdges (usually after a SimplyToNgon), then Soften all edges.)
+              • New Command -->	smo.GC.ModollamaRebuildNGontoTriangle & smo.GC.MultiModollamaRebuildNGontoTriangle
+                    (Rebuild all NGons via Modollama Triangulation command to output Triangles.)
+        • Bugfix on smo.GC.RenderThumbPreset
+
+
 - 9.10 -
         • Fixed an issue with Error message populating the Event Log, while using the smo.GC.SetNewMaterialSmartRename command as well as the Quick Tag - Set Mat Color ID commands.
         • (Remap the SMO GAME CONTENT MainKeymaps as the smo.GC.SetNewMaterialSmartRename now need a Boolean Argument at the end. --> "smo.GC.SetNewMaterialSmartRename 1" to show Modo Color Picker at launch)

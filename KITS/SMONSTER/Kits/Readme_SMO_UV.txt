@@ -4,6 +4,10 @@ Hi. Everyone
 --- UPDATE LOG ---
 ----------------------
 - 3.00 -
+        • Menu and Icons (Big UI refresh)
+        • Bugfix (Get UVMap Count argument not correctly exposed. It adds also a 4th argument to deselect all maps except UV maps)
+
+- 3.00 -
         • Bugfix on UnwrapCylindrical to disable Auto RelaxUV Island if the Unwrap Rectangle was True and AutoRelax was True, in order to keep Rectangle result in output.
 
 - 2.80 -

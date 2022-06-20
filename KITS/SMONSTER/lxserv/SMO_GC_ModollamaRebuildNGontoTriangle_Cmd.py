@@ -4,7 +4,7 @@
 # Version:      1.0
 #
 # Purpose:      This Command is designed to
-#               Rebuild all NGons via Modollama Triangulation command to output Triangles
+#               Rebuild all NGons via Modollama Triangulation command to output Triangles.
 #
 # Author:       Franck ELISABETH
 # Website:      http://www.smoluck.com

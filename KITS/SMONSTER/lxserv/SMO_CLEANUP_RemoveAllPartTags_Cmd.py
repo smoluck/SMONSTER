@@ -31,10 +31,10 @@ class SMO_CLEANUP_RemoveAllPartTags_Cmd(lxu.command.BasicCommand):
         return 'SMO CLEANUP RemoveAllPartTags'
 
     def cmd_Desc(self):
-        return 'Check for all Meshes in the current scene and rename their First UVMap (by Index = 0) to Modo/Preferences/Defaults/Application name.'
+        return 'Check for all Meshes in the current scene remove any part tags in it.'
 
     def cmd_Tooltip(self):
-        return 'Check for all Meshes in the current scene and rename their First UVMap (by Index = 0) to Modo/Preferences/Defaults/Application name.'
+        return 'Check for all Meshes in the current scene remove any part tags in it.'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'

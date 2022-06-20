@@ -4,6 +4,48 @@
 
 
 -------------------------
+v3.50 - 2022/06/20
+GC:
+        • Update on FBX Preset Pop Up Menu to expose more options.
+        • New Command -->	smo.GC.ConvertToHardEdgeWorkflowUsingGeoBoundaryAsHardEdge
+                    (On current Mesh item, convert Shading Method to HardEdge Workflow using geometry boundary as "HardEdge" and set all other Edges as "Smooth".)
+        • New Command -->	smo.GC.ExportMeshAsMeshPreset
+                    (Export current Mesh As MeshPreset LXL file into Target Path. (optional: Define Path destination as argument))
+        • New Command -->	smo.GC.ExportSelectedMeshesAsMeshPreset
+                    (Export Selected Meshes As MeshPreset LXL file into Target Path. (optional: Define Path destination as argument))
+        • New commands for MicroBevel Workflow:
+              • New Command -->	smo.GC.SimplifyToNGon & smo.GC.MultiSimplifyToNGon
+                    (Merge every polygons that have same coplanar polygon direction to simplify a given set of meshes. Via argument you can also update the HardEdges data for a better end result.)
+              • New Command -->	smo.GC.MicroBevelHardEdgesAndUpdateToSoften & smo.GC.MultiMicroBevelHardEdgesAndUpdateToSoften
+                    (Micro Bevel HardEdges (usually after a SimplyToNgon), then Soften all edges.)
+              • New Command -->	smo.GC.ModollamaRebuildNGontoTriangle & smo.GC.MultiModollamaRebuildNGontoTriangle
+                    (Rebuild all NGons via Modollama Triangulation command to output Triangles.)
+        • Bugfix on smo.GC.RenderThumbPreset
+
+CLEANUP:
+        • PopUp menu updated
+        • New Command -->	smo.CLEANUP.ConvertAllSolidWorksShape
+                    (Search for all Solidworks Shape Items in the scene and convert them to regular Meshes. Delete the empty meshes in the process as well.)
+        • New Command -->	smo.CLEANUP.CleanupSolidWorksImport
+                    (Cleanup SolidWorks Import (from McMaster Website Data) in order to save a new scene with only one Mesh item of the imported asset. It will also convert the VertexNormals Data to HardEdgeWorkflow if needed.)
+        • New Command -->	smo.CLEANUP.DelEverythingExceptMeshes
+                    • (Select everything in the current scene, except Meshes items and delete all other items / materials. It unparent in place the current Meshes to preserve their position in space in case they were part of a hierarchy.)
+        • New Command -->	smo.CLEANUP.RemoveAllPartTags
+                    (Check for all Meshes in the current scene remove any part tags in it.)
+        • New Command -->	smo.CLEANUP.DelPreTransform
+                    (Freeze Scale transform of all meshes in scene but if there is instances, it retain Instances scale to 100 percent or -100 percent as well.)
+        • Bugfix smo.CLEANUP.RenameUVMapToDefaultSceneWise - (That command now create an empty UV map if one is missing using Default UVMap name from Preferences)
+
+BATCH:
+        • PopUp menu updated
+        • Support for SLDPRT added as Input file format (CAD file - Solidworks)
+
+UV:
+        • Menu and Icons (Big UI refresh)
+        • Bugfix (Get UVMap Count argument not correctly exposed. It adds also a 4th argument to deselect all maps except UV maps)
+
+
+-------------------------
 v3.20 - 2022/05/10
 GC:
         • Fixed an issue with Error message populating the Event Log, while using the smo.GC.SetNewMaterialSmartRename command as well as the Quick Tag - Set Mat Color ID commands.
