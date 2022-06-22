@@ -32,36 +32,59 @@ class SMO_GC_ModollamaTriple_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO Modollama Triple'
+        return 'SMO GC Modollama Triple'
 
     def cmd_Desc(self):
-        return 'SMO Triple current Polygon selection using Modollama Kit using arguments as Iteration count.'
+        return 'Triangulate current Polygon selection using Modollama Kit using arguments as Iteration count.'
 
     def cmd_Tooltip(self):
-        return 'SMO Triple current Polygon selection using Modollama Kit using arguments as Iteration count.'
+        return 'Triangulate current Polygon selection using Modollama Kit using arguments as Iteration count.'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO Modollama Triple'
+        return 'SMO GC Modollama Triple'
 
     def basic_Enable(self, msg):
         return True
 
     def basic_Execute(self, msg, flags):
         Iteration = self.dyna_Int(0)
+
         if self.SelModePoly == True:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
 
-            KeepUVBoundsState = lx.eval('user.value llama_keepuvbounds ?')
+        KitsList = ['modollama']
+        ModoLlama_Status = bool(lx.eval("kit.toggleEnable " + KitsList[0] + " ?"))
+        if ModoLlama_Status:
+            KeepUVBoundsState = bool(lx.eval('user.value llama_keepuvbounds ?'))
+            KeepMatBoundsState = bool(lx.eval('user.value llama_keepmatbounds ?'))
+            Origin_Iter = lx.eval('user.value llama_iterations ?')
+
+        func = True
+        if ModoLlama_Status:
             lx.eval('user.value llama_keepuvbounds false')
-            KeepMatBoundsState = lx.eval('user.value llama_keepmatbounds ?')
             lx.eval('user.value llama_keepmatbounds false')
             lx.eval('user.value llama_iterations %i' % Iteration)
             lx.eval('user.value llama_anglethreshold 0.005')
-            lx.eval('@SmartTriangulation.pl')
+
+        if not ModoLlama_Status:
+            lx.eval('dialog.setup info')
+            lx.eval('dialog.title {SMO GC Modollama Triple:}')
+            lx.eval('dialog.msg {You must have ModoLllama kit enabled and loaded if you want to use that function}')
+            lx.eval('+dialog.open')
+            lx.out('You must have ModoLllama kit enabled and loaded if you want to use that function')
+            func = False
+
+        if ModoLlama_Status:
+            if func:
+                lx.eval('@SmartTriangulation.pl')
+
+        if ModoLlama_Status:
             lx.eval('user.value llama_keepuvbounds %s' % KeepUVBoundsState)
             lx.eval('user.value llama_keepmatbounds %s' % KeepMatBoundsState)
+            lx.eval('user.value llama_iterations %s' % Origin_Iter)
+
 
 lx.bless(SMO_GC_ModollamaTriple_Cmd, Command_Name)

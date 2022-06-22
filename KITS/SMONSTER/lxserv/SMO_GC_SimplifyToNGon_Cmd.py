@@ -205,7 +205,7 @@ class SMO_GC_SimplifyToNGon_Cmd(lxu.command.BasicCommand):
             lx.eval('!delete')
             scene_sngon.select(Mesh_DataRaw)
 
-            if SetHardEdge :
+            if SetHardEdge:
                 # HardEdge at all Geometry Boundary
                 lx.eval('select.type edge')
                 lx.eval('select.drop edge')
@@ -231,8 +231,10 @@ class SMO_GC_SimplifyToNGon_Cmd(lxu.command.BasicCommand):
 
         scene_exec = modo.scene.current()
         mesh = modo.Mesh()
+        RefreshHardEdge = self.dyna_Bool(0)
 
-        prepare_hardsoft()
+        if RefreshHardEdge:
+            prepare_hardsoft()
 
         Mesh_Source = scene_exec.selectedByType('mesh')[0]
 
@@ -249,7 +251,9 @@ class SMO_GC_SimplifyToNGon_Cmd(lxu.command.BasicCommand):
         Mesh_Data = scene_exec.selectedByType('mesh')[0]
 
         simplifytongon()
-        update_hardsoft()
+
+        if RefreshHardEdge:
+            update_hardsoft()
 
         lx.eval('select.drop item')
         scene_exec.select(Mesh_Data)

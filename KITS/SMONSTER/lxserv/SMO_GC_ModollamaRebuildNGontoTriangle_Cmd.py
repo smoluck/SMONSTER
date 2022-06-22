@@ -65,6 +65,9 @@ class SMO_GC_ModollamaRebuildNGontoTriangle_Cmd(lxu.command.BasicCommand):
         # Modo = False
         # Modollama = True
 
+        KitsList = ['modollama']
+        ModoLlama_Status = bool(lx.eval("kit.toggleEnable " + KitsList[0] + " ?"))
+
         def scene_info():
             return modo.scene.current()
 
@@ -100,6 +103,7 @@ class SMO_GC_ModollamaRebuildNGontoTriangle_Cmd(lxu.command.BasicCommand):
 
         def action_ngontotri():
             TriMethod = self.dyna_Bool(0)
+
             if item_is_a_mesh():
                 scene = modo.scene.current()
                 mesh = modo.Mesh()
@@ -131,7 +135,8 @@ class SMO_GC_ModollamaRebuildNGontoTriangle_Cmd(lxu.command.BasicCommand):
                     lx.eval('select.type polygon')
                     PolyPack[0].select()
                     if TriMethod:
-                        lx.eval('@SmartTriangulation.pl')
+                        if ModoLlama_Status:
+                            lx.eval('@SmartTriangulation.pl')
                     if not TriMethod:
                         lx.eval('poly.triple')
 
@@ -161,11 +166,21 @@ class SMO_GC_ModollamaRebuildNGontoTriangle_Cmd(lxu.command.BasicCommand):
 
         scene = modo.scene.current()
         items = modo.Scene().selected
+        Function = True
         if TriMethod:
-            setpref_modollama()
-        for item in items:
-            action_ngontotri()
-            lx.eval('select.drop item')
+            if ModoLlama_Status:
+                setpref_modollama()
+            if not ModoLlama_Status:
+                lx.eval('dialog.setup info')
+                lx.eval('dialog.title {SMO GC ModollamaRebuildNGontoTriangle:}')
+                lx.eval('dialog.msg {You must have ModoLllama kit enabled and loaded if you want to use that function}')
+                lx.eval('+dialog.open')
+                lx.out('You must have ModoLllama kit enabled and loaded if you want to use that function')
+                Function = False
+        if Function == True:
+            for item in items:
+                action_ngontotri()
+                lx.eval('select.drop item')
 
 
 lx.bless(SMO_GC_ModollamaRebuildNGontoTriangle_Cmd, Command_Name)
