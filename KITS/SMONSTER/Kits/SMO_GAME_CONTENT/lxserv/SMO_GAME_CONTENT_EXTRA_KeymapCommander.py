@@ -55,10 +55,10 @@ SMO_GC_EXTRA_HOTKEYS = [
 
     {
         "contexts": [
-            [".global", "(stateless)", ".anywhere", "(contextless)", "attr.formPopover {SenecaSuperTaut:sheet}"]
+            [".global", "(stateless)", ".anywhere", "(contextless)", "attr.formPopover {SMONSTER_SENECA_SUPERTAUT:sheet}"]
         ],
         "key": "ctrl-alt-l",
-        "command": "attr.formPopover {SenecaSuperTaut:sheet}",
+        "command": "attr.formPopover {SMONSTER_SENECA_SUPERTAUT:sheet}",
         "name": "GAME CONTENT: Seneca SuperTaut Pie Menu",
         "info": "Ctrl Alt L"
     },
