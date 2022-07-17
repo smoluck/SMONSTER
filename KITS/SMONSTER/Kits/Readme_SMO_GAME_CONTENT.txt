@@ -3,6 +3,11 @@ Hi. Everyone
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 10.10 -
+        • Added warning if you try to use commands that use Modollama kit without getting it activated / loaded.
+        • Bugfix forms for users that got already Seneca SuperTaut function and forms in their keymapping.
+
+
 - 10.00 -
         • Update on FBX Preset Pop Up Menu to expose more options.
         • New Command -->	smo.GC.ConvertToHardEdgeWorkflowUsingGeoBoundaryAsHardEdge

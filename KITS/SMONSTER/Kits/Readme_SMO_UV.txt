@@ -3,7 +3,10 @@ Hi. Everyone
 ----------------------
 --- UPDATE LOG ---
 ----------------------
-- 3.00 -
+- 3.55
+        • UV Tools Menu Reordering
+
+- 3.50 -
         • Menu and Icons (Big UI refresh)
         • Bugfix (Get UVMap Count argument not correctly exposed. It adds also a 4th argument to deselect all maps except UV maps)
 
