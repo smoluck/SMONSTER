@@ -17,7 +17,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.SetNewMaterialSmartRename"
+Cmd_Name = "smo.GC.SetNewMaterialSmartRename"
 # smo.GC.SetNewMaterialSmartRename true {MetalRust} {0.1 0.5 1.0}
 
 # # Bugfix for Shading Nerd compatibility issue. Commented this function creation as it returns a LookupError('attribute 0 not found.')
@@ -55,7 +55,7 @@ class SMO_GC_SetNewMaterialSmartRename_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC SetNewMaterialSmartRename'
+        return 'SMO GC - Set New Material Smart Rename'
 
     def cmd_Desc(self):
         return 'Create a New Material Tag, rename the Material Layer in Shader tree according to Group Material name with a "_Mat" Suffix and show up Color Picker for setting Diffuse Color Channel.'
@@ -67,10 +67,7 @@ class SMO_GC_SetNewMaterialSmartRename_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC SetNewMaterialSmartRename'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Set New Material Smart Rename'
 
     def basic_Enable(self, msg):
         return True
@@ -523,4 +520,5 @@ class SMO_GC_SetNewMaterialSmartRename_Cmd(lxu.command.BasicCommand):
 
         del (r, g, b, GC_OriginalModoMaterialOverride, GC_MatDefaultSmooAngle, GC_WeightByPolyArea, GC_MatShadingModel, GC_ConstantColorOverride, GC_MatNameSuffix, Const_Suffix)
 
-lx.bless(SMO_GC_SetNewMaterialSmartRename_Cmd, Command_Name)
+
+lx.bless(SMO_GC_SetNewMaterialSmartRename_Cmd, Cmd_Name)

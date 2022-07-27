@@ -18,27 +18,30 @@
 
 import modo, lx, lxu
 
-Command_Name = "smo.GC.SelectPolyByVertCount"
+Cmd_Name = "smo.GC.SelectPolyByVertCount"
 
 class SMO_GC_SelectPolyByVertCount_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__ (self)
         self.dyna_Add ("vertNumber", lx.symbol.sTYPE_INTEGER)
+
+    def cmd_Flags(self):
+        return lx.symbol.fCMD_UNDO | lx.symbol.fCMD_MODEL
+
+    def cmd_UserName(self):
+        return 'SMO GC - Select poly by Vertex Count'
+    
+    def cmd_Desc(self):
+        return 'Select polygons based on Vertex Count.'
+
+    def cmd_Tooltip(self):
+        return 'Select polygons based on Vertex Count.'
     
     def basic_ButtonName(self):
-        return 'My Command'
-    
-    def cmd_Tooltip(self):
-        return 'Tooltip for my command.'
-    
-    def cmd_UserName(self):
-        return 'SMO Select poly by Vertex Count'
+        return 'SMO GC - Select poly by Vertex Count'
         
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'
-    
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO | lx.symbol.fCMD_MODEL
     
     def basic_Execute(self, msg, flags):
         lx.out('basic execute')
@@ -51,4 +54,5 @@ class SMO_GC_SelectPolyByVertCount_Cmd(lxu.command.BasicCommand):
                 if poly.numVertices == vertNo:
                     poly.select()
 
-lx.bless (SMO_GC_SelectPolyByVertCount_Cmd, Command_Name)
+
+lx.bless (SMO_GC_SelectPolyByVertCount_Cmd, Cmd_Name)

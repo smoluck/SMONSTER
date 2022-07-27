@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.SelectPolyRenderItem"
+Cmd_Name = "smo.GC.SelectPolyRenderItem"
 # execute:      smo.GC.SelectPolyRenderItem
 # query:        smo.GC.SelectPolyRenderItem ?
 
@@ -38,7 +38,7 @@ class SMO_GC_SelectPolyRenderItem_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC SelectPolyRenderItem'
+        return 'SMO GC - Select PolyRender Item'
     
     def cmd_Desc (self):
         return 'Select the PolyRender Item of the current scene.'
@@ -50,12 +50,11 @@ class SMO_GC_SelectPolyRenderItem_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC SelectPolyRenderItem'
+        return 'SMO GC - Select PolyRender Item'
     
     def basic_Enable (self, msg):
         return True
-        
-    
+
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
         
@@ -104,6 +103,5 @@ class SMO_GC_SelectPolyRenderItem_Cmd(lxu.command.BasicCommand):
                 va.AddString(PolyRenderItemID)
                 return lx.result.OK
                 
-                
     
-lx.bless(SMO_GC_SelectPolyRenderItem_Cmd, Command_Name)
+lx.bless(SMO_GC_SelectPolyRenderItem_Cmd, Cmd_Name)

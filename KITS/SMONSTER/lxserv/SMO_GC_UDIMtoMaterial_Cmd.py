@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.UDIMtoMaterial"
+Cmd_Name = "smo.GC.UDIMtoMaterial"
 # smo.GC.UDIMtoMaterial {Boat} 1001 1013
 
 class SMO_GC_UDIMtoMaterial_Cmd(lxu.command.BasicCommand):
@@ -37,7 +37,7 @@ class SMO_GC_UDIMtoMaterial_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC UDIMtoMaterial'
+        return 'SMO GC - UDIM to Material'
 
     def cmd_Desc(self):
         return 'Create a New Material Tag, using MatName + UDIM ID on selected Mesh. It select Poly via UDIM index, then create a material for those.'
@@ -49,10 +49,7 @@ class SMO_GC_UDIMtoMaterial_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC UDIMtoMaterial'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - UDIM to Material'
 
     def basic_Enable(self, msg):
         return True
@@ -151,4 +148,5 @@ class SMO_GC_UDIMtoMaterial_Cmd(lxu.command.BasicCommand):
         lx.out('Newly created and assigned: %s Material' % len(MATNameList))
         lx.out('-------------')
 
-lx.bless(SMO_GC_UDIMtoMaterial_Cmd, Command_Name)
+
+lx.bless(SMO_GC_UDIMtoMaterial_Cmd, Cmd_Name)

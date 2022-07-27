@@ -16,6 +16,9 @@
 
 import lx, lxu, os, modo
 
+Cmd_Name = "smo.BATCH.ProcessByPref_revA"
+# smo.BATCH.ProcessByPref_revA
+
 class SMO_Batch_ProcessByPref_revA_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -27,7 +30,7 @@ class SMO_Batch_ProcessByPref_revA_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO Batch Process'
+        return 'SMO BATCH - Process (rev A)'
     
     def cmd_Desc (self):
         return 'Batch Process a set of files stored in a Folder, using User Defined Preferences.'
@@ -39,12 +42,11 @@ class SMO_Batch_ProcessByPref_revA_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO Batch Process'
+        return 'SMO BATCH - Process (rev A)'
     
     def basic_Enable (self, msg):
         return True
-        
-    
+
     def basic_Execute(self, msg, flags):
         
         BPLine001 = lx.eval('user.value SMO_UseVal_BP_String_Line001 ?')
@@ -210,10 +212,9 @@ class SMO_Batch_ProcessByPref_revA_Cmd(lxu.command.BasicCommand):
                 if len(BPLine009) == 0 :
                     lx.out('NOTIFICATION: line 009 Empty')
                 
-        
 
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_Batch_ProcessByPref_revA_Cmd, "smo.BATCH.ProcessByPref_revA")
-# smo.BATCH.ProcessByPref_revA
+
+lx.bless(SMO_Batch_ProcessByPref_revA_Cmd, Cmd_Name)

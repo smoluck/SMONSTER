@@ -18,7 +18,7 @@
 
 import lx, lxu, modo, os
 
-Command_Name = "smo.GC.Display.CycleMatCap"
+Cmd_Name = "smo.GC.Display.CycleMatCap"
 
 # Forward Mode
 # smo.GC.Display.CycleMatCap 0
@@ -39,7 +39,7 @@ class SMO_GC_Display_CycleMatCap_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName(self):
-        return 'SMO GC CycleMatCap'
+        return 'SMO GC - Cycle MatCap'
     
     def cmd_Desc(self):
         return 'Cycle Through Matcaps that are located in the Smonster GAME CONTENT MatCaps folder.'
@@ -51,10 +51,7 @@ class SMO_GC_Display_CycleMatCap_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName(self):
-        return 'SMO GC CycleMatCap'
-    
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Cycle MatCap'
     
     def basic_Enable(self, msg):
         return True
@@ -157,7 +154,9 @@ class SMO_GC_Display_CycleMatCap_Cmd(lxu.command.BasicCommand):
                 lx.eval('user.value SMO_MatCapId %i' % MatCapIndex)
                 lx.eval('@av_smartWireToggle.pl')
 
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_GC_Display_CycleMatCap_Cmd, Command_Name)
+
+lx.bless(SMO_GC_Display_CycleMatCap_Cmd, Cmd_Name)

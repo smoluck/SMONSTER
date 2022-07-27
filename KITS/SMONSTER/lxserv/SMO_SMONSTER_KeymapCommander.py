@@ -102,6 +102,7 @@ class SMONSTER_KeymapCmdClass(SmoCommanderClass):
         dialog_serv.MonitorRelease()
         # modo.dialogs.alert("Mapped Smonster Hotkeys", "Mapped %s Smonster hotkeys. See Help > Smonster Hotkey Reference" % n)
 
+
 lx.bless(SMONSTER_KeymapCmdClass, "smo.SMONSTER.MapDefaultHotkeys")
 
 
@@ -131,6 +132,7 @@ class RemoveSMONSTER_KeymapCmdClass(SmoCommanderClass):
 
         modo.dialogs.alert("Reverted Smonster Hotkeys", "Reverted %s Smonster hotkeys to defaults." % len(SMONSTER_HOTKEYS))
 
+
 lx.bless(RemoveSMONSTER_KeymapCmdClass, "smo.SMONSTER.unmapDefaultHotkeys")
 
 
@@ -155,5 +157,6 @@ class ClearSMONSTER_KeymapCmdClass(SmoCommanderClass):
                         lx.out("Could not clear mapping for '%s'." % key)
 
         modo.dialogs.alert("Cleared SMONSTER Hotkeys", "Cleared %s SMONSTER hotkeys attribution." % len(SMONSTER_HOTKEYS))
+
 
 lx.bless(ClearSMONSTER_KeymapCmdClass, "smo.SMONSTER.ClearHotkeys")

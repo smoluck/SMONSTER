@@ -17,8 +17,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.CLEANUP.DelPreTransform"
-
+Cmd_Name = "smo.CLEANUP.FreezeScaleTransform"
 
 class SMO_CLEANUP_FreezeScaleTransform_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -35,7 +34,7 @@ class SMO_CLEANUP_FreezeScaleTransform_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO Cleanup - FreezeScaleTransform'
+        return 'SMO CLEANUP - Freeze Scale Transforms'
 
     def cmd_Desc(self):
         return 'Freeze Scale transform but retain Instances scale to 100 percent or -100 percent if that s the case.'
@@ -47,10 +46,7 @@ class SMO_CLEANUP_FreezeScaleTransform_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO Cleanup - FreezeScaleTransform'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CLEANUP - Freeze Scale Transforms'
 
     def basic_Enable(self, msg):
         return True
@@ -181,5 +177,4 @@ class SMO_CLEANUP_FreezeScaleTransform_Cmd(lxu.command.BasicCommand):
                 mesh.select(True)
 
 
-lx.bless(SMO_CLEANUP_FreezeScaleTransform_Cmd, Command_Name)
-
+lx.bless(SMO_CLEANUP_FreezeScaleTransform_Cmd, Cmd_Name)

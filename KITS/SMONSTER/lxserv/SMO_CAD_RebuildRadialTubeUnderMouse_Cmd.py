@@ -14,9 +14,9 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 # ---------------------------------------
 
-import lx, lxu, modo
+import lx, lxu, modo, sys
 
-Command_Name = "smo.CAD.RebuildRadialTube"
+Cmd_Name = "smo.CAD.RebuildRadialTube"
 # smo.CAD.RebuildRadialTube
 
 class SMO_CAD_RebuildRadialTubeUnderMouse_Cmd(lxu.command.BasicCommand):
@@ -30,7 +30,7 @@ class SMO_CAD_RebuildRadialTubeUnderMouse_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO CAD Rebuild Radial Tube'
+        return 'SMO CAD - Rebuild Radial Tube'
 
     def cmd_Desc(self):
         return 'Select the Item and Polygon under mouse, select similar touching polygons Multiple Times with 40 degree value, then delete and recreate the PolyLoop Patch and update the VertexNormal Map if needed.'
@@ -42,10 +42,7 @@ class SMO_CAD_RebuildRadialTubeUnderMouse_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO CAD Rebuild Radial Tube'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CAD - Rebuild Radial Tube'
 
     def basic_Enable(self, msg):
         return True
@@ -363,4 +360,4 @@ class SMO_CAD_RebuildRadialTubeUnderMouse_Cmd(lxu.command.BasicCommand):
         ########################################################
 
 
-lx.bless(SMO_CAD_RebuildRadialTubeUnderMouse_Cmd, Command_Name)
+lx.bless(SMO_CAD_RebuildRadialTubeUnderMouse_Cmd, Cmd_Name)

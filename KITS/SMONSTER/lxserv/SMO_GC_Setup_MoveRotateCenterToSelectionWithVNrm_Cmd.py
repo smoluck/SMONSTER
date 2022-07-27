@@ -16,8 +16,9 @@
 # ---------------------------------------------
 
 import lx, lxu, modo, math
+from math import degrees
 
-Command_Name = "smo.GC.Setup.MoveRotateCenterToSelectionWithVNrm"
+Cmd_Name = "smo.GC.Setup.MoveRotateCenterToSelectionWithVNrm"
 # smo.GC.Setup.MoveRotateCenterToSelectionWithVNrm 1 1
 
 # Function for Radian to Degree
@@ -35,7 +36,7 @@ class SMO_GC_Setup_MoveRotateCenterToSelectionWithNNrm_Cmd(lxu.command.BasicComm
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC Setup MoveRotateCenter to Selection (VNrm support)'
+        return 'SMO GC - Setup - Move and Rotate Center to Selection (VNrm support)'
 
     def cmd_Desc(self):
         return 'Create New Mesh Layers, using target Mesh Name + PrefixName + UDIM ID from selected Mesh with VertexNormal Data update support.'
@@ -47,10 +48,7 @@ class SMO_GC_Setup_MoveRotateCenterToSelectionWithNNrm_Cmd(lxu.command.BasicComm
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC Setup MoveRotateCenter to Selection (VNrm support)'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Setup - Move and Rotate Center to Selection (VNrm support)'
 
     def basic_Enable(self, msg):
         return True
@@ -183,4 +181,6 @@ class SMO_GC_Setup_MoveRotateCenterToSelectionWithNNrm_Cmd(lxu.command.BasicComm
             scene.select(TargetCopy)
             lx.eval('!delete')
             scene.select(Target)
-lx.bless(SMO_GC_Setup_MoveRotateCenterToSelectionWithNNrm_Cmd, Command_Name)
+
+
+lx.bless(SMO_GC_Setup_MoveRotateCenterToSelectionWithNNrm_Cmd, Cmd_Name)

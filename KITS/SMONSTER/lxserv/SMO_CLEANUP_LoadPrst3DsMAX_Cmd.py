@@ -17,6 +17,8 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.CLEANUP.LoadPrst3DsMAX"
+
 class SMO_Cleanup_LoadPrst3DsMAX_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -27,7 +29,7 @@ class SMO_Cleanup_LoadPrst3DsMAX_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO Cleanup Load 3DsMAX Default Channel Preset'
+        return 'SMO CLEANUP - Load 3DsMAX Default Channel Preset'
     
     def cmd_Desc (self):
         return 'Load the 3DsMAX Default Channel Preset in the Preferences to be used by the Batch Cleaner command.'
@@ -39,14 +41,10 @@ class SMO_Cleanup_LoadPrst3DsMAX_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO Cleanup Load 3DsMAX Default Channel Preset'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CLEANUP - Load 3DsMAX Default Channel Preset'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         lx.eval('user.value SMO_UseVal_CLEANUP_FullAuto_FBXChan_String_A FBX_UDP3DSMAX')
@@ -59,5 +57,6 @@ class SMO_Cleanup_LoadPrst3DsMAX_Cmd(lxu.command.BasicCommand):
         lx.eval('user.value SMO_UseVal_CLEANUP_FullAuto_FBXChan_String_H ____EMPTY_SLOT____')
         lx.eval('user.value SMO_UseVal_CLEANUP_FullAuto_FBXChan_String_I ____EMPTY_SLOT____')
         lx.eval('user.value SMO_UseVal_CLEANUP_FullAuto_FBXChan_String_J ____EMPTY_SLOT____')
-    
-lx.bless(SMO_Cleanup_LoadPrst3DsMAX_Cmd, "smo.CLEANUP.LoadPrst3DsMAX")
+
+
+lx.bless(SMO_Cleanup_LoadPrst3DsMAX_Cmd, Cmd_Name)

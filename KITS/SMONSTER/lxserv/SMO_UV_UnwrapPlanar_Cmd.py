@@ -14,11 +14,10 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 #---------------------------------------
 
-import lx, lxu, modo
+import lx, lxu, modo, sys
 
-Command_Name = "smo.UV.UnwrapPlanar"
+Cmd_Name = "smo.UV.UnwrapPlanar"
 # smo.UV.UnwrapPlanar 2 0
-
 
 class SMO_UV_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -44,7 +43,7 @@ class SMO_UV_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO UV Unwrap Smart'
+        return 'SMO UV - Unwrap Smart'
     
     def cmd_Desc (self):
         return 'Unwrap the current Polygon Selection on defined Axis.'
@@ -56,11 +55,10 @@ class SMO_UV_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO UV Unwrap Smart'
+        return 'SMO UV - Unwrap Smart'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -709,4 +707,6 @@ class SMO_UV_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
             
         lx.out('End of Unwrap Planar Script')
         #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
-lx.bless(SMO_UV_UnwrapPlanar_Cmd, Command_Name)
+
+
+lx.bless(SMO_UV_UnwrapPlanar_Cmd, Cmd_Name)

@@ -16,6 +16,9 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.MIFABOMA.SetRadialSweepAnglePreset"
+# smo.MIFABOMA.SetRadialSweepAnglePreset 0 90 1
+
 class SMO_MIFABOMA_SetRadialSweepAnglePreset_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -24,6 +27,7 @@ class SMO_MIFABOMA_SetRadialSweepAnglePreset_Cmd(lxu.command.BasicCommand):
         self.basic_SetFlags (1, lx.symbol.fCMDARG_OPTIONAL)             # here the (1) define the argument index.
         self.dyna_Add("InBetween", lx.symbol.sTYPE_INTEGER)
         self.basic_SetFlags (2, lx.symbol.fCMDARG_OPTIONAL)
+
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
     
@@ -31,7 +35,7 @@ class SMO_MIFABOMA_SetRadialSweepAnglePreset_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO SetRadialSweep Angle Preset'
+        return 'SMO MIFABOMA - Set Radial Sweep Angle Preset'
     
     def cmd_Desc (self):
         return 'Set the current Angle Preset for Radial Sweep.'
@@ -43,18 +47,12 @@ class SMO_MIFABOMA_SetRadialSweepAnglePreset_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO SetRadialSweep Angle Preset'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO MIFABOMA - Set Radial Sweep Angle Preset'
     
     def basic_Enable (self, msg):
         return True
-    
-    
+
     def basic_Execute(self, msg, flags):
-        
-        
         
         ################################
         #<----[ DEFINE ARGUMENTS ]---->#                # smo.MIFABOMA.SetRadialSweepAnglePreset 0 90 1
@@ -91,5 +89,4 @@ class SMO_MIFABOMA_SetRadialSweepAnglePreset_Cmd(lxu.command.BasicCommand):
         lx.notimpl()
 
 
-lx.bless(SMO_MIFABOMA_SetRadialSweepAnglePreset_Cmd, "smo.MIFABOMA.SetRadialSweepAnglePreset")
-# smo.MIFABOMA.SetRadialSweepAnglePreset 0 90 1
+lx.bless(SMO_MIFABOMA_SetRadialSweepAnglePreset_Cmd, Cmd_Name)

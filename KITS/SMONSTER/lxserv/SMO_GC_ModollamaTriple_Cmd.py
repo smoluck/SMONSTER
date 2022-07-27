@@ -15,7 +15,7 @@
 #---------------------------------------
 import lx, lxu, modo
 
-Command_Name = "smo.GC.ModollamaTriple"
+Cmd_Name = "smo.GC.ModollamaTriple"
 # smo.GC.ModollamaTriple 8
 
 class SMO_GC_ModollamaTriple_Cmd(lxu.command.BasicCommand):
@@ -32,7 +32,7 @@ class SMO_GC_ModollamaTriple_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC Modollama Triple'
+        return 'SMO GC - Modollama Triple'
 
     def cmd_Desc(self):
         return 'Triangulate current Polygon selection using Modollama Kit using arguments as Iteration count.'
@@ -44,7 +44,7 @@ class SMO_GC_ModollamaTriple_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC Modollama Triple'
+        return 'SMO GC - Modollama Triple'
 
     def basic_Enable(self, msg):
         return True
@@ -87,4 +87,4 @@ class SMO_GC_ModollamaTriple_Cmd(lxu.command.BasicCommand):
             lx.eval('user.value llama_iterations %s' % Origin_Iter)
 
 
-lx.bless(SMO_GC_ModollamaTriple_Cmd, Command_Name)
+lx.bless(SMO_GC_ModollamaTriple_Cmd, Cmd_Name)

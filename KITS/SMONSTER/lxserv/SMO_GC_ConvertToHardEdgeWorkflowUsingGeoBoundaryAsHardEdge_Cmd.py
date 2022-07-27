@@ -17,7 +17,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.ConvertToHardEdgeWorkflowUsingGeoBoundaryAsHardEdge"
+Cmd_Name = "smo.GC.ConvertToHardEdgeWorkflowUsingGeoBoundaryAsHardEdge"
 # smo.GC.ConvertToHardEdgeWorkflowUsingGeoBoundaryAsHardEdge 1
 
 class SMO_GC_ConvertToHardEdgeWorkflowUsingGeoBoundaryAsHardEdge_Cmd(lxu.command.BasicCommand):
@@ -35,7 +35,7 @@ class SMO_GC_ConvertToHardEdgeWorkflowUsingGeoBoundaryAsHardEdge_Cmd(lxu.command
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC Convert to HardEdge Workflow using geometry boundary as HardEdge'
+        return 'SMO GC - Convert to HardEdge Workflow using geometry boundary as HardEdge'
 
     def cmd_Desc(self):
         return 'On current Mesh item, convert Shading Method to HardEdge Workflow using geometry boundary as "HardEdge" and set all other Edges as "Smooth".'
@@ -47,10 +47,7 @@ class SMO_GC_ConvertToHardEdgeWorkflowUsingGeoBoundaryAsHardEdge_Cmd(lxu.command
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC Convert to HardEdge Workflow using geometry boundary as HardEdge'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Convert to HardEdge Workflow using geometry boundary as HardEdge'
 
     def basic_Enable(self, msg):
         return True
@@ -97,4 +94,5 @@ class SMO_GC_ConvertToHardEdgeWorkflowUsingGeoBoundaryAsHardEdge_Cmd(lxu.command
         lx.eval('select.type item')
         lx.eval('smo.GC.DeselectAll')
 
-lx.bless(SMO_GC_ConvertToHardEdgeWorkflowUsingGeoBoundaryAsHardEdge_Cmd, Command_Name)
+
+lx.bless(SMO_GC_ConvertToHardEdgeWorkflowUsingGeoBoundaryAsHardEdge_Cmd, Cmd_Name)

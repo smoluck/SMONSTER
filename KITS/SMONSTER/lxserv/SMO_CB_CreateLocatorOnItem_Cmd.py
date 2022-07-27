@@ -15,7 +15,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.CB.CreateLocatorOnMesh"
+Cmd_Name = "smo.CB.CreateLocatorOnMesh"
 # smo.CB.CreateLocatorOnMesh 2 1 1
 
 class SMO_CB_CreateLocatorOnMesh_Cmd(lxu.command.BasicCommand):
@@ -35,7 +35,7 @@ class SMO_CB_CreateLocatorOnMesh_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO CB CreateLocatorOnMesh'
+        return 'SMO CB - Create Locator on Mesh'
 
     def cmd_Desc(self):
         return 'Create a Locator on first selected mesh position and parent all the selected meshes to that Locator.'
@@ -47,7 +47,7 @@ class SMO_CB_CreateLocatorOnMesh_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO CB CreateLocatorOnMesh'
+        return 'SMO CB - Create Locator on Mesh'
 
     def basic_Enable(self, msg):
         return True
@@ -254,7 +254,9 @@ class SMO_CB_CreateLocatorOnMesh_Cmd(lxu.command.BasicCommand):
         for i in range(len(LocIDList)):
             lx.eval('select.item %s add' % LocIDList[i])
 
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_CB_CreateLocatorOnMesh_Cmd, Command_Name)
+
+lx.bless(SMO_CB_CreateLocatorOnMesh_Cmd, Cmd_Name)

@@ -17,7 +17,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.CLEANUP.ConvertAllSolidWorksShape"
+Cmd_Name = "smo.CLEANUP.ConvertAllSolidWorksShape"
 # smo.CLEANUP.ConvertAllSolidWorksShape
 
 class SMO_CLEANUP_ConvertAllSolidWorksShape_Cmd(lxu.command.BasicCommand):
@@ -31,7 +31,7 @@ class SMO_CLEANUP_ConvertAllSolidWorksShape_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO CLEANUP Convert All SolidWorks Shapes to Meshes.'
+        return 'SMO CLEANUP - Convert All SolidWorks Shapes to Meshes.'
 
     def cmd_Desc(self):
         return 'Search for all Solidworks Shape Items in the scene and convert them to regular Meshes. Delete the empty meshes in the process as well.'
@@ -43,10 +43,7 @@ class SMO_CLEANUP_ConvertAllSolidWorksShape_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO CLEANUP Convert All SolidWorks Shapes to Meshes'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CLEANUP - Convert All SolidWorks Shapes to Meshes'
 
     def basic_Enable(self, msg):
         return True
@@ -72,4 +69,5 @@ class SMO_CLEANUP_ConvertAllSolidWorksShape_Cmd(lxu.command.BasicCommand):
             lx.eval('item.setType.mesh locator')
         lx.eval('smo.GC.DeselectAll')
 
-lx.bless(SMO_CLEANUP_ConvertAllSolidWorksShape_Cmd, Command_Name)
+
+lx.bless(SMO_CLEANUP_ConvertAllSolidWorksShape_Cmd, Cmd_Name)

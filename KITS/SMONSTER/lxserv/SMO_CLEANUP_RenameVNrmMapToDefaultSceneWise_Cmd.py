@@ -15,7 +15,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.CLEANUP.RenameVNrmMapToDefaultSceneWise"
+Cmd_Name = "smo.CLEANUP.RenameVNrmMapToDefaultSceneWise"
 # smo.CLEANUP.RenameVNrmMapToDefaultSceneWise
 
 class SMO_CLEANUP_RenameVNrmMapToDefaultSceneWise_Cmd(lxu.command.BasicCommand):
@@ -29,7 +29,7 @@ class SMO_CLEANUP_RenameVNrmMapToDefaultSceneWise_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO CLEANUP RenameVNrmMapToDefaultSceneWise'
+        return 'SMO CLEANUP - (SceneWise) Rename Vertex Normal map to Modo (Prefs) Name'
 
     def cmd_Desc(self):
         return 'Check for all Meshes in the current scene and rename their First VertexNormal Map (by Index = 0) to Modo/Preferences/Defaults/Application name.'
@@ -41,7 +41,7 @@ class SMO_CLEANUP_RenameVNrmMapToDefaultSceneWise_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO CLEANUP RenameVNrmMapToDefaultSceneWise'
+        return 'SMO CLEANUP - (SceneWise) Rename Vertex Normal map to Modo (Prefs) Name'
 
     def basic_Enable(self, msg):
         return True
@@ -109,4 +109,5 @@ class SMO_CLEANUP_RenameVNrmMapToDefaultSceneWise_Cmd(lxu.command.BasicCommand):
         del ZeroVNrmMap
         lx.eval('smo.GC.DeselectAll')
 
-lx.bless(SMO_CLEANUP_RenameVNrmMapToDefaultSceneWise_Cmd, Command_Name)
+
+lx.bless(SMO_CLEANUP_RenameVNrmMapToDefaultSceneWise_Cmd, Cmd_Name)

@@ -28,7 +28,7 @@ class SMONSTER_CLUB_SetAllKeymaps_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMONSTER Quick Set All Default Keymaps'
+        return 'SMO SMONSTER - Quick Set All Default Keymaps'
 
     def cmd_Desc(self):
         return 'Launch all the Popup Window dialog to set all the default keymaps for Smonster Kits.'
@@ -40,7 +40,7 @@ class SMONSTER_CLUB_SetAllKeymaps_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMONSTER Quick Set All Default Keymaps'
+        return 'SMO SMONSTER - Quick Set All Default Keymaps'
 
     def basic_Enable(self, msg):
         return True
@@ -120,5 +120,6 @@ class SMONSTER_CLUB_SetAllKeymaps_Cmd(lxu.command.BasicCommand):
             lx.eval('smo.VENOM.MapDefaultHotkeys')
         except:
             pass
+
 
 lx.bless(SMONSTER_CLUB_SetAllKeymaps_Cmd, CMD_NAME)

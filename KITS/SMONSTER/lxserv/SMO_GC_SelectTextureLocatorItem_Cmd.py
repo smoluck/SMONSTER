@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.SelectTextureLocatorItem"
+Cmd_Name = "smo.GC.SelectTextureLocatorItem"
 # execute:      smo.GC.SelectTextureLocatorItem
 # query:        smo.GC.SelectTextureLocatorItem ?
 
@@ -24,7 +24,6 @@ Command_Name = "smo.GC.SelectTextureLocatorItem"
 # TestResult = lx.eval('smo.GC.SelectTextureLocatorItem ?')
 # lx.out('Shader item Identity name is :',TestResult)
 ######################
-
 
 class SMO_GC_SelectTextureLocatorItem_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -38,7 +37,7 @@ class SMO_GC_SelectTextureLocatorItem_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC SelectTextureLocatorItem'
+        return 'SMO GC - Select Texture Locator Item'
     
     def cmd_Desc (self):
         return 'Select the Shader Item of the current scene.'
@@ -50,14 +49,10 @@ class SMO_GC_SelectTextureLocatorItem_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC SelectTextureLocatorItem'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Select Texture Locator Item'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -107,6 +102,5 @@ class SMO_GC_SelectTextureLocatorItem_Cmd(lxu.command.BasicCommand):
                 va.AddString(TextureLocatorItemID)
                 return lx.result.OK
                 
-                
     
-lx.bless(SMO_GC_SelectTextureLocatorItem_Cmd, Command_Name)
+lx.bless(SMO_GC_SelectTextureLocatorItem_Cmd, Cmd_Name)

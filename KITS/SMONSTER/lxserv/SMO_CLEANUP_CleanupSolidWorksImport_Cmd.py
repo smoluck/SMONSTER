@@ -17,7 +17,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.CLEANUP.CleanupSolidWorksImport"
+Cmd_Name = "smo.CLEANUP.CleanupSolidWorksImport"
 # smo.CLEANUP.CleanupSolidWorksImport
 
 class SMO_CLEANUP_CleanupSolidWorksImport_Cmd(lxu.command.BasicCommand):
@@ -31,7 +31,7 @@ class SMO_CLEANUP_CleanupSolidWorksImport_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO CLEANUP CleanupSolidWorksImport'
+        return 'SMO CLEANUP - Cleanup SolidWorks Import'
 
     def cmd_Desc(self):
         return 'Cleanup SolidWorks Import (from McMaster Website Data) in order to save a new scene with only one Mesh item of the imported asset. It will also convert the VertexNormals Data to HardEdgeWorkflow if needed.'
@@ -43,10 +43,7 @@ class SMO_CLEANUP_CleanupSolidWorksImport_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO CLEANUP CleanupSolidWorksImport'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CLEANUP - Cleanup SolidWorks Import'
 
     def basic_Enable(self, msg):
         return True
@@ -68,4 +65,6 @@ class SMO_CLEANUP_CleanupSolidWorksImport_Cmd(lxu.command.BasicCommand):
         lx.eval('select.deleteSet smonster_allpolygonselset true')
         lx.eval('smo.GC.DeselectAll')
         lx.eval('select.type item')
-lx.bless(SMO_CLEANUP_CleanupSolidWorksImport_Cmd, Command_Name)
+
+
+lx.bless(SMO_CLEANUP_CleanupSolidWorksImport_Cmd, Cmd_Name)

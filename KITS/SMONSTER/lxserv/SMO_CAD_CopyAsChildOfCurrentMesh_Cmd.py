@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.CAD.CopyCutAsChildOfCurrentMesh"
+Cmd_Name = "smo.CAD.CopyCutAsChildOfCurrentMesh"
 # 4th Argument set to "True" will select resulting mesh instead of source
 # smo.CAD.CopyCutAsChildOfCurrentMesh 0 1 1 true        Copy Polygon Similar Touching -- To Visible Mesh - And Select that new Mesh
 
@@ -63,7 +63,7 @@ class SMO_CAD_CopyCutAsChildOfCurrentMesh_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO CAD CopyAsChildOfCurrentMesh'
+        return 'SMO CAD - Copy as Child of Current Mesh'
 
     def cmd_Desc(self):
         return 'Copy selected Polygons to a new mesh as a child of the current mesh item.'
@@ -75,10 +75,7 @@ class SMO_CAD_CopyCutAsChildOfCurrentMesh_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO CAD CopyAsChildOfCurrentMesh'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CAD - Copy as Child of Current Mesh'
 
     def basic_Enable(self, msg):
         return True
@@ -256,4 +253,5 @@ class SMO_CAD_CopyCutAsChildOfCurrentMesh_Cmd(lxu.command.BasicCommand):
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_CAD_CopyCutAsChildOfCurrentMesh_Cmd, Command_Name)
+
+lx.bless(SMO_CAD_CopyCutAsChildOfCurrentMesh_Cmd, Cmd_Name)

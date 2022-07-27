@@ -15,12 +15,14 @@
 #---------------------------------------
 import lx, lxu, modo
 
+Cmd_Name = "smo.BATCH.SetOutputFileTypeViaPref"
+# smo.BATCH.SetOutputFileTypeViaPref {LXO}
+
 class SMO_BATCH_SetOutputFileTypeViaPref_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Input File Format", lx.symbol.sTYPE_STRING)
         self.basic_SetFlags (0, lx.symbol.fCMDARG_OPTIONAL)             # here the (0) define the argument index.
-        
     
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
@@ -29,7 +31,7 @@ class SMO_BATCH_SetOutputFileTypeViaPref_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO Batch Set Output File Type ia Pref'
+        return 'SMO BATCH - Set Output File Type via Pref'
     
     def cmd_Desc (self):
         return 'Set the Output Files Format using User Defined Preferences.'
@@ -41,15 +43,11 @@ class SMO_BATCH_SetOutputFileTypeViaPref_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO Batch Set Output File Type ia Pref'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO BATCH - Set Output File Type via Pref'
     
     def basic_Enable (self, msg):
         return True
-        
-    
+
     def basic_Execute(self, msg, flags):
         
         
@@ -100,10 +98,9 @@ class SMO_BATCH_SetOutputFileTypeViaPref_Cmd(lxu.command.BasicCommand):
             lx.eval('user.value SMO_UseVal_BATCH_OutputFiles_LXO 0')
             lx.eval('user.value SMO_UseVal_BATCH_OutputFiles_FBX 1')
             
-            
 
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_BATCH_SetOutputFileTypeViaPref_Cmd, "smo.BATCH.SetOutputFileTypeViaPref")
-# smo.BATCH.SetOutputFileTypeViaPref {LXO}
+
+lx.bless(SMO_BATCH_SetOutputFileTypeViaPref_Cmd, Cmd_Name)

@@ -16,6 +16,9 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.MIFABOMA.RadialSweepCountByUser"
+# smo.MIFABOMA.RadialSweepCountByUser 1 32 1 360 0 0
+
 class SMO_MIFABOMA_RadialSweep_CountByUser_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -39,7 +42,7 @@ class SMO_MIFABOMA_RadialSweep_CountByUser_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO RadialSweep Count By User'
+        return 'SMO MIFABOMA - Radial Sweep Count By User'
     
     def cmd_Desc (self):
         return 'Radial Sweep current Polygon Selection (or all Poly if no selection) / or Selected Edges using Origin Center (World) or Item Center (Local).'
@@ -51,14 +54,10 @@ class SMO_MIFABOMA_RadialSweep_CountByUser_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO RadialSweep Count By User'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO MIFABOMA - Radial Sweep Count By User'
     
     def basic_Enable (self, msg):
         return True
-    
     
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -332,10 +331,10 @@ class SMO_MIFABOMA_RadialSweep_CountByUser_Cmd(lxu.command.BasicCommand):
             lx.eval('item.refSystem %s' % CurrentRefSystemItem)
 
         lx.out('End of SMO RadialSweep  Command')
-    
+
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
 
-lx.bless(SMO_MIFABOMA_RadialSweep_CountByUser_Cmd, "smo.MIFABOMA.RadialSweepCountByUser")
-# smo.MIFABOMA.RadialSweepCountByUser 1 32 1 360 0 0
+lx.bless(SMO_MIFABOMA_RadialSweep_CountByUser_Cmd, Cmd_Name)

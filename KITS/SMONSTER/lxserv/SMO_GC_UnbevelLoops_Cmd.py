@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.UnbevelLoops"
+Cmd_Name = "smo.GC.UnbevelLoops"
 # smo.GC.UnbevelLoops 0
 
 class SMO_GC_UnbevelLoops_Cmd(lxu.command.BasicCommand):
@@ -40,7 +40,7 @@ class SMO_GC_UnbevelLoops_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName (self):
-        return 'SMO GC UnbevelPolyLoops'
+        return 'SMO GC - UnBevel PolyLoops'
 
     def cmd_Desc (self):
         return 'Unbevel the Polygon Selection, by using the MouseOver the Edge Ring.'
@@ -52,7 +52,7 @@ class SMO_GC_UnbevelLoops_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName (self):
-        return 'SMO GC UnbevelPolyLoops'
+        return 'SMO GC - UnBevel Poly Loops'
 
     def basic_Enable (self, msg):
         return True
@@ -217,4 +217,5 @@ class SMO_GC_UnbevelLoops_Cmd(lxu.command.BasicCommand):
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_GC_UnbevelLoops_Cmd, Command_Name)
+
+lx.bless(SMO_GC_UnbevelLoops_Cmd, Cmd_Name)

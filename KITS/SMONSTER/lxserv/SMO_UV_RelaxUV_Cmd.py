@@ -13,9 +13,9 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 #---------------------------------------
 
-import lx, lxu, modo
+import lx, lxu, modo, sys
 
-Command_Name = "smo.UV.Relax"
+Cmd_Name = "smo.UV.Relax"
 #smo.UV.Relax 256
 
 class SMO_UV_RelaxUV_Cmd(lxu.command.BasicCommand):
@@ -30,7 +30,7 @@ class SMO_UV_RelaxUV_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO UV Relax'
+        return 'SMO UV - Relax'
     
     def cmd_Desc (self):
         return 'Relax the UVs of the current Polygon Selection.'
@@ -42,14 +42,10 @@ class SMO_UV_RelaxUV_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO UV Relax'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO UV - Relax'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -131,16 +127,18 @@ class SMO_UV_RelaxUV_Cmd(lxu.command.BasicCommand):
             lx.eval('dialog.title {SMONSTER - Relax UVs:}')
             lx.eval('dialog.msg {Please select Only One Vertex Map and run that script again.}')
             lx.eval('dialog.open')
-            sys.exit()
             SMO_SafetyCheckUVRelax_UVMapCount = False
+            sys.exit()
+
         
         if SelectedMeshUVMapsCount < 1 :
             lx.eval('dialog.setup info')
             lx.eval('dialog.title {SMONSTER - Relax UVs:}')
             lx.eval('dialog.msg {You must have a UV map selected to run this script.}')
             lx.eval('dialog.open')
-            sys.exit()
             SMO_SafetyCheckUVRelax_UVMapCount = False
+            sys.exit()
+
         
         if SelectedMeshUVMapsCount == 1 :
             SMO_SafetyCheckUVRelax_UVMapCount = True
@@ -198,4 +196,4 @@ class SMO_UV_RelaxUV_Cmd(lxu.command.BasicCommand):
                 lx.out('UV Constraints junk map NOT detected')
         
     
-lx.bless(SMO_UV_RelaxUV_Cmd, Command_Name)
+lx.bless(SMO_UV_RelaxUV_Cmd, Cmd_Name)

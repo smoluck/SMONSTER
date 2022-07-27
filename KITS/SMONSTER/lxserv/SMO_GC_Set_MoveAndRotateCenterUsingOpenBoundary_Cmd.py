@@ -17,6 +17,9 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.GC.Set.MoveAndRotateCenterUsingOpenBoundary"
+# smo.GC.Set.MoveAndRotateCenterUsingOpenBoundary
+
 class SMO_GC_Set_MoveAndRotateCenterUsingOpenBoundary_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -27,7 +30,7 @@ class SMO_GC_Set_MoveAndRotateCenterUsingOpenBoundary_Cmd(lxu.command.BasicComma
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC Set Move And Rotate Center Using Open Boundary'
+        return 'SMO GC - Setup - Move and Rotate Center using Open Boundary'
     
     def cmd_Desc (self):
         return 'Select an Opened Mesh Move and Rotate the Center to Open boundary centroid and rotate it (use it in item mode)'
@@ -39,14 +42,10 @@ class SMO_GC_Set_MoveAndRotateCenterUsingOpenBoundary_Cmd(lxu.command.BasicComma
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC Set Move And Rotate Center Using Open Boundary'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Setup - Move and Rotate Center using Open Boundary'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         scene = modo.Scene()
@@ -139,8 +138,7 @@ class SMO_GC_Set_MoveAndRotateCenterUsingOpenBoundary_Cmd(lxu.command.BasicComma
             #deselect items
             lx.eval('select.drop item')
             
-            meshnum +=1
+            meshnum += 1
         
     
-lx.bless(SMO_GC_Set_MoveAndRotateCenterUsingOpenBoundary_Cmd, "smo.GC.Set.MoveAndRotateCenterUsingOpenBoundary")
-# smo.GC.Set.MoveAndRotateCenterUsingOpenBoundary
+lx.bless(SMO_GC_Set_MoveAndRotateCenterUsingOpenBoundary_Cmd, Cmd_Name)

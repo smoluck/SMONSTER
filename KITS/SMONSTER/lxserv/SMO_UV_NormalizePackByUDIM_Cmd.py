@@ -14,7 +14,10 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 #---------------------------------------
 
-import lx, lxu, modo
+import lx, lxu, modo, sys
+
+Cmd_Name = "smo.UV.NormalizePackByUDIM"
+# smo.UV.NormalizePackByUDIM %s %s 0 0
 
 class SMO_UV_NormalizePackByUDIM_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -27,6 +30,7 @@ class SMO_UV_NormalizePackByUDIM_Cmd(lxu.command.BasicCommand):
         self.basic_SetFlags (2, lx.symbol.fCMDARG_OPTIONAL)
         self.dyna_Add("Area Value V", lx.symbol.sTYPE_INTEGER)
         self.basic_SetFlags (3, lx.symbol.fCMDARG_OPTIONAL)
+
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
     
@@ -34,7 +38,7 @@ class SMO_UV_NormalizePackByUDIM_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO UV Normalize Pack By UDIM'
+        return 'SMO UV - Normalize Pack By UDIM'
     
     def cmd_Desc (self):
         return 'Normalize all the UV Islands and Pack them in defined UDIM UV Space.'
@@ -46,14 +50,10 @@ class SMO_UV_NormalizePackByUDIM_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO UV Normalize Pack By UDIM'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO UV - Normalize Pack By UDIM'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -164,16 +164,16 @@ class SMO_UV_NormalizePackByUDIM_Cmd(lxu.command.BasicCommand):
             lx.eval('dialog.title {SMONSTER - Normalize and Pack:}')
             lx.eval('dialog.msg {Please select Only One Vertex Map and run that script again.}')
             lx.eval('dialog.open')
-            sys.exit()
             SMO_SafetyCheckNPbUDIM_UVMapCount = False
+            sys.exit()
         
         if SelectedMeshUVMapsCount < 1 :
             lx.eval('dialog.setup info')
             lx.eval('dialog.title {SMONSTER - Normalize and Pack:}')
             lx.eval('dialog.msg {You must have a UV map selected to run this script.}')
             lx.eval('dialog.open')
-            sys.exit()
             SMO_SafetyCheckNPbUDIM_UVMapCount = False
+            sys.exit()
         
         if SelectedMeshUVMapsCount == 1 :
             SMO_SafetyCheckNPbUDIM_UVMapCount = True
@@ -327,5 +327,4 @@ class SMO_UV_NormalizePackByUDIM_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.type item')
         
     
-lx.bless(SMO_UV_NormalizePackByUDIM_Cmd, "smo.UV.NormalizePackByUDIM")
-# smo.UV.NormalizePackByUDIM %s %s 0 0
+lx.bless(SMO_UV_NormalizePackByUDIM_Cmd, Cmd_Name)

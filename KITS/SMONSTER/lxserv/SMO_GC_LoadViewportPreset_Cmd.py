@@ -15,7 +15,7 @@
 
 import modo, lx, lxu
 
-Command_Name = "smo.GC.LoadViewportPreset"
+Cmd_Name = "smo.GC.LoadViewportPreset"
 # smo.GC.LoadViewportPreset 1
 
 class SMO_GC_LoadViewportPreset_Cmd(lxu.command.BasicCommand):
@@ -27,7 +27,7 @@ class SMO_GC_LoadViewportPreset_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC LoadViewportPreset'
+        return 'SMO GC - Load Viewport Preset'
 
     def cmd_Desc(self):
         return 'Check if CAGE Map exist on current Mesh. If not, create a new MorphMap, then Select that CAGE Morph.'
@@ -39,7 +39,7 @@ class SMO_GC_LoadViewportPreset_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC LoadViewportPreset'
+        return 'SMO GC - Load Viewport Preset'
 
     def cmd_Flags(self):
         return lx.symbol.fCMD_UNDO
@@ -76,4 +76,5 @@ class SMO_GC_LoadViewportPreset_Cmd(lxu.command.BasicCommand):
             if Preset_ID == 2:
                 lx.eval('view3d.presetload AVP_Game')
 
-lx.bless(SMO_GC_LoadViewportPreset_Cmd, Command_Name)
+
+lx.bless(SMO_GC_LoadViewportPreset_Cmd, Cmd_Name)

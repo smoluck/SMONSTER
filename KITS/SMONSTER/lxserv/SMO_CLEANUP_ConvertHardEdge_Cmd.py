@@ -17,6 +17,9 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.CLEANUP.ConvertHardEdge"
+
+
 class SMO_Cleanup_ConvertHardEdge_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -32,7 +35,7 @@ class SMO_Cleanup_ConvertHardEdge_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO Cleanup ConvertHardEdge'
+        return 'SMO CLEANUP -  Convert to HardEdge Workflow'
     
     def cmd_Desc (self):
         return 'Update Materials Smoothing Angle to 179 Degree and set ON the Weight by Polygon Area according to SMO Modo Workflow, set ON the Weight by Polygon Area, Process a MeshCleanup pass and a Polygon Align'
@@ -44,15 +47,11 @@ class SMO_Cleanup_ConvertHardEdge_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO Cleanup ConvertHardEdge'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CLEANUP -  Convert to HardEdge Workflow'
     
     def basic_Enable (self, msg):
         return True
-        
-    
+
     def basic_Execute(self, msg, flags):
         scn = modo.Scene()
         IntSoften = self.dyna_Int (0)
@@ -92,4 +91,4 @@ class SMO_Cleanup_ConvertHardEdge_Cmd(lxu.command.BasicCommand):
         lx.eval('select.drop item')
         
     
-lx.bless(SMO_Cleanup_ConvertHardEdge_Cmd, "smo.CLEANUP.ConvertHardEdge")
+lx.bless(SMO_Cleanup_ConvertHardEdge_Cmd, Cmd_Name)

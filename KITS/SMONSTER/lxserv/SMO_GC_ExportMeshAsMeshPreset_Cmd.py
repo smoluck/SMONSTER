@@ -18,7 +18,7 @@
 import lx, lxu, os, modo, string
 from os import path
 
-Command_Name = "smo.GC.ExportMeshAsMeshPreset"
+Cmd_Name = "smo.GC.ExportMeshAsMeshPreset"
 # smo.GC.ExportMeshAsMeshPreset {C:\TEMP\Target}
 
 class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
@@ -34,7 +34,7 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC Export current Mesh as MeshPreset LXL files'
+        return 'SMO GC - Export current Mesh as MeshPreset LXL files'
 
     def cmd_Desc(self):
         return 'Export current Mesh As MeshPreset LXL file into Target Path. (optional: Define Path destination as argument)'
@@ -46,7 +46,7 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC Export Mesh as MeshPreset LXL files'
+        return 'SMO GC - Export Mesh as MeshPreset LXL files'
 
     def basic_Enable(self, msg):
         return True
@@ -283,4 +283,4 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
                     lx.eval("transform.channel rot.Z {%s}" % rad(WRZ))
 
 
-lx.bless(SMO_GC_ExportMeshAsMeshPreset_Cmd, Command_Name)
+lx.bless(SMO_GC_ExportMeshAsMeshPreset_Cmd, Cmd_Name)

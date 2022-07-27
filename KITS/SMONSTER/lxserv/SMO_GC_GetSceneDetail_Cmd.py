@@ -15,10 +15,9 @@
 #---------------------------------------
 
 import lx, lxu, os, string, modo
-from os import path
 
 
-Command_Name = "smo.GC.GetSceneDetail"
+Cmd_Name = "smo.GC.GetSceneDetail"
 
 ############# USE CASE
 # Result = lx.eval('smo.GC.GetSceneDetail 4 ?')
@@ -33,8 +32,7 @@ class SMO_GC_GetSceneDetail_Cmd(lxu.command.BasicCommand):
         self.basic_SetFlags (0, lx.symbol.fCMDARG_OPTIONAL)
         self.dyna_Add("Query Result", lx.symbol.sTYPE_STRING)
         self.basic_SetFlags (1, lx.symbol.fCMDARG_QUERY)
-        
-    
+
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
     
@@ -42,7 +40,7 @@ class SMO_GC_GetSceneDetail_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC Get Scene Detail'
+        return 'SMO GC - Get Scene Detail'
     
     def cmd_Desc (self):
         return 'Get Details about the current scene using arguments to specify wich data chunk you need.'
@@ -54,7 +52,7 @@ class SMO_GC_GetSceneDetail_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC Get Scene Detail'
+        return 'SMO GC - Get Scene Detail'
     
     def basic_Enable (self, msg):
         return True
@@ -130,8 +128,7 @@ class SMO_GC_GetSceneDetail_Cmd(lxu.command.BasicCommand):
                     Result = FileName[0]
                     # lx.out('Scene File Name:', Result)
                     
-                
-                
+
                 # lx.out ('Result of Query:', Result)
                 va = lx.object.ValueArray(vaQuery)
                 va.AddString(Result)
@@ -140,4 +137,4 @@ class SMO_GC_GetSceneDetail_Cmd(lxu.command.BasicCommand):
             return
         
     
-lx.bless(SMO_GC_GetSceneDetail_Cmd, Command_Name)
+lx.bless(SMO_GC_GetSceneDetail_Cmd, Cmd_Name)

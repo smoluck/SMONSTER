@@ -17,6 +17,9 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.GC.MergeTransByArg"
+# smo.GC.MergeTransByArg 1
+
 class SMO_GC_MergeTransByArg_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -30,7 +33,7 @@ class SMO_GC_MergeTransByArg_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO MergeTransByArg'
+        return 'SMO GC - Merge Transforms by Arguments'
     
     def cmd_Desc (self):
         return 'Merge the multiple Pos/Rot/Sca Transform into only one Transform Matrix via String Argument to define wich Transform to update: POSition / ROTation / SCAle.'
@@ -42,15 +45,11 @@ class SMO_GC_MergeTransByArg_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO MergeTransByArg'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Merge Transforms by Arguments'
     
     def basic_Enable (self, msg):
         return True
-        
-    
+
     def basic_Execute(self, msg, flags):
         scene = modo.Scene()
         scn = scene.selected[0]
@@ -105,13 +104,10 @@ class SMO_GC_MergeTransByArg_Cmd(lxu.command.BasicCommand):
             for n, xfrm in enumerate(transformsStackSca):
                 print(xfrm.name)
                 if xfrm == sca :
-                    if transformsStack[n + 1].type == 'scale':
+                    if transformsStackSca[n + 1].type == 'scale':
                         scene.select([transformsStackSca[n + 1], xfrm])
                         lx.eval('transform.merge rem:1')
                         break
-        
 
 
-    
-lx.bless(SMO_GC_MergeTransByArg_Cmd, "smo.GC.MergeTransByArg")
-# smo.GC.MergeTransByArg 1
+lx.bless(SMO_GC_MergeTransByArg_Cmd, Cmd_Name)

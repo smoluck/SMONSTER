@@ -15,6 +15,9 @@
 #---------------------------------------
 import lx, lxu, modo
 
+Cmd_Name = "smo.QT.SelectByBakeMeshType"
+# smo.QT.SelectByBakeMeshType 0
+
 class SMO_QT_SelectByBakeMeshType_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -28,7 +31,7 @@ class SMO_QT_SelectByBakeMeshType_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO Quick Tag - Bake Mesh Type'
+        return 'SMO QT - Bake Mesh Type'
     
     def cmd_Desc (self):
         return 'Add an MTyp Tag to the current selected Mesh item. it define it as low or high poly mesh for Baking purpose.'
@@ -40,14 +43,10 @@ class SMO_QT_SelectByBakeMeshType_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO Quick Tag - Bake Mesh Type'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO QT - Bake Mesh Type'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         
@@ -64,7 +63,8 @@ class SMO_QT_SelectByBakeMeshType_Cmd(lxu.command.BasicCommand):
         # 3 = high
         # ############### ARGUMENTS ###############
         scene = modo.scene.current()
-        
+        searchedtag = 'MTyp'
+
         lx.eval('select.drop item')
         lx.eval('select.itemType mesh')
         MeshItemList = []
@@ -74,15 +74,7 @@ class SMO_QT_SelectByBakeMeshType_Cmd(lxu.command.BasicCommand):
         for item in MeshItemList :
             tagtypes = lx.evalN('query sceneservice item.tagTypes ? %s' % searchedtag)
             
-            
-            
-            
-            
-            
-            
-            
         meshes_list = scene.selectedByType(lx.symbol.sITYPE_MESH)
-        searchedtag = 'MTyp'
         tagtypes = lx.evalN('query sceneservice      ? %s' % searchedtag)
         # lx.out('Mesh tag type:', tagtypes)
         
@@ -97,5 +89,5 @@ class SMO_QT_SelectByBakeMeshType_Cmd(lxu.command.BasicCommand):
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_QT_SelectByBakeMeshType_Cmd, "smo.QT.SelectByBakeMeshType")
-# smo.QT.SelectByBakeMeshType 0
+
+lx.bless(SMO_QT_SelectByBakeMeshType_Cmd, Cmd_Name)

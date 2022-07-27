@@ -17,7 +17,7 @@
 import modo, lx, lxifc, lxu
 import lxu.command as SAC
 
-Command_Name = "smo.GC.FixVertexWithNullVNormData"
+Cmd_Name = "smo.GC.FixVertexWithNullVNormData"
 # smo.GC.FixVertexWithNullVNormData
 
 class InvalidMeshMapVisitor(lxifc.Visitor):
@@ -92,8 +92,6 @@ def SelectInvalidVNorm():
 # if __name__ == "__main__":
 #     SelectInvalidVNorm()
 
-
-
 class SMO_GC_FixVertexWithNullVNormData_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -105,7 +103,7 @@ class SMO_GC_FixVertexWithNullVNormData_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC FixVertexWithNullVNormData'
+        return 'SMO GC - Fix Vertex with Null Vertex Normal Data'
 
     def cmd_Desc(self):
         return 'check current selected mesh, analyse the vertex data for Vertex Normal Maps. If those value are Null, it select the vertex and apply a Set Vertex Normal command.'
@@ -117,7 +115,7 @@ class SMO_GC_FixVertexWithNullVNormData_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC FixVertexWithNullVNormData'
+        return 'SMO GC - Fix Vertex with Null Vertex Normal Data'
 
     def basic_Enable(self, msg):
         return True
@@ -128,4 +126,5 @@ class SMO_GC_FixVertexWithNullVNormData_Cmd(lxu.command.BasicCommand):
         lx.eval('smo.GC.ResetVertexNormal')
         lx.eval('select.type vertex')
 
-lx.bless(SMO_GC_FixVertexWithNullVNormData_Cmd, Command_Name)
+
+lx.bless(SMO_GC_FixVertexWithNullVNormData_Cmd, Cmd_Name)

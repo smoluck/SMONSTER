@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.CB.LocatorShape"
+Cmd_Name = "smo.CB.LocatorShape"
 # smo.CB.LocatorShape 2 1 1
 
 class SMO_CB_LocatorShape_Cmd(lxu.command.BasicCommand):
@@ -52,7 +52,7 @@ class SMO_CB_LocatorShape_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO CB ItemColor'
+        return 'SMO CB - Locator Shape'
 
     def cmd_Desc(self):
         return 'Define the itemList Color and Drawing option for the current selected Item.'
@@ -64,10 +64,7 @@ class SMO_CB_LocatorShape_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO CB ItemColor'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CB - Locator Shape'
 
     def basic_Enable(self, msg):
         return True
@@ -371,9 +368,10 @@ class SMO_CB_LocatorShape_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.type item')
             # lx.out('End of SMO_DIS_ItemColor Script')
             #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
-    
+
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
     
     
-lx.bless(SMO_CB_LocatorShape_Cmd, Command_Name)
+lx.bless(SMO_CB_LocatorShape_Cmd, Cmd_Name)

@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.SelectShaderItem"
+Cmd_Name = "smo.GC.SelectShaderItem"
 # execute:      smo.GC.SelectShaderItem
 # query:        smo.GC.SelectShaderItem ?
 
@@ -31,6 +31,7 @@ class SMO_GC_SelectShaderItem_Cmd(lxu.command.BasicCommand):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Shader Item Name", lx.symbol.sTYPE_STRING)
         self.basic_SetFlags (0, lx.symbol.fCMDARG_QUERY)
+
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
     
@@ -38,7 +39,7 @@ class SMO_GC_SelectShaderItem_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC SelectShaderItem'
+        return 'SMO GC - Select Shader Item'
     
     def cmd_Desc (self):
         return 'Select the Shader Item of the current scene.'
@@ -50,14 +51,10 @@ class SMO_GC_SelectShaderItem_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC SelectShaderItem'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Select Shader Item'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -107,6 +104,5 @@ class SMO_GC_SelectShaderItem_Cmd(lxu.command.BasicCommand):
                 va.AddString(ShaderItemID)
                 return lx.result.OK
                 
-                
-    
-lx.bless(SMO_GC_SelectShaderItem_Cmd, Command_Name)
+
+lx.bless(SMO_GC_SelectShaderItem_Cmd, Cmd_Name)

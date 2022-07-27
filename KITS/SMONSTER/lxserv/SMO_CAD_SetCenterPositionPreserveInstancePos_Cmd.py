@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.CAD.SetCenterPositionPreserveInstancePos"
+Cmd_Name = "smo.CAD.SetCenterPositionPreserveInstancePos"
 # smo.CAD.SetCenterPositionPreserveInstancePos
 
 class SMO_CAD_SetCenterPositionPreserveInstancePos_Cmd(lxu.command.BasicCommand):
@@ -30,7 +30,7 @@ class SMO_CAD_SetCenterPositionPreserveInstancePos_Cmd(lxu.command.BasicCommand)
         pass
 
     def cmd_UserName(self):
-        return 'SMO CAD Set Center Position but Preserve Instance Position'
+        return 'SMO CAD - Set Center Position but Preserve Instance Position'
 
     def cmd_Desc(self):
         return 'Set the Center of the current Mesh item to selected Polygons Center, but preserving the Instances Positions.'
@@ -42,10 +42,7 @@ class SMO_CAD_SetCenterPositionPreserveInstancePos_Cmd(lxu.command.BasicCommand)
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO CAD Set Center Position but Preserve Instance Position'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CAD - Set Center Position but Preserve Instance Position'
 
     def basic_Enable(self, msg):
         return True
@@ -215,4 +212,5 @@ class SMO_CAD_SetCenterPositionPreserveInstancePos_Cmd(lxu.command.BasicCommand)
 
         lx.eval('smo.GC.DeselectAll')
 
-lx.bless(SMO_CAD_SetCenterPositionPreserveInstancePos_Cmd, Command_Name)
+
+lx.bless(SMO_CAD_SetCenterPositionPreserveInstancePos_Cmd, Cmd_Name)

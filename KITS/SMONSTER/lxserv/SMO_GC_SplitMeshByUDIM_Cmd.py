@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.SplitMeshByUDIM"
+Cmd_Name = "smo.GC.SplitMeshByUDIM"
 # smo.GC.SplitMeshByUDIM {Boat} 1001 1014
 
 class SMO_GC_SplitMeshByUDIM_Cmd(lxu.command.BasicCommand):
@@ -36,7 +36,7 @@ class SMO_GC_SplitMeshByUDIM_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC SplitMeshByUDIM'
+        return 'SMO GC - SplitMesh by UDIM'
 
     def cmd_Desc(self):
         return 'Create New Mesh Layers, using target Mesh Name + PrefixName + UDIM ID from selected Mesh.'
@@ -48,10 +48,7 @@ class SMO_GC_SplitMeshByUDIM_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC SplitMeshByUDIM'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Split Mesh by UDIM'
 
     def basic_Enable(self, msg):
         return True
@@ -159,4 +156,5 @@ class SMO_GC_SplitMeshByUDIM_Cmd(lxu.command.BasicCommand):
         # lx.out('Newly created and assigned: %s Material' % len(MATNameList))
         lx.out('-------------')
 
-lx.bless(SMO_GC_SplitMeshByUDIM_Cmd, Command_Name)
+
+lx.bless(SMO_GC_SplitMeshByUDIM_Cmd, Cmd_Name)

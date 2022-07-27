@@ -17,7 +17,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.MultiSimplifyToNGon"
+Cmd_Name = "smo.GC.MultiSimplifyToNGon"
 # smo.GC.MultiSimplifyToNGon 1
 
 class SMO_GC_MultiSimplifyToNGon_Cmd(lxu.command.BasicCommand):
@@ -43,7 +43,7 @@ class SMO_GC_MultiSimplifyToNGon_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC (Multi) SimplifyToNGon'
+        return 'SMO GC - (Multi) Simplify to NGon'
 
     def cmd_Desc(self):
         return 'Merge every polygons that have same coplanar polygon direction to simplify a given set of meshes. Via argument you can also update the HardEdges data for a better end result.'
@@ -55,7 +55,7 @@ class SMO_GC_MultiSimplifyToNGon_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC (Multi) SimplifyToNGon'
+        return 'SMO GC - (Multi) Simplify to NGon'
 
     def basic_Enable(self, msg):
         return True
@@ -76,4 +76,4 @@ class SMO_GC_MultiSimplifyToNGon_Cmd(lxu.command.BasicCommand):
         scene.select(selmeshessssa)
 
 
-lx.bless(SMO_GC_MultiSimplifyToNGon_Cmd, Command_Name)
+lx.bless(SMO_GC_MultiSimplifyToNGon_Cmd, Cmd_Name)

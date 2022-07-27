@@ -18,7 +18,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.CreateDeleteSelSetFromMTypTag"
+Cmd_Name = "smo.GC.CreateDeleteSelSetFromMTypTag"
 # smo.GC.CreateDeleteSelSetFromMTypTag 1 ------ > Detect if MTyp Tags exist. Then Create the Selection Set related to that tag for LowPoly / Cage / HighPoly.
 # smo.GC.CreateDeleteSelSetFromMTypTag 0 ------ > Delete the Selection Set related to that tag for LowPoly / Cage / HighPoly.
 
@@ -37,7 +37,7 @@ class SMO_GC_CreateDeleteSelSetFromMTypTag_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC Create or Delete SelSet From MTyp Tag'
+        return 'SMO GC - Create or Delete SelSet from Bake Mesh Type Tag'
     
     def cmd_Desc (self):
         return 'Read current defined Tags for Livelink Exports, then Create OR Delete the Selection Set related to that tag for LowPoly / Cage / HighPoly.'
@@ -49,14 +49,10 @@ class SMO_GC_CreateDeleteSelSetFromMTypTag_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC Create or Delete SelSet From MTyp Tag'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Create or Delete SelSet from Bake Mesh Type Tag'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         # if not self.dyna_IsSet(0):
@@ -165,4 +161,5 @@ class SMO_GC_CreateDeleteSelSetFromMTypTag_Cmd(lxu.command.BasicCommand):
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_GC_CreateDeleteSelSetFromMTypTag_Cmd, Command_Name)
+
+lx.bless(SMO_GC_CreateDeleteSelSetFromMTypTag_Cmd, Cmd_Name)

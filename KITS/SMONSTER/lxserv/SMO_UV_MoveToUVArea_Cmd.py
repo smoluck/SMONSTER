@@ -14,7 +14,10 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 #---------------------------------------
 
-import lx, lxu, modo
+import lx, lxu, modo, sys
+
+Cmd_Name = "smo.UV.MoveToUVArea"
+# smo.UV.MoveToUVArea -1 -1
 
 class SMO_UV_MoveToUVArea_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -23,6 +26,7 @@ class SMO_UV_MoveToUVArea_Cmd(lxu.command.BasicCommand):
         self.basic_SetFlags (0, lx.symbol.fCMDARG_OPTIONAL)                 # here the (0) define the argument index.
         self.dyna_Add("Area Value V", lx.symbol.sTYPE_INTEGER)
         self.basic_SetFlags (1, lx.symbol.fCMDARG_OPTIONAL)
+
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
     
@@ -30,7 +34,7 @@ class SMO_UV_MoveToUVArea_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO UV Move to UV Area'
+        return 'SMO UV - Move to UV Area'
     
     def cmd_Desc (self):
         return 'Move selected Polygons to a defined  UV Area (Via Arguments).'
@@ -42,14 +46,10 @@ class SMO_UV_MoveToUVArea_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO UV Move to UV Area'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO UV - Move to UV Area'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -130,5 +130,4 @@ class SMO_UV_MoveToUVArea_Cmd(lxu.command.BasicCommand):
         lx.eval('tool.set preset:TransformMove mode:off')
         
     
-lx.bless(SMO_UV_MoveToUVArea_Cmd, "smo.UV.MoveToUVArea")
-# smo.UV.MoveToUVArea -1 -1
+lx.bless(SMO_UV_MoveToUVArea_Cmd, Cmd_Name)

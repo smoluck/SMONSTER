@@ -17,7 +17,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.AffinitySVGRebuild"
+Cmd_Name = "smo.GC.AffinitySVGRebuild"
 # smo.GC.AffinitySVGRebuild
 
 class SMO_GC_Affinity_SVG_Rebuild_Cmd(lxu.command.BasicCommand):
@@ -41,7 +41,7 @@ class SMO_GC_Affinity_SVG_Rebuild_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName (self):
-        return 'SMO GC Affinity SVG Rebuild'
+        return 'SMO GC - Affinity SVG Rebuild'
 
     def cmd_Desc (self):
         return 'Split the current MeshLayer by reading the Polygon Selection Sets and using their names to split the mesh in multiple mesh Layers, with corresponding names.'
@@ -53,11 +53,10 @@ class SMO_GC_Affinity_SVG_Rebuild_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName (self):
-        return 'SMO GC Affinity SVG Rebuild'
+        return 'SMO GC - Affinity SVG Rebuild'
 
     def basic_Enable (self, msg):
         return True
-
 
     def basic_Execute(self, msg, flags):
         if self.current_Selection is not None:
@@ -270,19 +269,13 @@ class SMO_GC_Affinity_SVG_Rebuild_Cmd(lxu.command.BasicCommand):
                 selSets.append(mesh.PTagByIndex(lx.symbol.i_PTAG_PICK, i))
             lx.out('selSets:', selSets)
             '''
-    
-    
-    
-    
+
     
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
 
-lx.bless(SMO_GC_Affinity_SVG_Rebuild_Cmd, Command_Name)
-
-
-
+lx.bless(SMO_GC_Affinity_SVG_Rebuild_Cmd, Cmd_Name)
 
 
 

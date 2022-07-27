@@ -17,7 +17,7 @@
 
 import modo, lx, lxu, random
 
-Command_Name = "smo.QT.SetSelSetColorIDRandomConstant"
+Cmd_Name = "smo.QT.SetSelSetColorIDRandomConstant"
 # smo.QT.SetSelSetColorIDRandomConstant
 
 def ListPSelSet():
@@ -466,4 +466,4 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         #     sys.exit
         
     
-lx.bless(SMO_QT_SetSelSetColorIDRandomConstant_Cmd, Command_Name)
+lx.bless(SMO_QT_SetSelSetColorIDRandomConstant_Cmd, Cmd_Name)

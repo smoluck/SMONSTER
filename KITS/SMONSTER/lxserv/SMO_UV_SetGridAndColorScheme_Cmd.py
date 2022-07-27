@@ -16,6 +16,9 @@
 
 import lx, lxu, modo
 
+Cmd_Name =  "smo.UV.SetGridAndColorScheme"
+# smo.UV.SetGridAndColorScheme 1
+
 class SMO_UV_SetGridAndColorScheme_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -28,7 +31,7 @@ class SMO_UV_SetGridAndColorScheme_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO UV Set Grid And Color Scheme'
+        return 'SMO UV - Set Grid And Color Scheme'
     
     def cmd_Desc (self):
         return 'Activate the Dark Color Scheme in current UV View and set the Grid Settings for the Smart Unwrap Tools.'
@@ -40,12 +43,11 @@ class SMO_UV_SetGridAndColorScheme_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO UV Set Grid And Color Scheme'
+        return 'SMO UV - Set Grid And Color Scheme'
     
     def basic_Enable (self, msg):
         return True
-        
-    
+
     def basic_Execute(self, msg, flags):
         Int_UDIMMode = self.dyna_Int (0)
         
@@ -95,5 +97,4 @@ class SMO_UV_SetGridAndColorScheme_Cmd(lxu.command.BasicCommand):
         lx.out('End of SMO_UV_SetGRIDAndScheme Script')
         
     
-lx.bless(SMO_UV_SetGridAndColorScheme_Cmd, "smo.UV.SetGridAndColorScheme")
-# smo.UV.SetGridAndColorScheme 1
+lx.bless(SMO_UV_SetGridAndColorScheme_Cmd, Cmd_Name)

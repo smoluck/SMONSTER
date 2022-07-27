@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.MIFABOMA.RadialArrayCountByUser.ViaUserPref"
+Cmd_Name = "smo.MIFABOMA.RadialArrayCountByUser.ViaUserPref"
 # smo.MIFABOMA.RadialArrayCountByUser.ViaUserPref 1 8 1 0
 
 class SMO_MIFABOMA_RadialArray_CountByUser_ViaUserPref_Cmd(lxu.command.BasicCommand):
@@ -42,7 +42,7 @@ class SMO_MIFABOMA_RadialArray_CountByUser_ViaUserPref_Cmd(lxu.command.BasicComm
         pass
     
     def cmd_UserName (self):
-        return 'SMO RadialArray Count By User'
+        return 'SMO MIFABOMA - RadialArray Count By User'
     
     def cmd_Desc (self):
         return 'RadialArray current Polygon Selection (or all Poly if no selection) using Origin Center (World) or Item Center (Local).'
@@ -54,10 +54,7 @@ class SMO_MIFABOMA_RadialArray_CountByUser_ViaUserPref_Cmd(lxu.command.BasicComm
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO RadialArray Count By User'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO MIFABOMA - RadialArray Count By User'
     
     def basic_Enable (self, msg):
         return True
@@ -545,9 +542,10 @@ class SMO_MIFABOMA_RadialArray_CountByUser_ViaUserPref_Cmd(lxu.command.BasicComm
             lx.eval('item.refSystem %s' % CurrentRefSystemItem)
 
         lx.out('End of SMO RadialArray  Command')
-    
+
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
 
-lx.bless(SMO_MIFABOMA_RadialArray_CountByUser_ViaUserPref_Cmd, Command_Name)
+lx.bless(SMO_MIFABOMA_RadialArray_CountByUser_ViaUserPref_Cmd, Cmd_Name)

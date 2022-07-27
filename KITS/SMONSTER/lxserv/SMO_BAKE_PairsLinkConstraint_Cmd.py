@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.BAKE.PairsLinkConstraint"
+Cmd_Name = "smo.BAKE.PairsLinkConstraint"
 # smo.BAKE.PairsLinkConstraint
 
 class SMO_BAKE_PairsLinkConstraint_Cmd(lxu.command.BasicCommand):
@@ -47,7 +47,7 @@ class SMO_BAKE_PairsLinkConstraint_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO BAKE PairsLinkConstraint'
+        return 'SMO BAKE - Pairs Link Constraint'
     
     def cmd_Desc (self):
         return 'Create a Position/Rotation Constraint according to selection order and user preferences. low --> high OR  high --> low.'
@@ -59,14 +59,10 @@ class SMO_BAKE_PairsLinkConstraint_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO BAKE PairsLinkConstraint.'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO BAKE - Pairs Link Constraint.'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         if self.current_Selection is not None:
@@ -131,5 +127,5 @@ class SMO_BAKE_PairsLinkConstraint_Cmd(lxu.command.BasicCommand):
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_BAKE_PairsLinkConstraint_Cmd, Command_Name)
 
+lx.bless(SMO_BAKE_PairsLinkConstraint_Cmd, Cmd_Name)

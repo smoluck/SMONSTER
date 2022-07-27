@@ -17,7 +17,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.ExportSelectedMeshesAsMeshPreset"
+Cmd_Name = "smo.GC.ExportSelectedMeshesAsMeshPreset"
 # smo.GC.ExportSelectedMeshesAsMeshPreset {C:\TEMP\Target}
 
 class SMO_GC_ExportSelectedMeshesAsMeshPreset_Cmd(lxu.command.BasicCommand):
@@ -33,7 +33,7 @@ class SMO_GC_ExportSelectedMeshesAsMeshPreset_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC Export Selected Meshes as MeshPreset LXL files'
+        return 'SMO GC - Export Selected Meshes as MeshPreset LXL files'
 
     def cmd_Desc(self):
         return 'Export Selected Meshes As MeshPreset LXL file into Target Path. (optional: Define Path destination as argument)'
@@ -45,7 +45,7 @@ class SMO_GC_ExportSelectedMeshesAsMeshPreset_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC Export Selected Meshes as MeshPreset LXL files'
+        return 'SMO GC - Export Selected Meshes as MeshPreset LXL files'
 
     def basic_Enable(self, msg):
         return True
@@ -71,7 +71,7 @@ class SMO_GC_ExportSelectedMeshesAsMeshPreset_Cmd(lxu.command.BasicCommand):
             for mesh in meshes_list:
                 mesh.select(True)
                 lx.eval('smo.GC.ExportMeshAsMeshPreset')
-
         lx.eval('smo.GC.DeselectAll')
 
-lx.bless(SMO_GC_ExportSelectedMeshesAsMeshPreset_Cmd, Command_Name)
+
+lx.bless(SMO_GC_ExportSelectedMeshesAsMeshPreset_Cmd, Cmd_Name)

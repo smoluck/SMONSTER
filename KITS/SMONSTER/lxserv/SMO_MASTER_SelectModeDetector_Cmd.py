@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.MASTER.SelectModeDetector"
+Cmd_Name = "smo.MASTER.SelectModeDetector"
 # smo.MASTER.SelectModeDetector 1
 
 class SMO_MASTER_SelectModeDetector_Cmd(lxu.command.BasicCommand):
@@ -32,7 +32,7 @@ class SMO_MASTER_SelectModeDetector_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO MASTER Component Mode Detector'
+        return 'SMO MASTER - Component Mode Detector'
     
     def cmd_Desc (self):
         return 'Detect the current Component Mode and iterate user values based on the detection for further use of the tool.'
@@ -44,15 +44,11 @@ class SMO_MASTER_SelectModeDetector_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO MASTER Component Mode Detector'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO MASTER - Component Mode Detector'
     
     def basic_Enable (self, msg):
         return True
-    
-    
+
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
         
@@ -393,5 +389,6 @@ class SMO_MASTER_SelectModeDetector_Cmd(lxu.command.BasicCommand):
 
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
-        
-lx.bless(SMO_MASTER_SelectModeDetector_Cmd, Command_Name)
+
+
+lx.bless(SMO_MASTER_SelectModeDetector_Cmd, Cmd_Name)

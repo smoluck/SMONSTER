@@ -16,7 +16,7 @@
 
 import lx, lxu, modo, string, os
 
-Command_Name = "smo.GC.QuickCreateCameraMatchSetup"
+Cmd_Name = "smo.GC.QuickCreateCameraMatchSetup"
 # smo.GC.QuickCreateCameraMatchSetup
 
 class SMO_GC_QuickCreateCameraMatchSetup_Cmd(lxu.command.BasicCommand):
@@ -30,7 +30,7 @@ class SMO_GC_QuickCreateCameraMatchSetup_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC QuickCreateCameraMatchSetup'
+        return 'SMO GC - Quick Create CameraMatch Setup'
 
     def cmd_Desc(self):
         return 'Load images of specific type and create a scene with CameraMatch setup on camera. It save the scene using the Image filename.'
@@ -42,10 +42,7 @@ class SMO_GC_QuickCreateCameraMatchSetup_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC QuickCreateCameraMatchSetup'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Quick Create Camera Match Setup'
 
     def basic_Enable(self, msg):
         return True
@@ -156,4 +153,6 @@ class SMO_GC_QuickCreateCameraMatchSetup_Cmd(lxu.command.BasicCommand):
         #     ModifiedName = Scene_Name + '_' + Mesh_Name
         #     lx.eval('item.name {%s} xfrmcore' % ModifiedName)
         # lx.eval('select.drop item')
-lx.bless(SMO_GC_QuickCreateCameraMatchSetup_Cmd, Command_Name)
+
+
+lx.bless(SMO_GC_QuickCreateCameraMatchSetup_Cmd, Cmd_Name)

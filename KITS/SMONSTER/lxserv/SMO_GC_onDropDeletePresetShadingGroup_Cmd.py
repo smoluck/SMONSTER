@@ -17,7 +17,7 @@
 
 import lx, lxu.select, modo
 
-Command_Name = "smo.GC.OnDropDeletePresetShadingGroup"
+Cmd_Name = "smo.GC.OnDropDeletePresetShadingGroup"
 
 
 class SMO_GC_onDropDeletePresetShadingGroup_Cmd(lxu.command.BasicCommand):
@@ -31,7 +31,7 @@ class SMO_GC_onDropDeletePresetShadingGroup_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC onDropDeletePresetShadingGroup'
+        return 'SMO GC - OnDrop Delete Preset Shading Group'
 
     def cmd_Desc(self):
         return 'Automatically Remove the Shading Group "meshPresetName.lxl" created by Modo when we drop a meshpreset in the scene. It also setup the Transform tool ON, with Background MeshConstraint, and Action Center to Local mode, for easy adjustment. (Attach SMO_GC_onDrop_RotateTool.py script to the selected MeshPreset file via PB_View and smo.GC.AttachScriptToPreset command.)'
@@ -43,7 +43,7 @@ class SMO_GC_onDropDeletePresetShadingGroup_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC onDropDeletePresetShadingGroup'
+        return 'SMO GC - OnDrop Delete Preset Shading Group'
 
     def basic_Enable(self, msg):
         return True
@@ -93,5 +93,6 @@ class SMO_GC_onDropDeletePresetShadingGroup_Cmd(lxu.command.BasicCommand):
         lx.eval('tool.set const.bg on')
         lx.eval('tool.set "Transform" "on"')
         lx.eval('tool.set actr.local on')
-    
-lx.bless(SMO_GC_onDropDeletePresetShadingGroup_Cmd, Command_Name)
+
+
+lx.bless(SMO_GC_onDropDeletePresetShadingGroup_Cmd, Cmd_Name)

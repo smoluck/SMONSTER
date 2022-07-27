@@ -17,7 +17,7 @@
 import lx, lxu, modo, os, string
 from os import path
 
-Command_Name = "smo.BATCH.ExportMeshesAsMeshPreset"
+Cmd_Name = "smo.BATCH.ExportMeshesAsMeshPreset"
 
 class SMO_BATCH_ExportMeshesAsMeshPreset_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -30,7 +30,7 @@ class SMO_BATCH_ExportMeshesAsMeshPreset_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO Batch Export Meshes As MeshPreset LXL files'
+        return 'SMO BATCH - Export Meshes As MeshPreset LXL files'
 
     def cmd_Desc(self):
         return 'Batch Export Meshes As MeshPreset LXL file into Target Path.'
@@ -42,7 +42,7 @@ class SMO_BATCH_ExportMeshesAsMeshPreset_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO Batch Export Meshes As MeshPreset LXL files'
+        return 'SMO BATCH - Export Meshes As MeshPreset LXL files'
 
     def basic_Enable(self, msg):
         return True
@@ -112,4 +112,5 @@ class SMO_BATCH_ExportMeshesAsMeshPreset_Cmd(lxu.command.BasicCommand):
                 #     print('Pos: ', DetectTransformPos)
                 #     print('Rot: ', DetectTransformRot)
 
-lx.bless(SMO_BATCH_ExportMeshesAsMeshPreset_Cmd, Command_Name)
+
+lx.bless(SMO_BATCH_ExportMeshesAsMeshPreset_Cmd, Cmd_Name)

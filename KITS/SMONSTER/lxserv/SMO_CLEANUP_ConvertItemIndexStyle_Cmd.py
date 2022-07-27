@@ -17,7 +17,7 @@
 
 import lx, lxu, modo, string
 
-Command_Name = "smo.CLEANUP.ConvertItemIndexStyle"
+Cmd_Name = "smo.CLEANUP.ConvertItemIndexStyle"
 # smo.GC.ConvertItemIndexStyle
 
 class SMO_Cleanup_ConvertItemIndexStyle_Cmd(lxu.command.BasicCommand):
@@ -30,7 +30,7 @@ class SMO_Cleanup_ConvertItemIndexStyle_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO Cleanup ConvertItemIndexStyle'
+        return 'SMO CLEANUP - Convert Item Index Style'
     
     def cmd_Desc (self):
         return 'Check if the current Modo Item Index Style set in Preferences and Rename all the selected items, if they use mixed Index Style or if they use a different Index Style than the one in Modo Preferences.'
@@ -42,7 +42,7 @@ class SMO_Cleanup_ConvertItemIndexStyle_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO Cleanup ConvertItemIndexStyle'
+        return 'SMO CLEANUP - Convert Item Index Style'
     
     def basic_Enable (self, msg):
         return True
@@ -94,5 +94,5 @@ class SMO_Cleanup_ConvertItemIndexStyle_Cmd(lxu.command.BasicCommand):
         # scene.select(MeshItem_List)
         
     
-lx.bless(SMO_Cleanup_ConvertItemIndexStyle_Cmd, Command_Name)
+lx.bless(SMO_Cleanup_ConvertItemIndexStyle_Cmd, Cmd_Name)
 

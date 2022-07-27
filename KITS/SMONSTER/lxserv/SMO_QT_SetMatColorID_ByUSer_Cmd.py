@@ -17,7 +17,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.QT.SetMatColorIDByUser"
+Cmd_Name = "smo.QT.SetMatColorIDByUser"
 # smo.QT.SetMatColorIDByUser
 
 def SetColorIDByNumberCheckSceneMaxColorID():
@@ -87,9 +87,6 @@ class SMO_GC_SetMatColorID_ByUser_Cmd(lxu.command.BasicCommand):
 
     def basic_ButtonName(self):
         return 'SMO QT - Set ColorID ByUser (by Material)'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
 
     def basic_Enable(self, msg):
         return True
@@ -505,4 +502,5 @@ class SMO_GC_SetMatColorID_ByUser_Cmd(lxu.command.BasicCommand):
 
         del (R, G, B, GC_OriginalModoMaterialOverride, GC_MatDefaultSmooAngle, GC_WeightByPolyArea, GC_MatShadingModel, GC_ConstantColorOverride, GC_MatNameSuffix)
 
-lx.bless(SMO_GC_SetMatColorID_ByUser_Cmd, Command_Name)
+
+lx.bless(SMO_GC_SetMatColorID_ByUser_Cmd, Cmd_Name)

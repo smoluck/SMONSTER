@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.StarTriple"
+Cmd_Name = "smo.GC.StarTriple"
 # smo.GC.StarTriple
 
 class SMO_GC_StarTriple_Cmd(lxu.command.BasicCommand):
@@ -32,7 +32,7 @@ class SMO_GC_StarTriple_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC Star Triple'
+        return 'SMO GC - Star Triple'
 
     def cmd_Desc(self):
         return 'Star Triple area using touching polygons and same Facing Ratio.'
@@ -44,10 +44,7 @@ class SMO_GC_StarTriple_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC Star Triple'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Star Triple'
 
     def basic_Enable(self, msg):
         return True
@@ -245,4 +242,4 @@ class SMO_GC_StarTriple_Cmd(lxu.command.BasicCommand):
         # #################################
 
 
-lx.bless(SMO_GC_StarTriple_Cmd, Command_Name)
+lx.bless(SMO_GC_StarTriple_Cmd, Cmd_Name)

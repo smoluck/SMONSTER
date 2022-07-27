@@ -16,6 +16,9 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.GC.SplitEachComponentIndividualy"
+# smo.GC.SplitEachComponentIndividualy 1 0
+
 class SMO_GC_SplitEachComponentIndividualy_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -31,7 +34,7 @@ class SMO_GC_SplitEachComponentIndividualy_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName (self):
-        return 'SMO SplitEachComponentIndividualy'
+        return 'SMO GC - Split each Component Individualy'
 
     def cmd_Desc (self):
         return 'Separate current Mesh by Component (to create Polyline of 1 Edge). It Split each Vertex OR Polyline Edges OR Polygons into an individual piece.'
@@ -43,14 +46,10 @@ class SMO_GC_SplitEachComponentIndividualy_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName (self):
-        return 'SMO SplitEachComponentIndividualy'
-
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Split each Component Individualy'
 
     def basic_Enable (self, msg):
         return True
-
 
     def basic_Execute(self, msg, flags):
         scene = modo.Scene()
@@ -310,5 +309,5 @@ class SMO_GC_SplitEachComponentIndividualy_Cmd(lxu.command.BasicCommand):
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_GC_SplitEachComponentIndividualy_Cmd, "smo.GC.SplitEachComponentIndividualy")
-# smo.GC.SplitEachComponentIndividualy 1 0
+
+lx.bless(SMO_GC_SplitEachComponentIndividualy_Cmd, Cmd_Name)

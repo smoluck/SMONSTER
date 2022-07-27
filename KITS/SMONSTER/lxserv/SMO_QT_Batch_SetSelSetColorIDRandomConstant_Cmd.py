@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.QT.Batch.SetSelSetColorIDRandomConstant"
+Cmd_Name = "smo.QT.Batch.SetSelSetColorIDRandomConstant"
 # smo.QT.Batch.SetSelSetColorIDRandomConstant 1 1
 
 class SMO_QT_Batch_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
@@ -85,4 +85,5 @@ class SMO_QT_Batch_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
             lx.eval('select.type item')
             lx.eval('smo.GC.DeselectAll')
 
-lx.bless(SMO_QT_Batch_SetSelSetColorIDRandomConstant_Cmd, Command_Name)
+
+lx.bless(SMO_QT_Batch_SetSelSetColorIDRandomConstant_Cmd, Cmd_Name)

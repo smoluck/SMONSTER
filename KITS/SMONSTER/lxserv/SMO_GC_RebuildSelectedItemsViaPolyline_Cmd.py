@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.RebuildSelectedItemsViaPolyline"
+Cmd_Name = "smo.GC.RebuildSelectedItemsViaPolyline"
 # smo.GC.RebuildSelectedItemsViaPolyline
 
 class SMO_GC_RebuildSelectedItemsViaPolyline_Cmd(lxu.command.BasicCommand):
@@ -32,7 +32,7 @@ class SMO_GC_RebuildSelectedItemsViaPolyline_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC RebuildSelectedItemsViaPolyline'
+        return 'SMO GC - Rebuild selected Items Via Polyline'
     
     def cmd_Desc (self):
         return 'Merge Selected Items and recreate a Polyline from the resulting edges. Delete the original Data.'
@@ -44,14 +44,10 @@ class SMO_GC_RebuildSelectedItemsViaPolyline_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC RebuildSelectedItemsViaPolyline'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Rebuild selected Items Via Polyline'
     
     def basic_Enable (self, msg):
         return True
-    
     
     def basic_Execute(self, msg, flags):
         scene = modo.Scene()
@@ -73,4 +69,5 @@ class SMO_GC_RebuildSelectedItemsViaPolyline_Cmd(lxu.command.BasicCommand):
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_GC_RebuildSelectedItemsViaPolyline_Cmd, Command_Name)
+
+lx.bless(SMO_GC_RebuildSelectedItemsViaPolyline_Cmd, Cmd_Name)

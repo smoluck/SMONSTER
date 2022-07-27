@@ -15,6 +15,8 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.CAD.AllMesh.PolylineToNGon"
+
 class SMO_CAD_AllMesh_PolylineToNGon_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -26,7 +28,7 @@ class SMO_CAD_AllMesh_PolylineToNGon_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO CAD All Mesh Polyline To NGon'
+        return 'SMO CAD - All Mesh Polyline To NGon'
     
     def cmd_Desc (self):
         return 'Convert the current Polyline Selection to an NGon.'
@@ -38,16 +40,13 @@ class SMO_CAD_AllMesh_PolylineToNGon_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO CAD All Mesh Polyline To NGon'
+        return 'SMO CAD - All Mesh Polyline To NGon'
     
     def basic_Enable (self, msg):
         return True
-    
-    
+
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
-
-
 
         ###############COPY/PASTE Check Procedure#################
         ## create variables
@@ -127,8 +126,10 @@ class SMO_CAD_AllMesh_PolylineToNGon_Cmd(lxu.command.BasicCommand):
                 lx.eval('pref.value application.pasteDeSelection false')
                 lx.out('"Deselect Elements Before Pasting" have been Restored')
             ########################################################
-            
+
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_CAD_AllMesh_PolylineToNGon_Cmd, "smo.CAD.AllMesh.PolylineToNGon")
+
+lx.bless(SMO_CAD_AllMesh_PolylineToNGon_Cmd, Cmd_Name)

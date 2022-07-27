@@ -15,7 +15,7 @@
 #---------------------------------------
 import lx, lxu, modo
 
-Command_Name = "smo.GC.PrimGenCyl"
+Cmd_Name = "smo.GC.PrimGenCyl"
 # smo.GC.PrimGenCyl x 32 [10cm] [56cm] 0 1 1
 
 class SMO_GC_PrimGenCylinder_Cmd(lxu.command.BasicCommand):
@@ -38,7 +38,7 @@ class SMO_GC_PrimGenCylinder_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO PrimGenCylinder'
+        return 'SMO GC - Primitive Cylinder'
 
     def cmd_Desc(self):
         return 'SMO Primitive Generator Cylinder: Create a Cylinder or disk based on Arguments'
@@ -50,7 +50,7 @@ class SMO_GC_PrimGenCylinder_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO PrimGenCylinder'
+        return 'SMO GC - Primitive Cylinder'
 
     def basic_Enable(self, msg):
         return True
@@ -200,6 +200,4 @@ class SMO_GC_PrimGenCylinder_Cmd(lxu.command.BasicCommand):
         lx.eval('select.drop item')
 
 
-lx.bless(SMO_GC_PrimGenCylinder_Cmd, Command_Name)
-
-
+lx.bless(SMO_GC_PrimGenCylinder_Cmd, Cmd_Name)

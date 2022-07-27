@@ -15,7 +15,10 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 #---------------------------------------
 
-import lx, lxu, modo
+import lx, lxu, modo, sys
+
+Cmd_Name = "smo.UV.FixFlippedSoloV"
+# smo.UV.FixFlippedSoloV
 
 class SMO_UV_FixFlippedSoloV_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -27,7 +30,7 @@ class SMO_UV_FixFlippedSoloV_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO UV Fix Flipped on V'
+        return 'SMO UV - Fix Flipped on V'
     
     def cmd_Desc (self):
         return 'Fix the Flipped UVs in the current UVMap.'
@@ -39,14 +42,10 @@ class SMO_UV_FixFlippedSoloV_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO UV Fix Flipped on V'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO UV - Fix Flipped on V'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -106,16 +105,18 @@ class SMO_UV_FixFlippedSoloV_Cmd(lxu.command.BasicCommand):
             lx.eval('dialog.title {SMONSTER - UV Fix flipped on V:}')
             lx.eval('dialog.msg {Please select Only One Vertex Map and run that script again.}')
             lx.eval('dialog.open')
-            sys.exit()
             SMO_SafetyCheck_UVFixflippedSoloV_UVMapCount = False
+            sys.exit()
+
         
         if SelectedMeshUVMapsCount < 1 :
             lx.eval('dialog.setup info')
             lx.eval('dialog.title {SMONSTER - UV Fix flipped on V:}')
             lx.eval('dialog.msg {You must have a UV map selected to run this script.}')
             lx.eval('dialog.open')
-            sys.exit()
             SMO_SafetyCheck_UVFixflippedSoloV_UVMapCount = False
+            sys.exit()
+
         
         if SelectedMeshUVMapsCount == 1 :
             SMO_SafetyCheck_UVFixflippedSoloV_UVMapCount = True
@@ -260,5 +261,6 @@ class SMO_UV_FixFlippedSoloV_Cmd(lxu.command.BasicCommand):
                     lx.out('No UV Island to Flip')
             
         #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
-lx.bless(SMO_UV_FixFlippedSoloV_Cmd, "smo.UV.FixFlippedSoloV")
-# smo.UV.FixFlippedSoloV
+
+
+lx.bless(SMO_UV_FixFlippedSoloV_Cmd, Cmd_Name)

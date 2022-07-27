@@ -15,7 +15,7 @@
 
 import modo, lx, lxu
 
-Command_Name = "smo.BAKE.CreateAndOrSelectCAGEMorph"
+Cmd_Name = "smo.BAKE.CreateAndOrSelectCAGEMorph"
 # smo.BAKE.CreateAndOrSelectCAGEMorph
 
 class SMO_BAKE_CreateAndOrSelectCAGEMorph_Cmd(lxu.command.BasicCommand):
@@ -26,7 +26,7 @@ class SMO_BAKE_CreateAndOrSelectCAGEMorph_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO BAKE Create CAGE Morph'
+        return 'SMO BAKE - Create CAGE Morph'
 
     def cmd_Desc(self):
         return 'Check if CAGE Map exist on current Mesh. If not, create a new MorphMap, then Select that CAGE Morph.'
@@ -38,7 +38,7 @@ class SMO_BAKE_CreateAndOrSelectCAGEMorph_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO BAKE Create CAGE Morph'
+        return 'SMO BAKE - Create CAGE Morph'
 
     def cmd_Flags(self):
         return lx.symbol.fCMD_UNDO
@@ -128,4 +128,4 @@ class SMO_BAKE_CreateAndOrSelectCAGEMorph_Cmd(lxu.command.BasicCommand):
         lx.notimpl()
 
 
-lx.bless(SMO_BAKE_CreateAndOrSelectCAGEMorph_Cmd, Command_Name)
+lx.bless(SMO_BAKE_CreateAndOrSelectCAGEMorph_Cmd, Cmd_Name)

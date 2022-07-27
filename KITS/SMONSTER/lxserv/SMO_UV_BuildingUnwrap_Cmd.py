@@ -15,6 +15,8 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.UV.BuildingUnwrap"
+
 class SMO_UV_BuildingUnwrap_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -26,7 +28,7 @@ class SMO_UV_BuildingUnwrap_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO UV Building Unwrap'
+        return 'SMO UV - Building Unwrap'
     
     def cmd_Desc (self):
         return 'Relax the UVs of the current Polygon Selection.'
@@ -38,11 +40,10 @@ class SMO_UV_BuildingUnwrap_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO UV Building Unwrap'
+        return 'SMO UV - Building Unwrap'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -158,4 +159,4 @@ class SMO_UV_BuildingUnwrap_Cmd(lxu.command.BasicCommand):
                 lx.out('UV Constraints junk map NOT detected')
         
     
-lx.bless(SMO_UV_BuildingUnwrap_Cmd, "smo.UV.BuildingUnwrap")
+lx.bless(SMO_UV_BuildingUnwrap_Cmd, Cmd_Name)

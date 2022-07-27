@@ -15,7 +15,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.UnbevelRing"
+Cmd_Name = "smo.GC.UnbevelRing"
 
 
 class SMO_GC_UnbevelRing_Cmd(lxu.command.BasicCommand):
@@ -30,7 +30,7 @@ class SMO_GC_UnbevelRing_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC UnbevelRing'
+        return 'SMO GC - UnBevel Ring'
 
     def cmd_Desc(self):
         return 'Select current Edge Ring and Unbevel the selection.'
@@ -42,7 +42,7 @@ class SMO_GC_UnbevelRing_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC UnbevelRing'
+        return 'SMO GC - UnBevel Ring'
 
     def basic_Enable(self, msg):
         return True
@@ -107,4 +107,4 @@ class SMO_GC_UnbevelRing_Cmd(lxu.command.BasicCommand):
                 lx.eval('@unbevel.pl')
 
 
-lx.bless(SMO_GC_UnbevelRing_Cmd, Command_Name)
+lx.bless(SMO_GC_UnbevelRing_Cmd, Cmd_Name)

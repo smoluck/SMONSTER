@@ -16,7 +16,7 @@
 
 import lx, lxifc, lxu.command, lxu.select, subprocess, os
 
-CMD_NAME = "smo.LL.RIZOMUV.SetExePath"
+Cmd_Name = "smo.LL.RIZOMUV.SetExePath"
 
 class SMO_LL_RIZOMUV_SetExePath_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -29,7 +29,7 @@ class SMO_LL_RIZOMUV_SetExePath_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO RIZOMUV LIVELINK Set EXE Path'
+        return 'SMO LL RIZOMUV - Set EXE Path'
     
     def cmd_Desc (self):
         return 'Set the RizomUV exe path to create the LiveLink. It will prompt a File browser to get the EXE file Location.'
@@ -41,12 +41,11 @@ class SMO_LL_RIZOMUV_SetExePath_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO RIZOMUV LIVELINK Set EXE Path'
+        return 'SMO LL RIZOMUV - Set EXE Path'
     
     def basic_Enable (self, msg):
         return True
-    
-    
+
     def basic_Execute(self, msg, flags):
         # MODO version checks. Different versions have different FBX options.
         modo_ver = int(lx.eval ('query platformservice appversion ?'))
@@ -65,4 +64,5 @@ class SMO_LL_RIZOMUV_SetExePath_Cmd(lxu.command.BasicCommand):
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_LL_RIZOMUV_SetExePath_Cmd, CMD_NAME)
+
+lx.bless(SMO_LL_RIZOMUV_SetExePath_Cmd, Cmd_Name)

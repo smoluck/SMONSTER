@@ -19,11 +19,10 @@
 
 # You can take a look at the once provided by modo: https://learn.foundry.com/modo/content/help/pages/modeling/edit_geometry/static_analysis.html
 import modo
-
 import lx, lxifc, lxu
 import lxu.command as SAC
 
-Command_Name = "smo.SA.VNormalCheck"
+Cmd_Name = "smo.SA.VNormalCheck"
 
 class SMO_SA_VNormalCheck(SAC.StaticAnalysisCommand):
     def __init__(self):
@@ -64,4 +63,5 @@ class SMO_SA_VNormalCheck(SAC.StaticAnalysisCommand):
     def sa_ItemType(self):
         return "mesh"
 
-SAC.RegisterStaticAnalysisTest(SMO_SA_VNormalCheck, Command_Name)
+
+SAC.RegisterStaticAnalysisTest(SMO_SA_VNormalCheck, Cmd_Name)

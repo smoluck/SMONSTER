@@ -16,6 +16,8 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.CLEANUP.DelLight"
+
 class SMO_Cleanup_DelLight_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -27,7 +29,7 @@ class SMO_Cleanup_DelLight_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO Cleanup DelLight'
+        return 'SMO CLEANUP - Delete all Lights'
     
     def cmd_Desc (self):
         return 'Search for all Light in the scene and Delete them.'
@@ -39,10 +41,7 @@ class SMO_Cleanup_DelLight_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO Cleanup DelLight'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CLEANUP - Delete all Lights'
     
     def basic_Enable (self, msg):
         return True
@@ -57,7 +56,6 @@ class SMO_Cleanup_DelLight_Cmd(lxu.command.BasicCommand):
             lx.out('Light Deleted')
         except:
             lx.out('No Light Deleted')
-        
-        
+
     
-lx.bless(SMO_Cleanup_DelLight_Cmd, "smo.CLEANUP.DelLight")
+lx.bless(SMO_Cleanup_DelLight_Cmd, Cmd_Name)

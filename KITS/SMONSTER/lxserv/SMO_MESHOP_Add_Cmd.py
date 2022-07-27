@@ -12,9 +12,9 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 # ---------------------------------------
 
-import lx, lxu, modo
+import lx, lxu, modo, sys
 
-Command_Name = "smo.MESHOP.AddMeshop"
+Cmd_Name = "smo.MESHOP.AddMeshop"
 # smo.MESHOP.AddMeshop Stack
 
 class SMO_MESHOP_Add_Cmd(lxu.command.BasicCommand):
@@ -29,7 +29,7 @@ class SMO_MESHOP_Add_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO MeshOp AddMeshop'
+        return 'SMO GC - MeshOp - Add Meshop'
 
     def cmd_Desc(self):
         return 'Add a Meshop and add it to the Schematic.'
@@ -41,10 +41,7 @@ class SMO_MESHOP_Add_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO MeshOp AddMeshop'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - MeshOp - Add Meshop'
 
     def basic_Enable(self, msg):
         return True
@@ -683,5 +680,5 @@ class SMO_MESHOP_Add_Cmd(lxu.command.BasicCommand):
             lx.eval("smo.GC.DeselectAll")
             lx.eval("select.node {%s} toggle" % SchemNode_B)
 
-lx.bless(SMO_MESHOP_Add_Cmd, Command_Name)
 
+lx.bless(SMO_MESHOP_Add_Cmd, Cmd_Name)

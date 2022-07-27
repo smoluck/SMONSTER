@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.CB.ItemColor"
+Cmd_Name = "smo.CB.ItemColor"
 # smo.CB.ItemColor 2 1
 
 
@@ -35,7 +35,7 @@ class SMO_CB_ItemColor_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO CB ItemColor'
+        return 'SMO CB - ItemColor'
     
     def cmd_Desc (self):
         return 'Define the itemList Color and Drawing option for the current selected Item.'
@@ -47,11 +47,10 @@ class SMO_CB_ItemColor_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO CB ItemColor'
+        return 'SMO CB - ItemColor'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         ITColor = self.dyna_Int (0)
@@ -658,9 +657,10 @@ class SMO_CB_ItemColor_Cmd(lxu.command.BasicCommand):
             lx.eval('select.type item')
         # lx.out('End of SMO_DIS_ItemColor Script')
         #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
-    
+
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
     
     
-lx.bless(SMO_CB_ItemColor_Cmd, Command_Name)
+lx.bless(SMO_CB_ItemColor_Cmd, Cmd_Name)

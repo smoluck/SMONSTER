@@ -16,6 +16,8 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.CAD.PolylineToNGon"
+
 class SMO_CAD_PolylineToNGon_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -27,7 +29,7 @@ class SMO_CAD_PolylineToNGon_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO CAD Polyline To NGon'
+        return 'SMO CAD - Polyline To NGon'
     
     def cmd_Desc (self):
         return 'Convert the current Polyline Selection to an NGon.'
@@ -39,17 +41,12 @@ class SMO_CAD_PolylineToNGon_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO CAD Polyline To NGon'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CAD - Polyline To NGon'
     
     def basic_Enable (self, msg):
         return True
     
-    
     def basic_Execute(self, msg, flags):
-
 
 
         ###############COPY/PASTE Check Procedure#################
@@ -136,4 +133,4 @@ class SMO_CAD_PolylineToNGon_Cmd(lxu.command.BasicCommand):
         lx.notimpl()
 
 
-lx.bless(SMO_CAD_PolylineToNGon_Cmd, "smo.CAD.PolylineToNGon")
+lx.bless(SMO_CAD_PolylineToNGon_Cmd, Cmd_Name)

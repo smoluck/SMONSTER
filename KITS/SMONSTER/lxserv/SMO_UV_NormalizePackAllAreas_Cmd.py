@@ -14,7 +14,10 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 #---------------------------------------
 
-import lx, lxu, modo
+import lx, lxu, modo, sys
+
+Cmd_Name = "smo.UV.NormalizePackAllArea"
+# smo.UV.NormalizePackAllArea 0 0
 
 class SMO_UV_NormalizePackAllArea_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -30,7 +33,7 @@ class SMO_UV_NormalizePackAllArea_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO UV Normalize Pack All Areas'
+        return 'SMO UV - Normalize Pack All Areas'
     
     def cmd_Desc (self):
         return 'Normalize all the UV Islands and Pack them on every Areas (Unwrap, Planar, Cylindrical).'
@@ -42,14 +45,10 @@ class SMO_UV_NormalizePackAllArea_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO UV Normalize Pack All Areas'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO UV - Normalize Pack All Areas'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -132,16 +131,16 @@ class SMO_UV_NormalizePackAllArea_Cmd(lxu.command.BasicCommand):
             lx.eval('dialog.title {SMONSTER - Normalize and Pack:}')
             lx.eval('dialog.msg {Please select Only One Vertex Map and run that script again.}')
             lx.eval('dialog.open')
-            sys.exit()
             SMO_SafetyCheckNPAllArea_UVMapCount = False
+            sys.exit()
         
         if SelectedMeshUVMapsCount < 1 :
             lx.eval('dialog.setup info')
             lx.eval('dialog.title {SMONSTER - Normalize and Pack:}')
             lx.eval('dialog.msg {You must have a UV map selected to run this script.}')
             lx.eval('dialog.open')
-            sys.exit()
             SMO_SafetyCheckNPAllArea_UVMapCount = False
+            sys.exit()
         
         if SelectedMeshUVMapsCount == 1 :
             SMO_SafetyCheckNPAllArea_UVMapCount = True
@@ -181,9 +180,6 @@ class SMO_UV_NormalizePackAllArea_Cmd(lxu.command.BasicCommand):
             lx.eval('smo.UV.NormalizePackByArea %s %s -1 -1' % (FixFlippedUV, Orient_Pass) )  # Cylindrical Z
             
             lx.eval('select.drop polygon')
-            
-            
-        
-    
-lx.bless(SMO_UV_NormalizePackAllArea_Cmd, "smo.UV.NormalizePackAllArea")
-# smo.UV.NormalizePackAllArea 0 0
+
+
+lx.bless(SMO_UV_NormalizePackAllArea_Cmd, Cmd_Name)

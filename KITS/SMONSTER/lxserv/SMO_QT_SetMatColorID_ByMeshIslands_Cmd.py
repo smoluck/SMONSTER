@@ -17,7 +17,7 @@
 
 import modo, lx, lxu, random
 
-Command_Name = "smo.QT.SetMatColorIDByMeshIslands"
+Cmd_Name = "smo.QT.SetMatColorIDByMeshIslands"
 # smo.QT.SetMatColorIDByMeshIslands
 
 def scene():
@@ -88,9 +88,6 @@ class SMO_QT_SetMatColorID_ByMeshIslands_Cmd(lxu.command.BasicCommand):
     def basic_ButtonName(self):
         return 'SMO QT - Set ColorID ByUser (by Material) - By Mesh Islands'
 
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
-
     def basic_Enable(self, msg):
         return True
 
@@ -142,4 +139,5 @@ class SMO_QT_SetMatColorID_ByMeshIslands_Cmd(lxu.command.BasicCommand):
         if self.SelModeEdge == True:
             lx.eval('select.type edge')
 
-lx.bless(SMO_QT_SetMatColorID_ByMeshIslands_Cmd, Command_Name)
+
+lx.bless(SMO_QT_SetMatColorID_ByMeshIslands_Cmd, Cmd_Name)

@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.CB.CycleColor"
+Cmd_Name = "smo.CB.CycleColor"
 # smo.CB.CycleColor 1
 
 class SMO_CB_CycleColor_Cmd(lxu.command.BasicCommand):
@@ -32,7 +32,7 @@ class SMO_CB_CycleColor_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO CB CycleColor'
+        return 'SMO CB - Cycle Color'
     
     def cmd_Desc (self):
         return 'Define the itemList Color and Drawing option for the current selected Item in a Cycle mode'
@@ -44,14 +44,10 @@ class SMO_CB_CycleColor_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO CB CycleColor'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CB - Cycle Color'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         DrawOpt = self.dyna_Int (0)
@@ -626,9 +622,10 @@ class SMO_CB_CycleColor_Cmd(lxu.command.BasicCommand):
         # lx.out('End of SMO_DIS_ItemColor Script')
         # lx.out('-------------------------------')
         #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
-    
+
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
     
     
-lx.bless(SMO_CB_CycleColor_Cmd, Command_Name)
+lx.bless(SMO_CB_CycleColor_Cmd, Cmd_Name)

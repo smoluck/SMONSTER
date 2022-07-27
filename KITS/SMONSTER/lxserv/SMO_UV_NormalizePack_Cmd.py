@@ -14,7 +14,9 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 #---------------------------------------
 
-import lx, lxu, modo
+import lx, lxu, modo, sys
+
+Cmd_Name = "smo.UV.NormalizePack"
 
 class SMO_UV_NormalizePack_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -30,7 +32,7 @@ class SMO_UV_NormalizePack_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO UV Normalize Pack'
+        return 'SMO UV - Normalize Pack'
     
     def cmd_Desc (self):
         return 'Normalize all the UV Islands and Pack them in 0-1 UVSpace.'
@@ -42,12 +44,11 @@ class SMO_UV_NormalizePack_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO UV Normalize Pack'
+        return 'SMO UV - Normalize Pack'
     
     def basic_Enable (self, msg):
         return True
-        
-    
+
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
         mesh = scene.selectedByType('mesh')[0]
@@ -146,16 +147,16 @@ class SMO_UV_NormalizePack_Cmd(lxu.command.BasicCommand):
             lx.eval('dialog.title {SMONSTER - Normalize and Pack:}')
             lx.eval('dialog.msg {Please select Only One Vertex Map and run that script again.}')
             lx.eval('dialog.open')
-            sys.exit()
             SMO_SafetyCheckNP_UVMapCount = False
+            sys.exit()
 
         if SelectedMeshUVMapsCount < 1 :
             lx.eval('dialog.setup info')
             lx.eval('dialog.title {SMONSTER - Normalize and Pack:}')
             lx.eval('dialog.msg {You must have a UV map selected to run this script.}')
             lx.eval('dialog.open')
-            sys.exit()
             SMO_SafetyCheckNP_UVMapCount = False
+            sys.exit()
 
         if SelectedMeshUVMapsCount == 1 :
             SMO_SafetyCheckNP_UVMapCount = True
@@ -342,4 +343,4 @@ class SMO_UV_NormalizePack_Cmd(lxu.command.BasicCommand):
             lx.eval('smo.GC.ClearSelectionVmap 7 1')
         
     
-lx.bless(SMO_UV_NormalizePack_Cmd, "smo.UV.NormalizePack")
+lx.bless(SMO_UV_NormalizePack_Cmd, Cmd_Name)

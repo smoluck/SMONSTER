@@ -14,7 +14,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.Master.GetSelMode"
+Cmd_Name = "smo.Master.GetSelMode"
 # smo.Master.GetSelMode
 
 class SMO_MASTER_GetSelMode_Cmd(lxu.command.BasicCommand):
@@ -30,7 +30,7 @@ class SMO_MASTER_GetSelMode_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO Master GetSelMode'
+        return 'SMO MASTER - Get Selection Mode'
 
     def cmd_Desc(self):
         return 'Give current Selection Mode Type and set it to String User Value.'
@@ -42,10 +42,7 @@ class SMO_MASTER_GetSelMode_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO Master GetSelMode'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO MASTER - Get Selection Mode'
 
     def basic_Enable(self, msg):
         return True
@@ -85,7 +82,8 @@ class SMO_MASTER_GetSelMode_Cmd(lxu.command.BasicCommand):
         va.AddString(result)
         return lx.result.OK
 
-lx.bless(SMO_MASTER_GetSelMode_Cmd, Command_Name)
+
+lx.bless(SMO_MASTER_GetSelMode_Cmd, Cmd_Name)
 
 # ############# USE CASE
 # StringResult = lx.eval('smo.Master.GetSelMode ?')

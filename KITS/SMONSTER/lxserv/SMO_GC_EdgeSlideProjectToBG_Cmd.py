@@ -13,10 +13,10 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 # ---------------------------------------
 
-import lx, lxu, modo
+import lx, lxu, modo, sys
 from math import degrees
 
-Command_Name = "smo.GC.EdgeSlideProjectToBG"
+Cmd_Name = "smo.GC.EdgeSlideProjectToBG"
 # smo.GC.EdgeSlideProjectToBG
 
 class SMO_GC_EdgeSlideProjectToBG_Cmd(lxu.command.BasicCommand):
@@ -51,7 +51,7 @@ class SMO_GC_EdgeSlideProjectToBG_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC EdgeSlideProjectToBG'
+        return 'SMO GC - Edge Slide Project to BG'
 
     def cmd_Desc(self):
         return 'Extend the current Opened Boundary Edge Loop to nearest BG Mesh using BG Constraint.'
@@ -63,10 +63,7 @@ class SMO_GC_EdgeSlideProjectToBG_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC EdgeSlideProjectToBG'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Edge Slide Project to BG'
 
     def basic_Enable(self, msg):
         return True
@@ -416,4 +413,5 @@ class SMO_GC_EdgeSlideProjectToBG_Cmd(lxu.command.BasicCommand):
             scene.select(selected_mesh)
             lx.eval('select.type edge')
 
-lx.bless(SMO_GC_EdgeSlideProjectToBG_Cmd, Command_Name)
+
+lx.bless(SMO_GC_EdgeSlideProjectToBG_Cmd, Cmd_Name)

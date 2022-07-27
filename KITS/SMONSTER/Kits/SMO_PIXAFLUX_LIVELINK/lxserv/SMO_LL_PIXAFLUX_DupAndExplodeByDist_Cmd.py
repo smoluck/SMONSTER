@@ -17,7 +17,10 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 #---------------------------------------
 
-import lx, lxu, modo, random
+import lx, lxu, modo, random, sys
+
+Cmd_Name = "smo.LL.PIXAFLUX.DupAndExplodeByDist"
+# smo.LL.PIXAFLUX.DupAndExplodeByDist 1
 
 class SMO_PixaFlux_DupAndExplodeByDist_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -32,7 +35,7 @@ class SMO_PixaFlux_DupAndExplodeByDist_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName (self):
-        return 'SMO PixaFlux DupAndExplodeByDist'
+        return 'SMO LL PIXAFLUX - Duplicate and Explode by Distance'
 
     def cmd_Desc (self):
         return 'Duplicate the Current Selected Mesh, Rename the mesh with a Suffix "_EXPLODE" Create a Relativ e Morph Map called EXPLODE, then Create the Morph Influence out of it and Freeze the deformation / delete the morph map in order to export that to PixaFlux.'
@@ -44,11 +47,10 @@ class SMO_PixaFlux_DupAndExplodeByDist_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName (self):
-        return 'SMO PixaFlux DupAndExplodeByDist'
+        return 'SMO LL PIXAFLUX - Duplicate and Explode by Distance'
 
     def basic_Enable (self, msg):
         return True
-
 
     def basic_Execute(self, msg, flags):
         ExploDistByPrefs = self.dyna_Int (0)
@@ -318,5 +320,4 @@ class SMO_PixaFlux_DupAndExplodeByDist_Cmd(lxu.command.BasicCommand):
         lx.notimpl()
 
 
-lx.bless(SMO_PixaFlux_DupAndExplodeByDist_Cmd, "smo.LL.PIXAFLUX.DupAndExplodeByDist")
-# smo.LL.PIXAFLUX.DupAndExplodeByDist 1
+lx.bless(SMO_PixaFlux_DupAndExplodeByDist_Cmd, Cmd_Name)

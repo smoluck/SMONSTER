@@ -17,7 +17,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.MIFABOMA.Mirror_ViaUserPref"
+Cmd_Name = "smo.MIFABOMA.Mirror_ViaUserPref"
 # smo.MIFABOMA.Mirror_ViaUserPref 1 8 1
 
 class SMO_MIFABOMA_Mirror_ViaUserPref_Cmd(lxu.command.BasicCommand):
@@ -45,7 +45,7 @@ class SMO_MIFABOMA_Mirror_ViaUserPref_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName (self):
-        return 'SMO Mirror via User Prefs'
+        return 'SMO MIFABOMA - Mirror via User Prefs'
 
     def cmd_Desc (self):
         return 'Mirror current Polygon Selection (or all Poly if no selection) using Origin Center (World) or Item Center (Local). It use the User Preferences to define wich clone type you do and if you clone also the hierarchy.'
@@ -57,10 +57,7 @@ class SMO_MIFABOMA_Mirror_ViaUserPref_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName (self):
-        return 'SMO Mirror via User Prefs'
-
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO MIFABOMA - Mirror via User Prefs'
 
     def basic_Enable (self, msg):
         return True
@@ -367,12 +364,12 @@ class SMO_MIFABOMA_Mirror_ViaUserPref_Cmd(lxu.command.BasicCommand):
             lx.eval('item.refSystem {}')
         if RefSystemActive == True:
             lx.eval('item.refSystem %s' % CurrentRefSystemItem)
-        
-        
+
         lx.out('End of SMO Mirror Command')
-        
+
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
 
-lx.bless(SMO_MIFABOMA_Mirror_ViaUserPref_Cmd, Command_Name)
+lx.bless(SMO_MIFABOMA_Mirror_ViaUserPref_Cmd, Cmd_Name)

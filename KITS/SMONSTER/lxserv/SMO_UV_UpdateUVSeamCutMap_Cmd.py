@@ -15,6 +15,9 @@
 
 import lx, lxu, modo
 
+Cmd_Name ="smo.UV.UpdateUVSeamCutMap"
+# smo.UV.UpdateUVSeamCutMap
+
 class SMO_UV_UpdateUVSeamCutMap_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -25,7 +28,7 @@ class SMO_UV_UpdateUVSeamCutMap_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO UV Update UVSeam CutMap'
+        return 'SMO UV - Update UVSeam CutMap'
     
     def cmd_Desc (self):
         return 'Update the UVseam Cut Map based on the current UVMap'
@@ -37,14 +40,10 @@ class SMO_UV_UpdateUVSeamCutMap_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO UV Update UVSeam CutMap'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO UV - Update UVSeam CutMap'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -345,5 +344,4 @@ class SMO_UV_UpdateUVSeamCutMap_Cmd(lxu.command.BasicCommand):
         #####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- END --------------------#####
         
     
-lx.bless(SMO_UV_UpdateUVSeamCutMap_Cmd, "smo.UV.UpdateUVSeamCutMap")
-# smo.UV.UpdateUVSeamCutMap
+lx.bless(SMO_UV_UpdateUVSeamCutMap_Cmd, Cmd_Name)

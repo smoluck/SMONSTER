@@ -14,7 +14,10 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 #---------------------------------------
 
-import lx, lxu, modo
+import lx, lxu, modo, sys
+
+Cmd_Name = "smo.UV.FixFlipped"
+# smo.UV.FixFlipped 1
 
 class SMO_UV_FixFlipped_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -28,7 +31,7 @@ class SMO_UV_FixFlipped_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO UV FixFlipped'
+        return 'SMO UV - Fix Flipped'
     
     def cmd_Desc (self):
         return 'Fix the Flipped UVs in the current UVMap.'
@@ -40,15 +43,11 @@ class SMO_UV_FixFlipped_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO UV FixFlipped'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO UV - Fix Flipped'
     
     def basic_Enable (self, msg):
         return True
-        
-    
+
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
         mesh = scene.selectedByType('mesh')[0]
@@ -124,22 +123,22 @@ class SMO_UV_FixFlipped_Cmd(lxu.command.BasicCommand):
         
         lx.eval('smo.GC.ClearSelectionVmap 1 1')
         lx.eval('select.vertexMap %s txuv replace' % UVFixflipped_UVMapName)
-        
+
         if SelectedMeshUVMapsCount > 1 :
             lx.eval('dialog.setup info')
             lx.eval('dialog.title {SMONSTER - UV Fix flipped:}')
             lx.eval('dialog.msg {Please select Only One Vertex Map and run that script again.}')
             lx.eval('dialog.open')
-            sys.exit()
             SMO_SafetyCheck_UVFixflipped_UVMapCount = False
+            sys.exit()
         
         if SelectedMeshUVMapsCount < 1 :
             lx.eval('dialog.setup info')
             lx.eval('dialog.title {SMONSTER - UV Fix flipped:}')
             lx.eval('dialog.msg {You must have a UV map selected to run this script.}')
             lx.eval('dialog.open')
-            sys.exit()
             SMO_SafetyCheck_UVFixflipped_UVMapCount = False
+            sys.exit()
         
         if SelectedMeshUVMapsCount == 1 :
             SMO_SafetyCheck_UVFixflipped_UVMapCount = True
@@ -289,5 +288,6 @@ class SMO_UV_FixFlipped_Cmd(lxu.command.BasicCommand):
             
         lx.out('End of SMO_UV_FixFlipped Script')
         #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
-lx.bless(SMO_UV_FixFlipped_Cmd, "smo.UV.FixFlipped")
-# smo.UV.FixFlipped 1
+
+
+lx.bless(SMO_UV_FixFlipped_Cmd, Cmd_Name)

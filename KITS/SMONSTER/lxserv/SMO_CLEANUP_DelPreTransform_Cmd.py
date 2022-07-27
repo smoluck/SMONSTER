@@ -17,6 +17,8 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.CLEANUP.DelPreTransform"
+
 class SMO_Cleanup_DelPreTransform_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -24,6 +26,7 @@ class SMO_Cleanup_DelPreTransform_Cmd(lxu.command.BasicCommand):
         self.basic_SetFlags (0, lx.symbol.fCMDARG_OPTIONAL)				# here the (0) define the argument index.
         self.dyna_Add("Freeze Rotation", lx.symbol.sTYPE_INTEGER)
         self.basic_SetFlags (1, lx.symbol.fCMDARG_OPTIONAL)				# here the (1) define the argument index.
+
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
     
@@ -31,7 +34,7 @@ class SMO_Cleanup_DelPreTransform_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO Cleanup DelPreTransform'
+        return 'SMO CLEANUP - Delete PreTransforms'
     
     def cmd_Desc (self):
         return 'Delete all PreTransform Rotation Channels.'
@@ -43,15 +46,11 @@ class SMO_Cleanup_DelPreTransform_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO Cleanup DelPreTransform'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CLEANUP - Delete PreTransforms'
     
     def basic_Enable (self, msg):
         return True
-        
-    
+
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
         IntMergeTransRot = self.dyna_Int (0)
@@ -155,7 +154,7 @@ class SMO_Cleanup_DelPreTransform_Cmd(lxu.command.BasicCommand):
         ########################################################
         
     
-lx.bless(SMO_Cleanup_DelPreTransform_Cmd, "smo.CLEANUP.DelPreTransform")
+lx.bless(SMO_Cleanup_DelPreTransform_Cmd, Cmd_Name)
 
 
 #------------------------------------------------#

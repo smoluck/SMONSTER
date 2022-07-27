@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.SoloInstanceInPlace"
+Cmd_Name = "smo.GC.SoloInstanceInPlace"
 # smo.GC.SoloInstanceInPlace
 
 class SMO_GC_SoloInstanceInPlace_Cmd(lxu.command.BasicCommand):
@@ -30,7 +30,7 @@ class SMO_GC_SoloInstanceInPlace_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName(self):
-        return 'SMO GC Solo Instance In Place'
+        return 'SMO GC - Solo Instance In Place'
     
     def cmd_Desc(self):
         return 'Instance the current item and Unlink the transform from the Source mesh/item then select back the Source Mesh.'
@@ -42,10 +42,7 @@ class SMO_GC_SoloInstanceInPlace_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName(self):
-        return 'SMO GC Solo Instance In Place'
-    
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Solo Instance In Place'
     
     def basic_Enable(self, msg):
         return True
@@ -60,5 +57,6 @@ class SMO_GC_SoloInstanceInPlace_Cmd(lxu.command.BasicCommand):
             lx.eval('smo.GC.ClearTransformLink')
         lx.eval('smo.GC.DeselectAll')
         scene.select(selected_Items)
+
             
-lx.bless(SMO_GC_SoloInstanceInPlace_Cmd, Command_Name)
+lx.bless(SMO_GC_SoloInstanceInPlace_Cmd, Cmd_Name)

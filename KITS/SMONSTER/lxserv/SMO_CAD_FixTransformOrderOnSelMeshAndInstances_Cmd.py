@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.CAD.FixTransformOrderOnSelMeshAndInstances"
+Cmd_Name = "smo.CAD.FixTransformOrderOnSelMeshAndInstances"
 
 class SMO_CAD_FixTransformOrderOnSelMeshAndInstances_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -32,7 +32,7 @@ class SMO_CAD_FixTransformOrderOnSelMeshAndInstances_Cmd(lxu.command.BasicComman
         pass
 
     def cmd_UserName(self):
-        return 'SMO CAD FixTransformOrderOnSelMeshAndInstances'
+        return 'SMO CAD - Fix Transform Order on Selected Mesh and Instances'
 
     def cmd_Desc(self):
         return 'Change the Transform Order only on Meshes and Instances that have Transform Order different than XYZ.'
@@ -44,7 +44,7 @@ class SMO_CAD_FixTransformOrderOnSelMeshAndInstances_Cmd(lxu.command.BasicComman
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO CAD FixTransformOrderOnSelMeshAndInstances'
+        return 'SMO CAD - Fix Transform Order on Selected Mesh and Instances'
 
     def basic_Enable(self, msg):
         return True
@@ -131,7 +131,9 @@ class SMO_CAD_FixTransformOrderOnSelMeshAndInstances_Cmd(lxu.command.BasicComman
             del IDToProcessList[:]
             ####
 
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_CAD_FixTransformOrderOnSelMeshAndInstances_Cmd, Command_Name)
+
+lx.bless(SMO_CAD_FixTransformOrderOnSelMeshAndInstances_Cmd, Cmd_Name)

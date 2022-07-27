@@ -17,7 +17,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.QT.SetMatColorIDByNumber"
+Cmd_Name = "smo.QT.SetMatColorIDByNumber"
 # smo.QT.SetMatColorIDByNumber 2
 
 class SMO_GC_SetMatColorID_ByNumber_Cmd(lxu.command.BasicCommand):
@@ -59,9 +59,6 @@ class SMO_GC_SetMatColorID_ByNumber_Cmd(lxu.command.BasicCommand):
 
     def basic_ButtonName(self):
         return 'SMO QT - Set ColorID ByNumber (by Material)'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
 
     def basic_Enable(self, msg):
         return True
@@ -459,4 +456,5 @@ class SMO_GC_SetMatColorID_ByNumber_Cmd(lxu.command.BasicCommand):
 
         del (R, G, B, GC_OriginalModoMaterialOverride, GC_MatDefaultSmooAngle, GC_WeightByPolyArea, GC_MatShadingModel, GC_ConstantColorOverride, GC_MatNameSuffix)
 
-lx.bless(SMO_GC_SetMatColorID_ByNumber_Cmd, Command_Name)
+
+lx.bless(SMO_GC_SetMatColorID_ByNumber_Cmd, Cmd_Name)

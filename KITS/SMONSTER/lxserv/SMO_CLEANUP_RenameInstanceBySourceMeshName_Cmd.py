@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.CLEANUP.RenameInstanceBySourceMeshName"
+Cmd_Name = "smo.CLEANUP.RenameInstanceBySourceMeshName"
 # smo.CLEANUP.RenameInstanceBySourceMeshName
 
 class SMO_CLEANUP_RenameInstanceBySourceMeshName_Cmd(lxu.command.BasicCommand):
@@ -30,7 +30,7 @@ class SMO_CLEANUP_RenameInstanceBySourceMeshName_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO Cleanup RenameInstanceBySourceMeshName'
+        return 'SMO CLEANUP - Rename Instances by Source Mesh Name'
 
     def cmd_Desc(self):
         return 'Select all the Mesh instances of the current scene and rename them all to use the name of the Source Mesh.'
@@ -42,10 +42,7 @@ class SMO_CLEANUP_RenameInstanceBySourceMeshName_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO Cleanup RenameInstanceBySourceMeshName'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CLEANUP - Rename Instances by Source Mesh Name'
 
     def basic_Enable(self, msg):
         return True
@@ -100,4 +97,6 @@ class SMO_CLEANUP_RenameInstanceBySourceMeshName_Cmd(lxu.command.BasicCommand):
         # print(SourcesIDList)
         # print('List of Mesh Sources Name')
         # print(SourcesNameList)
-lx.bless(SMO_CLEANUP_RenameInstanceBySourceMeshName_Cmd, Command_Name)
+
+
+lx.bless(SMO_CLEANUP_RenameInstanceBySourceMeshName_Cmd, Cmd_Name)

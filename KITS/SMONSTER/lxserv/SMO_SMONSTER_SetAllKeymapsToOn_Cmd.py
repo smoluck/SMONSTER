@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.SMONSTER.SetAllKeymapsToOn"
+Cmd_Name = "smo.SMONSTER.SetAllKeymapsToOn"
 # smo.SMONSTER.SetAllKeymapsToOn
 
 class SMO_SMONSTER_SetAllKeymapsToOn_Cmd(lxu.command.BasicCommand):
@@ -30,7 +30,7 @@ class SMO_SMONSTER_SetAllKeymapsToOn_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO SMONSTER Set All Keymaps to On'
+        return 'SMO SMONSTER - Set All Keymaps to On'
 
     def cmd_Desc(self):
         return 'Set all the Smonster Keymaps Options to TRUE. Setting all Keymap in one Click.'
@@ -42,10 +42,7 @@ class SMO_SMONSTER_SetAllKeymapsToOn_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO SMONSTER Set All Keymaps to On'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO SMONSTER - Set All Keymaps to On'
 
     def basic_Enable(self, msg):
         return True
@@ -76,4 +73,5 @@ class SMO_SMONSTER_SetAllKeymapsToOn_Cmd(lxu.command.BasicCommand):
         lx.eval('smo.LL.PIXAFLUX.MapDefaultHotkeys true')
         lx.eval('smo.LL.RIZOMUV.MapDefaultHotkeys true')
 
-lx.bless(SMO_SMONSTER_SetAllKeymapsToOn_Cmd, Command_Name)
+
+lx.bless(SMO_SMONSTER_SetAllKeymapsToOn_Cmd, Cmd_Name)

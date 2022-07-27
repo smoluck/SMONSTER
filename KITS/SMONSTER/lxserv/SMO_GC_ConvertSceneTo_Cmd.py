@@ -17,6 +17,9 @@
 import lx, lxu, modo, string, os
 from os import path
 
+Cmd_Name = "smo.GC.ConvertSceneTo"
+# smo.GC.ConvertSceneTo 1 LXO
+
 class SMO_GC_ConvertSceneTo_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -33,7 +36,7 @@ class SMO_GC_ConvertSceneTo_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC Convert Scene To'
+        return 'SMO GC - Convert Scene To ...'
     
     def cmd_Desc (self):
         return 'Save the scene in same places as the current opened scene to a specified FileFormat and move the files to a Folder related to the file Format if Argument 1 is true.'
@@ -45,14 +48,10 @@ class SMO_GC_ConvertSceneTo_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC Convert Scene To'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Convert Scene To ...'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         ToFolder =  self.dyna_Int (0)
@@ -140,5 +139,4 @@ class SMO_GC_ConvertSceneTo_Cmd(lxu.command.BasicCommand):
             # lx.eval('select.drop item')
         
     
-lx.bless(SMO_GC_ConvertSceneTo_Cmd, "smo.GC.ConvertSceneTo")
-# smo.GC.ConvertSceneTo 1 LXO
+lx.bless(SMO_GC_ConvertSceneTo_Cmd, Cmd_Name)

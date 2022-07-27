@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.GetAllMaterialsTag"
+Cmd_Name = "smo.GC.GetAllMaterialsTag"
 # query:        smo.GC.GetAllMaterialsTag ?
 
 ############# USE CASE
@@ -30,6 +30,7 @@ class SMO_GC_GetAllMaterialsTag_Cmd(lxu.command.BasicCommand):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("All Material Name List", lx.symbol.sTYPE_STRING)
         self.basic_SetFlags (0, lx.symbol.fCMDARG_QUERY)
+
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
     
@@ -37,7 +38,7 @@ class SMO_GC_GetAllMaterialsTag_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC GetAllMaterialsTag'
+        return 'SMO GC - GetAllMaterialsTag'
     
     def cmd_Desc (self):
         return 'Get all the Material Tags in the scene.'
@@ -49,14 +50,10 @@ class SMO_GC_GetAllMaterialsTag_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC GetAllMaterialsTag'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
-    
+        return 'SMO GC - GetAllMaterialsTag'
+
     def basic_Enable (self, msg):
         return True
-        
         
     def cmd_Query(self, index, vaQuery):
         scene = modo.scene.current()
@@ -75,4 +72,4 @@ class SMO_GC_GetAllMaterialsTag_Cmd(lxu.command.BasicCommand):
         return lx.result.OK
                 
     
-lx.bless(SMO_GC_GetAllMaterialsTag_Cmd, Command_Name)
+lx.bless(SMO_GC_GetAllMaterialsTag_Cmd, Cmd_Name)

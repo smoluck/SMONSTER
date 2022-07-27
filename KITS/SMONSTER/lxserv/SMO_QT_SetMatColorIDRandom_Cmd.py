@@ -16,7 +16,7 @@
 
 import modo, lx, lxu, random
 
-Command_Name = "smo.QT.SetMatColorIDRandom"
+Cmd_Name = "smo.QT.SetMatColorIDRandom"
 # smo.QT.SetMatColorIDRandom
 
 class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
@@ -51,9 +51,6 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
 
     def basic_ButtonName(self):
         return 'SMO QT - Set ColorID Random (by Material)'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
 
     def basic_Enable(self, msg):
         return True
@@ -337,4 +334,4 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
         #     sys.exit
 
 
-lx.bless(SMO_QT_SetMatColorIDRandom_Cmd, Command_Name)
+lx.bless(SMO_QT_SetMatColorIDRandom_Cmd, Cmd_Name)

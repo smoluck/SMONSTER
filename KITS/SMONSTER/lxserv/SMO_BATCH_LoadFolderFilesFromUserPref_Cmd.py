@@ -18,6 +18,9 @@
 import lx, lxu, os, modo, string, sys
 from os import path
 
+Cmd_Name = "smo.BATCH.LoadFolderFilesFromUserPref"
+# smo.BATCH.LoadFolderFilesFromUserPref
+
 class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -29,7 +32,7 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO Batch Load Folder Files'
+        return 'SMO BATCH - Load Folder Files from User Prefs'
     
     def cmd_Desc (self):
         return 'Batch Load Files stored in a Folder and Process the data using User Defined Preferences.'
@@ -41,7 +44,7 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO Batch Load Folder Files'
+        return 'SMO BATCH - Load Folder Files from User Prefs'
     
     def basic_Enable (self, msg):
         return True
@@ -1703,5 +1706,5 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_BATCH_LoadFolderFilesFromUserPref_Cmd, "smo.BATCH.LoadFolderFilesFromUserPref")
-# smo.BATCH.LoadFolderFilesFromUserPref
+
+lx.bless(SMO_BATCH_LoadFolderFilesFromUserPref_Cmd, Cmd_Name)

@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.CLEANUP.DelEmptyMeshItem"
+Cmd_Name = "smo.CLEANUP.DelEmptyMeshItem"
 
 class SMO_Cleanup_DelEmptyMeshItem_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -29,7 +29,7 @@ class SMO_Cleanup_DelEmptyMeshItem_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO Cleanup DelEmptyMeshItem'
+        return 'SMO CLEANUP - Delete Empty Mesh Item'
     
     def cmd_Desc (self):
         return 'Delete Empty Mesh Layers (default Mesh Layer) in current scene.'
@@ -41,14 +41,10 @@ class SMO_Cleanup_DelEmptyMeshItem_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO Cleanup DelEmptyMeshItem'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CLEANUP - Delete Empty Mesh Item'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -103,4 +99,4 @@ class SMO_Cleanup_DelEmptyMeshItem_Cmd(lxu.command.BasicCommand):
         ###############################################
         
     
-lx.bless(SMO_Cleanup_DelEmptyMeshItem_Cmd, Command_Name)
+lx.bless(SMO_Cleanup_DelEmptyMeshItem_Cmd, Cmd_Name)

@@ -12,10 +12,9 @@
 # Created:      25/04/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
 # ---------------------------------------
-
 import lx, lxu, modo
 
-Command_Name = "smo.MASTER.ForceSelectMeshItemOnly"
+Cmd_Name = "smo.MASTER.ForceSelectMeshItemOnly"
 # smo.MASTER.ForceSelectMeshItemOnly
 
 class SMO_MASTER_ForceSelectMeshItem_Cmd(lxu.command.BasicCommand):
@@ -38,7 +37,7 @@ class SMO_MASTER_ForceSelectMeshItem_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO MASTER Force Select Mesh Item Only'
+        return 'SMO MASTER - Force Select Mesh Item Only'
 
     def cmd_Desc(self):
         return 'Select the Mesh Item related to current Selected Component. Filter only the Mesh Item to be selected at the end.'
@@ -50,7 +49,7 @@ class SMO_MASTER_ForceSelectMeshItem_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO MASTER Force Select Mesh Item Only'
+        return 'SMO MASTER - Force Select Mesh Item Only'
 
     def basic_Enable(self, msg):
         return True
@@ -138,7 +137,7 @@ class SMO_MASTER_ForceSelectMeshItem_Cmd(lxu.command.BasicCommand):
                     lx.eval('select.type vertex')
 
 
-lx.bless(SMO_MASTER_ForceSelectMeshItem_Cmd, Command_Name)
+lx.bless(SMO_MASTER_ForceSelectMeshItem_Cmd, Cmd_Name)
 
 
 

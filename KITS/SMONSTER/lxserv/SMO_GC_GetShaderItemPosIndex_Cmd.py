@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.GetShaderItemPosIndex"
+Cmd_Name = "smo.GC.GetShaderItemPosIndex"
 # query:        smo.GC.GetShaderItemPosIndex ?
 
 ############# USE CASE
@@ -30,6 +30,7 @@ class SMO_GC_GetShaderItemPosIndex_Cmd(lxu.command.BasicCommand):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Shader Item Position Index in Shader Tree", lx.symbol.sTYPE_INTEGER)
         self.basic_SetFlags (0, lx.symbol.fCMDARG_QUERY)
+
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
     
@@ -37,7 +38,7 @@ class SMO_GC_GetShaderItemPosIndex_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC GetShaderItemPosIndex'
+        return 'SMO GC - Get Shader Item Position Index'
     
     def cmd_Desc (self):
         return 'Get the Position Index of the Shader Item (in the Shader Tree of the current scene).'
@@ -49,10 +50,7 @@ class SMO_GC_GetShaderItemPosIndex_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC GetShaderItemPosIndex'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Get Shader Item Position Index'
     
     def basic_Enable (self, msg):
         return True
@@ -82,7 +80,6 @@ class SMO_GC_GetShaderItemPosIndex_Cmd(lxu.command.BasicCommand):
                 va = lx.object.ValueArray(vaQuery)
                 va.AddInt(ShaderItemPosIndex)
                 return lx.result.OK
-                
-                
-    
-lx.bless(SMO_GC_GetShaderItemPosIndex_Cmd, Command_Name)
+
+
+lx.bless(SMO_GC_GetShaderItemPosIndex_Cmd, Cmd_Name)

@@ -16,6 +16,9 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.CLEANUP.SSRUVMapByArg"
+# smo.CLEANUP.SSRUVMapByArg 1 {UVChannel_1} {TargetUVMap}
+
 class SMO_Cleanup_SSRUVMapByArg_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -33,7 +36,7 @@ class SMO_Cleanup_SSRUVMapByArg_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO Cleanup SSRUVMapByArg'
+        return 'SMO CLEANUP - Search and Select UVMap by Arg'
     
     def cmd_Desc (self):
         return 'Search if a specific UVMap exist, Select it and Rename it according to Arguments.'
@@ -45,14 +48,10 @@ class SMO_Cleanup_SSRUVMapByArg_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO Cleanup SSRUVMapByArg'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CLEANUP - Search and Select UVMap by Arg'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         scn = modo.Scene()
@@ -101,5 +100,4 @@ class SMO_Cleanup_SSRUVMapByArg_Cmd(lxu.command.BasicCommand):
         lx.eval('select.drop item')
         
     
-lx.bless(SMO_Cleanup_SSRUVMapByArg_Cmd, "smo.CLEANUP.SSRUVMapByArg")
-# smo.CLEANUP.SSRUVMapByArg 1 {UVChannel_1} {TargetUVMap}
+lx.bless(SMO_Cleanup_SSRUVMapByArg_Cmd, Cmd_Name)

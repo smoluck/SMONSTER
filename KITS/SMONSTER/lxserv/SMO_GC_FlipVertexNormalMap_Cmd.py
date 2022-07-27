@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.FlipVertexNormalMap"
+Cmd_Name = "smo.GC.FlipVertexNormalMap"
 # smo.GC.FlipVertexNormalMap
 
 class SMO_GC_FlipVertexNormalMap_Cmd(lxu.command.BasicCommand):
@@ -32,7 +32,7 @@ class SMO_GC_FlipVertexNormalMap_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC FlipVertexNormalMap'
+        return 'SMO GC - Flip Vertex Normal Map'
 
     def cmd_Desc(self):
         return 'Flip the VertexNormalMap Data on selected Component.'
@@ -44,10 +44,7 @@ class SMO_GC_FlipVertexNormalMap_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC FlipVertexNormalMap'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Flip Vertex Normal Map'
 
     def basic_Enable(self, msg):
         return True
@@ -91,4 +88,5 @@ class SMO_GC_FlipVertexNormalMap_Cmd(lxu.command.BasicCommand):
             lx.eval('vertMap.math {%s} {%s} -1.0 0.0 direct 0 (none) 1.0 0.0 direct 0' % (MathCmd, MathCmd))
         ####
 
-lx.bless(SMO_GC_FlipVertexNormalMap_Cmd, Command_Name)
+
+lx.bless(SMO_GC_FlipVertexNormalMap_Cmd, Cmd_Name)

@@ -14,9 +14,9 @@
 # Created:      05/04/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
 # ---------------------------------------
-import lx, lxu, modo
+import lx, lxu, modo, sys
 
-Command_Name = "smo.CAD.Rebevel"
+Cmd_Name = "smo.CAD.Rebevel"
 # smo.CAD.Rebevel
 
 class SMO_CAD_Rebevel_Cmd(lxu.command.BasicCommand):
@@ -34,7 +34,7 @@ class SMO_CAD_Rebevel_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO CAD Rebevel'
+        return 'SMO CAD - Rebevel'
 
     def cmd_Desc(self):
         return 'With 1 Item selected and if more than 2 Polygons selected, Process a rebevel on the selected patch of Quads.'
@@ -46,7 +46,7 @@ class SMO_CAD_Rebevel_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO CAD Rebevel'
+        return 'SMO CAD - Rebevel'
 
     def basic_Enable(self, msg):
         return True
@@ -495,4 +495,5 @@ class SMO_CAD_Rebevel_Cmd(lxu.command.BasicCommand):
 
         #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
 
-lx.bless(SMO_CAD_Rebevel_Cmd, Command_Name)
+
+lx.bless(SMO_CAD_Rebevel_Cmd, Cmd_Name)

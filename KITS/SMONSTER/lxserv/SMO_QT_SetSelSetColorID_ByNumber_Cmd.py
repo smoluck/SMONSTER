@@ -17,7 +17,7 @@
 
 import modo, lx, lxu, random
 
-Command_Name = "smo.QT.SetSelSetColorIDByNumber"
+Cmd_Name = "smo.QT.SetSelSetColorIDByNumber"
 # smo.QT.SetSelSetColorIDByNumber 1
 
 # def ListPSelSet():
@@ -147,9 +147,6 @@ class SMO_QT_SetSelSetColorID_ByNumber_Cmd(lxu.command.BasicCommand):
     def basic_ButtonName(self):
         return 'SMO QT - Set ColorID ByNumber (by SelSet and Constant)'
 
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
-
     def basic_Enable(self, msg):
         return True
 
@@ -201,4 +198,5 @@ class SMO_QT_SetSelSetColorID_ByNumber_Cmd(lxu.command.BasicCommand):
                     lx.eval('!select.editSet %s remove' % CleanupColorIDSelSetName)
         lx.eval('select.useSet %s replace' % ColorIDSelSetName)
 
-lx.bless(SMO_QT_SetSelSetColorID_ByNumber_Cmd, Command_Name)
+
+lx.bless(SMO_QT_SetSelSetColorID_ByNumber_Cmd, Cmd_Name)

@@ -14,9 +14,9 @@
 # Created:      06/05/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
 # ---------------------------------------
-import lx, lxu, modo
+import lx, lxu, modo, sys
 
-Command_Name = "smo.CAD.RebuildClosedPolyStrip"
+Cmd_Name = "smo.CAD.RebuildClosedPolyStrip"
 # smo.CAD.RebuildClosedPolyStrip 12
 
 class SMO_CAD_RebuildClosedPolyStrip_Cmd(lxu.command.BasicCommand):
@@ -32,7 +32,7 @@ class SMO_CAD_RebuildClosedPolyStrip_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO CAD Rebuild Closed PolyStrip'
+        return 'SMO CAD - Rebuild Closed PolyStrip'
 
     def cmd_Desc(self):
         return 'Test if 1 Item is selected and if more than 3 Edges are selected, then process a rebuild on the selected polystrip band (via 2 set of Edges). The Middle Edge will be used to create an in between Width with a regular size all accross the ring.'
@@ -44,7 +44,7 @@ class SMO_CAD_RebuildClosedPolyStrip_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO CAD Rebuild Closed PolyStrip'
+        return 'SMO CAD - Rebuild Closed PolyStrip'
 
     def basic_Enable(self, msg):
         return True
@@ -417,4 +417,5 @@ class SMO_CAD_RebuildClosedPolyStrip_Cmd(lxu.command.BasicCommand):
         lx.out('End of SMO_CAD_RebuildPolystrip Script')
         #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
 
-lx.bless(SMO_CAD_RebuildClosedPolyStrip_Cmd, Command_Name)
+
+lx.bless(SMO_CAD_RebuildClosedPolyStrip_Cmd, Cmd_Name)

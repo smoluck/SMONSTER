@@ -17,7 +17,7 @@
 
 import lx, lxu, modo, random
 
-Command_Name = "smo.GC.DupAndExplodeByDist"
+Cmd_Name = "smo.GC.DupAndExplodeByDist"
 # smo.GC.DupAndExplodeByDist
 
 class SMO_GC_DupAndExplodeByDist_Cmd(lxu.command.BasicCommand):
@@ -32,7 +32,7 @@ class SMO_GC_DupAndExplodeByDist_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName (self):
-        return 'SMO GC DupAndExplodeByDist'
+        return 'SMO GC - Duplicate and Explode by Distance'
 
     def cmd_Desc (self):
         return 'Duplicate the Current Selected Mesh, Rename the mesh with a Suffix "_EXPLODE" Create a Relativ e Morph Map called EXPLODE, then Create the Morph Influence out of it and Freeze the deformation / delete the motrph map in order to export that to PixaFlux.'
@@ -44,14 +44,10 @@ class SMO_GC_DupAndExplodeByDist_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName (self):
-        return 'SMO GC DupAndExplodeByDist'
-
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Duplicate and Explode by Distance'
 
     def basic_Enable (self, msg):
         return True
-
 
     def basic_Execute(self, msg, flags):
         # mode = self.dyna_Int (0)
@@ -299,4 +295,4 @@ class SMO_GC_DupAndExplodeByDist_Cmd(lxu.command.BasicCommand):
         lx.notimpl()
 
 
-lx.bless(SMO_GC_DupAndExplodeByDist_Cmd, Command_Name)
+lx.bless(SMO_GC_DupAndExplodeByDist_Cmd, Cmd_Name)

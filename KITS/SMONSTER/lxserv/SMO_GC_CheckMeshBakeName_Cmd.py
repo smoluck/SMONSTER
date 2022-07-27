@@ -17,7 +17,7 @@
 
 import lx, lxu, modo, string
 
-Command_Name = "smo.GC.CheckMeshBakeName"
+Cmd_Name = "smo.GC.CheckMeshBakeName"
 # smo.GC.CheckMeshBakeName ?
 
 ############# USE CASE
@@ -63,7 +63,7 @@ class SMO_GC_CheckMeshBakeName_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC CheckMeshName'
+        return 'SMO GC - Check Mesh Bake Name for low/cage/high'
     
     def cmd_Desc (self):
         return 'Check if the current Mesh item have low / cage / high strings in is name.'
@@ -75,10 +75,7 @@ class SMO_GC_CheckMeshBakeName_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC CheckMeshName'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Check Mesh Bake Name for low/cage/high'
     
     def basic_Enable(self, msg):
         # Perform the checks for when the command is supposed to be enabled,
@@ -172,12 +169,9 @@ class SMO_GC_CheckMeshBakeName_Cmd(lxu.command.BasicCommand):
                 # va.AddString(MeshClassName)
                 va.AddInt(MeshClassName)
                 return lx.result.OK
-                    
-                    
-        
+
         else:
             return
         
     
-lx.bless(SMO_GC_CheckMeshBakeName_Cmd, Command_Name)
-
+lx.bless(SMO_GC_CheckMeshBakeName_Cmd, Cmd_Name)

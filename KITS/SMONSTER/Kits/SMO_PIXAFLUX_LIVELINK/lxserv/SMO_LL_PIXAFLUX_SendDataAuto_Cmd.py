@@ -17,11 +17,9 @@
 
 # !/usr/bin/env python
 
-import lx, lxifc, lxu.command, lxu.select, subprocess, os
+import lx, lxifc, lxu.command, lxu.select, subprocess, os, traceback
 
-Command_Name = "smo.LL.PIXAFLUX.SendDataAuto"
-
-
+Cmd_Name = "smo.LL.PIXAFLUX.SendDataAuto"
 # smo.LL.PIXAFLUX.SendDataAuto 1 0 2048
 
 class SMO_LL_PIXAFLUX_SendData_Cmd(lxu.command.BasicCommand):
@@ -41,7 +39,7 @@ class SMO_LL_PIXAFLUX_SendData_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO LL Pixaflux SendDataAuto'
+        return 'SMO LL PIXAFLUX - Send Data Auto'
 
     def cmd_Desc(self):
         return 'Export the Current Mesh as FBX to PixaFlux temp Folder. Create a Texture to store the TSNM. Resolution defined by Argument in pixel.'
@@ -53,7 +51,7 @@ class SMO_LL_PIXAFLUX_SendData_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO LL Pixaflux SendDataAuto'
+        return 'SMO LL PIXAFLUX - Send Data Auto'
 
     def cmd_Flags(self):
         return lx.symbol.fCMD_UNDO
@@ -479,5 +477,4 @@ class SMO_LL_PIXAFLUX_SendData_Cmd(lxu.command.BasicCommand):
                 # lx.eval('select.subItem {%s} set mesh;replicator;meshInst;camera;light;txtrLocator;backdrop;groupLocator;replicator;surfGen;locator;falloff;deform;locdeform;weightContainer;morphContainer;deformGroup;deformMDD2;ABCStreamingDeformer;morphDeform;itemInfluence;genInfluence;deform.push;deform.wrap;softLag;ABCCurvesDeform.sample;ABCdeform.sample;force.root;baseVolume;chanModify;itemModify;meshoperation;chanEffect;defaultShader;defaultShader 0 0' % TargetMeshPixaFlux)
 
 
-lx.bless(SMO_LL_PIXAFLUX_SendData_Cmd, Command_Name)
-
+lx.bless(SMO_LL_PIXAFLUX_SendData_Cmd, Cmd_Name)

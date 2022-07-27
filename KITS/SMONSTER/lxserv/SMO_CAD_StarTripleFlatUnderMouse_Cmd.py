@@ -14,9 +14,9 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 # ---------------------------------------
 
-import lx, lxu, modo
+import lx, lxu, modo, sys
 
-Command_Name = "smo.CAD.StarTripleFlat"
+Cmd_Name = "smo.CAD.StarTripleFlat"
 # smo.CAD.StarTripleFlat
 
 class SMO_CAD_StarTripleFlatUnderMouse_Cmd(lxu.command.BasicCommand):
@@ -34,7 +34,7 @@ class SMO_CAD_StarTripleFlatUnderMouse_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO CAD Star Triple Flat'
+        return 'SMO CAD - Star Triple Flat'
 
     def cmd_Desc(self):
         return 'Star Triple Similar Touching (Mouse over a polygon in item mode and launch).'
@@ -46,10 +46,7 @@ class SMO_CAD_StarTripleFlatUnderMouse_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO CAD Star Triple Flat'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CAD - Star Triple Flat'
 
     def basic_Enable(self, msg):
         return True
@@ -241,4 +238,5 @@ class SMO_CAD_StarTripleFlatUnderMouse_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.type item')
                 lx.eval('smo.GC.DeselectAll')
 
-lx.bless(SMO_CAD_StarTripleFlatUnderMouse_Cmd, Command_Name)
+
+lx.bless(SMO_CAD_StarTripleFlatUnderMouse_Cmd, Cmd_Name)

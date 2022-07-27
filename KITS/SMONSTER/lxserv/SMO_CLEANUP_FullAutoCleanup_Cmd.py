@@ -16,6 +16,8 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.CLEANUP.FullAutoCleanup"
+
 class SMO_Cleanup_FullAutoCleanup_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -27,7 +29,7 @@ class SMO_Cleanup_FullAutoCleanup_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO FullAutoCleanup'
+        return 'SMO CLEANUP - Full Auto Cleanup'
     
     def cmd_Desc (self):
         return 'Cleanup all the scene using User Defined Preferences.'
@@ -39,10 +41,7 @@ class SMO_Cleanup_FullAutoCleanup_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO FullAutoCleanup'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CLEANUP - Full Auto Cleanup'
     
     def basic_Enable (self, msg):
         return True
@@ -173,4 +172,4 @@ class SMO_Cleanup_FullAutoCleanup_Cmd(lxu.command.BasicCommand):
         if ConvertItemIndexStyleSceneWise == 1 :
             lx.eval('smo.CLEANUP.ConvertItemIndexStyleSceneWise')
     
-lx.bless(SMO_Cleanup_FullAutoCleanup_Cmd, "smo.CLEANUP.FullAutoCleanup")
+lx.bless(SMO_Cleanup_FullAutoCleanup_Cmd, Cmd_Name)

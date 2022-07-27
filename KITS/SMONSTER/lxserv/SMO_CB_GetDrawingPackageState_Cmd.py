@@ -16,14 +16,13 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.CB.GetDrawingPackageState"
+Cmd_Name = "smo.CB.GetDrawingPackageState"
 # query:        smo.CB.GetDrawingPackageState ?
 
 ############# USE CASE
 # TestResult = lx.eval('smo.CB.GetDrawingPackageState ?')
 # lx.out('Drawing Package state is :',TestResult)
 ######################
-
 
 class SMO_CB_GetDrawingPackageState_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -37,7 +36,7 @@ class SMO_CB_GetDrawingPackageState_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO CB GetDrawingPackageState'
+        return 'SMO CB - Get Drawing Package State'
     
     def cmd_Desc (self):
         return 'Get the Drawing Package State of the current mesh or Locator. If not present add a Drawing Package.'
@@ -49,10 +48,7 @@ class SMO_CB_GetDrawingPackageState_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO CB GetDrawingPackageState'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CB - Get Drawing Package State'
     
     def basic_Enable (self, msg):
         return True
@@ -95,4 +91,4 @@ class SMO_CB_GetDrawingPackageState_Cmd(lxu.command.BasicCommand):
         return lx.result.OK
                 
     
-lx.bless(SMO_CB_GetDrawingPackageState_Cmd, Command_Name)
+lx.bless(SMO_CB_GetDrawingPackageState_Cmd, Cmd_Name)

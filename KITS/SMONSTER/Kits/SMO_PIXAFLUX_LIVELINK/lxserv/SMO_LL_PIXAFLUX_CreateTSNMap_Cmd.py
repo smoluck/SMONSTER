@@ -14,13 +14,17 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 #---------------------------------------
 
-import lx, lxu, modo
+import lx, lxu, modo, os, traceback
+
+Cmd_Name = "smo.LL.PIXAFLUX.CreateTSNMap"
+# smo.LL.PIXAFLUX.CreateTSNMap 2048
 
 class SMO_PixaFlux_CreateTSNMap_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Map Size", lx.symbol.sTYPE_INTEGER)
         self.basic_SetFlags (0, lx.symbol.fCMDARG_OPTIONAL)             # here the (0) define the argument index.
+
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
     
@@ -28,7 +32,7 @@ class SMO_PixaFlux_CreateTSNMap_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO PixaFlux CreateTSNMap'
+        return 'SMO LL PIXAFLUX - Create Tangent Space NormalMap'
     
     def cmd_Desc (self):
         return 'Create a new Texture file to save the PixaFlux Data. Resolution defined by Argument in pixel.'
@@ -40,11 +44,10 @@ class SMO_PixaFlux_CreateTSNMap_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO PixaFlux CreateTSNMap'
+        return 'SMO LL PIXAFLUX - Create Tangent Space NormalMap'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         
@@ -98,7 +101,7 @@ class SMO_PixaFlux_CreateTSNMap_Cmd(lxu.command.BasicCommand):
         image_save_time = os.path.getmtime (image_export_path)
 ################################################
 
-        
         #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
-lx.bless(SMO_PixaFlux_CreateTSNMap_Cmd, "smo.LL.PIXAFLUX.CreateTSNMap")
-# smo.LL.PIXAFLUX.CreateTSNMap 2048
+
+
+lx.bless(SMO_PixaFlux_CreateTSNMap_Cmd, Cmd_Name)

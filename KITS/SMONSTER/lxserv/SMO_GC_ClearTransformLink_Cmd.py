@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.ClearTransformLink"
+Cmd_Name = "smo.GC.ClearTransformLink"
 # smo.GC.ClearTransformLink
 
 class SMO_GC_ClearTransformLink_Cmd(lxu.command.BasicCommand):
@@ -30,7 +30,7 @@ class SMO_GC_ClearTransformLink_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC ClearTransformLink'
+        return 'SMO GC - Clear Transform Link'
 
     def cmd_Desc(self):
         return 'Remove any link between Sources and Instances Transform / Order.'
@@ -42,10 +42,7 @@ class SMO_GC_ClearTransformLink_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC ClearTransformLink'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Clear Transform Link'
 
     def basic_Enable(self, msg):
         return True
@@ -110,5 +107,5 @@ class SMO_GC_ClearTransformLink_Cmd(lxu.command.BasicCommand):
                 # And then set them again, forcing the channel value to go into 'edit' state and not inherit translation data from the source item anymore
                 # lx.eval('channel.value %s channel:{%s:order}' % transformRot_id)
 
-lx.bless(SMO_GC_ClearTransformLink_Cmd, Command_Name)
 
+lx.bless(SMO_GC_ClearTransformLink_Cmd, Cmd_Name)

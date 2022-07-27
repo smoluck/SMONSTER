@@ -15,7 +15,7 @@
 # ---------------------------------------
 import lx, lxu, modo
 
-Command_Name = "smo.CAD.RebevelClearSelSetTags"
+Cmd_Name = "smo.CAD.RebevelClearSelSetTags"
 # smo.CAD.RebevelClearSelSetTags
 
 class SMO_CAD_RebevelClearSelSetTags_Cmd(lxu.command.BasicCommand):
@@ -29,7 +29,7 @@ class SMO_CAD_RebevelClearSelSetTags_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO CAD Rebevel ClearSelSetTags'
+        return 'SMO CAD - Rebevel Clear Selection Set Tags'
 
     def cmd_Desc(self):
         return 'Clear all Item/Polygon/Edges Selection Set created by the CAD Rebevel commands.'
@@ -41,7 +41,7 @@ class SMO_CAD_RebevelClearSelSetTags_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO CAD Rebevel ClearSelSetTags'
+        return 'SMO CAD - Rebevel Clear Selection Set Tags'
 
     def basic_Enable(self, msg):
         return True
@@ -183,4 +183,5 @@ class SMO_CAD_RebevelClearSelSetTags_Cmd(lxu.command.BasicCommand):
         lx.out('End of Rebevel ClearTag Script')
         #####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- END --------------------#####
 
-lx.bless(SMO_CAD_RebevelClearSelSetTags_Cmd, Command_Name)
+
+lx.bless(SMO_CAD_RebevelClearSelSetTags_Cmd, Cmd_Name)

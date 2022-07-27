@@ -16,7 +16,7 @@
 import lx, lxu, modo
 from math import degrees
 
-Command_Name = "smo.GC.PlasticityPrepareMeshes"
+Cmd_Name = "smo.GC.PlasticityPrepareMeshes"
 # smo.GC.PlasticityPrepareMeshes 0 1 1 1 0
 
 class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
@@ -63,7 +63,7 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC PlasticityPrepareMeshes'
+        return 'SMO GC - Plasticity Prepare Meshes'
 
     def cmd_Desc(self):
         return 'Cleanup Meshes data from Plasticity creating Polygons Parts, Unwraped UVMaps and Merging Solid items.'
@@ -75,7 +75,7 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC PlasticityPrepareMeshes'
+        return 'SMO GC - Plasticity Prepare Meshes'
 
     def basic_Enable(self, msg):
         return True
@@ -250,5 +250,6 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
         lx.eval('!mesh.cleanup true mergeVertex:false')
 
         # lx.eval('smo.UV.EnableUVTextureChecker 4096')
-        
-lx.bless(SMO_GC_PlasticityPrepareMeshes_Cmd, Command_Name)
+
+
+lx.bless(SMO_GC_PlasticityPrepareMeshes_Cmd, Cmd_Name)

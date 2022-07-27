@@ -14,7 +14,10 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 #---------------------------------------
 
-import lx, lxu, modo
+import lx, lxu, modo, sys
+
+Cmd_Name = "smo.UV.UnwrapSmart"
+# smo.UV.UnwrapSmart 0 0 0 0
 
 class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -44,7 +47,7 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO UV Unwrap Smart'
+        return 'SMO UV - Unwrap Smart'
     
     def cmd_Desc (self):
         return 'Unwrap the current Polygon Selection on defined Axis.'
@@ -56,12 +59,11 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO UV Unwrap Smart'
+        return 'SMO UV - Unwrap Smart'
     
     def basic_Enable (self, msg):
         return True
-        
-    
+
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
 
@@ -917,8 +919,8 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
             if TotalSafetyCheckEdge != TotalSafetyCheckTrueValueEdge:
                 lx.out('script Stopped: your mesh does not match the requirement for that script.')
                 sys.exit
-                    
-        
+
         #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
-lx.bless(SMO_UV_UnwrapSmart_Cmd, "smo.UV.UnwrapSmart")
-# smo.UV.UnwrapSmart 0 0 0 0
+
+
+lx.bless(SMO_UV_UnwrapSmart_Cmd, Cmd_Name)

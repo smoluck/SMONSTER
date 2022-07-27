@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.MIFABOMA.Mirror"
+Cmd_Name = "smo.MIFABOMA.Mirror"
 # smo.MIFABOMA.Mirror 1 8 1 0 1 0
 
 class SMO_MIFABOMA_Mirror_Cmd(lxu.command.BasicCommand):
@@ -48,7 +48,7 @@ class SMO_MIFABOMA_Mirror_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName (self):
-        return 'SMO Mirror'
+        return 'SMO MIFABOMA - Mirror'
 
     def cmd_Desc (self):
         return 'Mirror current Polygon Selection (or all Poly if no selection) using Origin Center (World) or Item Center (Local).'
@@ -60,10 +60,7 @@ class SMO_MIFABOMA_Mirror_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName (self):
-        return 'SMO Mirror'
-
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO MIFABOMA - Mirror'
 
     def basic_Enable (self, msg):
         return True
@@ -358,9 +355,10 @@ class SMO_MIFABOMA_Mirror_Cmd(lxu.command.BasicCommand):
             lx.eval('item.refSystem %s' % CurrentRefSystemItem)
 
         lx.out('End of SMO Mirror Command')
-        
+
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
 
-lx.bless(SMO_MIFABOMA_Mirror_Cmd, Command_Name)
+lx.bless(SMO_MIFABOMA_Mirror_Cmd, Cmd_Name)

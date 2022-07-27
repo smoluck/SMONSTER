@@ -17,7 +17,7 @@
 import lx, lxu, modo
 from math import degrees
 
-Command_Name = "smo.GC.ReleaseFromIsolateMode"
+Cmd_Name = "smo.GC.ReleaseFromIsolateMode"
 # smo.GC.ReleaseFromIsolateMode
 
 class SMO_GC_ReleaseFromIsolateMode_Cmd(lxu.command.BasicCommand):
@@ -31,7 +31,7 @@ class SMO_GC_ReleaseFromIsolateMode_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC ReleaseFromIsolateMode'
+        return 'SMO GC - Release from Isolate Mode'
 
     def cmd_Desc(self):
         return 'Release from Isolate Mode by clearing the Reference System state, and fit the view on current selected mesh.'
@@ -43,10 +43,7 @@ class SMO_GC_ReleaseFromIsolateMode_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC ReleaseFromIsolateMode'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Release from Isolate Mode'
 
     def basic_Enable(self, msg):
         return True
@@ -54,5 +51,6 @@ class SMO_GC_ReleaseFromIsolateMode_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
         lx.eval('item.refSystem {}')
         lx.eval('viewport.fitSelected')
-        
-lx.bless(SMO_GC_ReleaseFromIsolateMode_Cmd, Command_Name)
+
+
+lx.bless(SMO_GC_ReleaseFromIsolateMode_Cmd, Cmd_Name)

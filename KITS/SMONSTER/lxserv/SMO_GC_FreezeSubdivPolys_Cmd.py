@@ -15,7 +15,7 @@
 
 import lx, lxu, modo
 
-Command_Name =  "smo.GC.FreezeSubdivPoly"
+Cmd_Name =  "smo.GC.FreezeSubdivPoly"
 # smo.GC.FreezeSubdivPoly
 
 class SMO_GC_FreezeSubdivPolys_Cmd(lxu.command.BasicCommand):
@@ -29,7 +29,7 @@ class SMO_GC_FreezeSubdivPolys_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC FreezeSubdivPolys'
+        return 'SMO GC - Freeze Subdiv Polys'
     
     def cmd_Desc (self):
         return 'Freeze the Subdiv or Catmull-Clark polygons in the given Mesh item.'
@@ -41,7 +41,7 @@ class SMO_GC_FreezeSubdivPolys_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC FreezeSubdivPolys'
+        return 'SMO GC -Freeze Subdiv Polys'
     
     def basic_Enable (self, msg):
         return True
@@ -71,7 +71,9 @@ class SMO_GC_FreezeSubdivPolys_Cmd(lxu.command.BasicCommand):
             lx.eval('select.drop polygon')
             lx.eval('select.type item')
 
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_GC_FreezeSubdivPolys_Cmd, Command_Name)
+
+lx.bless(SMO_GC_FreezeSubdivPolys_Cmd, Cmd_Name)

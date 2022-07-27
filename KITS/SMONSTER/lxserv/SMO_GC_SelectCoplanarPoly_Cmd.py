@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.SelectCoPlanarPoly"
+Cmd_Name = "smo.GC.SelectCoPlanarPoly"
 # smo.GC.SelectCoPlanarPoly 0 20
 
 class SMO_GC_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
@@ -45,7 +45,7 @@ class SMO_GC_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC SelectCoPlanarPoly'
+        return 'SMO GC - Select CoPlanar Poly'
 
     def cmd_Desc(self):
         return 'Replace the old Seneca Lazy Select by the Built in Select CoPlanar poly tool.'
@@ -57,10 +57,7 @@ class SMO_GC_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC SelectCoPlanarPoly'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Select CoPlanar Poly'
 
     def basic_Enable(self, msg):
         return True
@@ -240,7 +237,9 @@ class SMO_GC_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
         if RefSystemActive == True:
             lx.eval('item.refSystem %s' % CurrentRefSystemItem)
 
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_GC_SelectCoPlanarPoly_Cmd, Command_Name)
+
+lx.bless(SMO_GC_SelectCoPlanarPoly_Cmd, Cmd_Name)

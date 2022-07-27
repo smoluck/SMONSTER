@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.MIFABOMA.MirrorRelativeToParent"
+Cmd_Name = "smo.MIFABOMA.MirrorRelativeToParent"
 #smo.MIFABOMA.MirrorRelativeToParent 1 0 1 0
 
 class SMO_MIFABOMA_Mirror_RelativeToParent_Cmd(lxu.command.BasicCommand):
@@ -46,7 +46,7 @@ class SMO_MIFABOMA_Mirror_RelativeToParent_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName (self):
-        return 'SMO Mirror Relative To Parent'
+        return 'SMO MIFABOMA - Mirror Relative To Parent'
 
     def cmd_Desc (self):
         return 'Mirror current Polygon Selection (or all Poly if no selection) relative To Parent center.'
@@ -58,14 +58,10 @@ class SMO_MIFABOMA_Mirror_RelativeToParent_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName (self):
-        return 'SMO Mirror Relative To Parent'
-
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO MIFABOMA - Mirror Relative To Parent'
 
     def basic_Enable (self, msg):
         return True
-
 
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -445,12 +441,12 @@ class SMO_MIFABOMA_Mirror_RelativeToParent_Cmd(lxu.command.BasicCommand):
                 else:
                     print('Ref System activated')
                     lx.eval('item.refSystem %s' % SelItems[0])
-            
-        
+
         lx.out('End of SMO Mirror RelativeToParent Command')
+
 
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
 
-lx.bless(SMO_MIFABOMA_Mirror_RelativeToParent_Cmd, Command_Name)
+lx.bless(SMO_MIFABOMA_Mirror_RelativeToParent_Cmd, Cmd_Name)

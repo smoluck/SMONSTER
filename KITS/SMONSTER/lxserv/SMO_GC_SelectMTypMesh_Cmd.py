@@ -17,7 +17,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.SelectMTypMesh"
+Cmd_Name = "smo.GC.SelectMTypMesh"
 # smo.GC.SelectMTypMesh 0 ------ > Select LowPoly
 # smo.GC.SelectMTypMesh 1 ------ > Select Cage
 # smo.GC.SelectMTypMesh 2 ------ > Select HighPoly
@@ -38,7 +38,7 @@ class SMO_GC_SelectMTypMesh_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC Select Mesh Type for Game Export'
+        return 'SMO GC - Select Mesh Type for Game Export'
     
     def cmd_Desc (self):
         return 'Select corresponding LowPoly / Cage / HighPoly meshes for further FBX Export.'
@@ -50,14 +50,10 @@ class SMO_GC_SelectMTypMesh_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC Select Mesh Type for Game Export'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Select Mesh Type for Game Export'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         # if not self.dyna_IsSet(0):
@@ -81,10 +77,10 @@ class SMO_GC_SelectMTypMesh_Cmd(lxu.command.BasicCommand):
             lx.eval('!select.useSet MTyp_Cage select')
         if SelectMTypTag == 2 :
             lx.eval('!select.useSet MTyp_HighPoly select')
-        
-        
+
     
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_GC_SelectMTypMesh_Cmd, Command_Name)
+
+lx.bless(SMO_GC_SelectMTypMesh_Cmd, Cmd_Name)

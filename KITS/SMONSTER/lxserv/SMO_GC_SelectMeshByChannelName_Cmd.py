@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.SelectMeshByChannelName"
+Cmd_Name = "smo.GC.SelectMeshByChannelName"
 # smo.GC.SelectMeshByChannelName TgLP 1
 
 class SMO_GC_SelectMeshByChannelName_Cmd(lxu.command.BasicCommand):
@@ -34,7 +34,7 @@ class SMO_GC_SelectMeshByChannelName_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC Select Mesh By Channel Name'
+        return 'SMO GC - Select Mesh By Channel Name'
     
     def cmd_Desc (self):
         return 'Search in all Mesh items in the Scene, if a specific channel exist via String Argument #1, Reselect the items that have that channel via rgument #2.'
@@ -46,14 +46,10 @@ class SMO_GC_SelectMeshByChannelName_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC Select Mesh By Channel Name'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Select Mesh By Channel Name'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         # # ############### 1 ARGUMENTS Test ###############
@@ -68,8 +64,7 @@ class SMO_GC_SelectMeshByChannelName_Cmd(lxu.command.BasicCommand):
         # lx.out('Searched String chain:', SearchStringArg)
         # # ############### ARGUMENTS ###############
         
-        
-        
+
         scn = modo.scene.current()
         for mesh in scn.items('mesh'):
             for channelName in mesh.channelNames:
@@ -86,4 +81,4 @@ class SMO_GC_SelectMeshByChannelName_Cmd(lxu.command.BasicCommand):
             lx.eval('!select.deleteSet %s false' % SearchString)
         
     
-lx.bless(SMO_GC_SelectMeshByChannelName_Cmd, Command_Name)
+lx.bless(SMO_GC_SelectMeshByChannelName_Cmd, Cmd_Name)

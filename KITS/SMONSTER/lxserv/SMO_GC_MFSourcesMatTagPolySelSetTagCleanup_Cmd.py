@@ -20,6 +20,9 @@
 
 import lx, lxu, lxifc, os, modo, random
 
+Cmd_Name = "smo.GC.MFSourcesMatTagPolySelSetTagCleanup"
+# smo.GC.MFSourcesMatTagPolySelSetTagCleanup
+
 class SMO_GC_MF_Sources_MatTag_PolySelSetTags_Cleanup_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -31,7 +34,7 @@ class SMO_GC_MF_Sources_MatTag_PolySelSetTags_Cleanup_Cmd(lxu.command.BasicComma
         pass
 
     def cmd_UserName (self):
-        return 'SMO MF Sources Mat & PolySelSet Tags Cleanup'
+        return 'SMO GC - MeshFusion - Sources Mat & PolySelSet Tags Cleanup'
 
     def cmd_Desc (self):
         return 'Rebuild the Sources Material Tag and Polygon Selection Set Tags of current MF Item.'
@@ -43,14 +46,10 @@ class SMO_GC_MF_Sources_MatTag_PolySelSetTags_Cleanup_Cmd(lxu.command.BasicComma
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName (self):
-        return 'SMO MF Sources Mat & PolySelSet Tags Cleanup'
-
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - MeshFusion - Sources Mat & PolySelSet Tags Cleanup'
 
     def basic_Enable (self, msg):
         return True
-
 
     def basic_Execute(self, msg, flags):
         # Tag the current MeshFusion Item
@@ -158,9 +157,10 @@ class SMO_GC_MF_Sources_MatTag_PolySelSetTags_Cleanup_Cmd(lxu.command.BasicComma
         # Select back the MF Item and Delete is SelSet Tag
         lx.eval('select.useSet TEMP_ProcessedMFI select')
         lx.eval('!select.deleteSet TEMP_ProcessedMFI')
-    
+
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_GC_MF_Sources_MatTag_PolySelSetTags_Cleanup_Cmd, "smo.GC.MFSourcesMatTagPolySelSetTagCleanup")
-# smo.GC.MFSourcesMatTagPolySelSetTagCleanup
+
+lx.bless(SMO_GC_MF_Sources_MatTag_PolySelSetTags_Cleanup_Cmd, Cmd_Name)

@@ -17,6 +17,9 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.GC.ConvertPolygonsToPolylineAndMergeToDXFLayer"
+# smo.GC.ConvertPolygonsToPolylineAndMergeToDXFLayer 1 1
+
 class SMO_GC_ConvertPolygonsToPolylineAndMergeToDXFLayer_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -32,7 +35,7 @@ class SMO_GC_ConvertPolygonsToPolylineAndMergeToDXFLayer_Cmd(lxu.command.BasicCo
         pass
 
     def cmd_UserName (self):
-        return 'SMO GC ConvertPolygonsToPolylineAndMergeToDXFLayer'
+        return 'SMO GC - Convert Polygons to Polyline and Merge to DXF Layer'
 
     def cmd_Desc (self):
         return 'Convert all the current Meshes (Unique Polygons by Layer) in scene to Polyline data and then merge all the lines into a single mesh for DXF export.'
@@ -44,14 +47,10 @@ class SMO_GC_ConvertPolygonsToPolylineAndMergeToDXFLayer_Cmd(lxu.command.BasicCo
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName (self):
-        return 'SMO GC ConvertPolygonsToPolylineAndMergeToDXFLayer'
-
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Convert Polygons to Polyline and Merge to DXF Layer'
 
     def basic_Enable (self, msg):
         return True
-
 
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -187,5 +186,4 @@ class SMO_GC_ConvertPolygonsToPolylineAndMergeToDXFLayer_Cmd(lxu.command.BasicCo
         lx.notimpl()
 
 
-lx.bless(SMO_GC_ConvertPolygonsToPolylineAndMergeToDXFLayer_Cmd, "smo.GC.ConvertPolygonsToPolylineAndMergeToDXFLayer")
-# smo.GC.ConvertPolygonsToPolylineAndMergeToDXFLayer 1 1
+lx.bless(SMO_GC_ConvertPolygonsToPolylineAndMergeToDXFLayer_Cmd, Cmd_Name)

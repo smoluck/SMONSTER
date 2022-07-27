@@ -15,7 +15,7 @@
 
 import lx, lxu
 
-Command_Name = "smo.GC.AttachScriptToPreset"
+Cmd_Name = "smo.GC.AttachScriptToPreset"
 
 
 class SMO_GC_AttachScriptToPreset_Cmd(lxu.command.BasicCommand):
@@ -29,19 +29,19 @@ class SMO_GC_AttachScriptToPreset_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC AttachScriptToPreset'
+        return 'SMO GC - Attach Script to Preset'
 
     def cmd_Desc(self):
-        return 'Attach MO_GC_onDrop_RotateTool.py script to the selected MeshPreset file via PB_View and smo.GC.AttachScriptToPreset command.'
+        return 'Attach SMO_GC_onDrop_RotateTool.py script to the selected MeshPreset file via PB_View and smo.GC.AttachScriptToPreset command.'
 
     def cmd_Tooltip(self):
-        return 'Attach MO_GC_onDrop_RotateTool.py script to the selected MeshPreset file via PB_View and smo.GC.AttachScriptToPreset command.'
+        return 'Attach SMO_GC_onDrop_RotateTool.py script to the selected MeshPreset file via PB_View and smo.GC.AttachScriptToPreset command.'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC AttachScriptToPreset'
+        return 'SMO GC - Attach Script to Preset'
 
     def basic_Enable(self, msg):
         return True
@@ -61,4 +61,5 @@ class SMO_GC_AttachScriptToPreset_Cmd(lxu.command.BasicCommand):
         
         lx.eval('preset.attachScript preset:{%s} script:{%s}' % (SelPrstPBPath, AttachScriptPath))
 
-lx.bless(SMO_GC_AttachScriptToPreset_Cmd, Command_Name)
+
+lx.bless(SMO_GC_AttachScriptToPreset_Cmd, Cmd_Name)

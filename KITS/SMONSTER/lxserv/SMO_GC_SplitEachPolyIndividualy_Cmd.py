@@ -16,6 +16,9 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.GC.SplitEachPolyIndividualy"
+# smo.GC.SplitEachPolyIndividualy 1
+
 class SMO_GC_SplitEachPolyIndividualy_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -29,7 +32,7 @@ class SMO_GC_SplitEachPolyIndividualy_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName (self):
-        return 'SMO GC SplitEachPolyIndividualy'
+        return 'SMO GC - Split each Polygon Individually'
 
     def cmd_Desc (self):
         return 'Separate current Mesh by Polygons. It Split each polygon into an individual item.'
@@ -41,11 +44,10 @@ class SMO_GC_SplitEachPolyIndividualy_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName (self):
-        return 'SMO GC SplitEachPolyIndividualy'
+        return 'SMO GC - Split each Polygon Individually'
 
     def basic_Enable (self, msg):
         return True
-
 
     def basic_Execute(self, msg, flags):
         scene = modo.Scene()
@@ -160,10 +162,9 @@ class SMO_GC_SplitEachPolyIndividualy_Cmd(lxu.command.BasicCommand):
             lx.out('"Deselect Elements Before Pasting" have been Restored')
         ########################################################
             
-        
 
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_GC_SplitEachPolyIndividualy_Cmd, "smo.GC.SplitEachPolyIndividualy")
-# smo.GC.SplitEachPolyIndividualy 1
+
+lx.bless(SMO_GC_SplitEachPolyIndividualy_Cmd, Cmd_Name)

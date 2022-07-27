@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.SplitByPart"
+Cmd_Name = "smo.GC.SplitByPart"
 # smo.GC.SplitByPart
 
 class SMO_GC_SplitByPart_Cmd(lxu.command.BasicCommand):
@@ -30,7 +30,7 @@ class SMO_GC_SplitByPart_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC Split by Part Tag'
+        return 'SMO GC - Split by Part Tag'
 
     def cmd_Desc(self):
         return 'Split current selected mesh by Part Tag.'
@@ -42,10 +42,7 @@ class SMO_GC_SplitByPart_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC Split by Part Tag'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Split by Part Tag'
 
     def basic_Enable(self, msg):
         return True
@@ -93,7 +90,9 @@ class SMO_GC_SplitByPart_Cmd(lxu.command.BasicCommand):
                 if polys_left == 0:
                     lx.eval('item.delete')
 
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_GC_SplitByPart_Cmd, Command_Name)
+
+lx.bless(SMO_GC_SplitByPart_Cmd, Cmd_Name)

@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.SelectImageMaps"
+Cmd_Name = "smo.GC.SelectImageMaps"
 # smo.GC.SelectImageMaps 0
 
 class SMO_GC_SelectImageMaps_Cmd(lxu.command.BasicCommand):
@@ -37,7 +37,7 @@ class SMO_GC_SelectImageMaps_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC Select Still Image Item'
+        return 'SMO GC - Select Still Image Item'
     
     def cmd_Desc (self):
         return 'Select a still images (clips) Item of the current scene and set is Effect mode via arguments.'
@@ -49,15 +49,11 @@ class SMO_GC_SelectImageMaps_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC Select Still Image Item'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Select Still Image Item'
     
     def basic_Enable (self, msg):
         return True
-        
-    
+
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
         
@@ -151,6 +147,6 @@ class SMO_GC_SelectImageMaps_Cmd(lxu.command.BasicCommand):
             lx.eval('select.drop schmNode')
             lx.eval('select.drop channel')
             lx.eval('select.drop link')
-        
-lx.bless(SMO_GC_SelectImageMaps_Cmd, Command_Name)
 
+
+lx.bless(SMO_GC_SelectImageMaps_Cmd, Cmd_Name)

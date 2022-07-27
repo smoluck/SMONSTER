@@ -15,12 +15,14 @@
 #---------------------------------------
 import lx, lxu, modo
 
+Cmd_Name = "smo.BATCH.SetInputFileTypeViaPref"
+# smo.BATCH.SetInputFileTypeViaPref {DXF}
+
 class SMO_BATCH_SetInputFileTypeViaPref_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Input File Format", lx.symbol.sTYPE_STRING)
         self.basic_SetFlags (0, lx.symbol.fCMDARG_OPTIONAL)             # here the (0) define the argument index.
-        
     
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
@@ -29,7 +31,7 @@ class SMO_BATCH_SetInputFileTypeViaPref_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO Batch Set Input File Type ia Pref'
+        return 'SMO BATCH - Set Input File Type via Pref'
     
     def cmd_Desc (self):
         return 'Set the Input Files Format using User Defined Preferences.'
@@ -41,12 +43,11 @@ class SMO_BATCH_SetInputFileTypeViaPref_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO Batch Set Input File Type ia Pref'
+        return 'SMO BATCH - Set Input File Type via Pref'
     
     def basic_Enable (self, msg):
         return True
-        
-    
+
     def basic_Execute(self, msg, flags):
         
         
@@ -114,5 +115,4 @@ class SMO_BATCH_SetInputFileTypeViaPref_Cmd(lxu.command.BasicCommand):
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_BATCH_SetInputFileTypeViaPref_Cmd, "smo.BATCH.SetInputFileTypeViaPref")
-# smo.BATCH.SetInputFileTypeViaPref {DXF}
+lx.bless(SMO_BATCH_SetInputFileTypeViaPref_Cmd, Cmd_Name)

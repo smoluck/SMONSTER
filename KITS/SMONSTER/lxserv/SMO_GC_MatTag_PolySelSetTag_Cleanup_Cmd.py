@@ -20,7 +20,7 @@
 
 import lx, lxu, lxifc, os, modo, random
 
-Command_Name = "smo.GC.MatTag.PolySelSetTag.Cleanup"
+Cmd_Name = "smo.GC.MatTag.PolySelSetTag.Cleanup"
 # smo.GC.MatTag.PolySelSetTag.Cleanup
 
 class SMO_GC_MatTag_and_PolySelSetTags_Cleanup_Cmd(lxu.command.BasicCommand):
@@ -34,7 +34,7 @@ class SMO_GC_MatTag_and_PolySelSetTags_Cleanup_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName (self):
-        return 'SMO Mat & PolySelSet Tags Cleanup'
+        return 'SMO GC - Mat and PolySelSet Tags Cleanup'
 
     def cmd_Desc (self):
         return 'Rebuild Material Tag and Polygon Selection Set Tags of current Mesh Layer selected.'
@@ -46,14 +46,10 @@ class SMO_GC_MatTag_and_PolySelSetTags_Cleanup_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName (self):
-        return 'SMO Mat & PolySelSet Tags Cleanup'
-
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Mat and PolySelSet Tags Cleanup'
 
     def basic_Enable (self, msg):
         return True
-
 
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -129,4 +125,5 @@ class SMO_GC_MatTag_and_PolySelSetTags_Cleanup_Cmd(lxu.command.BasicCommand):
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_GC_MatTag_and_PolySelSetTags_Cleanup_Cmd, Command_Name)
+
+lx.bless(SMO_GC_MatTag_and_PolySelSetTags_Cleanup_Cmd, Cmd_Name)

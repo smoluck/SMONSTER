@@ -17,7 +17,7 @@
 
 import lx, lxu, modo, string
 
-Command_Name = "smo.GC.DuplicateToCageAndRename"
+Cmd_Name = "smo.GC.DuplicateToCageAndRename"
 # smo.GC.DuplicateToCageAndRename
 
 class SMO_GC_DuplicateToCageAndRename_Cmd(lxu.command.BasicCommand):
@@ -85,7 +85,7 @@ class SMO_GC_DuplicateToCageAndRename_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC DuplicateToCageAndRename'
+        return 'SMO GC - Duplicate Mesh to Cage and Rename it'
     
     def cmd_Desc (self):
         return 'Duplicate the current mesh, Create a morph influence set to Cage, rename it to "cage" and freeze deformers. It applies different method for renaming based on User Index Style defined in Modo Preferences.'
@@ -97,10 +97,7 @@ class SMO_GC_DuplicateToCageAndRename_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC DuplicateToCageAndRename'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Duplicate Mesh to Cage and Rename it'
     
     def basic_Enable(self, msg):
         """ Perform the checks for when the command is supposed to be enabled,
@@ -111,7 +108,6 @@ class SMO_GC_DuplicateToCageAndRename_Cmd(lxu.command.BasicCommand):
         """
         valid_selection = bool(modo.Scene().selectedByType('mesh'))
         return valid_selection
-        
         
     def basic_Execute(self, msg, flags):
         if self.current_Selection is not None:
@@ -138,5 +134,4 @@ class SMO_GC_DuplicateToCageAndRename_Cmd(lxu.command.BasicCommand):
             return
         
     
-lx.bless(SMO_GC_DuplicateToCageAndRename_Cmd, Command_Name)
-
+lx.bless(SMO_GC_DuplicateToCageAndRename_Cmd, Cmd_Name)

@@ -14,9 +14,9 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 #---------------------------------------
 
-import lx, lxu, modo
+import lx, lxu, modo, sys
 
-Command_Name =  "smo.MIFABOMA.SliceLocal"
+Cmd_Name =  "smo.MIFABOMA.SliceLocal"
 # smo.MIFABOMA.SliceLocal 1 0 0
 
 class SMO_MIFABOMA_Slice_Local_Cmd(lxu.command.BasicCommand):
@@ -37,7 +37,7 @@ class SMO_MIFABOMA_Slice_Local_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO Slice Local'
+        return 'SMO MIFABOMA - Slice Local'
     
     def cmd_Desc (self):
         return 'Slice current Polygon Selection using Item Center.'
@@ -49,14 +49,10 @@ class SMO_MIFABOMA_Slice_Local_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO Slice Local'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO MIFABOMA - Slice Local'
     
     def basic_Enable (self, msg):
         return True
-    
     
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -386,9 +382,10 @@ class SMO_MIFABOMA_Slice_Local_Cmd(lxu.command.BasicCommand):
             sys.exit
             
         lx.out('End of SMO_MirrorLocal  Command')
-    
+
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
 
-lx.bless(SMO_MIFABOMA_Slice_Local_Cmd, Command_Name)
+lx.bless(SMO_MIFABOMA_Slice_Local_Cmd, Cmd_Name)

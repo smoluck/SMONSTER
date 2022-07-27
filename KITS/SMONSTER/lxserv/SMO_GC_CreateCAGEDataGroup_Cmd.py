@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.CreateCloneCAGEData"
+Cmd_Name = "smo.GC.CreateCloneCAGEData"
 # smo.GC.CreateCloneCAGEData
 
 class SMO_GC_CreateCAGEDataGroup_Cmd(lxu.command.BasicCommand):
@@ -30,7 +30,7 @@ class SMO_GC_CreateCAGEDataGroup_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC Create CAGE Data Group.'
+        return 'SMO GC - Create CAGE Data Group.'
     
     def cmd_Desc (self):
         return 'Select the Tagged LowPoly Meshes and create A new CAGE Data group out of their current Cage Morph map.'
@@ -42,14 +42,10 @@ class SMO_GC_CreateCAGEDataGroup_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC Create CAGE Data Group.'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Create CAGE Data Group.'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -156,8 +152,10 @@ class SMO_GC_CreateCAGEDataGroup_Cmd(lxu.command.BasicCommand):
         lx.eval('smo.GC.SelectMTypMesh 1')
         lx.eval('!!vertMap.delete CAGE')
         lx.eval('select.drop item')
-    
+
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_GC_CreateCAGEDataGroup_Cmd, Command_Name)
+
+lx.bless(SMO_GC_CreateCAGEDataGroup_Cmd, Cmd_Name)

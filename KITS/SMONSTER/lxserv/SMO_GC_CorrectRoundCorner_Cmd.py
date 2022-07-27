@@ -16,7 +16,7 @@
 
 import lx, lxu, modo, math
 
-Command_Name = "smo.GC.CorrectRoundCorner"
+Cmd_Name = "smo.GC.CorrectRoundCorner"
 
 class SMO_GC_CorrectRoundCorner_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -30,7 +30,7 @@ class SMO_GC_CorrectRoundCorner_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC CorrectRoundCorner'
+        return 'SMO GC - Correct Round Corner'
     
     def cmd_Desc (self):
         return 'Select the EdgeLoop Corner of a Tube mesh and rebuild a correct triangle at this one.'
@@ -42,11 +42,8 @@ class SMO_GC_CorrectRoundCorner_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC CorrectRoundCorner'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
-    
+        return 'SMO GC - Correct Round Corner'
+
     def basic_Enable (self, msg):
         return True
     
@@ -511,9 +508,9 @@ class SMO_GC_CorrectRoundCorner_Cmd(lxu.command.BasicCommand):
         ItemRotXrad = lx.eval('workplane.edit 0 0 0 ? 0 0')
         ItemRotYrad = lx.eval('workplane.edit 0 0 0 0 ? 0')
         ItemRotZrad = lx.eval('workplane.edit 0 0 0 0 0 ?')
-        lx.out('(Rad) Workplane rot X:', ItemRotX)
-        lx.out('(Rad) Workplane rot Y:', ItemRotY)
-        lx.out('(Rad) Workplane rot Z:', ItemRotZ)
+        lx.out('(Rad) Workplane rot X:', ItemRotXrad)
+        lx.out('(Rad) Workplane rot Y:', ItemRotYrad)
+        lx.out('(Rad) Workplane rot Z:', ItemRotZrad)
         
         ItemRotX = math.degrees(ItemRotXrad)
         ItemRotY = math.degrees(ItemRotYrad)
@@ -627,4 +624,5 @@ class SMO_GC_CorrectRoundCorner_Cmd(lxu.command.BasicCommand):
             lx.out('"Deselect Elements Before Pasting" have been Restored')
         ########################################################
 
-lx.bless(SMO_GC_CorrectRoundCorner_Cmd, Command_Name)
+
+lx.bless(SMO_GC_CorrectRoundCorner_Cmd, Cmd_Name)

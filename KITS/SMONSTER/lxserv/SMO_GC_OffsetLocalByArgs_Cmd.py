@@ -16,7 +16,7 @@
 
 import lx, lxu, os, modo
 
-Command_Name = "smo.GC.OffsetLocalByArgs"
+Cmd_Name = "smo.GC.OffsetLocalByArgs"
 # smo.GC.OffsetLocalByArgs 0.101382531226 0.0613391231745 0.00526303052902
 
 class SMO_GC_OffsetLocalByArgs_Cmd(lxu.command.BasicCommand):
@@ -36,7 +36,7 @@ class SMO_GC_OffsetLocalByArgs_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC OffsetLocalByArgs'
+        return 'SMO GC - Offset Locally by Arguments'
     
     def cmd_Desc (self):
         return 'Move the current Selection by a specific distance in Float on X Y Z.'
@@ -48,14 +48,10 @@ class SMO_GC_OffsetLocalByArgs_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC OffsetLocalByArgs'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Offset Locally by Arguments'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         
@@ -90,5 +86,6 @@ class SMO_GC_OffsetLocalByArgs_Cmd(lxu.command.BasicCommand):
         lx.eval('select.drop item')
         lx.eval('select.item %s add' % Locator)
         lx.eval('!delete')
-        
-lx.bless(SMO_GC_OffsetLocalByArgs_Cmd, Command_Name)
+
+
+lx.bless(SMO_GC_OffsetLocalByArgs_Cmd, Cmd_Name)

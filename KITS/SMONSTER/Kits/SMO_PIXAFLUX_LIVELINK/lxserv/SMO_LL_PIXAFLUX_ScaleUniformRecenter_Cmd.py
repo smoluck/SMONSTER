@@ -16,6 +16,8 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.LL.PIXAFLUX.ScaleUniformRecenter"
+
 class SMO_LL_PIXAFLUX_ScaleUniformRecenter_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -27,7 +29,7 @@ class SMO_LL_PIXAFLUX_ScaleUniformRecenter_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName (self):
-        return 'SMO PixaFlux ScaleUniformRecenter'
+        return 'SMO LL PIXAFLUX - Scale Uniform Recenter'
 
     def cmd_Desc (self):
         return 'Scale Uniformly to 1 m Unit and Recenter mesh to Origin.'
@@ -39,11 +41,10 @@ class SMO_LL_PIXAFLUX_ScaleUniformRecenter_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName (self):
-        return 'SMO Bool'
+        return 'SMO LL PIXAFLUX - Scale Uniform Recenter'
 
     def basic_Enable (self, msg):
         return True
-
 
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -67,5 +68,6 @@ class SMO_LL_PIXAFLUX_ScaleUniformRecenter_Cmd(lxu.command.BasicCommand):
         lx.eval('transform.channel rot.X 0.0')
         lx.eval('transform.channel rot.Y 0.0')
         lx.eval('transform.channel rot.Z 0.0')
-        
-lx.bless(SMO_LL_PIXAFLUX_ScaleUniformRecenter_Cmd, "smo.LL.PIXAFLUX.ScaleUniformRecenter")
+
+
+lx.bless(SMO_LL_PIXAFLUX_ScaleUniformRecenter_Cmd, Cmd_Name)

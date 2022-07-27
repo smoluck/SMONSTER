@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.GetMaterialsTagInSelection"
+Cmd_Name = "smo.GC.GetMaterialsTagInSelection"
 # query:        smo.GC.GetMaterialsTagInSelection ?
 
 ############# USE CASE
@@ -37,7 +37,7 @@ class SMO_GC_GetMaterialsTagInSelection_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC GetMaterialsTagInSelection'
+        return 'SMO GC - Get Materials Tag on Selection'
     
     def cmd_Desc (self):
         return 'Get the Material Tags on current selection.'
@@ -49,14 +49,10 @@ class SMO_GC_GetMaterialsTagInSelection_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC GetMaterialsTagInSelection'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Get Materials Tag on Selection'
     
     def basic_Enable (self, msg):
         return True
-        
         
     def cmd_Query(self, index, vaQuery):
         scene = modo.scene.current()
@@ -77,5 +73,4 @@ class SMO_GC_GetMaterialsTagInSelection_Cmd(lxu.command.BasicCommand):
         return lx.result.OK
                 
     
-lx.bless(SMO_GC_GetMaterialsTagInSelection_Cmd, Command_Name)
-
+lx.bless(SMO_GC_GetMaterialsTagInSelection_Cmd, Cmd_Name)

@@ -20,7 +20,7 @@
 
 import	lx, lxifc, lxu.command, lxu.select, subprocess, os
 
-CMD_NAME = "smo.LL.RIZOMUV.Basic"
+Cmd_Name = "smo.LL.RIZOMUV.Basic"
 
 class SMO_LL_RIZOMUV_Basic_Cmd (lxu.command.BasicCommand):
     def __init__ (self):
@@ -33,7 +33,7 @@ class SMO_LL_RIZOMUV_Basic_Cmd (lxu.command.BasicCommand):
         pass
         
     def cmd_UserName (self):
-        return 'SMO RizomUV Basic'
+        return 'SMO LL RIZOMUV - Basic'
     
     def cmd_Desc (self):
         return 'Send as an FBX file (Prompt to FBX file save Destination) the current selected Meshes as FBX 2013 to RizomUV and get back the UV data updated in Modo, once the FBX file is saved back (original file overwritted by RizomUV).'
@@ -45,7 +45,7 @@ class SMO_LL_RIZOMUV_Basic_Cmd (lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO RizomUV Basic'
+        return 'SMO LL RIZOMUV - Basic'
     
     def cmd_Flags (self):
         return lx.symbol.fCMD_UNDO
@@ -469,4 +469,4 @@ class SMO_LL_RIZOMUV_Basic_Cmd (lxu.command.BasicCommand):
                         lx.eval ('select.vertexMap %s txuv add' % uv_map)
                 lx.eval ('select.drop polygon')
 
-lx.bless (SMO_LL_RIZOMUV_Basic_Cmd, CMD_NAME)
+lx.bless (SMO_LL_RIZOMUV_Basic_Cmd, Cmd_Name)

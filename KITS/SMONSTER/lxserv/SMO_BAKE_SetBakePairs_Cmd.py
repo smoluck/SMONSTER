@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.BAKE.SetBakePairs"
+Cmd_Name = "smo.BAKE.SetBakePairs"
 # smo.BAKE.SetBakePairs
 
 class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
@@ -47,7 +47,7 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO BAKE Set Bake Pairs'
+        return 'SMO BAKE - Set Bake Pairs'
     
     def cmd_Desc (self):
         return 'Set MTyp Tags and Name prefix according to selection order and user preferences. low --> high OR  high --> low.'
@@ -59,10 +59,7 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO BAKE Set Bake Pairs.'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO BAKE - Set Bake Pairs.'
     
     def basic_Enable (self, msg):
         return True
@@ -398,6 +395,6 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
             
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
-        
-lx.bless(SMO_BAKE_SetBakePairs_Cmd, Command_Name)
 
+
+lx.bless(SMO_BAKE_SetBakePairs_Cmd, Cmd_Name)

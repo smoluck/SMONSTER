@@ -17,7 +17,7 @@
 
 import lx, lxu, modo, string
 
-Command_Name = "smo.GC.CheckMeshClassType"
+Cmd_Name = "smo.GC.CheckMeshClassType"
 # smo.GC.CheckMeshClassType ?
 
 ############# USE CASE
@@ -63,7 +63,7 @@ class SMO_GC_CheckMeshClassType_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC Check Mesh Class Type'
+        return 'SMO GC - Check Mesh Class Type'
     
     def cmd_Desc (self):
         return 'Check if the current Mesh item have low / cage / high strings in is name and if it has the corresponding MTyp tag set.'
@@ -75,7 +75,7 @@ class SMO_GC_CheckMeshClassType_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC Check Mesh Class Type'
+        return 'SMO GC - Check Mesh Class Type'
     
     def basic_Enable(self, msg):
         # Perform the checks for when the command is supposed to be enabled,
@@ -85,9 +85,6 @@ class SMO_GC_CheckMeshClassType_Cmd(lxu.command.BasicCommand):
         # :type msg: lx.object.Message
         valid_selection = bool(modo.Scene().selectedByType('mesh'))
         return valid_selection
-        
-        
-        
         
     def cmd_Query(self, index, vaQuery):
         if self.current_Selection is not None :
@@ -159,12 +156,9 @@ class SMO_GC_CheckMeshClassType_Cmd(lxu.command.BasicCommand):
                 # va.AddString(MeshClassTag)
                 va.AddInt(MeshClassTag)
                 return lx.result.OK
-                    
-                    
-        
+
         else:
             return
         
     
-lx.bless(SMO_GC_CheckMeshClassType_Cmd, Command_Name)
-
+lx.bless(SMO_GC_CheckMeshClassType_Cmd, Cmd_Name)

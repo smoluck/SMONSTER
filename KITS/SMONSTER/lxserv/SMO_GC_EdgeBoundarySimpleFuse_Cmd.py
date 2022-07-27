@@ -13,10 +13,10 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 # ---------------------------------------
 
-import lx, lxu, modo
+import lx, lxu, modo, sys
 from math import degrees
 
-Command_Name = "smo.GC.EdgeBoundarySimpleFuse"
+Cmd_Name = "smo.GC.EdgeBoundarySimpleFuse"
 # smo.GC.EdgeBoundarySimpleFuse [5mm]
 
 class SMO_GC_EdgeBoundarySimpleFuse_Cmd(lxu.command.BasicCommand):
@@ -52,7 +52,7 @@ class SMO_GC_EdgeBoundarySimpleFuse_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC EdgeBoundarySimpleFuse'
+        return 'SMO GC - EdgeBoundary Simple Fuse'
 
     def cmd_Desc(self):
         return 'MakePoly + Bevel Inset Outside + applying a VertexNormalTransfer to fuse the border with BG Mesh normals.'
@@ -64,10 +64,7 @@ class SMO_GC_EdgeBoundarySimpleFuse_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC EdgeBoundarySimpleFuse'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - EdgeBoundary Simple Fuse'
 
     def basic_Enable(self, msg):
         return True
@@ -441,4 +438,5 @@ class SMO_GC_EdgeBoundarySimpleFuse_Cmd(lxu.command.BasicCommand):
             scene.select(selected_mesh)
             lx.eval('select.type edge')
 
-lx.bless(SMO_GC_EdgeBoundarySimpleFuse_Cmd, Command_Name)
+
+lx.bless(SMO_GC_EdgeBoundarySimpleFuse_Cmd, Cmd_Name)

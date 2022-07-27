@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.MultiModollamaRebuildNGontoTriangle"
+Cmd_Name = "smo.GC.MultiModollamaRebuildNGontoTriangle"
 # smo.GC.MultiModollamaRebuildNGontoTriangle 1
 # Modo Method = False
 # Modollama Method = True
@@ -44,7 +44,7 @@ class SMO_GC_MultiModollamaRebuildNGontoTriangle_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC (Multi) MicroBevelHardEdgesAndUpdateToSoften'
+        return 'SMO GC - (Multi) Rebuild all NGons via Modollama Triangles'
 
     def cmd_Desc(self):
         return 'Rebuild all NGons via Modollama Triangulation command to output Triangles.'
@@ -56,7 +56,7 @@ class SMO_GC_MultiModollamaRebuildNGontoTriangle_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC (Multi) MicroBevelHardEdgesAndUpdateToSoften'
+        return 'SMO GC - (Multi) Rebuild all NGons via Modollama Triangles'
 
     def basic_Enable(self, msg):
         return True
@@ -82,4 +82,4 @@ class SMO_GC_MultiModollamaRebuildNGontoTriangle_Cmd(lxu.command.BasicCommand):
         scene.select(selmeshitems)
 
 
-lx.bless(SMO_GC_MultiModollamaRebuildNGontoTriangle_Cmd, Command_Name)
+lx.bless(SMO_GC_MultiModollamaRebuildNGontoTriangle_Cmd, Cmd_Name)

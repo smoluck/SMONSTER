@@ -16,6 +16,9 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.MIFABOMA.RadialSweepRelativeToParent"
+# smo.MIFABOMA.RadialSweepRelativeToParent 1 32 1 360 0 0
+
 class SMO_MIFABOMA_RadialSweepRelativeToParent_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -37,7 +40,7 @@ class SMO_MIFABOMA_RadialSweepRelativeToParent_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO RadialSweep'
+        return 'SMO MIFABOMA - Radial Sweep Relative to Parent'
     
     def cmd_Desc (self):
         return 'Radial Sweep current Polygon Selection (or all Poly if no selection) / or Selected Edges using Origin Center (World) or Item Center (Local).'
@@ -49,14 +52,10 @@ class SMO_MIFABOMA_RadialSweepRelativeToParent_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO RadialSweep'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO MIFABOMA - Radial Sweep Relative to Parent'
     
     def basic_Enable (self, msg):
         return True
-    
     
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -417,10 +416,10 @@ class SMO_MIFABOMA_RadialSweepRelativeToParent_Cmd(lxu.command.BasicCommand):
             lx.eval('select.type polygon')
         
         lx.out('End of SMO RadialSweep  Command')
-    
+
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
 
-lx.bless(SMO_MIFABOMA_RadialSweepRelativeToParent_Cmd, "smo.MIFABOMA.RadialSweepRelativeToParent")
-# smo.MIFABOMA.RadialSweepRelativeToParent 1 32 1 360 0 0
+lx.bless(SMO_MIFABOMA_RadialSweepRelativeToParent_Cmd, Cmd_Name)

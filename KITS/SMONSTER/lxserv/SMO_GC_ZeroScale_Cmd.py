@@ -13,10 +13,10 @@
 # Created:      13/01/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
 #---------------------------------------
-
-
-
 import lx, lxu, modo
+
+Cmd_Name ="smo.GC.ZeroScale"
+# smo.GC.ZeroScale
 
 class SMO_GC_ZeroScale_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -37,7 +37,7 @@ class SMO_GC_ZeroScale_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC ZeroScale'
+        return 'SMO GC - Zero Out Lowest Scale'
     
     def cmd_Desc (self):
         return 'Check Axis Scale value and modify the lowest scale to ZERO.'
@@ -49,14 +49,10 @@ class SMO_GC_ZeroScale_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC ZeroScale'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Zero Out Lowest Scale'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
             ToolScaleState = lx.eval('tool.set TransformScale ?')
@@ -110,5 +106,4 @@ class SMO_GC_ZeroScale_Cmd(lxu.command.BasicCommand):
         lx.notimpl()
     
     
-lx.bless(SMO_GC_ZeroScale_Cmd, "smo.GC.ZeroScale")
-# smo.GC.ZeroScale
+lx.bless(SMO_GC_ZeroScale_Cmd, Cmd_Name)

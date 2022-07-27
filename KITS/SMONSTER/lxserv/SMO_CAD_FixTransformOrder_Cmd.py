@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.CAD.FixTransformOrder"
+Cmd_Name = "smo.CAD.FixTransformOrder"
 
 class SMO_CAD_FixTransformOrder_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -32,7 +32,7 @@ class SMO_CAD_FixTransformOrder_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO CAD FixTransformOrder'
+        return 'SMO CAD - Fix Transform Order'
 
     def cmd_Desc(self):
         return 'Change the Transform Order of current selected item to XYZ Order.'
@@ -44,10 +44,7 @@ class SMO_CAD_FixTransformOrder_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO CAD FixTransformOrder'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CAD - Fix Transform Order'
 
     def basic_Enable(self, msg):
         return True
@@ -161,4 +158,5 @@ class SMO_CAD_FixTransformOrder_Cmd(lxu.command.BasicCommand):
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_CAD_FixTransformOrder_Cmd, Command_Name)
+
+lx.bless(SMO_CAD_FixTransformOrder_Cmd, Cmd_Name)

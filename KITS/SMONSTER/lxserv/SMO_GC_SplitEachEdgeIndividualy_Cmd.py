@@ -16,6 +16,9 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.GC.SplitEachEdgeIndividualy"
+# smo.GC.SplitEachEdgeIndividualy 1
+
 class SMO_GC_SplitEachEdgeIndividualy_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -29,7 +32,7 @@ class SMO_GC_SplitEachEdgeIndividualy_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName (self):
-        return 'SMO SplitEachEdgeIndividualy'
+        return 'SMO GC - Split each Edge individually'
 
     def cmd_Desc (self):
         return 'Separate current Mesh by Edges (to create Polyline of 1 Edge). It Split each Polyline Edges into an individual item.'
@@ -41,15 +44,13 @@ class SMO_GC_SplitEachEdgeIndividualy_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName (self):
-        return 'SMO SplitEachEdgeIndividualy'
+        return 'SMO GC - Split each Edge individually'
 
     def basic_Enable (self, msg):
         return True
 
-
     def basic_Execute(self, msg, flags):
         scene = modo.Scene()
-
 
 
         ###############COPY/PASTE Check Procedure#################
@@ -189,8 +190,9 @@ class SMO_GC_SplitEachEdgeIndividualy_Cmd(lxu.command.BasicCommand):
             lx.out('"Deselect Elements Before Pasting" have been Restored')
         ########################################################
 
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_GC_SplitEachEdgeIndividualy_Cmd, "smo.GC.SplitEachEdgeIndividualy")
-# smo.GC.SplitEachEdgeIndividualy 1
+
+lx.bless(SMO_GC_SplitEachEdgeIndividualy_Cmd, Cmd_Name)

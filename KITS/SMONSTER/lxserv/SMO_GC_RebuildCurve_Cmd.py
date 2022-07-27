@@ -13,9 +13,9 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 #---------------------------------------
 
-import lx, lxu, modo
+import lx, lxu, modo, sys
 
-Command_Name = "smo.GC.RebuildCurve"
+Cmd_Name = "smo.GC.RebuildCurve"
 # smo.GC.RebuildCurve
 
 class SMO_GC_RebuildCurve_Cmd(lxu.command.BasicCommand):
@@ -31,7 +31,7 @@ class SMO_GC_RebuildCurve_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO RebuildCurve'
+        return 'SMO GC - Rebuild Curve Data to Polyline'
     
     def cmd_Desc (self):
         return 'Rebuild the current selected Mesh layer (curve Data) to Polylines'
@@ -43,14 +43,10 @@ class SMO_GC_RebuildCurve_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO RebuildCurve'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Rebuild Curve Data to Polyline'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         # # ############### 2 ARGUMENTS Test ###############
@@ -324,8 +320,10 @@ class SMO_GC_RebuildCurve_Cmd(lxu.command.BasicCommand):
         lx.out('End of SMO_RebuildCurve Script')
         lx.out('-------------------------------')
         #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
-    
+
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
-    
-lx.bless(SMO_GC_RebuildCurve_Cmd, Command_Name)
+
+
+lx.bless(SMO_GC_RebuildCurve_Cmd, Cmd_Name)

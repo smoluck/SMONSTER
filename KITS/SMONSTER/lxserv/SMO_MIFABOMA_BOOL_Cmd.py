@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.MIFABOMA.Boolean"
+Cmd_Name = "smo.MIFABOMA.Boolean"
 # smo.MIFABOMA.Boolean 0
 
 class SMO_MIFABOMA_Bool_Cmd(lxu.command.BasicCommand):
@@ -33,7 +33,7 @@ class SMO_MIFABOMA_Bool_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO Bool'
+        return 'SMO MIFABOMA - Boolean'
 
     def cmd_Desc(self):
         return 'Mirror current Polygon Selection using Item Center.'
@@ -45,10 +45,7 @@ class SMO_MIFABOMA_Bool_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO Bool'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO MIFABOMA - Boolean'
 
     def basic_Enable(self, msg):
         return True
@@ -371,13 +368,12 @@ class SMO_MIFABOMA_Bool_Cmd(lxu.command.BasicCommand):
         lx.eval('select.type polygon')
         #-------############################################--------#
 
-
-
         lx.out('End of SMO_Bool_Subtract Script')
         #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+
 
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
 
-lx.bless(SMO_MIFABOMA_Bool_Cmd, Command_Name)
+lx.bless(SMO_MIFABOMA_Bool_Cmd, Cmd_Name)

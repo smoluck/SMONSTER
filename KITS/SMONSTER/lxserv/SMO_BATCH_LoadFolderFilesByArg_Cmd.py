@@ -16,6 +16,9 @@
 
 import lx, lxu, os, modo
 
+Cmd_Name = "smo.BATCH.LoadFolderFilesByArg"
+# smo.BATCH.LoadFolderFilesByArg {DXF} {LXO}
+
 class SMO_BATCH_LoadFolderFilesByArg_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -31,7 +34,7 @@ class SMO_BATCH_LoadFolderFilesByArg_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO Batch Load Folder Files'
+        return 'SMO BATCH - Load Folder Files by Arguments'
     
     def cmd_Desc (self):
         return 'Batch Load Files stored in a Folder and Process the data using User Defined Preferences.'
@@ -43,14 +46,10 @@ class SMO_BATCH_LoadFolderFilesByArg_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO Batch Load Folder Files'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO BATCH - Load Folder Files by Arguments'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         
@@ -117,5 +116,5 @@ class SMO_BATCH_LoadFolderFilesByArg_Cmd(lxu.command.BasicCommand):
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_BATCH_LoadFolderFilesByArg_Cmd, "smo.BATCH.LoadFolderFilesByArg")
-# smo.BATCH.LoadFolderFilesByArg {DXF} {LXO}
+
+lx.bless(SMO_BATCH_LoadFolderFilesByArg_Cmd, Cmd_Name)

@@ -14,7 +14,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.CLEANUP.RemoveAllPartTags"
+Cmd_Name = "smo.CLEANUP.RemoveAllPartTags"
 # smo.CLEANUP.RemoveAllPartTags
 
 class SMO_CLEANUP_RemoveAllPartTags_Cmd(lxu.command.BasicCommand):
@@ -28,7 +28,7 @@ class SMO_CLEANUP_RemoveAllPartTags_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO CLEANUP RemoveAllPartTags'
+        return 'SMO CLEANUP - Remove All Part Tags'
 
     def cmd_Desc(self):
         return 'Check for all Meshes in the current scene remove any part tags in it.'
@@ -40,7 +40,7 @@ class SMO_CLEANUP_RemoveAllPartTags_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO CLEANUP RemoveAllPartTags'
+        return 'SMO CLEANUP - Remove All Part Tags'
 
     def basic_Enable(self, msg):
         return True
@@ -55,4 +55,5 @@ class SMO_CLEANUP_RemoveAllPartTags_Cmd(lxu.command.BasicCommand):
             lx.eval('poly.renameTag smo_partTagTemp {} PART')
         lx.eval('smo.GC.DeselectAll')
 
-lx.bless(SMO_CLEANUP_RemoveAllPartTags_Cmd, Command_Name)
+
+lx.bless(SMO_CLEANUP_RemoveAllPartTags_Cmd, Cmd_Name)

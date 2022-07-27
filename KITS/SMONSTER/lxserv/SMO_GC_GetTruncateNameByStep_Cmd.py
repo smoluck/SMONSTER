@@ -17,7 +17,7 @@
 
 import lx, lxu, modo, string
 
-Command_Name = "smo.GC.GetTruncateNameByStep"
+Cmd_Name = "smo.GC.GetTruncateNameByStep"
 # smo.GC.GetTruncateNameByStep 1 ?
 
 ############# USE CASE
@@ -62,7 +62,7 @@ class SMO_GC_GetTruncateNameByStep_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC GetTruncateNameByStep'
+        return 'SMO GC - Get Truncated Name by Step'
     
     def cmd_Desc (self):
         return 'Get the Truncate Name of the current mesh item selected. It applies different method for renaming based on User Index Style defined in Modo Preferences.'
@@ -74,7 +74,7 @@ class SMO_GC_GetTruncateNameByStep_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC GetTruncateNameByStep'
+        return 'SMO GC - Get Truncated Name by Step'
     
     def basic_Enable(self, msg):
         # Perform the checks for when the command is supposed to be enabled,
@@ -84,10 +84,7 @@ class SMO_GC_GetTruncateNameByStep_Cmd(lxu.command.BasicCommand):
         # :type msg: lx.object.Message
         valid_selection = bool(modo.Scene().selectedByType('mesh'))
         return valid_selection
-        
-        
-        
-        
+
     def cmd_Query(self, index, vaQuery):
         if self.current_Selection is not None :
             scene = modo.scene.current()
@@ -247,21 +244,14 @@ class SMO_GC_GetTruncateNameByStep_Cmd(lxu.command.BasicCommand):
                         # lx.out ('base name is: ', BaseName)
                     ##########    NEW METHOD    #########
                 
-                
-                
-                
-                
-                
+
                 # lx.out ('Result of Query:', BaseName)
                 va = lx.object.ValueArray(vaQuery)
                 va.AddString(BaseName)
                 return lx.result.OK
-                
-                
-        
+
         else:
             return
         
     
-lx.bless(SMO_GC_GetTruncateNameByStep_Cmd, Command_Name)
-
+lx.bless(SMO_GC_GetTruncateNameByStep_Cmd, Cmd_Name)

@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.SelectTextureLayerItem"
+Cmd_Name = "smo.GC.SelectTextureLayerItem"
 # execute:      smo.GC.SelectTextureLayerItem
 # query:        smo.GC.SelectTextureLayerItem ?
 
@@ -24,7 +24,6 @@ Command_Name = "smo.GC.SelectTextureLayerItem"
 # TestResult = lx.eval('smo.GC.SelectTextureLayerItem ?')
 # lx.out('Texture Layer item Identity name is :',TestResult)
 ######################
-
 
 class SMO_GC_SelectTextureLayerItem_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -38,7 +37,7 @@ class SMO_GC_SelectTextureLayerItem_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC SelectTextureLayerItem'
+        return 'SMO GC - Select TextureLayer Item'
     
     def cmd_Desc (self):
         return 'Select the Texture Layer Item of the current scene.'
@@ -50,19 +49,14 @@ class SMO_GC_SelectTextureLayerItem_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC SelectTextureLayerItem'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Select TextureLayer Item'
     
     def basic_Enable (self, msg):
         return True
-        
-    
+
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
-        
-        
+
         # Get the item count
         n = lx.eval1( 'query sceneservice item.N ?' )
         
@@ -95,7 +89,6 @@ class SMO_GC_SelectTextureLayerItem_Cmd(lxu.command.BasicCommand):
                 va = lx.object.ValueArray(vaQuery)
                 va.AddString(TextureLayerItemID)
                 return lx.result.OK
-                
-                
+
     
-lx.bless(SMO_GC_SelectTextureLayerItem_Cmd, Command_Name)
+lx.bless(SMO_GC_SelectTextureLayerItem_Cmd, Cmd_Name)

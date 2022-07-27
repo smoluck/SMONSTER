@@ -14,7 +14,10 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 #---------------------------------------
 
-import lx, lxu, modo
+import lx, lxu, modo, sys
+
+Cmd_Name = "smo.UV.SelectUVArea"
+# smo.UV.SelectUVArea -1 -1
 
 class SMO_UV_SelectUVArea_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -30,7 +33,7 @@ class SMO_UV_SelectUVArea_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO UV Select UV Area'
+        return 'SMO UV - Select UV Area'
     
     def cmd_Desc (self):
         return 'Select the Polygons in a defined UV Area (Via Arguments).'
@@ -42,14 +45,10 @@ class SMO_UV_SelectUVArea_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO UV Select UV Area'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO UV - Select UV Area'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -110,16 +109,16 @@ class SMO_UV_SelectUVArea_Cmd(lxu.command.BasicCommand):
             lx.eval('dialog.title {SMONSTER - Normalize and Pack:}')
             lx.eval('dialog.msg {Please select Only One Vertex Map and run that script again.}')
             lx.eval('dialog.open')
-            sys.exit()
             SMO_SafetyCheckSelectUVArea_UVMapCount = False
+            sys.exit()
         
         if SelectedMeshUVMapsCount < 1 :
             lx.eval('dialog.setup info')
             lx.eval('dialog.title {SMONSTER - Normalize and Pack:}')
             lx.eval('dialog.msg {You must have a UV map selected to run this script.}')
             lx.eval('dialog.open')
-            sys.exit()
             SMO_SafetyCheckSelectUVArea_UVMapCount = False
+            sys.exit()
         
         if SelectedMeshUVMapsCount == 1 :
             SMO_SafetyCheckSelectUVArea_UVMapCount = True
@@ -152,5 +151,4 @@ class SMO_UV_SelectUVArea_Cmd(lxu.command.BasicCommand):
             lx.eval('tool.set util.udim off')
         
     
-lx.bless(SMO_UV_SelectUVArea_Cmd, "smo.UV.SelectUVArea")
-# smo.UV.SelectUVArea -1 -1
+lx.bless(SMO_UV_SelectUVArea_Cmd, Cmd_Name)

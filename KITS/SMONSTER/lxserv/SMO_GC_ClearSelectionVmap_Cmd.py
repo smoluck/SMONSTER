@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.ClearSelectionVmap"
+Cmd_Name = "smo.GC.ClearSelectionVmap"
 # smo.GC.ClearSelectionVmap 1 1
 
 class SMO_GC_ClearSelectionVmap_Cmd(lxu.command.BasicCommand):
@@ -33,7 +33,7 @@ class SMO_GC_ClearSelectionVmap_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC ClearSelectionVmap'
+        return 'SMO GC - Clear Selection VertexMap'
     
     def cmd_Desc (self):
         return 'Select all or Deselect all Vmaps based on specified type via arguments.'
@@ -45,10 +45,7 @@ class SMO_GC_ClearSelectionVmap_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC ClearSelectionVmap'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Clear Selection VertexMap'
     
     def basic_Enable (self, msg):
         return True
@@ -203,7 +200,7 @@ class SMO_GC_ClearSelectionVmap_Cmd(lxu.command.BasicCommand):
                         lx.eval("select.vertexMap {%s} wght add" % (VMap_NameList[i]))
                     if (VMap_TypeList[i]) == 1464289364 and ActionMode == 1:  # int id for Weight map
                         lx.eval("select.vertexMap {%s} wght remove" % (VMap_NameList[i]))
-                        
-        
         #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
-lx.bless(SMO_GC_ClearSelectionVmap_Cmd, Command_Name)
+
+
+lx.bless(SMO_GC_ClearSelectionVmap_Cmd, Cmd_Name)

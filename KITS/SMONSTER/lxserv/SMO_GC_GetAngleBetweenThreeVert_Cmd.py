@@ -18,7 +18,7 @@
 
 import lx, lxu, modo, string, lxu.vector, math
 
-Command_Name = "smo.GC.GetAngleBetweenThreeVert"
+Cmd_Name = "smo.GC.GetAngleBetweenThreeVert"
 # smo.GC.GetAngleBetweenThreeVert ?
 
 ############# USE CASE
@@ -44,7 +44,6 @@ def GetRotFromThreeVector(m):
         y = math.asin(m[1][0])
         z = math.atan2(-m[1][2],m[1][1])
     return ( math.degrees(z), math.degrees(x), math.degrees(y))
-
 
 
 class SMO_GC_GetAngleBetweenThreeVert_Cmd(lxu.command.BasicCommand):
@@ -81,7 +80,7 @@ class SMO_GC_GetAngleBetweenThreeVert_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC GetAngleBetweenThreeVert'
+        return 'SMO GC - Get Angle between 3 Vertex'
     
     def cmd_Desc (self):
         return 'Select 3 vertex. 1st (Extremity A) / 2nd (Corner) / 3rd (Extremity B) to get Corner Angle via query.'
@@ -93,7 +92,7 @@ class SMO_GC_GetAngleBetweenThreeVert_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC GetAngleBetweenThreeVert'
+        return 'SMO GC - Get Angle between 3 Vertex'
     
     def basic_Enable(self, msg):
         # Perform the checks for when the command is supposed to be enabled,
@@ -104,8 +103,7 @@ class SMO_GC_GetAngleBetweenThreeVert_Cmd(lxu.command.BasicCommand):
         valid_selection = bool(modo.Scene().selectedByType('mesh'))
         return valid_selection
     
-    
-    
+
     def cmd_Query(self, index, vaQuery):
         # 'select' layer for layerservice
         mLayer = lx.eval('query layerservice layers ? main')
@@ -151,5 +149,6 @@ class SMO_GC_GetAngleBetweenThreeVert_Cmd(lxu.command.BasicCommand):
         va = lx.object.ValueArray(vaQuery)
         va.AddFloat(Angle[0])
         return lx.result.OK
-    
-lx.bless(SMO_GC_GetAngleBetweenThreeVert_Cmd, Command_Name)
+
+
+lx.bless(SMO_GC_GetAngleBetweenThreeVert_Cmd, Cmd_Name)

@@ -15,7 +15,7 @@
 
 import modo, lx, lxifc, lxu.command, lxu.select, subprocess, os
 
-Command_Name = "smo.LL.MARMOSET.CreateMikkTangentBasis"
+Cmd_Name = "smo.LL.MARMOSET.CreateMikkTangentBasis"
 
 
 class SMO_LL_MARMOSET_CreateMikkTangentBasis_Cmd(lxu.command.BasicCommand):
@@ -26,7 +26,7 @@ class SMO_LL_MARMOSET_CreateMikkTangentBasis_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO LL MARMOSET Set Mikk Tangent Basis'
+        return 'SMO LL MARMOSET - Set Mikk Tangent Basis'
 
     def cmd_Desc(self):
         return 'Select the LowPoly meshes and Create MikkTangent Basis Map.'
@@ -38,7 +38,7 @@ class SMO_LL_MARMOSET_CreateMikkTangentBasis_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO LL MARMOSET Set Mikk Tangent Basis'
+        return 'SMO LL MARMOSET - Set Mikk Tangent Basis'
 
     def cmd_Flags(self):
         return lx.symbol.fCMD_UNDO
@@ -61,4 +61,5 @@ class SMO_LL_MARMOSET_CreateMikkTangentBasis_Cmd(lxu.command.BasicCommand):
         lx.eval('smo.GC.CreateDeleteSelSetFromMTypTag 0')
         lx.eval('select.drop item')
 
-lx.bless(SMO_LL_MARMOSET_CreateMikkTangentBasis_Cmd, Command_Name)
+
+lx.bless(SMO_LL_MARMOSET_CreateMikkTangentBasis_Cmd, Cmd_Name)

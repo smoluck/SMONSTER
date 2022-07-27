@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.CheckAndSetFullScreenState"
+Cmd_Name = "smo.GC.CheckAndSetFullScreenState"
 # smo.GC.CheckAndSetFullScreenState
 
 class SMO_GC_CheckAndSetFullScreenState_Cmd(lxu.command.BasicCommand):
@@ -30,7 +30,7 @@ class SMO_GC_CheckAndSetFullScreenState_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC Check FullScreen Mode State'
+        return 'SMO GC - Check FullScreen Mode State'
 
     def cmd_Desc(self):
         return 'Check Top/Down/Left/Right Side Bars State.'
@@ -42,10 +42,7 @@ class SMO_GC_CheckAndSetFullScreenState_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC Check FullScreen Mode State'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Check FullScreen Mode State'
 
     def basic_Enable(self, msg):
         return True
@@ -118,4 +115,5 @@ class SMO_GC_CheckAndSetFullScreenState_Cmd(lxu.command.BasicCommand):
         del (LayLeftState)
         del (LayRightState)
 
-lx.bless(SMO_GC_CheckAndSetFullScreenState_Cmd, Command_Name)
+
+lx.bless(SMO_GC_CheckAndSetFullScreenState_Cmd, Cmd_Name)

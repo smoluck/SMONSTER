@@ -14,9 +14,9 @@
 # Created:      22/01/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
 # ---------------------------------------
-import lx, lxu, modo
+import lx, lxu, modo, sys
 
-Command_Name = "smo.CAD.MergeCoplanarPoly"
+Cmd_Name = "smo.CAD.MergeCoplanarPoly"
 # smo.CAD.MergeCoplanarPoly 0 2
 
 class SMO_CAD_MergeCoplanarPoly_Cmd(lxu.command.BasicCommand):
@@ -34,7 +34,7 @@ class SMO_CAD_MergeCoplanarPoly_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO CAD MergeCoplanarPoly'
+        return 'SMO CAD - Merge Coplanar Poly'
 
     def cmd_Desc(self):
         return 'Merge the selected Polygons based on their facing Angle to delete the Edges inside those Polygons.'
@@ -46,10 +46,7 @@ class SMO_CAD_MergeCoplanarPoly_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO CAD MergeCoplanarPoly'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CAD - Merge Coplanar Poly'
 
     def basic_Enable(self, msg):
         return True
@@ -208,7 +205,9 @@ class SMO_CAD_MergeCoplanarPoly_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.nextMode')
             lx.eval('select.drop polygon')
 
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_CAD_MergeCoplanarPoly_Cmd, Command_Name)
+
+lx.bless(SMO_CAD_MergeCoplanarPoly_Cmd, Cmd_Name)

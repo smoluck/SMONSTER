@@ -15,7 +15,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.DOC.VideoLink"
+Cmd_Name = "smo.DOC.VideoLink"
 # smo.DOC.VideoLink GAME 1
 
 class SMO_DOC_VideoLink_Cmd(lxu.command.BasicCommand):
@@ -31,7 +31,7 @@ class SMO_DOC_VideoLink_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'Open Documentation Video'
+        return 'SMO DOC - Open Documentation Video'
 
     def cmd_Desc(self):
         return 'Open the Tutorial Videos using a String Argument for Defined Kit and an integer as argument for Video ID.'
@@ -43,10 +43,7 @@ class SMO_DOC_VideoLink_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'Open Documentation Video'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO DOC - Open Documentation Video'
 
     def basic_Enable(self, msg):
         return True
@@ -272,4 +269,5 @@ class SMO_DOC_VideoLink_Cmd(lxu.command.BasicCommand):
 
         lx.eval('openURL {%s}' % Output_URL)
 
-lx.bless(SMO_DOC_VideoLink_Cmd, Command_Name)
+
+lx.bless(SMO_DOC_VideoLink_Cmd, Cmd_Name)

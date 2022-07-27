@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.QT.CreateColorIDFromMatGrpMask"
+Cmd_Name = "smo.QT.CreateColorIDFromMatGrpMask"
 # smo.QT.CreateColorIDFromMatGrpMask
 
 class SMO_QT_CreateColorIDFromMaterialGroupMask_Cmd(lxu.command.BasicCommand):
@@ -30,7 +30,7 @@ class SMO_QT_CreateColorIDFromMaterialGroupMask_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO QT Create ColorID From Material Group Mask'
+        return 'SMO QT - Create ColorID From Material Group Mask'
 
     def cmd_Desc(self):
         return 'Select the Source mesh of a given Instanced Mesh, instance it in place and move it back to Origin with zero transforms. (Create a new Group Mask on top of the BaseShader with a Contant as Diffuse color (random values))'
@@ -42,10 +42,7 @@ class SMO_QT_CreateColorIDFromMaterialGroupMask_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO QT Create ColorID From Material Group Mask'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO QT - Create ColorID From Material Group Mask'
 
     def basic_Enable(self, msg):
         return True
@@ -59,4 +56,5 @@ class SMO_QT_CreateColorIDFromMaterialGroupMask_Cmd(lxu.command.BasicCommand):
             lx.eval('smo.QT.SetColorID')
             lx.eval('smo.GC.DeselectAll')
 
-lx.bless(SMO_QT_CreateColorIDFromMaterialGroupMask_Cmd, Command_Name)
+
+lx.bless(SMO_QT_CreateColorIDFromMaterialGroupMask_Cmd, Cmd_Name)

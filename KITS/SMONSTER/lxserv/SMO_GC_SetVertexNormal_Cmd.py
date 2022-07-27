@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.SetVertexNormal"
+Cmd_Name = "smo.GC.SetVertexNormal"
 # smo.GC.SetVertexNormal
 
 class SMO_GC_SetVertexNormal_Cmd(lxu.command.BasicCommand):
@@ -30,7 +30,7 @@ class SMO_GC_SetVertexNormal_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC SetVertexNormal'
+        return 'SMO GC - Set Vertex Normal'
 
     def cmd_Desc(self):
         return 'Set Vertex Normals on current Selection using user preferences VertexNormalMap name string.'
@@ -42,10 +42,7 @@ class SMO_GC_SetVertexNormal_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC SetVertexNormal'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Set Vertex Normal'
 
     def basic_Enable(self, msg):
         return True
@@ -54,4 +51,6 @@ class SMO_GC_SetVertexNormal_Cmd(lxu.command.BasicCommand):
         VNMapName = lx.eval('pref.value application.defaultVertexNormals ?')
         # print(VNMapName)
         lx.eval('vertMap.normals {%s} normalize:false' % VNMapName)
-lx.bless(SMO_GC_SetVertexNormal_Cmd, Command_Name)
+
+
+lx.bless(SMO_GC_SetVertexNormal_Cmd, Cmd_Name)

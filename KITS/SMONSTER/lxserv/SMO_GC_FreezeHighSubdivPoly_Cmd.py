@@ -15,7 +15,7 @@
 
 import lx, lxu, modo
 
-Command_Name =  "smo.GC.FreezeHighSubdivPoly"
+Cmd_Name =  "smo.GC.FreezeHighSubdivPoly"
 # smo.GC.FreezeHighSubdivPoly
 
 class SMO_GC_FreezeHighSubdivPoly_Cmd(lxu.command.BasicCommand):
@@ -29,7 +29,7 @@ class SMO_GC_FreezeHighSubdivPoly_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC Freeze High Subdiv Poly'
+        return 'SMO GC - Freeze High Subdiv Poly'
     
     def cmd_Desc (self):
         return 'Freeze the Subdiv or Catmull-Clark polygons in the HighPoly Meshes.'
@@ -41,7 +41,7 @@ class SMO_GC_FreezeHighSubdivPoly_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC Freeze High Subdiv Poly'
+        return 'SMO GC - Freeze High Subdiv Poly'
     
     def basic_Enable (self, msg):
         return True
@@ -58,7 +58,9 @@ class SMO_GC_FreezeHighSubdivPoly_Cmd(lxu.command.BasicCommand):
         lx.eval('smo.GC.CreateDeleteSelSetFromMTypTag 1')
         lx.eval('select.drop item')
 
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_GC_FreezeHighSubdivPoly_Cmd, Command_Name)
+
+lx.bless(SMO_GC_FreezeHighSubdivPoly_Cmd, Cmd_Name)

@@ -16,8 +16,8 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.GetMaterialListOnMesh"
-#query          smo.GC.GetMaterialListOnMesh ?
+Cmd_Name = "smo.GC.GetMaterialListOnMesh"
+#query      smo.GC.GetMaterialListOnMesh ?
 
 ############# USE CASE
 # MatsOnMesh = lx.eval('smo.GC.GetMaterialListOnMesh ?')
@@ -36,7 +36,7 @@ class SMO_GC_GetMaterialListOnMesh_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC Get Material List on Mesh'
+        return 'SMO GC - Get Material List on Mesh'
     
     def cmd_Desc (self):
         return 'Get the Material List applied on current selected Mesh.'
@@ -48,15 +48,11 @@ class SMO_GC_GetMaterialListOnMesh_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC Get Material List on Mesh'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Get Material List on Mesh'
     
     def basic_Enable (self, msg):
         return True
-        
-    
+
     def cmd_Query(self, index, vaQuery):
         scene = modo.scene.current()
         mesh = scene.selectedByType('mesh')[0]
@@ -73,8 +69,9 @@ class SMO_GC_GetMaterialListOnMesh_Cmd(lxu.command.BasicCommand):
         va = lx.object.ValueArray(vaQuery)
         va.AddString(MatStringList)
         return lx.result.OK
-        
-lx.bless(SMO_GC_GetMaterialListOnMesh_Cmd, Command_Name)
+
+
+lx.bless(SMO_GC_GetMaterialListOnMesh_Cmd, Cmd_Name)
 
 
 # import modo

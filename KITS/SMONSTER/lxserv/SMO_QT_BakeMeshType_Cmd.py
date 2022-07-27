@@ -16,7 +16,7 @@
 
 import lx, lxu, os, modo
 
-Command_Name = "smo.QT.TagBakeMeshType"
+Cmd_Name = "smo.QT.TagBakeMeshType"
 # smo.QT.TagBakeMeshType 0
 
 class SMO_QT_TagBakeMeshType_Cmd(lxu.command.BasicCommand):
@@ -32,7 +32,7 @@ class SMO_QT_TagBakeMeshType_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO Quick Tag - Bake Mesh Type'
+        return 'SMO QT - Bake Mesh Type'
     
     def cmd_Desc (self):
         return 'Add an MTyp Tag to the current selected Mesh item. it define it as low or high poly mesh for Baking purpose.'
@@ -44,14 +44,10 @@ class SMO_QT_TagBakeMeshType_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO Quick Tag - Bake Mesh Type'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO QT - Bake Mesh Type'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -92,4 +88,6 @@ class SMO_QT_TagBakeMeshType_Cmd(lxu.command.BasicCommand):
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_QT_TagBakeMeshType_Cmd, Command_Name)
+
+lx.bless(SMO_QT_TagBakeMeshType_Cmd, Cmd_Name)
+

@@ -16,10 +16,10 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 #---------------------------------------
 
-import modo, lx, lxifc, lxu.command, lxu.select, subprocess, os
+import modo, lx, lxifc, lxu.command, lxu.select, subprocess, os, traceback
 import json as j
 
-Command_Name = "smo.LL.MARMOSET.AutoSegmentedExport"
+Cmd_Name = "smo.LL.MARMOSET.AutoSegmentedExport"
 
 class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd (lxu.command.BasicCommand):
     def __init__ (self):
@@ -38,7 +38,7 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd (lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO Marmoset ExportToMarmoset Automatic Segmented FBX'
+        return 'SMO LL MARMOSET - Export Automatic Segmented FBX'
     
     def cmd_Desc (self):
         return 'Export LowPoly/Cage/HighPoly Meshes from current scene, based on MTyp Tag, as FBX to MarmosetToolbag temp Folder. Create a Texture to store the TSNM. Resolution defined by Argument in pixel.'
@@ -50,7 +50,7 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd (lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO Marmoset ExportToMarmoset Automatic Segmented FBX'
+        return 'SMO LL MARMOSET - Export Automatic Segmented FBX'
     
     def cmd_Flags (self):
         return lx.symbol.fCMD_UNDO
@@ -2116,5 +2116,5 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd (lxu.command.BasicCommand):
         lx.eval('smo.GC.CreateDeleteSelSetFromMTypTag 0')
         lx.eval('smo.GC.DeselectAll')
 
-lx.bless (SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd, Command_Name)
 
+lx.bless (SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd, Cmd_Name)

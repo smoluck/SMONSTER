@@ -17,7 +17,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.CLEANUP.DelEverythingExceptMeshes"
+Cmd_Name = "smo.CLEANUP.DelEverythingExceptMeshes"
 # smo.CLEANUP.DelEverythingExceptMeshes
 
 class SMO_CLEANUP_DelEverythingExceptMeshes_Cmd(lxu.command.BasicCommand):
@@ -31,7 +31,7 @@ class SMO_CLEANUP_DelEverythingExceptMeshes_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO CLEANUP Delete everything Except Meshes items'
+        return 'SMO CLEANUP - Delete everything Except Meshes items'
 
     def cmd_Desc(self):
         return 'Select everything in the current scene, except Meshes items and delete all other items / materials. It unparent in place the current Meshes to preserve their position in space in case they were part of a hierarchy.'
@@ -43,7 +43,7 @@ class SMO_CLEANUP_DelEverythingExceptMeshes_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO CLEANUP Delete everything Except Meshes items.'
+        return 'SMO CLEANUP - Delete everything Except Meshes items.'
 
     def cmd_Flags(self):
         return lx.symbol.fCMD_UNDO
@@ -68,4 +68,5 @@ class SMO_CLEANUP_DelEverythingExceptMeshes_Cmd(lxu.command.BasicCommand):
         lx.eval('!delete')
         lx.eval('smo.GC.DeselectAll')
 
-lx.bless(SMO_CLEANUP_DelEverythingExceptMeshes_Cmd, Command_Name)
+
+lx.bless(SMO_CLEANUP_DelEverythingExceptMeshes_Cmd, Cmd_Name)

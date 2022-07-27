@@ -16,6 +16,9 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.UV.SmartProjectionClearTag"
+# smo.UV.SmartProjectionClearTag
+
 class SMO_UV_SmartProjection_ClearTag_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -29,6 +32,7 @@ class SMO_UV_SmartProjection_ClearTag_Cmd(lxu.command.BasicCommand):
         self.basic_SetFlags (3, lx.symbol.fCMDARG_OPTIONAL)
         self.dyna_Add("Repack Mode", lx.symbol.sTYPE_INTEGER)
         self.basic_SetFlags (4, lx.symbol.fCMDARG_OPTIONAL)
+
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
     
@@ -36,7 +40,7 @@ class SMO_UV_SmartProjection_ClearTag_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO UV SmartProjection ClearTag'
+        return 'SMO UV - SmartProjection ClearTag'
     
     def cmd_Desc (self):
         return 'Remove all Polygon Selection Set created with the UV - Smart Projection Command.'
@@ -48,11 +52,10 @@ class SMO_UV_SmartProjection_ClearTag_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO UV SmartProjection ClearTag'
+        return 'SMO UV - SmartProjection ClearTag'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -197,8 +200,8 @@ class SMO_UV_SmartProjection_ClearTag_Cmd(lxu.command.BasicCommand):
         if SMO_SafetyCheck_ItemModeEnabled == 1:
             lx.eval('select.type item')
         
-        
         lx.out('End of Smart Projection ClearTag Script')
         #####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- END --------------------#####
-lx.bless(SMO_UV_SmartProjection_ClearTag_Cmd, "smo.UV.SmartProjectionClearTag")
-# smo.UV.SmartProjectionClearTag
+
+
+lx.bless(SMO_UV_SmartProjection_ClearTag_Cmd, Cmd_Name)

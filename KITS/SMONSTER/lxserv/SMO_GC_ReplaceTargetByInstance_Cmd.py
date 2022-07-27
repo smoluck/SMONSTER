@@ -17,6 +17,9 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.GC.ReplaceTargetByInstance"
+# smo.GC.ReplaceTargetByInstance 1 # copy in instance mode
+
 class SMO_GC_ReplaceTargetByInstance_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -29,7 +32,7 @@ class SMO_GC_ReplaceTargetByInstance_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC Replace By Instance'
+        return 'SMO GC - Replace By Instance'
     
     def cmd_Desc (self):
         return 'Select the target then the source Mesh Item.'
@@ -41,11 +44,10 @@ class SMO_GC_ReplaceTargetByInstance_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC Replace By Instance'
+        return 'SMO GC - Replace By Instance'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         ItemType = self.dyna_Int (0)
@@ -127,5 +129,4 @@ class SMO_GC_ReplaceTargetByInstance_Cmd(lxu.command.BasicCommand):
             meshnum +=1
         
     
-lx.bless(SMO_GC_ReplaceTargetByInstance_Cmd, "smo.GC.ReplaceTargetByInstance")
-# smo.GC.ReplaceTargetByInstance 1 # copy in instance mode
+lx.bless(SMO_GC_ReplaceTargetByInstance_Cmd, Cmd_Name)

@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.MIFABOMA.RadialSweep"
+Cmd_Name = "smo.MIFABOMA.RadialSweep"
 # smo.MIFABOMA.RadialSweep 1 32 1 360 0 0
 
 class SMO_MIFABOMA_RadialSweep_Cmd(lxu.command.BasicCommand):
@@ -42,7 +42,7 @@ class SMO_MIFABOMA_RadialSweep_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO RadialSweep'
+        return 'SMO MIFABOMA - Radial Sweep'
     
     def cmd_Desc (self):
         return 'Radial Sweep current Polygon Selection (or all Poly if no selection) / or Selected Edges using Origin Center (World) or Item Center (Local).'
@@ -54,14 +54,10 @@ class SMO_MIFABOMA_RadialSweep_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO RadialSweep'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO MIFABOMA - Radial Sweep'
     
     def basic_Enable (self, msg):
         return True
-    
     
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -316,9 +312,10 @@ class SMO_MIFABOMA_RadialSweep_Cmd(lxu.command.BasicCommand):
             lx.eval('item.refSystem %s' % CurrentRefSystemItem)
 
         lx.out('End of SMO RadialSweep  Command')
-    
+
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
 
-lx.bless(SMO_MIFABOMA_RadialSweep_Cmd, Command_Name)
+lx.bless(SMO_MIFABOMA_RadialSweep_Cmd, Cmd_Name)

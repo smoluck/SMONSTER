@@ -16,6 +16,8 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.CLEANUP.SetUVMapRenameMethod"
+
 class SMO_Cleanup_SetUVMapRenameMethod_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -29,7 +31,7 @@ class SMO_Cleanup_SetUVMapRenameMethod_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO Cleanup SetUVMapRenameMethod'
+        return 'SMO CLEANUP - Set UVMap Rename Method'
     
     def cmd_Desc (self):
         return 'Set the current Renaming Method for UVMap by setting User Defined Preferences.'
@@ -41,14 +43,10 @@ class SMO_Cleanup_SetUVMapRenameMethod_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO Cleanup SetUVMapRenameMethod'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CLEANUP - Set UVMap Rename Method'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         # ############### ARGUMENTS ###############
@@ -62,5 +60,4 @@ class SMO_Cleanup_SetUVMapRenameMethod_Cmd(lxu.command.BasicCommand):
             lx.eval('user.value SMO_UseVal_CLEANUP_FullAuto_RenameUVToUserPref true')
         
     
-lx.bless(SMO_Cleanup_SetUVMapRenameMethod_Cmd, "smo.CLEANUP.SetUVMapRenameMethod")
-# smo.CLEANUP.SetUVMapRenameMethod 1
+lx.bless(SMO_Cleanup_SetUVMapRenameMethod_Cmd, Cmd_Name)

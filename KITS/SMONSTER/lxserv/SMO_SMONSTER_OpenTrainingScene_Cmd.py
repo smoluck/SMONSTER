@@ -15,7 +15,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.SMONSTER.OpenTrainingScene"
+Cmd_Name = "smo.SMONSTER.OpenTrainingScene"
 # smo.SMONSTER.OpenTrainingScene 1
 
 class SMO_SMONSTER_OpenTrainingScene_Cmd(lxu.command.BasicCommand):
@@ -31,7 +31,7 @@ class SMO_SMONSTER_OpenTrainingScene_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'Open Training Scene'
+        return 'SMO SMONSTER - Open Training Scene'
     
     def cmd_Desc (self):
         return 'Open the Training Scene using an ID integer as argument.'
@@ -43,20 +43,15 @@ class SMO_SMONSTER_OpenTrainingScene_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'Open Training Scene'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO SMONSTER - Open Training Scene'
     
     def basic_Enable (self, msg):
         return True
-    
     
     def basic_Execute(self, msg, flags):
         args = lx.args()
         lx.out(args)
         SCENE_ID = self.dyna_Int (0)
-        
         
         
         if SCENE_ID == 0 :
@@ -248,10 +243,10 @@ class SMO_SMONSTER_OpenTrainingScene_Cmd(lxu.command.BasicCommand):
             filePathToOpen = lx.eval("query platformservice alias ? {kit_SMONSTER:TRAINING_SCENES/SMO_BAKE/SMO_BAKE_QuickExport.lxo}")
 
 
-            
-            
+
         # Open scene file
         lx.eval('scene.open {%s}' % filePathToOpen)
         lx.eval('viewport.fit')
+
         
-lx.bless(SMO_SMONSTER_OpenTrainingScene_Cmd, Command_Name)
+lx.bless(SMO_SMONSTER_OpenTrainingScene_Cmd, Cmd_Name)

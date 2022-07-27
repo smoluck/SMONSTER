@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.SplitByMaterial"
+Cmd_Name = "smo.GC.SplitByMaterial"
 # smo.GC.SplitByMaterial
 
 class SMO_GC_SplitByMaterial_Cmd(lxu.command.BasicCommand):
@@ -30,7 +30,7 @@ class SMO_GC_SplitByMaterial_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC Split by Material Tag'
+        return 'SMO GC - Split by Material Tag'
 
     def cmd_Desc(self):
         return 'Split current selected mesh by Material Tag.'
@@ -42,10 +42,7 @@ class SMO_GC_SplitByMaterial_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC Split by Material Tag'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Split by Material Tag'
 
     def basic_Enable(self, msg):
         return True
@@ -94,7 +91,9 @@ class SMO_GC_SplitByMaterial_Cmd(lxu.command.BasicCommand):
                 if polys_left == 0:
                     lx.eval('item.delete')
 
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_GC_SplitByMaterial_Cmd, Command_Name)
+
+lx.bless(SMO_GC_SplitByMaterial_Cmd, Cmd_Name)

@@ -18,7 +18,7 @@
 
 import modo, lx, lxifc, lxu.command, lxu.select, subprocess, os
 
-Command_Name = "smo.LL.MARMOSET.ExportFBXBakes"
+Cmd_Name = "smo.LL.MARMOSET.ExportFBXBakes"
 
 class SMO_MARMOSET_LIVELINK_ExportFBXBakes_Cmd (lxu.command.BasicCommand):
     def __init__ (self):
@@ -35,7 +35,7 @@ class SMO_MARMOSET_LIVELINK_ExportFBXBakes_Cmd (lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO Marmoset Export Game Ready FBX For Bakes'
+        return 'SMO LL MARMOSET - Export Game Ready FBX For Bakes'
     
     def cmd_Desc (self):
         return 'Export LowPoly/Cage/HighPoly Meshes from current scene, based on MTyp Tag, as FBX to Temp Scene Path SubFolder.'
@@ -47,15 +47,13 @@ class SMO_MARMOSET_LIVELINK_ExportFBXBakes_Cmd (lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC Export Game Ready FBX For Bakes'
+        return 'SMO LL MARMOSET - Export Game Ready FBX For Bakes'
     
     def cmd_Flags (self):
         return lx.symbol.fCMD_UNDO
     
     def basic_Enable (self, msg):
         return True
-    
-    
     
     def recurseToFindFBXMeshes (self, fbx_item, fbx_meshes, mesh_items):
         fbx_item_child_count = fbx_item.SubCount ()
@@ -520,6 +518,6 @@ class SMO_MARMOSET_LIVELINK_ExportFBXBakes_Cmd (lxu.command.BasicCommand):
         lx.eval('smo.GC.CreateDeleteSelSetFromMTypTag 0')
         
         lx.eval('!scene.revert')
-        
-lx.bless (SMO_MARMOSET_LIVELINK_ExportFBXBakes_Cmd, Command_Name)
 
+
+lx.bless (SMO_MARMOSET_LIVELINK_ExportFBXBakes_Cmd, Cmd_Name)

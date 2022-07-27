@@ -14,9 +14,9 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 #---------------------------------------
 
-import lx, lxu, modo
+import lx, lxu, modo, sys
 
-Command_Name = "smo.MIFABOMA.FlipOnAxis"
+Cmd_Name = "smo.MIFABOMA.FlipOnAxis"
 # smo.MIFABOMA.FlipOnAxis 0 1
 
 class SMO_MIFABOMA_FlipOnAxis_Cmd(lxu.command.BasicCommand):
@@ -36,7 +36,7 @@ class SMO_MIFABOMA_FlipOnAxis_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO Flip Axes'
+        return 'SMO MIFABOMA - Flip Axes'
     
     def cmd_Desc (self):
         return 'Flip the Mesh or the Polygon selection using the  Item Center.'
@@ -48,10 +48,7 @@ class SMO_MIFABOMA_FlipOnAxis_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO Flip Axes'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO MIFABOMA - Flip Axes'
     
     def basic_Enable (self, msg):
         return True
@@ -528,11 +525,9 @@ class SMO_MIFABOMA_FlipOnAxis_Cmd(lxu.command.BasicCommand):
         elif TotalSafetyCheck != TotalSafetyCheckTrueValue:
             lx.out('script Stopped: your mesh does not match the requirement for that script.')
             sys.exit
-        
-        
+
         lx.out('End of SMO_Bool_Subtract Script')
         #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
         
-        
-    
-lx.bless(SMO_MIFABOMA_FlipOnAxis_Cmd, Command_Name)
+
+lx.bless(SMO_MIFABOMA_FlipOnAxis_Cmd, Cmd_Name)

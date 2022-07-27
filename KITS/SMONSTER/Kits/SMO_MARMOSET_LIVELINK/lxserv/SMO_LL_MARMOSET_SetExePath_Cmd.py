@@ -16,7 +16,7 @@
 
 import lx, lxifc, lxu.command, lxu.select, subprocess, os
 
-Command_Name = "smo.LL.MARMOSET.SetExePath"
+Cmd_Name = "smo.LL.MARMOSET.SetExePath"
 
 class SMO_MARMOSET_LIVELINK_SetExePath_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -29,7 +29,7 @@ class SMO_MARMOSET_LIVELINK_SetExePath_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO Marmoset Toolbag LiveLink Set EXE Path'
+        return 'SMO LL MARMOSET - Set EXE Path'
     
     def cmd_Desc (self):
         return 'Set the Marmoset Toolbag exe path to create the LiveLink. It will prompt a File browser to get the EXE file Location.'
@@ -41,11 +41,10 @@ class SMO_MARMOSET_LIVELINK_SetExePath_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO Marmoset Toolbag LiveLink Set EXE Path'
+        return 'SMO LL MARMOSET - Set EXE Path'
     
     def basic_Enable (self, msg):
         return True
-    
     
     def basic_Execute(self, msg, flags):
         # MODO version checks. Different versions have different FBX options.
@@ -65,4 +64,5 @@ class SMO_MARMOSET_LIVELINK_SetExePath_Cmd(lxu.command.BasicCommand):
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_MARMOSET_LIVELINK_SetExePath_Cmd, Command_Name)
+
+lx.bless(SMO_MARMOSET_LIVELINK_SetExePath_Cmd, Cmd_Name)

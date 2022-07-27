@@ -16,9 +16,8 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.CreateEmptyChildMeshMatchTransform"
-
-# smo.CAD.CreateEmptyChildMatchTransform true        Select that new child Mesh
+Cmd_Name = "smo.GC.CreateEmptyChildMeshMatchTransform"
+# smo.GC.CreateEmptyChildMeshMatchTransform true        Select that new child Mesh
 
 class SMO_GC_CreateEmptyChildMatchTransform_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -35,7 +34,7 @@ class SMO_GC_CreateEmptyChildMatchTransform_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC CreateEmptyChildMeshMatchTransform'
+        return 'SMO GC - Create Empty Child Mesh and Match Transforms'
 
     def cmd_Desc(self):
         return 'Create a new child Mesh Item (empty) on current selected mesh item.'
@@ -47,7 +46,7 @@ class SMO_GC_CreateEmptyChildMatchTransform_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'smo.GC.CreateEmptyChildMeshMatchTransform'
+        return 'SMO GC - Create Empty Child Mesh and Match Transforms'
 
     def basic_Enable(self, msg):
         return True
@@ -186,7 +185,9 @@ class SMO_GC_CreateEmptyChildMatchTransform_Cmd(lxu.command.BasicCommand):
             lx.out('"Deselect Elements Before Pasting" have been Restored')
         ########################################################
 
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_GC_CreateEmptyChildMatchTransform_Cmd, Command_Name)
+
+lx.bless(SMO_GC_CreateEmptyChildMatchTransform_Cmd, Cmd_Name)

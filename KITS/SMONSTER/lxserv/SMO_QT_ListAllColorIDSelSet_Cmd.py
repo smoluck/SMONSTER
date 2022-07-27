@@ -17,7 +17,7 @@
 
 import modo, lx, lxu
 
-Command_Name = "smo.QT.ListAllColorIDSelSet"
+Cmd_Name = "smo.QT.ListAllColorIDSelSet"
 # smo.QT.ListAllColorIDSelSet
 
 
@@ -61,9 +61,6 @@ class SMO_QT_ListAllColorIDSelSet_Cmd(lxu.command.BasicCommand):
     def basic_ButtonName(self):
         return 'SMO QT - Set ColorID'
 
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
-
     def basic_Enable(self, msg):
         return True
 
@@ -74,4 +71,5 @@ class SMO_QT_ListAllColorIDSelSet_Cmd(lxu.command.BasicCommand):
         # print(GetColorIDSelSetList())
         scene.select(items)
 
-lx.bless(SMO_QT_ListAllColorIDSelSet_Cmd, Command_Name)
+
+lx.bless(SMO_QT_ListAllColorIDSelSet_Cmd, Cmd_Name)

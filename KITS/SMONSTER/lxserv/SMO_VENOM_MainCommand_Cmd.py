@@ -14,10 +14,10 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 # ---------------------------------------
 
-import lx, lxu, modo
+import lx, lxu, modo, sys
 from math import degrees
 
-Command_Name = "smo.VENOM.MainCommand"
+Cmd_Name = "smo.VENOM.MainCommand"
 # smo.VENOM.MainCommand
 
 class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
@@ -56,7 +56,7 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO VeNom'
+        return 'SMO VENOM - Main Command'
 
     def cmd_Desc(self):
         return 'Hard Set Vertex Normal on current Mesh layer using Facing Ratio to flatten the area and fix jagged Vertex Normals. Mouse over a polygon in item mode and launch'
@@ -68,10 +68,7 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO VeNom'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO VENOM - Main Command'
 
     def basic_Enable(self, msg):
         return True
@@ -760,4 +757,5 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
             lx.out('"Deselect Elements Before Pasting" have been Restored')
         ########################################################
 
-lx.bless(SMO_VENOM_MainCommand_Cmd, Command_Name)
+
+lx.bless(SMO_VENOM_MainCommand_Cmd, Cmd_Name)

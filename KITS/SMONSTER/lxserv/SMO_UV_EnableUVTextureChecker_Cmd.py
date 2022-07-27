@@ -13,11 +13,9 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 # ---------------------------------------
 
-import lx, lxu, modo, os
+import lx, lxu, modo, os, sys
 
-CMD_NAME = "smo.UV.EnableUVTextureChecker"
-
-
+Cmd_Name = "smo.UV.EnableUVTextureChecker"
 # smo.UV.EnableUVTextureChecker 1024
 
 class SMO_UV_EnableUVTextureChecker_Cmd(lxu.command.BasicCommand):
@@ -29,7 +27,7 @@ class SMO_UV_EnableUVTextureChecker_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO UV EnableUVTextureChecker'
+        return 'SMO UV - Enable UV Texture Checker'
 
     def cmd_Desc(self):
         return 'Enable the UV Texture Checker in the current Viewport using the UVGrid PNG files from the UV kit. (Argument define the file resolution)'
@@ -41,7 +39,7 @@ class SMO_UV_EnableUVTextureChecker_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO UV EnableUVTextureChecker'
+        return 'SMO UV - Enable UV Texture Checker'
 
     def cmd_Flags(self):
         return lx.symbol.fCMD_UNDO
@@ -85,4 +83,6 @@ class SMO_UV_EnableUVTextureChecker_Cmd(lxu.command.BasicCommand):
 
         except:
             sys.exit
-lx.bless(SMO_UV_EnableUVTextureChecker_Cmd, CMD_NAME)
+
+
+lx.bless(SMO_UV_EnableUVTextureChecker_Cmd, Cmd_Name)

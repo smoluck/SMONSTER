@@ -14,9 +14,9 @@
 # Created:      06/05/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
 # ---------------------------------------
-import lx, lxu, modo
+import lx, lxu, modo, sys
 
-Command_Name = "smo.CAD.RebevelProcedByUser"
+Cmd_Name = "smo.CAD.RebevelProcedByUser"
 # smo.CAD.RebevelProcedByUser 8
 
 class SMO_CAD_RebevelProcedByUser_Cmd(lxu.command.BasicCommand):
@@ -34,7 +34,7 @@ class SMO_CAD_RebevelProcedByUser_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO CAD RebevelProcedByUser'
+        return 'SMO CAD - Rebevel Proced by User'
 
     def cmd_Desc(self):
         return 'With 1 Item selected and if more than 2 Polygons selected, Process a rebevel on the selected patch of Quads.'
@@ -46,10 +46,7 @@ class SMO_CAD_RebevelProcedByUser_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO CAD RebevelProcedByUser'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CAD - Rebevel Proced by User'
 
     def basic_Enable(self, msg):
         return True
@@ -367,7 +364,10 @@ class SMO_CAD_RebevelProcedByUser_Cmd(lxu.command.BasicCommand):
             lx.eval('select.type edge')
             lx.eval('select.all')
             lx.eval('tool.set preset:"edge.bridge" mode:on')
-            lx.eval('tool.setAttr tool:"edge.bridge" attr:segments value:0')
+            lx.eval('tool.setAttr edge.bridge segments 0')
+            lx.eval('tool.setAttr edge.bridge remove true')
+            lx.eval('tool.setAttr edge.bridge connect false')
+            lx.eval('tool.setAttr edge.bridge mode curve')
             lx.eval('tool.doApply')
             lx.eval('select.nextMode')
 
@@ -395,7 +395,10 @@ class SMO_CAD_RebevelProcedByUser_Cmd(lxu.command.BasicCommand):
             lx.eval('select.convert edge')
 
             lx.eval('tool.set preset:"edge.bridge" mode:on')
-            lx.eval('tool.setAttr tool:"edge.bridge" attr:segments value:0')
+            lx.eval('tool.setAttr edge.bridge segments 0')
+            lx.eval('tool.setAttr edge.bridge remove true')
+            lx.eval('tool.setAttr edge.bridge connect false')
+            lx.eval('tool.setAttr edge.bridge mode curve')
             lx.eval('tool.doApply')
             lx.eval('select.nextMode')
             lx.eval('select.convert type:polygon')
@@ -561,4 +564,4 @@ class SMO_CAD_RebevelProcedByUser_Cmd(lxu.command.BasicCommand):
         #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
 
 
-lx.bless(SMO_CAD_RebevelProcedByUser_Cmd, Command_Name)
+lx.bless(SMO_CAD_RebevelProcedByUser_Cmd, Cmd_Name)

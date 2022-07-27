@@ -18,7 +18,7 @@
 
 import lx, lxifc, lxu.command, lxu.select, modo
 
-Command_Name = "smo.GC.ReadTag"
+Cmd_Name = "smo.GC.ReadTag"
 # smo.GC.ReadTag MTyp ?
 
 class SMO_GC_ReadTags_Cmd(lxu.command.BasicCommand):
@@ -41,7 +41,7 @@ class SMO_GC_ReadTags_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC Read Tags'
+        return 'SMO GC - Read Tags by Arguments'
     
     def cmd_Desc (self):
         return 'Read value of defined Tags (by Args)'
@@ -53,16 +53,11 @@ class SMO_GC_ReadTags_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC Read Tags'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Read Tags by Arguments'
     
     def basic_Enable (self, msg):
         return True
-        
-        
-        
+
     def basic_Execute(self, msg, flags):
         
         # Those lines prevent the script to run, if the 2 Arguments are not defined.
@@ -109,4 +104,5 @@ class SMO_GC_ReadTags_Cmd(lxu.command.BasicCommand):
         
         return False
 
-lx.bless(SMO_GC_ReadTags_Cmd, Command_Name)
+
+lx.bless(SMO_GC_ReadTags_Cmd, Cmd_Name)

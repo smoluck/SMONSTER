@@ -15,6 +15,9 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.UV.UVNormalizePackApplyTD"
+# smo.UV.UVNormalizePackApplyTD
+
 class SMO_UV_UVNormalizePackApplyTD_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -25,7 +28,7 @@ class SMO_UV_UVNormalizePackApplyTD_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO UV UVNormalize Pack ApplyTD'
+        return 'SMO UV - Normalize Pack Apply Texel Density'
     
     def cmd_Desc (self):
         return 'UVNormalize Pack and Apply Texel Density on the current UVMap'
@@ -37,14 +40,10 @@ class SMO_UV_UVNormalizePackApplyTD_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO UV UVNormalize Pack ApplyTD'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO UV - Normalize Pack Apply Texel Density'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -111,10 +110,8 @@ class SMO_UV_UVNormalizePackApplyTD_Cmd(lxu.command.BasicCommand):
         lx.eval('uv.fit sepa:entire gaps:"0.0"')
         lx.eval('texeldensity.set per:island mode:all')
         
-        
         lx.out('End of Update UVNormalizePackApplyTexelDensity Script')
         #####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- END --------------------#####
         
     
-lx.bless(SMO_UV_UVNormalizePackApplyTD_Cmd, "smo.UV.UVNormalizePackApplyTD")
-# smo.UV.UVNormalizePackApplyTD
+lx.bless(SMO_UV_UVNormalizePackApplyTD_Cmd, Cmd_Name)

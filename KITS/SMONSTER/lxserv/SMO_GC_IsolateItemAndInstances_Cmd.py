@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.IsolateItemAndInstances"
+Cmd_Name = "smo.GC.IsolateItemAndInstances"
 # smo.GC.IsolateItemAndInstances
 
 class SMO_GC_IsolateItemAndInstances_Cmd(lxu.command.BasicCommand):
@@ -30,7 +30,7 @@ class SMO_GC_IsolateItemAndInstances_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC Isolate Item And Instances'
+        return 'SMO GC - Isolate Item And Instances'
 
     def cmd_Desc(self):
         return 'Isolate current Item and his Instances.'
@@ -42,10 +42,7 @@ class SMO_GC_IsolateItemAndInstances_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC Isolate Item And Instances'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Isolate Item And Instances'
 
     def basic_Enable(self, msg):
         return True
@@ -190,4 +187,5 @@ class SMO_GC_IsolateItemAndInstances_Cmd(lxu.command.BasicCommand):
                 del TotalOutputItems[:]
             ####
 
-lx.bless(SMO_GC_IsolateItemAndInstances_Cmd, Command_Name)
+
+lx.bless(SMO_GC_IsolateItemAndInstances_Cmd, Cmd_Name)

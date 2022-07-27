@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.LoadStillImageInShaderTree"
+Cmd_Name = "smo.GC.LoadStillImageInShaderTree"
 # smo.GC.LoadStillImageInShaderTree
 
 class SMO_GC_LoadStillImageInShaderTree_Cmd(lxu.command.BasicCommand):
@@ -29,7 +29,7 @@ class SMO_GC_LoadStillImageInShaderTree_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC SelectStillImageItem'
+        return 'SMO GC - Select Still Image Item'
     
     def cmd_Desc (self):
         return 'Load the still images (clips) Item of the current scene to preview the PixaFlux Bake.'
@@ -41,11 +41,10 @@ class SMO_GC_LoadStillImageInShaderTree_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC SelectStillImageItem'
+        return 'SMO GC - Select Still Image Item'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -69,4 +68,6 @@ class SMO_GC_LoadStillImageInShaderTree_Cmd(lxu.command.BasicCommand):
         lx.eval('select.drop link')
         
         #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
-lx.bless(SMO_GC_LoadStillImageInShaderTree_Cmd, Command_Name)
+
+
+lx.bless(SMO_GC_LoadStillImageInShaderTree_Cmd, Cmd_Name)

@@ -16,6 +16,8 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.CLEANUP.UnparentInPlace"
+
 class SMO_Cleanup_UnparentInPlace_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -27,26 +29,22 @@ class SMO_Cleanup_UnparentInPlace_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO Cleanup UnparentInPlace'
+        return 'SMO CLEANUP - Unparent in place'
     
     def cmd_Desc (self):
-        return 'Unparent all Empty Meshes in current Scene.'
+        return 'Unparent all Meshes in current Scene.'
     
     def cmd_Tooltip (self):
-        return 'Unparent all Empty Meshes in current Scene.'
+        return 'Unparent all Meshes in current Scene.'
     
     def cmd_Help (self):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO Cleanup UnparentInPlace'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CLEANUP - Unparent in place'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -62,4 +60,4 @@ class SMO_Cleanup_UnparentInPlace_Cmd(lxu.command.BasicCommand):
         lx.eval('select.drop item')
         
     
-lx.bless(SMO_Cleanup_UnparentInPlace_Cmd, "smo.CLEANUP.UnparentInPlace")
+lx.bless(SMO_Cleanup_UnparentInPlace_Cmd, Cmd_Name)

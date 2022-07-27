@@ -16,6 +16,8 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.CLEANUP.UpdateMat"
+
 class SMO_Cleanup_UpdateMat_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -27,7 +29,7 @@ class SMO_Cleanup_UpdateMat_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO Cleanup UpdateMat'
+        return 'SMO CLEANUP - Update All Materials to SMO MicroBevel Workflow'
     
     def cmd_Desc (self):
         return 'Update Materials Smoothing Angle to User defined value (via Preferences) and set ON the Weight by Polygon Area according to SMO Modo Workflow.'
@@ -39,14 +41,10 @@ class SMO_Cleanup_UpdateMat_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO Cleanup UpdateMat'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CLEANUP - Update All Materials to SMO MicroBevel Workflow'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         
@@ -65,4 +63,4 @@ class SMO_Cleanup_UpdateMat_Cmd(lxu.command.BasicCommand):
         lx.eval('select.drop item')
         
     
-lx.bless(SMO_Cleanup_UpdateMat_Cmd, "smo.CLEANUP.UpdateMat")
+lx.bless(SMO_Cleanup_UpdateMat_Cmd, Cmd_Name)

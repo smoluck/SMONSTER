@@ -17,6 +17,9 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.QT.SelectBaseShader"
+# smo.QT.SelectBaseShader
+
 class SMO_QT_SelectBaseShaderCmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -28,7 +31,7 @@ class SMO_QT_SelectBaseShaderCmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO QT Select BaseShader'
+        return 'SMO QT - Select BaseShader'
     
     def cmd_Desc (self):
         return 'Select BaseShader Item in current Scene (Assuming there is only one).'
@@ -40,21 +43,17 @@ class SMO_QT_SelectBaseShaderCmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO QT Select BaseShader'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO QT - Select BaseShader'
     
     def basic_Enable (self, msg):
         return True
-        
-    
+
     def basic_Execute(self, msg, flags):
         scene = modo.Scene()
         for item in scene.items(itype='defaultShader', superType=True):
             #lx.out('Default Base Shader found:',item)
             print(item)
         scene.select(item)
-    
-lx.bless(SMO_QT_SelectBaseShaderCmd, "smo.QT.SelectBaseShader")
-# smo.QT.SelectBaseShader
+
+
+lx.bless(SMO_QT_SelectBaseShaderCmd, Cmd_Name)

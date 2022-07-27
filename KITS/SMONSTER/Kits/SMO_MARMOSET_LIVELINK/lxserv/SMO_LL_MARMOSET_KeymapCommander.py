@@ -126,4 +126,5 @@ class ClearSMO_MARMOSET_LIVELINK_KeymapCmdClass(SmoCommanderClass):
 
         modo.dialogs.alert("Cleared SMO MARMOSET LiveLink Hotkeys", "Cleared %s SMO MARMOSET LiveLink hotkeys attribution." % len(SMO_RIZOMUV_LIVELINK_HOTKEYS))
 
+
 lx.bless(ClearSMO_MARMOSET_LIVELINK_KeymapCmdClass, "smo.LL.MARMOSET.ClearHotkeys")

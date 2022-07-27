@@ -13,10 +13,10 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 # ---------------------------------------
 
-import lx, lxu, modo
+import lx, lxu, modo, math
 from math import degrees
 
-Command_Name = "smo.GC.TransferVNrmFromMouseOverSurface"
+Cmd_Name = "smo.GC.TransferVNrmFromMouseOverSurface"
 # smo.GC.TransferVNrmFromMouseOverSurface
 
 class SMO_GC_TransferVNrmFromMouseOverSurface_Cmd(lxu.command.BasicCommand):
@@ -115,22 +115,19 @@ class SMO_GC_TransferVNrmFromMouseOverSurface_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC EdgeBoundaryProjectToBGnFuse'
+        return 'SMO GC - Transfer Vertex Normal Data from Polygon under Mouse'
 
     def cmd_Desc(self):
-        return 'Extend the current Opened Boundary Edge Loop to nearest BG Mesh using BG Constraint and setting an Edge Bevel + applying a VertexNormalTransfer to fuse the border with BG Mesh normals.'
+        return 'Transfer Vertex Normal Data from Polygon under Mouse onto current selected elements.'
 
     def cmd_Tooltip(self):
-        return 'Extend the current Opened Boundary Edge Loop to nearest BG Mesh using BG Constraint and setting an Edge Bevel + applying a VertexNormalTransfer to fuse the border with BG Mesh normals.'
+        return 'Transfer Vertex Normal Data from Polygon under Mouse onto current selected elements.'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC EdgeBoundaryProjectToBGnFuse'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Transfer Vertex Normal Data from Polygon under Mouse'
 
     def basic_Enable(self, msg):
         return True
@@ -310,4 +307,5 @@ class SMO_GC_TransferVNrmFromMouseOverSurface_Cmd(lxu.command.BasicCommand):
                 if SelModePoly == True:
                     lx.eval('select.type polygon')
 
-lx.bless(SMO_GC_TransferVNrmFromMouseOverSurface_Cmd, Command_Name)
+
+lx.bless(SMO_GC_TransferVNrmFromMouseOverSurface_Cmd, Cmd_Name)

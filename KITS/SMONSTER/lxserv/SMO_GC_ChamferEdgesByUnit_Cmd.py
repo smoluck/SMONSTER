@@ -15,7 +15,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.ChamferEdgesByUnit"
+Cmd_Name = "smo.GC.ChamferEdgesByUnit"
 # smo.GC.ChamferEdgesByUnit [1mm]       # Using Square Brackets around values validate the use of units like "km", "m" , "cm", "mm", "um".
 
 class SMO_GC_ChamferEdgesByUnit_Cmd(lxu.command.BasicCommand):
@@ -33,7 +33,7 @@ class SMO_GC_ChamferEdgesByUnit_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC ChamferEdgesByUnit'
+        return 'SMO GC - Chamfer Edges by Unit'
 
     def cmd_Desc(self):
         return 'Chamfer currently selected Edges (or Selection Boundary Edges if in Polygon Mode) with a Chamfer set to 1 Side, using arguments by unit and width.'
@@ -45,10 +45,7 @@ class SMO_GC_ChamferEdgesByUnit_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC ChamferEdgesByUnit'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Chamfer Edges by Unit'
 
     def basic_Enable(self, msg):
         return True
@@ -171,6 +168,9 @@ class SMO_GC_ChamferEdgesByUnit_Cmd(lxu.command.BasicCommand):
             lx.eval('select.type polygon')
             lx.eval('select.drop polygon')
 
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
-lx.bless(SMO_GC_ChamferEdgesByUnit_Cmd, Command_Name)
+
+
+lx.bless(SMO_GC_ChamferEdgesByUnit_Cmd, Cmd_Name)

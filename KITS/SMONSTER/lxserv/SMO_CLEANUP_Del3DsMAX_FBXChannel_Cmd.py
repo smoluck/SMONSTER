@@ -17,6 +17,8 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.CLEANUP.Del3DsMAX.FBXChannel"
+
 class SMO_Cleanup_Del3DsMAX_FBXChannel_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -27,7 +29,7 @@ class SMO_Cleanup_Del3DsMAX_FBXChannel_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO Cleanup Del3DsMAX FBXChannel'
+        return 'SMO CLEANUP - Delete 3DsMAX FBXChannel'
     
     def cmd_Desc (self):
         return 'Delete all 3DS Max Channels.'
@@ -39,15 +41,11 @@ class SMO_Cleanup_Del3DsMAX_FBXChannel_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO Cleanup Del3DsMAX FBXChannel'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CLEANUP - Delete 3DsMAX FBXChannel'
     
     def basic_Enable (self, msg):
         return True
-        
-    
+
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
         
@@ -117,4 +115,4 @@ class SMO_Cleanup_Del3DsMAX_FBXChannel_Cmd(lxu.command.BasicCommand):
         lx.eval('select.drop item')
         
     
-lx.bless(SMO_Cleanup_Del3DsMAX_FBXChannel_Cmd, "smo.CLEANUP.Del3DsMAX.FBXChannel")
+lx.bless(SMO_Cleanup_Del3DsMAX_FBXChannel_Cmd, Cmd_Name)

@@ -15,7 +15,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.ModollamaRebuildNGontoTriangle"
+Cmd_Name = "smo.GC.ModollamaRebuildNGontoTriangle"
 # smo.GC.ModollamaRebuildNGontoTriangle 1
 # Modo Method = False
 # Modollama Method = True
@@ -43,7 +43,7 @@ class SMO_GC_ModollamaRebuildNGontoTriangle_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC ModollamaRebuildNGontoTriangle'
+        return 'SMO GC - Modollama Rebuild NGon to Triangles'
 
     def cmd_Desc(self):
         return 'Rebuild all NGons via Modollama Triangulation command to output Triangles.'
@@ -55,7 +55,7 @@ class SMO_GC_ModollamaRebuildNGontoTriangle_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC ModollamaRebuildNGontoTriangle'
+        return 'SMO GC - Modollama Rebuild NGon to Triangles'
 
     def basic_Enable(self, msg):
         return True
@@ -183,4 +183,4 @@ class SMO_GC_ModollamaRebuildNGontoTriangle_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.drop item')
 
 
-lx.bless(SMO_GC_ModollamaRebuildNGontoTriangle_Cmd, Command_Name)
+lx.bless(SMO_GC_ModollamaRebuildNGontoTriangle_Cmd, Cmd_Name)

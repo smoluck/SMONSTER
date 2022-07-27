@@ -16,6 +16,9 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.GC.SelectChanByArg"
+# smo.GC.DeleteChanByArg FBX_UDP3DSMAX
+
 class SMO_GC_SelectChanByArg_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -29,7 +32,7 @@ class SMO_GC_SelectChanByArg_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO SelectChanByArg'
+        return 'SMO GC - Select Channel by Arguments'
     
     def cmd_Desc (self):
         return 'Search if a specific channel exist via String Argument and select it.'
@@ -41,15 +44,11 @@ class SMO_GC_SelectChanByArg_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO SelectChanByArg'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Select Channel by Arguments'
     
     def basic_Enable (self, msg):
         return True
-        
-    
+
     def basic_Execute(self, msg, flags):
         # # ############### 1 ARGUMENTS Test ###############
         # SearchStringArg = 'FBX_UDP3DSMAX'
@@ -72,5 +71,4 @@ class SMO_GC_SelectChanByArg_Cmd(lxu.command.BasicCommand):
                         pass
     
     
-lx.bless(SMO_GC_SelectChanByArg_Cmd, "smo.GC.SelectChanByArg")
-# smo.GC.DeleteChanByArg FBX_UDP3DSMAX
+lx.bless(SMO_GC_SelectChanByArg_Cmd, Cmd_Name)

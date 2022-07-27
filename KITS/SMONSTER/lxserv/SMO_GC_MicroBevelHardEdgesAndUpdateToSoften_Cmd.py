@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.MicroBevelHardEdgesAndUpdateToSoften"
+Cmd_Name = "smo.GC.MicroBevelHardEdgesAndUpdateToSoften"
 # smo.GC.MicroBevelHardEdgesAndUpdateToSoften [1mm]
 # Using Square Brackets around values validate the use of units like "km", "m" , "cm", "mm", "um".
 
@@ -42,7 +42,7 @@ class SMO_GC_MicroBevelHardEdgesAndUpdateToSoften_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC MicroBevelHardEdgesAndUpdateToSoften'
+        return 'SMO GC - MicroBevel HardEdges and Soften all Edges'
 
     def cmd_Desc(self):
         return 'Micro Bevel HardEdges (usually after a SimplyToNgon), then Soften all edges.'
@@ -54,7 +54,7 @@ class SMO_GC_MicroBevelHardEdgesAndUpdateToSoften_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC MicroBevelHardEdgesAndUpdateToSoften'
+        return 'SMO GC - MicroBevel HardEdges and Soften all Edges'
 
     def basic_Enable(self, msg):
         return True
@@ -114,4 +114,4 @@ class SMO_GC_MicroBevelHardEdgesAndUpdateToSoften_Cmd(lxu.command.BasicCommand):
             lx.eval('select.drop item')
 
 
-lx.bless(SMO_GC_MicroBevelHardEdgesAndUpdateToSoften_Cmd, Command_Name)
+lx.bless(SMO_GC_MicroBevelHardEdgesAndUpdateToSoften_Cmd, Cmd_Name)

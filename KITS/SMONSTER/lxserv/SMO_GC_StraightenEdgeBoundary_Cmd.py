@@ -15,7 +15,7 @@
 
 import lx, lxu, modo, math
 
-Command_Name = "smo.GC.StraightenEdgeBoundary"
+Cmd_Name = "smo.GC.StraightenEdgeBoundary"
 # smo.GC.StraightenEdgeBoundary
 
 class SMO_GC_StraightenEdgeBoundary_Cmd(lxu.command.BasicCommand):
@@ -50,7 +50,7 @@ class SMO_GC_StraightenEdgeBoundary_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC StraightenEdgeBoundary'
+        return 'SMO GC - Straighten Edge Boundary'
 
     def cmd_Desc(self):
         return 'Flatten the selected Edge Boundary to fix squeeze.'
@@ -62,10 +62,7 @@ class SMO_GC_StraightenEdgeBoundary_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC StraightenEdgeBoundary'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Straighten Edge Boundary'
 
     def basic_Enable(self, msg):
         return True
@@ -313,4 +310,5 @@ class SMO_GC_StraightenEdgeBoundary_Cmd(lxu.command.BasicCommand):
         if RefSystemActive == False:
             lx.eval('item.refSystem {}')
 
-lx.bless(SMO_GC_StraightenEdgeBoundary_Cmd, Command_Name)
+
+lx.bless(SMO_GC_StraightenEdgeBoundary_Cmd, Cmd_Name)

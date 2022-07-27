@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.MIFABOMA.MirrorRelativeToParent_ViaUserPref"
+Cmd_Name = "smo.MIFABOMA.MirrorRelativeToParent_ViaUserPref"
 #smo.MIFABOMA.MirrorRelativeToParent_ViaUserPref 1 0
 
 
@@ -43,7 +43,7 @@ class SMO_MIFABOMA_Mirror_RelativeToParent_ViaUserPref_Cmd(lxu.command.BasicComm
         pass
 
     def cmd_UserName (self):
-        return 'SMO Mirror Relative To Parent via User Prefs'
+        return 'SMO MIFABOMA - Mirror Relative To Parent via User Prefs'
 
     def cmd_Desc (self):
         return 'Mirror current Polygon Selection (or all Poly if no selection) relative To Parent center. It use the User Preferences to define wich clone type you do and if you clone also the hierarchy.'
@@ -55,7 +55,7 @@ class SMO_MIFABOMA_Mirror_RelativeToParent_ViaUserPref_Cmd(lxu.command.BasicComm
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName (self):
-        return 'SMO Mirror Relative To Parent via User Prefs'
+        return 'SMO MIFABOMA - Mirror Relative To Parent via User Prefs'
 
     def basic_Enable (self, msg):
         return True
@@ -462,12 +462,12 @@ class SMO_MIFABOMA_Mirror_RelativeToParent_ViaUserPref_Cmd(lxu.command.BasicComm
                 else:
                     print('Ref System activated')
                     lx.eval('item.refSystem %s' % SelItems[0])
-            
         
         lx.out('End of SMO Mirror RelativeToParent Command')
+
 
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
 
-lx.bless(SMO_MIFABOMA_Mirror_RelativeToParent_ViaUserPref_Cmd, Command_Name)
+lx.bless(SMO_MIFABOMA_Mirror_RelativeToParent_ViaUserPref_Cmd, Cmd_Name)

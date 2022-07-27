@@ -17,6 +17,9 @@
 
 import lx, lxu, modo, random
 
+Cmd_Name = "smo.GC.ExplodedMorphMapDuplicate"
+# smo.GC.ExplodedMorphMapDuplicate
+
 class SMO_GC_ExplodedMorphMapDuplicate_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -28,7 +31,7 @@ class SMO_GC_ExplodedMorphMapDuplicate_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName (self):
-        return 'SMO GC ExplodedMorphMapDuplicate'
+        return 'SMO GC - Exploded MorphMap of current Mesh as Duplicated'
 
     def cmd_Desc (self):
         return 'Duplicate the Current Selected Mesh, Rename the mesh with a Suffix "_EXPLODE" then Create the Morph Influence out of the current selected Morph Map and Freeze the deformation / delete the morph map in order to export it.'
@@ -40,14 +43,10 @@ class SMO_GC_ExplodedMorphMapDuplicate_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName (self):
-        return 'SMO GC ExplodedMorphMapDuplicate'
-
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Exploded MorphMap of current Mesh as Duplicated'
 
     def basic_Enable (self, msg):
         return True
-
 
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -92,5 +91,4 @@ class SMO_GC_ExplodedMorphMapDuplicate_Cmd(lxu.command.BasicCommand):
             lx.eval('!select.deleteSet EXPLODED_MESH')
         
 
-lx.bless(SMO_GC_ExplodedMorphMapDuplicate_Cmd, "smo.GC.ExplodedMorphMapDuplicate")
-# smo.GC.ExplodedMorphMapDuplicate
+lx.bless(SMO_GC_ExplodedMorphMapDuplicate_Cmd, Cmd_Name)

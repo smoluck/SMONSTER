@@ -18,6 +18,9 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.UV.GetUVMapCountName"
+# smo.UV.GetUVMapCountName 0 1 1
+
 class SMO_UV_GetUVMapCountName_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -37,7 +40,7 @@ class SMO_UV_GetUVMapCountName_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO UV Get UVMap Count & Name'
+        return 'SMO UV - Get UVMap Count and Name'
     
     def cmd_Desc (self):
         return 'Query UV Map count and name in all the scene and query UV Map count and name in selected meshes.'
@@ -49,11 +52,10 @@ class SMO_UV_GetUVMapCountName_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO UV Get UVMap Count & Name'
+        return 'SMO UV - Get UVMap Count and Name'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
@@ -147,6 +149,6 @@ class SMO_UV_GetUVMapCountName_Cmd(lxu.command.BasicCommand):
                             vmap_names.append(vmap_name)
                             lx.out('Selected UV Map name:', vmap_name)
                             lx.eval ('user.value SMO_UV_SelectedMeshUVmapName {%s}' % vmap_name) 
-                    
-lx.bless(SMO_UV_GetUVMapCountName_Cmd, "smo.UV.GetUVMapCountName")
-# smo.UV.GetUVMapCountName 0 1 1
+
+
+lx.bless(SMO_UV_GetUVMapCountName_Cmd, Cmd_Name)

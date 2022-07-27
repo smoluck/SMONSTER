@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.Setup.OffsetCenterPosPreserveInstancesPos"
+Cmd_Name = "smo.GC.Setup.OffsetCenterPosPreserveInstancesPos"
 
 class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -29,7 +29,7 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC Setup OffsetCenterPosPreserveInstancesPos'
+        return 'SMO GC - Setup - Offset Center Position and Preserve Instances Position'
     
     def cmd_Desc (self):
         return 'Offset Center Position on selected Mesh Item, but preserve the Instances Positions in Worldspace.'
@@ -41,7 +41,7 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC Setup OffsetCenterPosPreserveInstancesPos'
+        return 'SMO GC - Setup - Offset Center Position and Preserve Instances Position'
     
     def basic_Enable (self, msg):
         return True
@@ -216,7 +216,7 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
 
         scene = modo.scene.current()
         SelItem = lxu.select.ItemSelection().current()
-        print SelItem
+        print (SelItem)
 
         ToProcessList = []
         # for item in TargetIDList:
@@ -362,4 +362,5 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
             lx.out('"Deselect Elements Before Pasting" have been Restored')
         ########################################################
 
-lx.bless(SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd, Command_Name)
+
+lx.bless(SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd, Cmd_Name)

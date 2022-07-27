@@ -15,8 +15,7 @@
 
 import lx, lxu, modo, time, sys
 
-Command_Name = "smo.GC.RenderThumbPreset"
-
+Cmd_Name = "smo.GC.RenderThumbPreset"
 
 class SMO_GC_RenderThumbPreset_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -29,7 +28,7 @@ class SMO_GC_RenderThumbPreset_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC RenderThumbPreset'
+        return 'SMO GC - Render Thumbnail Preset'
 
     def cmd_Desc(self):
         return 'Replace the current Preset Thumbnail by SMO ThumbnailMaker_Template scene Render.)'
@@ -41,13 +40,13 @@ class SMO_GC_RenderThumbPreset_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC RenderThumbPreset'
+        return 'SMO GC - Render Thumbnail Preset'
 
     def basic_Enable(self, msg):
         return True
 
     def basic_Execute(self, msg, flags):
-        # scene = modo.scene.current()
+        #scene = modo.scene.current()
         OriginalViewState = lx.eval('view3d.projection ?')
         print(OriginalViewState)
         try:
@@ -126,4 +125,5 @@ class SMO_GC_RenderThumbPreset_Cmd(lxu.command.BasicCommand):
         lx.eval('!scene.close')
         lx.eval('view3d.projection %s' % OriginalViewState)
 
-lx.bless(SMO_GC_RenderThumbPreset_Cmd, Command_Name)
+
+lx.bless(SMO_GC_RenderThumbPreset_Cmd, Cmd_Name)

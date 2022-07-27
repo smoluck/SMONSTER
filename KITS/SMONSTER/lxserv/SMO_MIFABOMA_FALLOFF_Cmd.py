@@ -16,6 +16,8 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.MIFABOMA.FallOff"
+
 class SMO_MIFABOMA_FallOff_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -32,7 +34,7 @@ class SMO_MIFABOMA_FallOff_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName (self):
-        return 'SMO MIFABOMA FallOff'
+        return 'SMO MIFABOMA - FallOff'
 
     def cmd_Desc (self):
         return 'Setup the corresponding FallOff to the current Selection.'
@@ -44,14 +46,10 @@ class SMO_MIFABOMA_FallOff_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName (self):
-        return 'SMO MIFABOMA FallOff'
-
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO MIFABOMA - FallOff'
 
     def basic_Enable (self, msg):
         return True
-
 
     def basic_Execute(self, msg, flags):
         Falloffmode = self.dyna_Int (0)
@@ -197,4 +195,4 @@ class SMO_MIFABOMA_FallOff_Cmd(lxu.command.BasicCommand):
         lx.notimpl()
 
 
-lx.bless(SMO_MIFABOMA_FallOff_Cmd, "smo.MIFABOMA.FallOff")
+lx.bless(SMO_MIFABOMA_FallOff_Cmd, Cmd_Name)

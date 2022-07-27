@@ -13,9 +13,9 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 # ---------------------------------------
 
-import lx, lxu, modo
+import lx, lxu, modo, sys
 
-Command_Name = "smo.CAD.RebuildWithCube"
+Cmd_Name = "smo.CAD.RebuildWithCube"
 # smo.CAD.RebuildWithCube
 
 class SMO_CAD_RebuildWithCube_Cmd(lxu.command.BasicCommand):
@@ -31,7 +31,7 @@ class SMO_CAD_RebuildWithCube_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO CAD RebuildWithCube'
+        return 'SMO CAD - Rebuild with Cube'
 
     def cmd_Desc(self):
         return 'Selected Volume (Polygon Mode) with just a Cube.'
@@ -43,7 +43,7 @@ class SMO_CAD_RebuildWithCube_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO CAD RebuildWithCube'
+        return 'SMO CAD - Rebuild with Cube'
 
     def basic_Enable(self, msg):
         return True
@@ -355,7 +355,9 @@ class SMO_CAD_RebuildWithCube_Cmd(lxu.command.BasicCommand):
         lx.out('End of SMO REBUILD With CUBE')
         #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
 
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_CAD_RebuildWithCube_Cmd, Command_Name)
+
+lx.bless(SMO_CAD_RebuildWithCube_Cmd, Cmd_Name)

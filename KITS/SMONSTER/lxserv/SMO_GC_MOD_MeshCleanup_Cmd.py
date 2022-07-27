@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.MOD.MeshCleanup"
+Cmd_Name = "smo.GC.MOD.MeshCleanup"
 # smo.GC.MOD.MeshCleanup [2um] 1                # Using Square Brackets around values validate the use of units like "km", "m" , "cm", "mm", "um".
 
 class SMO_GC_MOD_MeshCleanup_Cmd(lxu.command.BasicCommand):
@@ -38,7 +38,7 @@ class SMO_GC_MOD_MeshCleanup_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC Set Move And Rotate Center Using Open Boundary'
+        return 'SMO GC - Set Move And Rotate Center Using Open Boundary'
 
     def cmd_Desc(self):
         return 'Select an Opened Mesh Move and Rotate the Center to Open boundary centroid and rotate it (use it in item mode)'
@@ -50,10 +50,7 @@ class SMO_GC_MOD_MeshCleanup_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC Set Move And Rotate Center Using Open Boundary'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Set Move And Rotate Center Using Open Boundary'
 
     def basic_Enable(self, msg):
         return True
@@ -172,4 +169,5 @@ class SMO_GC_MOD_MeshCleanup_Cmd(lxu.command.BasicCommand):
             if RefSystemActive == True:
                 lx.eval('item.refSystem %s' % CurrentRefSystemItem)
 
-lx.bless(SMO_GC_MOD_MeshCleanup_Cmd, Command_Name)
+
+lx.bless(SMO_GC_MOD_MeshCleanup_Cmd, Cmd_Name)

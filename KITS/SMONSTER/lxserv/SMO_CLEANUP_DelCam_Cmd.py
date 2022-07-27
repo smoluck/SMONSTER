@@ -16,6 +16,8 @@
 
 import lx, lxu, modo
 
+Cmd_Name = "smo.CLEANUP.DelCam"
+
 class SMO_Cleanup_DelCam_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -27,26 +29,22 @@ class SMO_Cleanup_DelCam_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO Cleanup DelCam.'
+        return 'SMO CLEANUP - Delete all Cameras'
     
     def cmd_Desc (self):
-        return 'SMO Search for all camera in the scene and Delete them.'
+        return 'Search for all camera in the scene and Delete them.'
     
     def cmd_Tooltip (self):
-        return 'SMO Search for all camera in the scene and Delete them.'
+        return 'Search for all camera in the scene and Delete them.'
     
     def cmd_Help (self):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO Cleanup DelCam'
-    
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CLEANUP - Delete all Cameras'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         lx.eval('select.drop item')
@@ -58,6 +56,5 @@ class SMO_Cleanup_DelCam_Cmd(lxu.command.BasicCommand):
         except:
             lx.out('No Camera Deleted')
         
-        
-    
-lx.bless(SMO_Cleanup_DelCam_Cmd, "smo.CLEANUP.DelCam")
+
+lx.bless(SMO_Cleanup_DelCam_Cmd, Cmd_Name)

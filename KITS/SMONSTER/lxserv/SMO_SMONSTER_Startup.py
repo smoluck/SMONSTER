@@ -13,7 +13,7 @@ elif python_majorver >= 3 :
     from smodule.commander.SMO_Commander import SmoCommanderClass
 
 
-CMD_NAME = 'smo.SMONSTER.Startup'
+Cmd_Name = 'smo.SMONSTER.Startup'
 
 class SMONSTER_BOOT_Cmd(SmoCommanderClass):
 
@@ -52,4 +52,5 @@ class SMONSTER_BOOT_Cmd(SmoCommanderClass):
 
         lx.eval("user.value SMO_SMONSTER_version %s" % SMO_SMONSTER_version_installed)
 
-lx.bless(SMONSTER_BOOT_Cmd, CMD_NAME)
+
+lx.bless(SMONSTER_BOOT_Cmd, Cmd_Name)

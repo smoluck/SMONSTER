@@ -17,9 +17,9 @@
 
 #!/usr/bin/env python
 
-import lx, lxifc, lxu.command, lxu.select, subprocess, os
+import lx, lxifc, lxu.command, lxu.select, subprocess, os, traceback
 
-CMD_NAME = "smo.LL.RIZOMUV.SendDataAuto"
+Cmd_Name = "smo.LL.RIZOMUV.SendDataAuto"
 
 class SMO_LL_RIZOMUV_SendDataAuto_Cmd (lxu.command.BasicCommand):
     def __init__ (self):
@@ -32,7 +32,7 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd (lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO RIZOMUV LIVELINK Simple'
+        return 'SMO LL RIZOMUV - Send Data Auto'
     
     def cmd_Desc (self):
         return 'Send as an FBX file, the current selected Meshes as FBX 2013 to RizomUV and get back the UV data updated in Modo, once the FBX file is saved back (original file overwritted by RizomUV).'
@@ -44,7 +44,7 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd (lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO RIZOMUV LIVELINK Simple'
+        return 'SMO LL RIZOMUV - Send Data Auto'
     
     def cmd_Flags (self):
         return lx.symbol.fCMD_UNDO
@@ -471,4 +471,4 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd (lxu.command.BasicCommand):
                         lx.eval ('select.vertexMap %s txuv add' % uv_map)
                 lx.eval ('select.drop polygon')
 
-lx.bless (SMO_LL_RIZOMUV_SendDataAuto_Cmd, CMD_NAME)
+lx.bless (SMO_LL_RIZOMUV_SendDataAuto_Cmd, Cmd_Name)

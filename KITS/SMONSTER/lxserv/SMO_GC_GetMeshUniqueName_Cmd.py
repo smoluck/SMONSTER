@@ -17,7 +17,7 @@
 
 import lx, lxu, modo, string
 
-Command_Name = "smo.GC.GetMeshUniqueName"
+Cmd_Name = "smo.GC.GetMeshUniqueName"
 # smo.GC.GetMeshUniqueName ?
 
 ############# USE CASE
@@ -60,7 +60,7 @@ class SMO_GC_GetMeshUniqueName_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC GetMeshUniqueName'
+        return 'SMO GC - Get Mesh Unique Name'
     
     def cmd_Desc (self):
         return 'Get the Mesh Unique Name of the current mesh item selected.'
@@ -72,7 +72,7 @@ class SMO_GC_GetMeshUniqueName_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC GetMeshUniqueName'
+        return 'SMO GC - Get Mesh Unique Name'
     
     def basic_Enable(self, msg):
         # Perform the checks for when the command is supposed to be enabled,
@@ -82,7 +82,6 @@ class SMO_GC_GetMeshUniqueName_Cmd(lxu.command.BasicCommand):
         # :type msg: lx.object.Message
         valid_selection = bool(modo.Scene().selectedByType('mesh'))
         return valid_selection
-        
 
     def cmd_Query(self, index, vaQuery):
         if self.current_Selection is not None :
@@ -96,10 +95,8 @@ class SMO_GC_GetMeshUniqueName_Cmd(lxu.command.BasicCommand):
             va.AddString(ItemUniqueName)
             return lx.result.OK
 
-        
         else:
             return
         
     
-lx.bless(SMO_GC_GetMeshUniqueName_Cmd, Command_Name)
-
+lx.bless(SMO_GC_GetMeshUniqueName_Cmd, Cmd_Name)

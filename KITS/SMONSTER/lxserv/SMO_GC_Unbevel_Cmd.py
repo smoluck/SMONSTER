@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.Unbevel"
+Cmd_Name = "smo.GC.Unbevel"
 # smo.GC.Unbevel
 
 class SMO_GC_Unbevel_Cmd(lxu.command.BasicCommand):
@@ -39,7 +39,7 @@ class SMO_GC_Unbevel_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName (self):
-        return 'SMO GC Unbevel'
+        return 'SMO GC - UnBevel'
 
     def cmd_Desc (self):
         return 'Unbevel the Edge Selection, you must have 3 continuous Edges Selected at least.'
@@ -51,10 +51,7 @@ class SMO_GC_Unbevel_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName (self):
-        return 'SMO GC Unbevel'
-
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - UnBevel'
 
     def basic_Enable (self, msg):
         return True
@@ -125,4 +122,5 @@ class SMO_GC_Unbevel_Cmd(lxu.command.BasicCommand):
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_GC_Unbevel_Cmd, Command_Name)
+
+lx.bless(SMO_GC_Unbevel_Cmd, Cmd_Name)

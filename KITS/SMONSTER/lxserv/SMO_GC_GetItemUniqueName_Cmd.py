@@ -17,9 +17,7 @@
 
 import lx, lxu, modo, string
 
-Command_Name = "smo.GC.GetItemUniqueName"
-
-
+Cmd_Name = "smo.GC.GetItemUniqueName"
 # smo.GC.GetItemUniqueName ?
 
 ############# USE CASE
@@ -61,7 +59,7 @@ class SMO_GC_GetItemUniqueName_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC GetItemUniqueName'
+        return 'SMO GC - Get Item Unique Name'
 
     def cmd_Desc(self):
         return 'Get the Item Unique Name of the current selected item.'
@@ -73,7 +71,7 @@ class SMO_GC_GetItemUniqueName_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC GetItemUniqueName'
+        return 'SMO GC - Get Item Unique Name'
 
     def basic_Enable(self, msg):
         # Perform the checks for when the command is supposed to be enabled,
@@ -96,10 +94,8 @@ class SMO_GC_GetItemUniqueName_Cmd(lxu.command.BasicCommand):
             va.AddString(ItemUniqueName)
             return lx.result.OK
 
-
         else:
             return
 
 
-lx.bless(SMO_GC_GetItemUniqueName_Cmd, Command_Name)
-
+lx.bless(SMO_GC_GetItemUniqueName_Cmd, Cmd_Name)

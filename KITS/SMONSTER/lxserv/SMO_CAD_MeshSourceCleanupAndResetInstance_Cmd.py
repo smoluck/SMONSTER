@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.CAD.MeshSourceCleanupAndResetInstance"
+Cmd_Name = "smo.CAD.MeshSourceCleanupAndResetInstance"
 # smo.CAD.MeshSourceCleanupAndResetInstance
 
 class SMO_CAD_MeshSourceCleanupAndResetInstance_Cmd(lxu.command.BasicCommand):
@@ -30,7 +30,7 @@ class SMO_CAD_MeshSourceCleanupAndResetInstance_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO CAD Isolate Instances Source Mesh / Reset Pos / Move To Group'
+        return 'SMO CAD - Isolate Instances Source Mesh / Reset Pos / Move To Group'
 
     def cmd_Desc(self):
         return 'Select the Source mesh of a given Instanced Mesh, instance it in place and move it back to Origin with zero transforms.'
@@ -42,10 +42,7 @@ class SMO_CAD_MeshSourceCleanupAndResetInstance_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO CAD Isolate Instances Source Mesh / Reset Pos / Move To Group'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO CAD - Isolate Instances Source Mesh / Reset Pos / Move To Group'
 
     def basic_Enable(self, msg):
         return True
@@ -115,6 +112,4 @@ class SMO_CAD_MeshSourceCleanupAndResetInstance_Cmd(lxu.command.BasicCommand):
         lx.eval('item.setType.mesh')
 
 
-lx.bless(SMO_CAD_MeshSourceCleanupAndResetInstance_Cmd, Command_Name)
-
-
+lx.bless(SMO_CAD_MeshSourceCleanupAndResetInstance_Cmd, Cmd_Name)

@@ -1,24 +1,25 @@
 # python
 # ---------------------------------------
-# Name:         SMO_CLEANUP_RenameUVMapToDefaultSceneWise_Cmd.py
-# Version:      1.0
+# Name:         SMO_MESHOPS_ExportMeshOpRigToFBXSequence_Cmd
+# Version:      1.00
 #
-# Purpose:      Check for all Meshes in the current scene and rename their
-#               first detected UVMap (by Index = 0) to Modo/Preferences/Defaults/Application name.
+# Purpose:      This script is designed to
+#               Export MeshOps rig as a freezed Mesh, over time, as an FBX sequence.
+#               Select the MeshOp item and run.
 #
 # Author:       Franck ELISABETH
 # Website:      http://www.smoluck.com
 #
-# Created:      21/10/2021
+# Created:      08/06/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
 # ---------------------------------------
 
 import lx, lxu, modo
 
-Cmd_Name = "smo.CLEANUP.RenameUVMapToDefaultSceneWise"
-# smo.CLEANUP.RenameUVMapToDefaultSceneWise
+Cmd_Name = "smo.MESHOP.ExportMeshOpRigToFBXSequence"
+# smo.MESHOP.ExportMeshOpRigToFBXSequence
 
-class SMO_CLEANUP_RenameUVMapToDefaultSceneWise_Cmd(lxu.command.BasicCommand):
+class SMO_MESHOP_ExportMeshOpRigToFBXSequence_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
 
@@ -29,30 +30,29 @@ class SMO_CLEANUP_RenameUVMapToDefaultSceneWise_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO CLEANUP - (SceneWise) Rename UVMap to Modo (Prefs) Name'
+        return 'SMO GC - Meshop - Export MeshOp Rig to FBX Sequence'
 
     def cmd_Desc(self):
-        return 'Check for all Meshes in the current scene and rename their First UVMap (by Index = 0) to Modo/Preferences/Defaults/Application name.'
+        return 'Add a Meshop and add it to the Schematic.'
 
     def cmd_Tooltip(self):
-        return 'Check for all Meshes in the current scene and rename their First UVMap (by Index = 0) to Modo/Preferences/Defaults/Application name.'
+        return 'Add a Meshop and add it to the Schematic.'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO CLEANUP - (SceneWise) Rename UVMap to Modo (Prefs) Name'
+        return 'SMO GC - Meshop - Export MeshOp Rig to FBX Sequence'
 
     def basic_Enable(self, msg):
         return True
 
     def basic_Execute(self, msg, flags):
-        #lx.eval('!!log.masterClear')
+        # lx.eval('!!log.masterClear')
         scn = modo.Scene()
         # Get the Default UV Map name of the user
-        DefaultUVMapName =  lx.eval('pref.value application.defaultTexture ?')
-        #lx.out('Current Default UV Map name:', DefaultUVMapName)
-
+        DefaultUVMapName = lx.eval('pref.value application.defaultTexture ?')
+        # lx.out('Current Default UV Map name:', DefaultUVMapName)
 
         CheckEmptyList = []
         ZeroUVMap = bool()
@@ -63,8 +63,7 @@ class SMO_CLEANUP_RenameUVMapToDefaultSceneWise_Cmd(lxu.command.BasicCommand):
         UVMapNameList = []
         UVMapCountList = []
 
-
-        #for mesh in scn.items('mesh'):
+        # for mesh in scn.items('mesh'):
         #    mesh.select(True)
         #    lx.eval('smo.GC.ClearSelectionVmap 1 0')
         #    DetectedVMapCount = len(lx.evalN('vertMap.list all ?'))
@@ -115,15 +114,12 @@ class SMO_CLEANUP_RenameUVMapToDefaultSceneWise_Cmd(lxu.command.BasicCommand):
             del UVMapCountList[:]
             # print('---------')
             # print('---------')
-
-            #Bugfix to create empty UV map if not present
             if ZeroUVMap == True:
                 lx.out('UVMap Renaming skipped, because not Detected')
                 lx.eval('vertMap.new {%s} txuv' % DefaultUVMapName)
-                lx.out('New UVMap {%s} created as it was missing' % DefaultUVMapName)
         del CheckEmptyList[:]
         del ZeroUVMap
         lx.eval('smo.GC.DeselectAll')
 
 
-lx.bless(SMO_CLEANUP_RenameUVMapToDefaultSceneWise_Cmd, Cmd_Name)
+lx.bless(SMO_MESHOP_ExportMeshOpRigToFBXSequence_Cmd, Cmd_Name)

@@ -18,6 +18,9 @@
 import lx, lxu, modo, string
 from os import path
 
+Cmd_Name = "smo.GC.RenameMeshesBySceneName"
+# smo.GC.RenameMeshesBySceneName
+
 class SMO_GC_RenameMeshesBySceneName_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -31,7 +34,7 @@ class SMO_GC_RenameMeshesBySceneName_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC Rename Meshes By Scene Name'
+        return 'SMO GC - Rename Meshes By Scene Name'
     
     def cmd_Desc (self):
         return 'Get the scene name and add this  name as a Prefix on every Meshes in the current scene. Script will save the scene in same places as the current opened scene.'
@@ -43,11 +46,10 @@ class SMO_GC_RenameMeshesBySceneName_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC Rename Meshes By Scene Name'
+        return 'SMO GC - Rename Meshes By Scene Name'
     
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         # Get the name of the scene, wihout the filepath and extension
@@ -70,5 +72,4 @@ class SMO_GC_RenameMeshesBySceneName_Cmd(lxu.command.BasicCommand):
         lx.eval('select.drop item')
     
     
-lx.bless(SMO_GC_RenameMeshesBySceneName_Cmd, "smo.GC.RenameMeshesBySceneName")
-# smo.GC.RenameMeshesBySceneName
+lx.bless(SMO_GC_RenameMeshesBySceneName_Cmd, Cmd_Name)

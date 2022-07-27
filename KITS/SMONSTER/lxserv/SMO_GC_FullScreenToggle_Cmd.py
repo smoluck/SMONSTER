@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.FullScreenToggle"
+Cmd_Name = "smo.GC.FullScreenToggle"
 # smo.GC.FullScreenToggle
 
 class SMO_GC_FullScreenToggle_Cmd(lxu.command.BasicCommand):
@@ -30,7 +30,7 @@ class SMO_GC_FullScreenToggle_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO GC FullScreen Toggle'
+        return 'SMO GC - FullScreen Toggle'
     
     def cmd_Desc (self):
         return 'Toggle the Side Bars On or Off.'
@@ -42,7 +42,7 @@ class SMO_GC_FullScreenToggle_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO GC FullScreen Toggle'
+        return 'SMO GC - FullScreen Toggle'
     
     def basic_Enable (self, msg):
         return True
@@ -98,7 +98,8 @@ class SMO_GC_FullScreenToggle_Cmd(lxu.command.BasicCommand):
                 lx.eval('viewport.collapse true hash LayoutMODOXXRightPanelGroup right "50054021014:xkey"')
             lx.eval('user.value SMO_UseVal_GC_FullscreenState false')
 
-lx.bless(SMO_GC_FullScreenToggle_Cmd, Command_Name)
+
+lx.bless(SMO_GC_FullScreenToggle_Cmd, Cmd_Name)
 
 
 

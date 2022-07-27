@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.GC.DeselectAll"
+Cmd_Name = "smo.GC.DeselectAll"
 # smo.GC.DeselectAll
 
 class SMO_GC_DeselectAll_Cmd(lxu.command.BasicCommand):
@@ -30,7 +30,7 @@ class SMO_GC_DeselectAll_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC Deselect Anything'
+        return 'SMO GC - Deselect Anything'
 
     def cmd_Desc(self):
         return 'Deselect anything in the current scene. Items(Meshes, Lights, etc) / Materials or Schematic Nodes.'
@@ -42,10 +42,7 @@ class SMO_GC_DeselectAll_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC Deselect Anything'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
+        return 'SMO GC - Deselect Anything'
 
     def basic_Enable(self, msg):
         return True
@@ -55,4 +52,6 @@ class SMO_GC_DeselectAll_Cmd(lxu.command.BasicCommand):
         lx.eval('select.drop schmNode')
         lx.eval('select.drop channel')
         lx.eval('select.drop link')
-lx.bless(SMO_GC_DeselectAll_Cmd, Command_Name)
+
+
+lx.bless(SMO_GC_DeselectAll_Cmd, Cmd_Name)

@@ -17,7 +17,7 @@
 import lx, lxu, os, modo, string
 from os import path
 
-Command_Name = "smo.GC.CheckLXLTag"
+Cmd_Name = "smo.GC.CheckLXLTag"
 
 class SMO_GC_CheckLXLTag_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -31,7 +31,7 @@ class SMO_GC_CheckLXLTag_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC Check Scene LXLTag'
+        return 'SMO GC - Check Scene LXLTag'
 
     def cmd_Desc(self):
         return 'Check Scene LXLT tag state and give the ability to change the Mesh Preset Tag name.'
@@ -43,7 +43,7 @@ class SMO_GC_CheckLXLTag_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC Check Scene LXLTag'
+        return 'SMO GC - Check Scene LXLTag'
 
     def basic_Enable(self, msg):
         return True
@@ -105,4 +105,5 @@ class SMO_GC_CheckLXLTag_Cmd(lxu.command.BasicCommand):
             LXLTag = lx.eval('item.tagRemove LXLT')
         lx.eval('smo.GC.DeselectAll')
 
-lx.bless(SMO_GC_CheckLXLTag_Cmd, Command_Name)
+
+lx.bless(SMO_GC_CheckLXLTag_Cmd, Cmd_Name)

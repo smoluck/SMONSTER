@@ -16,7 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.MIFABOMA.RadialSweep.TagsProcessFromHighPolyMeshData"
+Cmd_Name = "smo.MIFABOMA.RadialSweep.TagsProcessFromHighPolyMeshData"
 # smo.MIFABOMA.RadialSweep.TagsProcessFromHighPolyMeshData 0
 
 class SMO_MIFABOMA_RADIALSWEEP_TagsProcessFromHighPolyMeshData_Cmd(lxu.command.BasicCommand):
@@ -31,7 +31,7 @@ class SMO_MIFABOMA_RADIALSWEEP_TagsProcessFromHighPolyMeshData_Cmd(lxu.command.B
         pass
 
     def cmd_UserName (self):
-        return 'SMO MIFABOMA TagsProcessForRadialSweepFromHighPolyMeshData'
+        return 'SMO MIFABOMA - Tags Process for Radial Sweep from HighPoly Mesh Data'
 
     def cmd_Desc (self):
         return 'Create tags for MiFaBoMa RadialSweepLocal from Edges.'
@@ -43,7 +43,7 @@ class SMO_MIFABOMA_RADIALSWEEP_TagsProcessFromHighPolyMeshData_Cmd(lxu.command.B
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName (self):
-        return 'SMO MIFABOMA TagsProcessForRadialSweepFromHighPolyMeshData'
+        return 'SMO MIFABOMA - Tags Process for Radial Sweep from HighPoly Mesh Data'
 
     def basic_Enable (self, msg):
         return True
@@ -167,4 +167,5 @@ class SMO_MIFABOMA_RADIALSWEEP_TagsProcessFromHighPolyMeshData_Cmd(lxu.command.B
             lx.out('"Deselect Elements Before Pasting" have been Restored')
         ########################################################
 
-lx.bless(SMO_MIFABOMA_RADIALSWEEP_TagsProcessFromHighPolyMeshData_Cmd, Command_Name)
+
+lx.bless(SMO_MIFABOMA_RADIALSWEEP_TagsProcessFromHighPolyMeshData_Cmd, Cmd_Name)

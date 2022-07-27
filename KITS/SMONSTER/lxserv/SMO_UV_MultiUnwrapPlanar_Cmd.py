@@ -16,8 +16,7 @@
 
 import lx, lxu, modo
 
-Command_Name = "smo.UV.MultiUnwrapPlanar"
-
+Cmd_Name = "smo.UV.MultiUnwrapPlanar"
 # smo.UV.MultiUnwrapPlanar 2 0
 
 class SMO_UV_MultiUnwrapPlanar_Cmd(lxu.command.BasicCommand):
@@ -44,7 +43,7 @@ class SMO_UV_MultiUnwrapPlanar_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO UV Unwrap Smart MultiMeshes'
+        return 'SMO UV - Unwrap Smart MultiMeshes'
 
     def cmd_Desc(self):
         return 'Unwrap the current Polygon Selection on defined Axis.'
@@ -56,7 +55,7 @@ class SMO_UV_MultiUnwrapPlanar_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO UV Unwrap Smart MultiMeshes'
+        return 'SMO UV - Unwrap Smart MultiMeshes'
 
     def basic_Enable(self, msg):
         return True
@@ -159,4 +158,5 @@ class SMO_UV_MultiUnwrapPlanar_Cmd(lxu.command.BasicCommand):
         if self.SelModePoly == True:
             lx.eval('select.type polygon')
 
-lx.bless(SMO_UV_MultiUnwrapPlanar_Cmd, Command_Name)
+
+lx.bless(SMO_UV_MultiUnwrapPlanar_Cmd, Cmd_Name)

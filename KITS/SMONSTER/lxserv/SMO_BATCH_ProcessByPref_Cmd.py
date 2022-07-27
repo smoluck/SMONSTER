@@ -16,6 +16,9 @@
 
 import lx, lxu, os, modo
 
+Cmd_Name = "smo.BATCH.ProcessByPref"
+# smo.BATCH.ProcessByPref
+
 class SMO_BATCH_ProcessByPref_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -27,7 +30,7 @@ class SMO_BATCH_ProcessByPref_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO Batch Process By Pref'
+        return 'SMO BATCH - Process By Pref'
     
     def cmd_Desc (self):
         return 'Batch Process a set of files stored in a Folder, using User Defined Preferences.'
@@ -39,12 +42,11 @@ class SMO_BATCH_ProcessByPref_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO Batch Process By Pref'
+        return 'SMO BATCH - Process By Pref'
     
     def basic_Enable (self, msg):
         return True
-        
-    
+
     def basic_Execute(self, msg, flags):
         
         ################################
@@ -308,5 +310,4 @@ class SMO_BATCH_ProcessByPref_Cmd(lxu.command.BasicCommand):
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
-lx.bless(SMO_BATCH_ProcessByPref_Cmd, "smo.BATCH.ProcessByPref")
-# smo.BATCH.ProcessByPref
+lx.bless(SMO_BATCH_ProcessByPref_Cmd, Cmd_Name)

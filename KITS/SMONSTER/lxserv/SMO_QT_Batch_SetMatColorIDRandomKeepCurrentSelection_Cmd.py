@@ -17,7 +17,7 @@
 
 import modo, lx, lxu, random
 
-Command_Name = "smo.QT.Batch.SetMatColorIDRandomKeepCurrentSelection"
+Cmd_Name = "smo.QT.Batch.SetMatColorIDRandomKeepCurrentSelection"
 # smo.QT.Batch.SetMatColorIDRandomKeepCurrentSelection
 
 class SMO_QT_Batch_SetMatColorIDRandomKeepCurrentSelection_Cmd(lxu.command.BasicCommand):
@@ -52,9 +52,6 @@ class SMO_QT_Batch_SetMatColorIDRandomKeepCurrentSelection_Cmd(lxu.command.Basic
 
     def basic_ButtonName(self):
         return 'SMO QT - Set ColorID Random (by Material)'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
 
     def basic_Enable(self, msg):
         return True
@@ -330,4 +327,4 @@ class SMO_QT_Batch_SetMatColorIDRandomKeepCurrentSelection_Cmd(lxu.command.Basic
         lx.eval('select.type polygon')
 
 
-lx.bless(SMO_QT_Batch_SetMatColorIDRandomKeepCurrentSelection_Cmd, Command_Name)
+lx.bless(SMO_QT_Batch_SetMatColorIDRandomKeepCurrentSelection_Cmd, Cmd_Name)
