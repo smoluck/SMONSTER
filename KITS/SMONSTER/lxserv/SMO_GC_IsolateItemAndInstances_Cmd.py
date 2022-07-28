@@ -158,10 +158,9 @@ class SMO_GC_IsolateItemAndInstances_Cmd(lxu.command.BasicCommand):
                         lx.eval('item.refSystem %s' % (SourcesItems[0].Ident()))
                         lx.eval('viewport.fitSelected')
             lx.eval('smo.GC.DeselectAll')
+            scene.select(SourcesItems)
 
             ####
-            del SelItem[:]
-            del CurrentRefSystemItem
             if len(InputInstIDList) > 0:
                 del InputInstIDList[:]
 
@@ -186,6 +185,13 @@ class SMO_GC_IsolateItemAndInstances_Cmd(lxu.command.BasicCommand):
             if len(TotalOutputItems) > 0:
                 del TotalOutputItems[:]
             ####
+        del SelItem[:]
+        del CurrentRefSystemItem
+        del InputInstIDList[:]
+        del InputMeshIDList[:]
+        del OutputSourcesItems[:]
+        del InputMeshes[:]
+        del OutputInstItems[:]
 
 
 lx.bless(SMO_GC_IsolateItemAndInstances_Cmd, Cmd_Name)
