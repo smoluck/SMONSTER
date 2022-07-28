@@ -30,7 +30,7 @@ class SMO_BAKE_CreatePairsFromMesh_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO BAKE - Create Bake Pairs from Mesh'
+        return 'SMO BAKE - Create Bake Pairs from HighPoly'
 
     def cmd_Desc(self):
         return 'Create a New Bake Pairs from a Single High Poly mesh and Enter into Polygon Editing To Reduce the Mesh Detail.'
@@ -42,7 +42,7 @@ class SMO_BAKE_CreatePairsFromMesh_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO BAKE - Create Bake Pairs from Mesh'
+        return 'SMO BAKE - Create Bake Pairs from HighPoly'
 
     def basic_Enable(self, msg):
         return True
@@ -158,6 +158,11 @@ class SMO_BAKE_CreatePairsFromMesh_Cmd(lxu.command.BasicCommand):
                 lx.eval('item.refSystem %s' % LowItemID)
                 lx.eval('select.type polygon')
                 lx.eval('viewport.fitSelected')
+
+        del TargetIDList[:]
+        del TargetNameList[:]
+        del VertNrnMapList[:]
+        del LowVertNrnMapList[:]
 
 
 lx.bless(SMO_BAKE_CreatePairsFromMesh_Cmd, Cmd_Name)

@@ -391,7 +391,13 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
                     lx.eval('hide.sel')
 
             lx.eval('smo.GC.DeselectAll')
-            
+
+        del HPGrps[:]
+        del HPGrpsIDList[:]
+        del HPGrpsNameList[:]
+        del LPGrps[:]
+        del LPGrpsIDList[:]
+        del LPGrpsNameList[:]
             
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
