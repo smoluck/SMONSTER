@@ -153,6 +153,7 @@ class SMO_GC_Display_CycleMatCap_Cmd(lxu.command.BasicCommand):
                 lx.eval('vpover.setOverride {%s} matcap' % MatCapFilePath[MatCapIndex])
                 lx.eval('user.value SMO_MatCapId %i' % MatCapIndex)
                 lx.eval('@av_smartWireToggle.pl')
+        del MatCapFilePath[:]
 
 
     def cmd_Query(self, index, vaQuery):

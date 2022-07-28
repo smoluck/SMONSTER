@@ -367,7 +367,7 @@ class SMO_CB_LocatorShape_Cmd(lxu.command.BasicCommand):
             if SMO_SafetyCheckLocShape_ItemModeEnabled == 1:
                 lx.eval('select.type item')
             # lx.out('End of SMO_DIS_ItemColor Script')
-            #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+            del selected_Items[:]
 
 
     def cmd_Query(self, index, vaQuery):

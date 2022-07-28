@@ -254,6 +254,10 @@ class SMO_CB_CreateLocatorOnMesh_Cmd(lxu.command.BasicCommand):
         for i in range(len(LocIDList)):
             lx.eval('select.item %s add' % LocIDList[i])
 
+        del TargetIDList[:]
+        del TargetNameList[:]
+        del LocIDList[:]
+
 
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()

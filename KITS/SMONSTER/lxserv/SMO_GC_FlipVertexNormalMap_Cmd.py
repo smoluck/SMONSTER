@@ -87,6 +87,8 @@ class SMO_GC_FlipVertexNormalMap_Cmd(lxu.command.BasicCommand):
             print(MathCmd)
             lx.eval('vertMap.math {%s} {%s} -1.0 0.0 direct 0 (none) 1.0 0.0 direct 0' % (MathCmd, MathCmd))
         ####
+        del VMap_NameList[:]
+        del VMap_TypeList[:]
 
 
 lx.bless(SMO_GC_FlipVertexNormalMap_Cmd, Cmd_Name)

@@ -90,11 +90,6 @@ class SMO_GC_CheckMeshClassType_Cmd(lxu.command.BasicCommand):
         if self.current_Selection is not None :
             scene = modo.scene.current()
             
-            
-            
-            
-            
-            
             MeshItem_List = scene.selected
             # MeshItem_List = scene.selectedByType(lx.symbol.sITYPE_MESH)
             for mesh in MeshItem_List:
@@ -124,41 +119,39 @@ class SMO_GC_CheckMeshClassType_Cmd(lxu.command.BasicCommand):
                     lx.eval('smo.QT.TagBakeMeshType 0')
                 
                 
-                # searchedStr_uscore_LP = "_low"
-                # searchedStr_uscore_CAGE = "_cage"
-                # searchedStr_uscore_HP = "_high"
+                searchedStr_uscore_LP = "_low"
+                searchedStr_uscore_CAGE = "_cage"
+                searchedStr_uscore_HP = "_high"
                 
                 
                 
-                # Mesh_Name = lx.eval('item.name ? xfrmcore')
-                # # lx.out ('current item name is ', Mesh_Name)
+                Mesh_Name = lx.eval('item.name ? xfrmcore')
+                # lx.out ('current item name is ', Mesh_Name)
                 
-                # UserItemIndexStyle = str(lx.eval('pref.value application.indexStyle ?'))
-                # # lx.out ('User Item Index Style is ', UserItemIndexStyle)
+                UserItemIndexStyle = str(lx.eval('pref.value application.indexStyle ?'))
+                # lx.out ('User Item Index Style is ', UserItemIndexStyle)
                 
                 
-                # if searchedStr_uscore_LP in Mesh_Name :
-                    # lx.out ('Mesh Name is classified low')
-                    # MeshClassTag = 1
-                # if searchedStr_uscore_CAGE in Mesh_Name :
-                    # lx.out ('Mesh Name is classified as cage')
-                    # MeshClassTag = 2
-                # if searchedStr_uscore_HP in Mesh_Name :
-                    # lx.out ('Mesh Name is classified as high')
-                    # MeshClassTag = 3
+                if searchedStr_uscore_LP in Mesh_Name :
+                    lx.out ('Mesh Name is classified low')
+                    MeshClassTag = 1
+                if searchedStr_uscore_CAGE in Mesh_Name :
+                    lx.out ('Mesh Name is classified as cage')
+                    MeshClassTag = 2
+                if searchedStr_uscore_HP in Mesh_Name :
+                    lx.out ('Mesh Name is classified as high')
+                    MeshClassTag = 3
                     
-                # elif searchedStr_uscore_LP not in Mesh_Name and searchedStr_uscore_CAGE not in Mesh_Name and searchedStr_uscore_HP not in Mesh_Name:
-                    # lx.out ('Mesh Name is not classified for Baking Workflow')
-                    # MeshClassTag = 0
+                elif searchedStr_uscore_LP not in Mesh_Name and searchedStr_uscore_CAGE not in Mesh_Name and searchedStr_uscore_HP not in Mesh_Name:
+                    lx.out ('Mesh Name is not classified for Baking Workflow')
+                    MeshClassTag = 0
                     
                 # lx.out ('Result of Query:', BaseName)
                 va = lx.object.ValueArray(vaQuery)
                 # va.AddString(MeshClassTag)
                 va.AddInt(MeshClassTag)
                 return lx.result.OK
-
-        else:
-            return
+            del MeshItem_List
         
     
 lx.bless(SMO_GC_CheckMeshClassType_Cmd, Cmd_Name)

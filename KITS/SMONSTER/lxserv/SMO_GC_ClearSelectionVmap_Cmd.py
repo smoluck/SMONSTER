@@ -200,6 +200,9 @@ class SMO_GC_ClearSelectionVmap_Cmd(lxu.command.BasicCommand):
                         lx.eval("select.vertexMap {%s} wght add" % (VMap_NameList[i]))
                     if (VMap_TypeList[i]) == 1464289364 and ActionMode == 1:  # int id for Weight map
                         lx.eval("select.vertexMap {%s} wght remove" % (VMap_NameList[i]))
+
+        del VMap_NameList[:]
+        del VMap_TypeList[:]
         #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
 
 

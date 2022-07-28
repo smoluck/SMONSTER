@@ -96,6 +96,8 @@ class SMO_Cleanup_DelEmptyMeshItem_Cmd(lxu.command.BasicCommand):
                 # Increare progress monitor
                 m.step(1)
         lx.eval('select.drop item')
+
+        del DefaultMeshItemList
         ###############################################
         
     
