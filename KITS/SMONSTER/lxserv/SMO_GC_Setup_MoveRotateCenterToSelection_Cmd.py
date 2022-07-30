@@ -29,6 +29,7 @@ class SMO_GC_Setup_MoveRotateCenterToSelection_Cmd(lxu.command.BasicCommand):
         self.SelModeVert = bool(lx.eval1("select.typeFrom typelist:vertex;edge;polygon;item ?"))
         self.SelModeEdge = bool(lx.eval1("select.typeFrom typelist:edge;vertex;polygon;item ?"))
         self.SelModePoly = bool(lx.eval1("select.typeFrom typelist:polygon;vertex;edge;item ?"))
+        self.SelModeItem = bool(lx.eval1("select.typeFrom typelist:item;edge;polygon;vertex ?"))
 
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
@@ -56,8 +57,15 @@ class SMO_GC_Setup_MoveRotateCenterToSelection_Cmd(lxu.command.BasicCommand):
 
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
-        if self.SelModePoly == True or self.SelModeEdge == True or self.SelModeVert == True :
+        item_mode = bool()
+        if self.SelModePoly or self.SelModeEdge or self.SelModeVert:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
+            item_mode = False
+
+        elif self.SelModeItem:
+            item_mode = True
+            lx.eval('select.type polygon')
+            lx.eval('select.all')
         mesh = scene.selectedByType('mesh')[0]
 
         MoveCenter = self.dyna_Int (0)
@@ -94,12 +102,18 @@ class SMO_GC_Setup_MoveRotateCenterToSelection_Cmd(lxu.command.BasicCommand):
             lx.eval('matchWorkplanePos')
             lx.eval('workPlane.reset')
 
-            if self.SelModePoly == True :
-                lx.eval('select.type polygon')
-            if self.SelModeEdge == True :
-                lx.eval('select.type edge')
-            if self.SelModeVert == True :
-                lx.eval('select.type vertex')
+
+            if not item_mode:
+                if self.SelModePoly == True :
+                    lx.eval('select.type polygon')
+                if self.SelModeEdge == True :
+                    lx.eval('select.type edge')
+                if self.SelModeVert == True :
+                    lx.eval('select.type vertex')
+
+            if item_mode:
+                if self.SelModeItem == True :
+                    lx.eval('select.type item')
 
         if RotateCenter == 1:
             if self.SelModeVert == True:
@@ -114,12 +128,20 @@ class SMO_GC_Setup_MoveRotateCenterToSelection_Cmd(lxu.command.BasicCommand):
             lx.eval('matchWorkplaneRot')
             lx.eval('workPlane.reset')
 
-            if self.SelModePoly == True :
-                lx.eval('select.type polygon')
-            if self.SelModeEdge == True :
-                lx.eval('select.type edge')
-            if self.SelModeVert == True :
-                lx.eval('select.type vertex')
+            if not item_mode:
+                if self.SelModePoly == True :
+                    lx.eval('select.type polygon')
+                if self.SelModeEdge == True :
+                    lx.eval('select.type edge')
+                if self.SelModeVert == True :
+                    lx.eval('select.type vertex')
+
+            if item_mode:
+                if self.SelModeItem == True :
+                    lx.eval('select.type item')
+                    lx.eval('select.type polygon')
+                    lx.eval('select.drop polygon')
+                    lx.eval('select.type item')
 
 
         if RefSystemActive == False:
