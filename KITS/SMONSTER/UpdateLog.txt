@@ -4,6 +4,25 @@
 
 
 -------------------------
+v3.59 - 2022/07/30
+SMONSTER:
+        • Code Optimization and Command naming harmonization.
+
+CAD:
+        • Bugfix on Training Scene - Rebuild Radial (duplicated vertex causing issue for users while testing the commands).
+
+BAKE:
+        • Exposed the CreatePairsFromHighPolyMesh command in UI pop over menu as well as in Item Context Menu (right click).
+
+GC:
+        • Changed smo.GC.AffinitySVGRebuild Cmd to smo.GC.SplitByPolySelectionSet as it as a general usage.
+        • Exposed smo.GC.SplitByPolySelectionSet in SMONSTER / Top Menu.
+        • smo.GC.IsolateItemAndInstances Cmd now select automatically the source mesh in the item list even if you launched it while having an instance selected.
+        • smo.GC.IsolateItemAndInstances is now also exposed in Viewport Context Menu (right click).
+        • Setup cmd Move Center to selection now also works in item Mode (it will move the center item at the center of the mesh layer).
+
+
+-------------------------
 v3.55 - 2022/07/18
 SMONSTER:
         • Training Scene Menu switched to Vertical toolbar.
