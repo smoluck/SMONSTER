@@ -22,8 +22,8 @@ Best regards, Franck Elisabeth.
 SMONSTER include 15 Standard Kits (including 2 Beta Kits) and 3 Livelink Kits to simplify integration of other software within Modo and improve your workflow.
 
 # DOCUMENTATION
-[Online Documentation](https://smonster-doc.readthedocs.io/en/latest)
-[Update Log](https://smonster-doc.readthedocs.io/en/latest/updatelog.html)]
+- [Online Documentation](https://smonster-doc.readthedocs.io/en/latest)
+- [Update Log](https://smonster-doc.readthedocs.io/en/latest/updatelog.html)]
 
 
 
