@@ -24,7 +24,7 @@ SMONSTER include 15 Standard Kits (including 2 Beta Kits) and 3 Livelink Kits to
 
 
 # Building the kit from GitHub
-Python version: `3.7` or `2.7` 
+Python version: `2.7` or `3.7`  
 
 Clone this repository locally on your PC using GitHub Desktop.
 - To install the kit to your appdata kits directory, run: `install.py` under `SMONSTER`
