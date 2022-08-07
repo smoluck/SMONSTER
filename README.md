@@ -21,6 +21,10 @@ Best regards, Franck Elisabeth.
 # DETAILS
 SMONSTER include 15 Standard Kits (including 2 Beta Kits) and 3 Livelink Kits to simplify integration of other software within Modo and improve your workflow.
 
+# DOCUMENTATION
+[Online Documentation](https://smonster-doc.readthedocs.io/en/latest)
+[Update Log](https://smonster-doc.readthedocs.io/en/latest/updatelog.html)]
+
 
 
 # Building the kit from GitHub
@@ -32,8 +36,8 @@ Clone this repository locally on your PC using GitHub Desktop.
 
 
 
-# Download the latest LPK
-from the [Gumroad](https://smoluck.gumroad.com/l/Smonster-v3)
+# DOWNLOAD
+LPK install file from [Gumroad](https://smoluck.gumroad.com/l/Smonster-v3)
 
 
 
