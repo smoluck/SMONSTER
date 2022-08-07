@@ -57,11 +57,11 @@ Method B:  -- Manual Install --
 
 
 # INSTALLATION NOTE for MARMOSET LIVELINK
-Make sure to copy this file:	SMO_MARMOSET_MODO_LL.tbbake
-from the Kit folder:		SMONSTER/Kits/SMO_MARMOSET_LIVELINK/Marmoset_Script
-to the folder 		C:/Users/YOUR_NAME/AppData/Local/Marmoset Toolbag 3/baker if you use Marmoset v3
-or/and
-to the folder 		C:/Users/YOUR_NAME/AppData/Local/Marmoset Toolbag 4/baker if you use Marmoset v4
+- Make sure to copy this file:	SMO_MARMOSET_MODO_LL.tbbake
+- from the Kit folder:		SMONSTER/Kits/SMO_MARMOSET_LIVELINK/Marmoset_Script
+- to the folder 		C:/Users/YOUR_NAME/AppData/Local/Marmoset Toolbag 3/baker if you use Marmoset v3
+- or/and
+- to the folder 		C:/Users/YOUR_NAME/AppData/Local/Marmoset Toolbag 4/baker if you use Marmoset v4
 
 Also check your Modo Preferences/Defaults/Application/Item Index Style: It should be set to (Underscore ) : Item_2
 
