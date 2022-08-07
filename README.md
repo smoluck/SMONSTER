@@ -15,7 +15,7 @@ To use it at your profit, you can install it in two ways:
 
 Enjoy the tools and please give some feedback on Foundry Forum thread or preferably via our [Dedicated Slack](https://join.slack.com/t/smonster/shared_invite/zt-1dkpid10n-QK4gn4UAk6iG5wv7ISEdnQ).
 
-Thanks to the wonderfull Modo community and the [PixelFondue](https://www.pixelfondue.com/) Contributor Team that have gave me a lot of support on this achievement.
+Thanks to the wonderful Modo community and the [PixelFondue](https://www.pixelfondue.com/) Contributor Team that have gave me a lot of support on this achievement.
 
 Best regards, Franck Elisabeth.
 
