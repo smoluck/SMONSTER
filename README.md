@@ -1,10 +1,13 @@
 # SMONSTER
 Hi everyone.
 
-- Today i'm releasing the Smonster Kit to public for both Freelance or Studios.
-- SMONSTER kit is production ready.
-- If you want to contribute to the development you can.
-- Give financial support, i'd appreciated that.
+Today i'm releasing the Smonster Kit to public for both Freelance or Studios.
+
+SMONSTER kit is production ready.
+
+If you want to contribute to the development you can.
+
+Give financial support, i'd appreciated that.
 
 ***I must precise that i will still add things to it in a near future, so plase don't consider it as an abandon-ware. I've spent too many time building it to let it go.***
 
