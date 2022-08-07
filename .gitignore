@@ -4,7 +4,9 @@
 
 # Build
 *.pyc
-build/
+build_RizomUV_LL/
+build_SourceEdition/
+build_StandardEdition/
 
 # Mac crap
 #.DS_Store
