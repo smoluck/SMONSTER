@@ -3,9 +3,10 @@ Hi everyone.
 
 Today i'm releasing the Smonster Kit to public for both Freelance or Studios.
 SMONSTER kit is production ready.
-If you want to contribute to the development or give financial support i'd appreciated that.
+If you want to contribute to the development you can.
+Give financial support, i'd appreciated that.
 
-(I must precise that i will still add things to it in a near future, so plase don't consider it as an abandon-ware. I've spent too many time building it to let it go.)
+***I must precise that i will still add things to it in a near future, so plase don't consider it as an abandon-ware. I've spent too many time building it to let it go.***
 
 It's been about 5 years now that i've started to learn Python Scripting over my spare time. It was a though work for a simple 3D Artist, but i won't regret anything i've discovered during that time. It was a great journey, along those years and i will continue to explore that as a Technical Artist.
 I've wrapped up about ~250 commands for Modo along many other scripts and UI development.
