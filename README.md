@@ -23,7 +23,7 @@ SMONSTER include 15 Standard Kits (including 2 Beta Kits) and 3 Livelink Kits to
 
 # DOCUMENTATION
 - [Online Documentation](https://smonster-doc.readthedocs.io/en/latest)
-- [Update Log](https://smonster-doc.readthedocs.io/en/latest/updatelog.html)]
+- [Update Log](https://smonster-doc.readthedocs.io/en/latest/updatelog.html)
 
 
 
