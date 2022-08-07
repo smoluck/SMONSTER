@@ -128,6 +128,8 @@ As usual if you found a bug, please reach me out on SNS and i will do my best to
 # CONTACT:
 [My Website](https://smoluck.com)
 
+[My Gumroad](https://smoluck.gumroad.com)
+
 [My Twitter](https://twitter.com/sm0luck)
 
 [SMONSTER dedicated Slack server](https://join.slack.com/t/smonster/shared_invite/zt-1dkpid10n-QK4gn4UAk6iG5wv7ISEdnQ)
