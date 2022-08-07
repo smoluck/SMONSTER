@@ -6,7 +6,8 @@
 -------------------------
 v3.60 - 2022/08/08
 SMONSTER:
-        • Public Release: Free for Fveryone, Freelance and Studio 
+        • Public Release: Free for Everyone, Freelance and Studio
+        • "AI TOOLS" and "PCLOUD XYZ" Beta Kits added.
 
 
 -------------------------
