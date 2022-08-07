@@ -24,7 +24,7 @@ Best regards, Franck Elisabeth.
 - [DETAILS](https://github.com/smoluck/SMONSTER/blob/main/README.md#details)
 - [DOCUMENTATION](https://github.com/smoluck/SMONSTER/blob/main/README.md#documentation)
 - [GITHUB BUILD](https://github.com/smoluck/SMONSTER/blob/main/README.md#building-the-kit-from-github)
-- [LPK DOWNLOAD](https://github.com/smoluck/SMONSTER/blob/main/README.md#download)
+- [LPK DOWNLOAD](https://github.com/smoluck/SMONSTER/blob/main/README.md#lpk-download)
 - [INSTALL](https://github.com/smoluck/SMONSTER/blob/main/README.md#installation)
 - [UPGRADE](https://github.com/smoluck/SMONSTER/blob/main/README.md#upgrade)
 - [STANDARD KIT LIST](https://github.com/smoluck/SMONSTER/blob/main/README.md#standard-kit-list)
