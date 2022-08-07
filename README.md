@@ -1,24 +1,41 @@
 # SMONSTER
-Hi. Everyone
+Hi everyone.
 
-Please follow the instruction below for a new installation OR when you update the kit.
+Today i'm releasing the Smonster Kit to public for both Freelance or Studios.
+(I must precise that i will still add things to it in a near future, so plase don't consider it as an abandonware.)
+
+
+It's been about 5 years now that i've started to learn Python Scripting over my spare time. It was a though work, but i won't regret anything i've discovered during that time. It was a great journey, along those years.
+I've wrapped up about ~250 commands for Modo along many other scripts and UI development.
+Modo is a hub for me since 2006 and i've got plenty of pleasure using it along other tools.
+Some have been so important to my pipeline that i've integrated some Livelink kits for them, like RizomUV, Marmoset Toolbag or Pixaflux. 
+
+To use it at your profit, you can either Clone that repository or directly download the latest LPK to install the kit.
+Please follow the instruction below for a new installation OR when you update the Smonster kit from Gumroad builds.
 Enjoy the tools and please give some feedback on Foundry Forum thread or preferably via our Dedicated Slack.
 
-Best regards, Franck.
+Thanks to the wonderfull Modo community and the PixelFondue Contributor Team that have gave me a lot of support on this achievement.
+
+Best regards, Franck Elisabeth.
 
 
 
-# Building the kit
-Python version: `3.7` 
+# Building the kit from GitHub
+Python version: `3.7` or `2.7` 
 
-To install the kit to your appdata kits directory, run: `install.py`
+clone thois repository locally on your PC.
+To install the kit to your appdata kits directory, run: `install.py` under `SMONSTER`
+To build the lpk file for either the Standard Edition (Compiled scripts) or the Source Edition (Raw Code), run: `build_STANDARD.py` or `build_SOURCE.py` under `SMONSTER/KITS/SMONSTER`
 
-To build the lpk file, run: `utils.py` then `build.py`
+
+
+# Download the latest LPK
+under `SMONSTER/KITS/SMONSTER`
 
 
 
 # INSTALLATION INSTRUCTION
-After downloading the Zip file, please follow those instructions and this Video:	https://youtu.be/nJjRuAxuqhU
+After downloading the Zip file from Gumroad or `SMONSTER/KITS/SMONSTER`, please follow those instructions and this Video:	https://youtu.be/nJjRuAxuqhU
 (If you are an owner of SMONSTER V1, please delete the SMONSTER Folder from your Kits folder Before install)
 
 
@@ -91,19 +108,11 @@ https://youtu.be/nJjRuAxuqhU
 
 
 # DISCLAIMER
-You need at least Modo `14.1` to run `100 %` of the scripts included.
-I try to keep compatibility from `14.0` to `15.2`.
+You need at least Modo `15.0` to run `100 %` of the scripts included.
+I try to keep compatibility from `15.0` to `16.X`.
 As usual if you found a bug, please reach me out on SNS and i will do my best to help you and fix this.
 
 `You ALWAYS need to have SMO_MASTER ans SMOONSTER Kit up and running to use the commands in the kit`
-
-
-
-As for every Product / Art piece / Assets that you do, like everyone of us,
-please do not share those files, as you didn't want to see your work shared
-on internet without your permission.
-                `I'm sure you'll understand that point.`
-
 
 
 
@@ -111,12 +120,11 @@ on internet without your permission.
 Twitter:
 https://twitter.com/sm0luck
 
- Foundry Modo Slack server:
-foundry-modo.slack.com
+SMONSTER dedicated Slack server:
+https://join.slack.com/t/smonster/shared_invite/zt-1dkpid10n-QK4gn4UAk6iG5wv7ISEdnQ
+
+Foundry Modo Slack server:
+https://foundry-modo.slack.com
 
 Foundry Forums:
 https://community.foundry.com/discuss/topic/152258
-
------------------------
-fghfh
------------------------
