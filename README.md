@@ -1,41 +1,58 @@
 # SMONSTER
-Hi. Everyone
+Hi everyone.
 
-Please follow the instruction below for a new installation OR when you update the kit.
+Today i'm releasing the Smonster Kit to public for both Freelance or Studios.
+(I must precise that i will still add things to it in a near future, so plase don't consider it as an abandonware.)
+
+
+It's been about 5 years now that i've started to learn Python Scripting over my spare time. It was a though work, but i won't regret anything i've discovered during that time. It was a great journey, along those years.
+I've wrapped up about ~250 commands for Modo along many other scripts and UI development.
+Modo is a hub for me since 2006 and i've got plenty of pleasure using it along other tools.
+Some have been so important to my pipeline that i've integrated some Livelink kits for them, like RizomUV, Marmoset Toolbag or Pixaflux. 
+
+To use it at your profit, you can either Clone that repository or directly download the latest LPK to install the kit.
+Please follow the instruction below for a new installation OR when you update the Smonster kit from Gumroad builds.
 Enjoy the tools and please give some feedback on Foundry Forum thread or preferably via our Dedicated Slack.
 
-Best regards, Franck.
+Thanks to the wonderfull Modo community and the PixelFondue Contributor Team that have gave me a lot of support on this achievement.
+
+Best regards, Franck Elisabeth.
 
 
 
-# Building the kit
-Python version: `3.7` 
+# Building the kit from GitHub
+Python version: `3.7` or `2.7` 
 
-To install the kit to your appdata kits directory, run: `install.py`
+clone this repository locally on your PC using GitHub Desktop.
+To install the kit to your appdata kits directory, run: `install.py` under `SMONSTER`
+To build the lpk file for either the Standard Edition (Compiled scripts) or the Source Edition (Raw Code), run: `build_STANDARD.py` or `build_SOURCE.py` under `SMONSTER/KITS/SMONSTER`
 
-To build the lpk file, run: `utils.py` then `build.py`
+
+
+# Download the latest LPK
+under `SMONSTER/KITS/SMONSTER`
 
 
 
 # INSTALLATION INSTRUCTION
-After downloading the Zip file, please follow those instructions and this Video:	https://youtu.be/nJjRuAxuqhU
-(If you are an owner of SMONSTER V1, please delete the SMONSTER Folder from your Kits folder Before install)
+After downloading the Zip file from Gumroad or from this GitHub `SMONSTER/KITS/SMONSTER`, please follow those instructions and this [Video](https://youtu.be/nJjRuAxuqhU)
+(If you are an owner of SMONSTER V1 or V2, please delete the SMONSTER Folder from your Kits folder Before install)
+
 
 
 Method A:  -- Automatic Install via Modo and LPK --
-1 ---> Follow this Video https://youtu.be/nJjRuAxuqhU
-2 ---> Open Modo and Drag and Drop the LPK file into Modo Window (Modo should be started with administrator rights to unpack the files).
-3 ---> Restart Modo
-4 ---> Now you're ready to go.
+- Follow this [Video](https://youtu.be/nJjRuAxuqhU)
+- Open Modo and Drag and Drop the LPK file into Modo Window (Modo should be started with administrator rights to unpack the files).
+- Restart Modo
+
 
 
 Method B:  -- Manual Install --
-1 ---> Follow this Video https://youtu.be/nJjRuAxuqhU
-2 ---> Open the Zip Archive "SMONSTER_V3.XX.zip" and Drag and Drop the LPK file into a temp folder.
-3 ---> Rename the SMONSTER_V3.XX.lpk to a zip file SMONSTER_V3.XX.zip
-4 ---> Open you Modo Content Folder and create a new folder under Kits called SMONSTER, and unzip the files from the last renamed zip in it.
-5 ---> Restart Modo
-5 ---> Now you're ready to go.
+- Follow this [Video](https://youtu.be/nJjRuAxuqhU)
+- Open the Zip Archive "SMONSTER_V3.XX.zip" and Drag and Drop the LPK file into a temp folder.
+- Rename the SMONSTER_V3.XX.lpk to a zip file SMONSTER_V3.XX.zip
+- Open you Modo Content Folder and create a new folder under Kits called SMONSTER, and unzip the files from the last renamed zip in it.
+- Restart Modo
 
 
 
@@ -57,10 +74,10 @@ The zip file will not be loaded at modo start, you're also free to save it somew
 
 (If you are an owner of SMONSTER V1 or V2, please delete the SMONSTER Folder from your Kits folder Before install)
 
-1 ---> Delete the folder SMONSTER_V2 in your Modo Content Kits folder (Available from Modo/System/Modo Content folder  *Menu*.
-2 ---> Open Modo and drag n drop the new LPK file in it.
-3 ---> Restart Modo.
-4 ---> Now you're ready to go.
+- Delete the folder SMONSTER_V2 in your Modo Content Kits folder (Available from Modo/System/Modo Content folder  *Menu*.
+- Open Modo and drag n drop the new LPK file in it.
+- Restart Modo.
+- Now you're ready to go.
 
 
 
@@ -78,45 +95,43 @@ The zip file will not be loaded at modo start, you're also free to save it somew
     QUICK TAG (v 2.50)
     UV (v 3.00)
     VENOM (v 2.10)
---- LIVELINK KIT LIST ---
+    
+    
+    
+# LIVELINK KIT LIST
     MARMOSET TOOLBAG (v2.50)
     PIXAFLUX (v 1.30)
     RIZOM UV (v 2.55)
+    
+    
+    
+# BETA KIT LIST
+    AI TOOLS (v0.99)
+    PCLOUD XYZ (v 0.95)
 
 
 
 # INSTALLATION PROCEDURE and KEYMAPS
-https://youtu.be/nJjRuAxuqhU
+[Install and keymaps](https://youtu.be/nJjRuAxuqhU)
 
 
 
 # DISCLAIMER
-You need at least Modo `14.1` to run `100 %` of the scripts included.
-I try to keep compatibility from `14.0` to `15.2`.
+You need at least Modo `15.0` to run `100 %` of the scripts included.
+I try to keep compatibility from `15.0` to `16.X`.
 As usual if you found a bug, please reach me out on SNS and i will do my best to help you and fix this.
 
 `You ALWAYS need to have SMO_MASTER ans SMOONSTER Kit up and running to use the commands in the kit`
 
 
 
-As for every Product / Art piece / Assets that you do, like everyone of us,
-please do not share those files, as you didn't want to see your work shared
-on internet without your permission.
-                `I'm sure you'll understand that point.`
-
-
-
-
 # CONTACT:
-Twitter:
-https://twitter.com/sm0luck
+[My Website](https://smoluck.com)
 
- Foundry Modo Slack server:
-foundry-modo.slack.com
+[My Twitter](https://twitter.com/sm0luck)
 
-Foundry Forums:
-https://community.foundry.com/discuss/topic/152258
+[SMONSTER dedicated Slack server](https://join.slack.com/t/smonster/shared_invite/zt-1dkpid10n-QK4gn4UAk6iG5wv7ISEdnQ)
 
------------------------
-fghfh
------------------------
+[Foundry Modo Slack server](https://foundry-modo.slack.com)
+
+[Foundry Forums thread](https://community.foundry.com/discuss/topic/152258)
