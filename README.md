@@ -19,18 +19,31 @@ Thanks to the wonderfull Modo community and the [PixelFondue](https://www.pixelf
 
 Best regards, Franck Elisabeth.
 
+
 # MENU
-[DETAILS](https://github.com/smoluck/SMONSTER/blob/main/README.md#details)
-[DOCUMENTATION](https://github.com/smoluck/SMONSTER/blob/main/README.md#documentation)
+- [DETAILS](https://github.com/smoluck/SMONSTER/blob/main/README.md#details)
+- [DOCUMENTATION](https://github.com/smoluck/SMONSTER/blob/main/README.md#documentation)
+- [GITHUB BUILD](https://github.com/smoluck/SMONSTER/blob/main/README.md#building-the-kit-from-github)
+- [LPK DOWNLOAD](https://github.com/smoluck/SMONSTER/blob/main/README.md#download)
+- [INSTALL](https://github.com/smoluck/SMONSTER/blob/main/README.md#installation)
+- [UPGRADE](https://github.com/smoluck/SMONSTER/blob/main/README.md#upgrade)
+- [STANDARD KIT LIST](https://github.com/smoluck/SMONSTER/blob/main/README.md#standard-kit-list)
+- [LIVELINK KIT LIST](https://github.com/smoluck/SMONSTER/blob/main/README.md#livelink-kit-list)
+- [BETA KIT LIST](https://github.com/smoluck/SMONSTER/blob/main/README.md#beta-kit-list)
+- [GETTING STARTED](https://github.com/smoluck/SMONSTER/blob/main/README.md#getting-started)
+- [DISCLAIMER](https://github.com/smoluck/SMONSTER/blob/main/README.md#disclaimer)
+- [BETA KIT LIST](https://github.com/smoluck/SMONSTER/blob/main/README.md#beta-kit-list)
+- [CONTACT](https://github.com/smoluck/SMONSTER/blob/main/README.md#CONTACT)
 ---
+
 
 # DETAILS
 SMONSTER include 15 Standard Kits (including 2 Beta Kits) and 3 Livelink Kits to simplify integration of other software within Modo and improve your workflow.
 
+
 # DOCUMENTATION
 - [Online Documentation](https://smonster-doc.readthedocs.io/en/latest)
 - [Update Log](https://smonster-doc.readthedocs.io/en/latest/updatelog.html)
-
 
 
 # Building the kit from GitHub
@@ -41,13 +54,11 @@ Clone this repository locally on your PC using GitHub Desktop.
 - To build the lpk file for either the Standard Edition (Compiled scripts) or the Source Edition (Raw Code), run: `build_STANDARD.py` or `build_SOURCE.py` under `SMONSTER/KITS/SMONSTER`
 
 
-
 # DOWNLOAD
 LPK install file from [Gumroad](https://smoluck.gumroad.com/l/Smonster-v3)
 
 
-
-# INSTALLATION INSTRUCTION
+# INSTALLATION
 After downloading the Zip file from Gumroad or from this GitHub `SMONSTER/KITS/SMONSTER`, please follow those instructions and this [Video](https://youtu.be/nJjRuAxuqhU)
 (If you are an owner of SMONSTER V1 or V2, please delete the SMONSTER Folder from your Kits folder Before install)
 
@@ -68,7 +79,6 @@ Method B:  -- Manual Install --
 - Restart Modo
 
 
-
 # INSTALLATION NOTE for MARMOSET LIVELINK
 - Make sure to copy this file:	SMO_MARMOSET_MODO_LL.tbbake
 - from the Kit folder:		SMONSTER/Kits/SMO_MARMOSET_LIVELINK/Marmoset_Script
@@ -79,8 +89,7 @@ Method B:  -- Manual Install --
 Also check your Modo Preferences/Defaults/Application/Item Index Style: It should be set to (Underscore ) : Item_2
 
 
-
-# UPGRADE INSTRUCTION
+# UPGRADE
 As you already have the kit installed, create a backup of the folder as Zip or any archive,
 just in case you 'll have any issue with the new one.
 The zip file will not be loaded at modo start, you're also free to save it somewhere on a different location.
@@ -93,8 +102,7 @@ The zip file will not be loaded at modo start, you're also free to save it somew
 - Now you're ready to go.
 
 
-
-# KIT LIST
+# STANDARD KIT LIST
     BAKE (v 1.60)
     BATCH (v 1.70)
     CAD TOOLS (v 3.70)
@@ -108,8 +116,7 @@ The zip file will not be loaded at modo start, you're also free to save it somew
     QUICK TAG (v 2.50)
     UV (v 3.00)
     VENOM (v 2.10)
-    
-    
+        
     
 # LIVELINK KIT LIST
     MARMOSET TOOLBAG (v2.50)
@@ -117,16 +124,13 @@ The zip file will not be loaded at modo start, you're also free to save it somew
     RIZOM UV (v 2.55)
     
     
-    
 # BETA KIT LIST
     AI TOOLS (v0.99)
     PCLOUD XYZ (v 0.95)
 
 
-
-# INSTALLATION PROCEDURE and KEYMAPS
+# GETTING STARTED
 [Install and keymaps](https://youtu.be/nJjRuAxuqhU)
-
 
 
 # DISCLAIMER
@@ -135,7 +139,6 @@ I try to keep compatibility from `15.0` to `16.X`.
 As usual if you found a bug, please reach me out on SNS and i will do my best to help you and fix this.
 
 `You ALWAYS need to have SMO_MASTER ans SMOONSTER Kit up and running to use the commands in the kit`
-
 
 
 # CONTACT:
