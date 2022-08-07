@@ -155,4 +155,4 @@ As usual if you found a bug, please reach me out on SNS and i will do my best to
 
 [Foundry Modo Slack server](https://foundry-modo.slack.com)
 
-[Foundry Forums thread](https://community.foundry.com/discuss/topic/152258)
+[Foundry Forums thread](https://community.foundry.com/discuss/topic/159978)
