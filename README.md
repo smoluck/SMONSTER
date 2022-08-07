@@ -95,10 +95,19 @@ The zip file will not be loaded at modo start, you're also free to save it somew
     QUICK TAG (v 2.50)
     UV (v 3.00)
     VENOM (v 2.10)
---- LIVELINK KIT LIST ---
+    
+    
+    
+# LIVELINK KIT LIST
     MARMOSET TOOLBAG (v2.50)
     PIXAFLUX (v 1.30)
     RIZOM UV (v 2.55)
+    
+    
+    
+# BETA KIT LIST
+    AI TOOLS (v0.99)
+    PCLOUD XYZ (v 0.95)
 
 
 
