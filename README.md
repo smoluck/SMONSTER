@@ -19,6 +19,9 @@ Thanks to the wonderfull Modo community and the [PixelFondue](https://www.pixelf
 
 Best regards, Franck Elisabeth.
 
+# MENU
+[DETAILS](https://github.com/smoluck/SMONSTER/blob/main/README.md#details)
+[DOCUMENTATION](https://github.com/smoluck/SMONSTER/blob/main/README.md#documentation)
 ---
 
 # DETAILS
