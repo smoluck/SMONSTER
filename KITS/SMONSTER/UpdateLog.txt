@@ -4,6 +4,12 @@
 
 
 -------------------------
+v3.60 - 2022/08/08
+SMONSTER:
+        • Public Release: Free for Fveryone, Freelance and Studio 
+
+
+-------------------------
 v3.59 - 2022/07/30
 SMONSTER:
         • Code Optimization and Command naming harmonization.
