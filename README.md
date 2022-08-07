@@ -11,7 +11,7 @@ Some have been so important to my pipeline that i've integrated some Livelink ki
 
 To use it at your profit, you can install it in two ways:
 - from [GitHub](https://github.com/smoluck/SMONSTER/blob/main/README.md#building-the-kit-from-github)
-- or from [Gumroad](https://smoluck.gumroad.com/l/Smonster-v3)
+- from [Gumroad](https://smoluck.gumroad.com/l/Smonster-v3)
 
 Enjoy the tools and please give some feedback on Foundry Forum thread or preferably via our [Dedicated Slack](https://join.slack.com/t/smonster/shared_invite/zt-1dkpid10n-QK4gn4UAk6iG5wv7ISEdnQ).
 
