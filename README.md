@@ -25,14 +25,13 @@ Best regards, Franck Elisabeth.
 - [DOCUMENTATION](https://github.com/smoluck/SMONSTER/blob/main/README.md#documentation)
 - [GITHUB BUILD](https://github.com/smoluck/SMONSTER/blob/main/README.md#building-the-kit-from-github)
 - [LPK DOWNLOAD](https://github.com/smoluck/SMONSTER/blob/main/README.md#lpk-download)
-- [INSTALL](https://github.com/smoluck/SMONSTER/blob/main/README.md#installation)
+- [INSTALL](https://github.com/smoluck/SMONSTER/blob/main/README.md#install)
 - [UPGRADE](https://github.com/smoluck/SMONSTER/blob/main/README.md#upgrade)
-- [STANDARD KIT LIST](https://github.com/smoluck/SMONSTER/blob/main/README.md#standard-kit-list)
-- [LIVELINK KIT LIST](https://github.com/smoluck/SMONSTER/blob/main/README.md#livelink-kit-list)
-- [BETA KIT LIST](https://github.com/smoluck/SMONSTER/blob/main/README.md#beta-kit-list)
+- [STANDARD KIT](https://github.com/smoluck/SMONSTER/blob/main/README.md#standard-kit)
+- [LIVELINK KIT](https://github.com/smoluck/SMONSTER/blob/main/README.md#livelink-kit)
+- [BETA KIT](https://github.com/smoluck/SMONSTER/blob/main/README.md#beta-kit)
 - [GETTING STARTED](https://github.com/smoluck/SMONSTER/blob/main/README.md#getting-started)
 - [DISCLAIMER](https://github.com/smoluck/SMONSTER/blob/main/README.md#disclaimer)
-- [BETA KIT LIST](https://github.com/smoluck/SMONSTER/blob/main/README.md#beta-kit-list)
 - [CONTACT](https://github.com/smoluck/SMONSTER/blob/main/README.md#CONTACT)
 ---
 
@@ -58,7 +57,7 @@ Clone this repository locally on your PC using GitHub Desktop.
 LPK install file from [Gumroad](https://smoluck.gumroad.com/l/Smonster-v3)
 
 
-# INSTALLATION
+# INSTALL
 After downloading the Zip file from Gumroad or from this GitHub `SMONSTER/KITS/SMONSTER`, please follow those instructions and this [Video](https://youtu.be/nJjRuAxuqhU)
 (If you are an owner of SMONSTER V1 or V2, please delete the SMONSTER Folder from your Kits folder Before install)
 
