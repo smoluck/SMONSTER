@@ -4,33 +4,36 @@ Hi everyone.
 Today i'm releasing the Smonster Kit to public for both Freelance or Studios.
 (I must precise that i will still add things to it in a near future, so plase don't consider it as an abandonware.)
 
-
-It's been about 5 years now that i've started to learn Python Scripting over my spare time. It was a though work, but i won't regret anything i've discovered during that time. It was a great journey, along those years.
+It's been about 5 years now that i've started to learn Python Scripting over my spare time. It was a though work for a simple 3D Artist, but i won't regret anything i've discovered during that time. It was a great journey, along those years and i will continue to explore that as a Technical Artist.
 I've wrapped up about ~250 commands for Modo along many other scripts and UI development.
-Modo is a hub for me since 2006 and i've got plenty of pleasure using it along other tools.
-Some have been so important to my pipeline that i've integrated some Livelink kits for them, like RizomUV, Marmoset Toolbag or Pixaflux. 
+[MODO](https://www.foundry.com/products/modo) is a hub for me since 2006 and i've got plenty of pleasure using it along other tools.
+Some have been so important to my pipeline that i've integrated some Livelink kits for them, like [RizomUV](https://www.rizom-lab.com/), [Marmoset Toolbag](https://marmoset.co/toolbag/) or [Pixaflux](http://pixaflux.com/). 
 
-To use it at your profit, you can either Clone that repository or directly download the latest LPK to install the kit.
-Please follow the instruction below for a new installation OR when you update the Smonster kit from Gumroad builds.
-Enjoy the tools and please give some feedback on Foundry Forum thread or preferably via our Dedicated Slack.
+To use it at your profit, you can Clone that repository and build the LPK or get it from my [Gumroad](https://smoluck.gumroad.com/l/Smonster-v3).
+Enjoy the tools and please give some feedback on Foundry Forum thread or preferably via our [Dedicated Slack](https://join.slack.com/t/smonster/shared_invite/zt-1dkpid10n-QK4gn4UAk6iG5wv7ISEdnQ).
 
-Thanks to the wonderfull Modo community and the PixelFondue Contributor Team that have gave me a lot of support on this achievement.
+Thanks to the wonderfull Modo community and the [PixelFondue](https://www.pixelfondue.com/) Contributor Team that have gave me a lot of support on this achievement.
 
 Best regards, Franck Elisabeth.
+
+---
+
+# DETAILS
+SMONSTER include 15 Standard Kits (including 2 Beta Kits) and 3 Livelink Kits to simplify integration of other software within Modo and improve your workflow.
 
 
 
 # Building the kit from GitHub
 Python version: `3.7` or `2.7` 
 
-clone this repository locally on your PC using GitHub Desktop.
-To install the kit to your appdata kits directory, run: `install.py` under `SMONSTER`
-To build the lpk file for either the Standard Edition (Compiled scripts) or the Source Edition (Raw Code), run: `build_STANDARD.py` or `build_SOURCE.py` under `SMONSTER/KITS/SMONSTER`
+Clone this repository locally on your PC using GitHub Desktop.
+- To install the kit to your appdata kits directory, run: `install.py` under `SMONSTER`
+- To build the lpk file for either the Standard Edition (Compiled scripts) or the Source Edition (Raw Code), run: `build_STANDARD.py` or `build_SOURCE.py` under `SMONSTER/KITS/SMONSTER`
 
 
 
 # Download the latest LPK
-under `SMONSTER/KITS/SMONSTER`
+from the [Gumroad](https://smoluck.gumroad.com/l/Smonster-v3)
 
 
 
