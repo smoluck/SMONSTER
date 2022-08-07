@@ -46,7 +46,7 @@ SMONSTER include 15 Standard Kits (including 2 Beta Kits) and 3 Livelink Kits to
 - [Update Log](https://smonster-doc.readthedocs.io/en/latest/updatelog.html)
 
 
-# Building the kit from GitHub
+# BUILDING from GITHUB
 Python version: `2.7` or `3.7`  
 
 Clone this repository locally on your PC using GitHub Desktop.
@@ -54,7 +54,7 @@ Clone this repository locally on your PC using GitHub Desktop.
 - To build the lpk file for either the Standard Edition (Compiled scripts) or the Source Edition (Raw Code), run: `build_STANDARD.py` or `build_SOURCE.py` under `SMONSTER/KITS/SMONSTER`
 
 
-# DOWNLOAD
+# LPK DOWNLOAD
 LPK install file from [Gumroad](https://smoluck.gumroad.com/l/Smonster-v3)
 
 
