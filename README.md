@@ -1,8 +1,12 @@
 # SMONSTER
 Hi everyone.
 
-Today i'm releasing the Smonster Kit to public for both Freelance or Studios. SMONSTER kit is production ready.
-(I must precise that i will still add things to it in a near future, so plase don't consider it as an abandonware. I've spent too many time building it to let it go.)
+Today i'm releasing the SMONSTER Kit to public for both Freelance or Studios.
+- This kit is production ready.
+- If you want to contribute to the development you can.
+- Give financial support, i'd appreciated that.
+
+***I must precise that i will still add things to it in a near future, so please don't consider it as an abandon-ware. I've spent too many time building it to let it go.***
 
 It's been about 5 years now that i've started to learn Python Scripting over my spare time. It was a though work for a simple 3D Artist, but i won't regret anything i've discovered during that time. It was a great journey, along those years and i will continue to explore that as a Technical Artist.
 I've wrapped up about ~250 commands for Modo along many other scripts and UI development.
@@ -15,7 +19,7 @@ To use it at your profit, you can install it in two ways:
 
 Enjoy the tools and please give some feedback on Foundry Forum thread or preferably via our [Dedicated Slack](https://join.slack.com/t/smonster/shared_invite/zt-1dkpid10n-QK4gn4UAk6iG5wv7ISEdnQ).
 
-Thanks to the wonderfull Modo community and the [PixelFondue](https://www.pixelfondue.com/) Contributor Team that have gave me a lot of support on this achievement.
+Thanks to the wonderful Modo community and the [PixelFondue](https://www.pixelfondue.com/) Contributor Team that have gave me a lot of support on this achievement.
 
 Best regards, Franck Elisabeth.
 
@@ -151,4 +155,4 @@ As usual if you found a bug, please reach me out on SNS and i will do my best to
 
 [Foundry Modo Slack server](https://foundry-modo.slack.com)
 
-[Foundry Forums thread](https://community.foundry.com/discuss/topic/152258)
+[Foundry Forums thread](https://community.foundry.com/discuss/topic/159978)
