@@ -17,7 +17,7 @@ To use it at your profit, you can install it in two ways:
 - from [GitHub](https://github.com/smoluck/SMONSTER/blob/main/README.md#building-the-kit-from-github)
 - from [Gumroad](https://smoluck.gumroad.com/l/Smonster-v3)
 
-Enjoy the tools and please give some feedback on Foundry Forum thread or preferably via our [Dedicated Slack](https://join.slack.com/t/smonster/shared_invite/zt-1dkpid10n-QK4gn4UAk6iG5wv7ISEdnQ).
+Enjoy the tools and please give some feedback on Foundry Forum thread or preferably via our [Slack](https://join.slack.com/t/smonster/shared_invite/zt-1dkpid10n-QK4gn4UAk6iG5wv7ISEdnQ) or via [Discord](https://discord.gg/fqgWnbC).
 
 Thanks to the wonderfull Modo community and the [PixelFondue](https://www.pixelfondue.com/contributors) Contributor Team that have gave me a lot of support on this achievement.
 
@@ -28,11 +28,11 @@ Best regards, Franck Elisabeth.
 - Fellow-Worker
 ***(Extriple Team and especially 김주희.)***
 - Pixel Fondue Team
-***(William Vaughan, Greg Leuenberger, Shawn Frueh, Ymmanuel Flores, Yazan Malkosh, Wes McDermott, Adam OHern, Eric Soulvie, Ellery Connell, Simon Lundberg, Rich Hurrey, Lukasz Pazera, Richard Yot, Mario Baldi, Lauren Thomas, Volker Troy, Ed Ferrari, Alexander Kucera, Fredrik Widman, James Darknell, Ryan Ernst, Alexander Shmakov, Pascal Nocquet, Steve White, Matt Meersbergen, Pedro Alpiarça dos Santos) )***
+***(William Vaughan, Greg Leuenberger, Shawn Frueh, Ymmanuel Flores, Yazan Malkosh, Volker Troy, Wes McDermott, Adam OHern, Eric Soulvie, Ellery Connell, Simon Lundberg, Rich Hurrey, Lukasz Pazera, Richard Yot, Mario Baldi, Lauren Thomas, Volker Troy, Ed Ferrari, Alexander Kucera, Fredrik Widman, James Darknell, Ryan Ernst, Alexander Shmakov, Pascal Nocquet, Steve White, Matt Meersbergen, Pedro Alpiarça dos Santos) )***
 - Foundry Team
 ***(Brad Peebler, Shane Griffith, Greg Brown, Joe Angell, James O'Hare, Matt Cox, Ben Halling, Dejan Javanovic, Yoshiaki Tazaki, Mike Jensen, Michael McCarthy, Duncan Hopkins, Andrew Brown, Chris Hague, Milos Bullat, Darrel Anderson )***
 - Modo Community
-***( Seneca Menard, Cristóbal Vila, Mateusz Losinski, Daniel Potuznik, Kai, Volker Troy, Ricky Scharneck, Warren L, Dino Zanco, Ola Haldor Solvik Voll, Pierre Dubertrand, Dominiek De Ridder, Yoshikai Yuji, Kashif C Rilley, Keith, Oliver Hotz, Robert Lechl, Rodesqa, Pascal Labillois, Leif Mariussen, Leonard Billeke, Francois Caillaud, Felix Leyendecker, Jordan Cain, Elliot Sharp, Dmytro Holub, Thiago Carneiro, Thomas Groppi, Thomas Cheng, Tim Crowson, Dominique Piccinato, Steve Hill, Dmitry Bersenev, Kjell Emanuelsson, Remi Brouet, Mark Tomlinson, Timothee Yeramian, Maxime Rouca, Rouven Miller, Tom Dymond, 이범희, Joost Spek, Chris Fritsche,  Esa Nietula, Vladimir Leleiva, Yuya Takeda, Srecko Micic, Sergio Mucino, Jörg-Mark Kasassoglou, Jawad Altabtabai, Sergio Madeira, Andras Vigyazo, Andreas Rånman, Ian Brown, Michele Faccoli, Iyad Horani, Erwin Zwart, Edward Erickson, Bart Van Doornik, Cem Tezcan, Joseph Senti, Sébastien Grégoire, Scott Neece, Gep, Peter Sims, Chris O'Riley, Gaurav Mathur, Gerard Falla, Gideon Klindt, Luciano Daluz, Jerome Lebrun, Tomasz Lechocinski, Warren, Neil M, Daniel Brok, Martin, Mario Manganelli, Mark White, Martin Kramme Guldbaek, Baroba, Luca Giarrettino, Marcus Kjeldsen, Martin Oberg)***
+***( Seneca Menard, Cristóbal Vila, Mateusz Losinski, Daniel Potuznik, Kai, Ricky Scharneck, Warren L, Dino Zanco, Ola Haldor Solvik Voll, Pierre Dubertrand, Dominiek De Ridder, Yoshikai Yuji, Kashif C Rilley, Keith, Oliver Hotz, Robert Lechl, Rodesqa, Pascal Labillois, Leif Mariussen, Leonard Billeke, Francois Caillaud, Felix Leyendecker, Jordan Cain, Elliot Sharp, Dmytro Holub, Thiago Carneiro, Thomas Groppi, Thomas Cheng, Tim Crowson, Dominique Piccinato, Steve Hill, Dmitry Bersenev, Kjell Emanuelsson, Remi Brouet, Mark Tomlinson, Timothee Yeramian, Maxime Rouca, Rouven Miller, Tom Dymond, 이범희, Joost Spek, Chris Fritsche,  Esa Nietula, Vladimir Leleiva, Yuya Takeda, Srecko Micic, Sergio Mucino, Jörg-Mark Kasassoglou, Jawad Altabtabai, Sergio Madeira, Andras Vigyazo, Andreas Rånman, Ian Brown, Michele Faccoli, Iyad Horani, Erwin Zwart, Edward Erickson, Bart Van Doornik, Cem Tezcan, Joseph Senti, Sébastien Grégoire, Scott Neece, Gep, Peter Sims, Chris O'Riley, Gaurav Mathur, Gerard Falla, Gideon Klindt, Luciano Daluz, Jerome Lebrun, Tomasz Lechocinski, Warren, Neil M, Daniel Brok, Martin, Mario Manganelli, Mark White, Martin Kramme Guldbaek, Baroba, Luca Giarrettino, Marcus Kjeldsen, Martin Oberg)***
 (not exhaustive list for sure :^D)
 
 
@@ -163,7 +163,9 @@ As usual if you found a bug, please reach me out on SNS and i will do my best to
 
 [My Twitter](https://twitter.com/sm0luck)
 
-[SMONSTER dedicated Slack server](https://join.slack.com/t/smonster/shared_invite/zt-1dkpid10n-QK4gn4UAk6iG5wv7ISEdnQ)
+[SMONSTER Discord Server](https://discord.gg/fqgWnbC)
+
+[SMONSTER Slack server](https://join.slack.com/t/smonster/shared_invite/zt-1dkpid10n-QK4gn4UAk6iG5wv7ISEdnQ)
 
 [Foundry Modo Slack server](https://foundry-modo.slack.com)
 
