@@ -4,6 +4,14 @@
 
 
 -------------------------
+v3.65 - 2022/08/15
+SMONSTER:
+        • SMO GC - Replace by Instance
+		(From selected targets, create a copy or an instance of the last selected Mesh, with or without a Guide Mesh.)
+        • Exposition of the AI and PCLOUD kit. Bugfix on exposed files.
+
+
+-------------------------
 v3.60 - 2022/08/08
 SMONSTER:
         • Public Release: Free for Everyone, Freelance and Studio
