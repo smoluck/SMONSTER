@@ -17,7 +17,7 @@
 
 import lx, os, re
 
-SMO_KitsList = ['SMONSTER', 'SMO_AI_TOOLS', 'SMO_BAKE', 'SMO_BATCH', 'SMO_CAD_TOOLS', 'SMO_CLEANUP', 'SMO_COLOR_BAR', 'SMO_GAME_CONTENT', 'SMO_MASTER', 'SMO_MARMOSET_LIVELINK', 'SMO_MATH_TOOLS', 'SMO_MESHOPS', 'SMO_MIFABOMA', 'SMO_PCLOUD_XYZ', 'SMO_PIXAFLUX_LIVELINK', 'SMO_QUICK_TAG', 'SMO_RIZOMUV_LIVELINK', 'SMO_UV', 'SMO_VENOM']
+SMO_KitsList = ['SMONSTER', 'SMO_AI_TOOLS', 'SMO_BAKE', 'SMO_BATCH', 'SMO_CAD_TOOLS', 'SMO_CLEANUP', 'SMO_COLOR_BAR', 'SMO_GAME_CONTENT', 'SMO_MASTER', 'SMO_MARMOSET_LIVELINK', 'SMO_MATH_TOOLS', 'SMO_MESHOPS', 'SMO_MIFABOMA', 'SMO_PCLOUD_XYZ', 'SMO_PIXAFLUX_LIVELINK', 'SMO_QUICK_TAG', 'SMO_RIZOMUV_LIVELINK', 'SMO_UV', 'SMO_VENOM', 'SMO_TRAINING']
 
 SMONSTER_Status = lx.eval("kit.toggleEnable " + SMO_KitsList[0] + " ?")
 SMO_AI_TOOLS_Status = lx.eval("kit.toggleEnable " + SMO_KitsList[1] + " ?")
@@ -38,6 +38,7 @@ SMO_QUICK_TAG_Status = lx.eval("kit.toggleEnable " + SMO_KitsList[15] + " ?")
 SMO_RIZOMUV_LIVELINK_Status = lx.eval("kit.toggleEnable " + SMO_KitsList[16] + " ?")
 SMO_UV_Status = lx.eval("kit.toggleEnable " + SMO_KitsList[17] + " ?")
 SMO_VENOM_Status = lx.eval("kit.toggleEnable " + SMO_KitsList[18] + " ?")
+SMO_TRAINING_Status = lx.eval("kit.toggleEnable " + SMO_KitsList[19] + " ?")
 
 lx.out("-------- SMO Kits List: LOADED --------")
 lx.out("V-VV-VVV-----------------------VVV-VV-V")
@@ -217,6 +218,18 @@ if SMO_VENOM_Status == True :
     SMO_VENOM_version_installed = m.group(1)
     lx.out("SMO VENOM - version: %s" % SMO_VENOM_version_installed)
     index_file_data_SMO_VENOM.close()
+    
+    
+if SMO_TRAINING_Status == True :
+    kit_folder_SMO_TRAINING = lx.eval("query platformservice alias ? {kit_SMO_TRAINING:}")
+    index_file_SMO_TRAINING = os.path.join(kit_folder_SMO_TRAINING, "index.cfg")
+    with open(index_file_SMO_TRAINING, 'r') as index_file_data_SMO_TRAINING:
+        xml_as_string = index_file_data_SMO_TRAINING.read().replace('\n', '')
+    r = r'<[ ]*configuration[^>]*version[ =]*[\"\']([^\"\']*)[\"\']'
+    m = re.search(r, xml_as_string)
+    SMO_TRAINING_version_installed = m.group(1)
+    lx.out("SMO TRAINING - version: %s" % SMO_TRAINING_version_installed)
+    index_file_data_SMO_TRAINING.close()
 lx.out("A-AA-AAA-----------------------AAA-AA-A")
 
 
@@ -316,6 +329,9 @@ if SMO_UV_Status == False :
     
 if SMO_VENOM_Status == False :
     lx.out("NOT LOADED : SMO VENOM")
+    
+if SMO_TRAINING_Status == False :
+    lx.out("NOT LOADED : SMO TRAINING")
 
 lx.out("A-AA-AAA----------------------AAA-AA-A")
     
