@@ -12,7 +12,7 @@ from utilssmonster import midroot
 from utilssmonster import midconfig
 from utilssmonster import midscripts
 from utilssmonster import midlxserv
-from utilssmonster import m_ID_smodule
+from utilssmonster import midsmodule
 from utilssmonster import midtraining
 
 ###### STANDARD KITS
@@ -39,7 +39,7 @@ from utilssmonster import midkitllmarmo
 from utilssmonster import midkitllpixa
 from utilssmonster import midkitllrizom
 
-from utilssmonster import m_ID_message
+from utilssmonster import midmessage
 
 # Get the root path to this repo
 repo_dir = Path(__file__).parent
@@ -92,7 +92,7 @@ license_file = repo_dir / "LICENSE"
 def root_fi():
     # Get Base files in folders "Config" "scripts" "TRAINING_SCENES" and make sure no pyc files come along
     root_files = []
-    files = [f for f in os.listdir(kit_dir) if f.endswith((".cfg", ".txt", "LICENSE"))]
+    files = [f for f in os.listdir(kit_dir) if f.endswith((".cfg", ".txt", ".url", "LICENSE"))]
     for f in files:
         f = kit_dir / f
         root_files.append(f)
@@ -347,7 +347,7 @@ mkdir(build_dir)
 version = utilssmonster.get_version()
 lpk_standard_path = build_dir / f"SMONSTER_v{version}_StandardEdition.lpk"
 # Message to display to the users
-message = f"You successfully installed SMONSTER (Standard Edition): v{version} &#10;Please refer to the ReadmeFirst_SMONSTER.txt for more information. &#10;Remember to join our dedicated Slack server for support and updates.&#10; &#10;Best regards,&#10;Franck Elisabeth&#10; &#10;"
+message = f"You successfully installed SMONSTER (Standard Edition): v{version} &#10;Please refer to the README.url for more information. &#10;Remember to join our dedicated Slack server for support and updates.&#10; &#10;Best regards,&#10;Franck Elisabeth&#10; &#10;"
 
 # Build the LPK file.
 with ZipFile(lpk_standard_path, mode="w", compression=ZIP_DEFLATED) as lpk:
@@ -372,7 +372,7 @@ with ZipFile(lpk_standard_path, mode="w", compression=ZIP_DEFLATED) as lpk:
     indexlxserv = midlxserv(folder=kit_dir, files=lxserv_fi())
 
     print("----- Copy Root/smodule Folder Data -----")
-    indexsmodule = m_ID_smodule(folder=kit_dir, files=smodule_fi())
+    indexsmodule = midsmodule(folder=kit_dir, files=smodule_fi())
 
     print("----- Copy Root/TRAINING_SCENE Folder Data -----")
     indextraining = midtraining(folder=kit_dir, files=training_fi())
@@ -440,7 +440,7 @@ with ZipFile(lpk_standard_path, mode="w", compression=ZIP_DEFLATED) as lpk:
     indexLLRIZOM = midkitllrizom(folder=kit_dir, files=kit_ll_rizomuv_fi())
 
     ###### MESSAGE
-    indexmessage = m_ID_message(info=message)
+    indexmessage = midmessage(info=message)
 
     index_data_base = (indexheader + indexroot + indexconfig + indexscripts + indexlxserv + indexsmodule + indextraining)
     index_data_kit = (indexkits + indexAI + indexBAKE + indexBATCH + indexCAD + indexCB + indexCLEANUP + indexDOC + indexGC + indexMASTER + indexMATH + indexMESHOPS + indexMIFABOMA + indexPCLOUD + indexQTAG + indexUV + indexVENOM)

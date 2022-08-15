@@ -127,7 +127,7 @@ def midlxserv(folder, files):
         xml_lxserv += f'\n\t\t<source target="{lxserv_full_path}">{lxserv_rel_path}</source>'
     return xml_lxserv
 
-def m_ID_smodule(folder, files):
+def midsmodule(folder, files):
     # For each file add target
     xml_smodule = f''
     for file in files:  # type: Path
@@ -419,7 +419,7 @@ def midkitllrizom(folder, files):
 
 
 
-def m_ID_message(info):
+def midmessage(info):
     xml_message = f'\n\t</kit>\n\t<message button="Help">{info}</message>\n</package>'
     return xml_message
 
@@ -428,3 +428,4 @@ def m_ID_message(info):
 def get_version():
     with repo_dir.joinpath("VERSION").open("r") as version_file:
         return version_file.read().strip()
+
