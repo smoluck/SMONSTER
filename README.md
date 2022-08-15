@@ -55,6 +55,10 @@ Best regards, Franck Elisabeth.
 # DETAILS
 SMONSTER include 15 Standard Kits (including 2 Beta Kits) and 3 Livelink Kits to simplify integration of other software within Modo and improve your workflow.
 
+`SOURCE Edition Kit + TRAINING kit`
+
+- Now SMONSTER consist of the SOURCE Kit + TRAINING Kit as 2 zip archive. SMONSTER TRAINING Kit is now a separate kit. It contain all the training files.
+
 
 # DOCUMENTATION
 - [Online Documentation](https://smonster-doc.readthedocs.io/en/latest)
