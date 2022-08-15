@@ -17,7 +17,7 @@ from utilssmonster import midtraining
 
 ###### STANDARD KITS
 from utilssmonster import midkits
-# from utilssmonster import m_ID_kitAI
+from utilssmonster import midkitai
 from utilssmonster import midkitbake
 from utilssmonster import midkitbatch
 from utilssmonster import midkitcad
@@ -29,7 +29,7 @@ from utilssmonster import midkitmaster
 from utilssmonster import midkitmath
 from utilssmonster import midkitmeshops
 from utilssmonster import midkitmifaboma
-# from utilssmonster import midkitpcloud
+from utilssmonster import midkitpcloud
 from utilssmonster import midkitqtag
 from utilssmonster import midkituv
 from utilssmonster import midkitvenom
@@ -59,7 +59,7 @@ training_dir = kit_dir / "TRAINING_SCENES"
 ###### STANDARD KITS
 kitsfolders_dir = kit_dir / "Kits"
 
-# kit_ai_dir = kitsfolders_dir / "SMO_AI_TOOLS"
+kit_ai_dir = kitsfolders_dir / "SMO_AI_TOOLS"
 kit_bake_dir = kitsfolders_dir / "SMO_BAKE"
 kit_batch_dir = kitsfolders_dir / "SMO_BATCH"
 kit_cad_dir = kitsfolders_dir / "SMO_CAD_TOOLS"
@@ -71,7 +71,7 @@ kit_master_dir = kitsfolders_dir / "SMO_MASTER"
 kit_math_dir = kitsfolders_dir / "SMO_MATH_TOOLS"
 kit_meshops_dir = kitsfolders_dir / "SMO_MESHOPS"
 kit_mifaboma_dir = kitsfolders_dir / "SMO_MIFABOMA"
-# kit_pcloud_dir = kitsfolders_dir / "SMO_PCLOUD_XYZ"
+kit_pcloud_dir = kitsfolders_dir / "SMO_PCLOUD_XYZ"
 kit_qt_dir = kitsfolders_dir / "SMO_QUICK_TAG"
 kit_uv_dir = kitsfolders_dir / "SMO_UV"
 kit_venom_dir = kitsfolders_dir / "SMO_VENOM"
@@ -170,12 +170,12 @@ def kits_fi():
     return kits_files
 # kits_fi()
 
-# # Files contained in "Kits/SMO_BAKE" folder
-# def kitAI_fi():
-#     kitAI_files = [f for f in kit_ai_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
-#     print(kitAI_files)
-#     return kitAI_files
-# # kitAI_fi()
+# Files contained in "Kits/SMO_AI_TOOLS" folder
+def kit_ai_fi():
+    kitAI_files = [f for f in kit_ai_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
+    print(kitAI_files)
+    return kitAI_files
+# kitAI_fi()
 
 # Files contained in "Kits/SMO_BAKE" folder
 def kit_bake_fi():
@@ -254,44 +254,41 @@ def kit_mifaboma_fi():
     return kitMIFABOMA_files
 # kit_mifaboma_fi()
 
-# # Files contained in "Kits/SMO_PCLOUD_XYZ" folder
-# def kitPCLOUD_fi():
-#     kitPCLOUD_files = [f for f in kit_pcloud_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
-#     print(kitPCLOUD_files)
-#     return kitPCLOUD_files
-# # kitPCLOUD_fi()
+# Files contained in "Kits/SMO_PCLOUD_XYZ" folder
+def kit_pcloud_fi():
+    kitPCLOUD_files = [f for f in kit_pcloud_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
+    print(kitPCLOUD_files)
+    return kitPCLOUD_files
+# kit_plcoud_fi()
 
 # Files contained in "Kits/SMO_QUICK_TAG" folder
 def kit_qtag_fi():
-    kitQTAG_files = [f for f in kit_qt_dir.glob("**/*") if
-                     f.is_file() and not f.name.endswith(".pyc")]
+    kitQTAG_files = [f for f in kit_qt_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
     print(kitQTAG_files)
     return kitQTAG_files
 # kit_qtag_fi()
 
 # Files contained in "Kits/SMO_UV" folder
 def kit_uv_fi():
-    kitUV_files = [f for f in kit_uv_dir.glob("**/*") if
-                   f.is_file() and not f.name.endswith(".pyc")]
+    kitUV_files = [f for f in kit_uv_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
     print(kitUV_files)
     return kitUV_files
 # kit_uv_fi()
 
 # Files contained in "Kits/SMO_VENOM" folder
 def kit_venom_fi():
-    kitVENOM_files = [f for f in kit_venom_dir.glob("**/*") if
-                      f.is_file() and not f.name.endswith("_KeymapCommander.pyc") and not f.name.endswith(
-                          "_Startup.pyc")]
+    kitVENOM_files = [f for f in kit_venom_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
     print(kitVENOM_files)
     return kitVENOM_files
 # kit_venom_fi()
+
 
 
 ###### LIVELINK KITS #########################################################
 # Files contained in "Kits/SMO_MARMOSET_LIVELINK" folder
 def kit_ll_marmosettoolbag_fi():
     # Files that doesn't include the source code py files, but only the one that remains to the KeymapCommander and Startup scripts.
-    kitLLMARMO_files = [f for f in kit_marmo_dir.glob("**/*") if f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc", "SMO_LL_MARMOSET_AutoSegmentedExport_Cmd.py", "SMO_LL_MARMOSET_CreateMikkTangentBasisMap_Cmd.py", "SMO_LL_MARMOSET_ExportFBXBakes_Cmd.py", "SMO_LL_MARMOSET_SetExePath_Cmd.py"))]
+    kitLLMARMO_files = [f for f in kit_marmo_dir.glob("**/*") if f.is_file() and not f.name.endswith((".pyc"))]
     print("Files in Marmoset Toolbag LL kit folder:")
     print(kitLLMARMO_files)
     print("--------------")
@@ -301,7 +298,7 @@ def kit_ll_marmosettoolbag_fi():
 # Files contained in "Kits/SMO_PIXAFLUX_LIVELINK" folder
 def kit_ll_pixaflux_fi():
     # Files that doesn't include the source code py files, but only the one that remains to the KeymapCommander and Startup scripts.
-    kitLLPIXA_files = [f for f in kit_pixa_dir.glob("**/*") if f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc", "SMO_LL_PIXAFLUX_CreateTSNMap_Cmd.py", "SMO_LL_PIXAFLUX_DupAndExplodeByDist_Cmd.py", "SMO_LL_PIXAFLUX_ScaleUniformRecenter_Cmd.py", "SMO_LL_PIXAFLUX_SendDataAuto_Cmd.py", "SMO_LL_PIXAFLUX_SetExePath_Cmd.py"))]
+    kitLLPIXA_files = [f for f in kit_pixa_dir.glob("**/*") if f.is_file() and not f.name.endswith((".pyc"))]
     print("Files in Pixaflux LL kit folder:")
     print(kitLLPIXA_files)
     print("--------------")
@@ -311,7 +308,7 @@ def kit_ll_pixaflux_fi():
 # Files contained in "Kits/SMO_RIZOMUV_LIVELINK" folder
 def kit_ll_rizomuv_fi():
     # Files that doesn't include the source code py files, but only the one that remains to the KeymapCommander and Startup scripts.
-    kitLLRIZOM_files = [f for f in kit_rizom_dir.glob("**/*") if f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc", "SMO_LL_RIZOMUV_Basic_Cmd.py", "SMO_LL_RIZOMUV_SendDataAuto_Cmd.py", "SMO_LL_RIZOMUV_SetExePath_Cmd.py"))]
+    kitLLRIZOM_files = [f for f in kit_rizom_dir.glob("**/*") if f.is_file() and not f.name.endswith((".pyc"))]
     print("Files in RizomUV LL kit folder:")
     print("Files in RizomUV LL kit folder:")
     print(kitLLRIZOM_files)
@@ -320,11 +317,13 @@ def kit_ll_rizomuv_fi():
 # kit_ll_rizomuv_fi()
 
 
+
 # del config_files[:]
 # del scripts_files[:]
 # del scene_files[:]
 # del smodule_files[:]
 # del lxserv_files[:]
+
 
 
 # Clear the build directory
@@ -371,8 +370,8 @@ with ZipFile(lpk_source_path, mode="w", compression=ZIP_DEFLATED) as lpk:
     print("----- Copy Root/Kits Files Data -----")
     indexkits = midkits(folder=kit_dir, files=kits_fi())
 
-    # print("----- Copy Root/Kits/SMO_AI_TOOLS Folder Data -----")
-    # indexAI = m_ID_kitAI(folder=target_kit, files=kitAI_fi())
+    print("----- Copy Root/Kits/SMO_AI_TOOLS Folder Data -----")
+    indexAI = midkitai(folder=kit_dir, files=kit_ai_fi())
 
     print("----- Copy Root/Kits/SMO_BAKE Folder Data -----")
     indexBAKE = midkitbake(folder=kit_dir, files=kit_bake_fi())
@@ -407,8 +406,8 @@ with ZipFile(lpk_source_path, mode="w", compression=ZIP_DEFLATED) as lpk:
     print("----- Copy Root/Kits/SMO_MIFABOMA Folder Data -----")
     indexMIFABOMA = midkitmifaboma(folder=kit_dir, files=kit_mifaboma_fi())
 
-    # print("----- Copy Root/Kits/SMO_PCLOUD_XYZ Folder Data -----")
-    # indexPCLOUD = midkitpcloud(folder=kit_dir, files=kitPCLOUD_fi())
+    print("----- Copy Root/Kits/SMO_PCLOUD_XYZ Folder Data -----")
+    indexPCLOUD = midkitpcloud(folder=kit_dir, files=kit_pcloud_fi())
 
     print("----- Copy Root/Kits/SMO_QUICK_TAG Folder Data -----")
     indexQTAG = midkitqtag(folder=kit_dir, files=kit_qtag_fi())
@@ -433,7 +432,7 @@ with ZipFile(lpk_source_path, mode="w", compression=ZIP_DEFLATED) as lpk:
     indexmessage = m_ID_message(info=message)
 
     index_data_base = (indexheader + indexroot + indexconfig + indexscripts + indexlxserv + indexsmodule + indextraining)
-    index_data_kit = (indexkits + indexBAKE + indexBATCH + indexCAD + indexCB + indexCLEANUP + indexDOC + indexGC + indexMASTER + indexMATH + indexMESHOPS + indexMIFABOMA + indexQTAG + indexUV + indexVENOM)
+    index_data_kit = (indexkits + indexAI + indexBAKE + indexBATCH + indexCAD + indexCB + indexCLEANUP + indexDOC + indexGC + indexMASTER + indexMATH + indexMESHOPS + indexMIFABOMA + indexPCLOUD + indexQTAG + indexUV + indexVENOM)
     index_data_LLkit = (indexLLPIXA + indexLLMARMO + indexLLRIZOM)
 
     index_data = (index_data_base + index_data_kit + index_data_LLkit + indexmessage)
@@ -499,10 +498,10 @@ with ZipFile(lpk_source_path, mode="w", compression=ZIP_DEFLATED) as lpk:
         print(file.relative_to(kit_dir))
         lpk.write(file, file.relative_to(kit_dir))
 
-    # print("----- SMO_AI_TOOLS Folder files -----")
-    # for file in kitAI_fi():
-    #     print(file.relative_to(kit_dir))
-    #     lpk.write(file, file.relative_to(kit_dir))
+    print("----- SMO_AI_TOOLS Folder files -----")
+    for file in kit_ai_fi():
+        print(file.relative_to(kit_dir))
+        lpk.write(file, file.relative_to(kit_dir))
 
     print("----- SMO_BAKE Folder files -----")
     for file in kit_bake_fi():
@@ -556,6 +555,11 @@ with ZipFile(lpk_source_path, mode="w", compression=ZIP_DEFLATED) as lpk:
 
     print("----- SMO_MIFABOMA Folder files -----")
     for file in kit_mifaboma_fi():
+        print(file.relative_to(kit_dir))
+        lpk.write(file, file.relative_to(kit_dir))
+
+    print("----- SMO_PCLOUD Folder files -----")
+    for file in kit_pcloud_fi():
         print(file.relative_to(kit_dir))
         lpk.write(file, file.relative_to(kit_dir))
 

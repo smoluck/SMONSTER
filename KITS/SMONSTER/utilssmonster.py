@@ -15,7 +15,7 @@ training_dir = target_kit / "TRAINING_SCENES"
 ###### STANDARD KITS
 kitsfolders_dir = target_kit / "Kits"
 
-# kit_ai_dir = kitsfolders_dir / "SMO_AI_TOOLS"
+kit_ai_dir = kitsfolders_dir / "SMO_AI_TOOLS"
 kit_bake_dir = kitsfolders_dir / "SMO_BAKE"
 kit_batch_dir = kitsfolders_dir / "SMO_BATCH"
 kit_cad_dir = kitsfolders_dir / "SMO_CAD_TOOLS"
@@ -27,7 +27,7 @@ kit_master_dir = kitsfolders_dir / "SMO_MASTER"
 kit_math_dir = kitsfolders_dir / "SMO_MATH_TOOLS"
 kit_meshops_dir = kitsfolders_dir / "SMO_MESHOPS"
 kit_mifaboma_dir = kitsfolders_dir / "SMO_MIFABOMA"
-# kit_pcloud_dir = kitsfolders_dir / "SMO_PCLOUD_XYZ"
+kit_pcloud_dir = kitsfolders_dir / "SMO_PCLOUD_XYZ"
 kit_qt_dir = kitsfolders_dir / "SMO_QUICK_TAG"
 kit_uv_dir = kitsfolders_dir / "SMO_UV"
 kit_venom_dir = kitsfolders_dir / "SMO_VENOM"
@@ -166,18 +166,18 @@ def midkits(folder, files):
     # Return Text
     return xml_kits
 
-# def m_ID_kitAI(folder, files):
-#     # For each file add target
-#     xml_kitAI = f''
-#     for file in files:  # type: Path
-#         # Path including the kit directory
-#         kitAI_full_path = file.relative_to(folder.parent)
-#         # Path without kit directory
-#         kitAI_rel_path = file.relative_to(folder)
-#         xml_kitAI += f'\n\t\t<source target="{kitAI_full_path}">{kitAI_rel_path}</source>'
-#     # print (xml_kitAI)
-#     # Return Text
-#     return xml_kitAI
+def midkitai(folder, files):
+    # For each file add target
+    xml_kitAI = f''
+    for file in files:  # type: Path
+        # Path including the kit directory
+        kitAI_full_path = file.relative_to(folder.parent)
+        # Path without kit directory
+        kitAI_rel_path = file.relative_to(folder)
+        xml_kitAI += f'\n\t\t<source target="{kitAI_full_path}">{kitAI_rel_path}</source>'
+    # print (xml_kitAI)
+    # Return Text
+    return xml_kitAI
 
 def midkitbake(folder, files):
     # For each file add target
@@ -322,18 +322,18 @@ def midkitmifaboma(folder, files):
     # Return Text
     return xml_kitMIFABOMA
 
-# def midkitpcloud(folder, files):
-#     # For each file add target
-#     xml_kitPCLOUD = f''
-#     for file in files:  # type: Path
-#         # Path including the kit directory
-#         kitPCLOUD_full_path = file.relative_to(folder.parent)
-#         # Path without kit directory
-#         kitPCLOUD_rel_path = file.relative_to(folder)
-#         xml_kitPCLOUD += f'\n\t\t<source target="{kitPCLOUD_full_path}">{kitPCLOUD_rel_path}</source>'
-#     # print (xml_kitPCLOUD)
-#     # Return Text
-#     return xml_kitPCLOUD
+def midkitpcloud(folder, files):
+    # For each file add target
+    xml_kitPCLOUD = f''
+    for file in files:  # type: Path
+        # Path including the kit directory
+        kitPCLOUD_full_path = file.relative_to(folder.parent)
+        # Path without kit directory
+        kitPCLOUD_rel_path = file.relative_to(folder)
+        xml_kitPCLOUD += f'\n\t\t<source target="{kitPCLOUD_full_path}">{kitPCLOUD_rel_path}</source>'
+    # print (xml_kitPCLOUD)
+    # Return Text
+    return xml_kitPCLOUD
 
 def midkitqtag(folder, files):
     # For each file add target
@@ -373,6 +373,7 @@ def midkitvenom(folder, files):
     # print (xml_kitVENOM)
     # Return Text
     return xml_kitVENOM
+
 
 
 ###### LIVELINK KITS #########################################################
@@ -415,8 +416,6 @@ def midkitllrizom(folder, files):
     # print (xml_kitLL_RIZOMUV)
     # Return Text
     return xml_kitLL_RIZOMUV
-
-
 
 
 
