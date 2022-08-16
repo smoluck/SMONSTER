@@ -103,6 +103,10 @@ class SMO_GC_ReplaceTargetByInstance_Cmd(lxu.command.BasicCommand):
                 lx.eval("select.type item")
                 lx.eval('smo.GC.DeselectAll')
 
+            lx.eval('select.item {%s} set' % sourceMesh)
+            lx.eval("smo.CB.ItemColor 3 0")
+            lx.eval('smo.GC.DeselectAll')
+
             for r in range(SelectedItemsCount):
                 lx.eval('select.item {%s} set' % selMeshes[meshnum])
                 m = lx.eval('query sceneservice selection ? mesh')
@@ -151,6 +155,9 @@ class SMO_GC_ReplaceTargetByInstance_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.drop item')
 
                 meshnum += 1
+
+            del selMeshes
+            del TargetMeshes
         
     
 lx.bless(SMO_GC_ReplaceTargetByInstance_Cmd, Cmd_Name)
