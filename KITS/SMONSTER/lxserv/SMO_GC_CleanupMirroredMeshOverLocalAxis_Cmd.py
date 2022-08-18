@@ -1,12 +1,12 @@
 # python
 # ---------------------------------------
-# Name:         SMO_GC_CleanupMirroredMeshOverWorldAxis_Cmd.py
+# Name:         SMO_GC_CleanupMirroredMeshOverLocalAxis_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to
-#               Cleanup selected Mesh along a given axis(x, y, z) in order to remove
-#               Mirrored Opposite Side Argument boolean(Positive or Negative).
-#               Then recreate instances out of that mesh along that axis.
+#               Cleanup selected Mesh along a given axis Local (x, y, z)
+#               in order to remove Mirrored Opposite Side Argument boolean
+#               (Positive or Negative). Then recreate instances out of that mesh along that axis.
 #
 # Author:       Franck ELISABETH
 # Website:      http://www.smoluck.com
@@ -17,10 +17,10 @@
 
 import lx, lxu, modo
 
-Cmd_Name = "smo.GC.CleanupMirroredMeshOverWorldAxis"
-# smo.GC.CleanupMirroredMeshOverWorldAxis z true
+Cmd_Name = "smo.GC.CleanupMirroredMeshOverLocalAxis"
+# smo.GC.CleanupMirroredMeshOverLocalAxis z true
 
-class SMO_GC_CleanupMirroredMeshOverWorldAxis_Cmd(lxu.command.BasicCommand):
+class SMO_GC_CleanupMirroredMeshOverLocalAxis_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Axis", lx.symbol.sTYPE_AXIS)
@@ -37,19 +37,19 @@ class SMO_GC_CleanupMirroredMeshOverWorldAxis_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC - CleanupMirroredMeshOverWorldAxis'
+        return 'SMO GC - CleanupMirroredMeshOverLocalAxis'
 
     def cmd_Desc(self):
-        return 'Cleanup selected Mesh along a given axis(x, y, z) in order to remove Mirrored Opposite Side Argument boolean(Positive or Negative). Then recreate instances out of that mesh along that axis.'
+        return 'Cleanup selected Mesh along a given axis Local (x, y, z) in order to remove Mirrored Opposite Side Argument boolean (Positive or Negative). Then recreate instances out of that mesh along that axis.'
 
     def cmd_Tooltip(self):
-        return 'Cleanup selected Mesh along a given axis(x, y, z) in order to remove Mirrored Opposite Side Argument boolean(Positive or Negative). Then recreate instances out of that mesh along that axis.'
+        return 'Cleanup selected Mesh along a given axis Local (x, y, z) in order to remove Mirrored Opposite Side Argument boolean (Positive or Negative). Then recreate instances out of that mesh along that axis.'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC - CleanupMirroredMeshOverWorldAxis'
+        return 'SMO GC - CleanupMirroredMeshOverLocalAxis'
 
     def basic_Enable(self, msg):
         return True
@@ -96,5 +96,5 @@ class SMO_GC_CleanupMirroredMeshOverWorldAxis_Cmd(lxu.command.BasicCommand):
         lx.eval('smo.GC.ReleaseFromIsolateMode')
 
 
-lx.bless(SMO_GC_CleanupMirroredMeshOverWorldAxis_Cmd, Cmd_Name)
+lx.bless(SMO_GC_CleanupMirroredMeshOverLocalAxis_Cmd, Cmd_Name)
 
