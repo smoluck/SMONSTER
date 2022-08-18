@@ -17,7 +17,7 @@
 import lx, lxu, modo
 
 Cmd_Name = "smo.GC.SelectChanByArg"
-# smo.GC.DeleteChanByArg FBX_UDP3DSMAX
+# smo.GC.SelectChanByArg FBX_UDP3DSMAX
 
 class SMO_GC_SelectChanByArg_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -72,3 +72,4 @@ class SMO_GC_SelectChanByArg_Cmd(lxu.command.BasicCommand):
     
     
 lx.bless(SMO_GC_SelectChanByArg_Cmd, Cmd_Name)
+

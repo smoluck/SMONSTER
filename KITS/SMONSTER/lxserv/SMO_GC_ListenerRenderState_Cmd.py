@@ -1,4 +1,4 @@
-+# python
+# python
 import lx, lxifc, lxu, modo
 
 class RenderListener(lxifc.RenderProgressListener):

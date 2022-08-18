@@ -101,7 +101,7 @@ class SMO_MIFABOMA_Slice_Local_Cmd(lxu.command.BasicCommand):
         SPLIT_MODE = self.dyna_Bool (2)                 # Off = 0 ### On = 1
         # Expose the Result of the Arguments 
         #lx.out(SLICE_AXES)
-        lx.out(AXES,GAP_MODE,SPLIT_MODE)
+        lx.out(AXES, GAP_MODE, SPLIT_MODE)
         ################################
         #<----[ DEFINE ARGUMENTS ]---->#
         ################################
