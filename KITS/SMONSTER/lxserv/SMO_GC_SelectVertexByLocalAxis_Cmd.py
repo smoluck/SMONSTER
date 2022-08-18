@@ -28,13 +28,29 @@ class SMO_GC_SelectVertexByLocalAxis_Cmd(lxu.command.BasicCommand):
         self.SelModeEdge = bool(lx.eval1("select.typeFrom typelist:edge;vertex;polygon;item;ptag ?"))
         self.SelModePoly = bool(lx.eval1("select.typeFrom typelist:polygon;vertex;edge;item;ptag ?"))
         self.SelModeItem = bool(lx.eval1("select.typeFrom typelist:item;pivot;center;edge;polygon;vertex;ptag ?"))
+        self.CompMode = int()
+        if self.SelModeVert:
+            self.CompMode = 1
+        if self.SelModeEdge:
+            self.CompMode = 2
+        if self.SelModePoly:
+            self.CompMode = 3
+        if self.SelModeItem:
+            self.CompMode = 4
         # print(self.SelModeVert)
         # print(self.SelModeEdge)
         # print(self.SelModePoly)
         # print(self.SelModeItem)
-        if self.SelModeEdge or self.SelModePoly or self.SelModeItem:
+        lx.eval('select.type vertex')
+        lx.eval('select.drop vertex')
+        if self.CompMode == 1:
             lx.eval('select.type vertex')
-            lx.eval('select.drop vertex')
+        if self.CompMode == 2:
+            lx.eval('select.type edge')
+        if self.CompMode == 3:
+            lx.eval('select.type polygon')
+        if self.CompMode == 4:
+            lx.eval('select.type item')
 
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
@@ -63,6 +79,9 @@ class SMO_GC_SelectVertexByLocalAxis_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
         Axis = self.dyna_String(0)
         PositiveDir = self.dyna_Bool(1)
+        CurrentCompMode = self.CompMode
+
+        lx.eval('select.type vertex')
 
         layer_id = lx.eval("query layerservice layer.index ? current")
         print('current item:', layer_id)
@@ -100,14 +119,16 @@ class SMO_GC_SelectVertexByLocalAxis_Cmd(lxu.command.BasicCommand):
                         mylist.append(i)
         # print(mylist)
         for i in range(len(mylist)):
-            lx.eval("select.element %s vertex add %s" % (layer_id, i))
+            lx.eval("select.element %s vertex add %s" % (layer_id, mylist[i]))
             # Print result
             # lx.out(i, " ", vertPOS)
 
-        if self.SelModePoly:
-            lx.eval('select.convert polygon')
-        if self.SelModeEdge:
+        if CurrentCompMode == 2:
             lx.eval('select.convert edge')
+        if CurrentCompMode == 3:
+            lx.eval('select.convert polygon')
+
+        del mylist
 
 
 lx.bless(SMO_GC_SelectVertexByLocalAxis_Cmd, Cmd_Name)
