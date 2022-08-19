@@ -1,10 +1,10 @@
 # python
 # ---------------------------------------
-# Name:         SMO_GC_CleanupMirroredMeshDataOverWorldAxis_Cmd.py
+# Name:         SMO_MIFABOMA_CleanupMirroredPairOfMeshesOverWorldAxis_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to
-#               Cleanup selected Mirrored Mesh in order to align it over world axis
+#               Cleanup selected Pairs of Meshes in order to align them over world axis
 #               and recreate instances out of that mesh.
 #               it use X Y Z axis as argument and Positive or Negative Direction
 #               to define what is the Side part that we preserve.
@@ -18,10 +18,10 @@
 
 import lx, lxu, modo
 
-Cmd_Name = "smo.GC.CleanupMirroredMeshDataOverWorldAxis"
-# smo.GC.CleanupMirroredMeshDataOverWorldAxis z true
+Cmd_Name = "smo.MIFABOMA.CleanupMirroredPairOfMeshesOverWorldAxis"
+# smo.MIFABOMA.CleanupMirroredPairOfMeshesOverWorldAxis z true
 
-class SMO_GC_CleanupMirroredMeshDataOverWorldAxis_Cmd(lxu.command.BasicCommand):
+class SMO_MIFABOMA_CleanupMirroredPairOfMeshesOverWorldAxis_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Axis", lx.symbol.sTYPE_AXIS)
@@ -38,7 +38,7 @@ class SMO_GC_CleanupMirroredMeshDataOverWorldAxis_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC - CleanupMirroredMeshDataOverWorldAxis'
+        return 'SMO MIFABOMA - CleanupMirroredPairOfMeshesOverWorldAxis'
 
     def cmd_Desc(self):
         return 'Cleanup selected Mirrored Mesh in order to align it over world axis and recreate instances out of that mesh. It use X Y Z axis as argument and Positive or Negative Direction to define what is the Side part that we preserve.'
@@ -50,7 +50,7 @@ class SMO_GC_CleanupMirroredMeshDataOverWorldAxis_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC - CleanupMirroredMeshDataOverWorldAxis'
+        return 'SMO MIFABOMA - CleanupMirroredPairOfMeshesOverWorldAxis'
 
     def basic_Enable(self, msg):
         return True
@@ -110,5 +110,5 @@ class SMO_GC_CleanupMirroredMeshDataOverWorldAxis_Cmd(lxu.command.BasicCommand):
         lx.eval('select.subItem %s set mesh 0 0' % Mesh_B.name)
 
 
-lx.bless(SMO_GC_CleanupMirroredMeshDataOverWorldAxis_Cmd, Cmd_Name)
+lx.bless(SMO_MIFABOMA_CleanupMirroredPairOfMeshesOverWorldAxis_Cmd, Cmd_Name)
 

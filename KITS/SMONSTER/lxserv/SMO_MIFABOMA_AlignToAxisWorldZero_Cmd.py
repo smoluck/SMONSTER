@@ -1,6 +1,6 @@
 # python
 # ---------------------------------------
-# Name:         SMO_GC_AlignToAxisWorldZero_Cmd.py
+# Name:         SMO_MIFABOMA_AlignToAxisWorldZero_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to
@@ -16,11 +16,11 @@
 
 import lx, lxu, modo
 
-Cmd_Name = "smo.GC.AlignToAxisWorldZero"
-# smo.GC.AlignToAxisWorldZero z
+Cmd_Name = "smo.MIFABOMA.AlignToAxisWorldZero"
+# smo.MIFABOMA.AlignToAxisWorldZero z
 
 
-class SMO_GC_AlignToAxisWorldZero_Cmd(lxu.command.BasicCommand):
+class SMO_MIFABOMA_AlignToAxisWorldZero_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Axis", lx.symbol.sTYPE_AXIS)
@@ -40,7 +40,7 @@ class SMO_GC_AlignToAxisWorldZero_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC - AlignToAxisWorldZero'
+        return 'SMO MIFABOMA - AlignToAxisWorldZero'
 
     def cmd_Desc(self):
         return 'Align a given Mesh item to World Axis. It use X Y Z axis as argument for the direction.'
@@ -52,7 +52,7 @@ class SMO_GC_AlignToAxisWorldZero_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC - AlignToAxisWorldZero'
+        return 'SMO MIFABOMA - AlignToAxisWorldZero'
 
     def basic_Enable(self, msg):
         return True
@@ -61,9 +61,6 @@ class SMO_GC_AlignToAxisWorldZero_Cmd(lxu.command.BasicCommand):
         Axis = self.dyna_String(0)
 
         scene = modo.Scene()
-
-        CleanupAxis = "y"
-        AlignAxis = "z"
         PositiveDir = True
 
         DeleteDir = bool()
@@ -72,8 +69,7 @@ class SMO_GC_AlignToAxisWorldZero_Cmd(lxu.command.BasicCommand):
         if not PositiveDir:
             DeleteDir = True
 
-
-        TargetMeshes = scene.selected
+        Target_Meshes = scene.selected
         mi = modo.Item()  # selected item,
         name = mi.UniqueName()
         # print('Mesh Name is:', name)
@@ -92,27 +88,46 @@ class SMO_GC_AlignToAxisWorldZero_Cmd(lxu.command.BasicCommand):
         if len(p_name) != 0:
             lx.eval('!item.parent parent:{} inPlace:1')
 
-        m = lx.eval('query sceneservice selection ? mesh')
-        TargetXfrm = lx.eval1("query sceneservice item.xfrmPos ? " + m)
-        # print(TargetXfrm)
+        lx.eval('smo.GC.DeselectAll')
+        lx.eval('item.create locator applyDefaultPreset:true')
+        lo_item = modo.Item().Ident()
+
+        # lx.eval('item.refSystem %s' % lo_item)
+        scene.select(ident, "add")
+        lx.eval('item.parent inPlace:1')
+        scene.select(lo_item)
+        lx.eval('transform.reset translation')
+        lx.eval('item.parent parent:{} inPlace:1')
+        scene.select(ident)
+        scene.select(lo_item, "add")
+        lx.eval('item.parent inPlace:1')
+        scene.select(lo_item)
+        locator = lx.eval('query sceneservice selection ? locator')
+        LocXfrm = lx.eval1("query sceneservice item.xfrmPos ? " + locator)
 
         if Axis == "x":
-            lx.eval('select.channel {%s:pos.X} set' % TargetXfrm)
+            lx.eval('select.channel {%s:pos.X} set' % LocXfrm)
             lx.eval('transform.channel pos.X 0.0')
         if Axis == "y":
-            lx.eval('select.channel {%s:pos.Y} set' % TargetXfrm)
+            lx.eval('select.channel {%s:pos.Y} set' % LocXfrm)
             lx.eval('transform.channel pos.Y 0.0')
         if Axis == "z":
-            lx.eval('select.channel {%s:pos.Z} set' % TargetXfrm)
+            lx.eval('select.channel {%s:pos.Z} set' % LocXfrm)
             lx.eval('transform.channel pos.Z 0.0')
         lx.eval('select.drop channel')
+
+        scene.select(ident)
+        lx.eval('item.parent parent:{} inPlace:1')
+        scene.select(lo_item)
+        lx.eval('!delete')
+        scene.select(ident)
 
         if len(p_name) != 0:
             lx.eval('select.subItem %s add mesh 0 0' % p_ident)
             lx.eval('item.parent inPlace:1')
         lx.eval('smo.GC.DeselectAll')
-        scene.select(TargetMeshes)
+        scene.select(Target_Meshes)
 
 
-lx.bless(SMO_GC_AlignToAxisWorldZero_Cmd, Cmd_Name)
+lx.bless(SMO_MIFABOMA_AlignToAxisWorldZero_Cmd, Cmd_Name)
 

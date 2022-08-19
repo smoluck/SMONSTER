@@ -1,6 +1,6 @@
 # python
 # ---------------------------------------
-# Name:         SMO_GC_AlignToAxisParentZero_Cmd.py
+# Name:         SMO_MIFABOMA_AlignToAxisParentZero_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to
@@ -16,11 +16,11 @@
 
 import lx, lxu, modo
 
-Cmd_Name = "smo.GC.AlignToAxisParentZero"
-# smo.GC.AlignToAxisParentZero z
+Cmd_Name = "smo.MIFABOMA.AlignToAxisParentZero"
+# smo.MIFABOMA.AlignToAxisParentZero z
 
 
-class SMO_GC_AlignToAxisParentZero_Cmd(lxu.command.BasicCommand):
+class SMO_MIFABOMA_AlignToAxisParentZero_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Axis", lx.symbol.sTYPE_AXIS)
@@ -40,7 +40,7 @@ class SMO_GC_AlignToAxisParentZero_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC - AlignToAxisParentZero'
+        return 'SMO MIFABOMA - AlignToAxisParentZero'
 
     def cmd_Desc(self):
         return 'Align a given Mesh item to Parent Axis. It use X Y Z axis as argument for the direction.'
@@ -52,7 +52,7 @@ class SMO_GC_AlignToAxisParentZero_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC - AlignToAxisParentZero'
+        return 'SMO MIFABOMA - AlignToAxisParentZero'
 
     def basic_Enable(self, msg):
         return True
@@ -81,8 +81,8 @@ class SMO_GC_AlignToAxisParentZero_Cmd(lxu.command.BasicCommand):
         if len(p_name) != 0:
             scene.select(p.Ident())
 
-        m = lx.eval('query sceneservice selection ? mesh')
-        TargetXfrm = lx.eval1("query sceneservice item.xfrmPos ? " + m)
+        mRef = lx.eval('query sceneservice selection ? mesh')
+        TargetXfrm = lx.eval1("query sceneservice item.xfrmPos ? " + mRef)
         # print(TargetXfrm)
 
         if Axis == "x":
@@ -105,5 +105,5 @@ class SMO_GC_AlignToAxisParentZero_Cmd(lxu.command.BasicCommand):
         del p_name
 
 
-lx.bless(SMO_GC_AlignToAxisParentZero_Cmd, Cmd_Name)
+lx.bless(SMO_MIFABOMA_AlignToAxisParentZero_Cmd, Cmd_Name)
 

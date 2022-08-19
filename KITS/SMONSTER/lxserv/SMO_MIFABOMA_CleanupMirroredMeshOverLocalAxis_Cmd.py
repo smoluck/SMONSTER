@@ -1,6 +1,6 @@
 # python
 # ---------------------------------------
-# Name:         SMO_GC_CleanupMirroredMeshOverLocalAxis_Cmd.py
+# Name:         SMO_MIFABOMA_CleanupMirroredMeshOverLocalAxis_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to
@@ -17,10 +17,10 @@
 
 import lx, lxu, modo
 
-Cmd_Name = "smo.GC.CleanupMirroredMeshOverLocalAxis"
-# smo.GC.CleanupMirroredMeshOverLocalAxis z true
+Cmd_Name = "smo.MIFABOMA.CleanupMirroredMeshOverLocalAxis"
+# smo.MIFABOMA.CleanupMirroredMeshOverLocalAxis z true
 
-class SMO_GC_CleanupMirroredMeshOverLocalAxis_Cmd(lxu.command.BasicCommand):
+class SMO_MIFABOMA_CleanupMirroredMeshOverLocalAxis_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Axis", lx.symbol.sTYPE_AXIS)
@@ -37,7 +37,7 @@ class SMO_GC_CleanupMirroredMeshOverLocalAxis_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC - CleanupMirroredMeshOverLocalAxis'
+        return 'SMO MIFABOMA - CleanupMirroredMeshOverLocalAxis'
 
     def cmd_Desc(self):
         return 'Cleanup selected Mesh along a given axis Local (x, y, z) in order to remove Mirrored Opposite Side Argument boolean (Positive or Negative). Then recreate instances out of that mesh along that axis.'
@@ -49,7 +49,7 @@ class SMO_GC_CleanupMirroredMeshOverLocalAxis_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC - CleanupMirroredMeshOverLocalAxis'
+        return 'SMO MIFABOMA - CleanupMirroredMeshOverLocalAxis'
 
     def basic_Enable(self, msg):
         return True
@@ -60,7 +60,9 @@ class SMO_GC_CleanupMirroredMeshOverLocalAxis_Cmd(lxu.command.BasicCommand):
 
         scene = modo.scene.current()
         mesh = modo.Mesh()
-
+        RefSystemActive = bool()
+        CurrentRefSystemItem = lx.eval('item.refSystem ?')
+        print(CurrentRefSystemItem)
 
         DeleteDir = bool()
         if PositiveDir:
@@ -76,7 +78,12 @@ class SMO_GC_CleanupMirroredMeshOverLocalAxis_Cmd(lxu.command.BasicCommand):
         lx.out('selitems', selitems)
 
         sel_items = list(scene.selectedByType("mesh"))
-        lx.eval('smo.GC.IsolateItemAndInstances')
+
+        # lx.eval('smo.GC.IsolateItemAndInstances')
+        if not RefSystemActive:
+            lx.eval('item.refSystem %s' % (mesh.Ident()))
+
+
         lx.eval('smo.GC.SelectVertexByLocalAxis %s %s' % (CleanupAxis, DeleteDir))
         if lx.eval("query layerservice vert.N ? selected") > 0:
             lx.eval('delete')
@@ -93,8 +100,10 @@ class SMO_GC_CleanupMirroredMeshOverLocalAxis_Cmd(lxu.command.BasicCommand):
         lx.eval('select.subItem %s set mesh 0 0' % Mesh_Target.name)
         lx.eval('select.itemInstances')
         lx.eval('select.subItem %s add mesh 0 0' % Mesh_Target.name)
-        lx.eval('smo.GC.ReleaseFromIsolateMode')
+
+        # lx.eval('smo.GC.ReleaseFromIsolateMode')
+        lx.eval('item.refSystem {}')
 
 
-lx.bless(SMO_GC_CleanupMirroredMeshOverLocalAxis_Cmd, Cmd_Name)
+lx.bless(SMO_MIFABOMA_CleanupMirroredMeshOverLocalAxis_Cmd, Cmd_Name)
 
