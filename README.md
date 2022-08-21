@@ -1,3 +1,5 @@
+![](Smonster_Logo2.png)
+
 # SMONSTER
 Hi everyone.
 
@@ -6,13 +8,13 @@ Today i'm releasing the SMONSTER Kit to public for both Freelance or Studios.
 - If you want to contribute to the development you can.
 - Give financial support, i'd appreciated that.
 
-***I must precise that i will still add things to it in a near future, so please don't consider it as an abandon-ware. I've spent too many time building it to let it go.***
+***I must precise that i will still add things to it in a near future, so please don't consider it as an abandon-ware. I've spent too many times building it to let it go.***
 
 
 # DETAILS
 SMONSTER include 15 Standard Kits (including 2 Beta Kits) and 3 Livelink Kits to simplify integration of other software within Modo and improve your workflow.
 
-`SOURCE Edition Kit` + `TRAINING kit'
+`SOURCE Edition Kit` + `TRAINING kit`
 
 - Now SMONSTER consist of the [SOURCE](https://smoluck.gumroad.com/l/Smonster-v3) Kit + [TRAINING](https://smoluck.gumroad.com/l/SMONSTER_TRAINING) Kit as 2 zip archive. SMONSTER TRAINING Kit is now a separate kit. It contain all the training files.
 
@@ -20,7 +22,8 @@ SMONSTER include 15 Standard Kits (including 2 Beta Kits) and 3 Livelink Kits to
 It's been about 5 years now that i've started to learn Python Scripting over my spare time. It was a though work for a simple 3D Artist, but i won't regret anything i've discovered during that time. It was a great journey, along those years and i will continue to explore that as a Technical Artist.
 I've wrapped up about ~250 commands for Modo along many other scripts and UI development.
 [MODO](https://www.foundry.com/products/modo) is a hub for me since 2006 and i've got plenty of pleasure using it along other tools.
-Some have been so important to my pipeline that i've integrated some Livelink kits for them, like [RizomUV](https://www.rizom-lab.com/), [Marmoset Toolbag](https://marmoset.co/toolbag/) or [Pixaflux](http://pixaflux.com/). 
+Some have been so important to my pipeline that i've integrated some Livelink kits for them, like [RizomUV](https://www.rizom-lab.com/), [Marmoset Toolbag](https://marmoset.co/toolbag/) or [Pixaflux](http://pixaflux.com/).
+2 Beta kits are dedicated to Adobe Illustrator and Point Cloud workflow. 
 
 To use it at your profit, you can install it in two ways:
 - from [GitHub](https://github.com/smoluck/SMONSTER/blob/main/README.md#building-the-kit-from-github)
@@ -28,7 +31,7 @@ To use it at your profit, you can install it in two ways:
 
 Enjoy the tools and please give some feedback on Foundry Forum thread or preferably via our [Slack](https://join.slack.com/t/smonster/shared_invite/zt-1dkpid10n-QK4gn4UAk6iG5wv7ISEdnQ) or via [Discord](https://discord.gg/fqgWnbC).
 
-Thanks to the wonderfull Modo community and the [PixelFondue](https://www.pixelfondue.com/contributors) Contributor Team that have gave me a lot of support on this achievement.
+Thanks to the wonderful Modo community and the [PixelFondue](https://www.pixelfondue.com/contributors) Contributor Team that have gave me a lot of support on this achievement.
 
 Best regards, Franck Elisabeth.
 
