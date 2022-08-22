@@ -4,7 +4,7 @@
 # Version:      1.0
 #
 # Purpose:      This script is designed to
-#               unmerge selected mesh in 2 Meshes by Local Axis Side (positive or negative).
+#               Unmerge selected mesh in 2 Meshes by Local Axis Side (positive or negative).
 #
 # Author:       Franck ELISABETH
 # Website:      http://www.smoluck.com
@@ -38,10 +38,10 @@ class SMO_GC_SplitInTwoMeshesByLocalAxisSides_Cmd(lxu.command.BasicCommand):
         return 'SMO GC - SplitInTwoMeshesByLocalAxisSides'
 
     def cmd_Desc(self):
-        return 'unmerge selected mesh in 2 Meshes by Local Axis Side (positive or negative).'
+        return 'Unmerge selected mesh in 2 Meshes by Local Axis Side (positive or negative).'
 
     def cmd_Tooltip(self):
-        return 'unmerge selected mesh in 2 Meshes by Local Axis Side (positive or negative).'
+        return 'Unmerge selected mesh in 2 Meshes by Local Axis Side (positive or negative).'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'

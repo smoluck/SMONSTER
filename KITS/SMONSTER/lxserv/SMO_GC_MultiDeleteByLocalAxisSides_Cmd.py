@@ -23,7 +23,7 @@ class SMO_GC_MultiDeleteByLocalAxisSides_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Axis", lx.symbol.sTYPE_AXIS)
-        self.dyna_Add("Direction", lx.symbol.sTYPE_BOOLEAN)
+        self.dyna_Add("Positive Direction", lx.symbol.sTYPE_BOOLEAN)
 
         scenedata = modo.scene.current()
         CheckGrpSelItems = lxu.select.ItemSelection().current()
