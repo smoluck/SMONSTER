@@ -4,8 +4,8 @@
 # Version:      1.0
 #
 # Purpose:      This script is designed to
-#               select vertex based on their local position.
-#               it use X Y Z axis as argument for Direction.
+#               Align a given Mesh item to World Axis.
+#               It use X Y Z axis as argument for the direction.
 #
 # Author:       Franck ELISABETH
 # Website:      http://www.smoluck.com
@@ -76,17 +76,26 @@ class SMO_MIFABOMA_AlignToAxisWorldZero_Cmd(lxu.command.BasicCommand):
         ident = mi.Ident()
         # print('Mesh ID is:', ident)
         p_name = []
+        HaveParent = bool()
         try:
             p = mi.Parent()
             p_name = p.UniqueName()
             p_ident = p.Ident()
             # print('Parent Name of %s  is : %s' % (name, p_name))
             # print(p_name)
+            HaveParent = True
         except:
+            HaveParent = False
             pass
 
-        if len(p_name) != 0:
+        if HaveParent:
             lx.eval('!item.parent parent:{} inPlace:1')
+        if not HaveParent:
+            lx.eval('item.create locator applyDefaultPreset:true')
+            world_item = modo.Item().Ident()
+            scene.select(ident)
+            scene.select(world_item, "add")
+            lx.eval('item.parent inPlace:1')
 
         lx.eval('smo.GC.DeselectAll')
         lx.eval('item.create locator applyDefaultPreset:true')
@@ -120,13 +129,19 @@ class SMO_MIFABOMA_AlignToAxisWorldZero_Cmd(lxu.command.BasicCommand):
         lx.eval('item.parent parent:{} inPlace:1')
         scene.select(lo_item)
         lx.eval('!delete')
+        if not HaveParent:
+            scene.select(world_item)
+            lx.eval('!delete')
         scene.select(ident)
 
-        if len(p_name) != 0:
+        if HaveParent:
             lx.eval('select.subItem %s add mesh 0 0' % p_ident)
             lx.eval('item.parent inPlace:1')
         lx.eval('smo.GC.DeselectAll')
         scene.select(Target_Meshes)
+
+        del HaveParent
+        del PositiveDir
 
 
 lx.bless(SMO_MIFABOMA_AlignToAxisWorldZero_Cmd, Cmd_Name)

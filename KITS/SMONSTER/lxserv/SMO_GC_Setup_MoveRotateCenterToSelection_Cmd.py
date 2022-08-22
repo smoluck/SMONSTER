@@ -4,8 +4,7 @@
 # Version:      1.0
 #
 # Purpose:      This script is designed to:
-#               Select an Opened Mesh Move and Rotate
-#               the Center to Open boundary centroid and rotate it (use it in item mode)
+#               Move and / or Rotate the Center to Selection center (use it in item mode or Component mode).
 #
 # Author:       Franck ELISABETH
 # Website:      http://www.smoluck.com
@@ -23,8 +22,8 @@ Cmd_Name = "smo.GC.Setup.MoveRotateCenterToSelection"
 class SMO_GC_Setup_MoveRotateCenterToSelection_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
-        self.dyna_Add("Move Center:", lx.symbol.sTYPE_INTEGER)
-        self.dyna_Add("Rotate Center:", lx.symbol.sTYPE_INTEGER)
+        self.dyna_Add("Move Center to Selection Center:", lx.symbol.sTYPE_BOOLEAN)
+        self.dyna_Add("Rotate Center to Selection Center:", lx.symbol.sTYPE_BOOLEAN)
 
         self.SelModeVert = bool(lx.eval1("select.typeFrom typelist:vertex;edge;polygon;item ?"))
         self.SelModeEdge = bool(lx.eval1("select.typeFrom typelist:edge;vertex;polygon;item ?"))
@@ -38,19 +37,19 @@ class SMO_GC_Setup_MoveRotateCenterToSelection_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC - Setup - Move And Rotate Center Using Open Boundary'
+        return 'SMO GC - Setup - Move And Rotate Center'
 
     def cmd_Desc(self):
-        return 'Select an Opened Mesh Move and Rotate the Center to Open boundary centroid and rotate it (use it in item mode)'
+        return 'Move and / or Rotate the Center to Selection center (use it in item mode or Component mode).'
 
     def cmd_Tooltip(self):
-        return 'Select an Opened Mesh Move and Rotate the Center to Open boundary centroid and rotate it (use it in item mode)'
+        return 'Move and / or Rotate the Center to Selection center (use it in item mode or Component mode).'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC - Setup - Move And Rotate Center Using Open Boundary'
+        return 'SMO GC - Setup - Move And Rotate Center'
 
     def basic_Enable(self, msg):
         return True
@@ -68,8 +67,8 @@ class SMO_GC_Setup_MoveRotateCenterToSelection_Cmd(lxu.command.BasicCommand):
             lx.eval('select.all')
         mesh = scene.selectedByType('mesh')[0]
 
-        MoveCenter = self.dyna_Int (0)
-        RotateCenter = self.dyna_Int (1)
+        MoveCenter = self.dyna_Bool(0)
+        RotateCenter = self.dyna_Bool(1)
 
 
         # BugFix to preserve the state of the RefSystem (item at origin in viewport)
@@ -85,16 +84,16 @@ class SMO_GC_Setup_MoveRotateCenterToSelection_Cmd(lxu.command.BasicCommand):
 
 
 
-        if RefSystemActive == True:
+        if RefSystemActive:
             lx.eval('item.refSystem {}')
 
 
-        if MoveCenter == 1:
-            if self.SelModeVert == True:
+        if MoveCenter:
+            if self.SelModeVert:
                 lx.eval('smo.MASTER.SelectModeDetector')
                 CountVert = lx.eval1('user.value SMO_SelectModeDetector_CountVertSelected ?')
                 # print(CountVert)
-            if self.SelModeVert == True and CountVert >= 2:
+            if self.SelModeVert and CountVert >= 2:
                 lx.eval('select.convert edge')
             lx.eval('workPlane.fitSelect')
             lx.eval('select.type item')
@@ -104,23 +103,23 @@ class SMO_GC_Setup_MoveRotateCenterToSelection_Cmd(lxu.command.BasicCommand):
 
 
             if not item_mode:
-                if self.SelModePoly == True :
+                if self.SelModePoly:
                     lx.eval('select.type polygon')
-                if self.SelModeEdge == True :
+                if self.SelModeEdge:
                     lx.eval('select.type edge')
-                if self.SelModeVert == True :
+                if self.SelModeVert:
                     lx.eval('select.type vertex')
 
             if item_mode:
-                if self.SelModeItem == True :
+                if self.SelModeItem:
                     lx.eval('select.type item')
 
-        if RotateCenter == 1:
-            if self.SelModeVert == True:
+        if RotateCenter:
+            if self.SelModeVert:
                 lx.eval('smo.MASTER.SelectModeDetector')
                 CountVert = lx.eval1('user.value SMO_SelectModeDetector_CountVertSelected ?')
                 # print(CountVert)
-            if self.SelModeVert == True and CountVert >= 2:
+            if self.SelModeVert and CountVert >= 2:
                 lx.eval('select.convert edge')
             lx.eval('workPlane.fitSelect')
             lx.eval('select.type item')
@@ -129,25 +128,30 @@ class SMO_GC_Setup_MoveRotateCenterToSelection_Cmd(lxu.command.BasicCommand):
             lx.eval('workPlane.reset')
 
             if not item_mode:
-                if self.SelModePoly == True :
+                if self.SelModePoly:
                     lx.eval('select.type polygon')
-                if self.SelModeEdge == True :
+                if self.SelModeEdge:
                     lx.eval('select.type edge')
-                if self.SelModeVert == True :
+                if self.SelModeVert:
                     lx.eval('select.type vertex')
 
             if item_mode:
-                if self.SelModeItem == True :
+                if self.SelModeItem:
                     lx.eval('select.type item')
                     lx.eval('select.type polygon')
                     lx.eval('select.drop polygon')
                     lx.eval('select.type item')
 
 
-        if RefSystemActive == False:
+        if RefSystemActive:
             lx.eval('item.refSystem {}')
-        if RefSystemActive == True:
+        if RefSystemActive:
             lx.eval('item.refSystem %s' % CurrentRefSystemItem)
+
+        del MoveCenter
+        del RotateCenter
+        del CurrentRefSystemItem
+        del item_mode
 
 
 lx.bless(SMO_GC_Setup_MoveRotateCenterToSelection_Cmd, Cmd_Name)

@@ -18,6 +18,7 @@ import lx, lxu, modo
 
 Cmd_Name = "smo.GC.Setup.OffsetCenterPosPreserveInstancesPos"
 
+
 class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -102,9 +103,53 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
 
         ### 1 ######################################################################################
         ################ Calculate the Offset needed ###############################################
+
+        Target_Meshes = scene.selected
+        mi = modo.Item()  # selected item,
+        name = mi.UniqueName()
+        # print('Mesh Name is:', name)
+        ident = mi.Ident()
+        # print('Mesh ID is:', ident)
+        p_name = []
+        HaveParent = bool()
+        HaveInstance = bool()
+        try:
+            p = mi.Parent()
+            p_name = p.UniqueName()
+            p_ident = p.Ident()
+            # print('Parent Name of %s  is : %s' % (name, p_name))
+            # print(p_name)
+            HaveParent = True
+        except:
+            HaveParent = False
+            pass
+
+        try:
+            lx.eval('select.itemInstances')
+            instance_ident = mi.Ident()
+            HaveInstance = True
+            scene.select(ident)
+        except:
+            HaveInstance = False
+
+        if HaveParent:
+            lx.eval('!item.parent parent:{} inPlace:1')
+        if not HaveParent:
+            lx.eval('item.create locator applyDefaultPreset:true')
+            world_item = modo.Item().Ident()
+            scene.select(ident)
+            scene.select(world_item, "add")
+            lx.eval('item.parent inPlace:1')
+            scene.select(ident)
+            if HaveInstance:
+                lx.eval('select.itemInstances')
+                scene.select(world_item, "add")
+                lx.eval('item.parent inPlace:1')
+                scene.select(ident)
+
         TargetList = []
         TotalInstancesList = []
-        HaveInstance = False
+        print(HaveInstance)
 
         if lx.eval('workPlane.state ?') == True:
             lx.eval('workPlane.state false')
@@ -131,7 +176,7 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
         lx.out('Workplane posY:', WorldTargetCenterY)
         lx.out('Workplane posZ:', WorldTargetCenterZ)
         lx.eval('workPlane.edit cenX:%f cenY:%f cenZ:%f rotX:0 rotY:0 rotZ:0' % (
-        WorldTargetCenterX, WorldTargetCenterY, WorldTargetCenterZ))
+            WorldTargetCenterX, WorldTargetCenterY, WorldTargetCenterZ))
 
         # Get the Offset position from the Item Relative Position
         scene.select(selected_Items)
@@ -166,7 +211,7 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
         print([NewPosX, NewPosY, NewPosZ])
 
         lx.eval('workPlane.edit cenX:%f cenY:%f cenZ:%f rotX:0 rotY:0 rotZ:0' % (
-        WorldTargetCenterX, WorldTargetCenterY, WorldTargetCenterZ))
+            WorldTargetCenterX, WorldTargetCenterY, WorldTargetCenterZ))
         ### 1 #####################################################################################
 
         ### 2 #####################################################################################
@@ -205,18 +250,17 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
         Source_PosY = RelativeOffsetY
         Source_PosZ = RelativeOffsetZ
 
-        print (Source_PosX)
-        print (Source_PosY)
-        print (Source_PosZ)
+        print(Source_PosX)
+        print(Source_PosY)
+        print(Source_PosZ)
 
         # Drop channels selected.
         lx.eval('select.drop channel')
 
         lx.eval('select.itemInstances')
 
-        scene = modo.scene.current()
         SelItem = lxu.select.ItemSelection().current()
-        print (SelItem)
+        print(SelItem)
 
         ToProcessList = []
         # for item in TargetIDList:
@@ -277,6 +321,10 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
             lx.eval('transform.channel rot.Y %s' % rad(chanRotY))
             lx.eval('transform.channel rot.Z %s' % rad(chanRotZ))
             scene.select(LocItem)
+            lx.eval('!delete')
+
+        if not HaveParent:
+            scene.select(world_item)
             lx.eval('!delete')
 
         del (ToProcessList[:])
@@ -347,6 +395,13 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
 
         lx.eval('smo.GC.DeselectAll')
         scene.select(selected_Items)
+
+        if HaveParent:
+            lx.eval('select.itemInstances')
+            scene.select(p.Ident(), "add")
+            lx.eval('item.parent inPlace:1')
+            scene.select(selected_Items)
+
         lx.eval('select.type polygon')
 
         ###############COPY/PASTE END Procedure#################
