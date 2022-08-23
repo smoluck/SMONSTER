@@ -4,7 +4,7 @@
 # Version:      1.0
 #
 # Purpose:      This script is designed to
-#               Align a given Mesh item to World Axis.
+#               Align selected Mesh/Instances/Locator/GroupLocator items to World Axis.
 #               It use X Y Z axis as argument for the direction.
 #
 # Author:       Franck ELISABETH
@@ -18,7 +18,6 @@ import lx, lxu, modo
 
 Cmd_Name = "smo.MIFABOMA.MultiAlignToAxisWorldZero"
 # smo.MIFABOMA.MultiAlignToAxisWorldZero z
-
 
 
 class SMO_MIFABOMA_MultiAlignToAxisWorldZero_Cmd(lxu.command.BasicCommand):
@@ -46,10 +45,10 @@ class SMO_MIFABOMA_MultiAlignToAxisWorldZero_Cmd(lxu.command.BasicCommand):
         return 'SMO MIFABOMA - (Multi) AlignToAxisWorldZero'
 
     def cmd_Desc(self):
-        return 'Align a given Mesh item to World Axis. It use X Y Z axis as argument for the direction.'
+        return 'Align selected Mesh/Instances/Locator/GroupLocator items to World Axis. It use X Y Z axis as argument for the direction.'
 
     def cmd_Tooltip(self):
-        return 'Align a given Mesh item to World Axis. It use X Y Z axis as argument for the direction.'
+        return 'Align selected Mesh/Instances/Locator/GroupLocator items to World Axis. It use X Y Z axis as argument for the direction.'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'
@@ -63,19 +62,27 @@ class SMO_MIFABOMA_MultiAlignToAxisWorldZero_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
         Axis = self.dyna_String(0)
         scene = modo.scene.current()
-        items = modo.Scene().selected
 
-        selmeshes_ksfs = scene.selectedByType(lx.symbol.sITYPE_MESH)
+        # current Selection
+        selitems_ksfs = scene.selected
+
+        # selitems_ksfs = scene.selectedByType(lx.symbol.sITYPE_MESH)          # to select only Meshes              "in selection"
+        # selitems_ksfs = scene.selectedByType(lx.symbol.sITYPE_GROUP)         # to select only Groups              ""
+        # selitems_ksfs = scene.selectedByType(lx.symbol.sITYPE_GROUPLOCATOR)  # to select only GroupLocator        ""
+        # selitems_ksfs = scene.selectedByType(lx.symbol.sITYPE_SCENE)         # to select only Scene Item          ""
+        # selitems_ksfs = scene.selectedByType(lx.symbol.sITYPE_TRISURF)       # to select only StaticMeshes        ""
+        # selitems_ksfs = scene.selectedByType(lx.symbol.sITYPE_VIDEOSTILL)    # to select only VideoStillImages    ""
+        # selitems_ksfs = scene.selectedByType(lx.symbol.sITYPE_LOCATOR)       # to select only Locator             ""
         lx.eval('select.drop item')
 
-        for mesh in selmeshes_ksfs:
+        for mesh in selitems_ksfs:
             mesh.select(True)
             lx.eval('smo.MIFABOMA.AlignToAxisWorldZero %s' % Axis)
             lx.eval('select.drop item')
 
-        scene.select(selmeshes_ksfs)
+        scene.select(selitems_ksfs)
 
-        del selmeshes_ksfs
+        del selitems_ksfs
 
 
 lx.bless(SMO_MIFABOMA_MultiAlignToAxisWorldZero_Cmd, Cmd_Name)
