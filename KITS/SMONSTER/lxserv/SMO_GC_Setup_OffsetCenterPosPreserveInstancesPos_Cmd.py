@@ -81,11 +81,11 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
 
         # Look at current Copy / Paste user Preferences:
         User_Pref_CopyDeselect = lx.eval('pref.value application.copyDeSelection ?')
-        lx.out('User Pref: Deselect Elements after Copying', User_Pref_CopyDeselect)
+        # lx.out('User Pref: Deselect Elements after Copying', User_Pref_CopyDeselect)
         User_Pref_PasteSelection = lx.eval('pref.value application.pasteSelection ?')
-        lx.out('User Pref: Select Pasted Elements', User_Pref_PasteSelection)
+        # lx.out('User Pref: Select Pasted Elements', User_Pref_PasteSelection)
         User_Pref_PasteDeselect = lx.eval('pref.value application.pasteDeSelection ?')
-        lx.out('User Pref: Deselect Elements Before Pasting', User_Pref_PasteDeselect)
+        # lx.out('User Pref: Deselect Elements Before Pasting', User_Pref_PasteDeselect)
         # Is Copy Deselect False ?
         if User_Pref_CopyDeselect == 0:
             lx.eval('pref.value application.copyDeSelection true')
@@ -202,7 +202,7 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
         except:
             HaveParent = False
             pass
-        print('Target Mesh have parent: ', HaveParent)
+        # print('Target Original Mesh have parent: ', HaveParent)
 
         instance_ident = []
         TargetList = []
@@ -251,8 +251,8 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
                     print('current instance have parent: ', InstHaveParent)
                 State_InstanceParent.append(InstHaveParent)
 
-            print(Inst_Parent_List)
-            print(State_InstanceParent)
+            # print(Inst_Parent_List)
+            # print(State_InstanceParent)
             ###########################################
             ###########################################
 
@@ -313,20 +313,20 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
             WorldTargetCenterY = lx.eval('workplane.edit 0 ? 0 0 0 0')
             WorldTargetCenterZ = lx.eval('workplane.edit 0 0 ? 0 0 0')
             lx.eval('workPlane.state false')
-            lx.out('Workplane posX:', WorldTargetCenterX)
-            lx.out('Workplane posY:', WorldTargetCenterY)
-            lx.out('Workplane posZ:', WorldTargetCenterZ)
+            # lx.out('Workplane posX:', WorldTargetCenterX)
+            # lx.out('Workplane posY:', WorldTargetCenterY)
+            # lx.out('Workplane posZ:', WorldTargetCenterZ)
             lx.eval('workPlane.edit cenX:%f cenY:%f cenZ:%f rotX:0 rotY:0 rotZ:0' % (WorldTargetCenterX, WorldTargetCenterY, WorldTargetCenterZ))
 
             # Get the Offset position from the Item Relative Position
             scene.select(selected_Items)
-            print(len(selected_Items))
+            # print(len(selected_Items))
             # if (len(selected_Items)) == 1 :
             selected_mesh = scene.selected[0]  # gets the current selected object (throws an error if nothing is selected)
             Tar_WorldPos = selected_mesh.transforms.position.get()
-            lx.out(Tar_WorldPos)
+            # lx.out(Tar_WorldPos)
             Tar_WorldRot = selected_mesh.transforms.rotation.get()
-            lx.out(Tar_WorldRot)
+            # lx.out(Tar_WorldRot)
             lx.eval('item.refSystem %s' % TargetList[0])
 
             lx.eval('select.type polygon')
@@ -335,10 +335,10 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
             RelativeOffsetX = lx.eval('workplane.edit ? 0 0 0 0 0')
             RelativeOffsetY = lx.eval('workplane.edit 0 ? 0 0 0 0')
             RelativeOffsetZ = lx.eval('workplane.edit 0 0 ? 0 0 0')
-            lx.eval('workPlane.state false')
-            lx.out('Center Offset posX:', RelativeOffsetX)
-            lx.out('Center Offset posY:', RelativeOffsetY)
-            lx.out('Center Offset posZ:', RelativeOffsetZ)
+            # lx.eval('workPlane.state false')
+            # lx.out('Center Offset posX:', RelativeOffsetX)
+            # lx.out('Center Offset posY:', RelativeOffsetY)
+            # lx.out('Center Offset posZ:', RelativeOffsetZ)
             # lx.eval('workPlane.edit cenX:%f cenY:%f cenZ:%f rotX:0 rotY:0 rotZ:0' % (RelativeOffsetX, RelativeOffsetY, RelativeOffsetZ))
 
             RelativeOffsetPos = [float(), float(), float()]
@@ -562,9 +562,9 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
             ################################################
             ################################################
             # Parent instances back to their original parent
-            print(InstID_List)
-            print(Inst_Parent_List)
-            print(State_InstanceParent)
+            # print(InstID_List)
+            # print(Inst_Parent_List)
+            # print(State_InstanceParent)
             inst_num = -1
             for i in InstID_List:
                 inst_num = inst_num + 1
