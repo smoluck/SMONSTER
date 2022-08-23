@@ -216,32 +216,45 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
             instance_ident = mi.Ident()
 
 
-            # ###########################################
-            # ###########################################
-            # # Create a list of parent for all instances
-            # InstID_List = []
-            # n = scene.selected
-            # # print(n)
-            # for item in n:
-            #     ID = item.Ident()
-            #     # print(ID)
-            #     InstID_List.append(ID)
-            # # print(InstID_List)
-            #
-            # Inst_Parent_List = []
-            # print('------------------------------------')
-            # for i in InstID_List:
-            #     scene.select(i)
-            #     mi_inst = modo.Item()
-            #     print(mi_inst)
-            #     inst_p = mi_inst.Parent()
-            #     print(inst_p)
-            #     inst_p_ident = inst_p.Ident()
-            #     print(inst_p_ident)
-            #     Inst_Parent_List.append(inst_p_ident)
-            # # print(Inst_Parent_List)
-            # ###########################################
-            # ###########################################
+            ###########################################
+            ###########################################
+            # Create a list of parent for all instances
+            InstID_List = []
+            n = scene.selected
+            # print(n)
+            for item in n:
+                ID = item.Ident()
+                # print(ID)
+                InstID_List.append(ID)
+            # print(InstID_List)
+
+            Inst_Parent_List = []
+            State_InstanceParent = []
+            InstHaveParent = bool()
+            print('------------------------------------')
+            for i in InstID_List:
+                scene.select(i)
+                test_mi_inst = modo.Item()
+                # print(test_mi_inst)
+                try :
+                    test_inst_p = test_mi_inst.Parent()
+                    # print(test_inst_p)
+                    test_inst_p_ident = test_inst_p.Ident()
+                    # print(test_inst_p_ident)
+                    Inst_Parent_List.append(test_inst_p_ident)
+                    InstHaveParent = True
+                    print('current instance have parent: ', InstHaveParent)
+                except:
+                    test_inst_p_ident = "XXXXXXXXXXXXYYYYZZZZ"
+                    Inst_Parent_List.append(test_inst_p_ident)
+                    InstHaveParent = False
+                    print('current instance have parent: ', InstHaveParent)
+                State_InstanceParent.append(InstHaveParent)
+
+            print(Inst_Parent_List)
+            print(State_InstanceParent)
+            ###########################################
+            ###########################################
 
 
             if HaveParent:
@@ -396,8 +409,10 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
             # print(ToProcessList)
 
             lx.eval('smo.GC.DeselectAll')
-            InstHaveParent = bool()
+
+            iteration = -1
             for item in ToProcessList:
+                iteration = iteration + 1
                 scene.select(item)
                 TargetItem = lx.eval1("query sceneservice selection ? locator")
                 # print(TargetItem)
@@ -409,24 +424,9 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
                 # print(chanRotZ)
                 scene.select(item)
 
-                try:
-                    inst_p = mi.Parent()
-                    inst_p_name = inst_p.UniqueName()
-                    inst_p_ident = inst_p.Ident()
-                    # print('Parent Name of %s  is : %s' % (inst_p_name, inst_p_ident))
-                    # print(p_name)
-                    if inst_p_ident is not None:
-                        InstHaveParent = True
-                except:
-                    InstHaveParent = False
-                print('current instance have parent: ', InstHaveParent)
-                if InstHaveParent:
-                    try:
-                        lx.eval('!item.parent parent:{} inPlace:1')
-                    except:
-                        pass
-                if not InstHaveParent:
-                    lx.eval('smo.GC.DeselectAll')
+                if State_InstanceParent[iteration] == True:
+                    lx.eval('!item.parent parent:{} inPlace:1')
+                lx.eval('smo.GC.DeselectAll')
 
                 lx.eval('item.create locator applyDefaultPreset:true')
                 LocItem = lx.eval1("query sceneservice selection ? locator")
@@ -559,23 +559,22 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
                 lx.eval('!delete')
 
 
-            # ################################################
-            # ################################################
-            # # Parent instances back to their original parent
-            # inst_num = -1
-            # for i in InstID_List:
-            #     inst_num = inst_num + 1
-            #     scene.select(i)
-            #     minst = modo.Item()
-            #     inst_p_state = minst.Parent()
-            #     # print(inst_p_state)
-            #     if inst_p_state is not None:
-            #         scene.select(Inst_Parent_List[inst_num], "add")
-            #         lx.eval('!item.parent inPlace:1')
-            #     del minst
-            #     del inst_p_state
-            # ################################################
-            # ################################################
+            ################################################
+            ################################################
+            # Parent instances back to their original parent
+            print(InstID_List)
+            print(Inst_Parent_List)
+            print(State_InstanceParent)
+            inst_num = -1
+            for i in InstID_List:
+                inst_num = inst_num + 1
+                scene.select(i)
+                # Check the state of Parent presence on original instances via "State_InstanceParent"
+                if State_InstanceParent[inst_num]:
+                    scene.select(Inst_Parent_List[inst_num], "add")
+                    lx.eval('!item.parent inPlace:1')
+            ################################################
+            ################################################
 
 
 
@@ -603,8 +602,9 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
         del (ToProcessList[:])
         del ComponentTuple
         del (ComponentList[:])
-        # del InstID_List
-        # del Inst_Parent_List
+        del InstID_List
+        del Inst_Parent_List
+        del State_InstanceParent
 
 
 
