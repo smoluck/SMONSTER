@@ -25,15 +25,15 @@ class SMO_MIFABOMA_MultiAlignToAxisWorldZero_Cmd(lxu.command.BasicCommand):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Axis", lx.symbol.sTYPE_AXIS)
 
-        scenedata = modo.scene.current()
-        CheckGrpSelItems = lxu.select.ItemSelection().current()
-        for item in CheckGrpSelItems:
-            itemType = modo.Item(item).type
-            item = lx.object.Item(item)
-            item_name = item.UniqueName()
-            # print(item_name)
-            if itemType != "mesh":
-                scenedata.deselect(item_name)
+        # scenedata = modo.scene.current()
+        # CheckGrpSelItems = lxu.select.ItemSelection().current()
+        # for item in CheckGrpSelItems:
+        #     itemType = modo.Item(item).type
+        #     item = lx.object.Item(item)
+        #     item_name = item.UniqueName()
+        #     # print(item_name)
+        #     if itemType != "mesh":
+        #         scenedata.deselect(item_name)
 
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
