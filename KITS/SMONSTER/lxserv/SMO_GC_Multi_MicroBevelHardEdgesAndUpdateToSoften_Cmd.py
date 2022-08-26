@@ -1,10 +1,10 @@
 # python
 # ---------------------------------------
-# Name:         SMO_GC_MultiMicroBevelHardEdgesAndUpdateToSoften_Cmd.py
+# Name:         SMO_GC_Multi_MicroBevelHardEdgesAndUpdateToSoften_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This Command is designed to
-#               For a set of Meshes.
+#               (for Multiple Mesh)
 #               Micro Bevel HardEdges (usually after a SimplyToNgon), then Soften all edges.
 #
 #
@@ -17,11 +17,12 @@
 
 import lx, lxu, modo
 
-Cmd_Name = "smo.GC.MultiMicroBevelHardEdgesAndUpdateToSoften"
-# smo.GC.MultiMicroBevelHardEdgesAndUpdateToSoften [1mm]
+Cmd_Name = "smo.GC.Multi.MicroBevelHardEdgesAndUpdateToSoften"
+# smo.GC.Multi.MicroBevelHardEdgesAndUpdateToSoften [1mm]
 # Using Square Brackets around values validate the use of units like "km", "m" , "cm", "mm", "um".
 
-class SMO_GC_MultiMicroBevelHardEdgesAndUpdateToSoften_Cmd(lxu.command.BasicCommand):
+
+class SMO_GC_Multi_MicroBevelHardEdgesAndUpdateToSoften_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Witdh Value", lx.symbol.sTYPE_DISTANCE)
@@ -83,4 +84,4 @@ class SMO_GC_MultiMicroBevelHardEdgesAndUpdateToSoften_Cmd(lxu.command.BasicComm
         scene.select(selmeshessss)
 
 
-lx.bless(SMO_GC_MultiMicroBevelHardEdgesAndUpdateToSoften_Cmd, Cmd_Name)
+lx.bless(SMO_GC_Multi_MicroBevelHardEdgesAndUpdateToSoften_Cmd, Cmd_Name)

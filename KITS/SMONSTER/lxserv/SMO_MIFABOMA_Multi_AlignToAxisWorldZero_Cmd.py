@@ -1,6 +1,6 @@
 # python
 # ---------------------------------------
-# Name:         SMO_MIFABOMA_MultiAlignToAxisWorldZero_Cmd.py
+# Name:         SMO_MIFABOMA_Multi_AlignToAxisWorldZero_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to
@@ -16,11 +16,11 @@
 
 import lx, lxu, modo
 
-Cmd_Name = "smo.MIFABOMA.MultiAlignToAxisWorldZero"
-# smo.MIFABOMA.MultiAlignToAxisWorldZero z
+Cmd_Name = "smo.MIFABOMA.Multi.AlignToAxisWorldZero"
+# smo.MIFABOMA.Multi.AlignToAxisWorldZero z
 
 
-class SMO_MIFABOMA_MultiAlignToAxisWorldZero_Cmd(lxu.command.BasicCommand):
+class SMO_MIFABOMA_Multi_AlignToAxisWorldZero_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Axis", lx.symbol.sTYPE_AXIS)
@@ -85,5 +85,5 @@ class SMO_MIFABOMA_MultiAlignToAxisWorldZero_Cmd(lxu.command.BasicCommand):
         del selitems_ksfs
 
 
-lx.bless(SMO_MIFABOMA_MultiAlignToAxisWorldZero_Cmd, Cmd_Name)
+lx.bless(SMO_MIFABOMA_Multi_AlignToAxisWorldZero_Cmd, Cmd_Name)
 

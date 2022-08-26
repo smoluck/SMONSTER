@@ -1,9 +1,10 @@
 # python
 # ---------------------------------------
-# Name:         SMO_UV_MultiUnwrapPlanar_Cmd.py
+# Name:         SMO_UV_Multi_UnwrapPlanar_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to
+#               (for Multiple Mesh)
 #               Unwrap the current Polygon Selection
 #               on defined Axis.
 #
@@ -16,10 +17,10 @@
 
 import lx, lxu, modo
 
-Cmd_Name = "smo.UV.MultiUnwrapPlanar"
-# smo.UV.MultiUnwrapPlanar 2 0
+Cmd_Name = "smo.UV.Multi.UnwrapPlanar"
+# smo.UV.Multi.UnwrapPlanar 2 0
 
-class SMO_UV_MultiUnwrapPlanar_Cmd(lxu.command.BasicCommand):
+class SMO_UV_Multi_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Unwrap Projection Axis", lx.symbol.sTYPE_INTEGER)
@@ -148,4 +149,4 @@ class SMO_UV_MultiUnwrapPlanar_Cmd(lxu.command.BasicCommand):
         lx.eval('select.type polygon')
 
 
-lx.bless(SMO_UV_MultiUnwrapPlanar_Cmd, Cmd_Name)
+lx.bless(SMO_UV_Multi_UnwrapPlanar_Cmd, Cmd_Name)

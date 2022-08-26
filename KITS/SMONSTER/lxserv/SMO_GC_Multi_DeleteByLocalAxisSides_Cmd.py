@@ -1,9 +1,10 @@
 # python
 # ---------------------------------------
-# Name:         SMO_GC_MultiDeleteByLocalAxisSides_Cmd.py
+# Name:         SMO_GC_Multi_DeleteByLocalAxisSides_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to
+#               (for Multiple Mesh)
 #               Delete vertex by Local Axis Side (positive or negative).
 #
 # Author:       Franck ELISABETH
@@ -15,11 +16,11 @@
 
 import lx, lxu, modo
 
-Cmd_Name = "smo.GC.MultiDeleteByLocalAxisSides"
-# smo.GC.MultiDeleteByLocalAxisSides z true
+Cmd_Name = "smo.GC.Multi.DeleteByLocalAxisSides"
+# smo.GC.Multi.DeleteByLocalAxisSides z true
 
 
-class SMO_GC_MultiDeleteByLocalAxisSides_Cmd(lxu.command.BasicCommand):
+class SMO_GC_Multi_DeleteByLocalAxisSides_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Axis", lx.symbol.sTYPE_AXIS)
@@ -79,4 +80,4 @@ class SMO_GC_MultiDeleteByLocalAxisSides_Cmd(lxu.command.BasicCommand):
         del selmeshes_ksfs
 
 
-lx.bless(SMO_GC_MultiDeleteByLocalAxisSides_Cmd, Cmd_Name)
+lx.bless(SMO_GC_Multi_DeleteByLocalAxisSides_Cmd, Cmd_Name)

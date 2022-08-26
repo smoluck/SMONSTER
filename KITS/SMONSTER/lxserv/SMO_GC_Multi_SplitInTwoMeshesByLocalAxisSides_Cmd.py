@@ -1,10 +1,10 @@
 # python
 # ---------------------------------------
-# Name:         SMO_GC_MultiSplitInTwoMeshesByLocalAxisSides_Cmd.py
+# Name:         SMO_GC_Multi_SplitInTwoMeshesByLocalAxisSides_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to
-#               (for Multiple items function)
+#               (for Multiple items)
 #               unmerge selected mesh in 2 Meshes by Local Axis Side (positive or negative).
 #
 # Author:       Franck ELISABETH
@@ -16,11 +16,11 @@
 
 import lx, lxu, modo
 
-Cmd_Name = "smo.GC.MultiSplitInTwoMeshesByLocalAxisSides"
-# smo.GC.MultiSplitInTwoMeshesByLocalAxisSides z true
+Cmd_Name = "smo.GC.Multi.SplitInTwoMeshesByLocalAxisSides"
+# smo.GC.Multi.SplitInTwoMeshesByLocalAxisSides z true
 
 
-class SMO_GC_MultiSplitInTwoMeshesByLocalAxisSides_Cmd(lxu.command.BasicCommand):
+class SMO_GC_Multi_SplitInTwoMeshesByLocalAxisSides_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Axis", lx.symbol.sTYPE_AXIS)
@@ -79,4 +79,4 @@ class SMO_GC_MultiSplitInTwoMeshesByLocalAxisSides_Cmd(lxu.command.BasicCommand)
         del selmeshes_pttth
 
 
-lx.bless(SMO_GC_MultiSplitInTwoMeshesByLocalAxisSides_Cmd, Cmd_Name)
+lx.bless(SMO_GC_Multi_SplitInTwoMeshesByLocalAxisSides_Cmd, Cmd_Name)

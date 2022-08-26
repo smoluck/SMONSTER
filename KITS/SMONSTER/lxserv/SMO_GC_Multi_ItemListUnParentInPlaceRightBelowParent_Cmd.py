@@ -1,9 +1,10 @@
 # python
 # ---------------------------------------
-# Name:         SMO_GC_MultiItemListUnparentInPlaceRightBelowRootParent_Cmd.py
+# Name:         SMO_GC_Multi_ItemListUnparentInPlaceRightBelowRootParent_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to
+#               (for Multiple items)
 #               By default, when we unparent an item (inPlace), the item move at the end of the ItemList.
 #               This command make sure the unparented item can appear right bellow
 #               the Root Parent of it, in the ItemList.
@@ -17,11 +18,11 @@
 
 import lx, lxu, modo
 
-Cmd_Name = "smo.GC.MultiItemListUnparentInPlaceRightBelowRootParent"
-# smo.GC.MultiItemListUnparentInPlaceRightBelowRootParent
+Cmd_Name = "smo.GC.Multi.ItemListUnparentInPlaceRightBelowRootParent"
+# smo.GC.Multi.ItemListUnparentInPlaceRightBelowRootParent
 
 
-class SMO_GC_MultiItemListUnparentInPlaceRightBelowRootParent_Cmd(lxu.command.BasicCommand):
+class SMO_GC_Multi_ItemListUnparentInPlaceRightBelowRootParent_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
 
@@ -73,5 +74,5 @@ class SMO_GC_MultiItemListUnparentInPlaceRightBelowRootParent_Cmd(lxu.command.Ba
         del selitems_ksfs
 
 
-lx.bless(SMO_GC_MultiItemListUnparentInPlaceRightBelowRootParent_Cmd, Cmd_Name)
+lx.bless(SMO_GC_Multi_ItemListUnparentInPlaceRightBelowRootParent_Cmd, Cmd_Name)
 

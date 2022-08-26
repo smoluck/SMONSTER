@@ -1,6 +1,6 @@
 # python
 # ---------------------------------------------
-# Name:         SMO_GC_Setup_MultiMoveRotateCenterToSelection_Cmd.py
+# Name:         SMO_GC_Setup_Multi_MoveRotateCenterToSelection_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to:
@@ -15,10 +15,10 @@
 
 import lx, lxu, modo
 
-Cmd_Name = "smo.GC.Setup.MultiMoveRotateCenterToSelection"
-# smo.GC.Setup.MultiMoveRotateCenterToSelection 1 0
+Cmd_Name = "smo.GC.Setup.Multi.MoveRotateCenterToSelection"
+# smo.GC.Setup.Multi.MoveRotateCenterToSelection 1 0
 
-class SMO_GC_Setup_MultiMoveRotateCenterToSelection_Cmd(lxu.command.BasicCommand):
+class SMO_GC_Setup_Multi_MoveRotateCenterToSelection_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Move Center to Selection Center:", lx.symbol.sTYPE_BOOLEAN)
@@ -226,4 +226,4 @@ class SMO_GC_Setup_MultiMoveRotateCenterToSelection_Cmd(lxu.command.BasicCommand
         del ComponentTuple
 
 
-lx.bless(SMO_GC_Setup_MultiMoveRotateCenterToSelection_Cmd, Cmd_Name)
+lx.bless(SMO_GC_Setup_Multi_MoveRotateCenterToSelection_Cmd, Cmd_Name)

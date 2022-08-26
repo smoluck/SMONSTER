@@ -4,6 +4,49 @@
 
 
 -------------------------
+v4.00 - 2022/08/26
+SMONSTER:
+        • Support of Multiple Items and Component selection on more commands:
+            • smo.GC.Setup.Multi.MoveRotateCenterToSelection
+            • smo.GC.Setup.Multi.MoveRotateCenterToItemBBOXCenter
+            • smo.GC.Multi.DeleteByLocalAxisSides
+            • smo.GC.Multi.ItemListUnparentInPlaceRightBelowRootParent
+            • smo.GC.Multi.SplitInTwoMeshesByLocalAxisSides
+            • smo.GC.Multi.MicroBevelHardEdgesAndUpdateToSoften
+            • smo.GC.Multi.ModollamaRebuildNGontoTriangle
+            • smo.GC.Multi.SimplifyToNGon
+            • smo.UV.Multi.UnwrapPlanar
+
+UV:
+            • UV Smart Unwrap Planar now support multiple Items and Component Selections for faster processing (smo.UV.Multi.UnwrapPlanar).
+
+
+GC:
+        • Updated Vertical PopOver Menu (Ctrl + Shift + Q) and regular Pie Menu (Ctrl + Q).
+        • Replace by Instance now set the Item Color to pink on both New instances and original mesh to let you see them quickly from the Item List.
+        • New Commands:
+            • smo.GC.ItemListUnparentInPlaceRightBelowRootParent
+                (By default, when we unparent an item (inPlace), the item move at the end of the ItemList.
+                This command make sure the unparented item can appear right bellow the Root Parent of it, in the ItemList.)
+            • Select Component by Local Axis Cmd
+                (Select Component by Local Axis (Positive / Negative))
+            • Cleanup Mirrored Mesh over World Axis Cmd
+                (Cleanup selected Mesh along a given axis Local (x, y, z) in order to remove Mirrored Opposite Side Argument boolean (Positive or Negative).
+                Then recreate instances out of that mesh along that axis.)
+            • Cleanup Mirrored Pair of Meshes over World Axis Cmd
+            • smo.GC.DeleteByLocalAxisSides
+            • smo.GC.SplitInTwoMeshesByLocalAxisSides
+            • smo.GC.ItemListUnparentInPlaceRightBelowRootParent
+
+MIFABOMA:
+        • New Commands:
+                • smo.MIFABOMA.AlignToAxisParentZero
+                • smo.MIFABOMA.AlignToAxisWorldZero
+                • smo.MIFABOMA.CleanupMirroredMeshOverLocalAxis
+                • smo.MIFABOMA.CleanupMirroredPairOfMeshesOverWorldAxis
+
+
+-------------------------
 v3.65 - 2022/08/15
 SMONSTER:
         • SMO GC - Replace by Instance
@@ -67,11 +110,11 @@ GC:
                     (Create a new child Mesh Item (empty) on current selected mesh item.)
 
         • New commands for MicroBevel Workflow:
-              • New Command -->	smo.GC.SimplifyToNGon & smo.GC.MultiSimplifyToNGon
+              • New Command -->	smo.GC.SimplifyToNGon & smo.GC.Multi.SimplifyToNGon
                     (Merge every polygons that have same coplanar polygon direction to simplify a given set of meshes. Via argument you can also update the HardEdges data for a better end result.)
-              • New Command -->	smo.GC.MicroBevelHardEdgesAndUpdateToSoften & smo.GC.MultiMicroBevelHardEdgesAndUpdateToSoften
+              • New Command -->	smo.GC.MicroBevelHardEdgesAndUpdateToSoften & smo.GC.Multi.MicroBevelHardEdgesAndUpdateToSoften
                     (Micro Bevel HardEdges (usually after a SimplyToNgon), then Soften all edges.)
-              • New Command -->	smo.GC.ModollamaRebuildNGontoTriangle & smo.GC.MultiModollamaRebuildNGontoTriangle
+              • New Command -->	smo.GC.ModollamaRebuildNGontoTriangle & smo.GC.Multi.ModollamaRebuildNGontoTriangle
                     (Rebuild all NGons via Modollama Triangulation command to output Triangles.)
 
         • Bugfix on smo.GC.RenderThumbPreset

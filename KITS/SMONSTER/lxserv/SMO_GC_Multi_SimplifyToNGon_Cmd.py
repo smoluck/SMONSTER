@@ -1,11 +1,12 @@
 # python
 # ---------------------------------------
-# Name:         SMO_GC_MultiModollamaRebuildNGontoTriangle_Cmd.py
+# Name:         SMO_GC_Multi_SimplifyToNGon_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This Command is designed to
-#               For a set of Meshes.
-#               Rebuild all NGons via Modollama Triangulation command to output Triangles.
+#               (for Multiple Mesh)
+#               Merge every polygons that have same coplanar polygon direction to simplify a given set of meshes.
+#               Via argument you can also update the HardEdges data for a better end result.
 #
 # Author:       Franck ELISABETH
 # Website:      http://www.smoluck.com
@@ -16,15 +17,13 @@
 
 import lx, lxu, modo
 
-Cmd_Name = "smo.GC.MultiModollamaRebuildNGontoTriangle"
-# smo.GC.MultiModollamaRebuildNGontoTriangle 1
-# Modo Method = False
-# Modollama Method = True
+Cmd_Name = "smo.GC.Multi.SimplifyToNGon"
+# smo.GC.Multi.SimplifyToNGon 1
 
-class SMO_GC_MultiModollamaRebuildNGontoTriangle_Cmd(lxu.command.BasicCommand):
+class SMO_GC_Multi_SimplifyToNGon_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
-        self.dyna_Add("Triangulate Method: Modo or Modollama", lx.symbol.sTYPE_BOOLEAN)
+        self.dyna_Add("Set HardEdge", lx.symbol.sTYPE_BOOLEAN)
         self.basic_SetFlags(0, lx.symbol.fCMDARG_OPTIONAL)  # here the (0) define the argument index.
 
         scenedata = modo.scene.current()
@@ -44,42 +43,37 @@ class SMO_GC_MultiModollamaRebuildNGontoTriangle_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC - (Multi) Rebuild all NGons via Modollama Triangles'
+        return 'SMO GC - (Multi) Simplify to NGon'
 
     def cmd_Desc(self):
-        return 'Rebuild all NGons via Modollama Triangulation command to output Triangles.'
+        return 'Merge every polygons that have same coplanar polygon direction to simplify a given set of meshes. Via argument you can also update the HardEdges data for a better end result.'
 
     def cmd_Tooltip(self):
-        return 'Rebuild all NGons via Modollama Triangulation command to output Triangles.'
+        return 'Merge every polygons that have same coplanar polygon direction to simplify a given set of meshes. Via argument you can also update the HardEdges data for a better end result.'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC - (Multi) Rebuild all NGons via Modollama Triangles'
+        return 'SMO GC - (Multi) Simplify to NGon'
 
     def basic_Enable(self, msg):
         return True
 
     def basic_Execute(self, msg, flags):
-        TriMethod = self.dyna_Bool(0)
-        # Modo = False
-        # Modollama = True
+        SetHardEdge = self.dyna_Bool(0)
         scene = modo.scene.current()
         items = modo.Scene().selected
 
-        selmeshitems = scene.selectedByType(lx.symbol.sITYPE_MESH)
+        selmeshessssa = scene.selectedByType(lx.symbol.sITYPE_MESH)
         lx.eval('select.drop item')
 
-        for mesh in selmeshitems:
+        for mesh in selmeshessssa:
             mesh.select(True)
-            if TriMethod:
-                lx.eval('smo.GC.ModollamaRebuildNGontoTriangle 1')
-            if not TriMethod:
-                lx.eval('smo.GC.ModollamaRebuildNGontoTriangle 0')
+            lx.eval('smo.GC.SimplifyToNGon %s' % SetHardEdge)
             lx.eval('select.drop item')
 
-        scene.select(selmeshitems)
+        scene.select(selmeshessssa)
 
 
-lx.bless(SMO_GC_MultiModollamaRebuildNGontoTriangle_Cmd, Cmd_Name)
+lx.bless(SMO_GC_Multi_SimplifyToNGon_Cmd, Cmd_Name)

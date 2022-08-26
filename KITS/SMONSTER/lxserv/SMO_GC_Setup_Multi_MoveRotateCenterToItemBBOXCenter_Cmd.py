@@ -1,6 +1,6 @@
 # python
 # ---------------------------------------
-# Name:         SMO_GC_Setup_MultiMoveRotateCenterToItemBBOXCenter_Cmd.py
+# Name:         SMO_GC_Setup_Multi_MoveRotateCenterToItemBBOXCenter_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to
@@ -15,11 +15,11 @@
 
 import lx, lxu, modo
 
-Cmd_Name = "smo.GC.Setup.MultiMoveRotateCenterToItemBBOXCenter"
-# smo.GC.Setup.MultiMoveRotateCenterToItemBBOXCenter 1
+Cmd_Name = "smo.GC.Setup.Multi.MoveRotateCenterToItemBBOXCenter"
+# smo.GC.Setup.Multi.MoveRotateCenterToItemBBOXCenter 1
 
 
-class SMO_GC_Setup_MultiMoveRotateCenterToItemBBOXCenter_Cmd(lxu.command.BasicCommand):
+class SMO_GC_Setup_Multi_MoveRotateCenterToItemBBOXCenter_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Move Center:", lx.symbol.sTYPE_BOOLEAN)
@@ -87,4 +87,4 @@ class SMO_GC_Setup_MultiMoveRotateCenterToItemBBOXCenter_Cmd(lxu.command.BasicCo
             # del RotateCenter
 
 
-lx.bless(SMO_GC_Setup_MultiMoveRotateCenterToItemBBOXCenter_Cmd, Cmd_Name)
+lx.bless(SMO_GC_Setup_Multi_MoveRotateCenterToItemBBOXCenter_Cmd, Cmd_Name)

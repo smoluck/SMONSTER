@@ -1,6 +1,6 @@
 #python
 #-----------------------------------------------
-# Name:         SMO_GC_RebuildCurve_Multi_Cmd.py
+# Name:         SMO_GC_Multi_RebuildCurve_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to
@@ -15,9 +15,9 @@
 
 import lx, lxu, modo, sys
 
-Cmd_Name = "smo.GC.RebuildCurveMulti"
+Cmd_Name = "smo.GC.Multi.RebuildCurve"
 
-class SMO_GC_RebuildCurve_Multi_Cmd(lxu.command.BasicCommand):
+class SMO_GC_Multi_RebuildCurve_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("samplingPrecision", lx.symbol.sTYPE_DISTANCE)
@@ -268,4 +268,4 @@ class SMO_GC_RebuildCurve_Multi_Cmd(lxu.command.BasicCommand):
         lx.notimpl()
     
     
-lx.bless(SMO_GC_RebuildCurve_Multi_Cmd, Cmd_Name)
+lx.bless(SMO_GC_Multi_RebuildCurve_Cmd, Cmd_Name)
