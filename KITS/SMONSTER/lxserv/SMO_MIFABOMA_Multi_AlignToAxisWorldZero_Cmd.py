@@ -45,10 +45,10 @@ class SMO_MIFABOMA_Multi_AlignToAxisWorldZero_Cmd(lxu.command.BasicCommand):
         return 'SMO MIFABOMA - (Multi) AlignToAxisWorldZero'
 
     def cmd_Desc(self):
-        return 'Align selected Mesh/Instances/Locator/GroupLocator items to World Axis. It use X Y Z axis as argument for the direction.'
+        return 'MULTI - Align selected Mesh/Instances/Locator/GroupLocator items to World Axis. It use X Y Z axis as argument for the direction.'
 
     def cmd_Tooltip(self):
-        return 'Align selected Mesh/Instances/Locator/GroupLocator items to World Axis. It use X Y Z axis as argument for the direction.'
+        return 'MULTI - Align selected Mesh/Instances/Locator/GroupLocator items to World Axis. It use X Y Z axis as argument for the direction.'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'

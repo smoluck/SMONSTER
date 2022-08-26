@@ -52,10 +52,10 @@ class SMO_GC_Setup_Multi_MoveRotateCenterToSelection_Cmd(lxu.command.BasicComman
         return 'SMO GC - Setup - (Multi) Move And Rotate Center'
 
     def cmd_Desc(self):
-        return 'Move and / or Rotate the Center to Selection center (use it in item mode or Component mode).'
+        return 'MULTI - Move and / or Rotate the Center to Selection center (use it in item mode or Component mode).'
 
     def cmd_Tooltip(self):
-        return 'Move and / or Rotate the Center to Selection center (use it in item mode or Component mode).'
+        return 'MULTI - Move and / or Rotate the Center to Selection center (use it in item mode or Component mode).'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'

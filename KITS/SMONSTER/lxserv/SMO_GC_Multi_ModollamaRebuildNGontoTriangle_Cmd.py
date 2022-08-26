@@ -48,10 +48,10 @@ class SMO_GC_Multi_ModollamaRebuildNGontoTriangle_Cmd(lxu.command.BasicCommand):
         return 'SMO GC - (Multi) Rebuild all NGons via Modollama Triangles'
 
     def cmd_Desc(self):
-        return 'Rebuild all NGons via Modollama Triangulation command to output Triangles.'
+        return 'MULTI - Rebuild all NGons via Modollama Triangulation command to output Triangles.'
 
     def cmd_Tooltip(self):
-        return 'Rebuild all NGons via Modollama Triangulation command to output Triangles.'
+        return 'MULTI - Rebuild all NGons via Modollama Triangulation command to output Triangles.'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'

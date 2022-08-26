@@ -46,10 +46,10 @@ class SMO_GC_Multi_SimplifyToNGon_Cmd(lxu.command.BasicCommand):
         return 'SMO GC - (Multi) Simplify to NGon'
 
     def cmd_Desc(self):
-        return 'Merge every polygons that have same coplanar polygon direction to simplify a given set of meshes. Via argument you can also update the HardEdges data for a better end result.'
+        return 'MULTI - Merge every polygons that have same coplanar polygon direction to simplify a given set of meshes. Via argument you can also update the HardEdges data for a better end result.'
 
     def cmd_Tooltip(self):
-        return 'Merge every polygons that have same coplanar polygon direction to simplify a given set of meshes. Via argument you can also update the HardEdges data for a better end result.'
+        return 'MULTI - Merge every polygons that have same coplanar polygon direction to simplify a given set of meshes. Via argument you can also update the HardEdges data for a better end result.'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'

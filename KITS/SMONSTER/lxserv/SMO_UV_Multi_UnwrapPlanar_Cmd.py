@@ -47,10 +47,10 @@ class SMO_UV_Multi_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
         return 'SMO UV - (Multi) Unwrap Smart MultiMeshes'
 
     def cmd_Desc(self):
-        return 'Unwrap the current Polygon Selection on defined Axis.'
+        return 'MULTI - Unwrap the current Polygon Selection on defined Axis.'
 
     def cmd_Tooltip(self):
-        return 'Unwrap the current Polygon Selection on defined Axis.'
+        return 'MULTI - Unwrap the current Polygon Selection on defined Axis.'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'

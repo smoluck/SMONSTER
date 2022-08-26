@@ -36,10 +36,10 @@ class SMO_GC_Multi_ItemListUnparentInPlaceRightBelowRootParent_Cmd(lxu.command.B
         return 'SMO GC - (Multi) ItemListUnparentInPlaceRightBelowRootParent'
 
     def cmd_Desc(self):
-        return 'By default, when we unparent an item (inPlace), the item move at the end of the ItemList. This command make sure the unparented item can appear right bellow the Root Parent of it, in the ItemList.'
+        return 'MULTI - By default, when we unparent an item (inPlace), the item move at the end of the ItemList. This command make sure the unparented item can appear right bellow the Root Parent of it, in the ItemList.'
 
     def cmd_Tooltip(self):
-        return 'By default, when we unparent an item (inPlace), the item move at the end of the ItemList. This command make sure the unparented item can appear right bellow the Root Parent of it, in the ItemList.'
+        return 'MULTI - By default, when we unparent an item (inPlace), the item move at the end of the ItemList. This command make sure the unparented item can appear right bellow the Root Parent of it, in the ItemList.'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'
