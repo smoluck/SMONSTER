@@ -1,10 +1,10 @@
 #python
 #---------------------------------------
-# Name:         SMO_MIFABOMA_FlipOnAxis_Cmd.py
+# Name:         SMO_MIFABOMA_FLIP_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to
-#               Flip the Mesh or the Polygon selection or the whole item on using the  Item Center.
+#               Flip the Mesh or the Polygon selection using the Local Axis.
 # 
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
@@ -16,10 +16,10 @@
 
 import lx, lxu, modo, sys
 
-Cmd_Name = "smo.MIFABOMA.FlipOnAxis"
-# smo.MIFABOMA.FlipOnAxis 0 1
+Cmd_Name = "smo.MIFABOMA.Flip"
+# smo.MIFABOMA.Flip 0 1
 
-class SMO_MIFABOMA_FlipOnAxis_Cmd(lxu.command.BasicCommand):
+class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Axis", lx.symbol.sTYPE_INTEGER)
@@ -36,19 +36,19 @@ class SMO_MIFABOMA_FlipOnAxis_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO MIFABOMA - Flip Axes'
+        return 'SMO MIFABOMA - Flip'
     
     def cmd_Desc (self):
-        return 'Flip the Mesh or the Polygon selection using the  Item Center.'
+        return 'Flip the Mesh or the Polygon selection using the Local Axis.'
     
     def cmd_Tooltip (self):
-        return 'Flip the Mesh or the Polygon selection using the  Item Center.'
+        return 'Flip the Mesh or the Polygon selection using the Local Axis.'
     
     def cmd_Help (self):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO MIFABOMA - Flip Axes'
+        return 'SMO MIFABOMA - Flip'
     
     def basic_Enable (self, msg):
         return True
@@ -530,4 +530,4 @@ class SMO_MIFABOMA_FlipOnAxis_Cmd(lxu.command.BasicCommand):
         #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
         
 
-lx.bless(SMO_MIFABOMA_FlipOnAxis_Cmd, Cmd_Name)
+lx.bless(SMO_MIFABOMA_Flip_Cmd, Cmd_Name)
