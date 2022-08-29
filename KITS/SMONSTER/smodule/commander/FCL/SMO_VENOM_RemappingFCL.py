@@ -34,6 +34,10 @@ FORMS = [
         "label": "VENOM:   Set on Current Polygons with AutoLoop Mode",
         "recommended": "ctrl-alt-shift-n",
         "cmd": "smo.VENOM.MainCommand 0 1"
+    }, {
+        "label": "VENOM: Transfer VertexNormal Data from BG Mesh (under mouse) on current Component Selection",
+        "recommended": "Alt-n",
+        "cmd": "smo.GC.UnbevelRing"
     }
 
 ]

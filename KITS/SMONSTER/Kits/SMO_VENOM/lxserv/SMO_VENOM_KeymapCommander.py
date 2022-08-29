@@ -83,6 +83,16 @@ SMO_VENOM_HOTKEYS = [
         "command": "smo.VENOM.MainCommand 0 1",
         "name": "VENOM: Set on Current Polygons with AutoLoop Mode",
         "info": "Ctrl Alt Shift N  ---  ComponentMode"
+    },
+
+    {
+        "contexts": [
+            ["view3DOverlay3D", "(stateless)", ".anywhere", ".componentMode", "smo.GC.TransferVNrmFromMouseOverSurface"]
+        ],
+        "key": "alt-n",
+        "command": "smo.GC.TransferVNrmFromMouseOverSurface",
+        "name": "VENOM: Transfer VertexNormal Data from BG Mesh (under mouse) on current Component Selection",
+        "info": "Alt N  ---  ComponentMode"
     }
 
 ]
