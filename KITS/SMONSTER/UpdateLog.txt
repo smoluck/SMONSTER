@@ -9,6 +9,7 @@ SMONSTER:
         • Support of Multiple Items and Component selection on more commands:
             • smo.GC.Setup.Multi.MoveRotateCenterToSelection
             • smo.GC.Setup.Multi.MoveRotateCenterToItemBBOXCenter
+            • smo.GC.Multi.SelectCoPlanarPoly
             • smo.GC.Multi.DeleteByLocalAxisSides
             • smo.GC.Multi.ItemListUnparentInPlaceRightBelowRootParent
             • smo.GC.Multi.SplitInTwoMeshesByLocalAxisSides
@@ -16,6 +17,7 @@ SMONSTER:
             • smo.GC.Multi.ModollamaRebuildNGontoTriangle
             • smo.GC.Multi.SimplifyToNGon
             • smo.UV.Multi.UnwrapPlanar
+            • smo.UV.Multi.UnwrapRectangleOrient
 
 UV:
             • UV Smart Unwrap Planar now support multiple Items and Component Selections for faster processing (smo.UV.Multi.UnwrapPlanar).

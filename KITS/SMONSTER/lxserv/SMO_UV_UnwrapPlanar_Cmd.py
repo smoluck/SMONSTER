@@ -644,47 +644,47 @@ class SMO_UV_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
                 
                 
                 lx.eval('unhide')
-                
-                if RePack == True and UVProjAxe == 0 and RelocateInArea == True :
-                    lx.eval('smo.UV.SelectUVArea -2 0')
-                    lx.eval('hide.unsel')
-                    lx.eval('smo.UV.NormalizePackByArea 0 0 -2 0')
-                    lx.eval('unhide')
+                if RePack:
+                    if UVProjAxe == 0 and RelocateInArea:
+                        lx.eval('smo.UV.SelectUVArea -2 0')
+                        lx.eval('hide.unsel')
+                        lx.eval('smo.UV.NormalizePackByArea 0 0 -2 0')
+                        lx.eval('unhide')
+
+                    if UVProjAxe == 1 and RelocateInArea:
+                        lx.eval('smo.UV.SelectUVArea -1 0')
+                        lx.eval('hide.unsel')
+                        lx.eval('smo.UV.NormalizePackByArea 0 0 -1 0')
+                        lx.eval('unhide')
+
+                    if UVProjAxe == 2 and RelocateInArea:
+                        lx.eval('smo.UV.SelectUVArea -1 1')
+                        lx.eval('hide.unsel')
+                        lx.eval('smo.UV.NormalizePackByArea 0 0 -1 1')
+                        lx.eval('unhide')
+
+                    if UVProjAxe == 3 and RelocateInArea:
+                        lx.eval('smo.UV.SelectUVArea -2 1')
+                        lx.eval('hide.unsel')
+                        lx.eval('smo.UV.NormalizePackByArea 0 0 -2 1')
+                        lx.eval('unhide')
+
+                    if not RelocateInArea:
+                        lx.eval('smo.UV.SelectUVArea 0 0')
+                        lx.eval('hide.unsel')
+                        lx.eval('smo.UV.NormalizePackByArea 0 0 0 0')
+                        lx.eval('unhide')
                     
-                if RePack == True and UVProjAxe == 1 and RelocateInArea == True :
-                    lx.eval('smo.UV.SelectUVArea -1 0')
-                    lx.eval('hide.unsel')
-                    lx.eval('smo.UV.NormalizePackByArea 0 0 -1 0')
-                    lx.eval('unhide')
-                    
-                if RePack == True and UVProjAxe == 2 and RelocateInArea == True :
-                    lx.eval('smo.UV.SelectUVArea -1 1')
-                    lx.eval('hide.unsel')
-                    lx.eval('smo.UV.NormalizePackByArea 0 0 -1 1')
-                    lx.eval('unhide')
-                    
-                if RePack == True and UVProjAxe == 3 and RelocateInArea == True :
-                    lx.eval('smo.UV.SelectUVArea -2 1')
-                    lx.eval('hide.unsel')
-                    lx.eval('smo.UV.NormalizePackByArea 0 0 -2 1')
-                    lx.eval('unhide')
-                    
-                if RePack == True and RelocateInArea == False :
-                    lx.eval('smo.UV.SelectUVArea 0 0')
-                    lx.eval('hide.unsel')
-                    lx.eval('smo.UV.NormalizePackByArea 0 0 0 0')
-                    lx.eval('unhide')
                     
                     
-                    
-                if AutoUpdateUVSeamCutMapState == True and Modo_ver >= 1300 :
+                if AutoUpdateUVSeamCutMapState and Modo_ver >= 1300 :
                     lx.eval('smo.UV.UpdateUVSeamCutMap')
                     lx.eval('view3d.showUVSeam true active')
                 
                 
                 
                 AutoHideState = lx.eval('user.value SMO_UseVal_UV_HideAfterUnwrap ?')
-                if AutoHideState == True :
+                if AutoHideState:
                     lx.eval('select.useSet UV_DONE select')
                     lx.eval('hide.sel')
                 
@@ -695,9 +695,9 @@ class SMO_UV_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.type polygon')
 
 
-            if RefSystemActive == False:
+            if not RefSystemActive:
                 lx.eval('item.refSystem {}')
-            if RefSystemActive == True:
+            if RefSystemActive:
                 lx.eval('item.refSystem %s' % CurrentRefSystemItem)
                 
         

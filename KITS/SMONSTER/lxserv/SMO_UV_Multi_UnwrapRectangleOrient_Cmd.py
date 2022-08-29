@@ -1,6 +1,6 @@
 # python
 # ---------------------------------------
-# Name:         SMO_UV_Multi_UnwrapPlanar_Cmd.py
+# Name:         SMO_UV_Multi_UnwrapRectangleOrient_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to
@@ -11,22 +11,21 @@
 # Author:       Franck ELISABETH
 # Website:      http://www.smoluck.com
 #
-# Created:      28/12/2018
+# Created:      26/08/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
 # ---------------------------------------
 
 import lx, lxu, modo
 
-Cmd_Name = "smo.UV.Multi.UnwrapPlanar"
-# smo.UV.Multi.UnwrapPlanar 2 0
+Cmd_Name = "smo.UV.Multi.UnwrapRectangleOrient"
+# smo.UV.Multi.UnwrapRectangleOrient 0
 
-class SMO_UV_Multi_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
+
+class SMO_UV_Multi_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
-        self.dyna_Add("Unwrap Projection Axis", lx.symbol.sTYPE_INTEGER)
+        self.dyna_Add("Orient Direction", lx.symbol.sTYPE_INTEGER)
         self.basic_SetFlags(0, lx.symbol.fCMDARG_OPTIONAL)  # here the (0) define the argument index.
-        self.dyna_Add("Facing Ratio Mode", lx.symbol.sTYPE_INTEGER)
-        self.basic_SetFlags(1, lx.symbol.fCMDARG_OPTIONAL)
 
         self.SelModeVert = bool(lx.eval1("select.typeFrom typelist:vertex;polygon;edge;item;ptag ?"))
         self.SelModeEdge = bool(lx.eval1("select.typeFrom typelist:edge;vertex;polygon;item ?"))
@@ -44,26 +43,25 @@ class SMO_UV_Multi_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO UV - (Multi) Unwrap Smart MultiMeshes'
+        return 'SMO UV - Unwrap Rectangle and Orient'
 
     def cmd_Desc(self):
-        return 'MULTI - Unwrap the current Polygon Selection on defined Axis.'
+        return 'MULTI - Unwrap the current Polygon Selection using Rectangle method and Orient the UV Island on defined direction (Via Arguments).'
 
     def cmd_Tooltip(self):
-        return 'MULTI - Unwrap the current Polygon Selection on defined Axis.'
+        return 'MULTI - Unwrap the current Polygon Selection using Rectangle method and Orient the UV Island on defined direction (Via Arguments).'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO UV - (Multi) Unwrap Smart MultiMeshes'
+        return 'SMO UV - Unwrap Rectangle and Orient'
 
     def basic_Enable(self, msg):
         return True
 
     def basic_Execute(self, msg, flags):
-        UVProjAxe = self.dyna_Int(0)
-        Similar = self.dyna_Int(1)
+        Int_OrientDir = self.dyna_Int(0)
 
         scene = modo.scene.current()
 
@@ -127,7 +125,7 @@ class SMO_UV_Multi_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
                 selected_mesh.geometry.polygons.select(item)
             ############### PUT YOUR Command HERE to run over each item Polygons
             try:
-                lx.eval('smo.UV.UnwrapPlanar %s %s' % (UVProjAxe, Similar))
+                lx.eval('smo.UV.UnwrapRectangleOrient %s' % Int_OrientDir)
             except:
                 lx.out('Error on {%s}' % (lx.eval('item.name ? xfrmcore')))
             selected_mesh.geometry.polygons.select(item, replace=True)
@@ -136,7 +134,6 @@ class SMO_UV_Multi_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
             lx.eval('select.type item')
             lx.eval('select.drop item')
             # GOOOOOOOOOOOOD
-        index = -1
         lx.eval('smo.GC.DeselectAll')
         scene.select(mesh)
         lx.eval('select.type polygon')
@@ -146,91 +143,61 @@ class SMO_UV_Multi_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
         # Auto Update UV Seam map   Off = 0
         # Auto Update UV Seam map   On = 1
         AutoUpdateUVSeamCutMapState = lx.eval('user.value SMO_UseVal_UV_AutoUpdateUVSeamCutMapState ?')
-        lx.out('Auto Update UV Seam Cut Map state:', AutoUpdateUVSeamCutMapState)
+        lx.out('Auto Update UV Seam Cut Map state:',AutoUpdateUVSeamCutMapState)
 
         # Repack Off = 0
         # Repack On = 1
         RePack = lx.eval('user.value SMO_UseVal_UV_RepackAfterUnwrap ?')
-        lx.out('Auto RePack state:', RePack)
+        lx.out('RePack state:', RePack)
 
         # Multi_Repack Off = 0
         # Multi_Repack On = 1
         Multi_RePack = lx.eval('user.value SMO_UseVal_UV_RepackMultipleMeshAfterUnwrap ?')
         lx.out('Auto RePack Multiple Meshes together state:', Multi_RePack)
 
-        # FixFlip Off = 0
-        # FixFlip On = 1
-        FixFlip = lx.eval('user.value SMO_UseVal_UV_FixFlip ?')
-        lx.out('Auto Fix Flipped UVs state:', FixFlip)
-
         # Relocate in Area = 0
         # Relocate in Area = 1
         RelocateInArea = lx.eval('user.value SMO_UseVal_UV_RelocateInArea ?')
         lx.out('Relocate In Area state:', RelocateInArea)
 
-        AutoExpandSel = lx.eval('user.value SMO_UseVal_UV_AutoExpandSelectionState ?')
-        lx.out('Auto Expand Selection state:', AutoExpandSel)
+        # Fit UVs
+        if RelocateInArea:
+            if not RePack:
+                lx.eval('uv.fit entire gapsByPixel:8.0 udim:1002')
 
-        AutoHideState = lx.eval('user.value SMO_UseVal_UV_HideAfterUnwrap ?')
-        lx.out('Auto Hide state:', AutoHideState)
+            if RePack:
+                lx.eval('uv.fit entire gapsByPixel:8.0 udim:1002')
+                lx.eval('smo.UV.NormalizePackByArea 0 0 1 0')
 
-        # MODO version checks.
-        # Modo 13.0 and up have UV Seam map.
-        # Version below 13.0 haven't
-        Modo_ver = int(lx.eval ('query platformservice appversion ?'))
-        lx.out('Modo Version:', Modo_ver)
-        #####################################################
-        if Multi_RePack:
-            if UVProjAxe == 0 and RelocateInArea:
-                lx.eval('smo.UV.SelectUVArea -2 0')
-                lx.eval('hide.unsel')
-                lx.eval('smo.UV.NormalizePackByArea 0 0 -2 0')
+        if not RelocateInArea:
+            if not RePack:
+                lx.eval('uv.fit entire gapsByPixel:8.0 udim:1001')
+
+            if RePack:
+                lx.eval('uv.fit entire gapsByPixel:8.0 udim:1001')
                 lx.eval('unhide')
-
-            if UVProjAxe == 1 and RelocateInArea:
-                lx.eval('smo.UV.SelectUVArea -1 0')
-                lx.eval('hide.unsel')
-                lx.eval('smo.UV.NormalizePackByArea 0 0 -1 0')
-                lx.eval('unhide')
-
-            if UVProjAxe == 2 and RelocateInArea:
-                lx.eval('smo.UV.SelectUVArea -1 1')
-                lx.eval('hide.unsel')
-                lx.eval('smo.UV.NormalizePackByArea 0 0 -1 1')
-                lx.eval('unhide')
-
-            if UVProjAxe == 3 and RelocateInArea:
-                lx.eval('smo.UV.SelectUVArea -2 1')
-                lx.eval('hide.unsel')
-                lx.eval('smo.UV.NormalizePackByArea 0 0 -2 1')
-                lx.eval('unhide')
-
-            if not RelocateInArea:
                 lx.eval('smo.UV.SelectUVArea 0 0')
                 lx.eval('hide.unsel')
                 lx.eval('smo.UV.NormalizePackByArea 0 0 0 0')
-                lx.eval('unhide')
+        #####################################################
 
-        if AutoUpdateUVSeamCutMapState and Modo_ver >= 1300:
-            lx.eval('smo.UV.UpdateUVSeamCutMap')
-            lx.eval('view3d.showUVSeam true active')
-
-        # select back the Polygons
+        # # select back the Polygons
         lx.eval('smo.GC.DeselectAll')
         scene.select(mesh)
         lx.eval('select.type polygon')
+        for item in (PolysList):
+            # print(item)
+            selected_mesh.geometry.polygons.select(item)
 
-        if AutoHideState:
-            for item in (PolysList):
-                # print(item)
-                selected_mesh.geometry.polygons.select(item)
-            if Similar == 1:
-                lx.eval('smo.GC.Multi.SelectCoPlanarPoly 0 2 0')
-            if Similar == 2:
-                lx.eval('smo.GC.Multi.SelectCoPlanarPoly 1 2 1000')
-            if Similar == 3:
-                lx.eval('smo.GC.Multi.SelectCoPlanarPoly 2 2 1000')
-            lx.eval('hide.sel')
+        if Multi_RePack:
+            lx.eval('smo.UV.NormalizePackByArea 0 0 0 0')
+
+        lx.eval('smo.GC.DeselectAll')
+        scene.select(mesh)
+        lx.eval('select.type polygon')
+        for item in (PolysList):
+            # print(item)
+            selected_mesh.geometry.polygons.select(item)
 
         del index
         del TargetIDList
@@ -239,4 +206,4 @@ class SMO_UV_Multi_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
         lx.eval('select.type polygon')
 
 
-lx.bless(SMO_UV_Multi_UnwrapPlanar_Cmd, Cmd_Name)
+lx.bless(SMO_UV_Multi_UnwrapRectangleOrient_Cmd, Cmd_Name)
