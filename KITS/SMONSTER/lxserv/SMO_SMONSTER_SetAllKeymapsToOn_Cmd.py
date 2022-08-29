@@ -68,7 +68,7 @@ class SMO_SMONSTER_SetAllKeymapsToOn_Cmd(lxu.command.BasicCommand):
         lx.eval('smo.MIFABOMA.MapDefaultHotkeys true')
         lx.eval('smo.QT.MapDefaultHotkeys true')
         lx.eval('smo.UV.MapDefaultHotkeys true true')
-        lx.eval('smo.VENOM.MapDefaultHotkeys true true true true true true true')
+        lx.eval('smo.VENOM.MapDefaultHotkeys true true true true true true true true')
         lx.eval('smo.LL.MARMOSET.MapDefaultHotkeys true')
         lx.eval('smo.LL.PIXAFLUX.MapDefaultHotkeys true')
         lx.eval('smo.LL.RIZOMUV.MapDefaultHotkeys true')
