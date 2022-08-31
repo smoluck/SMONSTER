@@ -17,8 +17,8 @@
 
 import lx, lxu, modo
 
-Cmd_Name = "smo.GC.ExportSelectedMeshesAsMeshPreset"
-# smo.GC.ExportSelectedMeshesAsMeshPreset {C:\TEMP\Target}
+Cmd_Name = "smo.GC.Multi.ExportSelectedMeshesAsMeshPreset"
+# smo.GC.Multi.ExportSelectedMeshesAsMeshPreset {C:\TEMP\Target}
 
 class SMO_GC_ExportSelectedMeshesAsMeshPreset_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -36,10 +36,10 @@ class SMO_GC_ExportSelectedMeshesAsMeshPreset_Cmd(lxu.command.BasicCommand):
         return 'SMO GC - Export Selected Meshes as MeshPreset LXL files'
 
     def cmd_Desc(self):
-        return 'Export Selected Meshes As MeshPreset LXL file into Target Path. (optional: Define Path destination as argument)'
+        return 'MULTI - Export Selected Meshes As MeshPreset LXL file into Target Path. (optional: Define Path destination as argument)'
 
     def cmd_Tooltip(self):
-        return 'Export Selected Meshes As MeshPreset LXL file into Target Path. (optional: Define Path destination as argument)'
+        return 'MULTI - Export Selected Meshes As MeshPreset LXL file into Target Path. (optional: Define Path destination as argument)'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'
@@ -59,19 +59,45 @@ class SMO_GC_ExportSelectedMeshesAsMeshPreset_Cmd(lxu.command.BasicCommand):
             # print('Destination Path is set by Argument')
 
         scene = modo.scene.current()
-        meshes_list = scene.selectedByType(lx.symbol.sITYPE_MESH)
-        # print(meshes_list)
 
-        if self.dyna_IsSet(0):
-            for mesh in meshes_list:
-                mesh.select(True)
-                lx.eval('smo.GC.ExportMeshAsMeshPreset {%s}' % TargetDirPath)
+        mesh = scene.selectedByType('mesh')
+        # print('modo.Mesh :', mesh)
+        # print('modo.Mesh list length:', len(mesh))
 
-        if not self.dyna_IsSet(0):
-            for mesh in meshes_list:
-                mesh.select(True)
-                lx.eval('smo.GC.ExportMeshAsMeshPreset')
+        TargetIDList = []
+        for item in mesh:
+            itemType = modo.Item(item).type
+            item = lx.object.Item(item)
+            # print(item)
+            if itemType == "mesh":
+                ID = item.Ident()
+                # print(ID)
+                TargetIDList.append(ID)
+        # print(TargetIDList)
+
         lx.eval('smo.GC.DeselectAll')
+        lx.eval('select.type item')
+
+        index = -1
+        for m in TargetIDList:
+            index = (index + 1)
+            # print('id :', index)
+            scene.select(m)
+            ############### PUT YOUR Command HERE to run over each item Polygons
+            try:
+                lx.eval('smo.GC.ExportMeshAsMeshPreset %s' % TargetDirPath)
+                # lx.eval('smo.GC.ExportSelectedMeshesAsMeshPreset %s' % TargetDirPath)
+            except:
+                lx.out('Error on {%s}' % (lx.eval('item.name ? xfrmcore')))
+            lx.eval('select.type item')
+            lx.eval('select.drop item')
+            # GOOOOOOOOOOOOD
+        index = -1
+        lx.eval('smo.GC.DeselectAll')
+        scene.select(mesh)
+
+        del index
+        del TargetIDList
 
 
 lx.bless(SMO_GC_ExportSelectedMeshesAsMeshPreset_Cmd, Cmd_Name)
