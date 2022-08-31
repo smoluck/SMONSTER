@@ -44,7 +44,9 @@
 // 		http://opensource.org/licenses/mit-license.php
 // ########################################################################################################
 
-#target illustrator
+
+//@target illustrator
+app.preferences.setBooleanPreference('ShowExternalJSXWarning', false); // Fix drag and drop a .jsx file
 
 // Global variables
 var scriptName = 'SMO Ungroup',
@@ -124,6 +126,7 @@ if (app.Documents.length > 0) {
     copyright.margins = margins / 4;
     var lblCopyright = copyright.add('statictext');
     lblCopyright.text = scriptAuthor;
+	
     if (Doc.groupItems.length > 0) {
       win.show();
     } else { 
@@ -168,7 +171,7 @@ if (app.Documents.length > 0) {
         removeMasks(clearArr);
       }
       win.close();
-     }
+    }
   } catch (e) {
     // showError(e);
   }

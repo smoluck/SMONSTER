@@ -6,7 +6,8 @@
 // The .lxc file is saved with the same file name and inc the same folder as the .ai file  
 // If the .ai file hasn't been saved, the .lxc file is saved in the users home directory  
   
-#target illustrator
+//@target illustrator
+app.preferences.setBooleanPreference('ShowExternalJSXWarning', false); // Fix drag and drop a .jsx file
   
 var scriptName = 'Export current Color Swatch Group to LXC (Modo) file',
 	copyright = ' \u00A9 Smoluck';

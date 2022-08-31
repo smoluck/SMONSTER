@@ -26,9 +26,8 @@
 //	# Copyright:	(c) Franck ELISABETH 2020
 //	#---------------------------------------
 
-
-
-#target illustrator
+//@target illustrator
+app.preferences.setBooleanPreference('ShowExternalJSXWarning', false); // Fix drag and drop a .jsx file
 
 // Default variables for dialog box
 var scriptName = 'SMO Pipeline --> AI to MODO',
@@ -42,7 +41,6 @@ var fileName = 'Mesh',
     fileAI_Ext = '.ai',
     separator = '_',
     outFolder = Folder.desktop;
-
 
 
 // -------------------------

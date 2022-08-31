@@ -1,75 +1,66 @@
-﻿// ExtUngroup.jsx for Adobe Illustrator
-// Description: This script with UI is сan be easily custom ungrouping to all group items, releasing clipping masks in the document.
-// Requirements: Adobe Illustrator CS/CC
-// Author: Sergey Osokin (hi@sergosokin.ru), 2018
-// Based on 'ungroupV1.js' script by Jiwoong Song (netbluew@nate.com), 2009 & modification by John Wundes (wundes.com), 2012
-// ============================================================================
-// Installation:
-// 1. Place script in:
-//  Win (32 bit): C:\Program Files (x86)\Adobe\Adobe Illustrator [vers.]\Presets\en_GB\Scripts\
-//  Win (64 bit): C:\Program Files\Adobe\Adobe Illustrator [vers.] (64 Bit)\Presets\en_GB\Scripts\
-//  Mac OS: <hard drive>/Applications/Adobe Illustrator [vers.]/Presets.localized/en_GB/Scripts
-// 2. Restart Illustrator
-// 3. Choose File > Scripts > ExtUngroup
-// ============================================================================
-// Donate (optional): If you find this script helpful and want to support me 
-// by shouting me a cup of coffee, you can by via PayPal http://www.paypal.me/osokin/usd
-// ============================================================================
-// THIS SOFTWARE IS PROVIDED ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, 
-// INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY 
-// AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL 
-// THE FOUNDATION OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
-// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, 
-// PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; 
-// OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER 
-// IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
-// OF THE POSSIBILITY OF SUCH DAMAGE.
-// ============================================================================
-// Versions:
-//  1.0 Initial version
-//  1.1 Added option to delete / save mask objects. Fixed a performance issue.
-//  1.2 Fixed ungrouping of the selected group inside another.
-// ============================================================================
-// Released under the MIT license.
-// http://opensource.org/licenses/mit-license.php
-// ============================================================================
-// Check other author's scripts: https://github.com/creold
+﻿/*
+  ExtUngroup.jsx for Adobe Illustrator
+  Description: This script with UI is сan be easily custom ungrouping to all group items, releasing clipping masks in the document.
+  Requirements: Adobe Illustrator CS/CC
+  Author: Sergey Osokin (hi@sergosokin.ru), 2018
+  Based on 'ungroupV1.js' script by Jiwoong Song (netbluew@nate.com), 2009 & modification by John Wundes (wundes.com), 2012
 
-#target illustrator
+  Installation: https://github.com/creold/illustrator-scripts#how-to-run-scripts
+
+  Donate (optional):
+  If you find this script helpful, you can buy me a coffee
+  - via DonatePay https://new.donatepay.ru/en/@osokin
+  - via Donatty https://donatty.com/sergosokin
+  - via YooMoney https://yoomoney.ru/to/410011149615582
+  - via QIWI https://qiwi.com/n/OSOKIN
+  - via PayPal (temporarily unavailable) http://www.paypal.me/osokin/usd
+
+  Release notes:
+  1.0 Initial version
+  1.1 Added option to delete / save mask objects. Fixed a performance issue.
+  1.2 Fixed ungrouping of the selected group inside another.
+  1.2.1 Minor improvements
+
+  Released under the MIT license.
+  http://opensource.org/licenses/mit-license.php
+
+  Check other author's scripts: https://github.com/creold
+*/
+
+//@target illustrator
+app.preferences.setBooleanPreference('ShowExternalJSXWarning', false); // Fix drag and drop a .jsx file
 
 // Global variables
-var scriptName = 'ExtUngroup',
-    scriptVersion = '1.2',
-    scriptAuthor = '\u00A9 Sergey Osokin, 2019',
-    scriptDonate = 'Donate via PayPal';
+var SCRIPT_NAME  = 'ExtUngroup',
+    SCRIPT_VERSION = 'v.1.2.1';
 var doc = app.activeDocument;
 
-if (app.documents.length > 0) {
+// If a Document is currently open
+if (app.Documents.length > 0) {
   try {
     var currLayer = doc.activeLayer,
         boardNum = doc.artboards.getActiveArtboardIndex() + 1,
         clearArr = [], // Array of Clipping Masks obj
-        margins = [10, 20, 10, 20];
+        uiMargins = [10, 20, 10, 10];
 
     // Create Main Window
-    var win = new Window('dialog', scriptName + ' ver.' + scriptVersion, undefined);
+    var win = new Window('dialog', SCRIPT_NAME + ' ' + SCRIPT_VERSION, undefined);
     win.orientation = 'column';
     win.alignChildren = ['fill', 'fill'];
 
     // Target radiobutton
     var slctTarget = win.add('panel', undefined, 'Target');
     slctTarget.alignChildren = 'left';
-    slctTarget.margins = margins;
+    slctTarget.margins = uiMargins;
     if (getSelection(doc).length > 0) {
       var currSelRadio = slctTarget.add('radiobutton', undefined, 'Selected objects');
     }
     if (!currLayer.locked && currLayer.visible) {
-      var currLayerRadio = slctTarget.add('radiobutton', undefined, 'Active Layer "' + currLayer.name + '"');
+      var currLayerRadio = slctTarget.add('radiobutton', undefined, 'Active layer "' + currLayer.name + '"');
       currLayerRadio.value = true;
     }
-    var currBoardRadio = slctTarget.add('radiobutton', undefined, 'Artboard No.' + boardNum);
-    var currDocRadio = slctTarget.add('radiobutton', undefined, 'All Document');
+    var currBoardRadio = slctTarget.add('radiobutton', undefined, 'Artboard \u2116 ' + boardNum);
+    var currDocRadio = slctTarget.add('radiobutton', undefined, 'All in document');
     if (getSelection(doc).length > 0) {
       currSelRadio.value = true;
     } else if (typeof (currLayerRadio) == 'undefined') {
@@ -79,7 +70,7 @@ if (app.documents.length > 0) {
     // Action checkbox
     var options = win.add('panel', undefined, 'Options');
     options.alignChildren = 'left';
-    options.margins = margins;
+    options.margins = uiMargins;
     var chkUnroup = options.add('checkbox', undefined, 'Ungroup All');
     chkUnroup.value = true;
     var chkClipping = options.add('checkbox', undefined, 'Release Clipping Masks');
@@ -102,34 +93,14 @@ if (app.documents.length > 0) {
     ok.onClick = okClick;
 
     // Copyright block
-    var copyright = win.add('panel');
-    copyright.orientation = 'column';
-    copyright.alignChild = ['center', 'center'];
-    copyright.alignment = 'fill';
-    copyright.margins = margins / 4;
-    var lblCopyright = copyright.add('statictext');
-    lblCopyright.text = scriptAuthor;
-    var donate = copyright.add('button', undefined, scriptDonate);
+    var copyright = win.add('statictext', undefined, '\u00A9 Sergey Osokin, sergosokin.ru');
+    copyright.justify = 'center';
+    copyright.enabled = false;
 
     if (doc.groupItems.length > 0) {
       win.show();
     } else { 
       alert(scriptName + '\nDocument does not contain any groups.'); 
-    }
-
-    // Buttons click 
-    donate.onClick = function () {
-      var fname, shortcut;
-      fname = '_aiscript_donate.url';
-      shortcut = new File('' + Folder.temp + '/' + fname);
-      shortcut.open('w');
-      shortcut.writeln('[InternetShortcut]');
-      shortcut.writeln('URL=http://www.paypal.me/osokin/usd');
-      shortcut.writeln();
-      shortcut.close();
-      shortcut.execute();
-      $.sleep(4000);
-      return shortcut.remove();
     }
 
     cancel.onClick = function () {
@@ -218,7 +189,8 @@ function ungroup(obj) {
         element.move(obj, ElementPlacement.PLACEBEFORE);
         // Push empty paths in array 
         if ((element.typename === 'PathItem' && !element.filled && !element.stroked) ||
-          (element.typename === 'CompoundPathItem' && !element.pathItems[0].filled && !element.pathItems[0].stroked))
+          (element.typename === 'CompoundPathItem' && !element.pathItems[0].filled && !element.pathItems[0].stroked) ||
+          (element.typename === 'TextFrame' && element.textRange.fillColor == '[NoColor]' && element.textRange.strokeColor == '[NoColor]'))
           clearArr.push(element);
       }
       if (element.typename === 'GroupItem' || element.typename === 'Layer') {

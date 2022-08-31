@@ -44,7 +44,8 @@
 // 		http://opensource.org/licenses/mit-license.php
 // ########################################################################################################
 
-#target illustrator
+//@target illustrator
+app.preferences.setBooleanPreference('ShowExternalJSXWarning', false); // Fix drag and drop a .jsx file
 
 var scriptName = 'Export current Layers to individual AI 8 files',
     copyright = ' \u00A9 Smoluck & Sergey Osokin';
