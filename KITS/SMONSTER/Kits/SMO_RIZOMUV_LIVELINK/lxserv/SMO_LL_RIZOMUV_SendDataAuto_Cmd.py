@@ -480,5 +480,8 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd(lxu.command.BasicCommand):
                         lx.eval('select.vertexMap %s txuv add' % uv_map)
                 lx.eval('select.drop polygon')
 
+            del mesh_items
+            del mesh_uvs
+
 
 lx.bless(SMO_LL_RIZOMUV_SendDataAuto_Cmd, Cmd_Name)
