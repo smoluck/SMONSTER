@@ -4,7 +4,7 @@
 
 
 -------------------------
-v4.00 - 2022/08/26
+v4.00 - 2022/09/03
 SMONSTER:
         • Support of Multiple Items and Component selection on more commands:
             • smo.GC.Setup.Multi.MoveRotateCenterToSelection
@@ -16,16 +16,17 @@ SMONSTER:
             • smo.GC.Multi.MicroBevelHardEdgesAndUpdateToSoften
             • smo.GC.Multi.ModollamaRebuildNGontoTriangle
             • smo.GC.Multi.SimplifyToNGon
+            • smo.GC.Multi.ExportSelectedMeshesAsMeshPreset
             • smo.UV.Multi.UnwrapPlanar
             • smo.UV.Multi.UnwrapRectangleOrient
 
 UV:
             • UV Smart Unwrap Planar now support multiple Items and Component Selections for faster processing (smo.UV.Multi.UnwrapPlanar).
 
-
 GC:
         • Updated Vertical PopOver Menu (Ctrl + Shift + Q) and regular Pie Menu (Ctrl + Q).
         • Replace by Instance now set the Item Color to pink on both New instances and original mesh to let you see them quickly from the Item List.
+        • UI (Minor ordering fix for MeshCleanup Pie Menu)
         • New Commands:
             • smo.GC.ItemListUnparentInPlaceRightBelowRootParent
                 (By default, when we unparent an item (inPlace), the item move at the end of the ItemList.
@@ -46,6 +47,12 @@ MIFABOMA:
                 • smo.MIFABOMA.AlignToAxisWorldZero
                 • smo.MIFABOMA.CleanupMirroredMeshOverLocalAxis
                 • smo.MIFABOMA.CleanupMirroredPairOfMeshesOverWorldAxis
+
+AI:
+        • Updated Java code for AI 2022 Compatibility.
+
+RIZOMUV Livelink:
+        • bugfix to remove Embeded Media in FBX export on Modo 15.1 and up
 
 
 -------------------------
@@ -204,7 +211,6 @@ GC:
         • Layout change in right click Context Menus to add more options and commands.
 
 RIZOMUV Livelink:
-
         • MODO 15.2v2 Support
         • RizomUV 2022.0 Support
         • Bugfix for those who also are using Vertex Normals maps in their workflow. In any case the kit won't update in Modo you could still open the Temp FBX File in order to get back all the data from Materials to VNrm to UV's of course.

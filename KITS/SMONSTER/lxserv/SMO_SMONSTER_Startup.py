@@ -1,19 +1,20 @@
 # python
 
 import lx, modo, os, re, sys
+
 python_majorver = sys.version_info.major
 # print('the Highest version number 2 for 2.7 release / 3 for 3.7 release')
 # print(python_majorver)
 
-if python_majorver == 2 :
+if python_majorver == 2:
     # print("do something for 2.X code")
     from smodule.commander.SMO_Commander import SmoCommanderClass
-elif python_majorver >= 3 :
+elif python_majorver >= 3:
     # print("do something for 3.X code")
     from smodule.commander.SMO_Commander import SmoCommanderClass
 
-
 Cmd_Name = 'smo.SMONSTER.Startup'
+
 
 class SMONSTER_BOOT_Cmd(SmoCommanderClass):
 
@@ -48,7 +49,7 @@ class SMONSTER_BOOT_Cmd(SmoCommanderClass):
             modo.dialogs.alert(
                 "New SMONSTER Version",
                 "IMPORTANT: New version of SMONSTER detected.\n \nIt is Recommended to Reset MODO prefs using:\nSystem --> Reset Preferences"
-                )
+            )
 
         lx.eval("user.value SMO_SMONSTER_version %s" % SMO_SMONSTER_version_installed)
 
