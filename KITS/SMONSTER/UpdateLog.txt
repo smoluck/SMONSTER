@@ -12,8 +12,9 @@ SMONSTER:
             • smo.UV.Multi.SmartUnwrap
 
 UV:
-            • All Unwrap Command snow support Multiple Items and Component Selections.
-            • ( Smart Unwrap Cylindrical / Smart Unwrap / SmartOrient ) now support multiple Items and Component Selections for faster processing.
+        • "Q" key (instead of Shift - Q) show up now the UV Pie Menu when the mouse is over the UVTexture Editor.
+        • All Unwrap Command snow support Multiple Items and Component Selections.
+        • ( Smart Unwrap Cylindrical / Smart Unwrap / SmartOrient ) now support multiple Items and Component Selections for faster processing.
 
 
 -------------------------
