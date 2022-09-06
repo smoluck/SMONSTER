@@ -4,6 +4,19 @@
 
 
 -------------------------
+v4.10 - 2022/09/06
+SMONSTER:
+        • Support of Multiple Items and Component selection on more commands:
+            • smo.UV.Multi.UnwrapCylindrical
+            • smo.UV.Multi.SmartOrient
+            • smo.UV.Multi.SmartUnwrap
+
+UV:
+            • All Unwrap Command snow support Multiple Items and Component Selections.
+            • ( Smart Unwrap Cylindrical / Smart Unwrap / SmartOrient ) now support multiple Items and Component Selections for faster processing.
+
+
+-------------------------
 v4.00 - 2022/09/04
 SMONSTER:
         • Support of Multiple Items and Component selection on more commands:

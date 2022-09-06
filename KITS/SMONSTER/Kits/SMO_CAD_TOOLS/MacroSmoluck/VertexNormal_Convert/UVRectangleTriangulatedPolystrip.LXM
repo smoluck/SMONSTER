@@ -10,7 +10,7 @@ tool.doApply
 # replay name:"Select Next Mode"
 select.nextMode
 # replay name:"UV Rectangle"
-uv.rectangle pack:false gaps:"0.2" uniformX:false uniformY:false
+!uv.rectangle pack:false gaps:"0.2" uniformX:false uniformY:false
 # replay name:"Unhide"
 unhide
 # replay name:"Move"

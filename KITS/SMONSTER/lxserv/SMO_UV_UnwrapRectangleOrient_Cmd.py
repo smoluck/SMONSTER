@@ -442,7 +442,7 @@ class SMO_UV_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.nextMode')
                 # # replay name:"Normalize Texel Density"
                 # lx.eval('texeldensity.normalize')
-                lx.eval('uv.rectangle false 0.2 false false')
+                lx.eval('!uv.rectangle false 0.2 false false')
                 if OrientDir == 0:
                     lx.eval('uv.orient horizontal')
                 if OrientDir == 1:

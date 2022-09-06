@@ -123,12 +123,12 @@ class SMO_UV_Multi_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
             for item in (PolysList[index]):
                 # print(item)
                 selected_mesh.geometry.polygons.select(item)
-            ############### PUT YOUR Command HERE to run over each item Polygons
-            try:
-                lx.eval('smo.UV.UnwrapRectangleOrient %s' % Int_OrientDir)
-            except:
-                lx.out('Error on {%s}' % (lx.eval('item.name ? xfrmcore')))
-            selected_mesh.geometry.polygons.select(item, replace=True)
+                ############### PUT YOUR Command HERE to run over each item Polygons
+                try:
+                    lx.eval('smo.UV.UnwrapRectangleOrient %s' % Int_OrientDir)
+                except:
+                    lx.out('Error on {%s}' % (lx.eval('item.name ? xfrmcore')))
+                selected_mesh.geometry.polygons.select(item, replace=True)
             lx.eval('select.type polygon')
             lx.eval('select.drop polygon')
             lx.eval('select.type item')

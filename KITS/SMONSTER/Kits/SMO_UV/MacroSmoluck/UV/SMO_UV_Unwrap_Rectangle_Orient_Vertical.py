@@ -14,11 +14,13 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 #---------------------------------------
 
+import lx,sys
+
 lx.eval('tool.set preset:"uv.unwrap" mode:on')
 lx.eval('tool.apply')
 # # replay name:"Normalize Texel Density"
 # lx.eval('texeldensity.normalize')
-lx.eval('uv.rectangle false 0.2 false false')
+lx.eval('!uv.rectangle false 0.2 false false')
 lx.eval('uv.orient perpendicular')
 
 # lx.eval('texeldensity.set per:island mode:all')

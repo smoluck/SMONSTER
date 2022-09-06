@@ -230,7 +230,7 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
                 # Unwrap and Pack UV Islands
                 lx.eval('select.type polygon')
                 lx.eval('select.all')
-                lx.eval('smo.UV.UnwrapSmart 0 1 0 0')
+                lx.eval('smo.UV.Multi.UnwrapSmart 0 1 0 0')
                 lx.eval('smo.UV.SmartProjectionClearTag')
 
             if Airtight == True:

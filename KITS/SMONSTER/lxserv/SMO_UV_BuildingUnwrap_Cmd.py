@@ -127,7 +127,7 @@ class SMO_UV_BuildingUnwrap_Cmd(lxu.command.BasicCommand):
         lx.eval('select.drop edge')
         lx.eval('select.edgeSharp 89.55 180.0')
         lx.eval('select.edge add bond equal (none)')
-        lx.eval('smo.UV.UnwrapSmart 1 1 0 0')
+        lx.eval('smo.UV.Multi.UnwrapSmart 1 1 0 0')
         lx.eval('select.drop edge')
         ################
         

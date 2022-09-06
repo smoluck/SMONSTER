@@ -4,8 +4,8 @@
 # Version:      1.0
 #
 # Purpose:      This script is designed to
-#               Orient the current UV island based
-#               on Poly or Edge Selection
+#               Orient the current UV Island (Horizontally or Vertically)
+#               based on Poly or Edge Selection.
 #
 # Author:       Franck ELISABETH
 # Website:      http://www.smoluck.com
@@ -23,7 +23,7 @@ class SMO_UV_SmartOrient_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Orient Direction", lx.symbol.sTYPE_INTEGER)
-        self.basic_SetFlags (0, lx.symbol.fCMDARG_OPTIONAL)             # here the (0) define the argument index.
+        self.basic_SetFlags (0, lx.symbol.fCMDARG_OPTIONAL)
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
     
@@ -31,19 +31,19 @@ class SMO_UV_SmartOrient_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO UV - Unwrap Smart'
+        return 'SMO UV - Smart Orient'
     
     def cmd_Desc (self):
-        return 'Unwrap the current Polygon Selection on defined Axis.'
+        return 'Orient the current UV Island (Horizontally or Vertically) based on Poly or Edge Selection.'
     
     def cmd_Tooltip (self):
-        return 'Unwrap the current Polygon Selection on defined Axis.'
+        return 'Orient the current UV Island (Horizontally or Vertically) based on Poly or Edge Selection.'
     
     def cmd_Help (self):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO UV - Unwrap Smart'
+        return 'SMO UV - Smart Orient'
     
     def basic_Enable (self, msg):
         return True

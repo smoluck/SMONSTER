@@ -1,36 +1,36 @@
-#python
-#---------------------------------------
-# Name:         SMO_UV_UnwrapSmart_Cmd.py
+# python
+# ---------------------------------------
+# Name:         SMO_UV_Multi_UnwrapSmart_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to
-#               Unwrap the current Polygon Selection
-#               on defined Axis.
+#               Unwrap the current Polygon Selection or via a set of Edges
+#               with various Unwrap Method, Rectangle Mode and Autoloop function  using Arguments.
 #
 # Author:       Franck ELISABETH
 # Website:      http://www.smoluck.com
 #
 # Created:      28/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+# ---------------------------------------
 
 import lx, lxu, modo, sys
 
-Cmd_Name = "smo.UV.UnwrapSmart"
-# smo.UV.UnwrapSmart 0 0 0 0
+Cmd_Name = "smo.UV.Multi.UnwrapSmart"
+# smo.UV.Multi.UnwrapSmart 0 0 0 0
 
-class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
+class SMO_UV_Multi_UnwrapSmart_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Unwrap Method", lx.symbol.sTYPE_INTEGER)
-        self.basic_SetFlags (0, lx.symbol.fCMDARG_OPTIONAL)             # here the (0) define the argument index.
+        self.basic_SetFlags(0, lx.symbol.fCMDARG_OPTIONAL)  # here the (0) define the argument index.
         self.dyna_Add("Initial Projection", lx.symbol.sTYPE_INTEGER)
-        self.basic_SetFlags (1, lx.symbol.fCMDARG_OPTIONAL)
+        self.basic_SetFlags(1, lx.symbol.fCMDARG_OPTIONAL)
         self.dyna_Add("Rectangle Mode", lx.symbol.sTYPE_INTEGER)
-        self.basic_SetFlags (2, lx.symbol.fCMDARG_OPTIONAL)
+        self.basic_SetFlags(2, lx.symbol.fCMDARG_OPTIONAL)
         self.dyna_Add("Select by Loop Mode", lx.symbol.sTYPE_INTEGER)
-        self.basic_SetFlags (3, lx.symbol.fCMDARG_OPTIONAL)
-        
+        self.basic_SetFlags(3, lx.symbol.fCMDARG_OPTIONAL)
+
         self.SelModeVert = bool(lx.eval1("select.typeFrom typelist:vertex;polygon;edge;item;ptag ?"))
         self.SelModeEdge = bool(lx.eval1("select.typeFrom typelist:edge;vertex;polygon;item ?"))
         self.SelModePoly = bool(lx.eval1("select.typeFrom typelist:polygon;vertex;edge;item ?"))
@@ -42,26 +42,26 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
 
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
-    
-    def cmd_Interact (self):
+
+    def cmd_Interact(self):
         pass
-    
-    def cmd_UserName (self):
-        return 'SMO UV - Unwrap Smart'
-    
-    def cmd_Desc (self):
-        return 'Unwrap the current Polygon Selection on defined Axis.'
-    
-    def cmd_Tooltip (self):
-        return 'Unwrap the current Polygon Selection on defined Axis.'
-    
-    def cmd_Help (self):
+
+    def cmd_UserName(self):
+        return 'SMO UV - (Multi) Unwrap Smart'
+
+    def cmd_Desc(self):
+        return 'MULTI - Unwrap the current Polygon Selection or via a set of Edges with various Unwrap Method, Rectangle Mode and Autoloop function using Arguments.'
+
+    def cmd_Tooltip(self):
+        return 'MULTI - Unwrap the current Polygon Selection or via a set of Edges with various Unwrap Method, Rectangle Mode and Autoloop function using Arguments.'
+
+    def cmd_Help(self):
         return 'https://twitter.com/sm0luck'
-    
-    def basic_ButtonName (self):
-        return 'SMO UV - Unwrap Smart'
-    
-    def basic_Enable (self, msg):
+
+    def basic_ButtonName(self):
+        return 'SMO UV - (Multi) Unwrap Smart'
+
+    def basic_Enable(self, msg):
         return True
 
     def basic_Execute(self, msg, flags):
@@ -76,15 +76,13 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
         # MODO version checks.
         # Modo 13.0 and up have UV Seam map.
         # Version below 13.0 haven't
-        Modo_ver = int(lx.eval ('query platformservice appversion ?'))
-        lx.out('Modo Version:',Modo_ver)
+        Modo_ver = int(lx.eval('query platformservice appversion ?'))
+        lx.out('Modo Version:', Modo_ver)
 
-
-
-        Int_UnwrapMethod = self.dyna_Int (0)
-        Int_InitProjection = self.dyna_Int (1)
-        Int_IsRectangle = self.dyna_Int (2)
-        Int_SelectByLoop = self.dyna_Int (3)
+        US_UnwrapMethod = self.dyna_Int(0)
+        US_InitProjection = self.dyna_Int(1)
+        US_IsRectangle = self.dyna_Int(2)
+        US_SelectByLoop = self.dyna_Int(3)
 
         ############### 5 ARGUMENTS ###############
         args = lx.args()
@@ -92,55 +90,50 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
 
         # Conformal= 0
         # Angle Based = 1
-        UnwrapMethod = Int_UnwrapMethod
-        lx.out('Desired Unwrap Method:',UnwrapMethod)
+        UnwrapMethod = US_UnwrapMethod
+        lx.out('Desired Unwrap Method:', UnwrapMethod)
 
         # Planar = 0
         # Group Normal = 1
-        InitProjection = Int_InitProjection
-        lx.out('Initial Projection Mode:',InitProjection)
+        InitProjection = US_InitProjection
+        lx.out('Initial Projection Mode:', InitProjection)
 
         # Current Selection is not Rectangle = 0
         # Current Selection is Rectangle = 1
-        IsRectangle = Int_IsRectangle
-        lx.out('Rectangle Post pass:',IsRectangle)
+        IsRectangle = US_IsRectangle
+        lx.out('Rectangle Post pass:', IsRectangle)
 
         # Current Selection = 0
         # current selection + Add loop = 1
-        SelectByLoop = Int_SelectByLoop
-        lx.out('Select by loop state:',SelectByLoop)
+        SelectByLoop = US_SelectByLoop
+        lx.out('Select by loop state:', SelectByLoop)
         ############### ARGUMENTS ###############
-
-
 
         # Auto Update UV Seam map   Off = 0
         # Auto Update UV Seam map   On = 1
         AutoUpdateUVSeamCutMapState = lx.eval('user.value SMO_UseVal_UV_AutoUpdateUVSeamCutMapState ?')
-        lx.out('Auto Update UV Seam Cut Map state:',AutoUpdateUVSeamCutMapState)
-
+        lx.out('Auto Update UV Seam Cut Map state:', AutoUpdateUVSeamCutMapState)
 
         # Repack Off = 0
         # Repack On = 1
         RePack = lx.eval('user.value SMO_UseVal_UV_RepackAfterUnwrap ?')
-        lx.out('RePack state:',RePack)
+        lx.out('RePack state:', RePack)
 
         # Relax UV Off = 0
         # Relax UV On = 1
         RelaxUV = lx.eval('user.value SMO_UseVal_UV_RelaxPostProcess ?')
-        lx.out('RelaxUV state:',RelaxUV)
+        lx.out('RelaxUV state:', RelaxUV)
 
         UVRelaxIterCount = lx.eval('user.value SMO_UseVal_UV_RelaxIterCount ?')
-        lx.out('RelaxUV iteration count:',UVRelaxIterCount)
+        lx.out('RelaxUV iteration count:', UVRelaxIterCount)
 
         # Relocate in Area = 0
         # Relocate in Area = 1
         RelocateInArea = lx.eval('user.value SMO_UseVal_UV_RelocateInArea ?')
-        lx.out('Relocate In Area state:',RelocateInArea)
+        lx.out('Relocate In Area state:', RelocateInArea)
 
         AutoExpandSel = lx.eval('user.value SMO_UseVal_UV_AutoExpandSelectionState ?')
         lx.out('Auto Expand Selection state:', AutoExpandSel)
-
-
 
         # ############### 4 ARGUMENTS Test ###############
         # UnwrapMethod = 0          --> Conformal
@@ -149,10 +142,8 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
         # SelectByLoop = 0
         # ############### ARGUMENTS ###############
 
-
-
         ################################
-        #<----[ DEFINE VARIABLES ]---->#
+        # <----[ DEFINE VARIABLES ]---->#
         ################################
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
@@ -172,8 +163,6 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
         #####
         #####--- Define user value for all the different SafetyCheck --- END ---#####
 
-
-
         lx.eval('smo.GC.ClearSelectionVmap 2 1')
         lx.eval('smo.GC.ClearSelectionVmap 3 1')
         lx.eval('smo.GC.ClearSelectionVmap 4 1')
@@ -181,8 +170,6 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
         lx.eval('smo.GC.ClearSelectionVmap 6 1')
         lx.eval('smo.GC.ClearSelectionVmap 7 1')
         lx.eval('smo.GC.ClearSelectionVmap 8 1')
-
-
 
         ###################################################
         ####### SAFETY CHECK 1 - One UVMap Selected #######
@@ -193,14 +180,14 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
         # Get info about the selected UVMap.
         lx.eval('smo.UV.GetUVMapCountName 0 1 1')
         SelectedMeshUVMapsCount = lx.eval('user.value SMO_UV_SelectedMeshUVmapCount ?')
-        lx.out('Selected Mesh UV Maps Count:',SelectedMeshUVMapsCount)
+        lx.out('Selected Mesh UV Maps Count:', SelectedMeshUVMapsCount)
         UVUnwrapSmart_UVMapName = lx.eval('user.value SMO_UV_SelectedMeshUVmapName ?')
-        lx.out('Selected Mesh UV Maps Name:',UVUnwrapSmart_UVMapName)
+        lx.out('Selected Mesh UV Maps Name:', UVUnwrapSmart_UVMapName)
 
         lx.eval('smo.GC.ClearSelectionVmap 1 1')
         lx.eval('select.vertexMap %s txuv replace' % UVUnwrapSmart_UVMapName)
 
-        if SelectedMeshUVMapsCount > 1 :
+        if SelectedMeshUVMapsCount > 1:
             lx.eval('dialog.setup info')
             lx.eval('dialog.title {SMONSTER - UV - Unwrap Smart:}')
             lx.eval('dialog.msg {Please select Only One Vertex Map and run that script again.}')
@@ -208,7 +195,7 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
             sys.exit()
             SMO_SafetyCheck_UVUnwrapSmart_UVMapCount = False
 
-        if SelectedMeshUVMapsCount < 1 :
+        if SelectedMeshUVMapsCount < 1:
             lx.eval('dialog.setup info')
             lx.eval('dialog.title {SMONSTER - UV - Unwrap Smart:}')
             lx.eval('dialog.msg {You must have a UV map selected to run this script.}')
@@ -216,7 +203,7 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
             sys.exit()
             SMO_SafetyCheck_UVUnwrapSmart_UVMapCount = False
 
-        if SelectedMeshUVMapsCount == 1 :
+        if SelectedMeshUVMapsCount == 1:
             SMO_SafetyCheck_UVUnwrapSmart_UVMapCount = True
 
         # UserUVMapName = lx.eval1('query layerservice vmap.name ? %s' % UVmap_Selected)
@@ -224,10 +211,6 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
         lx.out('<- UV Map Safety Check ->')
         lx.out('<------------- END -------------->')
         ###############################################
-
-
-
-
 
         ##############################
         ####### SAFETY CHECK 1 #######
@@ -250,7 +233,7 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
             # Used to query layerservice for the list of polygons, edges or vertices.
             attrType = ""
 
-            if lx.eval1( "select.typeFrom typelist:vertex;polygon;edge;item;ptag ?" ):
+            if lx.eval1("select.typeFrom typelist:vertex;polygon;edge;item;ptag ?"):
                 selType = "vertex"
                 attrType = "vert"
 
@@ -263,10 +246,10 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
                 lx.eval('+dialog.open')
                 lx.out('script Stopped: You must be in Polygon or Edge Mode to run that script')
                 sys.exit
-                #sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
+                # sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
 
 
-            elif lx.eval1( "select.typeFrom typelist:edge;vertex;polygon;item ?" ):
+            elif lx.eval1("select.typeFrom typelist:edge;vertex;polygon;item ?"):
                 selType = "edge"
                 attrType = "edge"
 
@@ -276,7 +259,7 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
                 SelectByLoop = 0
                 lx.out('script Running: Edge Component Selection Mode')
 
-            elif lx.eval1( "select.typeFrom typelist:polygon;vertex;edge;item ?" ):
+            elif lx.eval1("select.typeFrom typelist:polygon;vertex;edge;item ?"):
                 selType = "polygon"
                 attrType = "poly"
 
@@ -300,7 +283,7 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
                 lx.eval('+dialog.open')
                 lx.out('script Stopped: You must be in Polygon Mode to run that script')
                 sys.exit
-                #sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
+                # sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
             #####--------------------  safety check 2: Polygon or Edge Selection Mode enabled --- END --------------------#####
 
             ItemLayerName = lx.eval('query layerservice layer.name ? 1')
@@ -311,11 +294,10 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
             lx.eval('select.item %s add' % ItemLayerID)
             if SMO_SafetyCheck_UVUnwrapSmart_EdgeModeEnabled == 1:
                 lx.eval('select.type edge')
-            elif SMO_SafetyCheck_UVUnwrapSmart_PolygonModeEnabled == 1 :
+            elif SMO_SafetyCheck_UVUnwrapSmart_PolygonModeEnabled == 1:
                 lx.eval('select.type polygon')
             mesh = scene.selectedByType('mesh')[0]
             meshseam = modo.Scene().selected[0]
-
 
         ItemCount = lx.eval('query layerservice layer.N ? selected')
         lx.out('ItemCount', ItemCount)
@@ -324,7 +306,8 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
             SMO_SafetyCheck_Only1MeshItemSelected = 0
             lx.eval('dialog.setup info')
             lx.eval('dialog.title {SMONSTER - UV - Unwrap Smart:}')
-            lx.eval('dialog.msg {You must select the Mesh Item layer you are working on, in Item List, to run that script}')
+            lx.eval(
+                'dialog.msg {You must select the Mesh Item layer you are working on, in Item List, to run that script}')
             lx.eval('+dialog.open')
             lx.out('Only One Item Selected result:', SMO_SafetyCheck_Only1MeshItemSelected)
             lx.out('script Stopped: Select only one Mesh Item')
@@ -336,12 +319,8 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
             lx.out('script running: right amount of Mesh Item selected')
         #####-------------------- safety check 1 : Only One Item Selected --- END --------------------#####
 
-
-
         CsPolys = len(mesh.geometry.polygons.selected)
         CsEdges = len(mesh.geometry.edges.selected)
-
-
 
         # ##### UV SEAM Map Detection #####
 
@@ -353,7 +332,6 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
         # lx.eval("user.defNew name:UVUnwrapSmart_NoUVSeamMap type:string life:momentary")
         # UVUnwrapSmart_NoUVSeamMap = '_____n_o_n_e_____'
 
-
         # # Get the number of UV Seam map available on mesh
         # DetectedUVSEAMmapCount = len(lx.evalN('vertMap.list seam ?'))
         # lx.out('UV SEAM Map Count:', DetectedUVSEAMmapCount)
@@ -363,30 +341,27 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
         # lx.out('UV SEAM Map Name:', DetectedUVSEAMmapName)
         # ##### UV SEAM Map Detection #####
 
-
         # #####
         # #####--- Define user value for all the different SafetyCheck --- END ---#####
 
         # if Modo_ver >= 1300:
         # ## UVSEAM Map Selection Check ##
-            # lx.out('<--- UVSEAM Map Safety Check --->')
-            # lx.out('<---------- START ---------->')
-            # if DetectedUVSEAMmapName == UVUnwrapSmart_NoUVSeamMap:
-                # # lx.eval('vertMap.list seam ?')
-                # # lx.eval('vertMap.list seam _____n_e_w_____')
-                # lx.eval('vertMap.new "UV Seam" seam true {0.78 0.78 0.78} 2.0')
-                # lx.eval('vertMap.list seam "UV Seam"')
+        # lx.out('<--- UVSEAM Map Safety Check --->')
+        # lx.out('<---------- START ---------->')
+        # if DetectedUVSEAMmapName == UVUnwrapSmart_NoUVSeamMap:
+        # # lx.eval('vertMap.list seam ?')
+        # # lx.eval('vertMap.list seam _____n_e_w_____')
+        # lx.eval('vertMap.new "UV Seam" seam true {0.78 0.78 0.78} 2.0')
+        # lx.eval('vertMap.list seam "UV Seam"')
 
-            # elif DetectedUVSEAMmapName == UVUnwrapSmart_DesiredUVSEAMmapName:
-                # lx.out('UV Map and UVSEAM Map Selected')
-                # lx.eval('vertMap.list seam "UV Seam"')
-            # # UserUVSEAMmapName = lx.eval1('query layerservice vmap.name ? %s' %UVSEAM_Selected)
-            # # lx.out('USER UVSEAM Map Name:', UserUVSEAMmapName)
+        # elif DetectedUVSEAMmapName == UVUnwrapSmart_DesiredUVSEAMmapName:
+        # lx.out('UV Map and UVSEAM Map Selected')
+        # lx.eval('vertMap.list seam "UV Seam"')
+        # # UserUVSEAMmapName = lx.eval1('query layerservice vmap.name ? %s' %UVSEAM_Selected)
+        # # lx.out('USER UVSEAM Map Name:', UserUVSEAMmapName)
 
-            # lx.out('<----------- END ----------->')
+        # lx.out('<----------- END ----------->')
         # ################################
-
-
 
         ##############################
         ####### SAFETY CHECK 2 #######
@@ -398,7 +373,7 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
         # Used to query layerservice for the list of polygons, edges or vertices.
         attrType = ""
 
-        if lx.eval1( "select.typeFrom typelist:vertex;polygon;edge;item;ptag ?" ):
+        if lx.eval1("select.typeFrom typelist:vertex;polygon;edge;item;ptag ?"):
             selType = "vertex"
             attrType = "vert"
 
@@ -411,10 +386,10 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
             lx.eval('+dialog.open')
             lx.out('script Stopped: You must be in Polygon or Edge Mode to run that script')
             sys.exit
-            #sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
+            # sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
 
 
-        elif lx.eval1( "select.typeFrom typelist:edge;vertex;polygon;item ?" ):
+        elif lx.eval1("select.typeFrom typelist:edge;vertex;polygon;item ?"):
             selType = "edge"
             attrType = "edge"
 
@@ -424,7 +399,7 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
             SelectByLoop = 0
             lx.out('script Running: Edge Component Selection Mode')
 
-        elif lx.eval1( "select.typeFrom typelist:polygon;vertex;edge;item ?" ):
+        elif lx.eval1("select.typeFrom typelist:polygon;vertex;edge;item ?"):
             selType = "polygon"
             attrType = "poly"
 
@@ -449,10 +424,8 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
             lx.eval('+dialog.open')
             lx.out('script Stopped: You must be in Polygon Mode to run that script')
             sys.exit
-            #sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
+            # sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
         #####--------------------  safety check 2: Polygon or Edge Selection Mode enabled --- END --------------------#####
-
-
 
         ##############################
         ####### SAFETY CHECK 3 #######
@@ -460,7 +433,7 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
 
         #####--------------------  safety check 3: at Least 1 Polygons is selected --- START --------------------#####
         if SMO_SafetyCheck_UVUnwrapSmart_PolygonModeEnabled == 1 and SMO_SafetyCheck_UVUnwrapSmart_EdgeModeEnabled == 0:
-            lx.out('Count Selected Poly',CsPolys)
+            lx.out('Count Selected Poly', CsPolys)
 
             if CsPolys < 1:
                 SMO_SafetyCheck_UVUnwrapSmart_min1PolygonSelected = 0
@@ -478,13 +451,11 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
                 lx.out('script running: right amount of polygons in selection')
         #####--------------------  safety check 3: at Least 1 Polygons is selected --- END --------------------#####
 
-
-
         #####--------------------  safety check 3: at Least 3 Edges are selected --- START --------------------#####
-        if SMO_SafetyCheck_UVUnwrapSmart_EdgeModeEnabled == 1 and SMO_SafetyCheck_UVUnwrapSmart_PolygonModeEnabled == 0 :
-            lx.out('Count Selected Edges',CsEdges)
+        if SMO_SafetyCheck_UVUnwrapSmart_EdgeModeEnabled == 1 and SMO_SafetyCheck_UVUnwrapSmart_PolygonModeEnabled == 0:
+            lx.out('Count Selected Edges', CsEdges)
 
-            if CsEdges <= 2 :
+            if CsEdges <= 2:
                 SMO_SafetyCheck_UVUnwrapSmart_min1PolygonSelected = 0
                 SMO_SafetyCheck_UVUnwrapSmart_min3EdgeSelected = 0
                 lx.eval('dialog.setup info')
@@ -494,38 +465,36 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
                 lx.out('script Stopped: Add more Edges to your selection')
                 sys.exit
 
-            elif CsEdges >= 3 :
+            elif CsEdges >= 3:
                 SMO_SafetyCheck_UVUnwrapSmart_min1PolygonSelected = 0
                 SMO_SafetyCheck_UVUnwrapSmart_min3EdgeSelected = 1
                 lx.out('script running: right amount of Edges in selection')
         #####--------------------  safety check 3: at Least 3 Edges are selected --- END --------------------#####
 
-
         #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
         #####
         TotalSafetyCheckTrueValuePoly = 3
-        lx.out('Desired Value for Polygon Mode',TotalSafetyCheckTrueValuePoly)
+        lx.out('Desired Value for Polygon Mode', TotalSafetyCheckTrueValuePoly)
 
         TotalSafetyCheckTrueValueEdge = 7
-        lx.out('Desired Value for Edge Mode',TotalSafetyCheckTrueValueEdge)
+        lx.out('Desired Value for Edge Mode', TotalSafetyCheckTrueValueEdge)
 
-        TotalSafetyCheckPolygon = (SMO_SafetyCheck_Only1MeshItemSelected + SMO_SafetyCheck_UVUnwrapSmart_PolygonModeEnabled + SMO_SafetyCheck_UVUnwrapSmart_min1PolygonSelected)
-        lx.out('Current Polygon Check Value',TotalSafetyCheckPolygon)
+        TotalSafetyCheckPolygon = (
+                    SMO_SafetyCheck_Only1MeshItemSelected + SMO_SafetyCheck_UVUnwrapSmart_PolygonModeEnabled + SMO_SafetyCheck_UVUnwrapSmart_min1PolygonSelected)
+        lx.out('Current Polygon Check Value', TotalSafetyCheckPolygon)
 
-        TotalSafetyCheckEdge = (SMO_SafetyCheck_Only1MeshItemSelected + SMO_SafetyCheck_UVUnwrapSmart_EdgeModeEnabled + SMO_SafetyCheck_UVUnwrapSmart_min3EdgeSelected + 4)
-        lx.out('Current Edge Check Value',TotalSafetyCheckEdge)
-
-
+        TotalSafetyCheckEdge = (
+                    SMO_SafetyCheck_Only1MeshItemSelected + SMO_SafetyCheck_UVUnwrapSmart_EdgeModeEnabled + SMO_SafetyCheck_UVUnwrapSmart_min3EdgeSelected + 4)
+        lx.out('Current Edge Check Value', TotalSafetyCheckEdge)
 
         #####
         #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
 
-
-
         ###############################################
         ## <----( Main Macro for Polygon Mode )----> ##
         ###############################################
-        if SMO_SafetyCheck_UVUnwrapSmart_UVMapCount == True :
+        if SMO_SafetyCheck_UVUnwrapSmart_UVMapCount == True:
+            AutoHideState = lx.eval('user.value SMO_UseVal_UV_HideAfterUnwrap ?')
             #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
             if TotalSafetyCheckPolygon == TotalSafetyCheckTrueValuePoly:
                 if SelectByLoop == 1:
@@ -542,7 +511,7 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
                     lx.eval('select.type polygon')
                     lx.eval('select.loop')
 
-                    if AutoExpandSel == True:
+                    if AutoExpandSel:
                         lx.eval('select.expand')
 
                 # if AutoExpandSel == True and SelectByLoop == 0:
@@ -562,7 +531,7 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
                 #     lx.eval('select.useSet UV_Selection select')
                 #     lx.eval('select.expand')
 
-                if AutoExpandSel == True and SelectByLoop == 0 and IsRectangle == 1:
+                if AutoExpandSel and SelectByLoop == 0 and IsRectangle == 1:
                     lx.eval('select.editSet name:UV_Selection mode:add')
                     lx.eval('select.convert edge')
                     lx.eval('select.editSet name:UV_AllEdgeSel mode:add')
@@ -592,7 +561,7 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
                     lx.eval('select.editSet name:UV_DONE mode:add')
                     lx.eval('hide.unsel')
 
-                if AutoExpandSel == True and SelectByLoop == 0 and IsRectangle == 0:
+                if AutoExpandSel and SelectByLoop == 0 and IsRectangle == 0:
                     lx.eval('select.expand')
 
                 # Isolate selection
@@ -600,17 +569,17 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
 
                 #######################################
                 # Tag Selection Set Poly for UV Done
-                if SelectByLoop == 1 and AutoExpandSel == True:
+                if SelectByLoop == 1 and AutoExpandSel:
                     lx.eval('select.type edge')
                     lx.eval('select.loop')
                     lx.eval('select.editSet name:UV_CutEdgeSel mode:add')
                     lx.eval('select.type polygon')
                     lx.eval('select.editSet name:UV_DONE mode:add')
 
-                if AutoExpandSel == False:
+                if not AutoExpandSel:
                     lx.eval('select.editSet name:UV_DONE mode:add')
 
-                if AutoExpandSel == True and SelectByLoop == 0 and IsRectangle == 0:
+                if AutoExpandSel and SelectByLoop == 0 and IsRectangle == 0:
                     lx.eval('select.editSet name:UV_DONE mode:add')
                 #######################################
 
@@ -645,7 +614,7 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
                 lx.eval('tool.set uv.unwrap off')
 
                 # Relax Passes --> Start
-                if RelaxUV == True:
+                if RelaxUV:
                     if IsRectangle == 1 and SelectByLoop == 1:
                         lx.eval('select.type polygon')
                         lx.eval('select.all')
@@ -656,13 +625,13 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
                 if IsRectangle == 1 and SelectByLoop == 1:
                     lx.eval('uv.split')
                     lx.eval('select.type polygon')
-                    lx.eval('uv.rectangle false')
+                    lx.eval('!uv.rectangle false')
 
                 lx.eval('tool.viewType uv')
 
                 if IsRectangle == 1 and SelectByLoop == 0:
                     lx.eval('select.all')
-                    lx.eval('uv.rectangle false')
+                    lx.eval('!uv.rectangle false')
 
                 lx.eval('uv.orient horizontal')
 
@@ -670,10 +639,10 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
                 lx.eval('uv.fit entire gapsByPixel:8.0 udim:1001')
 
                 RelocateInArea = lx.eval('user.value SMO_UseVal_UV_RelocateInArea ?')
-                print ('Relocate In Area state:', RelocateInArea)
+                print('Relocate In Area state:', RelocateInArea)
                 lx.out('Relocate In Area state:', RelocateInArea)
 
-                if RelocateInArea == True:
+                if RelocateInArea:
                     # replay name:"Move"
                     lx.eval('tool.set preset:TransformMove mode:on')
 
@@ -708,7 +677,7 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
                     lx.eval('!select.deleteSet UV_CutEdgeSel false')
                     lx.eval('select.type polygon')
 
-                if AutoExpandSel == True and SelectByLoop == 0 and IsRectangle == 1:
+                if AutoExpandSel and SelectByLoop == 0 and IsRectangle == 1:
                     lx.eval('!select.deleteSet UV_Selection false')
                     lx.eval('select.type edge')
                     lx.eval('!select.deleteSet UV_AllEdgeSel false')
@@ -719,7 +688,6 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
                     lx.eval('!select.deleteSet UV_RingExtremity false')
                     lx.eval('select.type polygon')
 
-
                 # ## 2022_04_07 Bug with Unhide that can't be recorded as undoable.
                 # lx.eval('tool.viewType xyz')
                 # lx.eval('unhide')
@@ -728,42 +696,40 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
                 lx.eval('unhide')
 
                 lx.eval('select.drop polygon')
+                if RePack:
+                    if RelocateInArea:
+                        if UnwrapMethod == 0 and IsRectangle == 0:
+                            lx.eval('smo.UV.SelectUVArea 0 -1')
+                            lx.eval('hide.unsel')
+                            lx.eval('smo.UV.NormalizePackByArea 0 0 0 -1')
+                            lx.eval('unhide')
 
-                if RePack == True and UnwrapMethod == 0 and IsRectangle == 0 and RelocateInArea == True:
-                    lx.eval('smo.UV.SelectUVArea 0 -1')
-                    lx.eval('hide.unsel')
-                    lx.eval('smo.UV.NormalizePackByArea 0 0 0 -1')
-                    lx.eval('unhide')
+                        if UnwrapMethod == 1 and IsRectangle == 0:
+                            lx.eval('smo.UV.SelectUVArea 1 -1')
+                            lx.eval('hide.unsel')
+                            lx.eval('smo.UV.NormalizePackByArea 0 0 1 -1')
+                            lx.eval('unhide')
 
-                if RePack == True and UnwrapMethod == 1 and IsRectangle == 0 and RelocateInArea == True:
-                    lx.eval('smo.UV.SelectUVArea 1 -1')
-                    lx.eval('hide.unsel')
-                    lx.eval('smo.UV.NormalizePackByArea 0 0 1 -1')
-                    lx.eval('unhide')
+                        if UnwrapMethod == 0 and IsRectangle == 1:
+                            lx.eval('smo.UV.SelectUVArea 0 -2')
+                            lx.eval('hide.unsel')
+                            lx.eval('smo.UV.NormalizePackByArea 0 0 0 -2')
+                            lx.eval('unhide')
 
-                if RePack == True and UnwrapMethod == 0 and IsRectangle == 1 and RelocateInArea == True:
-                    lx.eval('smo.UV.SelectUVArea 0 -2')
-                    lx.eval('hide.unsel')
-                    lx.eval('smo.UV.NormalizePackByArea 0 0 0 -2')
-                    lx.eval('unhide')
+                    if not RelocateInArea:
+                        lx.eval('unhide')
+                        lx.eval('smo.UV.SelectUVArea 0 0')
+                        lx.eval('hide.unsel')
+                        lx.eval('smo.UV.NormalizePackByArea 0 0 0 0')
+                        lx.eval('unhide')
 
-                if RePack == True and RelocateInArea == False:
-                    lx.eval('unhide')
-                    lx.eval('smo.UV.SelectUVArea 0 0')
-                    lx.eval('hide.unsel')
-                    lx.eval('smo.UV.NormalizePackByArea 0 0 0 0')
-                    lx.eval('unhide')
-
-                if AutoUpdateUVSeamCutMapState == True and Modo_ver >= 1300:
+                if AutoUpdateUVSeamCutMapState and Modo_ver >= 1300:
                     lx.eval('smo.UV.UpdateUVSeamCutMap')
                     lx.eval('view3d.showUVSeam true active')
 
-                AutoHideState = lx.eval('user.value SMO_UseVal_UV_HideAfterUnwrap ?')
-                if AutoHideState == True:
+                if AutoHideState:
                     lx.eval('select.useSet UV_DONE select')
                     lx.eval('hide.sel')
-
-
 
             ###############################################
             ## <----( Main Macro for Edge Mode )----> ##
@@ -807,13 +773,13 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.all')
 
                 # Relax Passes --> Start
-                if RelaxUV == True:
+                if RelaxUV:
                     lx.eval('smo.UV.Relax %s' % UVRelaxIterCount)
                 # Relax Passes --> End
 
                 if IsRectangle == 1:
                     lx.eval('select.all')
-                    lx.eval('uv.rectangle false')
+                    lx.eval('!uv.rectangle false')
 
                 lx.eval('select.all')
                 lx.eval('uv.orient horizontal')
@@ -821,27 +787,26 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
                 # replay name:"Fit UVs"
                 lx.eval('uv.fit entire gapsByPixel:8.0 udim:1001')
 
-
                 RelocateInArea = lx.eval('user.value SMO_UseVal_UV_RelocateInArea ?')
-                print ('Relocate In Area state:', RelocateInArea)
+                print('Relocate In Area state:', RelocateInArea)
                 lx.out('Relocate In Area state:', RelocateInArea)
 
-                if RelocateInArea == True:
+                if RelocateInArea:
                     # replay name:"Move"
                     lx.eval('tool.set preset:TransformMove mode:on')
 
                     ## Move UVs on Right Side depending on the Method used
-                    if UnwrapMethod == 0 and RelocateInArea == True:
+                    if UnwrapMethod == 0:
                         # Command Block Begin:
                         lx.eval('tool.setAttr tool:"xfrm.transform" attr:U value:"0.0"')
                         lx.eval('tool.setAttr tool:"xfrm.transform" attr:V value:"-1.0"')
                         # Command Block End:
-                    if UnwrapMethod == 1 and RelocateInArea == True:
+                    if UnwrapMethod == 1:
                         # Command Block Begin:
                         lx.eval('tool.setAttr tool:"xfrm.transform" attr:U value:"1.0"')
                         lx.eval('tool.setAttr tool:"xfrm.transform" attr:V value:"-1.0"')
                         # Command Block End:
-                    if IsRectangle == 1 and RelocateInArea == True:
+                    if IsRectangle == 1:
                         # Command Block Begin:
                         lx.eval('tool.setAttr tool:"xfrm.transform" attr:U value:"0.0"')
                         lx.eval('tool.setAttr tool:"xfrm.transform" attr:V value:"-2.0"')
@@ -868,47 +833,43 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
                 lx.eval('unhide')
 
                 lx.eval('select.drop polygon')
+                if RePack:
+                    if RelocateInArea:
+                        if UnwrapMethod == 0 and IsRectangle == 0:
+                            lx.eval('smo.UV.SelectUVArea 0 -1')
+                            lx.eval('hide.unsel')
+                            lx.eval('smo.UV.NormalizePackByArea 0 0 0 -1')
+                            lx.eval('unhide')
 
-                if RePack == True and UnwrapMethod == 0 and IsRectangle == 0 and RelocateInArea == True:
-                    lx.eval('smo.UV.SelectUVArea 0 -1')
-                    lx.eval('hide.unsel')
-                    lx.eval('smo.UV.NormalizePackByArea 0 0 0 -1')
-                    lx.eval('unhide')
+                        if UnwrapMethod == 1 and IsRectangle == 0:
+                            lx.eval('smo.UV.SelectUVArea 1 -1')
+                            lx.eval('hide.unsel')
+                            lx.eval('smo.UV.NormalizePackByArea 0 0 1 -1')
+                            lx.eval('unhide')
 
-                if RePack == True and UnwrapMethod == 1 and IsRectangle == 0 and RelocateInArea == True:
-                    lx.eval('smo.UV.SelectUVArea 1 -1')
-                    lx.eval('hide.unsel')
-                    lx.eval('smo.UV.NormalizePackByArea 0 0 1 -1')
-                    lx.eval('unhide')
+                        if UnwrapMethod == 0 and IsRectangle == 1:
+                            lx.eval('smo.UV.SelectUVArea 0 -2')
+                            lx.eval('hide.unsel')
+                            lx.eval('smo.UV.NormalizePackByArea 0 0 0 -2')
+                            lx.eval('unhide')
 
-                if RePack == True and UnwrapMethod == 0 and IsRectangle == 1 and RelocateInArea == True:
-                    lx.eval('smo.UV.SelectUVArea 0 -2')
-                    lx.eval('hide.unsel')
-                    lx.eval('smo.UV.NormalizePackByArea 0 0 0 -2')
-                    lx.eval('unhide')
+                    if not RelocateInArea:
+                        lx.eval('unhide')
+                        lx.eval('smo.UV.SelectUVArea 0 0')
+                        lx.eval('hide.unsel')
+                        lx.eval('smo.UV.NormalizePackByArea 0 0 0 0')
+                        lx.eval('unhide')
 
-                if RePack == True and RelocateInArea == False:
-                    lx.eval('unhide')
-                    lx.eval('smo.UV.SelectUVArea 0 0')
-                    lx.eval('hide.unsel')
-                    lx.eval('smo.UV.NormalizePackByArea 0 0 0 0')
-                    lx.eval('unhide')
-
-                if AutoUpdateUVSeamCutMapState == True and Modo_ver >= 1300:
+                if AutoUpdateUVSeamCutMapState and Modo_ver >= 1300:
                     lx.eval('smo.UV.UpdateUVSeamCutMap')
                     lx.eval('view3d.showUVSeam true active')
 
-                AutoHideState = lx.eval('user.value SMO_UseVal_UV_HideAfterUnwrap ?')
-                if AutoHideState == True:
+                if AutoHideState:
                     lx.eval('select.useSet UV_DONE select')
                     lx.eval('hide.sel')
 
                 lx.eval('select.type edge')
                 lx.eval('select.drop edge')
-
-
-
-
 
         if SMO_SafetyCheck_UVUnwrapSmart_PolygonModeEnabled == 1 and SMO_SafetyCheck_UVUnwrapSmart_EdgeModeEnabled == 0:
             if TotalSafetyCheckPolygon != TotalSafetyCheckTrueValuePoly:
@@ -923,4 +884,4 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
         #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
 
 
-lx.bless(SMO_UV_UnwrapSmart_Cmd, Cmd_Name)
+lx.bless(SMO_UV_Multi_UnwrapSmart_Cmd, Cmd_Name)

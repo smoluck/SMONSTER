@@ -457,7 +457,7 @@ class SMO_UV_UnwrapCylindrical_Cmd(lxu.command.BasicCommand):
             
             
             if IsRectangle == 1 :
-                lx.eval('uv.rectangle false')
+                lx.eval('!uv.rectangle false')
             
             
             #FixFlipped UVs Passes --> Start

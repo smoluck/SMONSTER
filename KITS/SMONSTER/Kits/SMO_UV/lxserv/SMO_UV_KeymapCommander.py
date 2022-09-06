@@ -29,10 +29,10 @@ SMO_UV_HOTKEYS = [
             ["view3DOverlayUV", "(stateless)", ".anywhere", "(contextless)",
              "attr.formPopover {SMO_UV_PM_SH:sheet}"]
         ],
-        "key": "shift-q",
+        "key": "q",
         "command": "attr.formPopover {SMO_UV_PM_SH:sheet}",
         "name": "UV: Pie Menu from UVTexture Viewport",
-        "info": "Shift Q  ---  Over UV Viewport"
+        "info": "Q  ---  Over UV Viewport"
     }
 
 ]
