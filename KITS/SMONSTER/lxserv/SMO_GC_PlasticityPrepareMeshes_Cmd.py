@@ -17,23 +17,19 @@ import lx, lxu, modo
 from math import degrees
 
 Cmd_Name = "smo.GC.PlasticityPrepareMeshes"
+
+
 # smo.GC.PlasticityPrepareMeshes 0 1 1 1 0
 
 class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Convert Scale", lx.symbol.sTYPE_BOOLEAN)
-        # self.basic_SetFlags(0, lx.symbol.fCMDARG_OPTIONAL)  # here the (0) define the argument index.
         self.dyna_Add("Create Part Tags", lx.symbol.sTYPE_BOOLEAN)
-        # self.basic_SetFlags(1, lx.symbol.fCMDARG_OPTIONAL)
         self.dyna_Add("Create UV Maps and Unwrap", lx.symbol.sTYPE_BOOLEAN)
-        # self.basic_SetFlags(2, lx.symbol.fCMDARG_OPTIONAL)
         self.dyna_Add("Output Airtight Meshes", lx.symbol.sTYPE_BOOLEAN)
-        # self.basic_SetFlags(3, lx.symbol.fCMDARG_OPTIONAL)
         self.dyna_Add("Repack All Meshes together", lx.symbol.sTYPE_BOOLEAN)
-        # self.basic_SetFlags(4, lx.symbol.fCMDARG_OPTIONAL)
         self.dyna_Add("Unparent in place", lx.symbol.sTYPE_BOOLEAN)
-        # self.basic_SetFlags(5, lx.symbol.fCMDARG_OPTIONAL)
 
         # self.SelModeVert = bool(lx.eval1("select.typeFrom typelist:vertex;polygon;edge;item;ptag ?"))
         # self.SelModeEdge = bool(lx.eval1("select.typeFrom typelist:edge;vertex;polygon;item ?"))
@@ -44,17 +40,17 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
         # print(self.SelModePoly)
         # print(self.SelModeItem)
         # if self.SelModePoly == True or self.SelModeItem == True:
-            # try:
-                # self.TargetMeshList = lxu.select.ItemSelection().current()
-            # except:
-                # self.TargetMeshList = []
+        # try:
+        # self.TargetMeshList = lxu.select.ItemSelection().current()
+        # except:
+        # self.TargetMeshList = []
 
-            # # If we do have something selected, put it in self.TargetMeshList
-            # if len(self.TargetMeshList) > 0:
-                # self.TargetMeshList = self.TargetMeshList
-            # else:
-                # self.TargetMeshList = None
-            # # print(self.TargetMeshList)
+        # # If we do have something selected, put it in self.TargetMeshList
+        # if len(self.TargetMeshList) > 0:
+        # self.TargetMeshList = self.TargetMeshList
+        # else:
+        # self.TargetMeshList = None
+        # # print(self.TargetMeshList)
 
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
@@ -86,17 +82,18 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
         NewNameList = []
         GrpNewNameList = []
 
-        ConvertScale = self.dyna_Bool (0)
-        CreatePartTags = self.dyna_Bool (1)
-        UVUnwrap = self.dyna_Bool (2)
-        Airtight = self.dyna_Bool (3)
-        RepackAll = self.dyna_Bool (4)
-        UnparentInPlace = self.dyna_Bool (5)
+        ConvertScale = self.dyna_Bool(0)
+        CreatePartTags = self.dyna_Bool(1)
+        UVUnwrap = self.dyna_Bool(2)
+        Airtight = self.dyna_Bool(3)
+        RepackAll = self.dyna_Bool(4)
+        UnparentInPlace = self.dyna_Bool(5)
 
         ### Part toggle
         PolygonTagTypeMode = lx.eval('select.ptagType ?')
         # print(PolygonTagTypeMode)
 
+        PTTMdiff = bool()
         if PolygonTagTypeMode != "part":
             lx.eval('select.ptagType part')
             PTTMdiff = True
@@ -105,14 +102,13 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
             PTTMdiff = False
         ###
 
-
         ### Delete  Empty Meshes maybe not needed in SMO Batch context
         lx.eval('smo.CLEANUP.DelEmptyMeshItem')
         lx.eval('select.itemType mesh')
         meshes_list = scene.selectedByType(lx.symbol.sITYPE_MESH)
         # print(meshes_list)
 
-        if ConvertScale == True:
+        if ConvertScale:
             u_def = lx.eval("pref.value units.default ?")
             # print(u_def)
             if u_def == "meters":
@@ -129,9 +125,8 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
                 lx.eval('transform.channel scl.Z 10')
                 lx.eval('transform.freeze scale')
 
-
-        #secondmeshes_list = scene.selected
-        #meshes_list.append(secondmeshes_list)
+        # secondmeshes_list = scene.selected
+        # meshes_list.append(secondmeshes_list)
 
         ### Grouping and Separate meshes parts
         for mesh in meshes_list:
@@ -141,10 +136,10 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
             TargetNamePrefix = Mesh_Target.name
             # print(TargetNamePrefix)
             NewName = TargetNamePrefix + '_' + "part"
-            GrpNewName = "Grp"+ '_' + TargetNamePrefix
+            GrpNewName = "Grp" + '_' + TargetNamePrefix
             GrpNewNameList.append(GrpNewName)
 
-            if UnparentInPlace == True:
+            if UnparentInPlace:
                 lx.eval('item.parent parent:{} inPlace:1')
             lx.eval('layer.groupSelected')
             lx.eval('item.name %s xfrmcore' % GrpNewName)
@@ -158,18 +153,17 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
             lx.eval('select.useSet %s select' % GrpNewName)
             lx.eval('select.itemHierarchy')
             lx.eval('select.useSet %s deselect' % GrpNewName)
-            if CreatePartTags == True:
+            if CreatePartTags:
                 lx.eval('item.name %s xfrmcore' % NewName)
                 lx.eval('select.editSet %s add' % NewName)
                 NewNameList.append(NewName)
-            if CreatePartTags == False:
+            if not CreatePartTags:
                 lx.eval('item.name %s xfrmcore' % TargetNamePrefix)
                 lx.eval('select.editSet %s add' % TargetNamePrefix)
                 NewNameList.append(TargetNamePrefix)
             lx.eval('smo.GC.DeselectAll')
 
-
-        ### Rename Items 
+        ### Rename Items
         print(NewNameList)
         print(GrpNewNameList)
 
@@ -189,7 +183,6 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
                 del PartTargetsList[:]
                 lx.eval('smo.GC.DeselectAll')
 
-
         ### MergeBack the meshes
         for item in GrpNewNameList:
             lx.eval('select.useSet %s select' % item)
@@ -197,7 +190,6 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
             lx.eval('select.useSet %s deselect' % item)
             lx.eval('layer.mergeMeshes false')
             lx.eval('smo.GC.DeselectAll')
-
 
         ### Delete the Groups locator and update the Lists
         lx.eval('select.itemType mesh')
@@ -211,29 +203,34 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
             lx.eval('smo.GC.DeselectAll')
 
         # remove Selection Sets
-        lx.eval('select.deleteSet %s true' % GrpNewNameList[0] )
+        lx.eval('select.deleteSet %s true' % GrpNewNameList[0])
 
-            
-
-        if PTTMdiff == True:
+        if PTTMdiff:
             lx.eval('select.ptagType %s' % PolygonTagTypeMode)
-
 
         ### Generate UV maps and Create Airtight Mesh by merging Vertex Boundary
         UVMapName = lx.eval('pref.value application.defaultTexture ?')
         scene.select(resultingmesh_list)
         lx.eval('vertMap.new {%s} txuv' % UVMapName)
+        lx.eval('smo.GC.DeselectAll')
+
+        AutoHideState = lx.eval('user.value SMO_UseVal_UV_HideAfterUnwrap ?')
+        if AutoHideState:
+            lx.eval('user.value SMO_UseVal_UV_HideAfterUnwrap False')
+        if UVUnwrap:
+            lx.eval("smo.UV.EnableUVTextureChecker 4096")
+
         for mesh in resultingmesh_list:
             mesh.select(True)
 
-            if UVUnwrap == True:
+            if UVUnwrap:
                 # Unwrap and Pack UV Islands
                 lx.eval('select.type polygon')
                 lx.eval('select.all')
                 lx.eval('smo.UV.Multi.UnwrapSmart 0 1 0 0')
                 lx.eval('smo.UV.SmartProjectionClearTag')
 
-            if Airtight == True:
+            if Airtight:
                 # Merge Vertex Boundary
                 lx.eval('@AddBoundary.py')
                 lx.eval('item.componentMode vertex true')
@@ -241,7 +238,7 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
             lx.eval('select.type item')
             lx.eval('smo.GC.DeselectAll')
 
-        if RepackAll == True and UVUnwrap == True:
+        if RepackAll and UVUnwrap:
             scene.select(resultingmesh_list)
             lx.eval('smo.UV.NormalizePack 0 0')
 
@@ -249,7 +246,16 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
         scene.select(resultingmesh_list)
         lx.eval('!mesh.cleanup true mergeVertex:false')
 
-        # lx.eval('smo.UV.EnableUVTextureChecker 4096')
+        lx.eval("select.itemType groupLocator")
+        MeshName = lx.eval("item.name ? xfrmcore")
+        lx.eval("!delete")
+        scene.select(resultingmesh_list)
+        lx.eval("item.name {%s} xfrmcore" % MeshName)
+
+        # Rename VertexNormal Map Data to Default Pref Name
+        lx.eval("smo.CLEANUP.RenameVNrmMapToDefaultSceneWise")
+
+        lx.eval('user.value SMO_UseVal_UV_HideAfterUnwrap %s' % AutoHideState)
 
 
 lx.bless(SMO_GC_PlasticityPrepareMeshes_Cmd, Cmd_Name)
