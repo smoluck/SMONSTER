@@ -29,7 +29,7 @@ To use it at your profit, you can install it in two ways:
 - from [GitHub](https://github.com/smoluck/SMONSTER/blob/main/README.md#building-the-kit-from-github)
 - from Gumroad for [SMONSTER Kit](https://smoluck.gumroad.com/l/Smonster-v3) and [TRAINING Kit](https://smoluck.gumroad.com/l/SMONSTER_TRAINING)
 
-Enjoy the tools and please give some feedback on Foundry Forum thread or preferably via our [Slack](https://join.slack.com/t/smonster/shared_invite/zt-1dkpid10n-QK4gn4UAk6iG5wv7ISEdnQ) or via [Discord](https://discord.gg/fqgWnbC).
+Enjoy the tools and please give some feedback on [Foundry Forums thread](https://community.foundry.com/discuss/topic/159978) or preferably via the [Foundry Modo Slack](https://foundry-modo.slack.com/archives/C04255BDJH3) or my [Slack](https://join.slack.com/t/smonster/shared_invite/zt-1dkpid10n-QK4gn4UAk6iG5wv7ISEdnQ) or via [Discord](https://discord.gg/fqgWnbC).
 
 Thanks to the wonderful Modo community and the [PixelFondue](https://www.pixelfondue.com/contributors) Contributor Team that have give me a lot of support on this achievement.
 
@@ -176,6 +176,6 @@ As usual if you found a bug, please reach me out on SNS and i will do my best to
 
 [SMONSTER Slack server](https://join.slack.com/t/smonster/shared_invite/zt-1dkpid10n-QK4gn4UAk6iG5wv7ISEdnQ)
 
-[Foundry Modo Slack server](https://foundry-modo.slack.com)
+[Foundry Modo Slack server](https://foundry-modo.slack.com/archives/C04255BDJH3)
 
 [Foundry Forums thread](https://community.foundry.com/discuss/topic/159978)
