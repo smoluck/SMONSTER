@@ -4,7 +4,7 @@
 # Version:      1.0
 #
 # Purpose:      This script is designed to:
-#               Cleanup Meshes data from Plasticity creating Polygons Parts, Unwraped UVMaps and Merging Solid items.
+#               Cleanup Meshes data from Plasticity creating Polygons Parts, Unwrapped UVMaps and Merging Solid items.
 #
 # Author:       Franck ELISABETH
 # Website:      http://www.smoluck.com
@@ -19,7 +19,7 @@ from math import degrees
 Cmd_Name = "smo.GC.PlasticityPrepareMeshes"
 
 
-# smo.GC.PlasticityPrepareMeshes 0 1 1 1 0
+# smo.GC.PlasticityPrepareMeshes 0 1 1 1 1 1
 
 class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -62,10 +62,10 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
         return 'SMO GC - Plasticity Prepare Meshes'
 
     def cmd_Desc(self):
-        return 'Cleanup Meshes data from Plasticity creating Polygons Parts, Unwraped UVMaps and Merging Solid items.'
+        return 'Cleanup Meshes data from Plasticity creating Polygons Parts, Unwrapped UVMaps and Merging Solid items.'
 
     def cmd_Tooltip(self):
-        return 'Cleanup Meshes data from Plasticity creating Polygons Parts, Unwraped UVMaps and Merging Solid items.'
+        return 'Cleanup Meshes data from Plasticity creating Polygons Parts, Unwrapped UVMaps and Merging Solid items.'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'
@@ -88,6 +88,8 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
         Airtight = self.dyna_Bool(3)
         RepackAll = self.dyna_Bool(4)
         UnparentInPlace = self.dyna_Bool(5)
+
+        lx.eval('smo.GC.DeselectAll')
 
         ### Part toggle
         PolygonTagTypeMode = lx.eval('select.ptagType ?')
@@ -128,7 +130,12 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
         # secondmeshes_list = scene.selected
         # meshes_list.append(secondmeshes_list)
 
-        ### Grouping and Separate meshes parts
+        # ### Grouping and Separate meshes parts
+        # scene.select(meshes_list)
+        # if UnparentInPlace:
+        #     lx.eval('!item.parent parent:{} inPlace:1')
+        #     # lx.eval('smo.GC.ItemListUnparentInPlaceRightBelowRootParent')
+
         for mesh in meshes_list:
             mesh.select(True)
             TargetItem = lx.eval1("query sceneservice selection ? locator")
@@ -139,8 +146,8 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
             GrpNewName = "Grp" + '_' + TargetNamePrefix
             GrpNewNameList.append(GrpNewName)
 
-            if UnparentInPlace:
-                lx.eval('item.parent parent:{} inPlace:1')
+            # if UnparentInPlace:
+            #     lx.eval('!item.parent parent:{} inPlace:1')
             lx.eval('layer.groupSelected')
             lx.eval('item.name %s xfrmcore' % GrpNewName)
             lx.eval('select.editSet %s add' % GrpNewName)
@@ -202,8 +209,8 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
             lx.eval('!delete')
             lx.eval('smo.GC.DeselectAll')
 
-        # remove Selection Sets
-        lx.eval('select.deleteSet %s true' % GrpNewNameList[0])
+        # remove Selection Sets not necessary as the group locator have been removed
+        # lx.eval('select.deleteSet %s true' % GrpNewNameList[0])
 
         if PTTMdiff:
             lx.eval('select.ptagType %s' % PolygonTagTypeMode)
