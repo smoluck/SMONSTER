@@ -98,7 +98,8 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
             except:
                 return ''
 
-        if Good == True:
+        FinalPath = ""
+        if Good:
             ItemSelected = scene.selected
             selectedMeshes = [item for item in ItemSelected if item.type == 'mesh']
             print(selectedMeshes)
@@ -124,7 +125,7 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
                 # lx.out('MatCap Path', MatCapKitPath)
                 print('SMO GC Kit preset path:', DestinationPath)
 
-            if SubFolderState == True:
+            if SubFolderState:
                 lx.eval('smo.GC.DeselectAll')
                 for item in sceneItem:
                     SceneID = item.Ident()
@@ -143,12 +144,12 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
                 if len(LXLTag) > 0:
                     FinalPath = DestinationPath + "/" + LXLTag
 
-            if SubFolderState == False:
+            if not SubFolderState:
                 FinalPath = DestinationPath
 
             print(FinalPath)
             FinalPath_AbsPath = os.path.abspath(FinalPath)
-            print(FinalPath_AbsPath)
+            print("Destination Folder: ", FinalPath_AbsPath)
 
             # Check / Create Directory
             # try:
@@ -189,11 +190,11 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
                 try:
                     Target.parent.select()
                     ParentItem = modo.Scene().selected[0]
-                    if ParentItem != None:
+                    if ParentItem is not None:
                         ParentIdent = ParentItem.Ident()
                         print(ParentIdent)
                         CheckPARENT = True
-                    elif ParentItem == None:
+                    elif ParentItem is None:
                         CheckPARENT = False
                 except:
                     CheckPARENT = False
@@ -202,7 +203,7 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
                 lx.eval('smo.GC.DeselectAll')
                 scene.select(Target)
 
-                if CheckPARENT == False:
+                if not CheckPARENT:
                     lx.eval('item.refSystem %s' % ItemIdent)
                     lx.eval('workPlane.fitGeometry')
                     lx.eval('workPlane.fitSelect')
@@ -221,10 +222,10 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
                     lx.out('World RotZ:', WRZ)
                     OffsetPos = [float(), float(), float()]
                     OffsetPos = [WPX, WPY, WPZ]
-                    print(OffsetPos)
+                    # print(OffsetPos)
                     OffsetRot = [float(), float(), float()]
                     OffsetRot = [WRX, WRY, WRZ]
-                    print(OffsetRot)
+                    # print(OffsetRot)
                     lx.eval('item.refSystem {}')
                     lx.eval("transform.channel pos.X 0.0")
                     lx.eval("transform.channel pos.Y 0.0")
@@ -233,7 +234,7 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
                     lx.eval("transform.channel rot.Y 0.0")
                     lx.eval("transform.channel rot.Z 0.0")
 
-                if CheckPARENT == True:
+                if CheckPARENT:
                     WPX = lx.eval("transform.channel pos.X ?")
                     WPY = lx.eval("transform.channel pos.Y ?")
                     WPZ = lx.eval("transform.channel pos.Z ?")
@@ -254,15 +255,14 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
                     lx.eval("transform.channel rot.Y 0.0")
                     lx.eval("transform.channel rot.Z 0.0")
 
-                lx.eval(
-                    'mesh.presetSave filename:{%s} desc:"" "" reuseThumb:0 item:{%s}' % (MeshPreset_AbsPath, ItemIdent))
+                lx.eval('mesh.presetSave filename:{%s} desc:"" "" reuseThumb:0 item:{%s}' % (MeshPreset_AbsPath, ItemIdent))
                 lx.eval('select.preset path:{%s} mode:set' % MeshPreset_AbsPath)
                 lx.eval('smo.GC.RenderThumbPreset')
                 lx.eval('select.preset path:{%s} mode:remove' % MeshPreset_AbsPath)
                 lx.eval('smo.GC.DeselectAll')
                 scene.select(Target)
 
-                if CheckPARENT == True:
+                if CheckPARENT:
                     lx.eval('select.item %s add' % ParentIdent)
                     lx.eval('item.parent')
                     lx.eval('smo.GC.DeselectAll')
@@ -274,7 +274,7 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
                     lx.eval("transform.channel rot.Y {%s}" % rad(WRY))
                     lx.eval("transform.channel rot.Z {%s}" % rad(WRZ))
 
-                if CheckPARENT == False:
+                if not CheckPARENT:
                     lx.eval("transform.channel pos.X {%s}" % WPX)
                     lx.eval("transform.channel pos.Y {%s}" % WPY)
                     lx.eval("transform.channel pos.Z {%s}" % WPZ)
