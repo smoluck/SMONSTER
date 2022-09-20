@@ -22,7 +22,8 @@ SMONSTER include 15 Standard Kits (including 2 Beta Kits) and 3 Livelink Kits to
 It's been about 5 years now that i've started to learn Python Scripting over my spare time. It was a though work for a simple 3D Artist, but i won't regret anything i've discovered during that time. It was a great journey, along those years and i will continue to explore that as a Technical Artist.
 I've wrapped up about ~250 commands for Modo along many other scripts and UI development.
 [MODO](https://www.foundry.com/products/modo) is a hub for me since 2006 and i've got plenty of pleasure using it along other tools.
-Some have been so important to my pipeline that i've integrated some Livelink kits for them, like [RizomUV](https://www.rizom-lab.com/), [Marmoset Toolbag](https://marmoset.co/toolbag/) or [Pixaflux](http://pixaflux.com/).
+Some have been so important to my pipeline that i've integrated some Livelink kits for them, like [RizomUV](https://www.rizom-lab.com/), [Marmoset Toolbag](https://marmoset.co/toolbag/), [Pixaflux](http://pixaflux.com/).
+Some have dedicated commands or presets to speed up your workflow with them, like [Unity](https://unity.com/), [Plasticity](https://github.com/nkallen/plasticity).
 2 Beta kits are dedicated to [Adobe Illustrator](https://www.adobe.com/products/illustrator.html) and Point Cloud workflow. 
 
 To use it at your profit, you can install it in two ways:
