@@ -48,7 +48,7 @@ class SMO_GC_RenderThumbPreset_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
         #scene = modo.scene.current()
         OriginalViewState = lx.eval('view3d.projection ?')
-        print(OriginalViewState)
+        print('original viewport type is: ', OriginalViewState)
         try:
             SelPrstPBPath = lxu.select.PresetPathSelection().current()[-1][0]
         except:
@@ -67,7 +67,7 @@ class SMO_GC_RenderThumbPreset_Cmd(lxu.command.BasicCommand):
         BGColor = lx.eval('user.value SMO_UseVal_ThumbBG_Color ?')
         # print (BGColor)
         lx.eval('select.subItem constant001 set textureLayer;render;environment;light;camera;scene;replicator;bake;mediaClip;txtrLocator')
-        lx.eval('item.channel constant$color {%s}' % BGColor)
+        lx.eval('!item.channel constant$color {%s}' % BGColor)
         lx.eval('smo.GC.DeselectAll')
 
         lx.eval('select.preset {%s} add' % SelPrstPBPath)
@@ -116,8 +116,13 @@ class SMO_GC_RenderThumbPreset_Cmd(lxu.command.BasicCommand):
         lx.eval('select.subItem camera002 set')
         # lx.eval('camera.autofocus')
 
+        ####################
+        print('IT Crash Here with this Error: Viewport Texture Override Initialize')
+        print('Only the Render Window can be Interacted with while rendering')
         lx.eval('render')
-        time.sleep(0.5)
+        # even with a Time of 10 to pause the script
+        time.sleep(10.0)
+
         lx.eval('preset.thumbReplace image:render')
         lx.eval('!render.clearAll')
         lx.eval('renderWindow.close')

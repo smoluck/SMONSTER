@@ -1284,7 +1284,6 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
                 # if '.lxo' in lxo.lower():
                 if ".lxo" in lxo or ".LXO" in lxo:  # this one will only accept .fbx or .FBX exactly
                     finalPath = Target_Path + "/" + lxo
-                    finalPath = Target_Path + "/" + obj
                     # print(finalPath)
                     finalPath_AbsPath = os.path.abspath(finalPath)
                     # print(finalPath_AbsPath)
@@ -1473,7 +1472,7 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
 
 
                     # Converting Meshes to Static Meshes
-                    if OutputLXO_ConvertStaticMeshes == True :
+                    if OutputLXO_ConvertStaticMeshes :
                         lx.eval('select.itemType mesh')
                         lx.eval('item.setType triSurf locator')
 
@@ -1482,7 +1481,10 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
                     # lx.eval('smo.GC.ConvertSceneTo 1 SVG')
                     # lx.eval('smo.GC.ConvertSceneTo 1 OBJ')
                     # lx.eval('smo.GC.ConvertSceneTo 1 FBX')
-                    lx.eval('smo.GC.ConvertSceneTo 1 %s' % OutputFileFormat)
+                    if OutputFileFormat == "LXO":
+                        lx.eval('scene.saveAs {%s} $LXOB false' % finalPath_AbsPath)
+                    if OutputFileFormat != "LXO":
+                        lx.eval('smo.GC.ConvertSceneTo 1 %s' % OutputFileFormat)
                     lx.eval('!scene.close')
                     lx.out('Scene Closed')
 
@@ -1685,7 +1687,7 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
                         lx.out('NOTIFICATION: line 020 Empty')
 
                     # Converting Meshes to Static Meshes
-                    if OutputLXO_ConvertStaticMeshes == True and OutputFileFormat_LXO == 1:
+                    if OutputLXO_ConvertStaticMeshes and OutputFileFormat_LXO == 1:
                         lx.eval('smo.CLEANUP.DelEmptyMeshItem')
                         lx.eval('smo.CLEANUP.DelCam')
                         lx.eval('smo.CLEANUP.DelLight')
