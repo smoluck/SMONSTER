@@ -2,6 +2,22 @@
 ---- UPDATES LOG----
 -------------------------
 
+-------------------------
+v4.15 - 2022/09/21
+SMONSTER:
+        • Python code boolean simplification
+
+BATCH:
+        • Bugfix when loading LXO and saving as LXO files.
+
+GC:
+        • Code bugfix and comment on smo.GC.RenderThumbPreset cmd.
+        • Bugfix on this Submenu integration in Preset Browser.
+        • smo.GC.PlasticityPrepareMeshes have been updated to support latest Release of Plasticity 0.6.29
+        • Exposed Split Pop-over menu into the Main Pie Menu / Modeling
+        • minor UI bug fix in this pie menu as well
+        • adding a simple teapot mesh preset to be sure the Folder structure of the SMOGC_Presets/Assets/Meshes is preserved in build.
+
 
 -------------------------
 v4.10 - 2022/09/06
