@@ -6,9 +6,9 @@ lx.eval('smo.BATCH.SetOutputFileTypeViaPref {LXO}')
 
 lx.eval('user.value SMO_UseVal_BATCH_String_Line001 {smo.CLEANUP.DelCam}')
 lx.eval('user.value SMO_UseVal_BATCH_String_Line002 {smo.CLEANUP.DelLight}')
-lx.eval('user.value SMO_UseVal_BATCH_String_Line003 {smo.CLEANUP.DelEmptyMeshItem}')
-lx.eval('user.value SMO_UseVal_BATCH_String_Line004 {smo.GC.RenameMeshesBySceneName}')
-lx.eval('user.value SMO_UseVal_BATCH_String_Line005 {smo.GC.PlasticityPrepareMeshes 1 0 1 1 0 0}')
+lx.eval('user.value SMO_UseVal_BATCH_String_Line003 {smo.GC.PlasticityPrepareMeshes 0 1 1 1 1 1}')
+lx.eval('user.value SMO_UseVal_BATCH_String_Line004 {}')
+lx.eval('user.value SMO_UseVal_BATCH_String_Line005 {}')
 
 lx.eval('user.value SMO_UseVal_BATCH_String_Line006 {}')
 lx.eval('user.value SMO_UseVal_BATCH_String_Line007 {}')
