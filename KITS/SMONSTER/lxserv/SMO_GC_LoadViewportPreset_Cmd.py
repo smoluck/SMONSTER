@@ -58,8 +58,17 @@ class SMO_GC_LoadViewportPreset_Cmd(lxu.command.BasicCommand):
 
         # MODO version checks.
         # Modo 14.0 aand 15.0 have different ViewportPresets.
-        Modo_ver = int(lx.eval ('query platformservice appversion ?'))
+        Modo_ver = int(lx.eval('query platformservice appversion ?'))
         # print('Modo Version:',Modo_ver)
+
+        # check the MatCap state on current viewport
+        MatCapState = bool(lx.eval('vpover.enable ?'))
+
+        # MatCapPrefs = bool(lx.eval('user value SMO_UseVal_VENOM_MatCapState ?'))
+
+        # if MatCapState:
+        #     currentMatCapPath = lx.eval('vpover.setOverride path:{?} type:matcap')
+
         if Modo_ver >= 1500:
             if Preset_ID == 0:
                 # lx.eval('attr.formPresetLoad "SMONSTERAVPGame:formPreset" {27036209057:sheet} contextForm:{27036209057:sheet}')
@@ -75,6 +84,12 @@ class SMO_GC_LoadViewportPreset_Cmd(lxu.command.BasicCommand):
                 lx.eval('view3d.presetload AVP_Game_AA')
             if Preset_ID == 2:
                 lx.eval('view3d.presetload AVP_Game')
+
+        lx.eval('view3d.shadingStyle gnzgl active')
+        if MatCapState:
+            lx.eval('vpover.enable true')
+        if not MatCapState:
+            lx.eval('vpover.enable false')
 
 
 lx.bless(SMO_GC_LoadViewportPreset_Cmd, Cmd_Name)

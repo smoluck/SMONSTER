@@ -62,7 +62,7 @@ class SMO_GC_Display_CycleMatCap_Cmd(lxu.command.BasicCommand):
         #lx.out(args)
         # ReverseDirection = 0      # Forward Cycle
         # ReverseDirection = 1      # Backward Cycle
-        ReverseDirection = self.dyna_Int (0)
+        ReverseDirection = self.dyna_Int(0)
         # lx.out('Cycle Direction Mode:',ReverseDirection)
         # ############### ARGUMENTS ###############
         SMO_MatCapId = lx.eval('user.value SMO_MatCapId ?')
@@ -83,7 +83,7 @@ class SMO_GC_Display_CycleMatCap_Cmd(lxu.command.BasicCommand):
 
 
 
-        if ReverseDirection == 0 :
+        if ReverseDirection == 0:
 
             if SMO_MatCapId == (MaxId - 1):
                 SMO_MatCapId = -1
@@ -119,7 +119,7 @@ class SMO_GC_Display_CycleMatCap_Cmd(lxu.command.BasicCommand):
                 lx.eval('user.value SMO_MatCapId %i' % MatCapIndex)
                 lx.eval('@av_smartWireToggle.pl')
 
-        if ReverseDirection == 1 :
+        if ReverseDirection == 1:
             if SMO_MatCapId == (MaxId - 1):
                 SMO_MatCapId = (MaxId - 1)
                 # lx.out('MatCap Current Index arrive at End:', SMO_MatCapId)
@@ -153,6 +153,8 @@ class SMO_GC_Display_CycleMatCap_Cmd(lxu.command.BasicCommand):
                 lx.eval('vpover.setOverride {%s} matcap' % MatCapFilePath[MatCapIndex])
                 lx.eval('user.value SMO_MatCapId %i' % MatCapIndex)
                 lx.eval('@av_smartWireToggle.pl')
+
+        # lx.eval('user value SMO_UseVal_VENOM_MatCapState 1')
         del MatCapFilePath[:]
 
 
