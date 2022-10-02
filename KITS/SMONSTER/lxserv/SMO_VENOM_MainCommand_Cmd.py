@@ -457,6 +457,16 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
         ##############################
         #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
         if TotalSafetyCheck == TotalSafetyCheckTrueValue:
+            #############
+            # # Make Inactive Items Invisible for editing
+            # lx.eval('view3d.inactiveInvisible true')
+            # # Hide Locator visibility
+            # lx.eval('view3d.showLocators false')
+
+            # Load the AVP VeNom Preset to help work.
+            if IsolateMode == True:
+                lx.eval('view3d.presetload AVP_VeNom_AA')
+            #############
 
             # Polygon Undermouse Selection Mode. You must be in Item Mode
             if SMO_SafetyCheck_ItemModeEnabled == 1:
@@ -472,17 +482,6 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.editSet SelSet_VeNomTargetPoly add {}')
                 lx.eval('select.type item')
                 lx.eval('view3d.selItemMode none')
-
-                #############
-                # # Make Inactive Items Invisible for editing
-                # lx.eval('view3d.inactiveInvisible true')
-                # # Hide Locator visibility
-                # lx.eval('view3d.showLocators false')
-
-                # Load the AVP VeNom Preset to help work.
-                if IsolateMode == True:
-                    lx.eval('view3d.presetload AVP_VeNom_AA')
-                #############
 
                 lx.eval('select.editSet SelSet_VeNomTarget add {}')
                 lx.eval('select.type polygon')
