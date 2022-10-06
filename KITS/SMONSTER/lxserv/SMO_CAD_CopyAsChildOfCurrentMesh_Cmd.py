@@ -186,6 +186,7 @@ class SMO_CAD_CopyCutAsChildOfCurrentMesh_Cmd(lxu.command.BasicCommand):
 
 
         Mesh_Source = scene.selectedByType('mesh')[0]
+        MeshName = lx.eval("item.name ? xfrmcore")
         Mesh_Source_ID = Mesh_Source.Ident()
         # lx.out('Source Mesh:', Mesh_Source_ID)
 
@@ -204,6 +205,7 @@ class SMO_CAD_CopyCutAsChildOfCurrentMesh_Cmd(lxu.command.BasicCommand):
         if CopyOrCut == True:
             lx.eval('cut')
         lx.eval('layer.new')
+        lx.eval("item.name {%s} xfrmcore" % MeshName)
 
         Mesh_Child = scene.selectedByType('mesh')[0]
         Mesh_Child_ID = Mesh_Child.Ident()
