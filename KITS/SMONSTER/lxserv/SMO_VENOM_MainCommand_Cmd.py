@@ -83,6 +83,9 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
         if self.SelModePoly == True:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
 
+        MakeInactiveSameAsActive = bool(lx.eval('view3d.inactiveInvisible ?'))
+        if MakeInactiveSameAsActive:
+            lx.eval('view3d.inactiveInvisible false')
 
         CheckGrpSelItems = lxu.select.ItemSelection().current()
         for item in CheckGrpSelItems:
@@ -605,6 +608,7 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
                 scene.select(temp_mesh)
                 lx.eval('select.type vertex')
                 lx.eval('select.useSet SelSet_VeNomTargetVertex select')
+                lx.eval('view3d.inactiveInvisible false')
                 lx.eval('vertMap.transferNormals true')
                 lx.eval('select.drop vertex')
                 lx.eval('select.type polygon')
@@ -667,6 +671,7 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.useSet SelSet_VeNomTempLayer select')
                 lx.eval('select.type vertex')
                 lx.eval('select.useSet SelSet_VeNomTargetVertex select')
+                lx.eval('view3d.inactiveInvisible false')
                 lx.eval('vertMap.transferNormals true')
                 lx.eval('select.drop vertex')
                 lx.eval('select.type polygon')
@@ -755,6 +760,11 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
             lx.eval('pref.value application.pasteDeSelection false')
             lx.out('"Deselect Elements Before Pasting" have been Restored')
         ########################################################
+
+        if IsolateMode:
+            lx.eval('view3d.inactiveInvisible true')
+        if not IsolateMode:
+            lx.eval('view3d.inactiveInvisible false')
 
 
 lx.bless(SMO_VENOM_MainCommand_Cmd, Cmd_Name)
