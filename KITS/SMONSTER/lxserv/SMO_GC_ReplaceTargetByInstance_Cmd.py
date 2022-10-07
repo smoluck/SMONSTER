@@ -92,6 +92,7 @@ class SMO_GC_ReplaceTargetByInstance_Cmd(lxu.command.BasicCommand):
                 GuideMesh = scene.selected
                 lx.eval("item.name Guide mesh")
                 lx.eval("smo.CB.ItemColor 8 1")
+                lx.eval("item.channel locator$select off")
                 lx.eval('smo.GC.DeselectAll')
                 scene.select(TargetMeshes)
                 lx.eval("select.type polygon")
