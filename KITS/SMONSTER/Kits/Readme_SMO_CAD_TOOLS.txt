@@ -4,6 +4,9 @@ Hi. Everyone
 --- UPDATE LOG ---
 ----------------------
 - 3.70 -
+	• smo.CAD.CopyCutAsChildOfCurrentMesh now rename the new mesh by the source name.
+
+- 3.70 -
         • Added Option for Rebuild Polystrip to work on Circle (Closed Loop). (using 2nd argument to define if it's working for a closed Polystrip)
 
 - 3.60 -

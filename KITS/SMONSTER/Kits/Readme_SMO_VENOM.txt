@@ -4,6 +4,9 @@ Hi. Everyone
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 2.20 -
+        • The main command now keep the Isolate mode or the InactiveSameActive state on current the viewport as expected.
+
 - 2.10 -
         • added a toggle for Switching or not in Isolate Mode in Tail Menu and Preferences
 

@@ -3,6 +3,44 @@ Hi. Everyone
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 11.40 -
+	• Changed the set of Matcaps to match most common used one with addition of soft bright clay matcaps
+	• Edit Chamfer command added to Polygon Context Menu
+	• Config change to be sure SwitcherBar state visibility to be sure the Top and Bottom bar are visible by default.
+	• Bugfix for VeNom ReCentering the view in special situations after running the command.
+	• Viewport Preset Load bugfix
+	• Bugfix AVP Preset switcher
+	• The Unmerge command is now exposed here to speed up that process in from the viewport in item mode.
+	• smo.GC.ReplaceTargetByInstance - Changed the Guide Mesh mode to be sure it is not selectable as before. It speeds up User interaction while adjusting the new instances position / rotations. You can still select it from the Item List.
+
+
+- 11.10 -
+	• Code bugfix and comment on smo.GC.RenderThumbPreset cmd.
+	• Bugfix on this Submenu integration in Preset Browser.
+	• smo.GC.PlasticityPrepareMeshes have been updated to support latest Release of Plasticity 0.6.29
+	• Exposed Split Pop-over menu into the Main Pie Menu / Modeling
+	• minor UI bug fix in this pie menu as well
+	• adding a simple teapot mesh preset to be sure the Folder structure of the SMOGC_Presets/Assets/Meshes is preserved in build.
+
+
+- 10.60 -
+	• Updated Vertical PopOver Menu (Ctrl + Shift + Q) and regular Pie Menu (Ctrl + Q).
+	• Replace by Instance now set the Item Color to pink on both New instances and original mesh to let you see them quickly from the Item List.
+	• New Commands:
+	  • smo.GC.ItemListUnparentInPlaceRightBelowRootParent
+	    (By default, when we unparent an item (inPlace), the item move at the end of the ItemList.
+	    This command make sure the unparented item can appear right bellow the Root Parent of it, in the ItemList.)
+	  • Select Component by Local Axis Cmd
+	    (Select Component by Local Axis (Positive / Negative))
+	  • Cleanup Mirrored Mesh over World Axis Cmd
+	    (Cleanup selected Mesh along a given axis Local (x, y, z) in order to remove Mirrored Opposite Side Argument boolean (Positive or Negative).
+	    Then recreate instances out of that mesh along that axis.)
+	  • Cleanup Mirrored Pair of Meshes over World Axis Cmd
+	  • smo.GC.DeleteByLocalAxisSides
+	  • smo.GC.SplitInTwoMeshesByLocalAxisSides
+	  • smo.GC.ItemListUnparentInPlaceRightBelowRootParent
+
+
 - 10.10 -
         • Added warning if you try to use commands that use Modollama kit without getting it activated / loaded.
         • Bugfix forms for users that got already Seneca SuperTaut function and forms in their keymapping.

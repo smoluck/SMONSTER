@@ -4,6 +4,10 @@ Hi. Everyone
 -----------------
 ---- UPDATES ----
 -----------------
+- 2.20 -
+	• Updated preset load for Plasticity process
+	• added URL Link for further use of SLDPRT files from McMaster website for testing BATCH kit
+
 - 2.00 -
         • PopUp menu updated
         • Support for SLDPRT added as Input file format (CAD file - Solidworks)
