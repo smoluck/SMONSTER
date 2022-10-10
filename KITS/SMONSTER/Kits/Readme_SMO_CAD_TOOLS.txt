@@ -3,7 +3,7 @@ Hi. Everyone
 ----------------------
 --- UPDATE LOG ---
 ----------------------
-- 3.70 -
+- 3.90 -
 	• smo.CAD.CopyCutAsChildOfCurrentMesh now rename the new mesh by the source name.
 
 - 3.70 -
