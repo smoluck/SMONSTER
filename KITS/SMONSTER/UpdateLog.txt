@@ -3,6 +3,51 @@
 -------------------------
 
 -------------------------
+v4.32 - 2022/10/11
+GC:
+        • TransformRotate now doesn't rotate (over RX) the selection with the "x" key. Preserving the Snapping ON/OFF toggle ability.
+        • TransformRotate keymap for rotation is now set to:
+          ctrl + right arrow = RX +90
+          ctrl + left arrow = RX -90
+          ctrl + up arrow = RY +90
+          ctrl + down arrow = RY -90
+          shift + up arrow = RZ +90
+          shift + down arrow = RZ -90
+
+        • Mirror Generator Tool keymap have been changed to preserve the Snapping ON/OFF toggle ability
+        • Mirror Generator keymap for axis is now set to:
+          ctrl + left = Axis X
+          ctrl + down = Axis Y
+          ctrl + right = Axis Z
+
+
+-------------------------
+v4.30 - 2022/10/10
+SMONSTER:
+        • Added this AVP form Preset "SMONSTER_ShowcaseScene" for showcasing tool Demos.
+
+BATCH:
+        • Updated preset load for Plasticity process
+        • added URL Link for further use of SLDPRT files from McMaster website for testing BATCH kit
+
+GC:
+        • Changed the set of Matcaps to match most common used one with addition of soft bright clay matcaps
+        • Edit Chamfer command added to Polygon Context Menu
+        • Config change to be sure SwitcherBar state visibility to be sure the Top and Bottom bar are visible by default.
+        • Bugfix for VeNom ReCentering the view in special situations after running the command.
+        • Viewport Preset Load bugfix
+        • Bugfix AVP Preset switcher
+        • The Unmerge command is now exposed here to speed up that process in from the viewport in item mode.
+        • smo.GC.ReplaceTargetByInstance - Changed the Guide Mesh mode to be sure it is not selectable as before. It speeds up User interaction while adjusting the new instances position / rotations. You can still select it from the Item List.
+
+CAD:
+        • smo.CAD.CopyCutAsChildOfCurrentMesh now rename the new mesh by the source name.
+
+VENOM:
+        • The main command now keep the Isolate mode or the InactiveSameActive state on current the viewport as expected.
+
+
+-------------------------
 v4.15 - 2022/09/21
 SMONSTER:
         • Python code boolean simplification
