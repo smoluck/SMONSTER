@@ -3,8 +3,10 @@
 -------------------------
 
 -------------------------
-v4.32 - 2022/10/11
+v4.35 - 2022/10/11
 GC:
+        • All HardCoded keymaps modifiers for Modo Tools like Edge Bevel , Cylinder , Cube and so on have been stored in the SMO_GC_Tools_HardCoded_Keymaps.zip file archive. This way it will not be extracted during the kit installation. It will not affect Smonster users preferences any more.
+        • Removed old ZEN related hotkey assignment in CFG
         • TransformRotate now doesn't rotate (over RX) the selection with the "x" key. Preserving the Snapping ON/OFF toggle ability.
         • TransformRotate keymap for rotation is now set to:
           ctrl + right arrow = RX +90
