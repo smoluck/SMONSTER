@@ -2,12 +2,17 @@ Hi. Everyone
 
 
 Since 2.2 Release:
-======> You ALWAYS need to have SMO_MASTER ans SMOONSTER Kit up and running to use the commands in the kit <======
+======> You ALWAYS need to have SMO_MASTER ans SMONSTER Kit up and running to use the commands in the kit <======
 
 
 ------------------
 --- UPDATE LOG ---
 ------------------
+- 2.8 -
+        • MODO 16.0v3 Support and small bugfix in code
+        • Added UV popup menu to the Vertex Maps under Info / Statistics to give access to commands more simply.
+        • Bugfix on the smo.LL.RIZOMUV.Basic command that wasn't getting the right fbx settings. It should now export correctly to the user defined path without any issues.
+
 - 2.7 -
         • MODO 16.0v1 Support
 
@@ -17,7 +22,7 @@ Since 2.2 Release:
         • Bugfix for those who also are using Vertex Normals maps in their workflow. In any case the kit won't update in Modo you could still open the Temp FBX File in order to get back all the data from Materials to VNrm to UV's of course..
 
 - 2.55 -
-        • Addition of Pixel Margin / Spacing Mode On in Rizom UV Preferences Script.
+        • Addition of Pixel Margin / Spacing Mode On in RizomUV Preferences Script.
 
 - 2.5 -
         • MODO 15.1v1  Support
@@ -25,7 +30,7 @@ Since 2.2 Release:
         • Added support for material at Livelink Export to let you use materials for fast polygon selection in RizomUV
 
 - 2.4 -
-        • Bugfix: in case you wasn't exporting Meshes fully triangulated, MODO 15.0vx wasn't getting proper UV data as it was exporting the mesh tiangulated instead of preserving the Mesh Topology (Square and Ngons).
+        • Bugfix: in case you wasn't exporting Meshes fully triangulated, MODO 15.0vx wasn't getting proper UV data as it was exporting the mesh triangulated instead of preserving the Mesh Topology (Square and Ngons).
 
 - 2.3 -
         • MODO 15.0v1  Support
@@ -42,12 +47,12 @@ Since 2.2 Release:
         • Fixed an issue where RizomUVLL was exporting the mesh triangulated if you was exporting Triangulated FBX previously using the RizomUV LL commands in the same scene.
 
 - 2.0 -
-        • Set path command to directly change the Rizom Release you want to work with.
+        • Set path command to directly change the RizomUV Release you want to work with.
 	(No need to to edit the Python script, and now you are able to choose the release to work with , without rebooting Modo.)
         • Kit Preferences Menu available in Modo Preferences Window
 
 - 1.9.5 -
-        • Bugfix on Rizom UV LL to use only FBX 2013 for all Import / Exports from whatever Modo release to fix incompatibility. 
+        • Bugfix on RizomUV LL to use only FBX 2013 for all Import / Exports from whatever Modo release to fix incompatibility.
 
 - 1.9.0 -
         • MODO 14.0v2 Support and Up
@@ -60,7 +65,7 @@ Since 2.2 Release:
 
 - 1.6.0 -
         • RizomUV 2019.1 Support,
-        • Fixed an issue related to an incompatibilty with other Kits, causing a "RizomUVLL Failed" Error from time to time.
+        • Fixed an issue related to an incompatibility with other Kits, causing a "RizomUVLL Failed" Error from time to time.
 
 - 1.5.0 -
         • Livelink and Livelink (Save) are now available
@@ -70,7 +75,7 @@ Since 2.2 Release:
 	This is the Real LiveLink.
 	(No More PopUp for file destination)
 
-	2-> Livelink (Save) - [Floopy disk icon]
+	2-> Livelink (Save) - [Floppy disk icon]
 	Here it's the same system as the previous build.
 	You can define and store the FBX export in a specific location.
 
@@ -118,7 +123,7 @@ After downloading the Zip file, please follow those instructions:
 then select the items, then the UV Map in the Vertex Map List
 Then run the hotkey: CTRL + ALT + Shift + R
 
-if you run it the first time and have installed Rizom UV in a specific Folder,
+if you run it the first time and have installed RizomUV in a specific Folder,
 Modo will ask for the Exe file of RizomUV.
 Point to the correct location on your system,
 then run the Livelink again.
@@ -158,7 +163,7 @@ OR
 (you need at least Modo 13.0v1 to run this kit)
 
 ----------------------------------------------------------------------------
-As for every Product / Art piece / Assets that you do, like everyone of us,
+As for every Product / Art piece / Assets that you do, like every one of us,
 please do not share those files, as you didn't want to see your work shared
 on internet without your permission.
                  I'm sure you'll understand that point.

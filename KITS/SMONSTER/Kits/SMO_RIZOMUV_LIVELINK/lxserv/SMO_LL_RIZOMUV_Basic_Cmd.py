@@ -254,66 +254,70 @@ class SMO_LL_RIZOMUV_Basic_Cmd (lxu.command.BasicCommand):
         # Apply FBX settings we want to use for RizomUV.
         # Essentially disabling everything except geometry and setting export to selection.
         # Also picking FBX2013, just because that should ensure things export smoothly.
-        lx.eval ('user.value sceneio.fbx.save.format 2')
-        lx.eval ('user.value sceneio.fbx.save.exportType 1')
-        lx.eval ('user.value sceneio.fbx.save.geometry 1')
-        lx.eval ('user.value sceneio.fbx.save.exportToASCII 0')
-        lx.eval ('user.value sceneio.fbx.save.animationOnly 0')
-        lx.eval ('user.value sceneio.fbx.save.cameras 0')
-        lx.eval ('user.value sceneio.fbx.save.lights 0')
-        lx.eval ('user.value sceneio.fbx.save.materials 0')
-        lx.eval ('user.value sceneio.fbx.save.polygonParts 1')
-        lx.eval ('user.value sceneio.fbx.save.selectionSets 1')
-        lx.eval ('user.value sceneio.fbx.save.smoothingGroups 1')
-        lx.eval ('user.value sceneio.fbx.save.morphMaps 0')
-        lx.eval ('user.value sceneio.fbx.save.animation 0')
-        lx.eval ('user.value sceneio.fbx.save.sampleAnimation 0')
-        lx.eval ('user.value sceneio.fbx.save.triangulate 0')
-        
+        lx.eval('user.value sceneio.fbx.save.format 2')
+        lx.eval('user.value sceneio.fbx.save.exportType 1')
+        lx.eval('user.value sceneio.fbx.save.geometry 1')
+        lx.eval('user.value sceneio.fbx.save.exportToASCII 0')
+        lx.eval('user.value sceneio.fbx.save.animationOnly 0')
+        lx.eval('user.value sceneio.fbx.save.cameras 0')
+        lx.eval('user.value sceneio.fbx.save.lights 0')
+        lx.eval('user.value sceneio.fbx.save.materials 1')  # Save Materials as RizomUV can now pack by Materials
+        lx.eval('user.value sceneio.fbx.save.polygonParts 1')
+        lx.eval('user.value sceneio.fbx.save.selectionSets 1')
+        lx.eval('user.value sceneio.fbx.save.smoothingGroups 1')
+        lx.eval('user.value sceneio.fbx.save.morphMaps 0')
+        lx.eval('user.value sceneio.fbx.save.animation 0')
+        lx.eval('user.value sceneio.fbx.save.sampleAnimation 0')
+
         if self.modo_ver > 900:
             try:
-                lx.eval1 ('user.value sceneio.fbx.save.tangentsBitangents 0')
+                lx.eval1('user.value sceneio.fbx.save.tangentsBitangents 0')
             except RuntimeError:
                 pass
         if self.modo_ver > 1000 and self.modo_ver <= 1011:
             try:
-                lx.eval ('user.value sceneio.fbx.save.triangulate 0')
-                lx.eval ('user.value sceneio.fbx.save.meshSmoothing 1')
+                lx.eval('user.value sceneio.fbx.save.triangulate 0')
+                lx.eval('user.value sceneio.fbx.save.meshSmoothing 1')
             except RuntimeError:
                 pass
         if self.modo_ver >= 1012 and self.modo_ver <= 1099:
             try:
-                lx.eval ('user.value sceneio.fbx.save.surfaceRefining FBXExportSubDiv')
+                lx.eval('user.value sceneio.fbx.save.surfaceRefining FBXExportSubDiv')
             except RuntimeError:
                 pass
         if self.modo_ver >= 1100 and self.modo_ver <= 1199:
             try:
-                lx.eval ('user.value sceneio.fbx.save.surfaceRefining FBXExportSubDiv')
-                lx.eval ('user.value sceneio.fbx.save.format 4')
+                lx.eval('user.value sceneio.fbx.save.surfaceRefining FBXExportSubDiv')
+                lx.eval('user.value sceneio.fbx.save.format 4')
             except RuntimeError:
                 pass
         if self.modo_ver >= 1200 and self.modo_ver <= 1299:
             try:
-                lx.eval ('user.value sceneio.fbx.save.surfaceRefining FBXExportSubDiv')
-                lx.eval ('user.value sceneio.fbx.save.format 4')
+                lx.eval('user.value sceneio.fbx.save.surfaceRefining FBXExportSubDiv')
+                lx.eval('user.value sceneio.fbx.save.format 4')
             except RuntimeError:
                 pass
         if self.modo_ver >= 1300 and self.modo_ver <= 1399:
             try:
-                lx.eval ('user.value sceneio.fbx.save.surfaceRefining FBXExportSubDiv')
-                lx.eval ('user.value sceneio.fbx.save.format 4')
+                lx.eval('user.value sceneio.fbx.save.surfaceRefining FBXExportSubDiv')
+                lx.eval('user.value sceneio.fbx.save.format 4')
             except RuntimeError:
                 pass
         if self.modo_ver >= 1400 and self.modo_ver <= 1499:
             try:
-                lx.eval ('user.value sceneio.fbx.save.surfaceRefining FBXExportSubDiv')
-                lx.eval ('user.value sceneio.fbx.save.format 4')
+                lx.eval('user.value sceneio.fbx.save.surfaceRefining FBXExportSubDiv')
+                lx.eval('user.value sceneio.fbx.save.format 4')
             except RuntimeError:
                 pass
         if self.modo_ver >= 1500 and self.modo_ver <= 1699:
             try:
-                lx.eval ('user.value sceneio.fbx.save.surfaceRefining FBXExportSubDiv')
-                lx.eval ('user.value sceneio.fbx.save.format FBX2013')
+                lx.eval('user.value sceneio.fbx.save.surfaceRefining FBXExportSubDiv')
+                lx.eval('user.value sceneio.fbx.save.format FBX2013')
+            except RuntimeError:
+                pass
+        if self.modo_ver >= 1510 and self.modo_ver <= 1699:
+            try:
+                lx.eval('user.value sceneio.fbx.save.embedMedia false')
             except RuntimeError:
                 pass
         
@@ -340,7 +344,7 @@ class SMO_LL_RIZOMUV_Basic_Cmd (lxu.command.BasicCommand):
                 fbx_export_path = os.path.splitext (fbx_export_path)[0] + '.fbx'
                 fbx_file_name = os.path.splitext (os.path.basename (fbx_export_path))[0]
         
-        lx.eval ('scene.saveAs "%s" fbx true' % fbx_export_path)
+        lx.eval ('!scene.saveAs filename:"{}" format:"fbx" export:true'.format(fbx_export_path))
         fbx_save_time = os.path.getmtime (fbx_export_path)
         
         # Restore the FBX preferences.

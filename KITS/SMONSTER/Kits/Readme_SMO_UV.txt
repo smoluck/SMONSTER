@@ -3,7 +3,10 @@ Hi. Everyone
 ----------------------
 --- UPDATE LOG ---
 ----------------------
-- 3.55
+- 3.60 -
+        • Added UV popup menu to the Vertex Maps under Info / Statistics to give access to UV commands more simply.
+
+- 3.55 -
         • UV Tools Menu Reordering
 
 - 3.50 -

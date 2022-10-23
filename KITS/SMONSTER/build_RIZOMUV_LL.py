@@ -12,34 +12,34 @@ from utilssmonster import midroot
 from utilssmonster import midconfig
 from utilssmonster import midscripts
 from utilssmonster import midlxserv
-from utilssmonster import m_ID_smodule
+from utilssmonster import midsmodule
 from utilssmonster import midtraining
 
 ###### STANDARD KITS
 from utilssmonster import midkits
-# from utilssmonster import m_ID_kitAI
-# from utilssmonster import midkitbake
-# from utilssmonster import midkitbatch
-# from utilssmonster import midkitcad
-# from utilssmonster import midkitcleanup
-# from utilssmonster import midkitcb
+from utilssmonster import midkitai
+from utilssmonster import midkitbake
+from utilssmonster import midkitbatch
+from utilssmonster import midkitcad
+from utilssmonster import midkitcleanup
+from utilssmonster import midkitcb
 from utilssmonster import midkitdoc
-# from utilssmonster import midkitgc
+from utilssmonster import midkitgc
 from utilssmonster import midkitmaster
-# from utilssmonster import midkitmath
-# from utilssmonster import midkitmeshops
-# from utilssmonster import midkitmifaboma
-# from utilssmonster import midkitpcloud
-# from utilssmonster import midkitqtag
-# from utilssmonster import midkituv
-# from utilssmonster import midkitvenom
+from utilssmonster import midkitmath
+from utilssmonster import midkitmeshops
+from utilssmonster import midkitmifaboma
+from utilssmonster import midkitpcloud
+from utilssmonster import midkitqtag
+from utilssmonster import midkituv
+from utilssmonster import midkitvenom
 
 ###### LIVELINK KITS
-# from utilssmonster import midkitllmarmo
-# from utilssmonster import midkitllpixa
+from utilssmonster import midkitllmarmo
+from utilssmonster import midkitllpixa
 from utilssmonster import midkitllrizom
 
-from utilssmonster import m_ID_message
+from utilssmonster import midmessage
 
 # Get the root path to this repo
 repo_dir = Path(__file__).parent
@@ -60,7 +60,7 @@ training_dir_rizomuv_ll = training_dir / "SMO_RIZOMUV_LIVELINK"
 ###### STANDARD KITS
 kitsfolders_dir = kit_dir / "Kits"
 
-# kit_ai_dir = kitsfolders_dir / "SMO_AI_TOOLS"
+kit_ai_dir = kitsfolders_dir / "SMO_AI_TOOLS"
 kit_bake_dir = kitsfolders_dir / "SMO_BAKE"
 kit_batch_dir = kitsfolders_dir / "SMO_BATCH"
 kit_cad_dir = kitsfolders_dir / "SMO_CAD_TOOLS"
@@ -72,7 +72,7 @@ kit_master_dir = kitsfolders_dir / "SMO_MASTER"
 kit_math_dir = kitsfolders_dir / "SMO_MATH_TOOLS"
 kit_meshops_dir = kitsfolders_dir / "SMO_MESHOPS"
 kit_mifaboma_dir = kitsfolders_dir / "SMO_MIFABOMA"
-# kit_pcloud_dir = kitsfolders_dir / "SMO_PCLOUD_XYZ"
+kit_pcloud_dir = kitsfolders_dir / "SMO_PCLOUD_XYZ"
 kit_qt_dir = kitsfolders_dir / "SMO_QUICK_TAG"
 kit_uv_dir = kitsfolders_dir / "SMO_UV"
 kit_venom_dir = kitsfolders_dir / "SMO_VENOM"
@@ -93,7 +93,7 @@ license_file = repo_dir / "LICENSE"
 def root_fi():
     # Get Base files in folders "Config" "scripts" "TRAINING_SCENES" and make sure no pyc files come along
     root_files = []
-    files = [f for f in os.listdir(kit_dir) if f.endswith((".cfg", ".txt", "LICENSE"))]
+    files = [f for f in os.listdir(kit_dir) if f.endswith((".cfg", ".txt", ".url", "LICENSE"))]
     for f in files:
         f = kit_dir / f
         root_files.append(f)
@@ -142,6 +142,8 @@ def lxserv_fi():
         # Files that must be compiled on user Device because of OS dependency
         if f.is_file() and f.name.endswith(".py"):
             if f.name.startswith("SMO_SMONSTER_"):
+                lxserv_files.append(f)
+            if f.name.startswith("SMO_MASTER_"):
                 lxserv_files.append(f)
     print("Files in lxserv folder:")
     print(lxserv_files)
@@ -349,10 +351,10 @@ if build_dir.exists():
 mkdir(build_dir)
 
 # Format the lpk file name with the version number from the VERSION file
-# version = utilssmonster.get_version()
-lpk_source_path = build_dir / f"RizomUV_LL.lpk"
+version = utilssmonster.get_version_rizomuvll()
+lpk_source_path = build_dir / f"SMONSTER_RizomUV_LL_v{version}.lpk"
 # Message to display to the users
-message = f"You successfully installed SMONSTER RizomUV Livelink (StandAlone Kit) &#10;Please refer to the ReadmeFirst_SMONSTER.txt for more information. &#10;Remember to join our dedicated Slack server for support and updates.&#10; &#10;Best regards,&#10;Franck Elisabeth&#10; &#10;"
+message = f"You successfully installed SMONSTER RizomUV Livelink (StandAlone Kit) : v{version} &#10;Please refer to the ReadmeFirst_SMONSTER.txt for more information. &#10;Remember to join our dedicated Slack server for support and updates.&#10; &#10;Best regards,&#10;Franck Elisabeth&#10; &#10;"
 
 # Build the LPK file.
 with ZipFile(lpk_source_path, mode="w", compression=ZIP_DEFLATED) as lpk:
@@ -377,7 +379,7 @@ with ZipFile(lpk_source_path, mode="w", compression=ZIP_DEFLATED) as lpk:
     indexlxserv = midlxserv(folder=kit_dir, files=lxserv_fi())
 
     print("----- Copy Root/smodule Folder Data -----")
-    indexsmodule = m_ID_smodule(folder=kit_dir, files=smodule_fi())
+    indexsmodule = midsmodule(folder=kit_dir, files=smodule_fi())
 
     print("----- Copy Root/TRAINING_SCENE Folder Data -----")
     indextraining = midtraining(folder=kit_dir, files=training_fi())
@@ -445,13 +447,12 @@ with ZipFile(lpk_source_path, mode="w", compression=ZIP_DEFLATED) as lpk:
     indexLLRIZOM = midkitllrizom(folder=kit_dir, files=kit_ll_rizomuv_fi())
 
     ###### MESSAGE
-    indexmessage = m_ID_message(info=message)
+    indexmessage = midmessage(info=message)
 
     index_data_base = (indexheader + indexroot + indexconfig + indexscripts + indexlxserv + indexsmodule + indextraining)
-    index_data_kit = (indexkits + indexDOC + indexMASTER)
-    index_data_LLkit = (indexLLRIZOM)
+    index_data_kit = (indexkits + indexDOC + indexMASTER + indexLLRIZOM)
 
-    index_data = (index_data_base + index_data_kit + index_data_LLkit + indexmessage)
+    index_data = (index_data_base + index_data_kit + indexmessage)
 
     # print("--")
     # print("----------------")

@@ -425,7 +425,14 @@ def midmessage(info):
 
 
 
-def get_version():
-    with repo_dir.joinpath("VERSION").open("r") as version_file:
-        return version_file.read().strip()
+def get_version_smonster():
+    with repo_dir.joinpath("VERSION_SMONSTER").open("r") as version_smonster_file:
+        return version_smonster_file.read().strip()
+
+
+
+def get_version_rizomuvll():
+    with repo_dir.joinpath("VERSION_RIZOMUVLL").open("r") as version_rizomuvll_file:
+        return version_rizomuvll_file.read().strip()
+
 

@@ -3,6 +3,16 @@
 -------------------------
 
 -------------------------
+v4.40 - 2022/10/23
+RIZOMUV Livelink:
+        • MODO 16.0v3 Support and small bugfix in code
+        • Added UV popup menu to the Vertex Maps under Info / Statistics to give access to commands more simply.
+        • Bugfix on the smo.LL.RIZOMUV.Basic command that wasn't getting the right fbx settings. It should now export correctly to the user defined path without any issues.
+
+UV:
+        • Added UV popup menu to the Vertex Maps under Info / Statistics to give access to UV commands more simply.
+
+-------------------------
 v4.35 - 2022/10/11
 GC:
         • All HardCoded keymaps modifiers for Modo Tools like Edge Bevel , Cylinder , Cube and so on have been stored in the SMO_GC_Tools_HardCoded_Keymaps.zip file archive. This way it will not be extracted during the kit installation. It will not affect Smonster users preferences any more.

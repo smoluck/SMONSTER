@@ -55,6 +55,7 @@ scripts_dir = kit_dir / "scripts"
 smodule_dir = kit_dir / "smodule"
 lxserv_dir = kit_dir / "lxserv"
 training_dir = kit_dir / "TRAINING_SCENES"
+training_dir_rizomuv_ll = training_dir / "SMO_RIZOMUV_LIVELINK"
 
 ###### STANDARD KITS
 kitsfolders_dir = kit_dir / "Kits"
@@ -333,7 +334,7 @@ if build_dir.exists():
 mkdir(build_dir)
 
 # Format the lpk file name with the version number from the VERSION file
-version = utilssmonster.get_version()
+version = utilssmonster.get_version_smonster()
 lpk_source_path = build_dir / f"SMONSTER_v{version}_SourceEdition.lpk"
 # Message to display to the users
 message = f"You successfully installed SMONSTER (Source Edition): v{version} &#10;Please refer to the README.url for more information. &#10;Remember to join our dedicated Slack server for support and updates.&#10; &#10;Best regards,&#10;Franck Elisabeth&#10; &#10;"
