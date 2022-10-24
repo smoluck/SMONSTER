@@ -12,6 +12,9 @@ RIZOMUV Livelink:
 UV:
         • Added UV popup menu to the Vertex Maps under Info / Statistics to give access to UV commands more simply.
 
+MASTER:
+        • Bugfix on smo.MASTER.ForceSelectMeshItemOnly in item mode.
+
 -------------------------
 v4.35 - 2022/10/11
 GC:
