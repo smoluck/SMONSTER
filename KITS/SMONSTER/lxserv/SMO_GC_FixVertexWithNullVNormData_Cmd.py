@@ -4,7 +4,9 @@
 # Version:      1.0
 #
 # Purpose:      This script is designed to
-#               check current selected mesh, analyse the vertex data for Vertex Normal Maps. If those value are Null, it select the vertex and apply a Set Vertex Normal command.
+#               Check current selected mesh, analyse the vertex data of Vertex Normal Maps.
+#               If those value are Null, it select the vertex and apply a Set Vertex Normal command.
+#               If you add the argument True it will automatically fix those vertex.
 #
 #
 # Author:       Franck ELISABETH (with the help of Andreas Ranman (aka Roberyman))
@@ -95,6 +97,8 @@ def SelectInvalidVNorm():
 class SMO_GC_FixVertexWithNullVNormData_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
+        self.dyna_Add("AutoFix Missing VertexNormal Data", lx.symbol.sTYPE_BOOLEAN)
+        self.basic_SetFlags(0, lx.symbol.fCMDARG_OPTIONAL)  # here the (0) define the argument index.
 
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
@@ -103,28 +107,31 @@ class SMO_GC_FixVertexWithNullVNormData_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC - Fix Vertex with Null Vertex Normal Data'
+        return 'SMO GC - Select or  AutoFix Vertex with Null Vertex Normal Data'
 
     def cmd_Desc(self):
-        return 'check current selected mesh, analyse the vertex data for Vertex Normal Maps. If those value are Null, it select the vertex and apply a Set Vertex Normal command.'
+        return 'Check current selected mesh, analyse the vertex data of Vertex Normal Maps. If those value are Null, it select the vertex and apply a Set Vertex Normal command. If you add the argument True it will automatically fix those vertex.'
 
     def cmd_Tooltip(self):
-        return 'check current selected mesh, analyse the vertex data for Vertex Normal Maps. If those value are Null, it select the vertex and apply a Set Vertex Normal command.'
+        return 'Check current selected mesh, analyse the vertex data of Vertex Normal Maps. If those value are Null, it select the vertex and apply a Set Vertex Normal command. If you add the argument True it will automatically fix those vertex.'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC - Fix Vertex with Null Vertex Normal Data'
+        return 'SMO GC - Select or  AutoFix Vertex with Null Vertex Normal Data'
 
     def basic_Enable(self, msg):
         return True
 
     def basic_Execute(self, msg, flags):
+        AutoFixMissingVNrmData = self.dyna_Bool(0)
         SelectInvalidVNorm()
         lx.eval('select.convert polygon')
-        lx.eval('smo.GC.ResetVertexNormal')
+        if AutoFixMissingVNrmData:
+            lx.eval('smo.GC.SetVertexNormal')
         lx.eval('select.type vertex')
+
 
 
 lx.bless(SMO_GC_FixVertexWithNullVNormData_Cmd, Cmd_Name)

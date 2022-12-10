@@ -48,11 +48,27 @@ class SMO_GC_ResetVertexNormal_Cmd(lxu.command.BasicCommand):
         return True
 
     def basic_Execute(self, msg, flags):
+        scene = modo.scene.current()
+        m = modo.Mesh()
+        # print(m)
+        # print(m.name)
+
         VNMapName = lx.eval('pref.value application.defaultVertexNormals ?')
         # print(VNMapName)
-        lx.eval('select.vertexMap {%s} norm replace' % VNMapName)
-        lx.eval('vertMap.clear norm')
-        lx.eval('vertMap.normals {%s} normalize:false' % VNMapName)
+
+        maps = m.geometry.vmaps.getMapsByType([lx.symbol.i_VMAP_NORMAL])
+        # print(len(maps))
+
+        if len(maps) == 0:
+            lx.eval('smo.GC.SetVertexNormal')
+            #print('New VNrm Maps created')
+            #print('VNrm map name is: %s' % VNMapName)
+
+        if len(maps) > 0:
+            if maps[0].name == VNMapName:
+                lx.eval('select.vertexMap {%s} norm replace' % VNMapName)
+                lx.eval('vertMap.clear norm')
+                lx.eval('vertMap.normals {%s} normalize:false' % VNMapName)
 
 
 lx.bless(SMO_GC_ResetVertexNormal_Cmd, Cmd_Name)
