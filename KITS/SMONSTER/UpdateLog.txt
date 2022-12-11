@@ -3,17 +3,31 @@
 -------------------------
 
 -------------------------
-v4.40 - 2022/10/23
+v4.50 - 2022/12/11
+GC:
+        • smo.GC.Display.CycleMatCap - Bugfix for Modo 16.1 that wasn't turning on the Wireframe Overlay as you was switching to MatCap shading. (causing error message in previous release)
+        • smo.GC.ChamferEdgesByUnit - Now automatically setting the "SharpCorner" option to "ON"
+        • smo.GC.FixVertexWithNullVNormData - Now have an option to automatically fix the detected Null values.
+        	• That command now Select or AutoFix Vertex with Null Vertex Normal Data:
+        	• Check current selected mesh, analyse the vertex data of Vertex Normal Maps.
+        	• If those value are Null, it select the vertex and apply a Set Vertex Normal command.
+        	• If you add the argument True it will automatically fix those vertex.
+        • smo.GC.ResetVertexNormal - Now also check if there is a Vertex Normal map. If not it will create one automatically.
+
+VENOM:
+        • smo.VENOM.MainCommand - Now automatically create a new Vertex Normal Maps if missing.
+
 RIZOMUV Livelink:
         • MODO 16.0v3 Support and small bugfix in code
         • Added UV popup menu to the Vertex Maps under Info / Statistics to give access to commands more simply.
         • Bugfix on the smo.LL.RIZOMUV.Basic command that wasn't getting the right fbx settings. It should now export correctly to the user defined path without any issues.
 
 UV:
-        • Added UV popup menu to the Vertex Maps under Info / Statistics to give access to UV commands more simply.
+        • Added UV popup menu to the Vertex Maps under Info / Statistics to give access to UV commands more simply. It also helps Users to keep in mind that they have to select the UVMap before running the command.
 
 MASTER:
-        • Bugfix on smo.MASTER.ForceSelectMeshItemOnly in item mode.
+        • smo.MASTER.ForceSelectMeshItemOnly - Bugfix in item mode.
+
 
 -------------------------
 v4.35 - 2022/10/11

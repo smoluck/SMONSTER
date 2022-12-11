@@ -4,8 +4,11 @@ Hi. Everyone
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 2.30 -
+        • smo.VENOM.MainCommand - Now automatically create a new Vertex Normal Maps if missing.
+
 - 2.20 -
-        • The main command now keep the Isolate mode or the InactiveSameActive state on current the viewport as expected.
+        • smo.VENOM.MainCommand - Now keep the Isolate mode or the InactiveSameActive state on current the viewport as expected.
 
 - 2.10 -
         • added a toggle for Switching or not in Isolate Mode in Tail Menu and Preferences

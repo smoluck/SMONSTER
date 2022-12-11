@@ -3,6 +3,16 @@ Hi. Everyone
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 12.00 -
+        • smo.GC.Display.CycleMatCap - Bugfix for Modo 16.1 that wasn't turning on the Wireframe Overlay as you was switching to MatCap shading. (causing error message in previous release)
+        • smo.GC.ChamferEdgesByUnit - Now automatically setting the "SharpCorner" option to "ON"
+        • smo.GC.FixVertexWithNullVNormData - Now have an option to automatically fix the detected Null values.
+        	• That command now Select or AutoFix Vertex with Null Vertex Normal Data:
+        	• Check current selected mesh, analyse the vertex data of Vertex Normal Maps.
+        	• If those value are Null, it select the vertex and apply a Set Vertex Normal command.
+        	• If you add the argument True it will automatically fix those vertex.
+        • smo.GC.ResetVertexNormal - Now also check if there is a Vertex Normal map. If not it will create one automatically.
+
 - 11.40 -
 	• Changed the set of Matcaps to match most common used one with addition of soft bright clay matcaps
 	• Edit Chamfer command added to Polygon Context Menu
