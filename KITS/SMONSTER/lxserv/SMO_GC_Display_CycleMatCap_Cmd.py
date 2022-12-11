@@ -81,6 +81,7 @@ class SMO_GC_Display_CycleMatCap_Cmd(lxu.command.BasicCommand):
         # print(MaxId)
         MinId = 0
 
+        modo_ver = int(lx.eval('query platformservice appversion ?'))
 
 
         if ReverseDirection == 0:
@@ -117,7 +118,12 @@ class SMO_GC_Display_CycleMatCap_Cmd(lxu.command.BasicCommand):
                 lx.eval('vpover.enable true')
                 lx.eval('vpover.setOverride {%s} matcap' % MatCapFilePath[MatCapIndex])
                 lx.eval('user.value SMO_MatCapId %i' % MatCapIndex)
-                lx.eval('@av_smartWireToggle.pl')
+
+                # Turn off wireframe
+                if modo_ver <= 1610:
+                    lx.eval('@av_smartWireToggle.pl')
+                if modo_ver > 1610:
+                    lx.eval('view3d.wireframeOverlay none active')
 
         if ReverseDirection == 1:
             if SMO_MatCapId == (MaxId - 1):
@@ -152,7 +158,12 @@ class SMO_GC_Display_CycleMatCap_Cmd(lxu.command.BasicCommand):
                 lx.eval('vpover.enable true')
                 lx.eval('vpover.setOverride {%s} matcap' % MatCapFilePath[MatCapIndex])
                 lx.eval('user.value SMO_MatCapId %i' % MatCapIndex)
-                lx.eval('@av_smartWireToggle.pl')
+
+                # Turn off wireframe
+                if modo_ver <= 1610:
+                    lx.eval('@av_smartWireToggle.pl')
+                if modo_ver > 1610:
+                    lx.eval('view3d.wireframeOverlay none active')
 
         # lx.eval('user value SMO_UseVal_VENOM_MatCapState 1')
         del MatCapFilePath[:]
