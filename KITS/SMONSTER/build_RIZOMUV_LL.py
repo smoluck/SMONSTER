@@ -354,7 +354,7 @@ mkdir(build_dir)
 version = utilssmonster.get_version_rizomuvll()
 lpk_source_path = build_dir / f"SMONSTER_RizomUV_LL_v{version}.lpk"
 # Message to display to the users
-message = f"You successfully installed SMONSTER RizomUV Livelink (StandAlone Kit) : v{version} &#10;Please refer to the ReadmeFirst_SMONSTER.txt for more information. &#10;Remember to join our dedicated Slack server for support and updates.&#10; &#10;Best regards,&#10;Franck Elisabeth&#10; &#10;"
+message = f"You successfully installed SMONSTER RizomUV Livelink (StandAlone Kit) : v{version} &#10;Please refer to the Readme_SMO_RIZOMUV_LIVELINK.txt for more information. &#10;Remember to join our dedicated Slack server for support and updates.&#10; &#10;Best regards,&#10;Franck Elisabeth&#10; &#10;"
 
 # Build the LPK file.
 with ZipFile(lpk_source_path, mode="w", compression=ZIP_DEFLATED) as lpk:
