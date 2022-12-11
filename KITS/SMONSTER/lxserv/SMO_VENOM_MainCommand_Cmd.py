@@ -20,6 +20,23 @@ from math import degrees
 Cmd_Name = "smo.VENOM.MainCommand"
 # smo.VENOM.MainCommand
 
+
+def checkvertexnormalpresence():
+    VNMapName = lx.eval('pref.value application.defaultVertexNormals ?')
+    # print(VNMapName)
+
+    m = modo.Mesh()
+    # print(m)
+    # print(m.name)
+    maps = m.geometry.vmaps.getMapsByType([lx.symbol.i_VMAP_NORMAL])
+    # print(len(maps))
+
+    if len(maps) == 0:
+        lx.eval('smo.GC.SetVertexNormal')
+        # print('New VNrm Maps created')
+        # print('VNrm map name is: %s' % VNMapName)
+
+
 class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -76,6 +93,8 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
         IntSimilarMode = self.dyna_Int(0)
         IntSelectLoop = self.dyna_Int(1)
+        checkvertexnormalpresence()
+
         scene = modo.scene.current()
 
         VeNomItemAsRotation = bool()
@@ -185,7 +204,7 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
         #lx.out(IsolateMode)
 
         ShowVNVectors = bool(lx.eval('user.value SMO_UseVal_VENOM_ShowVNVectors ?'))
-        #lx.out(VMapsName)
+        #lx.out(ShowVNVectors)
         ################################################
 
         ##############################
