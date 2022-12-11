@@ -149,7 +149,7 @@ class SMO_GC_ChamferEdgesByUnit_Cmd(lxu.command.BasicCommand):
                 lx.eval('tool.setAttr edge.chamfer autoWeld false')
                 lx.eval('tool.setAttr edge.chamfer parallel true')
                 lx.eval('tool.setAttr edge.chamfer coplanar false')
-                lx.eval('tool.setAttr edge.chamfer sharpCorner false')
+                lx.eval('tool.setAttr edge.chamfer sharpCorner true')
                 lx.eval('tool.setAttr edge.chamfer useMat false')
                 lx.eval('tool.setAttr edge.chamfer depth 1.0')
                 lx.eval('tool.setAttr edge.chamfer flatness 0.0')
