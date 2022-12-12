@@ -3,6 +3,11 @@ Hi. Everyone
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 4.20 -
+        • Bugfix on Multi Meshes Unwrap when UVmaps where miss-matching in presence or not.
+        	• smo.UV.Multi.UnwrapRectangleOrient / smo.UV.Multi.UnwrapPlanar / smo.UV.Multi.UnwrapSmart / smo.UV.Multi.UnwrapCylindrical
+        • smo.UV.AutoCreateUVMap - Automatically Create a UV Map if missing using Default UVMap Name in Preferences.
+
 - 4.10 -
         • Added UV popup menu to the Vertex Maps under Info / Statistics to give access to UV commands more simply. It also helps Users to keep in mind that they have to select the UVMap before running the command.
 

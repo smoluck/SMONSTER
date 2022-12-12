@@ -327,7 +327,8 @@ def kit_master_fi():
 # Files contained in "Kits/SMO_RIZOMUV_LIVELINK" folder
 def kit_ll_rizomuv_fi():
     # Files that doesn't include the source code py files, but only the one that remains to the KeymapCommander and Startup scripts.
-    kitLLRIZOM_files = [f for f in kit_rizom_dir.glob("**/*") if f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc", "SMO_LL_RIZOMUV_Basic_Cmd.py", "SMO_LL_RIZOMUV_SendDataAuto_Cmd.py", "SMO_LL_RIZOMUV_SetExePath_Cmd.py"))]
+    kitLLRIZOM_files = [f for f in kit_rizom_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]   #Bugfix for Precompiled Scripts that wasn't working.
+    # kitLLRIZOM_files = [f for f in kit_rizom_dir.glob("**/*") if f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc", "SMO_LL_RIZOMUV_Basic_Cmd.py", "SMO_LL_RIZOMUV_SendDataAuto_Cmd.py", "SMO_LL_RIZOMUV_SetExePath_Cmd.py"))]
     print("Files in RizomUV LL kit folder:")
     print("Files in RizomUV LL kit folder:")
     print(kitLLRIZOM_files)

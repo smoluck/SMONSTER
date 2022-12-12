@@ -44,7 +44,7 @@ class SMO_UV_Multi_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
         pass
 
     def cmd_UserName(self):
-        return 'SMO UV - (Multi) Unwrap Smart MultiMeshes'
+        return 'SMO UV - (Multi) Unwrap Planar MultiMeshes'
 
     def cmd_Desc(self):
         return 'MULTI - Unwrap the current Polygon Selection on defined Axis.'
@@ -56,26 +56,62 @@ class SMO_UV_Multi_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO UV - (Multi) Unwrap Smart MultiMeshes'
+        return 'SMO UV - (Multi) Unwrap Planar MultiMeshes'
 
     def basic_Enable(self, msg):
         return True
 
     def basic_Execute(self, msg, flags):
-        UP_UVProjAxe = self.dyna_Int(0)
-        UP_Similar = self.dyna_Int(1)
+        MUP_UVProjAxe = self.dyna_Int(0)
+        MUP_Similar = self.dyna_Int(1)
 
         scene = modo.scene.current()
 
+        # ###
+        # lx.out('<------------- START -------------->')
+        # lx.out('<--- UV Map Safety Check --->')
+        # ###
+        # # Create a UV Map automatically in case there is no UVMaps
+        # DefaultUVMapName = lx.eval('pref.value application.defaultTexture ?')
+        # # print(DefaultUVMapName)
+        #
+        # m = modo.Mesh()
+        # # print(m.name)
+        # maps = m.geometry.vmaps.getMapsByType([lx.symbol.i_VMAP_TEXTUREUV])  # same as m.geometry.vmaps.uvMaps
+        # # print(maps)
+        # # print(len(maps))
+        #
+        # # if len(maps) == 0:
+        # #     lx.eval('vertMap.new {%s} txuv' % DefaultUVMapName)
+        # #     print('New UVMap created')
+        # #     print('UV map name is: %s' % DefaultUVMapName)
+        # #
+        # # if len(maps) == 1:
+        # #     lx.eval('select.vertexMap {%s} txuv replace' % maps[0].name)
+        # #
+        # # if len(maps) > 1:
+        # #     # get the current select UV Map name
+        # #     print(lx.eval('vertMap.list type:txuv ?'))
+        #
+        # SelectedMeshUVMapsCount = len(maps)
+        # UVUnwrapPlanar_UVMapName = (lx.eval('vertMap.list type:txuv ?'))
+        # lx.out('Selected Mesh UV Maps Name:', UVUnwrapPlanar_UVMapName)
+        #
+        # lx.eval('smo.GC.ClearSelectionVmap 1 1')
+        # lx.eval("select.vertexMap {%s} txuv replace" % UVUnwrapPlanar_UVMapName)
+        # ###
+        # lx.out('<- UV Map Safety Check ->')
+        # lx.out('<------------- END -------------->')
+        # ###
 
-        UP_SelItem = lxu.select.ItemSelection().current()
-        # print('lxu.object.Item : ', UP_SelItem)
+        MUP_SelItem = lxu.select.ItemSelection().current()
+        # print('lxu.object.Item : ', MUP_SelItem)
 
         mesh = scene.selectedByType('mesh')
-        # print('modo.Mesh :', mesh)
-        # print('modo.Mesh list length:', len(mesh))
+        print('modo.Mesh :', mesh)
+        print('modo.Mesh list length:', len(mesh))
 
-        UP_TargetIDList = []
+        MUP_TargetIDList = []
         for item in mesh:
             itemType = modo.Item(item).type
             item = lx.object.Item(item)
@@ -83,29 +119,29 @@ class SMO_UV_Multi_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
             if itemType == "mesh":
                 ID = item.Ident()
                 # print(ID)
-                UP_TargetIDList.append(ID)
-        # print(UP_TargetIDList)
+                MUP_TargetIDList.append(ID)
+        # print(MUP_TargetIDList)
 
-        UP_PolysTuple = []
+        MUP_PolysTuple = []
         for item in mesh:
             # CsPolys = len(item.geometry.polygons.selected)
             # print('Total selected Polygons on this mesh layer', CsPolys)
             Polys = item.geometry.polygons.selected
             # print('modo.Mesh list ', Polys)
-            UP_PolysTuple.append(Polys)
-        # print('Tuple (Poly ID and Mesh ID): ---)', UP_PolysTuple)
+            MUP_PolysTuple.append(Polys)
+        # print('Tuple (Poly ID and Mesh ID): ---)', MUP_PolysTuple)
 
-        UP_PolysList = list(UP_PolysTuple)
-        # print('List (Poly ID and Mesh ID): ---)', UP_PolysList)
-        # print(UP_PolysList)
+        MUP_PolysList = list(MUP_PolysTuple)
+        # print('List (Poly ID and Mesh ID): ---)', MUP_PolysList)
+        # print(MUP_PolysList)
         # print('------------------')
-        # print(UP_PolysList[0])
+        # print(MUP_PolysList[0])
         # print('------')
-        # print(UP_PolysList[1])
+        # print(MUP_PolysList[1])
         # print('------')
-        # print(UP_PolysList[2])
+        # print(MUP_PolysList[2])
         # print('------')
-        # print(UP_PolysList[3])
+        # print(MUP_PolysList[3])
         # print('------')
 
         lx.eval('select.drop polygon')
@@ -114,29 +150,44 @@ class SMO_UV_Multi_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
         lx.eval('smo.GC.DeselectAll')
 
         index = -1
-        for m in UP_TargetIDList:
-            index = (index + 1)
-            # print('id :', index)
-            scene.select(m)
-            selected_mesh = scene.selectedByType('mesh')[0]
-            # print('current mesh indentity :', index, selected_mesh)
-            lx.eval('select.type polygon')
-            lx.eval('select.drop polygon')
-            for item in (UP_PolysList[index]):
-                # print(item)
-                selected_mesh.geometry.polygons.select(item)
-                ############### PUT YOUR Command HERE to run over each item Polygons
+        if len(mesh) > 1:
+            for n in MUP_TargetIDList:
+                index = (index + 1)
+                # print('id :', index)
+                scene.select(n)
+                selected_mesh = scene.selectedByType('mesh')[0]
+                # print('current mesh identity :', index, selected_mesh)
+                lx.eval('select.type polygon')
+                lx.eval('select.drop polygon')
+                for item in (MUP_PolysList[index]):
+                    # print(item)
+                    selected_mesh.geometry.polygons.select(item)
+
+                    ############### PUT YOUR Command HERE to run over each item Polygons
                 try:
-                    lx.eval('smo.UV.UnwrapPlanar %s %s' % (UP_UVProjAxe, UP_Similar))
+                    # lx.eval('smo.UV.AutoCreateUVMap')
+                    lx.eval('smo.UV.UnwrapPlanar %s %s' % (MUP_UVProjAxe, MUP_Similar))
                 except:
                     lx.out('Error on {%s}' % (lx.eval('item.name ? xfrmcore')))
                 selected_mesh.geometry.polygons.select(item, replace=True)
-            lx.eval('select.type polygon')
-            lx.eval('select.drop polygon')
-            lx.eval('select.type item')
-            lx.eval('select.drop item')
-            # GOOOOOOOOOOOOD
+
+                lx.eval('select.type polygon')
+                lx.eval('select.drop polygon')
+                lx.eval('select.type item')
+                lx.eval('select.drop item')
+                # GOOOOOOOOOOOOD
         index = -1
+
+        if len(mesh) == 1:
+            scene.select(mesh)
+            lx.eval('select.type polygon')
+            for item in (MUP_PolysList[index]):
+                # print(item)
+                selected_mesh = scene.selectedByType('mesh')[0]
+                selected_mesh.geometry.polygons.select(item)
+            # lx.eval('smo.UV.AutoCreateUVMap')
+            lx.eval('smo.UV.UnwrapPlanar %s %s' % (MUP_UVProjAxe, MUP_Similar))
+
         lx.eval('smo.GC.DeselectAll')
         scene.select(mesh)
         lx.eval('select.type polygon')
@@ -181,25 +232,25 @@ class SMO_UV_Multi_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
         lx.out('Modo Version:', Modo_ver)
         #####################################################
         if Multi_RePack:
-            if UP_UVProjAxe == 0 and RelocateInArea:
+            if MUP_UVProjAxe == 0 and RelocateInArea:
                 lx.eval('smo.UV.SelectUVArea -2 0')
                 lx.eval('hide.unsel')
                 lx.eval('smo.UV.NormalizePackByArea 0 0 -2 0')
                 lx.eval('unhide')
 
-            if UP_UVProjAxe == 1 and RelocateInArea:
+            if MUP_UVProjAxe == 1 and RelocateInArea:
                 lx.eval('smo.UV.SelectUVArea -1 0')
                 lx.eval('hide.unsel')
                 lx.eval('smo.UV.NormalizePackByArea 0 0 -1 0')
                 lx.eval('unhide')
 
-            if UP_UVProjAxe == 2 and RelocateInArea:
+            if MUP_UVProjAxe == 2 and RelocateInArea:
                 lx.eval('smo.UV.SelectUVArea -1 1')
                 lx.eval('hide.unsel')
                 lx.eval('smo.UV.NormalizePackByArea 0 0 -1 1')
                 lx.eval('unhide')
 
-            if UP_UVProjAxe == 3 and RelocateInArea:
+            if MUP_UVProjAxe == 3 and RelocateInArea:
                 lx.eval('smo.UV.SelectUVArea -2 1')
                 lx.eval('hide.unsel')
                 lx.eval('smo.UV.NormalizePackByArea 0 0 -2 1')
@@ -221,23 +272,23 @@ class SMO_UV_Multi_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
         lx.eval('select.type polygon')
 
         if AutoHideState:
-            # for item in (UP_PolysList):
+            # for item in (MUP_PolysList):
             #     # print(item)
             #     selected_mesh.geometry.polygons.select(item)
-            # if UP_Similar == 1:
+            # if MUP_Similar == 1:
             #     lx.eval('smo.GC.Multi.SelectCoPlanarPoly 0 2 0')
-            # if UP_Similar == 2:
+            # if MUP_Similar == 2:
             #     lx.eval('smo.GC.Multi.SelectCoPlanarPoly 1 2 1000')
-            # if UP_Similar == 3:
+            # if MUP_Similar == 3:
             #     lx.eval('smo.GC.Multi.SelectCoPlanarPoly 2 2 1000')
             # lx.eval('hide.sel')
             lx.eval('select.useSet UV_DONE select')
             lx.eval('hide.sel')
 
         del index
-        del UP_TargetIDList
-        del UP_PolysList
-        del UP_PolysTuple
+        del MUP_TargetIDList
+        del MUP_PolysList
+        del MUP_PolysTuple
         lx.eval('select.type polygon')
 
 

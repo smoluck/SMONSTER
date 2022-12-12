@@ -3,6 +3,17 @@
 -------------------------
 
 -------------------------
+v4.52 - 2022/12/12
+UV:
+        • Bugfix on Multi Meshes Unwrap when UVmaps where miss-matching in presence or not.
+        	• smo.UV.Multi.UnwrapRectangleOrient / smo.UV.Multi.UnwrapPlanar / smo.UV.Multi.UnwrapSmart / smo.UV.Multi.UnwrapCylindrical
+        • smo.UV.AutoCreateUVMap - Automatically Create a UV Map if missing using Default UVMap Name in Preferences.
+
+RIZOMUV Livelink:
+        • Bugfix on compilation errors on some platforms (win 11)
+
+
+-------------------------
 v4.50 - 2022/12/11
 GC:
         • smo.GC.Display.CycleMatCap - Bugfix for Modo 16.1 that wasn't turning on the Wireframe Overlay as you was switching to MatCap shading. (causing error message in previous release)

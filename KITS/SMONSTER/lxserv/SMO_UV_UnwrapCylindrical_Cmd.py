@@ -56,6 +56,7 @@ class SMO_UV_UnwrapCylindrical_Cmd(lxu.command.BasicCommand):
         scene = modo.scene.current()
         # Force to select the current Mesh Item if it is not selected in the Item List
         lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
+        lx.eval('smo.UV.AutoCreateUVMap')
 
         mesh = scene.selectedByType('mesh')[0]
         # meshes = scene.selectedByType('mesh')
@@ -77,15 +78,13 @@ class SMO_UV_UnwrapCylindrical_Cmd(lxu.command.BasicCommand):
         # print(RefSystemActive)
 
 
-
         # MODO version checks.
         # Modo 13.0 and up have UV Seam map.
         # Version below 13.0 haven't
         Modo_ver = int(lx.eval ('query platformservice appversion ?'))
         lx.out('Modo Version:',Modo_ver)
         
-        
-        
+
         Int_UVProjAxe = self.dyna_Int (0)
         Int_IsRectangle = self.dyna_Int (1)
         Int_SelectByLoop = self.dyna_Int (2)
@@ -151,8 +150,6 @@ class SMO_UV_UnwrapCylindrical_Cmd(lxu.command.BasicCommand):
         # Relocate in Area = 1
         RelocateInArea = lx.eval('user.value SMO_UseVal_UV_RelocateInArea ?')
         lx.out('Relocate In Area state:',RelocateInArea)
-
-        
         
         
         # ############### 3 ARGUMENTS Test ###############

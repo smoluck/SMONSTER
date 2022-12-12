@@ -63,6 +63,12 @@ class SMO_UV_Multi_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
         Int_OrientDir = self.dyna_Int(0)
 
+        # MODO version checks.
+        # Modo 13.0 and up have UV Seam map.
+        # Version below 13.0 haven't
+        Modo_ver = int(lx.eval ('query platformservice appversion ?'))
+        lx.out('Modo Version:',Modo_ver)
+
         scene = modo.scene.current()
 
 
@@ -73,7 +79,7 @@ class SMO_UV_Multi_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
         # print('modo.Mesh :', mesh)
         # print('modo.Mesh list length:', len(mesh))
 
-        TargetIDList = []
+        MURO_TargetIDList = []
         for item in mesh:
             itemType = modo.Item(item).type
             item = lx.object.Item(item)
@@ -81,29 +87,29 @@ class SMO_UV_Multi_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
             if itemType == "mesh":
                 ID = item.Ident()
                 # print(ID)
-                TargetIDList.append(ID)
-        # print(TargetIDList)
+                MURO_TargetIDList.append(ID)
+        # print(TMURO_argetIDList)
 
-        PolysTuple = []
+        MURO_PolysTuple = []
         for item in mesh:
             # CsPolys = len(item.geometry.polygons.selected)
             # print('Total selected Polygons on this mesh layer', CsPolys)
             Polys = item.geometry.polygons.selected
             # print('modo.Mesh list ', Polys)
-            PolysTuple.append(Polys)
-        # print('Tuple (Poly ID and Mesh ID): ---)', PolysTuple)
+            MURO_PolysTuple.append(Polys)
+        # print('Tuple (Poly ID and Mesh ID): ---)', MURO_PolysTuple)
 
-        PolysList = list(PolysTuple)
-        # print('List (Poly ID and Mesh ID): ---)', PolysList)
-        # print(PolysList)
+        MURO_PolysList = list(MURO_PolysTuple)
+        # print('List (Poly ID and Mesh ID): ---)', MURO_PolysList)
+        # print(MURO_PolysList)
         # print('------------------')
-        # print(PolysList[0])
+        # print(MURO_PolysList[0])
         # print('------')
-        # print(PolysList[1])
+        # print(MURO_PolysList[1])
         # print('------')
-        # print(PolysList[2])
+        # print(MURO_PolysList[2])
         # print('------')
-        # print(PolysList[3])
+        # print(MURO_PolysList[3])
         # print('------')
 
         lx.eval('select.drop polygon')
@@ -112,22 +118,22 @@ class SMO_UV_Multi_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
         lx.eval('smo.GC.DeselectAll')
 
         index = -1
-        for m in TargetIDList:
+        for n in MURO_TargetIDList:
             index = (index + 1)
             # print('id :', index)
-            scene.select(m)
+            scene.select(n)
             selected_mesh = scene.selectedByType('mesh')[0]
-            # print('current mesh indentity :', index, selected_mesh)
+            # print('current mesh identity :', index, selected_mesh)
             lx.eval('select.type polygon')
             lx.eval('select.drop polygon')
-            for item in (PolysList[index]):
+            for item in (MURO_PolysList[index]):
                 # print(item)
                 selected_mesh.geometry.polygons.select(item)
                 ############### PUT YOUR Command HERE to run over each item Polygons
-                try:
-                    lx.eval('smo.UV.UnwrapRectangleOrient %s' % Int_OrientDir)
-                except:
-                    lx.out('Error on {%s}' % (lx.eval('item.name ? xfrmcore')))
+            try:
+                lx.eval('smo.UV.UnwrapRectangleOrient %s' % Int_OrientDir)
+            except:
+                lx.out('Error on {%s}' % (lx.eval('item.name ? xfrmcore')))
                 selected_mesh.geometry.polygons.select(item, replace=True)
             lx.eval('select.type polygon')
             lx.eval('select.drop polygon')
@@ -185,7 +191,7 @@ class SMO_UV_Multi_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
         lx.eval('smo.GC.DeselectAll')
         scene.select(mesh)
         lx.eval('select.type polygon')
-        for item in (PolysList):
+        for item in (MURO_PolysList):
             # print(item)
             selected_mesh.geometry.polygons.select(item)
 
@@ -195,14 +201,23 @@ class SMO_UV_Multi_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
         lx.eval('smo.GC.DeselectAll')
         scene.select(mesh)
         lx.eval('select.type polygon')
-        for item in (PolysList):
+        for item in (MURO_PolysList):
             # print(item)
             selected_mesh.geometry.polygons.select(item)
 
+        if AutoUpdateUVSeamCutMapState == True and Modo_ver >= 1300:
+            lx.eval('smo.UV.UpdateUVSeamCutMap')
+            lx.eval('view3d.showUVSeam true active')
+
+        AutoHideState = lx.eval('user.value SMO_UseVal_UV_HideAfterUnwrap ?')
+        if AutoHideState == True:
+            lx.eval('select.useSet UV_DONE select')
+            lx.eval('hide.sel')
+
         del index
-        del TargetIDList
-        del PolysList
-        del PolysTuple
+        del MURO_TargetIDList
+        del MURO_PolysList
+        del MURO_PolysTuple
         lx.eval('select.type polygon')
 
 

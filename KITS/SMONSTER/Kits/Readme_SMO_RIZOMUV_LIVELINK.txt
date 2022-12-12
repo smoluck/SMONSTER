@@ -8,6 +8,9 @@ Since 2.2 Release:
 ------------------
 --- UPDATE LOG ---
 ------------------
+- 2.82 -
+        • Bugfix on compilation errors on some platforms (win 11)
+
 - 2.8 -
         • MODO 16.0v3 Support and small bugfix in code
         • Added UV popup menu to the Vertex Maps under Info / Statistics to give access to commands more simply.
