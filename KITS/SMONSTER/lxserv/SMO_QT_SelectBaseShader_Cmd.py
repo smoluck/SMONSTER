@@ -50,10 +50,20 @@ class SMO_QT_SelectBaseShaderCmd(lxu.command.BasicCommand):
 
     def basic_Execute(self, msg, flags):
         scene = modo.Scene()
+        SceneBaseShader = []
+        SceneBaseShaderName = []
         for item in scene.items(itype='defaultShader', superType=True):
             #lx.out('Default Base Shader found:',item)
-            print(item)
-        scene.select(item)
+            if item.name == "Base Shader":
+                # print(item)
+                SceneBaseShader.append(item)
+                # print(item.id)
+                SceneBaseShaderName.append(item.id)
+        scene.select(SceneBaseShader[0])
+        # print(SceneBaseShaderName)
+
+        del SceneBaseShader
+        del SceneBaseShaderName
 
 
 lx.bless(SMO_QT_SelectBaseShaderCmd, Cmd_Name)

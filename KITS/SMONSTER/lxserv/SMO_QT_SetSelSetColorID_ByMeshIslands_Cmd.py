@@ -105,29 +105,61 @@ class SMO_QT_SetSelSetColorID_ByMeshIslands_Cmd(lxu.command.BasicCommand):
         # Create a list of all Polygons in the current Mesh Layer
         if item_is_a_mesh():
             if mesh_layer_poly_count() > 0:
-               # for p in mesh_layer_poly_list():
-               #     print p.index
-               #     #PolyPack.append(p.index)
+                # for p in mesh_layer_poly_list():
+                #     print p.index
+                #     #PolyPack.append(p.index)
                 PolyPack = list(first_item_selected().geometry.polygons)
         # print(PolyPack)
+        print(PolyPack[0])
+        print('---')
+        ProcessedPack = list(PolyPack)
+        print(ProcessedPack[0])
+        print(ProcessedPack)
 
+        MaxCID = 0
+        IndexIter = 0
+        BeforeRemove = 0
+        AfterRemove = 0
         # Selecting the first Polygon in the list, extend to connected, then try to Remove those polygons from the original list of Polygons "PolyPack".
+        print(MaxCID)
+        print(IndexIter)
+
+        IslandGrps = []
+
         if item_is_a_mesh():
-            while mesh_layer_visible_poly() > 0:
-                #for p in PolyPack[0]:
+            while mesh_layer_visible_poly() > 1:
+                # for p in PolyPack[0]:
                 PolyPack[0].select()
+                mesh, = modo.scene.current().selectedByType("mesh")
+                pick = mesh.geometry.polygons.selected
+                IslandGrps.append(pick[0])
+                print(pick)
                 lx.eval('select.connect')
                 sel_poly = list(first_item_selected().geometry.polygons.selected)
                 BeforeRemove = len(PolyPack)
-                print('Before list cleanup:', BeforeRemove)
+                print('Visible Polygons before list cleanup:', BeforeRemove)
                 for item in sel_poly:
                     PolyPack.remove(item)
-                del sel_poly [:]
+                del sel_poly[:]
                 AfterRemove = len(PolyPack)
-                print('After list cleanup:', AfterRemove)
-                lx.eval('smo.QT.SetSelSetColorIDRandomConstant')
+                print('Visible Polygons after list cleanup:', AfterRemove)
                 lx.eval('hide.sel')
-        lx.eval('unhide')
+                MaxCID = (MaxCID + 1)
+            print('Individual Islands Count in current mesh is ', MaxCID)
+            lx.eval('unhide')
+        print(MaxCID)
+        print(IndexIter)
+        print(ProcessedPack[0])
+        print(IslandGrps[0])
+        print(len(IslandGrps))
+
+        for i in range(0, len(IslandGrps)):
+            IslandGrps[i].select()
+            lx.eval('select.connect')
+            lx.eval('smo.QT.SetSelSetColorIDRandomConstant')
+            lx.eval('select.drop polygon')
+            IndexIter = (IndexIter + 1)
+            print(IndexIter)
 
         lx.eval('select.type item')
         lx.eval('unhide')

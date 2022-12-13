@@ -48,7 +48,7 @@ def ListPSelSet():
     # Get the selection sets from the mesh with PICK and save them into a list
     selSets = []
     num_polset = mesh.PTagCount(lx.symbol.i_PTAG_PICK)
-    for i in xrange(num_polset):
+    for i in xrange(0, num_polset):
         selSets.append(mesh.PTagByIndex(lx.symbol.i_PTAG_PICK, i))
     # lx.out('selSets:', selSets)
     return selSets
@@ -104,7 +104,6 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
             ByItemMode = False
 
-
         # mesh = scene.selectedByType('mesh')[0]
         # CsPolys = len(mesh.geometry.polygons.selected)
         meshes = scene.selectedByType('mesh')
@@ -129,21 +128,18 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         PrstColorIDDarkGrey = 14
         PrstColorIDGrey = 15
         PrstColorIDWhite = 16
-        
-        
+
         ################################
-        #<----[ DEFINE VARIABLES ]---->#
+        # <----[ DEFINE VARIABLES ]---->#
         ################################
-        
+
         # #####--- Define user value for all the different SafetyCheck --- START ---#####
         # #####
         # lx.eval("user.defNew name:SMO_SafetyCheck_PolygonModeEnabled type:integer life:momentary")
         # lx.eval("user.defNew name:SMO_SafetyCheck_min1PolygonSelected type:integer life:momentary")
         # #####
         # #####--- Define user value for all the different SafetyCheck --- END ---#####
-        
-        
-        
+
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
         lx.eval("user.defNew name:SceneConstantID type:integer life:momentary")
@@ -153,7 +149,7 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         lx.eval("user.defNew name:Const_Suffix type:string life:momentary")
         lx.eval("user.defNew name:ColorIDConstantName type:string life:momentary")
         ###################
-        
+
         # ##############################
         # ####### SAFETY CHECK 1 #######
         # ##############################
@@ -248,10 +244,7 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         # lx.out('Current Value',TotalSafetyCheck)
         # #####
         # #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
-        
-        
-        
-        
+
         ##############################
         ## <----( Main Macro )----> ##
         ##############################
@@ -260,26 +253,45 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         # if TotalSafetyCheck == TotalSafetyCheckTrueValue:
         # Select the Base Shader to create and place ColorID group on top of current Material Groups
 
-        # lx.eval('smo.QT.SelectBaseShader')
-        SceneShaderItemList = []
-        SceneShaderItemName = []
+        ### Selection of ShaderItem have been dedicated to dustom command below smo.QT.SelectBaseShader.
+        # SceneShaderItemList = []
+        # SceneShaderItemName = []
+        # for item in scene.items(itype='defaultShader', superType=True):
+        #     # lx.out('Default Base Shader found:',item)
+        #     SceneShaderItemList.append(item)
+        #     # print(item.id)
+        #     SceneShaderItemName.append(item.id)
+        # scene.select(SceneShaderItemList[0])
+        # # print(SceneShaderItemName)
+
+        lx.eval('smo.QT.SelectBaseShader')
+        SceneShaderItemID = []
         for item in scene.items(itype='defaultShader', superType=True):
-            # lx.out('Default Base Shader found:',item)
-            SceneShaderItemList.append(item)
-            # print(item.id)
-            SceneShaderItemName.append(item.id)
-        scene.select(SceneShaderItemList[0])
-        # print(SceneShaderItemName)
+            if item.name == "Base Shader":
+                SceneShaderItemID.append(item.id)
+        # print('Base Shader item Id is:', SceneShaderItemID)
+
+        def uNameItem():
+            item = modo.item.Item()
+            return item.UniqueName()
+
+        def ItemIdent():
+            item = modo.item.Item()
+            return item.Ident()
+
+        baseShad = lx.eval('query sceneservice defaultShader.parent ? {Base Shader}')
+        # print(baseShad)
 
         QTChannelExist = bool()
         NewID = int()
 
         try:
-            lx.eval('!channel.create SelSetColorIDConstantGlobalCount integer useMin:true default:(-1.0) username:SelSetColorIDConstantGlobalCount')
+            lx.eval(
+                '!channel.create SelSetColorIDConstantGlobalCount integer useMin:true default:(-1.0) username:SelSetColorIDConstantGlobalCount')
             SceneConstantID = (-1)
             QTChannelExist = False
         except RuntimeError:  # diffuse amount is zero.
-            lx.eval('select.channel {%s:SelSetColorIDConstantGlobalCount@lmb=x} set' % SceneShaderItemName[0])
+            lx.eval('select.channel {%s:SelSetColorIDConstantGlobalCount@lmb=x} set' % SceneShaderItemID[0])
             QTChannelExist = True
             # lx.out('ColorID  Global Count channel already created')
             pass
@@ -304,6 +316,9 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         lx.eval('select.editSet {%s} add' % ColorIDSelSetName)
 
         lx.eval('shader.create mask')
+        GrpMask = scene.selected
+        scene.select(GrpMask)
+
         if NewID <= 16:
             try:
                 if NewID == PrstColorIDRed:
@@ -388,48 +403,47 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         Const_Suffix = "Constant"
         ColorIDConstantName = ("%s_%s" % (Const_Suffix, ColorIDSelSetName))
         lx.eval('item.name %s constant' % ColorIDConstantName)
-        print(ColorIDSelSetName)
+        # print(ColorIDSelSetName)
 
         Constant = lx.eval('query sceneservice selection ? textureLayer')
         # lx.out('Constant item name',Constant)
 
-
         if NewID <= 16:
             try:
                 if NewID == PrstColorIDRed:
-                    lx.eval('!item.channel constant$color {1.0 0.0844 0.0382} item:{%s}'% Constant)
+                    lx.eval('!item.channel constant$color {1.0 0.0844 0.0382} item:{%s}' % Constant)
                 elif NewID == PrstColorIDMagenta:
-                    lx.eval('!item.channel constant$color {0,8632 0,0802 0,3968} item:{%s}'% Constant)
+                    lx.eval('!item.channel constant$color {0,8632 0,0802 0,3968} item:{%s}' % Constant)
                 elif NewID == PrstColorIDPink:
-                    lx.eval('!item.channel constant$color {0.807 0.1946 0.1946} item:{%s}'% Constant)
+                    lx.eval('!item.channel constant$color {0.807 0.1946 0.1946} item:{%s}' % Constant)
                 elif NewID == PrstColorIDBrown:
-                    lx.eval('!item.channel constant$color {0.402 0.2232 0.0704} item:{%s}'% Constant)
+                    lx.eval('!item.channel constant$color {0.402 0.2232 0.0704} item:{%s}' % Constant)
                 elif NewID == PrstColorIDOrange:
-                    lx.eval('!item.channel constant$color {1.0 0.4793 0.0497} item:{%s}'% Constant)
+                    lx.eval('!item.channel constant$color {1.0 0.4793 0.0497} item:{%s}' % Constant)
                 elif NewID == PrstColorIDYellow:
-                    lx.eval('!item.channel constant$color {1.0 0,8149 0,0452} item:{%s}'% Constant)
+                    lx.eval('!item.channel constant$color {1.0 0,8149 0,0452} item:{%s}' % Constant)
                 elif NewID == PrstColorIDGreen:
-                    lx.eval('!item.channel constant$color {0,0423 0,7682 0,0423} item:{%s}'% Constant)
+                    lx.eval('!item.channel constant$color {0,0423 0,7682 0,0423} item:{%s}' % Constant)
                 elif NewID == PrstColorIDLightGreen:
-                    lx.eval('!item.channel constant$color {0.2832 0.9131 0.2832} item:{%s}'% Constant)
+                    lx.eval('!item.channel constant$color {0.2832 0.9131 0.2832} item:{%s}' % Constant)
                 elif NewID == PrstColorIDCyan:
-                    lx.eval('!item.channel constant$color {0,0382 0,9911 0,7454} item:{%s}'% Constant)
+                    lx.eval('!item.channel constant$color {0,0382 0,9911 0,7454} item:{%s}' % Constant)
                 elif NewID == PrstColorIDBlue:
-                    lx.eval('!item.channel constant$color {0,0529 0,5029 1.0} item:{%s}'% Constant)
+                    lx.eval('!item.channel constant$color {0,0529 0,5029 1.0} item:{%s}' % Constant)
                 elif NewID == PrstColorIDLightBlue:
-                    lx.eval('!item.channel constant$color {0,2232 0,624 1.0} item:{%s}'% Constant)
+                    lx.eval('!item.channel constant$color {0,2232 0,624 1.0} item:{%s}' % Constant)
                 elif NewID == PrstColorIDUltramarine:
-                    lx.eval('!item.channel constant$color {0.1274 0.2502 1.0} item:{%s}'% Constant)
+                    lx.eval('!item.channel constant$color {0.1274 0.2502 1.0} item:{%s}' % Constant)
                 elif NewID == PrstColorIDPurple:
-                    lx.eval('!item.channel constant$color {0,3763 0,2423 0,8308} item:{%s}'% Constant)
+                    lx.eval('!item.channel constant$color {0,3763 0,2423 0,8308} item:{%s}' % Constant)
                 elif NewID == PrstColorIDLightPurple:
-                    lx.eval('!item.channel constant$color {0.624 0.4179 1.0} item:{%s}'% Constant)
+                    lx.eval('!item.channel constant$color {0.624 0.4179 1.0} item:{%s}' % Constant)
                 elif NewID == PrstColorIDDarkGrey:
-                    lx.eval('!item.channel constant$color {0,2423 0,2423 0,2423} item:{%s}'% Constant)
+                    lx.eval('!item.channel constant$color {0,2423 0,2423 0,2423} item:{%s}' % Constant)
                 elif NewID == PrstColorIDGrey:
-                    lx.eval('!item.channel constant$color {0.4852 0.4852 0.4852} item:{%s}'% Constant)
+                    lx.eval('!item.channel constant$color {0.4852 0.4852 0.4852} item:{%s}' % Constant)
                 elif NewID == PrstColorIDWhite:
-                    lx.eval('!item.channel constant$color {0.855 0.855 0.855} item:{%s}'% Constant)
+                    lx.eval('!item.channel constant$color {0.855 0.855 0.855} item:{%s}' % Constant)
             except RuntimeError:  # diffuse amount is zero.
                 pass
 
@@ -441,26 +455,53 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
             except RuntimeError:  # diffuse amount is zero.
                 pass
 
+        ## Parent current ColorID Mask under BaseShader even if there is other Shader items in the scene
         lx.eval('smo.GC.DeselectAll')
-        # lx.eval('select.subItem %s set mesh;replicator;meshInst;camera;light;txtrLocator;backdrop;groupLocator;replicator;surfGen;locator;falloff;deform;locdeform;weightContainer;morphContainer;deformGroup;deformMDD2;ABCStreamingDeformer;morphDeform;itemInfluence;genInfluence;deform.push;deform.wrap;softLag;ABCCurvesDeform.sample;ABCdeform.sample;force.root;baseVolume;chanModify;itemModify;meshoperation;chanEffect;defaultShader;defaultShader 0 0' % ItemUniqueName)
+        lx.eval('smo.QT.SelectBaseShader')
+        baseShad = lx.eval('query sceneservice defaultShader.parent ? {Base Shader}')
+        # print(baseShad)
+        scene.select(GrpMask)
+        TargetGrpMask = ItemIdent()
+        # print(TargetGrpMask)
+        lx.eval('texture.parent {%s} {%s} item:{%s}' % (baseShad, NewID, TargetGrpMask))
+
+        # # Here we make sure the ColorID_0 is at the BottomMost in the hierarchy
+        # if ColorIDSelSetName == "ColorID_0":
+        # 	lx.eval('texture.parent {%s} 0 item:{%s}' % (baseShad, TargetGrpMask))  # '0' argument #2 is the relative position
+        #
+        # # Here we make sure that all other ColorID superior to 0 we be put on top of previously created Grp Mask
+        # if ColorIDSelSetName == "ColorID_1":
+        # 	lx.eval('texture.parent {%s} 1 item:{%s}' % (baseShad, TargetGrpMask)) # '0' argument #2 is the relative position
+
+        lx.eval('smo.GC.DeselectAll')
         scene.select(meshes)
         lx.eval('select.type polygon')
         lx.eval('select.drop polygon')
 
+        # print('ColorID List in scene')
+        # print(ListPSelSet())
+        # print('latest ColorID created')
+        # print(ColorIDSelSetName)
         if ByItemMode == False:
-            print(len(ListPSelSet()))
+            # print(len(ListPSelSet()))
             if len(ListPSelSet()) > 1:
                 for i in ListPSelSet():
-                    print(i)
+                    # print(i)
                     if i != ColorIDSelSetName:
-                        # print("Good")
-                        lx.eval('select.pickWorkingSet %s' % i)
-                        lx.eval('select.editSet %s remove' % i)
-            lx.eval('select.useSet %s replace' % ColorIDSelSetName)
+                        # lx.eval('select.pickWorkingSet %s' % i)
+                        # Better to use select.useset cmd than select.pickWorkingSet as it's not deendant of a list ID as it's explicitly select by SelSet Name
+
+                        lx.eval('!select.useSet {%s} select' % i)
+                        lx.eval('!select.useSet {%s} deselect' % ColorIDSelSetName)
+                        # lx.eval('!select.useSet ColorID_0 select')
+                        # lx.eval('!select.useSet ColorID_1 deselect')
+                        lx.eval('select.editSet {%s} remove' % ColorIDSelSetName)
+                        lx.eval('select.drop polygon')
+        lx.eval('select.useSet %s replace' % ColorIDSelSetName)
 
         if ByItemMode == True:
             lx.eval('select.type item')
-            
+
         # elif TotalSafetyCheck != TotalSafetyCheckTrueValue:
         #     lx.out('script Stopped: your mesh does not match the requirement for that script.')
         #     sys.exit
