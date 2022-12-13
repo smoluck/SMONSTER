@@ -474,6 +474,27 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         # 	lx.eval('texture.parent {%s} 1 item:{%s}' % (baseShad, TargetGrpMask)) # '0' argument #2 is the relative position
 
         lx.eval('smo.GC.DeselectAll')
+
+        GrpPresence = False
+        GrpTarget = []
+        for item in scene.items(itype='mask', superType=True):
+            # lx.out('Default Base Shader found:',item)
+            if item.name == "Grp_ColorID":
+                GrpPresence = True
+                # print(item)
+                GrpTarget.append(item.Ident())
+                print(GrpTarget[0])
+
+        if not GrpPresence:
+            GrpColorID = scene.addItem('mask', name='Grp_ColorID')
+            print(GrpColorID.Ident())
+            lx.eval('texture.parent {%s} 99 item:{%s}' % (GrpColorID.Ident(), TargetGrpMask))
+
+        if GrpPresence:
+            # scene.select(GrpTarget[0])
+            lx.eval('texture.parent {%s} {%s} item:{%s}' % (GrpTarget[0], NewID, TargetGrpMask))
+
+        lx.eval('smo.GC.DeselectAll')
         scene.select(meshes)
         lx.eval('select.type polygon')
         lx.eval('select.drop polygon')
@@ -505,6 +526,9 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         # elif TotalSafetyCheck != TotalSafetyCheckTrueValue:
         #     lx.out('script Stopped: your mesh does not match the requirement for that script.')
         #     sys.exit
+
+        del GrpPresence
+        del GrpTarget
         
     
 lx.bless(SMO_QT_SetSelSetColorIDRandomConstant_Cmd, Cmd_Name)
