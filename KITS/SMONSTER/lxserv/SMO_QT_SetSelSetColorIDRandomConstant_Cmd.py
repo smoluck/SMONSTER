@@ -92,6 +92,7 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
 
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
+        ColorID_Suffix = "ColorID"
         ByItemMode = bool()
 
         if self.SelModeItem == True:
@@ -299,7 +300,6 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
             lx.out('Constant ID Max in scene', SceneConstantID)
         # print(QTChannelExist)
 
-        ColorID_Suffix = "ColorID"
         # print(SceneConstantID)
 
         if SceneConstantID == (-1):
