@@ -504,5 +504,23 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
         #
         # lx.eval('texture.parent {%s} {%s} item:{%s}' % (SceneShaderItemID[0], PosID, GrpColorIdent))
 
+        scene.select(meshes)
+        lx.eval('select.type polygon')
+        lx.eval('select.drop polygon')
+
+        if ByItemMode == True:
+            lx.eval('select.type item')
+
+        # elif TotalSafetyCheck != TotalSafetyCheckTrueValue:
+        #     lx.out('script Stopped: your mesh does not match the requirement for that script.')
+        #     sys.exit
+
+        # SetBack to user preferences the SMO SmartMaterial back to normal.
+        if SMO_UseVal_GC_MatNameSuffix != "":
+            lx.eval('user.value SMO_UseVal_GC_MatNameSuffix {%s}' % SMO_UseVal_GC_MatNameSuffix)
+        if SMO_UseVal_GC_OriginalModoMaterialOverride:
+            lx.eval(
+                'user.value SMO_UseVal_GC_OriginalModoMaterialOverride %s' % SMO_UseVal_GC_OriginalModoMaterialOverride)
+
 
 lx.bless(SMO_QT_SetMatColorIDRandom_Cmd, Cmd_Name)
