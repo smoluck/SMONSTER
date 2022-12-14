@@ -77,7 +77,7 @@ class SMO_QT_Batch_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
         for mesh in meshes_list:
             mesh.select(True)
             if ByIslands == False:
-                lx.eval('smo.QT.Batch.SetMatColorIDRandomKeepCurrentSelection')
+                lx.eval('smo.QT.SetMatColorIDRandom')
             if ByIslands == True:
                 lx.eval('smo.QT.SetMatColorIDByMeshIslands')
             lx.eval('select.type polygon')

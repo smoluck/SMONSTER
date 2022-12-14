@@ -238,6 +238,11 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
         R = (TarCol.split(' ')[0])
         G = (TarCol.split(' ')[1])
         B = (TarCol.split(' ')[2])
+
+        if IDNum > 16:
+            from random import randrange
+            R, G, B = [randrange(0, 255, 10) / 255.0 for i in range(3)]
+
         # print('Red Color is: %s' % R)
         # print('Green Color is: %s' % G)
         # print('Blue Color is: %s' % B)
