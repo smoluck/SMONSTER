@@ -134,17 +134,13 @@ class SMO_GC_SetMatColorID_ByUser_Cmd(lxu.command.BasicCommand):
         except:
             pass
 
-        if self.SelModePoly == True:
-            lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
-
         lx.out('MODE PRESET ACTIVATED')
 
         # mesh = scene.selectedByType('mesh')[0]
         # CsPolys = len(mesh.geometry.polygons.selected)
         meshes = scene.selectedByType('mesh')
         lx.eval('query layerservice layer.id ? main')  # select main layer
-        ItemUniqueName = lx.eval(
-            'query layerservice layer.id ? main')  # store the Unique name of the current mesh layer
+        ItemUniqueName = lx.eval('query layerservice layer.id ? main')  # store the Unique name of the current mesh layer
         # lx.out('Item Unique Name:', ItemUniqueName)
 
         PrstColorIDRed = 0
@@ -378,8 +374,7 @@ class SMO_GC_SetMatColorID_ByUser_Cmd(lxu.command.BasicCommand):
         NewID = int()
 
         try:
-            lx.eval(
-                '!channel.create MatColorIDGlobalCount integer useMin:true default:(-1.0) username:MatColorIDGlobalCount')
+            lx.eval('!channel.create MatColorIDGlobalCount integer useMin:true default:(-1.0) username:MatColorIDGlobalCount')
             SceneConstantID = (-1)
             QTChannelExist = False
         except RuntimeError:  # diffuse amount is zero.
