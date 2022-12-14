@@ -271,6 +271,7 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
                 SceneShaderItemID.append(item.id)
         # print('Base Shader item Id is:', SceneShaderItemID)
 
+
         def uNameItem():
             item = modo.item.Item()
             return item.UniqueName()
@@ -278,9 +279,6 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         def ItemIdent():
             item = modo.item.Item()
             return item.Ident()
-
-        baseShad = lx.eval('query sceneservice defaultShader.parent ? {Base Shader}')
-        # print(baseShad)
 
         QTChannelExist = bool()
         NewID = int()
@@ -477,6 +475,7 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
 
         GrpPresence = False
         GrpTarget = []
+        GrpColorIdent = []
         for item in scene.items(itype='mask', superType=True):
             # lx.out('Default Base Shader found:',item)
             if item.name == "Grp_ColorID":
@@ -485,14 +484,31 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
                 GrpTarget.append(item.Ident())
                 print(GrpTarget[0])
 
+        # print(GrpPresence)
         if not GrpPresence:
             GrpColorID = scene.addItem('mask', name='Grp_ColorID')
             print(GrpColorID.Ident())
-            lx.eval('texture.parent {%s} 99 item:{%s}' % (GrpColorID.Ident(), TargetGrpMask))
+            GrpTarget.append(GrpColorID.Ident())
+            GrpColorIdent = GrpColorID.Ident()
+            lx.eval('texture.parent {%s} 99 item:{%s}' % (GrpColorIdent, TargetGrpMask))
 
         if GrpPresence:
+            GrpColorIdent = GrpTarget[0]
             # scene.select(GrpTarget[0])
-            lx.eval('texture.parent {%s} {%s} item:{%s}' % (GrpTarget[0], NewID, TargetGrpMask))
+            lx.eval('texture.parent {%s} {%s} item:{%s}' % (GrpColorIdent, NewID, TargetGrpMask))
+
+        renderItem = scene.renderItem
+        AllMasks = []
+        for mGrp in renderItem.childrenByType("mask", 1):
+            AllMasks.append(mGrp.index)
+        print(max(AllMasks))
+        PosID = 0
+        PosID = max(AllMasks)
+        print(PosID)
+        print(baseShad)
+        print(GrpColorIdent)
+
+        lx.eval('texture.parent {%s} {%s} item:{%s}' % (baseShad, PosID, GrpColorIdent))
 
         lx.eval('smo.GC.DeselectAll')
         scene.select(meshes)
@@ -526,9 +542,6 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         # elif TotalSafetyCheck != TotalSafetyCheckTrueValue:
         #     lx.out('script Stopped: your mesh does not match the requirement for that script.')
         #     sys.exit
-
-        del GrpPresence
-        del GrpTarget
         
     
 lx.bless(SMO_QT_SetSelSetColorIDRandomConstant_Cmd, Cmd_Name)
