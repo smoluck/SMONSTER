@@ -94,21 +94,42 @@ class SMO_GC_SetMatColorID_ByUser_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
         ColorID_Suffix = "ColorID"
+        ByItemMode = bool()
+
+        # Check Current status of SMO SmartMaterial to turn it to TRUE if needed
+        SMO_UseVal_GC_OriginalModoMaterialOverride = bool()
+        SMO_UseVal_GC_OriginalModoMaterialOverride = lx.eval('user.value SMO_UseVal_GC_OriginalModoMaterialOverride ?')
+        if SMO_UseVal_GC_OriginalModoMaterialOverride:
+            lx.eval('user.value SMO_UseVal_GC_OriginalModoMaterialOverride false')
+        SMO_UseVal_GC_MatNameSuffix = ""
+        SMO_UseVal_GC_MatNameSuffix = lx.eval('user.value SMO_UseVal_GC_MatNameSuffix ?')
+        if SMO_UseVal_GC_MatNameSuffix != "":
+            lx.eval('user.value SMO_UseVal_GC_MatNameSuffix ""')
+
+        if self.SelModeItem:
+            lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
+            lx.eval('select.type polygon')
+            lx.eval('select.all')
+            ByItemMode = True
+
+        if self.SelModePoly:
+            lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
+            ByItemMode = False
 
         try:
             #####--- Define User Value for Count --- START ---#####
             #####
-            #Create a user value that define the ID Number for the Command.
+            # Create a user value that define the ID Number for the Command.
             lx.eval("user.defNew name:IDNumber type:integer life:momentary")
-            #Set the title name for the dialog window
+            # Set the title name for the dialog window
             lx.eval('user.def IDNumber dialogname "SMO QT - Color ID - IDNumber"')
-            #Set the input field name for the value that the users will see
+            # Set the input field name for the value that the users will see
             lx.eval("user.def IDNumber username {Set the Color ID Number}")
-            #The '?' before the user.value calls a popup to have the user set the value
+            # The '?' before the user.value calls a popup to have the user set the value
             lx.eval("?user.value IDNumber")
-            #Now that the user set the value, i can query it
+            # Now that the user set the value, i can query it
             UserInput_IDNumber = lx.eval("user.value IDNumber ?")
-            lx.out('User ID Number:',UserInput_IDNumber)
+            lx.out('User ID Number:', UserInput_IDNumber)
             IDNum = UserInput_IDNumber
         except:
             pass
@@ -122,7 +143,8 @@ class SMO_GC_SetMatColorID_ByUser_Cmd(lxu.command.BasicCommand):
         # CsPolys = len(mesh.geometry.polygons.selected)
         meshes = scene.selectedByType('mesh')
         lx.eval('query layerservice layer.id ? main')  # select main layer
-        ItemUniqueName = lx.eval('query layerservice layer.id ? main')  # store the Unique name of the current mesh layer
+        ItemUniqueName = lx.eval(
+            'query layerservice layer.id ? main')  # store the Unique name of the current mesh layer
         # lx.out('Item Unique Name:', ItemUniqueName)
 
         PrstColorIDRed = 0
@@ -178,7 +200,6 @@ class SMO_GC_SetMatColorID_ByUser_Cmd(lxu.command.BasicCommand):
                 TarCol = '0.4852 0.4852 0.4852'
             if IDNum == PrstColorIDWhite:
                 TarCol = '0.855 0.855 0.855'
-
 
         if IDNum > 16:
             BACKGROUND_DEFAULT = '0.5 0.5 0.5'
@@ -357,7 +378,8 @@ class SMO_GC_SetMatColorID_ByUser_Cmd(lxu.command.BasicCommand):
         NewID = int()
 
         try:
-            lx.eval('!channel.create MatColorIDGlobalCount integer useMin:true default:(-1.0) username:MatColorIDGlobalCount')
+            lx.eval(
+                '!channel.create MatColorIDGlobalCount integer useMin:true default:(-1.0) username:MatColorIDGlobalCount')
             SceneConstantID = (-1)
             QTChannelExist = False
         except RuntimeError:  # diffuse amount is zero.
@@ -383,7 +405,44 @@ class SMO_GC_SetMatColorID_ByUser_Cmd(lxu.command.BasicCommand):
 
         Modo_ver = int(lx.eval('query platformservice appversion ?'))
         lx.out('Modo Version:', Modo_ver)
-        scene = modo.Scene()
+
+        def SetColorOnNode(IDNum):
+            if IDNum == PrstColorIDRed:
+                return lx.eval('item.editorColor red')
+            elif IDNum == PrstColorIDMagenta:
+                return lx.eval('item.editorColor magenta')
+            elif IDNum == PrstColorIDPink:
+                return lx.eval('item.editorColor pink')
+            elif IDNum == PrstColorIDBrown:
+                return lx.eval('item.editorColor brown')
+            elif IDNum == PrstColorIDOrange:
+                return lx.eval('item.editorColor orange')
+            elif IDNum == PrstColorIDYellow:
+                return lx.eval('item.editorColor yellow')
+            elif IDNum == PrstColorIDGreen:
+                return lx.eval('item.editorColor green')
+            elif IDNum == PrstColorIDLightGreen:
+                return lx.eval('item.editorColor lightgreen')
+            elif IDNum == PrstColorIDCyan:
+                return lx.eval('item.editorColor cyan')
+            elif IDNum == PrstColorIDBlue:
+                return lx.eval('item.editorColor blue')
+            elif IDNum == PrstColorIDLightBlue:
+                return lx.eval('item.editorColor lightblue')
+            elif IDNum == PrstColorIDUltramarine:
+                return lx.eval('item.editorColor ultramarine')
+            elif IDNum == PrstColorIDPurple:
+                return lx.eval('item.editorColor purple')
+            elif IDNum == PrstColorIDLightPurple:
+                return lx.eval('item.editorColor lightpurple')
+            elif IDNum == PrstColorIDDarkGrey:
+                return lx.eval('item.editorColor darkgrey')
+            elif IDNum == PrstColorIDGrey:
+                return lx.eval('item.editorColor grey')
+            elif IDNum == PrstColorIDWhite:
+                return lx.eval('item.editorColor white')
+            else:
+                return lx.eval('item.editorColor none')
 
         ###### Modo
         if GC_MatShadingModel < 4:
@@ -392,6 +451,7 @@ class SMO_GC_SetMatColorID_ByUser_Cmd(lxu.command.BasicCommand):
             if GC_OriginalModoMaterialOverride == True:
                 lx.eval('poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false type:default' % (ColorIDMatName, R, G, B))
                 lx.eval('material.new {} true false'.format(ColorIDMatName))
+            SetColorOnNode(IDNum)
         ###### Unreal
         if GC_MatShadingModel == 4:
             if GC_OriginalModoMaterialOverride == False:
@@ -399,20 +459,25 @@ class SMO_GC_SetMatColorID_ByUser_Cmd(lxu.command.BasicCommand):
             if GC_OriginalModoMaterialOverride == True:
                 lx.eval('poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false type:unreal' % (ColorIDMatName, R, G, B))
                 lx.eval('material.new {} true false unreal'.format(ColorIDMatName))
+            SetColorOnNode(IDNum)
         ###### Unity
         if GC_MatShadingModel == 5:
             if GC_OriginalModoMaterialOverride == False:
                 lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
             if GC_OriginalModoMaterialOverride == True:
-                lx.eval('poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false false type:unity' % (ColorIDMatName, R, G, B))
+                lx.eval(
+                    'poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false false type:unity' % (ColorIDMatName, R, G, B))
                 lx.eval('material.new {} true false unity'.format(ColorIDMatName))
+            SetColorOnNode(IDNum)
         ###### glTF
         if GC_MatShadingModel == 6:
             if GC_OriginalModoMaterialOverride == False:
                 lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
             if GC_OriginalModoMaterialOverride == True:
-                lx.eval('poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false false type:gltf' % (ColorIDMatName, R, G, B))
+                lx.eval(
+                    'poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false false type:gltf' % (ColorIDMatName, R, G, B))
                 lx.eval('material.new {} true false gltf'.format(ColorIDMatName))
+            SetColorOnNode(IDNum)
         ###### AxF
         if GC_MatShadingModel == 7:
             if GC_OriginalModoMaterialOverride == False:
@@ -420,6 +485,7 @@ class SMO_GC_SetMatColorID_ByUser_Cmd(lxu.command.BasicCommand):
             if GC_OriginalModoMaterialOverride == True:
                 lx.eval('poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false type:axf' % (ColorIDMatName, R, G, B))
                 lx.eval('material.new {} true false axf'.format(ColorIDMatName))
+            SetColorOnNode(IDNum)
 
         ###### Modo Shader
         if GC_MatShadingModel < 4:
@@ -496,6 +562,116 @@ class SMO_GC_SetMatColorID_ByUser_Cmd(lxu.command.BasicCommand):
         #    print (MaterialItemID)
 
         lx.eval('smo.GC.DeselectAll')
+
+        ###
+        # Make sure Advanced Material in the latest created Grp Mask is using the right Color code for the item
+        def SetColorOnAdvMaterial(IDNum, ColorIDMatName):
+            MainGrpPresence = False
+            indddex = 0
+            MatchingGrpMask = []
+            for item in scene.items(itype='mask', superType=True):
+                if item.name.startswith('ColorID_'):
+                    MainGrpPresence = True
+                    MatchingGrpMask.append(item.Ident())
+            for item in MatchingGrpMask:
+                scene.select(item)
+                for mask in scene.selectedByType('mask'):
+                    for child in mask.childrenByType('advancedMaterial'):
+                        cname = child.name
+                        if cname == ColorIDMatName:
+                            cid = cname.split('_')[1]
+                            scene.select(child)
+                            SetColorOnNode(indddex)
+                            # print(cname)
+                            # print(cid)
+                            lx.eval('smo.GC.DeselectAll')
+                indddex = indddex + 1
+            del indddex
+            del MatchingGrpMask
+            return
+
+        if IDNum <= 16:
+            SetColorOnAdvMaterial(IDNum, ColorIDMatName)
+        ###
+
+        ###
+        # Add the latest Material to the main Grp_ColorID folder/GrpMask
+        # lx.eval('smo.QT.SelectBaseShader')
+        # baseShad = lx.eval('query sceneservice defaultShader.parent ? {Base Shader}')
+        # lx.eval('smo.GC.DeselectAll')
+
+        GrpPresence = False
+        GrpTarget = []
+        GrpColorIdent = []
+        for item in scene.items(itype='mask', superType=True):
+            # lx.out('Default Base Shader found:',item)
+            if item.name == "Grp_ColorID":
+                GrpPresence = True
+                # print(item)
+                GrpTarget.append(item.Ident())
+                print(GrpTarget[0])
+        print(GrpPresence)
+
+        if not GrpPresence:
+            # Here we catch the MAINGrpMask "Grp_ColorID"
+            GrpColorID = scene.addItem('mask', name='Grp_ColorID')
+            print(GrpColorID.Ident())
+            GrpTarget.append(GrpColorID.Ident())
+            GrpColorIdent = GrpColorID.Ident()
+            SourceGrpMask = []
+            for item in scene.items(itype='mask', superType=True):
+                if item.name.startswith('ColorID_'):
+                    SubGrpPresence = True
+                    SourceGrpMask.append(item.Ident())
+            lx.eval('texture.parent {%s} 99 item:{%s}' % (GrpColorIdent, SourceGrpMask[0]))
+        ##########################################################
+        ##########################Marker##########################
+        ##########################################################
+
+        print(ColorIDMatName)
+        if GrpPresence:
+            GrpColorIdent = GrpTarget[0]
+            # scene.select(GrpTarget[0])
+            SourceGrpMask = []
+            for item in scene.items(itype='mask', superType=True):
+                test = ColorIDMatName
+                if item.name.startswith('ColorID_' + str(IDNum)):
+                    SourceGrpMask.append(item.Ident())
+                    print(SourceGrpMask[0])
+            lx.eval('texture.parent {%s} {%s} item:{%s}' % (GrpColorIdent, IDNum, SourceGrpMask[0]))
+
+        # renderItem = scene.renderItem
+        # AllMasks = []
+        # for mGrp in renderItem.childrenByType("mask", 1):
+        #    AllMasks.append(mGrp.index)
+        # print(max(AllMasks))
+        # PosID = 0
+        # PosID = max(AllMasks)
+        # print(PosID)
+        # print(SceneShaderItemID[0])
+        # print(GrpColorIdent)
+        #
+        # lx.eval('texture.parent {%s} {%s} item:{%s}' % (SceneShaderItemID[0], PosID, GrpColorIdent))
+
+        scene.select(meshes)
+        lx.eval('select.type polygon')
+        lx.eval('select.drop polygon')
+
+        if ByItemMode == True:
+            lx.eval('select.type item')
+
+        # elif TotalSafetyCheck != TotalSafetyCheckTrueValue:
+        #     lx.out('script Stopped: your mesh does not match the requirement for that script.')
+        #     sys.exit
+
+        # SetBack to user preferences the SMO SmartMaterial back to normal.
+        if SMO_UseVal_GC_MatNameSuffix != "":
+            lx.eval('user.value SMO_UseVal_GC_MatNameSuffix {%s}' % SMO_UseVal_GC_MatNameSuffix)
+        if SMO_UseVal_GC_OriginalModoMaterialOverride:
+            lx.eval(
+                'user.value SMO_UseVal_GC_OriginalModoMaterialOverride %s' % SMO_UseVal_GC_OriginalModoMaterialOverride)
+        ###
+
         # scene.select(MaterialItemName)
         # scene.select(mesh)
         scene.select(meshes)
