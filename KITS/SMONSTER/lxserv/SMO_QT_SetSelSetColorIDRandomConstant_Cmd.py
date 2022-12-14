@@ -251,10 +251,9 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         ##############################
 
         # #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
-        # if TotalSafetyCheck == TotalSafetyCheckTrueValue:
         # Select the Base Shader to create and place ColorID group on top of current Material Groups
 
-        ### Selection of ShaderItem have been dedicated to dustom command below smo.QT.SelectBaseShader.
+        ### Selection of ShaderItem have been dedicated to custom command below smo.QT.SelectBaseShader.
         # SceneShaderItemList = []
         # SceneShaderItemName = []
         # for item in scene.items(itype='defaultShader', superType=True):
