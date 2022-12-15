@@ -63,10 +63,11 @@ def SetColorIDByNumberCheckSceneMaxColorID():
     SceneShaderItemList = []
     SceneShaderItemName = []
     for item in scene.items(itype='defaultShader', superType=True):
-        # lx.out('Default Base Shader found:',item)
-        SceneShaderItemList.append(item)
-        # print(item.id)
-        SceneShaderItemName.append(item.id)
+        if item.name == "Base Shader":
+            # lx.out('Default Base Shader found:',item)
+            SceneShaderItemList.append(item)
+            # print(item.id)
+            SceneShaderItemName.append(item.id)
     scene.select(SceneShaderItemList[0])
     # print(SceneShaderItemName)
 
@@ -130,7 +131,7 @@ class SMO_QT_SetSelSetColorID_ByUser_Cmd(lxu.command.BasicCommand):
         return True
 
     def basic_Execute(self, msg, flags):
-        scene = modo.scene.current()
+        scn = modo.scene.current()
 
         try:
             #####--- Define User Value for Count --- START ---#####
@@ -158,7 +159,7 @@ class SMO_QT_SetSelSetColorID_ByUser_Cmd(lxu.command.BasicCommand):
 
         # mesh = scene.selectedByType('mesh')[0]
         # CsPolys = len(meshes.geometry.polygons.selected)
-        meshes = scene.selectedByType('mesh')
+        meshes = scn.selectedByType('mesh')
         # lx.eval('query layerservice layer.id ? main')  # select main layer
         # ItemUniqueName = lx.eval('query layerservice layer.id ? main')  # store the Unique name of the current mesh layer
         # lx.out('Item Unique Name:', ItemUniqueName)
@@ -171,7 +172,7 @@ class SMO_QT_SetSelSetColorID_ByUser_Cmd(lxu.command.BasicCommand):
         CheckSceneMaxColor = int(PresetMaxID) + 1
         # PresetMaxID = int(PresetMaxID)
         lx.out('number of ColorID Tags: %s' % PresetMaxID)
-        scene.select(meshes)
+        scn.select(meshes)
         lx.eval('select.type polygon')
         
         ColorIDSelSetName = ("%s_%s" % (ColorID_Suffix, IDNum))
