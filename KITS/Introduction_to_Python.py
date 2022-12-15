@@ -30,9 +30,15 @@ print("-------------------------------------")
 """
 to print in line
 """
+print("""text text text text text text text text text text text text text text text text text""")
 
-print(
-    """text text text text text text text text text text text text text text text text text text text text text text text""")
+print("-------------------------------------")
+"""to get the list of all module tht are related to a value type
+for instance on strings"""
+text = "bla bla"
+type(text)
+dir(str)            # a list of specific modules attached to that value type will be listed.
+text.capitalize()   # for instance will return "Bla bla"
 
 
 
@@ -111,6 +117,43 @@ FLOAT = float()
 f_pos = 1548.687
 f_neg = -1549.00
 print(FLOAT, f_pos, f_neg)
+
+
+f_a = 1     # 1 here is an integer type of value
+f_b = "3"   # 3 here is a String type of value
+
+type(f_a)   # will return an "int" for "Integer"
+type(f_b)   # will return a "str" for "String"
+
+"""f_a + f_b will return an error, so we need to convert the value type."""
+f_a + int(f_b)
+
+
+
+print("\n")
+print("----- about ------ Math Functions --------------------------")
+import math
+
+print('Multiplications')
+math_a = 8*2
+print(math_a)
+
+print('Power of 2')
+math_b = 8**2
+print(math_b)
+
+
+
+print("\n")
+print("----- about ------ Comparison Functions --------------------------")
+
+compare_a_to_b = (math_a == math_b)
+print(compare_a_to_b)       # this will be a Boolean result: true OR false
+
+print('Power of 2')
+math_b = 8**2
+print(math_b)
+
 
 
 print("\n")
