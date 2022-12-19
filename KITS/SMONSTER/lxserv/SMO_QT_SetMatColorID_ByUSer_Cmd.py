@@ -160,15 +160,15 @@ def SetColorIDByNumberCheckSceneMaxColorID(IDNum):
         lx.eval('select.channel {%s:MatColorIDGlobalCount@lmb=x} set' % SceneShaderItemName[0])
         SceneCurrentConstantID = lx.eval('!item.channel MatColorIDGlobalCount ?')
         QTChannelExist = True
-        print('ColorID  Global Count channel already created')
+        # print('ColorID  Global Count channel already created')
         pass
 
-    print(QTChannelExist)
-    print(IDNum)
-    print(SceneCurrentConstantID)
+    # print(QTChannelExist)
+    # print(IDNum)
+    # print(SceneCurrentConstantID)
     ValuesList = [int(IDNum), int(SceneCurrentConstantID)]
     MaxValue = max(ValuesList)
-    print('the Maximum ColorID desired in scene is: %s' % MaxValue)
+    # print('the Maximum ColorID desired in scene is: %s' % MaxValue)
 
     # Now that we're sure we have a channel created, we select it
     try:
@@ -178,7 +178,7 @@ def SetColorIDByNumberCheckSceneMaxColorID(IDNum):
     except RuntimeError:  # diffuse amount is zero.
         lx.eval('select.channel {%s:MatColorIDGlobalCount@lmb=x} set' % SceneShaderItemName[0])
         QTChannelExist = True
-        print('ColorID  Global Count channel already created')
+        # print('ColorID  Global Count channel already created')
         pass
 
     if QTChannelExist:
@@ -189,7 +189,7 @@ def SetColorIDByNumberCheckSceneMaxColorID(IDNum):
         if SceneCurrentConstantID >= 0:
             SceneCurrentConstantID = MaxValue
             lx.eval('!item.channel MatColorIDGlobalCount %s' % MaxValue)
-        print('Constant ID Max in scene', SceneCurrentConstantID)
+        # print('Constant ID Max in scene', SceneCurrentConstantID)
 
     if not QTChannelExist:
         lx.eval(
@@ -209,20 +209,10 @@ def SetColorIDByNumberCheckSceneMaxColorID(IDNum):
 def GetColorIDByNumberCheckSceneMaxColorID():
     # Select the Base Shader to create and place ColorID group on top of current Material Groups
     scn = modo.scene.current()
-    # lx.eval('smo.QT.SelectBaseShader')
-    RenderItemBaseShader = []
-    SceneShaderItemName = []
-    for item in scn.items(itype='defaultShader', superType=True):
-        if item.name == "Base Shader":
-            # lx.out('Default Base Shader found:',item)
-            RenderItemBaseShader.append(item)
-            # print(item.id)
-            SceneShaderItemName.append(item.id)
-    scn.select(RenderItemBaseShader[0])
-    # print(SceneShaderItemName)
+    scn.select(GetBaseShader()[0])
     MaxID = lx.eval('!item.channel MatColorIDGlobalCount ?')
-    print(MaxID)
-    scn.deselect(RenderItemBaseShader[0])
+    # print(MaxID)
+    scn.deselect(GetBaseShader()[0])
     return MaxID
 
 
@@ -245,12 +235,12 @@ def IsThereTargetGrpMaskColorIDSelSet(ListGrpMaskColorID, IDNum):
     scn = modo.scene.current()
     GrpMaskAlreadyThere = False
     ListTargetGrpMaskState = []
-    print(getTargetGrpMaskName(IDNum))
+    # print(getTargetGrpMaskName(IDNum))
     IsThereTargetGrpMaskColorIDSelSet = False
     for item in ListGrpMaskColorID:
         scn.select(item)
         for mask in scn.selectedByType('mask'):
-            print(mask.name)
+            # print(mask.name)
             if mask.name == (getTargetGrpMaskName(IDNum) + " " + "(Material)"):
                 IsThereTargetGrpMaskColorIDSelSet = True
                 ListTargetGrpMaskState.append(IsThereTargetGrpMaskColorIDSelSet)
@@ -279,12 +269,12 @@ def ProcessGrp_ColorID(TargetGrpMask, IDNum, baseShad):
             GrpPresence = True
             # print(item)
             GrpTarget.append(item.Ident())
-            print(GrpTarget[0])
+            # print(GrpTarget[0])
     GrpColorIdent = []
     # print(GrpPresence)
     if not GrpPresence:
         GrpColorID = scn.addItem('mask', name='Grp_ColorID')
-        print(GrpColorID.Ident())
+        # print(GrpColorID.Ident())
         GrpTarget.append(GrpColorID.Ident())
         GrpColorIdent = GrpColorID.Ident()
         lx.eval('texture.parent {%s} 99 item:{%s}' % (GrpColorIdent, TargetGrpMask))
@@ -296,10 +286,10 @@ def ProcessGrp_ColorID(TargetGrpMask, IDNum, baseShad):
     AllMasks = []
     for mGrp in renderItem.childrenByType("mask", 1):
         AllMasks.append(mGrp.index)
-    print(max(AllMasks))
+    # print(max(AllMasks))
     PosID = 0
     PosID = max(AllMasks)
-    print(PosID)
+    # print(PosID)
     # if not GrpPresence:
     #     lx.eval('texture.parent {%s} {%s} item:{%s}' % (baseShad, PosID, GrpColorIdent))
     scn.deselect(TargetGrpMask)
@@ -407,8 +397,7 @@ def SetMaterial(GC_MatShadingModel, GC_OriginalModoMaterialOverride, ColorIDMatN
         if GC_OriginalModoMaterialOverride == False:
             lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
         if GC_OriginalModoMaterialOverride == True:
-            lx.eval(
-                'poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false false type:unity' % (ColorIDMatName, R, G, B))
+            lx.eval('poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false false type:unity' % (ColorIDMatName, R, G, B))
             lx.eval('material.new {} true false unity'.format(ColorIDMatName))
         SetColorOnNode(IDNum)
 
@@ -417,8 +406,7 @@ def SetMaterial(GC_MatShadingModel, GC_OriginalModoMaterialOverride, ColorIDMatN
         if GC_OriginalModoMaterialOverride == False:
             lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
         if GC_OriginalModoMaterialOverride == True:
-            lx.eval(
-                'poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false false type:gltf' % (ColorIDMatName, R, G, B))
+            lx.eval('poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false false type:gltf' % (ColorIDMatName, R, G, B))
             lx.eval('material.new {} true false gltf'.format(ColorIDMatName))
         SetColorOnNode(IDNum)
 
@@ -500,38 +488,85 @@ def SetMaterial(GC_MatShadingModel, GC_OriginalModoMaterialOverride, ColorIDMatN
             scn.deselect(Mat_ModelName)
 
 
-def ReorderMaskInGrp_ColorID(TargetGrpMask, IDNum, baseShad):
+def ReorderMaskInGrp_ColorID():
+    # List only "Grp_ColorID" MAIN GrpMask
     scn = modo.scene.current()
     GrpPresence = False
     GrpTarget = []
+    #print(GrpTarget)
     for item in scn.items(itype='mask', superType=True):
         # lx.out('Default Base Shader found:',item)
         if item.name == "Grp_ColorID":
             GrpPresence = True
             # print(item)
             GrpTarget.append(item.Ident())
-            print(GrpTarget[0])
+            # print(GrpTarget[0])
     GrpColorIdent = []
-    # print(GrpPresence)
-    if not GrpPresence:
-        GrpColorID = scn.addItem('mask', name='Grp_ColorID')
-        print(GrpColorID.Ident())
-        GrpTarget.append(GrpColorID.Ident())
-    if GrpPresence:
-        GrpColorIdent = GrpTarget[0]
-        scn.select(GrpTarget[0])
-    renderItem = scn.renderItem
-    AllMasks = []
-    for mGrp in renderItem.childrenByType("mask", 1):
-        AllMasks.append(mGrp.index)
-    print(max(AllMasks))
-    PosID = 0
-    PosID = max(AllMasks)
-    print(PosID)
-    # if not GrpPresence:
-    #     lx.eval('texture.parent {%s} {%s} item:{%s}' % (baseShad, PosID, GrpColorIdent))
-    scn.deselect(TargetGrpMask)
-    return (GrpColorIdent)
+    GrpColorIdent = GrpTarget[0]
+    scn.select(GrpTarget[0])
+    AllColIDMasksName = []
+    # print(AllColIDMasksName)
+    AllColIDMasksIdent = []
+    # print(AllColIDMasksIdent)
+
+    # Get the Maximum Color ID in scurrent Scene
+    MaxID = GetColorIDByNumberCheckSceneMaxColorID()
+    #print('Maximum Color ID in scurrent Scene is: %s' % MaxID)
+
+    # Get only "Base Shader" Shader Render Item
+    Root = GetBaseShader()
+    # print(Root)
+
+    # List All and only "ColorID_" Childs GrpMask
+    index = 0
+    for item in xrange(0, int(GetColorIDByNumberCheckSceneMaxColorID())):
+        # print(item)
+        getTargetGrpMaskName(index)
+        for mask in scn.items(itype='mask', superType=True):
+            # print(mask.name)
+            if mask.name == (getTargetGrpMaskName(index) + " " + "(Material)"):
+                if mask.name.startswith('ColorID_'):
+                    # print(mask.name)
+                    AllColIDMasksName.append(mask.name)
+                    AllColIDMasksIdent.append(mask.Ident())
+        index = index + 1
+    # print(AllColIDMasksName)
+    # print(AllColIDMasksIdent)
+
+    # scn.select(AllColIDMasksIdent[0])
+
+
+    # Group all the ColorID GrpMAsk under a temp GrpMask Folder in order to reparrent those back into 'Grp_ColorID' GrpMask
+    scn.select(Root[0])
+    TEMP_GrpMask = []
+    lx.eval('shader.create mask')
+    lx.eval('item.name TEMP_GROUP mask')
+    for mask in scn.items(itype='mask', superType=True):
+        # print(mask.name)
+        if mask.name.startswith('TEMP_GROUP'):
+            # print(mask.Ident())
+            TEMP_GrpMask.append(mask.Ident())
+    scn.deselect(TEMP_GrpMask[0])
+
+    # parent targeted ColorIDGrpMask in that TEMP_GROUP
+    indexB = 0
+    for maskitem in AllColIDMasksIdent:
+        scn.select(maskitem)
+        lx.eval('texture.parent {%s} {%s} item:{%s}' % (TEMP_GrpMask[0], indexB, maskitem))
+        indexB = indexB + 1
+
+    scn.select(GrpColorIdent)
+
+    indexC = 0
+    for maskitem in AllColIDMasksIdent:
+        scn.select(maskitem)
+        lx.eval('texture.parent {%s} {%s} item:{%s}' % (GrpColorIdent, indexC, maskitem))
+        indexC = indexC + 1
+
+    scn.select(TEMP_GrpMask[0])
+    lx.eval('!delete')
+
+
 
 class SMO_GC_SetMatColorID_ByUser_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -665,21 +700,32 @@ class SMO_GC_SetMatColorID_ByUser_Cmd(lxu.command.BasicCommand):
                     TargetGrpMask = ItemIdent()
                     print(TargetGrpMask)
             ProcessGrp_ColorID(TargetGrpMask, IDNum, GetBaseShader())
+
+        if GrpMaskExist:
+            lx.eval('poly.setMaterial name:%s' % str(getTargetGrpMaskName(IDNum)))
+
         scn.select(meshes)
 
-        # for mask in scn.selectedByType('mask'):
-        #    print(mask.name)
-        #    if mask.name == getTargetGrpMaskName(IDNum):
-        #        scn.select(mask)
-        #        SetColorOnNode(IDNum)
+        if not GrpMaskExist:
+            ReorderMaskInGrp_ColorID()
 
-        # if GrpMaskExist:
-        # SetColorOnNode(IDNum)
+        scn.select(meshes)
+        lx.eval('select.type polygon')
+        lx.eval('select.drop polygon')
 
-        if self.SelModePoly == True:
-            lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
+        # SetBack to user preferences the SMO SmartMaterial back to normal.
+        if SMO_UseVal_GC_MatNameSuffix != "":
+            lx.eval('user.value SMO_UseVal_GC_MatNameSuffix {%s}' % SMO_UseVal_GC_MatNameSuffix)
+        if SMO_UseVal_GC_OriginalModoMaterialOverride:
+            lx.eval(
+                'user.value SMO_UseVal_GC_OriginalModoMaterialOverride %s' % SMO_UseVal_GC_OriginalModoMaterialOverride)
+        ###
+        scn.select(meshes)
 
-        if ByItemMode == True:
+        if self.SelModePoly:
+            lx.eval('select.type polygon')
+
+        if ByItemMode:
             lx.eval('select.type item')
 
 
