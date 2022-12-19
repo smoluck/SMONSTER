@@ -134,7 +134,7 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
         for item in scene.items(itype='defaultShader', superType=True):
             if item.name == "Base Shader":
                 SceneShaderItemID.append(item.id)
-        print('Base Shader item Id is:', SceneShaderItemID[0])
+        # print('Base Shader item Id is:', SceneShaderItemID[0])
 
         # scene.select(SceneShaderItemID[0])
 
@@ -165,13 +165,13 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
             # lx.out('Constant ID Max in scene', SceneConstantID)
         # print(QTChannelExist)
 
-        print(SceneConstantID)
+        # print(SceneConstantID)
 
         if SceneConstantID == (-1):
             IDNum = 0
         if SceneConstantID >= 0:
             IDNum = int(SceneConstantID) + 1
-        print(IDNum)
+        # print(IDNum)
         lx.eval('!item.channel MatColorIDGlobalCount %i' % IDNum)
         ColorIDMatName = ("%s_%s" % (ColorID_Suffix, IDNum))
         # lx.out('Color ID Selection set name:', ColorIDMatName)
@@ -465,13 +465,13 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
                 GrpPresence = True
                 # print(item)
                 GrpTarget.append(item.Ident())
-                print(GrpTarget[0])
-        print(GrpPresence)
+                # print(GrpTarget[0])
+        # print(GrpPresence)
 
         if not GrpPresence:
             # Here we catch the MAINGrpMask "Grp_ColorID"
             GrpColorID = scene.addItem('mask', name='Grp_ColorID')
-            print(GrpColorID.Ident())
+            # print(GrpColorID.Ident())
             GrpTarget.append(GrpColorID.Ident())
             GrpColorIdent = GrpColorID.Ident()
             SourceGrpMask = []
@@ -484,7 +484,7 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
         ##########################Marker##########################
         ##########################################################
 
-        print(ColorIDMatName)
+        # print(ColorIDMatName)
         if GrpPresence:
             GrpColorIdent = GrpTarget[0]
             # scene.select(GrpTarget[0])
@@ -493,7 +493,7 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
                 test = ColorIDMatName
                 if item.name.startswith('ColorID_' + str(IDNum)):
                     SourceGrpMask.append(item.Ident())
-                    print(SourceGrpMask[0])
+                    # print(SourceGrpMask[0])
             lx.eval('texture.parent {%s} {%s} item:{%s}' % (GrpColorIdent, IDNum, SourceGrpMask[0]))
 
         # renderItem = scene.renderItem

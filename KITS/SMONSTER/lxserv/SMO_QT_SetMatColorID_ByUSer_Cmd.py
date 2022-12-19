@@ -687,7 +687,7 @@ class SMO_GC_SetMatColorID_ByUser_Cmd(lxu.command.BasicCommand):
 
         print('---')
         GrpMaskExist = IsThereTargetGrpMaskColorIDSelSet(ListGrpMaskColorIDSelSet(IDNum), IDNum)[0]
-        print(GrpMaskExist)
+        # print(GrpMaskExist)
 
         scn.select(meshes)
 
@@ -698,7 +698,7 @@ class SMO_GC_SetMatColorID_ByUser_Cmd(lxu.command.BasicCommand):
                 if item.name.startswith(str(getTargetGrpMaskName(IDNum))):
                     scn.select(item)
                     TargetGrpMask = ItemIdent()
-                    print(TargetGrpMask)
+                    # print(TargetGrpMask)
             ProcessGrp_ColorID(TargetGrpMask, IDNum, GetBaseShader())
 
         if GrpMaskExist:

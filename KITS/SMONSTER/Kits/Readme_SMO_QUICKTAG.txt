@@ -3,6 +3,19 @@ Hi. Everyone
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 3.00 -
+        • Finally completed the Rewrite of those ColorID Commands in order to let the user have more features and freedom. ( smo.QT.SetMatColorIDByNumber / smo.QT.SetMatColorIDByUser / smo.QT.SetSelSetColorIDByNumber / smo.QT.SetSelSetColorIDByUser )
+        	• Now you can use whatever ID Value for those. You're not constrained anymore by the creation of those in order. (Start with #2 then add #6. There is no Order constraint on those commands.)
+        • Now when you create a ColorID, all the new Group Masks will be regrouped under a main Group folder called "Grp_ColorID" for easier shader tree organization.
+        • All ColorID Cmds are taking profit of the Automatic reordering of Newly created ID mask.
+        • Bugfix on various QT ColorID commands for Selection Set Tagging.
+        • GrpMask and AdvancedMaterial are now all Colored Nodes according to Color ID Presets (from 0 to 16).
+
+
+- 2.70 -
+
+
+
 - 2.60 -
         • Solved a regression with latest update on Batch - Set Mat Color ID commands
         • If the Color ID command is used while in Item Mode, it will switch back to item mode, after running it.

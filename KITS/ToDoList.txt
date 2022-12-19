@@ -2,9 +2,10 @@
 ---- TO DO LIST ----
 ----------------------
 
-Create an equivalent to smo.QT.Batch.SetSelSetColorIDRandomConstant for ColorID by Material solution as well.
-Create an equivalent to smo.QT.SetSelSetColorIDByMeshIslands for ColorID by Material solution as well.
-Bugfix for the Batch solution of smo.GC.PlasticityPrepareMeshes
+### DONE ### --> Create an equivalent to smo.QT.Batch.SetSelSetColorIDRandomConstant for ColorID by Material solution as well.
+### DONE ### --> Create an equivalent to smo.QT.SetSelSetColorIDByMeshIslands for ColorID by Material solution as well.
 ### DONE ### --> Find a solution for UV tools to be applied and process over multiple Mesh Layer at once.
 ### DONE ### --> Find a solution for the UnwrapSmart in Edge Mode for multiple meshes.
+
 Find a solution for SMO_GC_Setup_MoveRotateCenterToSelectionWithVNrm in order to Update VertexNormalMap when Center is changed.
+Bugfix for the Batch solution of smo.GC.PlasticityPrepareMeshes

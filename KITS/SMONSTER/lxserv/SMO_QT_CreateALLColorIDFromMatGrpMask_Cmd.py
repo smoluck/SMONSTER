@@ -50,7 +50,7 @@ class SMO_QT_CreateAllColorIDFromMatGrpMask_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
         selMatGrp = (lx.evalN('query sceneservice selection ? mask'))
         lx.out('Selected Material Groups', selMatGrp)
-        selMatGrpCount = len(sel)
+        selMatGrpCount = len(selMatGrp)
         lx.out('Selected Material Group Masks Count', selMatGrpCount)
         lx.eval('smo.GC.DeselectAll')
         if selMatGrpCount >= 1:

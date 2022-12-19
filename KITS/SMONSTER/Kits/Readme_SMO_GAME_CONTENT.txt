@@ -3,6 +3,12 @@ Hi. Everyone
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 12.20 -
+        • Exposed the Select / Fix Missing Vertex Normal Data as well in the Item Context Menu.
+        • Bugfix smo.GC.SetNewMaterialSmartRename now correctly Assign Mat Tag if already existing in the scene with creating a duplicated one. (As i was using Tim Cowson - Popup Kit in my workflow, that bug passed over my radar, but it was an issue for casual users.)
+
+
+
 - 12.00 -
         • smo.GC.Display.CycleMatCap - Bugfix for Modo 16.1 that wasn't turning on the Wireframe Overlay as you was switching to MatCap shading. (causing error message in previous release)
         • smo.GC.ChamferEdgesByUnit - Now automatically setting the "SharpCorner" option to "ON"

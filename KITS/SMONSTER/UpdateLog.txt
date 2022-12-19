@@ -3,6 +3,21 @@
 -------------------------
 
 -------------------------
+v4.60 - 2022/12/19
+GC:
+        • Exposed the Select / Fix Missing Vertex Normal Data as well in the Item Context Menu.
+        • Bugfix smo.GC.SetNewMaterialSmartRename now correctly Assign Mat Tag if already existing in the scene with creating a duplicated one. (As i was using Tim Cowson - Popup Kit in my workflow, that bug passed over my radar, but it was an issue for casual users.)
+
+QT:
+        • Finally completed the Rewrite of those ColorID Commands in order to let the user have more features and freedom. ( smo.QT.SetMatColorIDByNumber / smo.QT.SetMatColorIDByUser / smo.QT.SetSelSetColorIDByNumber / smo.QT.SetSelSetColorIDByUser )
+        	• Now you can use whatever ID Value for those. You're not constrained anymore by the creation of those in order. (Start with #2 then add #6. There is no Order constraint on those commands.)
+        • Now when you create a ColorID, all the new Group Masks will be regrouped under a main Group folder called "Grp_ColorID" for easier shader tree organization.
+        • All ColorID Cmds are taking profit of the Automatic reordering of Newly created ID mask.
+        • Bugfix on various QT ColorID commands for Selection Set Tagging.
+        • GrpMask and AdvancedMaterial are now all Colored Nodes according to Color ID Presets (from 0 to 16).
+
+
+-------------------------
 v4.52 - 2022/12/12
 UV:
         • Bugfix on Multi Meshes Unwrap when UVmaps where miss-matching in presence or not.
