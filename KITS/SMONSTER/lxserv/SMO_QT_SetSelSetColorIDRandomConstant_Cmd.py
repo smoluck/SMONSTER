@@ -15,7 +15,9 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 #---------------------------------------
 
-import modo, lx, lxu, random
+import modo, lx, lxu, random, sys
+if sys.version_info < (3, 0):
+    xrange = range
 
 Cmd_Name = "smo.QT.SetSelSetColorIDRandomConstant"
 # smo.QT.SetSelSetColorIDRandomConstant

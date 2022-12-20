@@ -14,7 +14,9 @@
 # Copyright:    (c) Franck Elisabeth 2017-2022
 # ---------------------------------------
 
-import lx, lxu, modo
+import lx, lxu, modo, sys
+if sys.version_info < (3, 0):
+    xrange = range
 
 Cmd_Name = "smo.GC.ItemListReParentToRootParent"
 # smo.GC.ItemListReParentToRootParent
