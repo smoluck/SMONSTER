@@ -13,7 +13,7 @@ Hi. Everyone
 
 
 - 2.70 -
-
+        • Bugfix on Poly SelSet updated maps
 
 
 - 2.60 -

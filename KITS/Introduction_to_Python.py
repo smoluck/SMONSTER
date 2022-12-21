@@ -38,8 +38,7 @@ for instance on strings"""
 text = "bla bla"
 type(text)
 dir(str)            # a list of specific modules attached to that value type will be listed.
-text.capitalize()   # for instance will return "Bla bla"
-
+text.capitalize()   # for instance will return "Bla bla". CFirst letter of  the chain will be high Case.
 
 
 print("\n")
@@ -77,7 +76,6 @@ name = "Allen Hastings"
 print("User\'s Name:", name)
 
 
-
 print("\n")
 print("----- about ------ Raw Strings --------------------------")
 """
@@ -94,7 +92,6 @@ ew folder
 instead use:
 """
 print(r"c:\temp\new folder")
-
 
 
 print("\n")
@@ -129,7 +126,6 @@ type(f_b)   # will return a "str" for "String"
 f_a + int(f_b)
 
 
-
 print("\n")
 print("----- about ------ Math Functions --------------------------")
 import math
@@ -143,7 +139,6 @@ math_b = 8**2
 print(math_b)
 
 
-
 print("\n")
 print("----- about ------ Comparison Functions --------------------------")
 
@@ -153,7 +148,6 @@ print(compare_a_to_b)       # this will be a Boolean result: true OR false
 print('Power of 2')
 math_b = 8**2
 print(math_b)
-
 
 
 print("\n")
@@ -186,6 +180,7 @@ class Result(scls):
     data = [scls]
 
 
+print("\n")
 print("----- SubClass state of various variable -----")
 state = issubclass(Result, scls)
 print("Does 'scls' is a subclass of 'Result' ?", "\n", "the answer is %s" % state)
@@ -198,3 +193,51 @@ colors = ['red', 'green', 'blue']
 rgb = '\n'.join(colors)
 s = f"The RGB colors are:\n{rgb}"
 print(s)
+
+print(colors.index('blue'))   # can output the index number linked to the value "blue"
+
+
+print("\n")
+print("----- about ------ List modules --------------------------")
+colors = ['red', 'green', 'blue']
+colors.append("yellow")         # append let us Add a value to a list.
+colors.clear()                  # clear will clear all the values in it.
+colors.copy()
+colors.remove()
+colors.count()
+colors.insert(1, 'test')        # insert will add a value in the list at a specific index. Here at the index 1
+
+
+print("\n")
+print("----- about ------ Dict modules --------------------------")
+# dict have no index but keys to define what you can call.
+# instead of list[x] where x is the index
+# dict["key"] will return the value at that key. You can output multiple values from it
+
+d = {}
+d = {'name': 'Kent', 'givenname': 'Clark'}
+print(d)
+d['job'] = 'Super Hero'     # 'job' is not part of the dict already, so it will add that new key and the value of it.
+print(d)
+print(d.keys())             # will return all the keys in it.
+print(d.values())           # will return all the values in it.
+
+# you can also only print the Values
+for x in d:
+    print(d[x])
+
+# you can also only print the Keys
+for x in d:
+    print(x)
+
+# you can also print the key and the values that way in the same line
+for x in d:
+    print(x, ':', d[x])
+
+# you can also print the key and the values that way in the same line but now with a tabulation on both side of the separator ":"
+for x in d:
+    print(x, '\t:\t', d.values())
+
+# if you want a clean list out of those keys, you will still have to get them through this to have a clean list format.
+list(d.keys())
+
