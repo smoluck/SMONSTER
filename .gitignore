@@ -4,7 +4,6 @@
 
 # Build
 *.pyc
-build_RizomUV_LL/
 build_SourceEdition/
 build_StandardEdition/
 
