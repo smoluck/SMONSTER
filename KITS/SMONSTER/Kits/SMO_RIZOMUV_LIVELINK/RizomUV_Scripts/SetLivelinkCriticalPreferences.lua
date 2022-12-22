@@ -7,8 +7,8 @@ ZomSet({Path="Vars.UI.Display.DialogPreferencesShown", Value=true})
 
 -- Set the UV Texture Cheker map path
 -- Path Location is refering to our SMONSTER V2 Folder
-ZomLoadGridTexture("C:/Users/EXA-W009/AppData/Roaming/Luxology/Kits/SMONSTER/Kits/SMO_UV/UVGrid/uvLayoutGrid_4096.png")
-ZomSet({Path="Prefs.Viewport.GridTexturePath", Value="C:/Users/EXA-W009/AppData/Roaming/Luxology/Kits/SMONSTER/Kits/SMO_UV/UVGrid/uvLayoutGrid_4096.png"})
+ZomLoadGridTexture("C:/ONEDRIVE/GITHUB/SMONSTER/KITS/SMONSTER/Kits/SMO_UV/UVGrid/uvLayoutGrid_4096.png")
+ZomSet({Path="Prefs.Viewport.GridTexturePath", Value="C:/ONEDRIVE/GITHUB/SMONSTER/KITS/SMONSTER/Kits/SMO_UV/UVGrid/uvLayoutGrid_4096.png"})
 
 -- Define common settings
 ZomSet({Path="Prefs.Viewport.NearPlane", Value=0.001})
@@ -35,6 +35,6 @@ ZomSet({Path="Prefs.UI.Display.IslandProperties", Value=true})
 -- Display the custom Checker Texture on mesh
 ZomSet({Path="Vars.Viewport.Viewport3D.Textured", Value=true})
 ZomSet({Path="Vars.Viewport.TextureID", Value=1})
-
+ZomSet({Path="Prefs.Script.Language", Value="Python"})
 
 
