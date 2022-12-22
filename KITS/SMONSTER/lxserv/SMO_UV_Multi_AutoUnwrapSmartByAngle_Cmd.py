@@ -23,10 +23,14 @@ Cmd_Name = "smo.UV.Multi.AutoUnwrapSmartByAngle"
 class SMO_UV_Multi_AutoUnwrapSmartByAngle_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
-        self.dyna_Add("Minimum Angle", lx.symbol.sTYPE_FLOAT)
+        self.dyna_Add("Unwrap Method: (Conformal) 0 or 1 (Angle Based)", lx.symbol.sTYPE_BOOLEAN)
         # self.basic_SetFlags(0, lx.symbol.fCMDARG_OPTIONAL)  # here the (0) define the argument index.
-        self.dyna_Add("Maximum Angle", lx.symbol.sTYPE_FLOAT)
+        self.dyna_Add("Initial Projection: (Planar) 0 or 1 (Group Normal)", lx.symbol.sTYPE_BOOLEAN)
         # self.basic_SetFlags(1, lx.symbol.fCMDARG_OPTIONAL)
+        self.dyna_Add("Minimum Angle", lx.symbol.sTYPE_FLOAT)
+        # self.basic_SetFlags(2, lx.symbol.fCMDARG_OPTIONAL)
+        self.dyna_Add("Maximum Angle", lx.symbol.sTYPE_FLOAT)
+        # self.basic_SetFlags(3, lx.symbol.fCMDARG_OPTIONAL)
 
         self.SelModeVert = bool(lx.eval1("select.typeFrom typelist:vertex;polygon;edge;item;ptag ?"))
         self.SelModeEdge = bool(lx.eval1("select.typeFrom typelist:edge;vertex;polygon;item ?"))
@@ -62,8 +66,10 @@ class SMO_UV_Multi_AutoUnwrapSmartByAngle_Cmd(lxu.command.BasicCommand):
         return True
 
     def basic_Execute(self, msg, flags):
-        MAUSBA_MinAngle = self.dyna_Float(0)
-        MAUSBA_MaxAngle = self.dyna_Float(1)
+        MAUSBA_UnwrapMethod = self.dyna_Bool(0)
+        MAUSBA_InitProjection = self.dyna_Bool(1)
+        MAUSBA_MinAngle = self.dyna_Float(2)
+        MAUSBA_MaxAngle = self.dyna_Float(3)
 
         SelCompMode = int()
         if self.SelModeVert:
@@ -86,6 +92,16 @@ class SMO_UV_Multi_AutoUnwrapSmartByAngle_Cmd(lxu.command.BasicCommand):
         ############### 5 ARGUMENTS ###############
         args = lx.args()
         lx.out(args)
+
+        # Conformal= 0
+        # Angle Based = 1
+        UnwrapMethod = MAUSBA_UnwrapMethod
+        lx.out('Desired Unwrap Method:', UnwrapMethod)
+
+        # Planar = 0
+        # Group Normal = 1
+        InitProjection = MAUSBA_InitProjection
+        lx.out('Initial Projection Mode:', InitProjection)
 
         # 89.0 Degree
         MinAngle = MAUSBA_MinAngle
@@ -147,12 +163,12 @@ class SMO_UV_Multi_AutoUnwrapSmartByAngle_Cmd(lxu.command.BasicCommand):
                 scn.select(n)
                 selected_mesh = scn.selectedByType('mesh')[0]
                 # print('current mesh identity :', index, selected_mesh)
-                lx.eval('smo.UV.AutoUnwrapSmartByAngle %s %s' % (MinAngle, MaxAngle))
+                lx.eval('smo.UV.AutoUnwrapSmartByAngle %s %s %s %s' % (UnwrapMethod, InitProjection, MinAngle, MaxAngle))
         index = -1
 
         if len(mesh) == 1:
             scn.select(m)
-            lx.eval('smo.UV.AutoUnwrapSmartByAngle %s %s' % (MinAngle, MaxAngle))
+            lx.eval('smo.UV.AutoUnwrapSmartByAngle %s %s %s %s' % (UnwrapMethod, InitProjection, MinAngle, MaxAngle))
 
         lx.eval('smo.GC.DeselectAll')
         scn.select(mesh)
@@ -192,10 +208,14 @@ class SMO_UV_Multi_AutoUnwrapSmartByAngle_Cmd(lxu.command.BasicCommand):
 
         #####################################################
         if Multi_RePack:
+            lx.eval('select.type polygon')
+            lx.eval('select.drop polygon')
+            lx.eval('smo.UV.SelectUVArea -1 0')
+            lx.eval('smo.UV.NormalizePackByArea 0 0 -1 0')
             lx.eval('unhide')
             lx.eval('smo.UV.SelectUVArea 0 0')
-            lx.eval('hide.unsel')
             lx.eval('smo.UV.NormalizePackByArea 0 0 0 0')
+            lx.eval('select.drop polygon')
             lx.eval('unhide')
 
         if AutoUpdateUVSeamCutMapState and Modo_ver >= 1300:
@@ -204,6 +224,8 @@ class SMO_UV_Multi_AutoUnwrapSmartByAngle_Cmd(lxu.command.BasicCommand):
 
         # select back the Polygons
         lx.eval('smo.GC.DeselectAll')
+        scn.select(mesh)
+        lx.eval('smo.UV.SmartProjectionClearTag')
         scn.select(mesh)
         lx.eval('select.type polygon')
 

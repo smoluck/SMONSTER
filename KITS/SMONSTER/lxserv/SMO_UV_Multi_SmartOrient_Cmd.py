@@ -67,139 +67,140 @@ class SMO_UV_Multi_SmartOrient_Cmd(lxu.command.BasicCommand):
 
     def basic_Execute(self, msg, flags):
         SO_OrientDir = self.dyna_Int(0)
-        CM = self.ComponentMode
-        scene = modo.scene.current()
-
-        SO_SelItem = lxu.select.ItemSelection().current()
-        # print('lxu.object.Item : ', SO_SelItem)
-
-        mesh = scene.selectedByType('mesh')
-        # print('modo.Mesh :', mesh)
-        # print('modo.Mesh list length:', len(mesh))
-
-        SO_TargetIDList = []
-        for item in mesh:
-            itemType = modo.Item(item).type
-            item = lx.object.Item(item)
-            # print(item)
-            if itemType == "mesh":
-                ID = item.Ident()
-                # print(ID)
-                SO_TargetIDList.append(ID)
-        # print(SO_TargetIDList)
-
-        SO_ComponentsTuple = []
-        if CM == 2:
-            for item in mesh:
-                # CsEdges = len(item.geometry.edges.selected)
-                # print('Total selected Edges on this mesh layer', CsEdges)
-                Edges = item.geometry.edges.selected
-                # print('modo.Mesh list ', Edges)
-                SO_ComponentsTuple.append(Edges)
-            # print('Tuple (Edge ID and Mesh ID): ---)', SO_ComponentsTuple)
-            SO_ComponentsList = list(SO_ComponentsTuple)
-            # print('List (Edge ID and Mesh ID): ---)', SO_ComponentsList)
-
-        if CM == 3:
-            for item in mesh:
-                # CsPolys = len(item.geometry.polygons.selected)
-                # print('Total selected Polygons on this mesh layer', CsPolys)
-                Polys = item.geometry.polygons.selected
-                # print('modo.Mesh list ', Polys)
-                SO_ComponentsTuple.append(Polys)
-            # print('Tuple (Poly ID and Mesh ID): ---)', SO_ComponentsTuple)
-            SO_ComponentsList = list(SO_ComponentsTuple)
-            # print('List (Poly ID and Mesh ID): ---)', SO_ComponentsList)
-
-        lx.eval('select.drop polygon')
-        lx.eval('smo.GC.DeselectAll')
-        lx.eval('select.type item')
-        lx.eval('smo.GC.DeselectAll')
-
-        SO_index = -1
-        for m in SO_TargetIDList:
-            SO_index = (SO_index + 1)
-            # print('id :', SO_index)
-            scene.select(m)
-            selected_mesh = scene.selectedByType('mesh')[0]
-            # print('current mesh indentity :', SO_index, selected_mesh)
-
-            if CM == 2:
-                lx.eval('select.type edge')
-                lx.eval('select.drop edge')
-            if CM == 3:
-                lx.eval('select.type polygon')
-                lx.eval('select.drop polygon')
-
-            for item in (SO_ComponentsList[SO_index]):
-                # print(item)
-                if CM == 2:
-                    lx.eval('select.type edge')
-                    selected_mesh.geometry.edges.select(item)
-                if CM == 3:
-                    lx.eval('select.type polygon')
-                    selected_mesh.geometry.polygons.select(item)
-            ############### PUT YOUR Command HERE to run over each item Polygons
-            if CM == 2:
-                CsEdges = len(selected_mesh.geometry.edges.selected)
-                if CsEdges > 0:
-                    try:
-                        lx.eval('smo.UV.SmartOrient %s' % SO_OrientDir)
-                    except:
-                        lx.out('Error on {%s}' % (lx.eval('item.name ? xfrmcore')))
-
-            if CM == 3:
-                CsPolys = len(selected_mesh.geometry.polygons.selected)
-                if CsPolys > 0:
-                    try:
-                        lx.eval('smo.UV.SmartOrient %s' % SO_OrientDir)
-                    except:
-                        lx.out('Error on {%s}' % (lx.eval('item.name ? xfrmcore')))
-
-            if CM == 2:
-                # selected_mesh.geometry.edges.select(item, replace=True)
-                lx.eval('select.type edge')
-                lx.eval('select.drop edge')
-            if CM == 3:
-                # selected_mesh.geometry.polygons.select(item, replace=True)
-                lx.eval('select.type polygon')
-                lx.eval('select.drop polygon')
-
-            lx.eval('select.type item')
-            lx.eval('select.drop item')
-            # GOOOOOOOOOOOOD
-        SO_index = -1
-        lx.eval('smo.GC.DeselectAll')
-        scene.select(mesh)
-
-        #####################################################
-        # MODO version checks.
-        # Modo 13.0 and up have UV Seam map.
-        # Version below 13.0 haven't
-        Modo_ver = int(lx.eval('query platformservice appversion ?'))
-        lx.out('Modo Version:', Modo_ver)
-        #####################################################
-
-        # select back the Polygons
-        lx.eval('smo.GC.DeselectAll')
-        scene.select(mesh)
-        if CM == 2:
-            lx.eval('select.type edge')
-            for m in SO_TargetIDList:
-                SO_index = (SO_index + 1)
-                for item in (SO_ComponentsList[SO_index]):
-                    selected_mesh.geometry.edges.select(item)
-        if CM == 3:
-            lx.eval('select.type polygon')
-            for m in SO_TargetIDList:
-                SO_index = (SO_index + 1)
-                for item in (SO_ComponentsList[SO_index]):
-                    selected_mesh.geometry.polygons.select(item)
-
-        del SO_index
-        del SO_TargetIDList
-        del SO_ComponentsList
-        del SO_ComponentsTuple
+        lx.eval('smo.UV.SmartOrient %s' % SO_OrientDir)
+        # CM = self.ComponentMode
+        # scene = modo.scene.current()
+        #
+        # SO_SelItem = lxu.select.ItemSelection().current()
+        # # print('lxu.object.Item : ', SO_SelItem)
+        #
+        # mesh = scene.selectedByType('mesh')
+        # # print('modo.Mesh :', mesh)
+        # # print('modo.Mesh list length:', len(mesh))
+        #
+        # SO_TargetIDList = []
+        # for item in mesh:
+        #     itemType = modo.Item(item).type
+        #     item = lx.object.Item(item)
+        #     # print(item)
+        #     if itemType == "mesh":
+        #         ID = item.Ident()
+        #         # print(ID)
+        #         SO_TargetIDList.append(ID)
+        # # print(SO_TargetIDList)
+        #
+        # SO_ComponentsTuple = []
+        # if CM == 2:
+        #     for item in mesh:
+        #         # CsEdges = len(item.geometry.edges.selected)
+        #         # print('Total selected Edges on this mesh layer', CsEdges)
+        #         Edges = item.geometry.edges.selected
+        #         # print('modo.Mesh list ', Edges)
+        #         SO_ComponentsTuple.append(Edges)
+        #     # print('Tuple (Edge ID and Mesh ID): ---)', SO_ComponentsTuple)
+        #     SO_ComponentsList = list(SO_ComponentsTuple)
+        #     # print('List (Edge ID and Mesh ID): ---)', SO_ComponentsList)
+        #
+        # if CM == 3:
+        #     for item in mesh:
+        #         # CsPolys = len(item.geometry.polygons.selected)
+        #         # print('Total selected Polygons on this mesh layer', CsPolys)
+        #         Polys = item.geometry.polygons.selected
+        #         # print('modo.Mesh list ', Polys)
+        #         SO_ComponentsTuple.append(Polys)
+        #     # print('Tuple (Poly ID and Mesh ID): ---)', SO_ComponentsTuple)
+        #     SO_ComponentsList = list(SO_ComponentsTuple)
+        #     # print('List (Poly ID and Mesh ID): ---)', SO_ComponentsList)
+        #
+        # lx.eval('select.drop polygon')
+        # lx.eval('smo.GC.DeselectAll')
+        # lx.eval('select.type item')
+        # lx.eval('smo.GC.DeselectAll')
+        #
+        # SO_index = -1
+        # for m in SO_TargetIDList:
+        #     SO_index = (SO_index + 1)
+        #     # print('id :', SO_index)
+        #     scene.select(m)
+        #     selected_mesh = scene.selectedByType('mesh')[0]
+        #     # print('current mesh indentity :', SO_index, selected_mesh)
+        #
+        #     if CM == 2:
+        #         lx.eval('select.type edge')
+        #         lx.eval('select.drop edge')
+        #     if CM == 3:
+        #         lx.eval('select.type polygon')
+        #         lx.eval('select.drop polygon')
+        #
+        #     for item in (SO_ComponentsList[SO_index]):
+        #         # print(item)
+        #         if CM == 2:
+        #             lx.eval('select.type edge')
+        #             selected_mesh.geometry.edges.select(item)
+        #         if CM == 3:
+        #             lx.eval('select.type polygon')
+        #             selected_mesh.geometry.polygons.select(item)
+        #     ############### PUT YOUR Command HERE to run over each item Polygons
+        #     if CM == 2:
+        #         CsEdges = len(selected_mesh.geometry.edges.selected)
+        #         if CsEdges > 0:
+        #             try:
+        #                 lx.eval('smo.UV.SmartOrient %s' % SO_OrientDir)
+        #             except:
+        #                 lx.out('Error on {%s}' % (lx.eval('item.name ? xfrmcore')))
+        #
+        #     if CM == 3:
+        #         CsPolys = len(selected_mesh.geometry.polygons.selected)
+        #         if CsPolys > 0:
+        #             try:
+        #                 lx.eval('smo.UV.SmartOrient %s' % SO_OrientDir)
+        #             except:
+        #                 lx.out('Error on {%s}' % (lx.eval('item.name ? xfrmcore')))
+        #
+        #     if CM == 2:
+        #         # selected_mesh.geometry.edges.select(item, replace=True)
+        #         lx.eval('select.type edge')
+        #         lx.eval('select.drop edge')
+        #     if CM == 3:
+        #         # selected_mesh.geometry.polygons.select(item, replace=True)
+        #         lx.eval('select.type polygon')
+        #         lx.eval('select.drop polygon')
+        #
+        #     lx.eval('select.type item')
+        #     lx.eval('select.drop item')
+        #     # GOOOOOOOOOOOOD
+        # SO_index = -1
+        # lx.eval('smo.GC.DeselectAll')
+        # scene.select(mesh)
+        #
+        # #####################################################
+        # # MODO version checks.
+        # # Modo 13.0 and up have UV Seam map.
+        # # Version below 13.0 haven't
+        # Modo_ver = int(lx.eval('query platformservice appversion ?'))
+        # lx.out('Modo Version:', Modo_ver)
+        # #####################################################
+        #
+        # # select back the Polygons
+        # lx.eval('smo.GC.DeselectAll')
+        # scene.select(mesh)
+        # if CM == 2:
+        #     lx.eval('select.type edge')
+        #     for m in SO_TargetIDList:
+        #         SO_index = (SO_index + 1)
+        #         for item in (SO_ComponentsList[SO_index]):
+        #             selected_mesh.geometry.edges.select(item)
+        # if CM == 3:
+        #     lx.eval('select.type polygon')
+        #     for m in SO_TargetIDList:
+        #         SO_index = (SO_index + 1)
+        #         for item in (SO_ComponentsList[SO_index]):
+        #             selected_mesh.geometry.polygons.select(item)
+        #
+        # del SO_index
+        # del SO_TargetIDList
+        # del SO_ComponentsList
+        # del SO_ComponentsTuple
 
 
 lx.bless(SMO_UV_Multi_SmartOrient_Cmd, Cmd_Name)

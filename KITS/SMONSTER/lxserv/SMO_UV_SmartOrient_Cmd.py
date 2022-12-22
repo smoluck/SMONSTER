@@ -24,6 +24,14 @@ class SMO_UV_SmartOrient_Cmd(lxu.command.BasicCommand):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Orient Direction", lx.symbol.sTYPE_INTEGER)
         self.basic_SetFlags (0, lx.symbol.fCMDARG_OPTIONAL)
+        self.dyna_Add("Repack", lx.symbol.sTYPE_BOOLEAN)
+        self.basic_SetFlags (1, lx.symbol.fCMDARG_OPTIONAL)
+
+        self.SelModeVert = bool(lx.eval1("select.typeFrom typelist:vertex;polygon;edge;item;ptag ?"))
+        self.SelModeEdge = bool(lx.eval1("select.typeFrom typelist:edge;vertex;polygon;item ?"))
+        self.SelModePoly = bool(lx.eval1("select.typeFrom typelist:polygon;vertex;edge;item ?"))
+        self.SelModeItem = bool(lx.eval1("select.typeFrom typelist:item;pivot;center;edge;polygon;vertex;ptag ?"))
+
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
     
@@ -51,16 +59,26 @@ class SMO_UV_SmartOrient_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
         
-        Int_OrientDir = self.dyna_Int (0)
+        Int_OrientDir = self.dyna_Int(0)
+
+        SelCompMode = int()
+        if self.SelModeVert:
+            SelCompMode = 1
+        if self.SelModeEdge:
+            SelCompMode = 2
+        if self.SelModePoly:
+            SelCompMode = 3
+        if self.SelModeItem:
+            SelCompMode = 5
         
-        
+
         ############### 2 ARGUMENTS ###############
         args = lx.args()
         lx.out(args)
         # Orient U = 0
         # Orient V = 1
         OrientDir = Int_OrientDir
-        lx.out('Orient Direction:',OrientDir)
+        lx.out('Orient Direction:', OrientDir)
         ############### ARGUMENTS ###############
         
         
@@ -68,18 +86,11 @@ class SMO_UV_SmartOrient_Cmd(lxu.command.BasicCommand):
         # Repack Off = 0
         # Repack On = 1
         RePack = lx.eval('user.value SMO_UseVal_UV_RepackAfterUnwrap ?')
-        lx.out('RePack state:',RePack)
-        
-        # Relax UV Off = 0
-        # Relax UV On = 1
-        RelaxUV = lx.eval('user.value SMO_UseVal_UV_RelaxPostProcess ?')
-        lx.out('RelaxUV state:',RelaxUV)
-        
-        UVRelaxIterCount = lx.eval('user.value SMO_UseVal_UV_RelaxIterCount ?')
-        lx.out('RelaxUV iteration count:',UVRelaxIterCount)
-        
-        
-        
+        lx.out('RePack state:', RePack)
+
+        RelocateInArea = lx.eval('user.value SMO_UseVal_UV_RelocateInArea ?')
+
+
         
         
         ################################
@@ -337,7 +348,7 @@ class SMO_UV_SmartOrient_Cmd(lxu.command.BasicCommand):
         
         #####--------------------  safety check 3: at Least 1 Polygons is selected --- START --------------------#####
         if SMO_SafetyCheckUVOrient_PolygonModeEnabled == 1 and SMO_SafetyCheckUVOrient_EdgeModeEnabled == 0:
-            lx.out('Count Selected Poly',CsPolys)
+            lx.out('Count Selected Poly', CsPolys)
         
             if CsPolys < 1:
                 SMO_SafetyCheckUVOrient_min1PolygonSelected = 0
@@ -359,9 +370,9 @@ class SMO_UV_SmartOrient_Cmd(lxu.command.BasicCommand):
         
         #####--------------------  safety check 3: at Least 3 Edges are selected --- START --------------------#####
         if SMO_SafetyCheckUVOrient_EdgeModeEnabled == 1 and SMO_SafetyCheckUVOrient_PolygonModeEnabled == 0 :
-            lx.out('Count Selected Edges',CsEdges)
+            lx.out('Count Selected Edges', CsEdges)
         
-            if CsEdges == 0 :
+            if CsEdges == 0:
                 SMO_SafetyCheckUVOrient_min1PolygonSelected = 0
                 SMO_SafetyCheckUVOrient_min1EdgeSelected = 0
                 lx.eval('dialog.setup info')
@@ -371,7 +382,7 @@ class SMO_UV_SmartOrient_Cmd(lxu.command.BasicCommand):
                 lx.out('script Stopped: Add more Edges to your selection')
                 sys.exit
         
-            elif CsEdges >= 1 :
+            elif CsEdges >= 1:
                 SMO_SafetyCheckUVOrient_min1PolygonSelected = 0
                 SMO_SafetyCheckUVOrient_min1EdgeSelected = 1
                 lx.out('script running: right amount of Edges in selection')
@@ -381,16 +392,16 @@ class SMO_UV_SmartOrient_Cmd(lxu.command.BasicCommand):
         #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
         #####
         TotalSafetyCheckTrueValuePoly = 3
-        lx.out('Desired Value for Polygon Mode',TotalSafetyCheckTrueValuePoly)
+        lx.out('Desired Value for Polygon Mode', TotalSafetyCheckTrueValuePoly)
         
         TotalSafetyCheckTrueValueEdge = 7
-        lx.out('Desired Value for Edge Mode',TotalSafetyCheckTrueValueEdge)  
+        lx.out('Desired Value for Edge Mode', TotalSafetyCheckTrueValueEdge)
         
         TotalSafetyCheckPolygon = (SMO_SafetyCheck_Only1MeshItemSelected + SMO_SafetyCheckUVOrient_PolygonModeEnabled + SMO_SafetyCheckUVOrient_min1PolygonSelected)
-        lx.out('Current Polygon Check Value',TotalSafetyCheckPolygon)
+        lx.out('Current Polygon Check Value', TotalSafetyCheckPolygon)
         
         TotalSafetyCheckEdge = (SMO_SafetyCheck_Only1MeshItemSelected + SMO_SafetyCheckUVOrient_EdgeModeEnabled + SMO_SafetyCheckUVOrient_min1EdgeSelected + 4)
-        lx.out('Current Edge Check Value',TotalSafetyCheckEdge)
+        lx.out('Current Edge Check Value', TotalSafetyCheckEdge)
         
         
         
@@ -405,13 +416,13 @@ class SMO_UV_SmartOrient_Cmd(lxu.command.BasicCommand):
         
         #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
         if TotalSafetyCheckPolygon == TotalSafetyCheckTrueValuePoly:
-            lx.eval('select.type polygon')
             lx.eval('tool.viewType uv')
-            if OrientDir == 0 :
+            # lx.eval('select.type polygon')
+            if OrientDir == 0:
                 lx.eval('uv.orient horizontal')
-            if OrientDir == 1 :
+            if OrientDir == 1:
                 lx.eval('uv.orient perpendicular')
-            lx.eval('select.type polygon')
+            # lx.eval('select.type polygon')
                 
                 
                 
@@ -421,27 +432,58 @@ class SMO_UV_SmartOrient_Cmd(lxu.command.BasicCommand):
         
         #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
         if TotalSafetyCheckEdge == TotalSafetyCheckTrueValueEdge:
-            lx.eval('select.type edge')
             lx.eval('tool.viewType uv')
-            if OrientDir == 0 :
+            # lx.eval('select.type edge')
+            if OrientDir == 0:
                 lx.eval('uv.edgeAlign u')
-            if OrientDir == 1 :
+            if OrientDir == 1:
                 lx.eval('uv.edgeAlign v')
-            lx.eval('select.type edge')
-        
-        
+            # lx.eval('select.type edge')
+
+
         if SMO_SafetyCheckUVOrient_PolygonModeEnabled == 1 and SMO_SafetyCheckUVOrient_EdgeModeEnabled == 0:
             if TotalSafetyCheckPolygon != TotalSafetyCheckTrueValuePoly:
                 lx.out('script Stopped: your mesh does not match the requirement for that script.')
                 sys.exit
-                
+
         if SMO_SafetyCheckUVOrient_PolygonModeEnabled == 0 and SMO_SafetyCheckUVOrient_EdgeModeEnabled == 1:
             if TotalSafetyCheckEdge != TotalSafetyCheckTrueValueEdge:
                 lx.out('script Stopped: your mesh does not match the requirement for that script.')
                 sys.exit
 
+        if RePack:
+            if RelocateInArea:
+                lx.eval('smo.UV.SelectUVArea 0 -1')
+                lx.eval('hide.unsel')
+                lx.eval('smo.UV.NormalizePackByArea 0 0 0 -1')
+                lx.eval('unhide')
+
+                lx.eval('smo.UV.SelectUVArea 1 -1')
+                lx.eval('hide.unsel')
+                lx.eval('smo.UV.NormalizePackByArea 0 0 1 -1')
+                lx.eval('unhide')
+
+                lx.eval('smo.UV.SelectUVArea 0 -2')
+                lx.eval('hide.unsel')
+                lx.eval('smo.UV.NormalizePackByArea 0 0 0 -2')
+                lx.eval('unhide')
+
+            if not RelocateInArea:
+                lx.eval('unhide')
+                lx.eval('smo.UV.SelectUVArea 0 0')
+                lx.eval('hide.unsel')
+                lx.eval('smo.UV.NormalizePackByArea 0 0 0 0')
+                lx.eval('unhide')
+
+        if SelCompMode == 1:
+            lx.eval('select.type vertex')
+        if SelCompMode == 2:
+            lx.eval('select.type edge')
+        if SelCompMode == 5:
+            lx.eval('select.type item')
+
         lx.out('End of Unwrap_Smart Script')
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+        ####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
 
 
 lx.bless(SMO_UV_SmartOrient_Cmd, Cmd_Name)

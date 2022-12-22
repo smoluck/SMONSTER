@@ -17,15 +17,19 @@
 import lx, lxu, modo, sys
 
 Cmd_Name = "smo.UV.AutoUnwrapSmartByAngle"
-# smo.UV.AutoUnwrapSmartByAngle 88 180
+# smo.UV.AutoUnwrapSmartByAngle 1 0 88 180
 
 class SMO_UV_AutoUnwrapSmartByAngle_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
-        self.dyna_Add("Minimum Angle", lx.symbol.sTYPE_FLOAT)
+        self.dyna_Add("Unwrap Method: (Conformal) False or True (Angle Based)", lx.symbol.sTYPE_BOOLEAN)
         # self.basic_SetFlags(0, lx.symbol.fCMDARG_OPTIONAL)  # here the (0) define the argument index.
-        self.dyna_Add("Maximum Angle", lx.symbol.sTYPE_FLOAT)
+        self.dyna_Add("Initial Projection: (Planar) False or True (Group Normal)", lx.symbol.sTYPE_BOOLEAN)
         # self.basic_SetFlags(1, lx.symbol.fCMDARG_OPTIONAL)
+        self.dyna_Add("Minimum Angle", lx.symbol.sTYPE_FLOAT)
+        # self.basic_SetFlags(2, lx.symbol.fCMDARG_OPTIONAL)
+        self.dyna_Add("Maximum Angle", lx.symbol.sTYPE_FLOAT)
+        # self.basic_SetFlags(3, lx.symbol.fCMDARG_OPTIONAL)
 
         self.SelModeVert = bool(lx.eval1("select.typeFrom typelist:vertex;polygon;edge;item;ptag ?"))
         self.SelModeEdge = bool(lx.eval1("select.typeFrom typelist:edge;vertex;polygon;item ?"))
@@ -63,6 +67,16 @@ class SMO_UV_AutoUnwrapSmartByAngle_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
 
+        SelCompMode = int()
+        if self.SelModeVert:
+            SelCompMode = 1
+        if self.SelModeEdge:
+            SelCompMode = 2
+        if self.SelModePoly:
+            SelCompMode = 3
+        if self.SelModeItem:
+            SelCompMode = 5
+
         # Force to select the current Mesh Item if it is not selected in the Item List
         lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
         lx.eval('smo.UV.AutoCreateUVMap')
@@ -76,12 +90,33 @@ class SMO_UV_AutoUnwrapSmartByAngle_Cmd(lxu.command.BasicCommand):
         Modo_ver = int(lx.eval('query platformservice appversion ?'))
         lx.out('Modo Version:', Modo_ver)
 
-        AUSBA_MinAngle = self.dyna_Float(0)
-        AUSBA_MaxAngle = self.dyna_Float(1)
+
+
+        if self.dyna_IsSet(0):
+            AUSBA_UnwrapMethod = self.dyna_Bool(0)
+
+        if self.dyna_IsSet(1):
+            AUSBA_InitProjection = self.dyna_Bool(1)
+
+        if self.dyna_IsSet(2):
+            AUSBA_MinAngle = self.dyna_Float(2)
+
+        if self.dyna_IsSet(3):
+            AUSBA_MaxAngle = self.dyna_Float(3)
 
         ############### 5 ARGUMENTS ###############
         args = lx.args()
         lx.out(args)
+
+        # Conformal= 0
+        # Angle Based = 1
+        UnwrapMethod = AUSBA_UnwrapMethod
+        lx.out('Desired Unwrap Method:', UnwrapMethod)
+
+        # Planar = 0
+        # Group Normal = 1
+        InitProjection = AUSBA_InitProjection
+        lx.out('Initial Projection Mode:', InitProjection)
 
         # 89.0 Degree
         MinAngle = AUSBA_MinAngle
@@ -200,29 +235,43 @@ class SMO_UV_AutoUnwrapSmartByAngle_Cmd(lxu.command.BasicCommand):
         if SMO_SafetyCheck_AUSBA_UVMapCount == True:
             AutoHideState = lx.eval('user.value SMO_UseVal_UV_HideAfterUnwrap ?')
             #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
-            if self.SelModeItem:
+            if SelCompMode != 3:
                 lx.eval('select.type polygon')
-                lx.eval('select.editSet name:UV_DONE mode:add')
+            lx.eval('select.editSet name:UV_DONE mode:add')
+            lx.eval('select.type edge')
+            lx.eval('select.drop edge')
+            lx.eval('select.edgeSharp 89.55 180.0')
+            lx.eval('smo.UV.UnwrapSmart %s %s 0 0' % (UnwrapMethod, InitProjection))
+            if AutoHideState:
+                lx.eval('select.type polygon')
+                lx.eval('unhide')
+            lx.eval('tool.viewType uv')
+            # lx.eval('uv.orient horizontal')
+
+            # # replay name:"Fit UVs"
+            # lx.eval('uv.fit entire gapsByPixel:8.0 udim:1001')
+
+            if AutoUpdateUVSeamCutMapState and Modo_ver >= 1300:
+                lx.eval('smo.UV.UpdateUVSeamCutMap')
+                lx.eval('view3d.showUVSeam true active')
+
+            lx.eval('select.type polygon')
+            lx.eval('select.drop polygon')
+            lx.eval('select.uvOverlap {%s} true true false false false true' % AUSBA_UVMapName)
+            lx.eval('select.connect uv')
+            lx.eval('smo.UV.MoveToUVArea -1 0')
+            lx.eval('smo.UV.NormalizePackByArea 0 0 -1 0')
+            lx.eval('unhide')
+            lx.eval('smo.UV.SelectUVArea 0 0')
+            lx.eval('smo.UV.NormalizePackByArea 0 0 0 0')
+            lx.eval('select.drop polygon')
+
+            if SelCompMode == 1:
+                lx.eval('select.type vertex')
+            if SelCompMode == 2:
                 lx.eval('select.type edge')
-                lx.eval('select.drop edge')
-                lx.eval('select.edgeSharp 89.55 180.0')
-                lx.eval('smo.UV.UnwrapSmart 0 1 0 0')
-                if AutoHideState:
-                    lx.eval('select.type polygon')
-                    lx.eval('unhide')
-                lx.eval('tool.viewType uv')
-                # lx.eval('uv.orient horizontal')
-
-                # # replay name:"Fit UVs"
-                # lx.eval('uv.fit entire gapsByPixel:8.0 udim:1001')
-
-                if AutoUpdateUVSeamCutMapState and Modo_ver >= 1300:
-                    lx.eval('smo.UV.UpdateUVSeamCutMap')
-                    lx.eval('view3d.showUVSeam true active')
-
+            if SelCompMode == 5:
                 lx.eval('select.type item')
-
-
         #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
 
 
