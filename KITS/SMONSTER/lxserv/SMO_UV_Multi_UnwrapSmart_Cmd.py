@@ -372,7 +372,7 @@ class SMO_UV_Multi_UnwrapSmart_Cmd(lxu.command.BasicCommand):
             if len(mesh) == 1:
                 scene.select(mesh)
                 lx.eval('select.type edge')
-                for item in (MUS_PolysList[index]):
+                for item in (MUS_EdgesList[index]):
                     # print(item)
                     selected_mesh = scene.selectedByType('mesh')[0]
                     selected_mesh.geometry.edges.select(item)
@@ -381,7 +381,7 @@ class SMO_UV_Multi_UnwrapSmart_Cmd(lxu.command.BasicCommand):
 
             lx.eval('smo.GC.DeselectAll')
             scene.select(mesh)
-            lx.eval('select.type polygon')
+            lx.eval('select.type edge')
 
         #####################################################
         # Repack in area or in 0-1 Space based on Preferences
