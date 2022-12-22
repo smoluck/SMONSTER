@@ -3,6 +3,17 @@ Hi. Everyone
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 4.40 -
+        • smo.UV.Multi.AutoUnwrapSmartByAngle 88 180 - New command to Auto Unwrap the current Mesh item by using Sharp Edges defined by a Min and Max Angle as Seams.
+        	• It use the SmartUnwrap base arguments (4 types):
+        	• Unwrap Method (Conformal or Angle Based)
+        	• Initial Projection (Planar or Group Normal)
+        	• Min Ang
+        	• Max Angle
+        • Updated UI (Vertical Menu and Pie Menu) to expose Auto Smart Unwrap By Angle command.
+        • smo.UV.SmartOrient - Bugfix to keep EdgeSelection from UVSpace (Edge selection relative to UVIslands).
+        • smo.uv.Multi.UnwrapSmart - Bugfix to work as well in Edge Mode to define UVSeams.
+
 - 4.20 -
         • Bugfix on Multi Meshes Unwrap when UVmaps where miss-matching in presence or not.
         	• smo.UV.Multi.UnwrapRectangleOrient / smo.UV.Multi.UnwrapPlanar / smo.UV.Multi.UnwrapSmart / smo.UV.Multi.UnwrapCylindrical
