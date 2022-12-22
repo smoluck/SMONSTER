@@ -614,11 +614,13 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
                 lx.eval('tool.doapply')
                 lx.eval('tool.set uv.unwrap off')
 
+                lx.eval('tool.viewType uv')
+
                 # Relax Passes --> Start
                 if RelaxUV:
+                    lx.eval('select.type polygon')
+                    lx.eval('select.all')
                     if IsRectangle == 1 and SelectByLoop == 1:
-                        lx.eval('select.type polygon')
-                        lx.eval('select.all')
                         lx.eval('select.type edge')
                     lx.eval('smo.UV.Relax %s' % UVRelaxIterCount)
                 # Relax Passes --> End
@@ -790,7 +792,6 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
 
                 RelocateInArea = lx.eval('user.value SMO_UseVal_UV_RelocateInArea ?')
                 print('Relocate In Area state:', RelocateInArea)
-                lx.out('Relocate In Area state:', RelocateInArea)
 
                 if RelocateInArea:
                     # replay name:"Move"
