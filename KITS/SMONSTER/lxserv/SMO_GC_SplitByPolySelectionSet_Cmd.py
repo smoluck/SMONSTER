@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_SplitByPolySelectionSet_Cmd.py
 # Version:      1.0
 #
@@ -8,23 +8,21 @@
 #               and using their names to split the mesh in multiple mesh Layers, with corresponding names.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/09/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.SplitByPolySelectionSet"
-
-
 # smo.GC.SplitByPolySelectionSet
 
+
 # Previous name of this command was "smo.GC.AffinitySVGRebuild" for cleaning up SVG data from Affinity Designer.
-
-
 class SMO_GC_SplitByPolySelectionSet_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)

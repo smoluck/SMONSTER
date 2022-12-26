@@ -1,6 +1,10 @@
 # python
 
-import lx, modo, os, re, sys
+import lx
+import modo
+import os
+import re
+import sys
 
 python_majorver = sys.version_info.major
 # print('the Highest version number 2 for 2.7 release / 3 for 3.7 release')

@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_SplitEachComponentIndividualy_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #               It Split each Polyline Edges into an individual item.
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      17/09/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.SplitEachComponentIndividualy"
 # smo.GC.SplitEachComponentIndividualy 1 0
+
 
 class SMO_GC_SplitEachComponentIndividualy_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -157,7 +160,7 @@ class SMO_GC_SplitEachComponentIndividualy_Cmd(lxu.command.BasicCommand):
         
         
         if Component_Mode == 0 :
-            MaxSteps = (TotalVertex)
+            MaxSteps = TotalVertex
             for steps in range(MaxSteps) :
                 m.step(1)
                 
@@ -204,7 +207,7 @@ class SMO_GC_SplitEachComponentIndividualy_Cmd(lxu.command.BasicCommand):
         
         
         if Component_Mode == 1 :
-            MaxSteps = (TotalEdge)
+            MaxSteps = TotalEdge
             for steps in range(MaxSteps) :
                 m.step(1)
                 

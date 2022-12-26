@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_IsolateItemAndInstances_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      02/04/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.IsolateItemAndInstances"
 # smo.GC.IsolateItemAndInstances
+
 
 class SMO_GC_IsolateItemAndInstances_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -154,7 +157,7 @@ class SMO_GC_IsolateItemAndInstances_Cmd(lxu.command.BasicCommand):
                 lx.eval('viewport.fitSelected')
                 if len(SourcesItems) == 1:
                     scene.select(SourcesItems[0])
-                    if RefSystemActive == False:
+                    if not RefSystemActive:
                         lx.eval('item.refSystem %s' % (SourcesItems[0].Ident()))
                         lx.eval('viewport.fitSelected')
             lx.eval('smo.GC.DeselectAll')

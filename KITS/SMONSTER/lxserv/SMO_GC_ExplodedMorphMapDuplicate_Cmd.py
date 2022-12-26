@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_ExplodedMorphMapDuplicate_Cmd.py
 # Version:      1.0
 #
@@ -9,16 +9,20 @@
 #               and Freeze the deformation / delete the morph map in order to export it.
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      09/07/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo, random
+import lx
+import lxu
+import modo
+import sys
 
 Cmd_Name = "smo.GC.ExplodedMorphMapDuplicate"
 # smo.GC.ExplodedMorphMapDuplicate
+
 
 class SMO_GC_ExplodedMorphMapDuplicate_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -57,7 +61,7 @@ class SMO_GC_ExplodedMorphMapDuplicate_Cmd(lxu.command.BasicCommand):
         
         
         ##################################################################
-        ## <----( Main Macro )----> Create the Duplicated Exploded Mesh ##
+        # <----( Main Macro )----> Create the Duplicated Exploded Mesh ##
         ##################################################################
         
         lx.eval('select.type item')

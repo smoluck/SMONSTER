@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_CLEANUP_ConvertItemIndexStyle_Cmd.py
 # Version:      1.0
 #
@@ -9,20 +9,24 @@
 #               if they use a different Index Style than the one in Modo Preferences.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      27/12/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo, string
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.CLEANUP.ConvertItemIndexStyle"
 # smo.GC.ConvertItemIndexStyle
 
+
 class SMO_Cleanup_ConvertItemIndexStyle_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
+
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
     

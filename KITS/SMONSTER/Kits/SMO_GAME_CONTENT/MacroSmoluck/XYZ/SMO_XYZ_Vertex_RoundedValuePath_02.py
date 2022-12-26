@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_XYZ_Vertex_RoundedValuePath.py
 # Version: 1.0
 #
@@ -8,34 +8,32 @@
 #			Each line is a new vertex and round the value to the Centimeter (2 Decimals)
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      29/11/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo, lx, lxu, os
 
-
+modo_ver = int(lx.eval('query platformservice appversion ?'))
 try:
 	lx.eval ('dialog.setup fileOpenMulti')
 	lx.eval ('dialog.title "Load an XYZ file"')
 	lx.eval ('dialog.fileType xyz')
-	if self.modo_ver == 801:
+	if modo_ver == 801:
 		lx.eval ('+dialog.open')
 	else:
 		lx.eval ('dialog.open')
 	xyz_path = lx.eval1 ('dialog.result ?')
 except:
 	lx.out ('Failed to load the XYZ Input file.')
-	return
 if xyz_path == None:
 	lx.out ('Failed to load the XYZ Input file.')
-	return
 else:
 	xyz_path = os.path.splitext (xyz_path)[0] + '.xyz'
 	xyz_file_name = os.path.splitext (os.path.basename (xyz_path))[0]
-	lx.out('XYZ Input file name' % xyz_file_name)
+	lx.out('XYZ Input file name', xyz_file_name)
 
 
 # The object that represents the current scene

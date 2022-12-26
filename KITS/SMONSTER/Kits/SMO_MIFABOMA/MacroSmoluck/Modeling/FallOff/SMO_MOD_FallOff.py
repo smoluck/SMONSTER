@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MOD_FallOff.py
 # Version: 1.0
 #
@@ -7,11 +7,11 @@
 # set automaticly a defined Falloff
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      16/09/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo, lx
 # scene = modo.scene.current()
@@ -25,9 +25,9 @@ import modo, lx
 #Auto_AXES = 2
 #Decay_Shape = 1
 #Sym_Mode = 1
-################################
-#<----[ DEFINE ARGUMENTS ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE ARGUMENTS )----> #
+# ------------------------------ #
 args = lx.args()
 lx.out(args)
 FallOff_Mode = args[0]                      # Falloff mode:                         Linear = 0 / Cylinder = 1 / Radial = 2
@@ -43,9 +43,9 @@ Sym_Mode = args[3]                          # Symmetry mode:                    
 # Expose the Result of the Arguments 
 lx.out(Sym_Mode)
 
-################################
-#<----[ DEFINE ARGUMENTS ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE ARGUMENTS )----> #
+# ------------------------------ #
 
 
 
@@ -72,7 +72,7 @@ if Auto_AXES == 1:
 if Auto_AXES == 2:
     lx.out('FallOff on Z')
     
-## <----( FallOff MODE)###########################
+# <----( FallOff MODE)###########################
     
 if FallOff_Mode == 0:
     lx.eval('tool.set falloff.linear on')
@@ -81,9 +81,9 @@ if FallOff_Mode == 1:
     lx.eval('tool.set falloff.cylinder on')
     lx.out('FallOff Mode: Cylinder')
 
-## <----( FallOff AXIS)###########################
+# <----( FallOff AXIS)###########################
 
-## <----( Linear FallOff )----> ##
+# <----( Linear FallOff )----> #
 if FallOff_Mode == 0 and Auto_AXES == 0:
     lx.eval('@kit_SMO_MIFABOMA:MacroSmoluck/Modeling/FallOff/SMO_MOD_FallOffLinearAxis.LXM 0')
     # lx.eval('falloff.axisAutoSize axis:0')
@@ -97,7 +97,7 @@ if FallOff_Mode == 0 and Auto_AXES == 2:
     # lx.eval('falloff.axisAutoSize axis:2')
     lx.out('FallOff AutoSize on Z')
 
-## <----( Cylinder FallOff )----> ##
+# <----( Cylinder FallOff )----> #
 if FallOff_Mode == 1 and Auto_AXES == 0:
     lx.eval('tool.setAttr falloff.cylinder axis 0')
     lx.eval('falloff.autoSize')
@@ -111,9 +111,9 @@ if FallOff_Mode == 1 and Auto_AXES == 2:
     lx.eval('falloff.autoSize')
     lx.out('FallOff AutoSize on Z')
 
-## <----( SYMMETRY)###########################
+# <----( SYMMETRY)###########################
 
-## Linear <----( Symmetry Mode )----> ##
+## Linear <----( Symmetry Mode )----> #
 if FallOff_Mode == 0:
     if Sym_Mode == 0:
         lx.eval('@kit_SMO_MIFABOMA:MacroSmoluck/Modeling/FallOff/SMO_MOD_FallOff_SymNO.py')
@@ -128,7 +128,7 @@ if FallOff_Mode == 0:
         # lx.eval('tool.setAttr falloff.linear symmetric end')
         lx.out('FallOff Symmetry: End')
 
-## Cylinder <----( Symmetry Mode )----> ##
+## Cylinder <----( Symmetry Mode )----> #
 if FallOff_Mode == 1:
     if Sym_Mode == 0:
         lx.eval('@kit_SMO_MIFABOMA:MacroSmoluck/Modeling/FallOff/SMO_MOD_FallOff_SymNO.py')
@@ -143,9 +143,9 @@ if FallOff_Mode == 1:
         # lx.eval('tool.setAttr falloff.cylinder symmetric end')
         lx.out('FallOff Symmetry: End')
 
-## <----( DECAY SHAPE)###########################
+# <----( DECAY SHAPE)###########################
 
-## Linear <----(Decay shape)----> ##
+## Linear <----(Decay shape)----> #
 if FallOff_Mode == 0 and Decay_Shape == 0:
     lx.eval('@kit_SMO_MIFABOMA:MacroSmoluck/Modeling/FallOff/SMO_MOD_FallOff_DecayShapeLinear.py')
     # lx.eval('tool.setAttr falloff.linear shape linear')

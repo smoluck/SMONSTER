@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_UV_SelectUVArea_Cmd.py
 # Version:      1.0
 # 
@@ -8,16 +8,20 @@
 # 
 # 
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 # 
 # Created:      28/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo, sys
+import lx
+import lxu
+import modo
+import sys
 
 Cmd_Name = "smo.UV.SelectUVArea"
 # smo.UV.SelectUVArea -1 -1
+
 
 class SMO_UV_SelectUVArea_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -59,7 +63,7 @@ class SMO_UV_SelectUVArea_Cmd(lxu.command.BasicCommand):
         Int_ZoneAreaU = self.dyna_Int (0)
         Int_ZoneAreaV = self.dyna_Int (1)
         
-        ############### 2 ARGUMENTS ###############
+        # ------------- ARGUMENTS ------------- #
         args = lx.args()
         lx.out(args)
         #
@@ -70,18 +74,13 @@ class SMO_UV_SelectUVArea_Cmd(lxu.command.BasicCommand):
         # 
         ZoneAreaV = Int_ZoneAreaV
         lx.out('Area Value V:',ZoneAreaV)
-        ############### ARGUMENTS ###############
-        
-        # ############### 2 ARGUMENT Test ###############
-        # ZoneAreaU = -1
-        # ZoneAreaV = -2
-        # ############### ARGUMENT ###############
+        # ------------- ARGUMENTS ------------- #
         
         
         
-        ################################
-        #<----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
         ## UVmap Selected Count
@@ -91,9 +90,9 @@ class SMO_UV_SelectUVArea_Cmd(lxu.command.BasicCommand):
         
         
         
-        ###############################################
-        ####### SAFETY CHECK 1 - UVMap Selected #######
-        ###############################################
+        # ----------------------------------------- #
+        # <---( SAFETY CHECK 1 )---> UVMap Selected #
+        # ----------------------------------------- #
         lx.out('<------------- START -------------->')
         lx.out('<--- UV Map Safety Check --->')
         
@@ -104,7 +103,7 @@ class SMO_UV_SelectUVArea_Cmd(lxu.command.BasicCommand):
         SelectedMeshUVMapsName = lx.eval('user.value SMO_UV_SelectedMeshUVmapName ?')
         lx.out('Selected Mesh UV Maps Name:',SelectedMeshUVMapsName)
         
-        if SelectedMeshUVMapsCount > 1 :
+        if SelectedMeshUVMapsCount > 1:
             lx.eval('dialog.setup info')
             lx.eval('dialog.title {SMONSTER - Normalize and Pack:}')
             lx.eval('dialog.msg {Please select Only One Vertex Map and run that script again.}')
@@ -112,7 +111,7 @@ class SMO_UV_SelectUVArea_Cmd(lxu.command.BasicCommand):
             SMO_SafetyCheckSelectUVArea_UVMapCount = False
             sys.exit()
         
-        if SelectedMeshUVMapsCount < 1 :
+        if SelectedMeshUVMapsCount < 1:
             lx.eval('dialog.setup info')
             lx.eval('dialog.title {SMONSTER - Normalize and Pack:}')
             lx.eval('dialog.msg {You must have a UV map selected to run this script.}')
@@ -120,7 +119,7 @@ class SMO_UV_SelectUVArea_Cmd(lxu.command.BasicCommand):
             SMO_SafetyCheckSelectUVArea_UVMapCount = False
             sys.exit()
         
-        if SelectedMeshUVMapsCount == 1 :
+        if SelectedMeshUVMapsCount == 1:
             SMO_SafetyCheckSelectUVArea_UVMapCount = True
             
         # UserUVMapName = lx.eval1('query layerservice vmap.name ? %s' % UVmap_Selected)
@@ -131,10 +130,10 @@ class SMO_UV_SelectUVArea_Cmd(lxu.command.BasicCommand):
         
         
         
-        ################################
-        ## <----( Main Macro : )----> ##
-        ################################
-        if SMO_SafetyCheckSelectUVArea_UVMapCount == True :
+        # -------------------------- #
+        # <----( Main Macro : )----> #
+        # -------------------------- #
+        if SMO_SafetyCheckSelectUVArea_UVMapCount:
             lx.eval('select.type polygon')
             lx.eval('select.drop polygon')
             lx.eval('tool.set util.udim on')

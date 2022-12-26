@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_ExportSelectedMeshesAsMeshPreset_Cmd.py
 # Version:      1.0
 #
@@ -9,16 +9,19 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      12/05/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.Multi.ExportSelectedMeshesAsMeshPreset"
 # smo.GC.Multi.ExportSelectedMeshesAsMeshPreset {C:\TEMP\Target}
+
 
 class SMO_GC_ExportSelectedMeshesAsMeshPreset_Cmd(lxu.command.BasicCommand):
     def __init__(self):

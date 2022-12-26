@@ -1,5 +1,5 @@
-#python
-#-----------------------------------------
+# python
+"""
 # Name:         SMO_UV_SetGridAndColorScheme_Cmd.py
 # Version:      1.0
 #
@@ -8,13 +8,15 @@
 #               and set the Grid Settings for the Smart Unwrap Tools.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      27/10/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#-----------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+
 
 class SMO_UV_SetGridAndColorScheme_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -42,18 +44,14 @@ class SMO_UV_SetGridAndColorScheme_Cmd(lxu.command.BasicCommand):
     def basic_ButtonName (self):
         return 'SMO UV Relax'
     
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
-    
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         Int_UDIMMode = self.dyna_Int (0)
         
         
-        ############### 1 ARGUMENT ###############
+        # ------------- ARGUMENTS ------------- #
         args = lx.args()
         lx.out(args)
         
@@ -61,16 +59,13 @@ class SMO_UV_SetGridAndColorScheme_Cmd(lxu.command.BasicCommand):
         # UDIM Mode = 1
         UDIMMode = Int_UDIMMode
         lx.out('Udim Mode State: {%s}' % UDIMMode)
-        ############### ARGUMENTS ###############
-        
-        # ############### ARGUMENT Test ###############
-        # RelaxUV_Iter = 16         --> Iteration Count
-        # ############### ARGUMENT ###############
+        # ------------- ARGUMENTS ------------- #
         
         
-        ##############################
-        ## <----( Main Macro )----> ##
-        ##############################
+        
+        # -------------------------- #
+        # <----( Main Macro )----> #
+        # -------------------------- #
         lx.out('Start of SMO_UV_SetGRIDAndScheme Script')
         
         lx.eval('!!viewport.scheme SMOLUCK_Dark_ColorScheme.3d')

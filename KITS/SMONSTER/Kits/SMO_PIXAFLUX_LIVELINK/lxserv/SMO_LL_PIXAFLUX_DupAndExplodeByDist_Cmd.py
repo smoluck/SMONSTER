@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_LL_PIXAFLUX_DupAndExplodeByDist_Cmd.py
 # Version:      1.0
 #
@@ -11,11 +11,11 @@
 #                   if smo.LL.PIXAFLUX.DupAndExplodeByDist 0    ==> Mode is asking to user Distance value
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      09/07/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import lx, lxu, modo, random, sys
 
@@ -64,9 +64,9 @@ class SMO_PixaFlux_DupAndExplodeByDist_Cmd(lxu.command.BasicCommand):
         lx.eval ('!!user.value Smo_PixaFluxTargetMesh {%s}' % TargetMeshPixaFlux)
         
         
-        ################################
-        #<----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         
         
         
@@ -123,7 +123,7 @@ class SMO_PixaFlux_DupAndExplodeByDist_Cmd(lxu.command.BasicCommand):
         
         
         ##################################################################
-        ## <----( Main Macro )----> Create the Duplicated Exploded Mesh ##
+        # <----( Main Macro )----> Create the Duplicated Exploded Mesh ##
         ##################################################################
         
         lx.eval('select.type item')
@@ -313,7 +313,7 @@ class SMO_PixaFlux_DupAndExplodeByDist_Cmd(lxu.command.BasicCommand):
             lx.out('"Deselect Elements Before Pasting" have been Restored')
         ########################################################
         
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
     def cmd_Query(self, index, vaQuery):

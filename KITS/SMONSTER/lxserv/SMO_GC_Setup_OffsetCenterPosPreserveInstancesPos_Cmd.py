@@ -1,20 +1,23 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd
 # Version:      1.0
 #
 # Purpose:      This script is designed to:
-#               Offset Center Position on selected Mesh Item, but preserve the Instances Positions in Worldspace.
+#               Offset Center Position on selected Mesh Item,
+#               but preserve the Instances Positions in Worldspace.
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      19/04/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.Setup.OffsetCenterPosPreserveInstancesPos"
 
@@ -216,8 +219,8 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
             instance_ident = mi.Ident()
 
 
-            ###########################################
-            ###########################################
+            # ------------------------------------- #
+            # ------------------------------------- #
             # Create a list of parent for all instances
             InstID_List = []
             n = scene.selected
@@ -253,8 +256,8 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
 
             # print(Inst_Parent_List)
             # print(State_InstanceParent)
-            ###########################################
-            ###########################################
+            # ------------------------------------- #
+            # ------------------------------------- #
 
 
             if HaveParent:
@@ -279,7 +282,7 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
                 lx.eval('item.parent inPlace:1')
                 scene.select(ident)
 
-            if lx.eval('workPlane.state ?') == True:
+            if lx.eval('workPlane.state ?'):
                 lx.eval('workPlane.state false')
             RefSystemActive = bool()
             try:
@@ -412,7 +415,7 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
 
             iteration = -1
             for item in ToProcessList:
-                iteration = iteration + 1
+                iteration += 1
                 scene.select(item)
                 TargetItem = lx.eval1("query sceneservice selection ? locator")
                 # print(TargetItem)
@@ -424,7 +427,7 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
                 # print(chanRotZ)
                 scene.select(item)
 
-                if State_InstanceParent[iteration] == True:
+                if State_InstanceParent[iteration]:
                     lx.eval('!item.parent parent:{} inPlace:1')
                 lx.eval('smo.GC.DeselectAll')
 
@@ -567,7 +570,7 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
             # print(State_InstanceParent)
             inst_num = -1
             for i in InstID_List:
-                inst_num = inst_num + 1
+                inst_num += 1
                 scene.select(i)
                 # Check the state of Parent presence on original instances via "State_InstanceParent"
                 if State_InstanceParent[inst_num]:

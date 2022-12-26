@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_QT_MoveColorIDGrpMaskToTopMostPos_Cmd.py
 # Version:      1.00
 #
@@ -9,16 +9,19 @@
 #
 #
 # Author:       Franck ELISABETH (with the help of Mateusz Losinski )
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      13/12/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.QT.MoveColorIDGrpMaskToTopMostPos"
 # smo.QT.MoveColorIDGrpMaskToTopMostPos
+
 
 class SMO_QT_MoveColorIDGrpMaskToTopMostPosCmd(lxu.command.BasicCommand):
     def __init__(self):

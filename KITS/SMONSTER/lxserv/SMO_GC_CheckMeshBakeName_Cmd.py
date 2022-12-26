@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_CheckMeshBakeName_Cmd.py
 # Version:      1.0
 #
@@ -9,21 +9,23 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      03/12/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo, string
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.CheckMeshBakeName"
 # smo.GC.CheckMeshBakeName ?
 
-############# USE CASE
+# ----------- USE CASE
 # TestResult = lx.eval('smo.GC.CheckMeshBakeName ?')
 # lx.out('Mesh Name is classified as from category : ',TestResult)
-######################
+# --------------------
 
 
 class SMO_GC_CheckMeshBakeName_Cmd(lxu.command.BasicCommand):
@@ -90,7 +92,7 @@ class SMO_GC_CheckMeshBakeName_Cmd(lxu.command.BasicCommand):
         
         
     def cmd_Query(self, index, vaQuery):
-        if self.current_Selection is not None :
+        if self.current_Selection is not None:
             scene = modo.scene.current()
             
             

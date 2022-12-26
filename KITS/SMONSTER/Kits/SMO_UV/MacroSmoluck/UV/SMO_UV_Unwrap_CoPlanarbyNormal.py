@@ -1,17 +1,17 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name: Unwrap_CoPlanarbyNormal.py
 # Version: 1.00
 #
 # Purpose: Select one Polygon an is will unwrap all the adjacent polygons based on the Normal of theis CoPlanar Island. 
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      11/04/2019
 # Modified:		11/04/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 
 lx.eval('cmd @kit_SMO_GAME_CONTENT:MacroSmoluck/Modeling/SMO_MOD_PolyLazySelect.py 1 2')

@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_SplitInTwoMeshesByLocalAxisSides_Cmd.py
 # Version:      1.0
 #
@@ -7,16 +7,19 @@
 #               Unmerge selected mesh in 2 Meshes by Local Axis Side (positive or negative).
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      19/08/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.SplitInTwoMeshesByLocalAxisSides"
 # smo.GC.SplitInTwoMeshesByLocalAxisSides z true
+
 
 class SMO_GC_SplitInTwoMeshesByLocalAxisSides_Cmd(lxu.command.BasicCommand):
     def __init__(self):

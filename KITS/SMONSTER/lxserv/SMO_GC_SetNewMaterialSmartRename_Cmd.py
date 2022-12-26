@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_SetNewMaterialSmartRename_Cmd.py
 # Version:      1.0
 #
@@ -7,18 +7,20 @@
 #               Create a New Material Tag, rename the Material Layer in Shader tree according to Group Material name with a "_Mat" Suffix and show up Color Picker for setting Diffuse Color Channel.
 #               It replace default command: "poly.setMaterial"
 #
-#
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      11/10/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.SetNewMaterialSmartRename"
 # smo.GC.SetNewMaterialSmartRename true {MetalRust} {0.1 0.5 1.0}
+
 
 # # Bugfix for Shading Nerd compatibility issue. Commented this function creation as it returns a LookupError('attribute 0 not found.')
 # def SetMatNameDialog():
@@ -77,7 +79,7 @@ class SMO_GC_SetNewMaterialSmartRename_Cmd(lxu.command.BasicCommand):
         # lx.out('Modo Version:', Modo_ver)
         scene = modo.Scene()
 
-        ###########  Check User Values  ###########
+        # ---------  Check User Values  ------- #
         GC_OriginalModoMaterialOverride =  bool(lx.eval('user.value SMO_UseVal_GC_OriginalModoMaterialOverride ?'))
         GC_MatDefaultSmooAngle = lx.eval('user.value SMO_UseVal_GC_MatDefaultSmooAngle ?')
         GC_WeightByPolyArea = lx.eval('user.value SMO_UseVal_GC_WeightByPolyArea ?')
@@ -183,13 +185,13 @@ class SMO_GC_SetNewMaterialSmartRename_Cmd(lxu.command.BasicCommand):
                         ListTargetGrpMaskState.append(IsThereTargetGrpMaskColorIDSelSet)
                 lx.eval('smo.GC.DeselectAll')
             for item in ListTargetGrpMaskState:
-                if item == True:
+                if item:
                     GrpMaskAlreadyThere = True
                     print('%s Group Mask is already is the Shader Tree' % material_name)
             if not GrpMaskAlreadyThere:
                 print('No Group Mask called: %s' % material_name)
                 print('We need to create a new one')
-            return (GrpMaskAlreadyThere)
+            return GrpMaskAlreadyThere
 
         # print(IsThereTargetGrpMaskColorIDSelSet(ListGrpMaskColorIDSelSet(IDNum), IDNum))
 
@@ -202,10 +204,10 @@ class SMO_GC_SetNewMaterialSmartRename_Cmd(lxu.command.BasicCommand):
 
         if not GrpMaskAlreadyExist:
             print('Material Tag missing. Creating a new one.')
-            if GC_OriginalModoMaterialOverride == True:
+            if GC_OriginalModoMaterialOverride:
                 lx.eval('poly.setMaterial')
 
-            if GC_OriginalModoMaterialOverride == False:
+            if not GC_OriginalModoMaterialOverride:
 
                 if self.dyna_String(1) and self.dyna_String(2):
                     if self.dyna_String(1):

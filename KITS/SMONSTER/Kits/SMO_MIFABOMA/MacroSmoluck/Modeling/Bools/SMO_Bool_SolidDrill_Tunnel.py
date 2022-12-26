@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_Bool_SolidDrill_Tunnel.py
 # Version: 1.0
 #
@@ -8,21 +8,23 @@
 # from the current Layer.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo
+import lx
+
 scene = modo.scene.current()
 mesh = scene.selectedByType('mesh')[0]
 CsPolys = len(mesh.geometry.polygons.selected)
 
 
-################################
-#<----[ DEFINE VARIABLES ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE VARIABLES )----> #
+# ------------------------------ #
 
 #####--- Define user value for all the different SafetyCheck --- START ---#####
 #####
@@ -33,73 +35,73 @@ lx.eval("user.defNew name:SMO_SafetyCheck_min1PolygonSelected type:integer life:
 	
 
 	
-##############################
-####### SAFETY CHECK 1 #######
-##############################
+# -------------------------- #
+# <---( SAFETY CHECK 1 )---> #
+# -------------------------- #
 
-#####--------------------  safety check 1: Polygon Selection Mode enabled --- START --------------------#####
+# --------------------  safety check 1: Polygon Selection Mode enabled --- START
 
 selType = ""
 # Used to query layerservice for the list of polygons, edges or vertices.
 attrType = ""
 
 if lx.eval1( "select.typeFrom typelist:vertex;polygon;edge;item;ptag ?" ):
-    selType = "vertex"
-    attrType = "vert"
+	selType = "vertex"
+	attrType = "vert"
 	
-    SMO_SafetyCheck_PolygonModeEnabled = 0
-    lx.eval('dialog.setup info')
-    lx.eval('dialog.title {SMO_BoolSubtract:}')
-    lx.eval('dialog.msg {You must be in Polygon Mode to run that script}')
-    lx.eval('+dialog.open')
-    lx.out('script Stopped: You must be in Polygon Mode to run that script')
-    sys.exit
-    #sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
-    
+	SMO_SafetyCheck_PolygonModeEnabled = 0
+	lx.eval('dialog.setup info')
+	lx.eval('dialog.title {SMO_BoolSubtract:}')
+	lx.eval('dialog.msg {You must be in Polygon Mode to run that script}')
+	lx.eval('+dialog.open')
+	lx.out('script Stopped: You must be in Polygon Mode to run that script')
+	sys.exit
+	#sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
+
 	
 elif lx.eval1( "select.typeFrom typelist:edge;vertex;polygon;item ?" ):
-    selType = "edge"
-    attrType = "edge"
+	selType = "edge"
+	attrType = "edge"
 	
-    SMO_SafetyCheck_PolygonModeEnabled = 0
-    lx.eval('dialog.setup info')
-    lx.eval('dialog.title {SMO_BoolSubtract:}')
-    lx.eval('dialog.msg {You must be in Polygon Mode to run that script}')
-    lx.eval('+dialog.open')
-    lx.out('script Stopped: You must be in Polygon Mode to run that script')
-    sys.exit
-    #sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
+	SMO_SafetyCheck_PolygonModeEnabled = 0
+	lx.eval('dialog.setup info')
+	lx.eval('dialog.title {SMO_BoolSubtract:}')
+	lx.eval('dialog.msg {You must be in Polygon Mode to run that script}')
+	lx.eval('+dialog.open')
+	lx.out('script Stopped: You must be in Polygon Mode to run that script')
+	sys.exit
+	#sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
 	
 elif lx.eval1( "select.typeFrom typelist:polygon;vertex;edge;item ?" ):
-    selType = "polygon"
-    attrType = "poly"
+	selType = "polygon"
+	attrType = "poly"
 	
-    SMO_SafetyCheck_PolygonModeEnabled = 1
-    lx.out('script Running: Correct Component Selection Mode')
+	SMO_SafetyCheck_PolygonModeEnabled = 1
+	lx.out('script Running: Correct Component Selection Mode')
 
 
 else:
 	# This only fails if none of the three supported selection
-    # modes have yet been used since the program started, or
-    # if "item" or "ptag" (ie: materials) is the current
-    # selection mode.
-    SMO_SafetyCheck_PolygonModeEnabled = 0
-    lx.eval('dialog.setup info')
-    lx.eval('dialog.title {SMO_BoolSubtract:}')
-    lx.eval('dialog.msg {You must be in Polygon Mode to run that script}')
-    lx.eval('+dialog.open')
-    lx.out('script Stopped: You must be in Polygon Mode to run that script')
-    sys.exit
-    #sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
-#####--------------------  safety check 1: Polygon Selection Mode enabled --- END --------------------#####
+	# modes have yet been used since the program started, or
+	# if "item" or "ptag" (ie: materials) is the current
+	# selection mode.
+	SMO_SafetyCheck_PolygonModeEnabled = 0
+	lx.eval('dialog.setup info')
+	lx.eval('dialog.title {SMO_BoolSubtract:}')
+	lx.eval('dialog.msg {You must be in Polygon Mode to run that script}')
+	lx.eval('+dialog.open')
+	lx.out('script Stopped: You must be in Polygon Mode to run that script')
+	sys.exit
+	#sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
+# --------------------  safety check 1: Polygon Selection Mode enabled --- END
 
 
 
-##############################
-####### SAFETY CHECK 2 #######
-##############################
+# -------------------------- #
+# <---( SAFETY CHECK 2 )---> #
+# -------------------------- #
 
-#####--------------------  safety check 2: at Least 1 Polygons is selected --- START --------------------#####
+# at Least 1 Polygons is selected --- START
 lx.out('Count Selected Poly',CsPolys)
 
 if CsPolys < 1:
@@ -114,7 +116,7 @@ if CsPolys < 1:
 elif CsPolys >= 1:
 	SMO_SafetyCheck_min1PolygonSelected = 1
 	lx.out('script running: right amount of polygons in selection')
-#####--------------------  safety check 2: at Least 1 Polygons is selected --- END --------------------#####
+# at Least 1 Polygons is selected --- END
 
 
 
@@ -129,11 +131,11 @@ lx.out('Current Value',TotalSafetyCheck)
 
 
 
-##############################
-## <----( Main Macro )----> ##
-##############################
+# -------------------------- #
+# <----( Main Macro )----> #
+# -------------------------- #
 
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
 if TotalSafetyCheck == TotalSafetyCheckTrueValue:
 
 	# replay name:"Select Connected Polys"
@@ -173,14 +175,14 @@ if TotalSafetyCheck == TotalSafetyCheckTrueValue:
 
 
 
-	##############################
-	## <----( Main Command )----> 
-	##############################
+	# -------------------------- #
+	# <----( Main Command )---->
+	# -------------------------- #
 	# replay name:"SolidDrill Tunnel Action"
 	lx.eval('poly.solidDrill Tunnel Default background')
-	##############################
-	## <----( Main Command )----> 
-	##############################
+	# -------------------------- #
+	# <----( Main Command )---->
+	# -------------------------- #
 	
 
 
@@ -208,4 +210,4 @@ elif TotalSafetyCheck != TotalSafetyCheckTrueValue:
 	sys.exit
 	
 lx.out('End of SMO_Bool_SolidDrill_Tunnel Script')
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END

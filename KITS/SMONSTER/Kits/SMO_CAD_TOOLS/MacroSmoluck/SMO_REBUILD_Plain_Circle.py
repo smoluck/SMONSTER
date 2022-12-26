@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_REBUILD_Plain_circle.py
 # Version: 1.0
 #
@@ -8,22 +8,24 @@
 #           got the same Radius and Length as the Source volume it can be:
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      16/04/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import modo, lx
+import lx
+import modo
+import sys
 
 scene = modo.scene.current()
 mesh = scene.selectedByType('mesh')[0]
 CsPolys = len(mesh.geometry.polygons.selected)
 
 
-################################
-#<----[ DEFINE VARIABLES ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE VARIABLES )----> #
+# ------------------------------ #
 
 #####--- Define user value for all the different SafetyCheck --- START ---#####
 #####
@@ -36,9 +38,9 @@ lx.eval("user.defNew name:SMO_SafetyCheck_min1PolygonSelected type:integer life:
 lx.out('Start of SMO REBUILD Plain Circle')
 
 
-# ################################
-# #<----[ DEFINE ARGUMENTS ]---->#
-# ################################
+# # ------------------------------ #
+# # <----( DEFINE ARGUMENTS )----> #
+# # ------------------------------ #
 # args = lx.args()
 # lx.out(args)
 # CYLINDER_SIDES_COUNT = args[0]                  # Sides Count for the Cylinder as an integer value
@@ -50,11 +52,11 @@ lx.out('Start of SMO REBUILD Plain Circle')
 
 
 
-##############################
-####### SAFETY CHECK 1 #######
-##############################
+# -------------------------- #
+# <---( SAFETY CHECK 1 )---> #
+# -------------------------- #
 
-#####--------------------  safety check 1: Polygon Selection Mode enabled --- START --------------------#####
+# --------------------  safety check 1: Polygon Selection Mode enabled --- START
 
 selType = ""
 # Used to query layerservice for the list of polygons, edges or vertices.
@@ -63,7 +65,7 @@ attrType = ""
 if lx.eval1( "select.typeFrom typelist:vertex;polygon;edge;item;ptag ?" ):
     selType = "vertex"
     attrType = "vert"
-	
+
     SMO_SafetyCheck_PolygonModeEnabled = 0
     lx.eval('dialog.setup info')
     lx.eval('dialog.title {SMO REBUILD Plain Circle:}')
@@ -73,11 +75,11 @@ if lx.eval1( "select.typeFrom typelist:vertex;polygon;edge;item;ptag ?" ):
     sys.exit
     #sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
     
-	
+
 elif lx.eval1( "select.typeFrom typelist:edge;vertex;polygon;item ?" ):
     selType = "edge"
     attrType = "edge"
-	
+
     SMO_SafetyCheck_PolygonModeEnabled = 0
     lx.eval('dialog.setup info')
     lx.eval('dialog.title {SMO REBUILD Plain Circle:}')
@@ -86,17 +88,17 @@ elif lx.eval1( "select.typeFrom typelist:edge;vertex;polygon;item ?" ):
     lx.out('script Stopped: You must be in Polygon Mode to run that script')
     sys.exit
     #sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
-	
+
 elif lx.eval1( "select.typeFrom typelist:polygon;vertex;edge;item ?" ):
     selType = "polygon"
     attrType = "poly"
-	
+
     SMO_SafetyCheck_PolygonModeEnabled = 1
     lx.out('script Running: Correct Component Selection Mode')
 
 
 else:
-	# This only fails if none of the three supported selection
+    # This only fails if none of the three supported selection
     # modes have yet been used since the program started, or
     # if "item" or "ptag" (ie: materials) is the current
     # selection mode.
@@ -108,29 +110,29 @@ else:
     lx.out('script Stopped: You must be in Polygon Mode to run that script')
     sys.exit
     #sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
-#####--------------------  safety check 1: Polygon Selection Mode enabled --- END --------------------#####
+# --------------------  safety check 1: Polygon Selection Mode enabled --- END
 
 
-##############################
-####### SAFETY CHECK 2 #######
-##############################
+# -------------------------- #
+# <---( SAFETY CHECK 2 )---> #
+# -------------------------- #
 
-#####--------------------  safety check 2: at Least 1 Polygons is selected --- START --------------------#####
+# at Least 1 Polygons is selected --- START
 lx.out('Count Selected Poly',CsPolys)
 
 if CsPolys < 1:
-	SMO_SafetyCheck_min1PolygonSelected = 0
-	lx.eval('dialog.setup info')
-	lx.eval('dialog.title {SMO REBUILD Plain Circle:}')
-	lx.eval('dialog.msg {You must select at least 1 polygon to run that script}')
-	lx.eval('+dialog.open')
-	lx.out('script Stopped: Add more polygons to your selection')
-	sys.exit
+    SMO_SafetyCheck_min1PolygonSelected = 0
+    lx.eval('dialog.setup info')
+    lx.eval('dialog.title {SMO REBUILD Plain Circle:}')
+    lx.eval('dialog.msg {You must select at least 1 polygon to run that script}')
+    lx.eval('+dialog.open')
+    lx.out('script Stopped: Add more polygons to your selection')
+    sys.exit
 
 elif CsPolys >= 1:
-	SMO_SafetyCheck_min1PolygonSelected = 1
-	lx.out('script running: right amount of polygons in selection')
-#####--------------------  safety check 2: at Least 1 Polygons is selected --- END --------------------#####
+    SMO_SafetyCheck_min1PolygonSelected = 1
+    lx.out('script running: right amount of polygons in selection')
+# at Least 1 Polygons is selected --- END
 
 
 
@@ -145,49 +147,48 @@ lx.out('Current Value',TotalSafetyCheck)
 
 
 
-##############################
-## <----( Main Macro )----> ##
-##############################
+# -------------------------- #
+# <----( Main Macro )----> #
+# -------------------------- #
 
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
 if TotalSafetyCheck == TotalSafetyCheckTrueValue:
-	# lx.eval('@lazySelect.pl selectTouching 2')
+    # lx.eval('@lazySelect.pl selectTouching 2')
     lx.eval('smo.GC.SelectCoPlanarPoly 0 2 0')
-	lx.eval('poly.merge')
+    lx.eval('poly.merge')
 
-	lx.eval('tool.set actr.auto on')
+    lx.eval('tool.set actr.auto on')
+    lx.eval('tool.set poly.bevel on')
+    # Command Block Begin: ToolAdjustment
+    lx.eval('tool.setAttr poly.bevel shift 0.0')
+    lx.eval('tool.setAttr poly.bevel inset 0.001')			## 1 milimeter inset
+    # Command Block End: ToolAdjustment
+    lx.eval('tool.doApply')
+    lx.eval('tool.drop')
 
-	lx.eval('tool.set poly.bevel on')
-	# Command Block Begin: ToolAdjustment
-	lx.eval('tool.setAttr poly.bevel shift 0.0')
-	lx.eval('tool.setAttr poly.bevel inset 0.001')			## 1 milimeter inset
-	# Command Block End: ToolAdjustment
-	lx.eval('tool.doApply')
-	lx.eval('tool.drop')
 
+    lx.eval('tool.set poly.bevel on')
+    #Command Block Begin: ToolAdjustment
+    lx.eval('tool.setAttr poly.bevel shift 0.0')
+    lx.eval('tool.setAttr poly.bevel inset 0.005')
+    #Command Block End: ToolAdjustment
+    lx.eval('tool.doApply')
+    lx.eval('tool.drop')
 
-	lx.eval('tool.set poly.bevel on')
-	#Command Block Begin: ToolAdjustment
-	lx.eval('tool.setAttr poly.bevel shift 0.0')
-	lx.eval('tool.setAttr poly.bevel inset 0.005')
-	#Command Block End: ToolAdjustment
-	lx.eval('tool.doApply')
-	lx.eval('tool.drop')
-
-	lx.eval('poly.collapse')
+    lx.eval('poly.collapse')
 
 elif TotalSafetyCheck != TotalSafetyCheckTrueValue:
-	lx.out('script Stopped: your mesh does not match the requirement for that script.')
-	sys.exit
-	
+    lx.out('script Stopped: your mesh does not match the requirement for that script.')
+    sys.exit
+
 lx.out('End of SMO REBUILD Plain Circle')
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
 
 #### NOTE ####
 
-# #python
+# # python
 # import modo, lx
 
 # args = lx.args()
@@ -205,11 +206,11 @@ lx.out('End of SMO REBUILD Plain Circle')
     # lx.out('Function A-- Enable')
     
 # if ARG_3rd != "1":				# Function A Disable
-	# lx.out('Function A-- Disable')
-	
+    # lx.out('Function A-- Disable')
+
 # if ARG_4th == "1":				# Function B Enable
     # lx.out('Function --B Enable')
     
 # if ARG_4th != "1":				# Function B Disable
-	# lx.out('Function --B Disable')
+    # lx.out('Function --B Disable')
 

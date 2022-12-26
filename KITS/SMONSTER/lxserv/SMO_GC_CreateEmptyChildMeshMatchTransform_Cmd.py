@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_CreateEmptyChildMeshMatchTransform_Cmd.py.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      20/06/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.CreateEmptyChildMeshMatchTransform"
 # smo.GC.CreateEmptyChildMeshMatchTransform true        Select that new child Mesh
+
 
 class SMO_GC_CreateEmptyChildMatchTransform_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -60,7 +63,7 @@ class SMO_GC_CreateEmptyChildMatchTransform_Cmd(lxu.command.BasicCommand):
         elif self.dyna_Bool(0) == None:
             SelectCopyCutResultMesh = False
 
-        if self.SelModePoly == True:
+        if self.SelModePoly:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
         mesh = scene.selectedByType('mesh')[0]
 
@@ -158,16 +161,16 @@ class SMO_GC_CreateEmptyChildMatchTransform_Cmd(lxu.command.BasicCommand):
         scene.select(Mesh_Child_ID)
         lx.eval('select.type item')
 
-        if SelectCopyCutResultMesh == False:
+        if not SelectCopyCutResultMesh:
             scene.select(Mesh_Source_ID)
-        if SelectCopyCutResultMesh == True:
+        if SelectCopyCutResultMesh:
             scene.select(Mesh_Child_ID)
 
 
 
-        if RefSystemActive == False:
+        if not RefSystemActive:
             lx.eval('item.refSystem {}')
-        if RefSystemActive == True:
+        if RefSystemActive:
             lx.eval('item.refSystem %s' % CurrentRefSystemItem)
 
 

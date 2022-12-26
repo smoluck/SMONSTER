@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_BATCH_ExportMeshesAsMeshPreset_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,18 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      27/10/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo, os, string
-from os import path
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.BATCH.ExportMeshesAsMeshPreset"
+
 
 class SMO_BATCH_ExportMeshesAsMeshPreset_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -51,11 +53,11 @@ class SMO_BATCH_ExportMeshesAsMeshPreset_Cmd(lxu.command.BasicCommand):
         PBState = bool()
         Good = bool()
         PBState = bool(lx.eval('layout.createOrClose PresetBrowser presetBrowserPalette ?'))
-        if PBState == False:
+        if not PBState:
             lx.eval('layout.createOrClose PresetBrowser presetBrowserPalette true Presets width:800 height:600 persistent:true style:palette')
         Good = bool(lx.eval('layout.createOrClose PresetBrowser presetBrowserPalette ?'))
 
-        if Good == True:
+        if Good:
             scene = modo.scene.current()
 
             # Drop Selection

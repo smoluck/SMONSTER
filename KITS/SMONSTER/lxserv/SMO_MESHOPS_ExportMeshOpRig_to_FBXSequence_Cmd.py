@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_MESHOPS_ExportMeshOpRigToFBXSequence_Cmd
 # Version:      1.00
 #
@@ -8,16 +8,19 @@
 #               Select the MeshOp item and run.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      08/06/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.MESHOP.ExportMeshOpRigToFBXSequence"
 # smo.MESHOP.ExportMeshOpRigToFBXSequence
+
 
 class SMO_MESHOP_ExportMeshOpRigToFBXSequence_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -100,7 +103,7 @@ class SMO_MESHOP_ExportMeshOpRigToFBXSequence_Cmd(lxu.command.BasicCommand):
                 print('Detected UV Map count %s:' % (len(VMap_NameList)))
                 # print('UVmap Detected', VMap_CountList)
 
-            if ZeroUVMap == False:
+            if not ZeroUVMap:
                 lx.eval('select.vertexMap {%s} txuv replace' % (VMap_NameList[0]))
                 DetectedVMapName = lx.eval('vertMap.list txuv ?')
                 if DetectedVMapName != DefaultUVMapName:
@@ -114,7 +117,7 @@ class SMO_MESHOP_ExportMeshOpRigToFBXSequence_Cmd(lxu.command.BasicCommand):
             del UVMapCountList[:]
             # print('---------')
             # print('---------')
-            if ZeroUVMap == True:
+            if ZeroUVMap:
                 lx.out('UVMap Renaming skipped, because not Detected')
                 lx.eval('vertMap.new {%s} txuv' % DefaultUVMapName)
         del CheckEmptyList[:]

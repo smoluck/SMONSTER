@@ -1,5 +1,5 @@
-#python
-#---------------------------------------------
+# python
+"""
 # Name:         SMO_Cleanup_3DsMAX_FBXChannel.py
 # Version:      1.0
 #
@@ -8,22 +8,25 @@
 #           at FBX Export in the current scene.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      19/12/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------------
-import lx, lxu, modo
+"""
+
+import lx
+import modo
+
 scene = modo.scene.current()
 
-#----------------------------------------#
+# ---------------------------------------#
 # Delete unnecessary FBX 3DSMax Channels #
-#----------------------------------------#
+# ---------------------------------------#
 
 lx.eval('select.itemType mesh')
 # Variables
 DelFBXChanMeshList = []
-DelFBXChanMeshList = lx.eval('query sceneservice selection ? mesh') # mesh item layers
+DelFBXChanMeshList = lx.eval('query sceneservice selection ? mesh')  # mesh item layers
 for mesh in DelFBXChanMeshList:
     # mesh.select(True)
     lx.eval('smo.CLEANUP.DelChanByArg FBX_UDP3DSMAX')

@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_GetSceneDetail_Cmd.py
 # Version:      1.00
 #
@@ -8,21 +8,22 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Modified:     20/12/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, os, string, modo
-
+import lx
+import lxu
+import modo
+import os
 
 Cmd_Name = "smo.GC.GetSceneDetail"
-
-############# USE CASE
+# ----------- USE CASE
 # Result = lx.eval('smo.GC.GetSceneDetail 4 ?')
 # lx.out('Folder Path (Path Without File and Extension):',Result)
-######################
+# --------------------
 
 
 class SMO_GC_GetSceneDetail_Cmd(lxu.command.BasicCommand):
@@ -58,10 +59,10 @@ class SMO_GC_GetSceneDetail_Cmd(lxu.command.BasicCommand):
         return True
     
     def cmd_Query(self, index, vaQuery):
-        if self.dyna_Int (0) is not None :
-            ################################
-            #<----[ DEFINE ARGUMENTS ]---->#
-            ################################
+        if self.dyna_Int (0) is not None:
+            # ------------------------------ #
+            # <----( DEFINE ARGUMENTS )----> #
+            # ------------------------------ #
             # args = lx.args()
             # lx.out(args)
             
@@ -72,9 +73,9 @@ class SMO_GC_GetSceneDetail_Cmd(lxu.command.BasicCommand):
             # 4 = Folder Path (Path Without File and Extension)
             DetailType = self.dyna_Int (0)
             # lx.out('Mode:', DetailType)
-            ################################
-            #<----[ DEFINE ARGUMENTS ]---->#
-            ################################
+            # ------------------------------ #
+            # <----( DEFINE ARGUMENTS )----> #
+            # ------------------------------ #
             
             
             
@@ -105,20 +106,20 @@ class SMO_GC_GetSceneDetail_Cmd(lxu.command.BasicCommand):
             IsItFile = os.path.isfile(scene_FullPath)
             # lx.out('Is it a file Check: ', IsItFile)
             
-            if IsItFile == True :
+            if IsItFile:
                 FolderPath = os.path.dirname(scene_FullPath)
                 # lx.out('Folder path of current file is:', FolderPath)
                 
-                if DetailType == 0 :
+                if DetailType == 0:
                     Result = scene_FullPath
                     # lx.out('Full Path (With Extension):', Result)
-                if DetailType == 1 :
+                if DetailType == 1:
                     Result = scene_FileName
                     # lx.out('File Name (With Extension):', Result)
-                if DetailType == 2 :
+                if DetailType == 2:
                     Result = FileExtension[0]
                     # lx.out('Partial Path (Path Without Extension):', Result)
-                if DetailType == 3 :
+                if DetailType == 3:
                     Result = FileExtension[1]
                     # lx.out('File Extension:', Result)
                 if DetailType == 4 :

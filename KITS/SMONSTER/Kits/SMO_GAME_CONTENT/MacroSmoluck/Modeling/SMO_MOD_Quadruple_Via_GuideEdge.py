@@ -1,37 +1,37 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MOD_Quadruple_Via_GuideEdge.py
 # Version:      1.0
 #
 # Purpose: This script will quadruple an Ngon base on a selection of 2 Edges Guide and the NGon polygon selection.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      21/05/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo
 
-#####--------------------  safety check 1: Polygon Selection Mode enabled --- START --------------------#####
+# --------------------  safety check 1: Polygon Selection Mode enabled --- START
 
 selType = ""
 # Used to query layerservice for the list of polygons, edges or vertices.
 attrType = ""
 
 if lx.eval1( "select.typeFrom typelist:vertex;polygon;edge;item;ptag ?" ):
-    selType = "vertex"
-    attrType = "vert"
+	selType = "vertex"
+	attrType = "vert"
 	
-    SMO_SafetyCheck_EdgeModeEnabled = 0
-    lx.eval('dialog.setup info')
-    lx.eval('dialog.title {Quadruple_Via_GuideEdge:}')
-    lx.eval('dialog.msg {You must be in Edge Mode to run that script}')
-    lx.eval('+dialog.open')
-    lx.out('script Stopped: You must be in Edge Mode to run that script')
-    sys.exit
-    
+	SMO_SafetyCheck_EdgeModeEnabled = 0
+	lx.eval('dialog.setup info')
+	lx.eval('dialog.title {Quadruple_Via_GuideEdge:}')
+	lx.eval('dialog.msg {You must be in Edge Mode to run that script}')
+	lx.eval('+dialog.open')
+	lx.out('script Stopped: You must be in Edge Mode to run that script')
+	sys.exit
+
 	
 elif lx.eval1( "select.typeFrom typelist:edge;vertex;polygon;item ?" ):
 	selType = "edge"
@@ -39,7 +39,7 @@ elif lx.eval1( "select.typeFrom typelist:edge;vertex;polygon;item ?" ):
 	
 	SMO_SafetyCheck_EdgeModeEnabled = 1
 	lx.out('script Running: Correct Component Selection Mode')
-    
+
 	
 elif lx.eval1( "select.typeFrom typelist:polygon;vertex;edge;item ?" ):
 	selType = "polygon"
@@ -56,18 +56,18 @@ elif lx.eval1( "select.typeFrom typelist:polygon;vertex;edge;item ?" ):
 
 else:
 	# This only fails if none of the three supported selection
-    # modes have yet been used since the program started, or
-    # if "item" or "ptag" (ie: materials) is the current
-    # selection mode.
-    SMO_SafetyCheck_EdgeModeEnabled = 0
-    lx.eval('dialog.setup info')
-    lx.eval('dialog.title {Quadruple_Via_GuideEdge:}')
-    lx.eval('dialog.msg {You must be in Edge Mode to run that script}')
-    lx.eval('+dialog.open')
-    lx.out('script Stopped: You must be in Edge Mode to run that script')
-    sys.exit
+	# modes have yet been used since the program started, or
+	# if "item" or "ptag" (ie: materials) is the current
+	# selection mode.
+	SMO_SafetyCheck_EdgeModeEnabled = 0
+	lx.eval('dialog.setup info')
+	lx.eval('dialog.title {Quadruple_Via_GuideEdge:}')
+	lx.eval('dialog.msg {You must be in Edge Mode to run that script}')
+	lx.eval('+dialog.open')
+	lx.out('script Stopped: You must be in Edge Mode to run that script')
+	sys.exit
 	
-#####--------------------  safety check 1: Edge Selection Mode enabled --- END --------------------#####
+# --------------------  safety check 1: Edge Selection Mode enabled --- END
 
 # Tag Current Selection
 lx.eval('select.editSet EDGE_GUIDE add {}')

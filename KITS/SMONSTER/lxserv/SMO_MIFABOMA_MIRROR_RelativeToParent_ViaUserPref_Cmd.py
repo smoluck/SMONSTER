@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MIFABOMA_MIRROR_RelativeToParent_ViaUserPref_Cmd.py
 # Version:      1.0
 #
@@ -8,13 +8,15 @@
 #               if no selection) relative To Parent center.
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      16/09/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.MIFABOMA.MirrorRelativeToParent_ViaUserPref"
 #smo.MIFABOMA.MirrorRelativeToParent_ViaUserPref 1 0
@@ -84,7 +86,7 @@ class SMO_MIFABOMA_Mirror_RelativeToParent_ViaUserPref_Cmd(lxu.command.BasicComm
         # print(TargetMeshes)
 
 
-        if self.SelModePoly == True:
+        if self.SelModePoly:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
 
         SelItems = (lx.evalN('query sceneservice selection ? locator'))
@@ -106,9 +108,9 @@ class SMO_MIFABOMA_Mirror_RelativeToParent_ViaUserPref_Cmd(lxu.command.BasicComm
 
 
         
-        ################################
-        #<----[ DEFINE ARGUMENTS ]---->#                    # smo.MIFABOMA.MirrorRelativeToParent_ViaUserPref 1 0
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #                    # smo.MIFABOMA.MirrorRelativeToParent_ViaUserPref 1 0
+        # ------------------------------ #
         args = lx.args()
         lx.out(args)
         MIRROR_AXES = self.dyna_Int (0)                     # Axes selection:       X = 0 ### Y = 1 ### Z = 2
@@ -116,9 +118,9 @@ class SMO_MIFABOMA_Mirror_RelativeToParent_ViaUserPref_Cmd(lxu.command.BasicComm
         
         # Expose the Result of the Arguments 
         lx.out(MIRROR_AXES,MERGE_VERTEX)
-        ################################
-        #<----[ DEFINE ARGUMENTS ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #
+        # ------------------------------ #
         
         
         CloneType_Clone = lx.eval('user.value SMO_UseVal_MIFABOMA_CloneType_Clone ?')
@@ -140,9 +142,9 @@ class SMO_MIFABOMA_Mirror_RelativeToParent_ViaUserPref_Cmd(lxu.command.BasicComm
         lx.eval('smo.GC.DeselectAll')
 
 
-        ########################################
-        ## <----( Main Macro - POLYGON )----> ##
-        ########################################
+        # ---------------------------------- #
+        # <----( Main Macro - POLYGON )----> #
+        # ---------------------------------- #
         if ItemMode == 0 and VertMode == 0 and EdgeMode == 0 and PolyMode == 1:
             for item in SelectedMeshes:
                 item.select(True)
@@ -181,8 +183,8 @@ class SMO_MIFABOMA_Mirror_RelativeToParent_ViaUserPref_Cmd(lxu.command.BasicComm
 
 
 
-                ######## PARENT  / CHILD Checkup ########
-                #########################################
+                # ------ PARENT  / CHILD Checkup ------ #
+                # ------------------------------------- #
                 if CountPoly > 0 :
                     lx.eval('hide.unsel')
                 lx.eval('select.type item')
@@ -233,26 +235,26 @@ class SMO_MIFABOMA_Mirror_RelativeToParent_ViaUserPref_Cmd(lxu.command.BasicComm
                     lx.eval('item.refSystem %s' % SelItems)
                     lx.eval('select.drop item')
                     lx.eval('select.useSet RadArr_ITEM_TARGET replace')
-                #########################################
+                # ------------------------------------- #
 
                 lx.eval('select.drop item')
                 lx.eval('select.useSet RadArr_ITEM_TARGET replace')
                 lx.eval('select.type polygon')
-                ###################################
-                ######## Mirror Tool Setup ########
-                ###################################
+                # ------------------------------- #
+                # ------ Mirror Tool Setup ------ #
+                # ------------------------------- #
                 lx.eval('tool.set *.mirror on')
                 MirrorReplaceSourceState = lx.eval('tool.attr effector.clone replace ?')
                 MirrorFlipPolyState = lx.eval('tool.attr effector.clone flip ?')
-                if MirrorReplaceSourceState == True:
+                if MirrorReplaceSourceState:
                     lx.eval('tool.setAttr effector.clone replace false')
 
                 ## Modo Mirror Behavior have changed on Modo 15.2. (it automatically flip the polygons now)
                 if Modo_ver < 1520:
-                    if MirrorFlipPolyState == False:
+                    if not MirrorFlipPolyState:
                         lx.eval('tool.setAttr effector.clone flip true')
                 if Modo_ver >= 1520:
-                    if MirrorFlipPolyState == True:
+                    if MirrorFlipPolyState:
                         lx.eval('tool.setAttr effector.clone flip false')
 
 
@@ -289,7 +291,7 @@ class SMO_MIFABOMA_Mirror_RelativeToParent_ViaUserPref_Cmd(lxu.command.BasicComm
                     lx.eval('tool.setAttr gen.mirror upX 0.0')
                     lx.eval('tool.setAttr gen.mirror upY 1')
                     lx.eval('tool.setAttr gen.mirror upZ 0.0')
-                ##############################
+                # -------------------------- #
                 lx.eval('tool.doApply')
                 lx.eval('select.nextMode')
                 lx.eval('tool.set *.mirror off')
@@ -313,29 +315,29 @@ class SMO_MIFABOMA_Mirror_RelativeToParent_ViaUserPref_Cmd(lxu.command.BasicComm
                 if CountPoly > 0 :
                     lx.eval('unhide')
 
-                if RefSystemActive == False:
+                if not RefSystemActive:
                     lx.eval('item.refSystem {}')
                 else:
                     print('Ref System activated')
                     lx.eval('item.refSystem %s' % SelItems[0])
 
 
-                ######## PARENT  / CHILD Checkup ########
-                #########################################
+                # ------ PARENT  / CHILD Checkup ------ #
+                # ------------------------------------- #
                 lx.eval('select.type item')
                 lx.eval('!select.deleteSet RadArr_ITEM_TARGET false')
                 if ParentPresent == 1 :
                     lx.eval('!select.deleteSet RadArr_ITEM_PARENT false')
-                if ChildPresent == True :
+                if ChildPresent:
                     lx.eval('!select.deleteSet RadArr_ITEM_CHILD false')
                 lx.eval('select.type polygon')
 
-                #########################################
+                # ------------------------------------- #
             
             
-        ####################################
-        ## <----( Main Macro - ITEM)----> ##
-        ####################################
+        # ------------------------------ #
+        # <----( Main Macro - ITEM)----> #
+        # ------------------------------ #
         if ItemMode == 1 and VertMode == 0 and EdgeMode == 0 and PolyMode == 0:
             for item in TargetMeshes:
                 item.select(True)
@@ -343,8 +345,8 @@ class SMO_MIFABOMA_Mirror_RelativeToParent_ViaUserPref_Cmd(lxu.command.BasicComm
                 SelItems = (lx.evalN('query sceneservice selection ? locator'))
                 lx.out('Selected items is:', SelItems)
 
-                ######## PARENT  / CHILD Checkup ########
-                #########################################
+                # ------ PARENT  / CHILD Checkup ------ #
+                # ------------------------------------- #
                 lx.eval('select.type item')
                 # Tag TARGET
                 lx.eval('select.editSet RadArr_ITEM_TARGET add')
@@ -393,15 +395,15 @@ class SMO_MIFABOMA_Mirror_RelativeToParent_ViaUserPref_Cmd(lxu.command.BasicComm
                     lx.eval('item.refSystem %s' % SelItems)
                     lx.eval('select.drop item')
                     lx.eval('select.useSet RadArr_ITEM_TARGET replace')
-                #########################################
+                # ------------------------------------- #
 
 
 
                 lx.eval('select.drop item')
                 lx.eval('select.useSet RadArr_ITEM_TARGET replace')
-                ###################################
-                ######## Mirror Tool Setup ########
-                ###################################
+                # ------------------------------- #
+                # ------ Mirror Tool Setup ------ #
+                # ------------------------------- #
                 lx.eval('tool.set *.mirror on')
                 if CloneType_Clone == 1 and CloneType_Instance == 0 and CloneType_Replicas == 0:
                     lx.eval('tool.setAttr effector.item instance false')
@@ -438,7 +440,7 @@ class SMO_MIFABOMA_Mirror_RelativeToParent_ViaUserPref_Cmd(lxu.command.BasicComm
                     lx.eval('tool.setAttr gen.mirror upX 0.0')
                     lx.eval('tool.setAttr gen.mirror upY 1')
                     lx.eval('tool.setAttr gen.mirror upZ 0.0')
-                ##############################
+                # -------------------------- #
                 lx.eval('tool.doApply')
                 lx.eval('select.drop item')
                 lx.eval('select.nextMode')
@@ -446,18 +448,18 @@ class SMO_MIFABOMA_Mirror_RelativeToParent_ViaUserPref_Cmd(lxu.command.BasicComm
                 lx.eval('tool.set actr.auto on 0')
 
 
-                ######## PARENT  / CHILD Checkup ########
-                #########################################
+                # ------ PARENT  / CHILD Checkup ------ #
+                # ------------------------------------- #
                 lx.eval('select.type item')
                 lx.eval('!select.deleteSet RadArr_ITEM_TARGET false')
                 if ParentPresent == 1 :
                     lx.eval('!select.deleteSet RadArr_ITEM_PARENT false')
-                if ChildPresent == True :
+                if ChildPresent:
                     lx.eval('!select.deleteSet RadArr_ITEM_CHILD false')
-                #########################################
+                # ------------------------------------- #
 
 
-                if RefSystemActive == False:
+                if not RefSystemActive:
                     lx.eval('item.refSystem {}')
                 else:
                     print('Ref System activated')

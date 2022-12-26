@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_SelectPolyRenderItem_Cmd.py
 # Version:      1.0
 #
@@ -8,22 +8,24 @@
 #
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      12/08/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.SelectPolyRenderItem"
 # execute:      smo.GC.SelectPolyRenderItem
 # query:        smo.GC.SelectPolyRenderItem ?
 
-############# USE CASE
+# ------ USE CASE
 # TestResult = lx.eval('smo.GC.SelectPolyRenderItem ?')
 # lx.out('Render item Identity name is :',TestResult)
-######################
+# ---------------
 
 
 class SMO_GC_SelectPolyRenderItem_Cmd(lxu.command.BasicCommand):
@@ -31,6 +33,7 @@ class SMO_GC_SelectPolyRenderItem_Cmd(lxu.command.BasicCommand):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Render Item Name", lx.symbol.sTYPE_STRING)
         self.basic_SetFlags (0, lx.symbol.fCMDARG_QUERY)
+
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
     

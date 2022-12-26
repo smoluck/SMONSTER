@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_CAD_StarTripleFlatUnderMouse_Cmd
 # Version:      1.0
 #
@@ -8,16 +8,20 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      22/09/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo, sys
+import lx
+import lxu
+import modo
+import sys
 
 Cmd_Name = "smo.CAD.StarTripleFlat"
 # smo.CAD.StarTripleFlat
+
 
 class SMO_CAD_StarTripleFlatUnderMouse_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -56,7 +60,7 @@ class SMO_CAD_StarTripleFlatUnderMouse_Cmd(lxu.command.BasicCommand):
         # IntSelectLoop = self.dyna_Int(1)
         scene = modo.scene.current()
 
-        # # ############### 5 ARGUMENTS ###############
+        # # ############### 5 ARGUMENTS ------------- #
         # args = lx.args()
         # lx.out(args)
         #
@@ -70,13 +74,13 @@ class SMO_CAD_StarTripleFlatUnderMouse_Cmd(lxu.command.BasicCommand):
         # # 1 = Keep current selection
         # SelectLoop = IntSelectLoop
         # lx.out('Select Loop Automatic:', SelectLoop)
-        # # ############### ARGUMENTS ###############
+        # # # ------------- ARGUMENTS ------------- #
 
 
 
-        ################################
-        # <----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
 
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
@@ -87,11 +91,11 @@ class SMO_CAD_StarTripleFlatUnderMouse_Cmd(lxu.command.BasicCommand):
         #####
         #####--- Define user value for all the different SafetyCheck --- END ---#####
 
-        ##############################
-        ####### SAFETY CHECK 1 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 1 )---> #
+        # -------------------------- #
 
-        #####--------------------  safety check 1: Polygon Selection Mode enabled --- START --------------------#####
+        # --------------------  safety check 1: Polygon Selection Mode enabled --- START
 
         selType = ""
         # Used to query layerservice for the list of polygons, edges or vertices.
@@ -142,7 +146,7 @@ class SMO_CAD_StarTripleFlatUnderMouse_Cmd(lxu.command.BasicCommand):
             SMO_SafetyCheck_ItemModeEnabled = 1
             SMO_SafetyCheck_PolygonModeEnabled = 0
             lx.out('script Running: Correct Item Selection Mode')
-        #####--------------------  safety check 1: Polygon Selection Mode enabled --- END --------------------#####
+        # --------------------  safety check 1: Polygon Selection Mode enabled --- END
 
         #####-------------------------------------------------------------------------------#####
         ####### Track Mouse Over Selection. Is there a polygon under Mouse and select it. #######
@@ -184,11 +188,11 @@ class SMO_CAD_StarTripleFlatUnderMouse_Cmd(lxu.command.BasicCommand):
         target_rotations = selected_mesh.transforms.rotation.get()
         # lx.out(target_positions)
 
-        ##############################
-        ####### SAFETY CHECK 2 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 2 )---> #
+        # -------------------------- #
         CsPolys = len(mesh.geometry.polygons.selected)
-        #####--------------------  safety check 2: at Least 1 Polygons is selected --- START --------------------#####
+        # at Least 1 Polygons is selected --- START
         lx.out('Count Selected Poly', CsPolys)
 
         if CsPolys < 1:
@@ -203,7 +207,7 @@ class SMO_CAD_StarTripleFlatUnderMouse_Cmd(lxu.command.BasicCommand):
         elif CsPolys >= 1:
             SMO_SafetyCheck_min1PolygonSelected = 1
             lx.out('script running: right amount of polygons in selection')
-        #####--------------------  safety check 2: at Least 1 Polygons is selected --- END --------------------#####
+        # at Least 1 Polygons is selected --- END
 
         #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
         #####
@@ -219,10 +223,11 @@ class SMO_CAD_StarTripleFlatUnderMouse_Cmd(lxu.command.BasicCommand):
         # Modo_ver = int(lx.eval ('query platformservice appversion ?'))
         # lx.out('Modo Version:',Modo_ver)
 
-        ##############################
-        ## <----( Main Macro )----> ##
-        ##############################
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+        # ------------------------ #
+        # <----( Main Macro )----> #
+        # ------------------------ #
+
+        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
         if TotalSafetyCheck == TotalSafetyCheckTrueValue:
             # Polygon Undermouse Selection Mode. You must be in Item Mode
             if SMO_SafetyCheck_ItemModeEnabled == 1:

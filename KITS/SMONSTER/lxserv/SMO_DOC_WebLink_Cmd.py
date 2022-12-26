@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_DOC_WebLink_Cmd.py
 # Version:      1.0
 #
@@ -7,16 +7,18 @@
 #               Open a WebLink using a String Argument for address.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      29/08/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
 
 Cmd_Name = "smo.DOC.WebLink"
 # smo.DOC.WebLink {https://www.youtube.com/watch?v=zeK736RmjrE}
+
 
 class SMO_DOC_WebLink_Cmd(lxu.command.BasicCommand):
     def __init__(self):

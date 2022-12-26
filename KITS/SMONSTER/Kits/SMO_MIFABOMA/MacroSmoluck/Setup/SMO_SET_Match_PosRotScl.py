@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_SET_Match_PosRotScl.py
 # Version:      1.0
 #
@@ -7,17 +7,17 @@
 # Align a set of item on their position based on the first selected
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo, lxu, lxu.select
 scene = modo.scene.current()
 
 
-############### 2 ARGUMENTS ###############
+# ------------- ARGUMENTS ------------- #
 args = lx.args()
 lx.out(args)
 # No Match Position = 0
@@ -45,21 +45,14 @@ lx.out('Match Scale on Axe: ',MatchScl)
 # Average Mode = 1
 Average = int(args[3])
 lx.out('Average State: ',Average)
-############### ARGUMENTS ###############
-
-# ############### 2 ARGUMENT Test ###############
-# MatchPos = 3
-# MatchRot = 0
-# MatchScl = 0
-# Average = 0
-# ############### ARGUMENT ###############
+# ------------- ARGUMENTS ------------- #
 
 
 
 
-################################
-#<----[ DEFINE VARIABLES ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE VARIABLES )----> #
+# ------------------------------ #
 #####--- Define user value for all the different SafetyCheck --- START ---#####
 #####
 
@@ -81,11 +74,11 @@ lx.eval("user.defNew name:SMO_SafetyCheck_ItemModeEnabled type:integer life:mome
 
 
 
-##############################
-####### SAFETY CHECK 1 #######
-##############################
+# -------------------------- #
+# <---( SAFETY CHECK 1 )---> #
+# -------------------------- #
 
-#####--------------------  safety check 1: Polygon Selection Mode enabled --- START --------------------#####
+# --------------------  safety check 1: Polygon Selection Mode enabled --- START
 
 selType = ""
 # Used to query layerservice for the list of polygons, edges or vertices.
@@ -101,7 +94,7 @@ if lx.eval1( "select.typeFrom typelist:vertex;polygon;edge;item;ptag ?" ):
 	SMO_SafetyCheck_ItemModeEnabled = 0
 	
 	lx.out('script Running: Vertex Component Selection Mode')
-    
+
 	
 elif lx.eval1( "select.typeFrom typelist:edge;vertex;polygon;item ?" ):
 	selType = "edge"
@@ -128,9 +121,9 @@ elif lx.eval1( "select.typeFrom typelist:polygon;vertex;edge;item ?" ):
 
 else:
 	# This only fails if none of the three supported selection
-    # modes have yet been used since the program started, or
-    # if "item" or "ptag" (ie: materials) is the current
-    # selection mode.
+	# modes have yet been used since the program started, or
+	# if "item" or "ptag" (ie: materials) is the current
+	# selection mode.
 
 	SMO_SafetyCheck_VertexModeEnabled = 0
 	SMO_SafetyCheck_EdgeModeEnabled = 0
@@ -139,49 +132,49 @@ else:
 	
 	lx.out('script Running: Item Component Selection Mode')
 	
-#####--------------------  safety check 1: Polygon Selection Mode enabled --- END --------------------#####
+# --------------------  safety check 1: Polygon Selection Mode enabled --- END
 
 
 
-##############################
-## <----( Main Macro )----> ##
-##############################
+# -------------------------- #
+# <----( Main Macro )----> #
+# -------------------------- #
 
 if MatchPos == 0 :
-    lx.out('Pos no change')
+	lx.out('Pos no change')
 if MatchPos == 1 :
-    lx.eval('item.match item pos x %s' % Average)
+	lx.eval('item.match item pos x %s' % Average)
 if MatchPos == 2 :
-    lx.eval('item.match item pos y %s' % Average)
+	lx.eval('item.match item pos y %s' % Average)
 if MatchPos == 3 :
-    lx.eval('item.match item pos z %s' % Average)
+	lx.eval('item.match item pos z %s' % Average)
 if MatchPos == 4 :
-    lx.eval('item.match item pos all %s' % Average)
-    
+	lx.eval('item.match item pos all %s' % Average)
+
 
 if MatchRot == 0 :
-    lx.out('Rotation no change')
+	lx.out('Rotation no change')
 if MatchRot == 1 :
-    lx.eval('item.match item rot x %s' % Average)
+	lx.eval('item.match item rot x %s' % Average)
 if MatchRot == 2 :
-    lx.eval('item.match item rot y %s' % Average)
+	lx.eval('item.match item rot y %s' % Average)
 if MatchRot == 3 :
-    lx.eval('item.match item rot z %s' % Average)
+	lx.eval('item.match item rot z %s' % Average)
 if MatchRot == 4 :
-    lx.eval('item.match item rot all %s' % Average)
-    
+	lx.eval('item.match item rot all %s' % Average)
+
 
 if MatchScl == 0 :
-    lx.out('Scale no change')
+	lx.out('Scale no change')
 if MatchScl == 1 :
-    lx.eval('item.match item scl x %s' % Average)
+	lx.eval('item.match item scl x %s' % Average)
 if MatchScl == 2 :
-    lx.eval('item.match item scl y %s' % Average)
+	lx.eval('item.match item scl y %s' % Average)
 if MatchScl == 3 :
-    lx.eval('item.match item scl z %s' % Average)
+	lx.eval('item.match item scl z %s' % Average)
 if MatchScl == 4 :
-    lx.eval('item.match item scl all %s' % Average)
+	lx.eval('item.match item scl all %s' % Average)
 
 
-#####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- START --------------------#####
+#####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- START
 # if SMO_SafetyCheck_ItemModeEnabled == 1:

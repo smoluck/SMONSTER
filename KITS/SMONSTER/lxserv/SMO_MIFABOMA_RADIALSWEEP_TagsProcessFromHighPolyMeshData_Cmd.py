@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MIFABOMA_RADIALSWEEP_TagsProcessFromHighPolyMeshData_Cmd.py
 # Version: 1.0
 # 
@@ -8,16 +8,19 @@
 # 
 # 
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 # 
 # Created:      05/02/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.MIFABOMA.RadialSweep.TagsProcessFromHighPolyMeshData"
 # smo.MIFABOMA.RadialSweep.TagsProcessFromHighPolyMeshData 0
+
 
 class SMO_MIFABOMA_RADIALSWEEP_TagsProcessFromHighPolyMeshData_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -49,8 +52,9 @@ class SMO_MIFABOMA_RADIALSWEEP_TagsProcessFromHighPolyMeshData_Cmd(lxu.command.B
         return True
 
     def basic_Execute(self, msg, flags):
+    
         scene = modo.Scene()
-        ############### 5 ARGUMENTS ###############
+        # ------------- 5 ARGUMENTS ------------- #
         args = lx.args()
         lx.out(args)
 
@@ -58,11 +62,11 @@ class SMO_MIFABOMA_RADIALSWEEP_TagsProcessFromHighPolyMeshData_Cmd(lxu.command.B
         # Delete Tagged Data = 1
         TaskID = self.dyna_Int (0)
         lx.out('Tache:',TaskID)
-        ############### ARGUMENTS ##############
+        # ------------- ARGUMENTS
 
 
 
-        ###############COPY/PASTE Check Procedure#################
+        ############### COPY/PASTE Check Procedure #################
         ## create variables
         lx.eval("user.defNew name:User_Pref_CopyDeselectChangedState type:boolean life:momentary")
         lx.eval("user.defNew name:User_Pref_PasteSelectionChangedState type:boolean life:momentary")

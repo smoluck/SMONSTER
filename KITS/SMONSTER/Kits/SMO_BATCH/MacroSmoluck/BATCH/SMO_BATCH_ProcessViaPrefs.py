@@ -1,4 +1,7 @@
-import lx, os
+# python
+
+import lx
+import os
 
 BPLine001 = lx.eval('user.value SMO_UseVal_BP_String_Line001 ?')
 lx.out('Batch Process Line 1:', BPLine001)

@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_StraightenEdgeBoundary_Cmd.py
 # Version:      1.0
 #
@@ -7,16 +7,20 @@
 #               Flatten the selected Edge Boundary to fix squeeze.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      04/12/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo, math
+import lx
+import lxu
+import math
+import modo
 
 Cmd_Name = "smo.GC.StraightenEdgeBoundary"
 # smo.GC.StraightenEdgeBoundary
+
 
 class SMO_GC_StraightenEdgeBoundary_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -70,7 +74,7 @@ class SMO_GC_StraightenEdgeBoundary_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
 
-        if self.SelModeEdge == True :
+        if self.SelModeEdge:
             lx.eval('select.type edge')
             lx.eval('select.createSet GC_StraightenEdgeBoundarySource')
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
@@ -81,9 +85,9 @@ class SMO_GC_StraightenEdgeBoundary_Cmd(lxu.command.BasicCommand):
         def rad(a):
             return [math.degrees(a)]
 
-        ################################
-        # <----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
 
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
@@ -98,10 +102,10 @@ class SMO_GC_StraightenEdgeBoundary_Cmd(lxu.command.BasicCommand):
         #####--- Define user value for all the different SafetyCheck --- END ---#####
 
 
-        ##############################
-        ####### SAFETY CHECK 1 #######
-        ##############################
-        #####--------------------  safety check 1: Polygon Selection Mode enabled --- START --------------------#####
+        # -------------------------- #
+        # <---( SAFETY CHECK 1 )---> #
+        # -------------------------- #
+        # --------------------  safety check 1: Polygon Selection Mode enabled --- START
 
         selType = ""
         # Used to query layerservice for the list of polygons, edges or vertices.
@@ -161,13 +165,13 @@ class SMO_GC_StraightenEdgeBoundary_Cmd(lxu.command.BasicCommand):
             lx.out('script Stopped: You must be in Edge Mode and have 1 Mesh Layer selected to run that script.')
             sys.exit
             # sys.exit( "LXe_FAILED:Must be in edge selection mode." )
-        #####--------------------  safety check 1: Polygon Selection Mode enabled --- END --------------------#####
+        # --------------------  safety check 1: Polygon Selection Mode enabled --- END
 
 
         ###################################################################################################
         # Bugfix for Mesh items that can have multiple Rotation transform (coming from 3DsMax for instance)
         # if self.SelModeEdge == True :
-        if self.SelModeEdge == True:
+        if self.SelModeEdge:
             lx.eval('select.type edge')
             lx.eval('select.useSet GC_StraightenEdgeBoundarySource replace')
             lx.eval('select.type item')
@@ -191,14 +195,14 @@ class SMO_GC_StraightenEdgeBoundary_Cmd(lxu.command.BasicCommand):
 
         items = scene.selected
         #lx.out('Processed Mesh Item:', items)
-        if RefSystemActive == False:
-            lx.eval('item.refSystem %s' % (items[0].id))
+        if not RefSystemActive:
+            lx.eval('item.refSystem %s' % items[0].id)
 
-        ##############################
-        ####### SAFETY CHECK 2 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 2 )---> #
+        # -------------------------- #
         CsEdges = len(selected_mesh.geometry.edges.selected)
-        #####--------------------  safety check 2: at Least 1 Edge is selected --- START --------------------#####
+        # at Least 1 Edge is selected --- START
         #lx.out('Count Selected Edge', CsEdges)
 
         if CsEdges < 1:
@@ -213,7 +217,7 @@ class SMO_GC_StraightenEdgeBoundary_Cmd(lxu.command.BasicCommand):
         elif CsEdges >= 1:
             SMO_SafetyCheck_min1EdgeSelected = 1
             #lx.out('script running: right amount of Edges in selection')
-        #####--------------------  safety check 2: at Least 1 Edge is selected --- END --------------------#####
+        # at Least 1 Edge is selected --- END
 
         #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
         #####
@@ -233,10 +237,11 @@ class SMO_GC_StraightenEdgeBoundary_Cmd(lxu.command.BasicCommand):
         Modo_ver = int(lx.eval('query platformservice appversion ?'))
         #print('Modo Version:', Modo_ver)
 
-        ##############################
-        ## <----( Main Macro )----> ##
-        ##############################
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+        # ------------------------ #
+        # <----( Main Macro )----> #
+        # ------------------------ #
+
+        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
         # if TotalSafetyCheck == TotalSafetyCheckTrueValue:
         if SMO_SafetyCheck_EdgeModeEnabled == 1:
             lx.eval('select.type edge')
@@ -260,7 +265,7 @@ class SMO_GC_StraightenEdgeBoundary_Cmd(lxu.command.BasicCommand):
             print (EdgesSelectedList)
             lx.eval('select.drop edge')
             modo.meshgeometry.MeshEdge.select((EdgesSelectedList[0]))
-            del (EdgesSelectedList)
+            del EdgesSelectedList
 
             lx.eval('workPlane.fitGeometry')
             lx.eval('workPlane.fitSelect')
@@ -307,7 +312,7 @@ class SMO_GC_StraightenEdgeBoundary_Cmd(lxu.command.BasicCommand):
             lx.eval('tool.clearTask axis center')
 
 
-        if RefSystemActive == False:
+        if not RefSystemActive:
             lx.eval('item.refSystem {}')
 
 

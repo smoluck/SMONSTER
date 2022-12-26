@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MIFABOMA_RADIALARRAY_ViaUserPref_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #               using Origin Center (World) or Item Center (Local). You need to get at least one Mesh item selected.
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      16/09/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.MIFABOMA.RadialArray.ViaUserPref"
 # smo.MIFABOMA.RadialArray.ViaUserPref 1 8 1 0
+
 
 class SMO_MIFABOMA_RadialArray_ViaUserPref_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -120,9 +123,9 @@ class SMO_MIFABOMA_RadialArray_ViaUserPref_Cmd(lxu.command.BasicCommand):
             Clone_Hierarchy = 0
 
 
-        ################################
-        #<----[ DEFINE ARGUMENTS ]---->#                # smo.RadialArray 1 8 1 0 1 0
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #                # smo.RadialArray 1 8 1 0 1 0
+        # ------------------------------ #
         args = lx.args()
         lx.out(args)
         RADIAL_AXES = self.dyna_Int (0)                 # Axes selection:       X = 0 ### Y = 1 ### Z = 2
@@ -132,9 +135,9 @@ class SMO_MIFABOMA_RadialArray_ViaUserPref_Cmd(lxu.command.BasicCommand):
 
         # Expose the Result of the Arguments
         lx.out(RADIAL_AXES,ARRAY_COUNT,ACT_CENTER_MODE,MERGE_VERTEX)
-        ################################
-        #<----[ DEFINE ARGUMENTS ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #
+        # ------------------------------ #
 
         ChildPresent = bool()
         ParentPresent = bool()
@@ -143,9 +146,9 @@ class SMO_MIFABOMA_RadialArray_ViaUserPref_Cmd(lxu.command.BasicCommand):
         lx.eval('smo.GC.DeselectAll')
 
 
-        ########################################
-        ## <----( Main Macro - POLYGON )----> ##
-        ########################################
+        # ---------------------------------- #
+        # <----( Main Macro - POLYGON )----> #
+        # ---------------------------------- #
         if ItemMode == 0 and VertMode == 0 and EdgeMode == 0 and PolyMode == 1:
             for item in SelectedMeshes:
                 item.select(True)
@@ -182,12 +185,12 @@ class SMO_MIFABOMA_RadialArray_ViaUserPref_Cmd(lxu.command.BasicCommand):
                 lx.out('Multi Count Selected', CountPoly)
                 lx.out('Multi Count Selected', CountItem)
 
-                ######## PARENT  / CHILD Checkup ########
-                #########################################
+                # ------ PARENT  / CHILD Checkup ------ #
+                # ------------------------------------- #
                 lx.eval('tool.set actr.auto on 0')
                 lx.eval('select.type item')
 
-                if RefSystemActive == False :
+                if not RefSystemActive:
                     lx.eval('item.refSystem %s' % SelItems[0])
                 else :
                     print('Ref System activated')
@@ -249,7 +252,7 @@ class SMO_MIFABOMA_RadialArray_ViaUserPref_Cmd(lxu.command.BasicCommand):
 
                 lx.eval('select.drop item')
                 lx.eval('select.useSet RadArr_ITEM_TARGET replace')
-                #########################################
+                # ------------------------------------- #
                 lx.eval('select.type polygon')
 
                 if CountPoly > 0 :
@@ -266,9 +269,9 @@ class SMO_MIFABOMA_RadialArray_ViaUserPref_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.type polygon')
 
 
-                #########################################
-                ######## Radial Array Tool Setup ########
-                #########################################
+                # ------------------------------------- #
+                # ------ Radial Array Tool Setup ------ #
+                # ------------------------------------- #
                 lx.eval('tool.set "*.Radial Array" on')
 
                 if MERGE_VERTEX == 0:
@@ -298,7 +301,7 @@ class SMO_MIFABOMA_RadialArray_ViaUserPref_Cmd(lxu.command.BasicCommand):
                     lx.eval('tool.setAttr gen.helix vecX 0.0')
                     lx.eval('tool.setAttr gen.helix vecY 0.0')
                     lx.eval('tool.setAttr gen.helix vecZ 1.0')
-                ##############################
+                # -------------------------- #
                 lx.eval('tool.doApply')
                 lx.eval('select.drop polygon')
                 lx.eval('select.nextMode')
@@ -311,7 +314,7 @@ class SMO_MIFABOMA_RadialArray_ViaUserPref_Cmd(lxu.command.BasicCommand):
 
 
 
-                if RefSystemActive == False:
+                if not RefSystemActive:
                     lx.eval('item.refSystem {}')
                 else:
                     print('Ref System activated')
@@ -321,23 +324,23 @@ class SMO_MIFABOMA_RadialArray_ViaUserPref_Cmd(lxu.command.BasicCommand):
                 if CountPoly > 0 :
                     lx.eval('unhide')
 
-                ######## PARENT  / CHILD Checkup ########
-                #########################################
+                # ------ PARENT  / CHILD Checkup ------ #
+                # ------------------------------------- #
                 lx.eval('select.type item')
                 if ParentPresent == 1 :
                     lx.eval('!select.deleteSet RadArr_ITEM_PARENT false')
-                if ChildPresent == True :
+                if ChildPresent:
                     lx.eval('!select.deleteSet RadArr_ITEM_CHILD false')
                 lx.eval('select.drop item')
                 lx.eval('select.useSet RadArr_ITEM_TARGET replace')
                 lx.eval('!select.deleteSet RadArr_ITEM_TARGET false')
                 lx.eval('select.type polygon')
-                #########################################
+                # ------------------------------------- #
 
 
-        ####################################
-        ## <----( Main Macro - ITEM)----> ##
-        ####################################
+        # ------------------------------ #
+        # <----( Main Macro - ITEM)----> #
+        # ------------------------------ #
         if ItemMode == 1 and VertMode == 0 and EdgeMode == 0 and PolyMode == 0:
             for item in TargetMeshes:
                 item.select(True)
@@ -345,8 +348,8 @@ class SMO_MIFABOMA_RadialArray_ViaUserPref_Cmd(lxu.command.BasicCommand):
                 SelItems = (lx.evalN('query sceneservice selection ? locator'))
                 lx.out('Selected items is:', SelItems)
 
-                ######## PARENT  / CHILD Checkup ########
-                #########################################
+                # ------ PARENT  / CHILD Checkup ------ #
+                # ------------------------------------- #
                 lx.eval('tool.set actr.auto on 0')
                 lx.eval('select.type item')
                 # Tag TARGET
@@ -405,7 +408,7 @@ class SMO_MIFABOMA_RadialArray_ViaUserPref_Cmd(lxu.command.BasicCommand):
 
                 lx.eval('select.drop item')
                 lx.eval('select.useSet RadArr_ITEM_TARGET replace')
-                #########################################
+                # ------------------------------------- #
 
                 lx.eval('tool.set actr.auto on 0')
                 lx.eval('select.type item')
@@ -435,9 +438,9 @@ class SMO_MIFABOMA_RadialArray_ViaUserPref_Cmd(lxu.command.BasicCommand):
 
 
 
-                #########################################
-                ######## Radial Array Tool Setup ########
-                #########################################
+                # ------------------------------------- #
+                # ------ Radial Array Tool Setup ------ #
+                # ------------------------------------- #
                 if CloneType_Clone == 1 and CloneType_Instance == 0 and CloneType_Replicas == 0 :
                     lx.eval('tool.set "*.Radial Array" on')
                     lx.eval('tool.setAttr effector.item instance false')
@@ -498,7 +501,7 @@ class SMO_MIFABOMA_RadialArray_ViaUserPref_Cmd(lxu.command.BasicCommand):
                     lx.eval('tool.setAttr gen.helix vecX 0.0')
                     lx.eval('tool.setAttr gen.helix vecY 0.0')
                     lx.eval('tool.setAttr gen.helix vecZ 1.0')
-                ##############################
+                # -------------------------- #
                 lx.eval('tool.doApply')
                 lx.eval('select.nextMode')
                 if ACT_CENTER_MODE == 1 and CloneType_Replicas == 0:
@@ -513,15 +516,15 @@ class SMO_MIFABOMA_RadialArray_ViaUserPref_Cmd(lxu.command.BasicCommand):
                 lx.eval('tool.set actr.auto on 0')
                 lx.eval('select.drop item')
 
-                ######## PARENT  / CHILD Checkup ########
-                #########################################
+                # ------ PARENT  / CHILD Checkup ------ #
+                # ------------------------------------- #
                 lx.eval('select.type item')
                 lx.eval('!select.deleteSet RadArr_ITEM_TARGET false')
                 if ParentPresent == 1 :
                     lx.eval('!select.deleteSet RadArr_ITEM_PARENT false')
-                if ChildPresent == True :
+                if ChildPresent:
                     lx.eval('!select.deleteSet RadArr_ITEM_CHILD false')
-                #########################################
+                # ------------------------------------- #
 
 
 
@@ -529,9 +532,9 @@ class SMO_MIFABOMA_RadialArray_ViaUserPref_Cmd(lxu.command.BasicCommand):
                 if CloneType_Clone == 0 and CloneType_Instance == 0 and CloneType_Replicas == 1:
                     lx.eval('user.value SMO_UseVal_MIFABOMA_CloneChilds %s' % BackupCloneHierarchyState)
 
-        if RefSystemActive == False:
+        if not RefSystemActive:
             lx.eval('item.refSystem {}')
-        if RefSystemActive == True:
+        if RefSystemActive:
             lx.eval('item.refSystem %s' % CurrentRefSystemItem)
 
         lx.out('End of SMO RadialArray  Command')

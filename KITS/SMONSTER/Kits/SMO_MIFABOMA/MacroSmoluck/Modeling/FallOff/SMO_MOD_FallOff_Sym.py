@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MOD_FallOff_Sym.py
 # Version: 1.0
 #
@@ -7,11 +7,11 @@
 # set automaticly a defined Falloff
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      16/09/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo
 # scene = modo.scene.current()
@@ -21,25 +21,25 @@ import modo
 # lx.out('In Selected items, List of their Unique Name is:',SelItems)
 
 #DSym_Mode = 0
-################################
-#<----[ DEFINE ARGUMENTS ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE ARGUMENTS )----> #
+# ------------------------------ #
 args = lx.args()
 lx.out(args)
 
 Sym_Mode = args[0]                          # Symmetry mode:                        None = 0 ### Start = 1 ### End = 2
 # Expose the Result of the Arguments 
 lx.out(Sym_Mode)
-################################
-#<----[ DEFINE ARGUMENTS ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE ARGUMENTS )----> #
+# ------------------------------ #
 
 
-## <----( Linear FallOff )----> ##
+# <----( Linear FallOff )----> #
 if lx.eval('tool.set falloff.linear ? ') == 'on':
     # lx.eval('tool.set falloff.linear on')
     FallOff_Mode = 0
-    ## Linear <----( Symetry Mode )----> ##
+    ## Linear <----( Symetry Mode )----> #
     if Sym_Mode == 0:
         lx.eval('tool.setAttr falloff.linear symmetric none')
     if Sym_Mode == 1:
@@ -51,11 +51,11 @@ if lx.eval('tool.set falloff.linear ? ') == 'on':
     # lx.eval('attr.formPopover {SMO_FALLOFF_Axes_Pie_SH:sheet}')
     # CALLING the FALLOFF AXES Pie Menu
 
-## <----( Cylinder FallOff )----> ##
+# <----( Cylinder FallOff )----> #
 if lx.eval('tool.set falloff.cylinder ? ') == 'on':
     # lx.eval('tool.set falloff.cylinder on')
     FallOff_Mode = 1
-    ## Cylinder <----( Symetry Mode )----> ##
+    ## Cylinder <----( Symetry Mode )----> #
     if Sym_Mode == 0:
         lx.eval('tool.setAttr falloff.cylinder symmetric none')
     if Sym_Mode == 1:

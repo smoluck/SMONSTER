@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_UV_NormalizePack_Cmd.py
 # Version:      1.0
 #
@@ -8,15 +8,19 @@
 #               them in 0-1 UVSpace.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo, sys
+import lx
+import lxu
+import modo
+import sys
 
 Cmd_Name = "smo.UV.NormalizePack"
+
 
 class SMO_UV_NormalizePack_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -60,7 +64,7 @@ class SMO_UV_NormalizePack_Cmd(lxu.command.BasicCommand):
 
 
 
-        ############### 2 ARGUMENTS ###############
+        # ------------- ARGUMENTS ------------- #
         args = lx.args()
         lx.out(args)
         # no Flipped = 0
@@ -72,20 +76,13 @@ class SMO_UV_NormalizePack_Cmd(lxu.command.BasicCommand):
         # Orient preprocess ON = 1
         Orient_Pass = Int_Orient_Pass
         lx.out('Orient preprocess state:',Orient_Pass)
-        ############### ARGUMENTS ###############
+        # ------------- ARGUMENTS ------------- #
 
 
 
-        # ############### 2 ARGUMENT Test ###############
-        # FixFlippedUV = 1
-        # Orient_Pass = 0
-        # ############### ARGUMENT ###############
-
-
-
-        ################################
-        #<----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
 
@@ -124,9 +121,9 @@ class SMO_UV_NormalizePack_Cmd(lxu.command.BasicCommand):
 
 
 
-        ###############################################
-        ####### SAFETY CHECK 1 - UVMap Selected #######
-        ###############################################
+        # ----------------------------------------- #
+        # <---( SAFETY CHECK 1 )---> UVMap Selected #
+        # ----------------------------------------- #
         lx.out('<------------- START -------------->')
         lx.out('<--- UV Map Safety Check --->')
 
@@ -172,7 +169,7 @@ class SMO_UV_NormalizePack_Cmd(lxu.command.BasicCommand):
         ################################################
         ####### SAFETY CHECK 2 -  Selection Mode #######
         ################################################
-        #####--------------------  safety check 2: Component Selection Mode type --- START --------------------#####
+        # Component Selection Mode type --- START
         
         selType = ""
         # Used to query layerservice for the list of polygons, edges or vertices.
@@ -225,14 +222,14 @@ class SMO_UV_NormalizePack_Cmd(lxu.command.BasicCommand):
             SMO_SafetyCheckNP_ItemModeEnabled = 1
             
             lx.out('script Running: Item Component Selection Mode')
-        #####--------------------  safety check 2: Component Selection Mode type --- END --------------------#####
+        # Component Selection Mode type --- END
         
         
         
         ##########################################
-        ## <----( Main Macro : FixFlipped pass )----> ##
+        # <----( Main Macro : FixFlipped pass )----> #
         ##########################################
-        if SMO_SafetyCheckNP_UVMapCount == True :
+        if SMO_SafetyCheckNP_UVMapCount:
             if SMO_SafetyCheckNP_VertexModeEnabled == 1:
                 lx.eval('select.type polygon')
                 
@@ -273,10 +270,10 @@ class SMO_UV_NormalizePack_Cmd(lxu.command.BasicCommand):
             
             
             
-            ##############################
-            ####### SAFETY CHECK 3 #######
-            ##############################
-            #####--------------------  safety check 3: at Least 1 Polygons is selected --- START --------------------#####
+            # -------------------------- #
+            # <---( SAFETY CHECK 3 )---> #
+            # -------------------------- #
+            # at Least 1 Polygons is selected --- START
             
             
             if CsPolysNP < 1:
@@ -286,12 +283,12 @@ class SMO_UV_NormalizePack_Cmd(lxu.command.BasicCommand):
             elif CsPolysNP >= 1:
                 SMO_SafetyCheckNP_min1PolygonSelected = 1
                 lx.out('Normalize and Pack applied on Poly Selection Only')
-            #####--------------------  safety check 3: at Least 1 Polygons is selected --- END --------------------#####
+            # at Least 1 Polygons is selected --- END
             
             
             
             ##########################################
-            ## <----( Main Macro : Normalize )----> ##
+            # <----( Main Macro : Normalize )----> #
             ##########################################
             if SMO_SafetyCheckNP_min1PolygonSelected >= 1 :
                 lx.out('Normalize and Pack applied on Poly Selection Only')

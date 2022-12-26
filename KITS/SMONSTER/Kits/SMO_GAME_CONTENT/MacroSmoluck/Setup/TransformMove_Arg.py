@@ -5,9 +5,9 @@ arguments = args()
 
 
 # Command Block Begin:
-lx.eval('tool.setAttr tool:xfrm.transform attr:TX value:{%f}' %arguments[0])
-lx.eval('tool.setAttr tool:xfrm.transform attr:TY value:{%f}' %arguments[1])
-lx.eval('tool.setAttr tool:xfrm.transform attr:TZ value:{%f}' %arguments[2])
+lx.eval('tool.setAttr tool:xfrm.transform attr:TX value:{%f}' % arguments[0])
+lx.eval('tool.setAttr tool:xfrm.transform attr:TY value:{%f}' % arguments[1])
+lx.eval('tool.setAttr tool:xfrm.transform attr:TZ value:{%f}' % arguments[2])
 # Command Block End:
 
 

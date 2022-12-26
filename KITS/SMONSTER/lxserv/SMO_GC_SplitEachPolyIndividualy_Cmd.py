@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_SplitEachPolyIndividualy_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #               It Split each polygon into an individual item.
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      17/09/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.SplitEachPolyIndividualy"
 # smo.GC.SplitEachPolyIndividualy 1
+
 
 class SMO_GC_SplitEachPolyIndividualy_Cmd(lxu.command.BasicCommand):
     def __init__(self):

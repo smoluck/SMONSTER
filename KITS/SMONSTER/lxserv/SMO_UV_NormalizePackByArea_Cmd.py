@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_UV_NormalizePackByArea_Cmd.py
 # Version:      1.0
 #
@@ -8,15 +8,19 @@
 #               them in defined UV Space by Arguments.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo, sys
+import lx
+import lxu
+import modo
+import sys
 
 Cmd_Name = "smo.UV.NormalizePackByArea"
+
 
 class SMO_UV_NormalizePackByArea_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -67,7 +71,7 @@ class SMO_UV_NormalizePackByArea_Cmd(lxu.command.BasicCommand):
         
         
         
-        ############### 2 ARGUMENTS ###############
+        # ------------- ARGUMENTS ------------- #
         args = lx.args()
         lx.out(args)
         # no Flipped = 0
@@ -87,22 +91,16 @@ class SMO_UV_NormalizePackByArea_Cmd(lxu.command.BasicCommand):
         # 
         ZoneAreaV = Int_ZoneAreaV
         lx.out('Area Value V:',ZoneAreaV)
-        ############### ARGUMENTS ###############
+        # ------------- ARGUMENTS ------------- #
+        
+        
+
         
         
         
-        # ############### 2 ARGUMENT Test ###############
-        # FixFlippedUV = 1
-        # Orient_Pass = 0
-        # ZoneAreaU = -1
-        # ZoneAreaV = -2
-        # ############### ARGUMENT ###############
-        
-        
-        
-        ################################
-        #<----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
         
@@ -139,9 +137,9 @@ class SMO_UV_NormalizePackByArea_Cmd(lxu.command.BasicCommand):
         
         
         
-        ###############################################
-        ####### SAFETY CHECK 1 - UVMap Selected #######
-        ###############################################
+        # ----------------------------------------- #
+        # <---( SAFETY CHECK 1 )---> UVMap Selected #
+        # ----------------------------------------- #
         lx.out('<------------- START -------------->')
         lx.out('<--- UV Map Safety Check --->')
         
@@ -178,14 +176,14 @@ class SMO_UV_NormalizePackByArea_Cmd(lxu.command.BasicCommand):
         # lx.out('USER UV Map Name:', UserUVMapName)
         lx.out('<- UV Map Safety Check ->')
         lx.out('<------------- END -------------->')
-        ###############################################
+        # ----------------------------------------- #
         
         
         
-        ################################################
-        ####### SAFETY CHECK 2 -  Selection Mode #######
-        ################################################
-        #####--------------------  safety check 2: Component Selection Mode type --- START --------------------#####
+        # ----------------------------------------- #
+        # <---( SAFETY CHECK 2 )---> Selection Mode #
+        # ----------------------------------------- #
+        # Component Selection Mode type --- START
         
         selType = ""
         # Used to query layerservice for the list of polygons, edges or vertices.
@@ -238,13 +236,13 @@ class SMO_UV_NormalizePackByArea_Cmd(lxu.command.BasicCommand):
             SMO_SafetyCheckNPbA_ItemModeEnabled = 1
             
             lx.out('script Running: Item Component Selection Mode')
-        #####--------------------  safety check 2: Component Selection Mode type --- END --------------------#####
+        # Component Selection Mode type --- END
         
         
-        ################################
-        ## <----( Main Macro : )----> ##
-        ################################
-        if SMO_SafetyCheckNPbA_UVMapCount == True :
+        # -------------------------- #
+        # <----( Main Macro : )----> #
+        # -------------------------- #
+        if SMO_SafetyCheckNPbA_UVMapCount:
             if SMO_SafetyCheckNPbA_VertexModeEnabled == 1:
                 lx.eval('select.type polygon')
                 

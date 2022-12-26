@@ -1,9 +1,14 @@
 # python
 
-import lx, modo, os, re
 from smodule.commander.SMO_Commander import SmoCommanderClass
 
+import lx
+import modo
+import os
+import re
+
 CMD_NAME = 'smo.BAKE.Startup'
+
 
 class SMO_BAKE_BOOT_Cmd(SmoCommanderClass):
 
@@ -38,8 +43,9 @@ class SMO_BAKE_BOOT_Cmd(SmoCommanderClass):
             modo.dialogs.alert(
                 "New SMO BAKE Version",
                 "IMPORTANT: New version of SMO BAKE detected.\n \nIt is Recommended to Reset MODO prefs using:\nSystem --> Reset Preferences"
-                )
+            )
 
         lx.eval("user.value SMO_BAKE_version %s" % SMO_BAKE_version_installed)
+
 
 lx.bless(SMO_BAKE_BOOT_Cmd, CMD_NAME)

@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_CorrectRoundCorner_Cmd.py
 # Version:      1.0
 #
@@ -8,15 +8,19 @@
 #
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      27/02/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo, math
+import lx
+import lxu
+import math
+import modo
 
 Cmd_Name = "smo.GC.CorrectRoundCorner"
+
 
 class SMO_GC_CorrectRoundCorner_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -114,7 +118,7 @@ class SMO_GC_CorrectRoundCorner_Cmd(lxu.command.BasicCommand):
         TargetMeshVertCount = lx.eval('query layerservice vert.N ? %s' % TargetMeshID)
         lx.out('Total Vert on Mesh: %s' % TargetMeshVertCount)
         
-        Vert_A_ID = (TargetMeshVertCount)
+        Vert_A_ID = TargetMeshVertCount
         lx.out('Vert A (ID) %s' % Vert_A_ID)
         
         
@@ -453,7 +457,7 @@ class SMO_GC_CorrectRoundCorner_Cmd(lxu.command.BasicCommand):
         
         
         ########################################################
-        ######## Mirror Corner Vertex and opposite Poly ########
+        # ------ Mirror Corner Vertex and opposite Poly ------ #
         # Select hypotenuse to Copy the Corner Vertex to opposite side with Mirror tool
         lx.eval('select.drop vertex')
         lx.eval('select.element layer:{%i} type:vertex mode:replace index:{%i}' % (CornerIt, 1))
@@ -528,7 +532,7 @@ class SMO_GC_CorrectRoundCorner_Cmd(lxu.command.BasicCommand):
         
         
         ####################################################################################
-        ######## Flatten Backup Poly according to point Corner -> A and Corner -> B ########
+        # ------ Flatten Backup Poly according to point Corner -> A and Corner -> B ------ #
         ## Corner -> A ##
         scene.select(MeshCorner)
         lx.eval('select.type vertex')

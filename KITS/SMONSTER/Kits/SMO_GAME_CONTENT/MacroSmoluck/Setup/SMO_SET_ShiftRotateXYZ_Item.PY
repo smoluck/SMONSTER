@@ -1,4 +1,4 @@
-#python
+# python
 # Select the mesh to rotate (in item mode)
 # and it will add the deisred value to the current transform value.
 #
@@ -13,6 +13,8 @@
 # arg2 = Rotation Value in degree
 #
 # lx.eval('@{kit_SMO_GAME_CONTENT:MacroSmoluck/Setup/SMO_SET_ShiftRotateXYZ_Item.py} 1 180')
+
+import lx
 
 args = lx.args()
 lx.out(args)
@@ -33,19 +35,19 @@ lx.out('Y Rotation:',yRot)
 lx.out('Z Rotation:',zRot)
 
 if UserAxe == 0 :	
-	xRot = xRot + UserRot
+	xRot += UserRot
 	#Output Name and New X Pos
 	lx.out('New X Rotation:',xRot)
 	lx.eval('transform.channel rot.X {%f} shift' % xRot)
 	#lx.eval('transform.channel rot.X {%s}', % xRot)
 if UserAxe == 1 :
-	yRot = yRot + UserRot
+	yRot += UserRot
 	#Output Name and New X Pos
 	lx.out('New X Rotation:',yRot)
 	lx.eval('transform.channel rot.Y {%f} shift' % yRot)
 	#lx.eval('transform.channel rot.Y {%s}', % yRot)
 if UserAxe == 2 :
-	zRot = zRot + UserRot
+	zRot += UserRot
 	#Output Name and New X Pos
 	lx.out('New X Rotation:',zRot)
 	lx.eval('transform.channel rot.Z {%f} shift' % zRot)

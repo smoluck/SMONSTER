@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_Bool_Intersect.py
 # Version: 1.0
 #
@@ -8,21 +8,23 @@
 # (Connected Polygons) from the current Layer.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo
+import lx
+
 scene = modo.scene.current()
 mesh = scene.selectedByType('mesh')[0]
 CsPolys = len(mesh.geometry.polygons.selected)
 
 
-################################
-#<----[ DEFINE VARIABLES ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE VARIABLES )----> #
+# ------------------------------ #
 
 #####--- Define user value for all the different SafetyCheck --- START ---#####
 #####
@@ -53,101 +55,101 @@ User_Pref_PasteDeselect = lx.eval('pref.value application.pasteDeSelection ?')
 lx.out('User Pref: Deselect Elements Before Pasting', User_Pref_PasteDeselect)
 # Is Copy Deselect False ?
 if User_Pref_CopyDeselect == 0:
-    lx.eval('pref.value application.copyDeSelection true')
-    User_Pref_CopyDeselectChangedState = 1
-    
+	lx.eval('pref.value application.copyDeSelection true')
+	User_Pref_CopyDeselectChangedState = 1
+
 # Is Paste Selection False ?
 if User_Pref_PasteSelection == 0:
-    lx.eval('pref.value application.pasteSelection true')
-    User_Pref_PasteSelectionChangedState = 1
-    
+	lx.eval('pref.value application.pasteSelection true')
+	User_Pref_PasteSelectionChangedState = 1
+
 # Is Paste Deselect False ?
 if User_Pref_PasteDeselect == 0:
-    lx.eval('pref.value application.pasteDeSelection true')
-    User_Pref_PasteDeselectChangedState = 1
-    
+	lx.eval('pref.value application.pasteDeSelection true')
+	User_Pref_PasteDeselectChangedState = 1
+
 # Is Copy Deselect True ?
 if User_Pref_CopyDeselect == 1:
-    User_Pref_CopyDeselectChangedState = 0
-    
+	User_Pref_CopyDeselectChangedState = 0
+
 # Is Paste Selection True ?
 if User_Pref_PasteSelection == 1:
-    User_Pref_PasteSelectionChangedState = 0
-    
+	User_Pref_PasteSelectionChangedState = 0
+
 # Is Paste Deselect True ?
 if User_Pref_PasteDeselect == 1:
-    User_Pref_PasteDeselectChangedState = 0
+	User_Pref_PasteDeselectChangedState = 0
 ################################################
 
 
 	
-##############################
-####### SAFETY CHECK 1 #######
-##############################
+# -------------------------- #
+# <---( SAFETY CHECK 1 )---> #
+# -------------------------- #
 
-#####--------------------  safety check 1: Polygon Selection Mode enabled --- START --------------------#####
+# --------------------  safety check 1: Polygon Selection Mode enabled --- START
 
 selType = ""
 # Used to query layerservice for the list of polygons, edges or vertices.
 attrType = ""
 
 if lx.eval1( "select.typeFrom typelist:vertex;polygon;edge;item;ptag ?" ):
-    selType = "vertex"
-    attrType = "vert"
+	selType = "vertex"
+	attrType = "vert"
 	
-    SMO_SafetyCheck_PolygonModeEnabled = 0
-    lx.eval('dialog.setup info')
-    lx.eval('dialog.title {SMO_BoolSubtract:}')
-    lx.eval('dialog.msg {You must be in Polygon Mode to run that script}')
-    lx.eval('+dialog.open')
-    lx.out('script Stopped: You must be in Polygon Mode to run that script')
-    sys.exit
-    #sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
-    
+	SMO_SafetyCheck_PolygonModeEnabled = 0
+	lx.eval('dialog.setup info')
+	lx.eval('dialog.title {SMO_BoolSubtract:}')
+	lx.eval('dialog.msg {You must be in Polygon Mode to run that script}')
+	lx.eval('+dialog.open')
+	lx.out('script Stopped: You must be in Polygon Mode to run that script')
+	sys.exit
+	#sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
+
 	
 elif lx.eval1( "select.typeFrom typelist:edge;vertex;polygon;item ?" ):
-    selType = "edge"
-    attrType = "edge"
+	selType = "edge"
+	attrType = "edge"
 	
-    SMO_SafetyCheck_PolygonModeEnabled = 0
-    lx.eval('dialog.setup info')
-    lx.eval('dialog.title {SMO_BoolSubtract:}')
-    lx.eval('dialog.msg {You must be in Polygon Mode to run that script}')
-    lx.eval('+dialog.open')
-    lx.out('script Stopped: You must be in Polygon Mode to run that script')
-    sys.exit
-    #sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
+	SMO_SafetyCheck_PolygonModeEnabled = 0
+	lx.eval('dialog.setup info')
+	lx.eval('dialog.title {SMO_BoolSubtract:}')
+	lx.eval('dialog.msg {You must be in Polygon Mode to run that script}')
+	lx.eval('+dialog.open')
+	lx.out('script Stopped: You must be in Polygon Mode to run that script')
+	sys.exit
+	#sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
 	
 elif lx.eval1( "select.typeFrom typelist:polygon;vertex;edge;item ?" ):
-    selType = "polygon"
-    attrType = "poly"
+	selType = "polygon"
+	attrType = "poly"
 	
-    SMO_SafetyCheck_PolygonModeEnabled = 1
-    lx.out('script Running: Correct Component Selection Mode')
+	SMO_SafetyCheck_PolygonModeEnabled = 1
+	lx.out('script Running: Correct Component Selection Mode')
 
 
 else:
 	# This only fails if none of the three supported selection
-    # modes have yet been used since the program started, or
-    # if "item" or "ptag" (ie: materials) is the current
-    # selection mode.
-    SMO_SafetyCheck_PolygonModeEnabled = 0
-    lx.eval('dialog.setup info')
-    lx.eval('dialog.title {SMO_BoolSubtract:}')
-    lx.eval('dialog.msg {You must be in Polygon Mode to run that script}')
-    lx.eval('+dialog.open')
-    lx.out('script Stopped: You must be in Polygon Mode to run that script')
-    sys.exit
-    #sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
-#####--------------------  safety check 1: Polygon Selection Mode enabled --- END --------------------#####
+	# modes have yet been used since the program started, or
+	# if "item" or "ptag" (ie: materials) is the current
+	# selection mode.
+	SMO_SafetyCheck_PolygonModeEnabled = 0
+	lx.eval('dialog.setup info')
+	lx.eval('dialog.title {SMO_BoolSubtract:}')
+	lx.eval('dialog.msg {You must be in Polygon Mode to run that script}')
+	lx.eval('+dialog.open')
+	lx.out('script Stopped: You must be in Polygon Mode to run that script')
+	sys.exit
+	#sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
+# --------------------  safety check 1: Polygon Selection Mode enabled --- END
 
 
 
-##############################
-####### SAFETY CHECK 2 #######
-##############################
+# -------------------------- #
+# <---( SAFETY CHECK 2 )---> #
+# -------------------------- #
 
-#####--------------------  safety check 2: at Least 1 Polygons is selected --- START --------------------#####
+# at Least 1 Polygons is selected --- START
 lx.out('Count Selected Poly',CsPolys)
 
 if CsPolys < 1:
@@ -162,7 +164,7 @@ if CsPolys < 1:
 elif CsPolys >= 1:
 	SMO_SafetyCheck_min1PolygonSelected = 1
 	lx.out('script running: right amount of polygons in selection')
-#####--------------------  safety check 2: at Least 1 Polygons is selected --- END --------------------#####
+# at Least 1 Polygons is selected --- END
 
 
 
@@ -177,11 +179,11 @@ lx.out('Current Value',TotalSafetyCheck)
 
 
 
-##############################
-## <----( Main Macro )----> ##
-##############################
+# -------------------------- #
+# <----( Main Macro )----> #
+# -------------------------- #
 
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
 if TotalSafetyCheck == TotalSafetyCheckTrueValue:
 	# replay name:"Edit Selection Set"
 	lx.eval('select.editSet name:Bool_Selected_Tag mode:add')
@@ -229,14 +231,14 @@ if TotalSafetyCheck == TotalSafetyCheckTrueValue:
 	
 	
 	
-	##############################
-	## <----( Main Command )----> 
-	##############################
+	# -------------------------- #
+	# <----( Main Command )----> 
+	# -------------------------- #
 	# replay name:"Boolean Action INTERSECT"
 	lx.eval('poly.boolean mode:intersect cutmesh:background')
-	##############################
-	## <----( Main Command )----> 
-	##############################
+	# -------------------------- #
+	# <----( Main Command )----> 
+	# -------------------------- #
 	
 	
 	
@@ -273,19 +275,19 @@ elif TotalSafetyCheck != TotalSafetyCheckTrueValue:
 	lx.out('script Stopped: your mesh does not match the requirement for that script.')
 	sys.exit
 	
-    
+
 ###############COPY/PASTE END Procedure#################
 # Restore user Preferences:
 if User_Pref_CopyDeselectChangedState == 1 :
-    lx.eval('pref.value application.copyDeSelection false')
-    lx.out('"Deselect Elements after Copying" have been Restored')
+	lx.eval('pref.value application.copyDeSelection false')
+	lx.out('"Deselect Elements after Copying" have been Restored')
 if User_Pref_PasteSelectionChangedState == 1 :
-    lx.eval('pref.value application.pasteSelection false')
-    lx.out('"Select Pasted Elements" have been Restored')
+	lx.eval('pref.value application.pasteSelection false')
+	lx.out('"Select Pasted Elements" have been Restored')
 if User_Pref_PasteDeselectChangedState == 1 :
-    lx.eval('pref.value application.pasteDeSelection false')
-    lx.out('"Deselect Elements Before Pasting" have been Restored')
+	lx.eval('pref.value application.pasteDeSelection false')
+	lx.out('"Deselect Elements Before Pasting" have been Restored')
 ########################################################
 
 lx.out('End of SMO_Bool_Intersect Script')
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END

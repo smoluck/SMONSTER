@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MIFABOMA_RADIALSWEEP_CountByUser_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #               using Origin Center (World) or Item Center (Local). You need to get at least one Mesh item selected.
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      16/09/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.MIFABOMA.RadialSweepCountByUser"
 # smo.MIFABOMA.RadialSweepCountByUser 1 32 1 360 0 0
+
 
 class SMO_MIFABOMA_RadialSweep_CountByUser_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -98,9 +101,9 @@ class SMO_MIFABOMA_RadialSweep_CountByUser_Cmd(lxu.command.BasicCommand):
         user_inputARRAY_COUNT = lx.eval("user.value RadialSweepSideCount ?")
         
         
-        ################################
-        #<----[ DEFINE ARGUMENTS ]---->#                # smo.MIFABOMA.RadialSweep 1 32 1 0 0
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #                # smo.MIFABOMA.RadialSweep 1 32 1 0 0
+        # ------------------------------ #
         args = lx.args()
         lx.out(args)
         RADIAL_AXES = self.dyna_Int (0)                 # Axes selection:       X = 0 ### Y = 1 ### Z = 2
@@ -110,9 +113,9 @@ class SMO_MIFABOMA_RadialSweep_CountByUser_Cmd(lxu.command.BasicCommand):
         SQUARE = self.dyna_Bool (4)                     # Off = 0 ### On = 1
         # Expose the Result of the Arguments 
         lx.out(RADIAL_AXES,ARRAY_COUNT,LOCAL,CAPS,SQUARE)
-        ################################
-        #<----[ DEFINE ARGUMENTS ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #
+        # ------------------------------ #
         
         
         
@@ -170,9 +173,9 @@ class SMO_MIFABOMA_RadialSweep_CountByUser_Cmd(lxu.command.BasicCommand):
         
         
         
-        ########################################
-        ## <----( Main Macro - POLYGON )----> ##
-        ########################################
+        # ---------------------------------- #
+        # <----( Main Macro - POLYGON )----> #
+        # ---------------------------------- #
         if ItemMode == 0 and VertMode == 0 and EdgeMode == 0 and PolyMode == 1 and CountItem > 0 :
             if CountPoly > 0 :
                 lx.eval('hide.unsel')
@@ -180,7 +183,7 @@ class SMO_MIFABOMA_RadialSweep_CountByUser_Cmd(lxu.command.BasicCommand):
             lx.eval('select.type item')
             if LOCAL == 1 :
                 # BugFix to preserve the state of the RefSystem (item at origin in viewport)
-                if RefSystemActive == False :
+                if not RefSystemActive:
                     lx.eval('item.refSystem %s' % SelItems[0])
                 else :
                     print('Ref System activated')
@@ -188,18 +191,18 @@ class SMO_MIFABOMA_RadialSweep_CountByUser_Cmd(lxu.command.BasicCommand):
             lx.eval('select.type polygon')
             
             
-            #########################################
-            ######## Radial Sweep Tool Setup ########
-            #########################################
+            # ------------------------------------- #
+            # ------ Radial Sweep Tool Setup ------ #
+            # ------------------------------------- #
             lx.eval('tool.set "Radial Sweep" on')
-            if SQUARE == False :
+            if not SQUARE:
                 lx.eval('tool.setAttr gen.helix square false')
                 lx.eval('tool.setAttr gen.helix sides %s' % ARRAY_COUNT)
                 lx.eval('tool.setAttr gen.helix start %s' % StartANGLE)
                 lx.eval('tool.setAttr gen.helix end %s' % EndANGLE)
                 
             lx.eval('tool.setAttr effector.sweep flip false')
-            if SQUARE == True :
+            if SQUARE:
                 lx.eval('tool.setAttr gen.helix square true')
                 
             if CAPS == 0 :
@@ -235,13 +238,13 @@ class SMO_MIFABOMA_RadialSweep_CountByUser_Cmd(lxu.command.BasicCommand):
                 lx.eval('tool.setAttr gen.helix vecX 0.0')
                 lx.eval('tool.setAttr gen.helix vecY 0.0')
                 lx.eval('tool.setAttr gen.helix vecZ 1.0')
-            ##############################
+            # -------------------------- #
             lx.eval('tool.doApply')
             lx.eval('select.drop polygon')
             lx.eval('select.nextMode')
             if LOCAL == 1 :
                 # BugFix to preserve the state of the RefSystem (item at origin in viewport)
-                if RefSystemActive == False :
+                if not RefSystemActive:
                     lx.eval('item.refSystem {}')
                 else :
                     print('Ref System activated')
@@ -253,18 +256,18 @@ class SMO_MIFABOMA_RadialSweep_CountByUser_Cmd(lxu.command.BasicCommand):
         
         
         
-        ########################################
-        ## <----( Main Macro - EDGE )----> ##
-        ########################################
+        # ------------------------------- #
+        # <----( Main Macro - EDGE )----> #
+        # ------------------------------- #
         if ItemMode == 0 and VertMode == 0 and EdgeMode == 1 and PolyMode == 0 and CountItem > 0 :
-            if TagsProcessFromHighPolyMeshData == True:
+            if TagsProcessFromHighPolyMeshData:
                 lx.eval('smo.MIFABOMA.RadialSweep.TagsProcessFromHighPolyMeshData 0')
 
             lx.eval('tool.set actr.auto on 0')
             lx.eval('select.type item')
             if LOCAL == 1 :
                 # BugFix to preserve the state of the RefSystem (item at origin in viewport)
-                if RefSystemActive == False :
+                if not RefSystemActive:
                     lx.eval('item.refSystem %s' % SelItems[0])
                 else :
                     print('Ref System activated')
@@ -272,17 +275,17 @@ class SMO_MIFABOMA_RadialSweep_CountByUser_Cmd(lxu.command.BasicCommand):
             lx.eval('select.type edge')
             
             
-            #########################################
-            ######## Radial Sweep Tool Setup ########
-            #########################################
+            # ------------------------------------- #
+            # ------ Radial Sweep Tool Setup ------ #
+            # ------------------------------------- #
             lx.eval('tool.set "Radial Sweep" on')
-            if SQUARE == False :
+            if not SQUARE:
                 lx.eval('tool.setAttr gen.helix square false')
                 lx.eval('tool.setAttr gen.helix sides %s' % ARRAY_COUNT)
                 lx.eval('tool.setAttr gen.helix start %s' % StartANGLE)
                 lx.eval('tool.setAttr gen.helix end %s' % EndANGLE)
                 
-            if SQUARE == True :
+            if SQUARE:
                 lx.eval('tool.setAttr gen.helix square true')
                 
             lx.eval('tool.setAttr effector.sweep flip true')
@@ -309,25 +312,25 @@ class SMO_MIFABOMA_RadialSweep_CountByUser_Cmd(lxu.command.BasicCommand):
                 lx.eval('tool.setAttr gen.helix vecX 0.0')
                 lx.eval('tool.setAttr gen.helix vecY 0.0')
                 lx.eval('tool.setAttr gen.helix vecZ 1.0')
-            ##############################
+            # -------------------------- #
             lx.eval('tool.doApply')
             lx.eval('select.drop edge')
             lx.eval('select.nextMode')
             if LOCAL == 1 :
                 # BugFix to preserve the state of the RefSystem (item at origin in viewport)
-                if RefSystemActive == False :
+                if not RefSystemActive:
                     lx.eval('item.refSystem {}')
                 else :
                     print('Ref System activated')
             lx.eval('tool.set actr.auto on 0')
 
-            if TagsProcessFromHighPolyMeshData == True:
+            if TagsProcessFromHighPolyMeshData:
                 lx.eval('smo.MIFABOMA.RadialSweep.TagsProcessFromHighPolyMeshData 1')
 
 
-        if RefSystemActive == False:
+        if not RefSystemActive:
             lx.eval('item.refSystem {}')
-        if RefSystemActive == True:
+        if RefSystemActive:
             lx.eval('item.refSystem %s' % CurrentRefSystemItem)
 
         lx.out('End of SMO RadialSweep  Command')

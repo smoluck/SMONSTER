@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_ReleaseFromIsolateMode_Cmd.py
 # Version:      1.0
 #
@@ -8,17 +8,18 @@
 #               
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      23/04/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
-from math import degrees
+import lx
+import lxu
 
 Cmd_Name = "smo.GC.ReleaseFromIsolateMode"
 # smo.GC.ReleaseFromIsolateMode
+
 
 class SMO_GC_ReleaseFromIsolateMode_Cmd(lxu.command.BasicCommand):
     def __init__(self):

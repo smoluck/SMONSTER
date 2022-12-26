@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_CB_CreateLocatorOnMesh_Cmd.py
 # Version:      1.0
 #
@@ -7,16 +7,19 @@
 #               Create a Locator on first selected mesh position and parent all the selected meshes to that Locator.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      13/04/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.CB.CreateLocatorOnMesh"
 # smo.CB.CreateLocatorOnMesh 2 1 1
+
 
 class SMO_CB_CreateLocatorOnMesh_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -55,13 +58,13 @@ class SMO_CB_CreateLocatorOnMesh_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
 
-        # # ############### 3 ARGUMENTS Test ###############
+        # # # ------------- ARGUMENTS Test
         # LocShape = 2
         # LocSolid = 0
         # LocAxis = 0
-        # # ############### ARGUMENTS ###############
+        # # # ------------- ARGUMENTS ------------- #
 
-        # ############### 3 ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
         args = lx.args()
         lx.out(args)
 
@@ -89,14 +92,12 @@ class SMO_CB_CreateLocatorOnMesh_Cmd(lxu.command.BasicCommand):
         # None = 4
         LocAxis = self.dyna_Int(2)
         # lx.out('Desired Axis:',LocAxis)
-        # ############### ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
 
-        ##############################
-        ## <----( Main Macro )----> ##
-        ##############################
-        ##############################
-        ## <----( Main Macro )----> ##
-        ##############################
+        # ------------------------ #
+        # <----( Main Macro )----> #
+        # ------------------------ #
+
         SelItem = lxu.select.ItemSelection().current()
         # TCount = len(SelMeshItem)
         ##################### For Locators ######################
@@ -155,7 +156,7 @@ class SMO_CB_CreateLocatorOnMesh_Cmd(lxu.command.BasicCommand):
         # Define the ID of the Master Locator that drive the channel values.
         LocMaster = LocIDList[0]
 
-        if LocAxis >= 0 and LocAxis <= 3 and LocShape > 0:
+        if 0 <= LocAxis <= 3 and LocShape > 0:
             if LocAxis == 0:
                 if LocShape == 1 or LocShape == 2 or LocShape == 3 or LocShape == 7:
                     lx.eval('select.item %s add' % LocMaster)

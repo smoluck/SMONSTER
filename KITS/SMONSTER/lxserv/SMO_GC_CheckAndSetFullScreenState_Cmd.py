@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_CheckAndSetFullScreenState_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,18 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      06/12/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
 
 Cmd_Name = "smo.GC.CheckAndSetFullScreenState"
 # smo.GC.CheckAndSetFullScreenState
+
 
 class SMO_GC_CheckAndSetFullScreenState_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -108,12 +110,12 @@ class SMO_GC_CheckAndSetFullScreenState_Cmd(lxu.command.BasicCommand):
         lx.out('FullScreen Mode State', bool(FullscreenState))
 
         #print('----------')
-        del (FullscreenState)
-        del (LaySwitchState)
-        del (LayTopState)
-        del (LayDownState)
-        del (LayLeftState)
-        del (LayRightState)
+        del FullscreenState
+        del LaySwitchState
+        del LayTopState
+        del LayDownState
+        del LayLeftState
+        del LayRightState
 
 
 lx.bless(SMO_GC_CheckAndSetFullScreenState_Cmd, Cmd_Name)

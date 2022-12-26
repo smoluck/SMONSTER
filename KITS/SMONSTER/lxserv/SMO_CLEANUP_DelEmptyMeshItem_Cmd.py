@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_CLEANUP_DelEmptyMeshItem_Cmd.py
 # Version:      1.0
 #
@@ -8,13 +8,15 @@
 #
 #
 # Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      17/02/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.CLEANUP.DelEmptyMeshItem"
 

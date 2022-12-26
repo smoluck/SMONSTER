@@ -1,5 +1,5 @@
-# python
-# ---------------------------------------
+#python
+"""
 # Name:         SMO_SMONSTER_OpenTrainingScene_Cmd.py
 # Version:      1.0
 #
@@ -7,18 +7,18 @@
 #               Open the Training Scene using an ID integer as argument
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      14/08/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
 
 Cmd_Name = "smo.SMONSTER.OpenTrainingScene"
-
-
 # smo.SMONSTER.OpenTrainingScene 1
+
 
 class SMO_SMONSTER_OpenTrainingScene_Cmd(lxu.command.BasicCommand):
     def __init__(self):

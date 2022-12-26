@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_UV_RelaxUV.py
 # Version: 1.0
 #
@@ -7,14 +7,16 @@
 # Relax the UV's of the current Polygon Selection
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      10/10/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
-import modo
+"""
 
-############### 1 ARGUMENT ###############
+import modo
+import lx
+
+# ------------- ARGUMENTS ------------- #
 args = lx.args()
 lx.out(args)
 
@@ -22,11 +24,7 @@ lx.out(args)
 # Angle Based = 1
 RelaxUV_Iter = int(args[0])
 lx.out('Relax UV iteration Count: %s' % RelaxUV_Iter)
-############### ARGUMENTS ###############
-
-# ############### ARGUMENT Test ###############
-# RelaxUV_Iter = 16         --> Iteration Count
-# ############### ARGUMENT ###############
+# ------------- ARGUMENTS ------------- #
 
 ##### UV SEAM Map Detection #####
 # MODO version checks.

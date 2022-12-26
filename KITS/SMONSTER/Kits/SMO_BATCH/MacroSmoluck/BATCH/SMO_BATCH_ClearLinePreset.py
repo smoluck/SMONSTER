@@ -1,5 +1,6 @@
-#python
-import lx, lxu, modo
+# python
+
+import lx
 
 lx.eval('user.value SMO_UseVal_BATCH_String_Line001 {}')
 lx.eval('user.value SMO_UseVal_BATCH_String_Line002 {}')

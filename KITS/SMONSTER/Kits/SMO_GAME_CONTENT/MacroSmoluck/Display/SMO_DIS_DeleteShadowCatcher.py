@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_DeleteShadowCatcher.py
 # Version: 1.0
 #
@@ -8,11 +8,13 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      10/03/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
+
+import lx
 
 lx.eval('select.item SMO_Ground_ShadowCatcher_ASS set')
 lx.eval('!delete')

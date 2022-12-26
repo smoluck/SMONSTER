@@ -1,5 +1,5 @@
 #LXMacro#
-#-----------------------------------------
+# ----------------------------------------
 # Name:         SMO_SET_ResetTransformationScaleAndRotation.LXM
 # Version:      1.0
 #
@@ -12,7 +12,7 @@
 #
 # Created:      XX/XX/2018-2019
 # Copyright:    (c) Franck Elisabeth 2019
-#-----------------------------------------
+# ----------------------------------------
 
 script.implicit name:"kit_SMO_GAME_CONTENT:MacroSmoluck/Setup/SMO_SET_ResetTransformScaleAndRotation.LXM"
 script.implicit name:"kit_SMO_GAME_CONTENT:MacroSmoluck/Setup/SMO_SET_ResetTransformPosition.LXM"

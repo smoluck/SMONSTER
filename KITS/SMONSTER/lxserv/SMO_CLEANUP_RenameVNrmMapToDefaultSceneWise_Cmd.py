@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_CLEANUP_RenameVNrmMapToDefaultSceneWise_Cmd.py
 # Version:      1.0
 #
@@ -7,16 +7,19 @@
 #               first detected VertexNormal Map (by Index = 0) to Modo/Preferences/Defaults/Application name.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      21/10/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.CLEANUP.RenameVNrmMapToDefaultSceneWise"
 # smo.CLEANUP.RenameVNrmMapToDefaultSceneWise
+
 
 class SMO_CLEANUP_RenameVNrmMapToDefaultSceneWise_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -89,13 +92,13 @@ class SMO_CLEANUP_RenameVNrmMapToDefaultSceneWise_Cmd(lxu.command.BasicCommand):
                 print('Detected Vertex Normal Map count %s:' % (len(VMap_NameList)))
                 #print('VertexNormalMap Detected', VMap_CountList)
 
-            if ZeroVNrmMap == False :
+            if not ZeroVNrmMap:
                 lx.eval('select.vertexMap {%s} norm replace' % (VMap_NameList[0]))
                 DetectedVMapName = lx.eval('vertMap.list norm ?')
                 if DetectedVMapName != DefaultVNrmMapName :
                     lx.eval('vertMap.rename {%s} {%s} norm active' % ((VMap_NameList[0]), DefaultVNrmMapName))
                     lx.out('Vertex Normal Map {%s} renamed to {%s}'% ((VMap_NameList[0]), DefaultVNrmMapName))
-            if ZeroVNrmMap == True :
+            if ZeroVNrmMap:
                 lx.out('Vertex Normal Map Renaming skipped, because not Detected')
             lx.eval('smo.GC.ClearSelectionVmap 4 1')
             del VMap_NameList[:]

@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_BATCH_SetInputFileTypeViaPref_Cmd.py
 # Version:      1.0
 #
@@ -8,15 +8,18 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      01/10/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
-import lx, lxu, modo
+"""
+
+import lx
+import lxu
 
 Cmd_Name = "smo.BATCH.SetInputFileTypeViaPref"
 # smo.BATCH.SetInputFileTypeViaPref {DXF}
+
 
 class SMO_BATCH_SetInputFileTypeViaPref_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -51,16 +54,16 @@ class SMO_BATCH_SetInputFileTypeViaPref_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
         
         
-        ################################
-        #<----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         lx.eval("user.defNew name:InputFileFormat type:string life:momentary")
-        ################################
+        # ------------------------------ #
         
         
-        # ############### ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
         InputFileFormat = self.dyna_String (0)
-        # ############### ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
         
         
         if InputFileFormat == "DXF" :

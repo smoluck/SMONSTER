@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MES_ExportMeshOpRig_QuadRemeshed_to_FBXSequence.py
 # Version: 5.00
 #
@@ -7,12 +7,12 @@
 # Select the MeshOp item and run. 
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      03/12/2018
 # Modified:		19/03/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 #import the necessary Python libraries
 import lx

@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_RemoveCoPlanar6Side.py
 # Version:      1.0
 #
@@ -8,22 +8,23 @@
 #               (Some of the code is related to the Sceneca  LazySelect script. Thanks to him for let me integrate it here)
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      14/04/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import modo, lx
+import lx
+import modo
 
 scene = modo.scene.current()
 mesh = scene.selectedByType('mesh')[0]
 CsPolys = len(mesh.geometry.polygons.selected)
 
 
-################################
-#<----[ DEFINE VARIABLES ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE VARIABLES )----> #
+# ------------------------------ #
 
 #####--- Define user value for all the different SafetyCheck --- START ---#####
 #####
@@ -81,11 +82,11 @@ if User_Pref_PasteDeselect == 1:
 
 
 
-##############################
-####### SAFETY CHECK 1 #######
-##############################
+# -------------------------- #
+# <---( SAFETY CHECK 1 )---> #
+# -------------------------- #
 
-#####--------------------  safety check 1: ITEM Selection Mode enabled --- START --------------------#####
+# --------------------  safety check 1: ITEM Selection Mode enabled --- START
 
 selType = ""
 # Used to query layerservice for the list of polygons, edges or vertices.
@@ -140,7 +141,7 @@ else:
     SMO_SafetyCheck_ItemModeEnabled = 1
     lx.out('script Running: Correct Component Selection Mode')
 
-#####--------------------  safety check 1: ITEM Selection Mode enabled --- END --------------------#####
+# --------------------  safety check 1: ITEM Selection Mode enabled --- END
 
 
 
@@ -148,18 +149,18 @@ else:
 #####
 TotalSafetyCheckTrueValue = 1
 lx.out('Desired Value',TotalSafetyCheckTrueValue)
-TotalSafetyCheck = (SMO_SafetyCheck_ItemModeEnabled)
+TotalSafetyCheck = SMO_SafetyCheck_ItemModeEnabled
 lx.out('Current Value',TotalSafetyCheck)
 #####
 #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
 
 
 
-##############################
-## <----( Main Macro )----> ##
-##############################
+# -------------------------- #
+# <----( Main Macro )----> #
+# -------------------------- #
 lx.out('Start of SMO Remove CoPlanar 6 Side')
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
 if TotalSafetyCheck == TotalSafetyCheckTrueValue:
 
     ############################################################

@@ -1,5 +1,5 @@
-#python
-#---------------------------------------------
+# python
+"""
 # Name:         SMO_CLEANUP_LoadPrst3DsMAX_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,17 @@
 #               Preferences to be used by the Batch Cleaner command.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      19/12/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------------
+"""
 
-
-import lx, lxu, modo
+import lx
+import lxu
 
 Cmd_Name = "smo.CLEANUP.LoadPrst3DsMAX"
+
 
 class SMO_Cleanup_LoadPrst3DsMAX_Cmd(lxu.command.BasicCommand):
     def __init__(self):

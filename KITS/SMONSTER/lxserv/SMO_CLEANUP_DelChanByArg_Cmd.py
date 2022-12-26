@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_CLEANUP_DelChanByArg_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #               via String Argument and delete it
 #
 # Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      17/02/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.CLEANUP.DelChanByArg"
 # smo.CLEANUP.DelChanByArg FBX_UDP3DSMAX
+
 
 class SMO_Cleanup_DelChanByArg_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -50,16 +53,16 @@ class SMO_Cleanup_DelChanByArg_Cmd(lxu.command.BasicCommand):
         return True
     
     def basic_Execute(self, msg, flags):
-        # # ############### 1 ARGUMENTS Test ###############
+        # # # ------------- ARGUMENTS Test
         # SearchStringArg = 'FBX_UDP3DSMAX'
-        # # ############### ARGUMENTS ###############
+        # # # ------------- ARGUMENTS ------------- #
         SearchString = self.dyna_String (0)
-        # # ############### 1 ARGUMENTS ###############
+        # # # ------------- ARGUMENTS ------------- #
         # args = lx.args()
         # lx.out(args)
         # SearchStringArg = SearchString
         # lx.out('Searched String chain:', SearchStringArg)
-        # # ############### ARGUMENTS ###############
+        # # # ------------- ARGUMENTS ------------- #
         
         scn = modo.Scene()
         for mesh in scn.items('mesh'):

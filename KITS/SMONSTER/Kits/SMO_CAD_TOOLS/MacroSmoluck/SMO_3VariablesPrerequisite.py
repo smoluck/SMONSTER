@@ -1,16 +1,19 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_3VariablesPrerequisite
 # Version: 1.0
 #
 # Purpose: This script is designed to test if at Least 3 Polygons are selected
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      27/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
+
+import lx
+import sys
 
 SMO_SafetyCheck_Only1MeshItemSelected = 0
 lx.out('SafetyCheck1',SMO_SafetyCheck_Only1MeshItemSelected)

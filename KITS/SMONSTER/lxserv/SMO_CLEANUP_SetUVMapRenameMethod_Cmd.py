@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_CLEANUP_SetUVMapRenameMethod_Cmd.py
 # Version:      1.0
 #
@@ -8,15 +8,17 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      21/06/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
 
 Cmd_Name = "smo.CLEANUP.SetUVMapRenameMethod"
+
 
 class SMO_Cleanup_SetUVMapRenameMethod_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -49,9 +51,9 @@ class SMO_Cleanup_SetUVMapRenameMethod_Cmd(lxu.command.BasicCommand):
         return True
     
     def basic_Execute(self, msg, flags):
-        # ############### ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
         RenameByDefault = self.dyna_Bool (0)
-        # ############### ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
         if RenameByDefault == 1 :
             lx.eval('user.value SMO_UseVal_CLEANUP_FullAuto_RenameUVToDefault true')
             lx.eval('user.value SMO_UseVal_CLEANUP_FullAuto_RenameUVToUserPref false')

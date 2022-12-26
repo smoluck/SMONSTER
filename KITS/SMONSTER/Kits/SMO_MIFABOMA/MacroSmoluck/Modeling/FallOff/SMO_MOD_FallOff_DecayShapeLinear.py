@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MOD_FallOff_DecayShape.py
 # Version: 1.0
 #
@@ -7,11 +7,11 @@
 # set automaticly a defined Falloff
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      16/09/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo
 # scene = modo.scene.current()
@@ -21,24 +21,24 @@ import modo
 # lx.out('In Selected items, List of their Unique Name is:',SelItems)
 
 Decay_Shape = 0
-################################
-#<----[ DEFINE ARGUMENTS ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE ARGUMENTS )----> #
+# ------------------------------ #
 # args = lx.args()
 # lx.out(args)
 
 # Decay_Shape = args[0]                       # Decay Shape:                          Linear = 0 / EaseIn = 1 / EaseOut = 2 / Smooth = 3
 # # Expose the Result of the Arguments 
 # lx.out(Decay_Shape)
-################################
-#<----[ DEFINE ARGUMENTS ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE ARGUMENTS )----> #
+# ------------------------------ #
 
-## <----( Linear FallOff )----> ##
+# <----( Linear FallOff )----> #
 if lx.eval('tool.set falloff.linear ? ') == 'on':
     # lx.eval('tool.set falloff.linear on')
     FallOff_Mode = 0
-    ## Linear <----(Decay shape)----> ##
+    ## Linear <----(Decay shape)----> #
     if FallOff_Mode == 0 and Decay_Shape == 0:
         lx.eval('tool.setAttr falloff.linear shape linear')
     if FallOff_Mode == 0 and Decay_Shape == 1:
@@ -52,11 +52,11 @@ if lx.eval('tool.set falloff.linear ? ') == 'on':
     # lx.eval('attr.formPopover {SMO_FALLOFF_Sym_Pie_SH:sheet}')
     # CALLING the FALLOFF SYMMETRY Pie Menu
 
-## <----( Cylinder FallOff )----> ##
+# <----( Cylinder FallOff )----> #
 if lx.eval('tool.set falloff.cylinder ? ') == 'on':
     # lx.eval('tool.set falloff.cylinder on')
     FallOff_Mode = 1
-    ## Cylinder <----(Decay shape)----> ##
+    ## Cylinder <----(Decay shape)----> #
     if FallOff_Mode == 1 and Decay_Shape == 0:
         lx.eval('tool.setAttr falloff.cylinder shape linear')
     if FallOff_Mode == 1 and Decay_Shape == 1:

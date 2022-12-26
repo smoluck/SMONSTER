@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_RebuildCurve.py
 # Version:      1.0
 #
@@ -8,27 +8,27 @@
 #               to Polygon Islands with differnet options like an Unmerge and Recenter.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      19/12/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import modo
+
 scene = modo.scene.current()
 
-
-# # ############### 2 ARGUMENTS Test ###############
+# # ------------- ARGUMENTS Test ------------- #
 # CurveRefineAngle = 10
 # UnmergeAllIslands = 1
 # Recenter = 1
 # Cleanup = 1
 # NoUndo = 1
-# # ############### ARGUMENTS ###############
+# # ------------- ARGUMENTS ------------- #
 
 
-
-# ############### 5 ARGUMENTS ###############
+# ------------- 5 ARGUMENTS ------------- #
 args = lx.args()
 lx.out(args)
 
@@ -53,16 +53,15 @@ lx.out('Cleanup Resulting Meshes:', Cleanup)
 
 NoUndo = bool(args[4])
 lx.out('Suspend Undo (more stable computation):', NoUndo)
-# ############### ARGUMENTS ###############
+# ------------- ARGUMENTS ------------- #
 
 
-if NoUndo == 1 :
+if NoUndo == 1:
     lx.eval('!!app.undoSuspend')
 
-
-#-------------------------------------------#
+# -------------------------------------------#
 # Delete Unnecesary items Lights and Camera #
-#-------------------------------------------#
+# -------------------------------------------#
 lx.out('-------------------------------')
 lx.out('Start of SMO_RebuildCurve Script')
 
@@ -75,21 +74,17 @@ lx.eval('!item.delete')
 lx.eval('select.itemType camera')
 lx.eval('!item.delete')
 
-
-
-
-#-----------------------------------------------#
+# -----------------------------------------------#
 # Delete Empty Mesh Layers (default Mesh Layer) #
-#-----------------------------------------------#
+# -----------------------------------------------#
 # # Variables
 DefaultMeshItemList = []
 numOfVerts = ''
 
-
 # # First we must select the scene and then all the mesh layers in our scene.
 lx.eval('select.drop item')
 lx.eval('select.layerTree all:1')
-DefaultMeshItemList = lx.eval('query sceneservice selection ? mesh') # mesh item layers
+DefaultMeshItemList = lx.eval('query sceneservice selection ? mesh')  # mesh item layers
 
 # Create the monitor item
 m = lx.Monitor()
@@ -97,66 +92,61 @@ m.init(len(DefaultMeshItemList))
 
 # For each mesh item layer, we check to see if there are any verts in the layer...
 for meshItem in DefaultMeshItemList:
-	lx.eval('select.drop item')
-	lx.eval('select.item %s' % meshItem)
-	lx.eval('query layerservice layer.index ? selected') # scene
-	numOfPoly = lx.eval('query layerservice poly.N ? all')
+    lx.eval('select.drop item')
+    lx.eval('select.item %s' % meshItem)
+    lx.eval('query layerservice layer.index ? selected')  # scene
+    numOfPoly = lx.eval('query layerservice poly.N ? all')
 
-	# If there are no verts, we delete the mesh item layer.
-	if numOfPoly == 0: lx.eval('!item.delete')
-	
-	# Increare progress monitor
-	m.step(1)
+    # If there are no verts, we delete the mesh item layer.
+    if numOfPoly == 0: lx.eval('!item.delete')
+
+    # Increare progress monitor
+    m.step(1)
 ###############################################
 
 
-
-
-#-----------------------------------------------------------------#
+# -----------------------------------------------------------------#
 # Unparent in Place All Mesh Layers and delete the Group Locators #
-#-----------------------------------------------------------------#
+# -----------------------------------------------------------------#
 # Drop layer selection
 lx.eval('select.drop item')
 lx.eval('select.itemType groupLocator')
 
 grploc_list = scene.selectedByType(lx.symbol.sITYPE_GROUPLOCATOR)
 for a in grploc_list:
-	a.select(True)
-	GrpLoc_Name = lx.eval('item.name ? xfrmcore')
-	CurveName = GrpLoc_Name + '_' + 'Curve'
-	# lx.out('Group Locator Name:', GrpLoc_Name)
-	lx.eval('select.createSet GrpLoc_temp')
-	try :
-		lx.eval('pickWalk down')
-	except :
-		lx.out('No Children Item in', GrpLoc_Name)
-	ChildCount = len(lx.evalN('query sceneservice selection ? mesh'))
-	lx.out('Children Count:', ChildCount)
-	if ChildCount >= 1 :
-		lx.eval('item.name {%s} xfrmcore' % CurveName)
-		lx.eval('item.parent parent:{} inPlace:1')
-	lx.eval('select.drop item')
-	lx.eval('select.useSet GrpLoc_temp select')
-	lx.eval('!item.delete')
+    a.select(True)
+    GrpLoc_Name = lx.eval('item.name ? xfrmcore')
+    CurveName = GrpLoc_Name + '_' + 'Curve'
+    # lx.out('Group Locator Name:', GrpLoc_Name)
+    lx.eval('select.createSet GrpLoc_temp')
+    try:
+        lx.eval('pickWalk down')
+    except:
+        lx.out('No Children Item in', GrpLoc_Name)
+    ChildCount = len(lx.evalN('query sceneservice selection ? mesh'))
+    lx.out('Children Count:', ChildCount)
+    if ChildCount >= 1:
+        lx.eval('item.name {%s} xfrmcore' % CurveName)
+        lx.eval('item.parent parent:{} inPlace:1')
+    lx.eval('select.drop item')
+    lx.eval('select.useSet GrpLoc_temp select')
+    lx.eval('!item.delete')
 lx.eval('select.drop item')
 #################################################################
 
 
-
-
-#-----------------------------------------------#
+# -----------------------------------------------#
 #		Delete Empty Mesh Layers	NO Vertex	#
 # (Curve Mesh that have been cleanup)			#
-#-----------------------------------------------#
+# -----------------------------------------------#
 # Variables
 CleanupCurveList = []
 numOfVerts = ''
 
-
 # First we must select the scene and then all the mesh layers in our scene.
 lx.eval('select.drop item')
 lx.eval('select.layerTree all:1')
-CleanupCurveList = lx.eval('query sceneservice selection ? mesh') # mesh item layers
+CleanupCurveList = lx.eval('query sceneservice selection ? mesh')  # mesh item layers
 
 # Create the monitor item
 m = lx.Monitor()
@@ -164,23 +154,21 @@ m.init(len(CleanupCurveList))
 
 # For each mesh item layer, we check to see if there are any verts in the layer...
 for meshItem in CleanupCurveList:
-	lx.eval('select.drop item')
-	lx.eval('select.item %s' % meshItem)
-	lx.eval('query layerservice layer.index ? selected') # scene
-	numOfVerts = lx.eval('query layerservice vert.N ? all')
+    lx.eval('select.drop item')
+    lx.eval('select.item %s' % meshItem)
+    lx.eval('query layerservice layer.index ? selected')  # scene
+    numOfVerts = lx.eval('query layerservice vert.N ? all')
 
-	# If there are no verts, we delete the mesh item layer.
-	if numOfVerts == 0: lx.eval('!item.delete')
-	# Increare progress monitor
-	m.step(1)
-#########################################
-
-
+    # If there are no verts, we delete the mesh item layer.
+    if numOfVerts == 0: lx.eval('!item.delete')
+    # Increare progress monitor
+    m.step(1)
+# ------------------------------------- #
 
 
-#----------------------------------#
+# ----------------------------------#
 # Create a Z positive Face Polygon #
-#----------------------------------#
+# ----------------------------------#
 lx.eval('item.create mesh')
 lx.eval('item.name PlaneZ xfrmcore')
 lx.eval('select.type polygon')
@@ -205,11 +193,11 @@ lx.eval('select.drop item')
 # scene = modo.Scene()
 # mesh_list = scene.selectedByType(lx.symbol.sTYPE_MESH)
 # for mesh in mesh_list:
-	# mesh.select(True)
-	# lx.eval("select.all")
-	# lx.eval("poly.flip")
+# mesh.select(True)
+# lx.eval("select.all")
+# lx.eval("poly.flip")
 ###################################################################################
-	
+
 ###################################################################################
 # Rename Children of Group Locators by the group Loactors name + Suffix tag (Curve)
 # import modo
@@ -221,102 +209,96 @@ lx.eval('select.drop item')
 
 # grploc_list = scene.selectedByType(lx.symbol.sITYPE_GROUPLOCATOR)
 # for a in grploc_list:
-	# a.select(True)
-	# GrpLoc_Name = lx.eval('item.name ? xfrmcore')
-	# lx.out('Group Locator Name:', GrpLoc_Name)
-	# lx.eval('pickWalk down')
-	# CurveName = GrpLoc_Name + '_' + 'Curve'
-	# lx.eval('item.name {%s} xfrmcore' % CurveName)
+# a.select(True)
+# GrpLoc_Name = lx.eval('item.name ? xfrmcore')
+# lx.out('Group Locator Name:', GrpLoc_Name)
+# lx.eval('pickWalk down')
+# CurveName = GrpLoc_Name + '_' + 'Curve'
+# lx.eval('item.name {%s} xfrmcore' % CurveName)
 # lx.eval('select.drop item groupLocator')
 ###################################################################################
 
 
-
-#------------------------------------------------------#
+# ------------------------------------------------------#
 # Select only curves Mesh and run the main Script part #
-#------------------------------------------------------#
+# ------------------------------------------------------#
 lx.eval('select.itemType mesh')
 lx.eval('select.useSet PlaneZ deselect')
 
 meshes_list = scene.selectedByType(lx.symbol.sITYPE_MESH)
 
 # Modollama Triangulation
-#lx.eval('user.value llama_keepuvbounds false')
-#lx.eval('user.value llama_keepmatbounds false')
+# lx.eval('user.value llama_keepuvbounds false')
+# lx.eval('user.value llama_keepmatbounds false')
 
 
 for mesh in meshes_list:
-	mesh.select(True)
-	# Freeze the curve to Polygons
-	lx.eval('poly.freeze face false 2 true true true false %i false Morph' % CurveRefineAngle )
-	
-	# #################################################
-	# # Delete Colinear Vertex
-	# lx.eval('select.type vertex')
-	# lx.eval('select.vertex add 4 0 (none)')
-	
-	# CsVertex = len(mesh.geometry.vertex.selected)
-	# lx.out('Count Selected Poly',CsVertex)
+    mesh.select(True)
+    # Freeze the curve to Polygons
+    lx.eval('poly.freeze face false 2 true true true false %i false Morph' % CurveRefineAngle)
 
-	# if CsVertex < 1:
-		# lx.out('No Colinear Vertex')
-	# elif CsVertex >= 1:
-		# SMO_SafetyCheck_min1PolygonSelected = 1
-		# lx.out('Colinear Vertex detected')
-		# lx.eval('!delete')
-	# #################################################
-	
-	lx.eval('select.type item')
-	
-	lx.eval('!!mesh.cleanup true true true true true true false true true true true')
-	lx.eval('select.type polygon')
-	lx.eval('paste')
-	lx.eval('select.drop polygon')
-	lx.eval('select.all')
-	lx.eval('select.polygon remove vertex curve 3')
-	lx.eval('select.useSet Polyflip deselect')
-	
-	polygons = lx.eval('query layerservice poly.N ? selected')
-	if polygons >= 1 :
-		lx.eval('poly.triple')
-	
-	# Modollama Triangulation
-	#lx.eval('@SmartTriangulation.pl')
-	
-	lx.eval('select.drop polygon')
-	lx.eval('select.useSet Polyflip select')
-	
-	#lx.eval('select.pickWorkingSet Polyflip true')
-	# lx.eval('@lazySelect.pl selectAll')
-	lx.eval('smo.GC.SelectCoPlanarPoly 2 2 1000')
-	lx.eval('poly.flip')
-	lx.eval('select.drop polygon')
-	lx.eval('select.useSet Polyflip select')
-	# lx.eval('select.pickWorkingSet Polyflip true')
-	lx.eval('!delete')
-	
-	polygons = 0
-	lx.eval('select.type item')
-	# lx.eval('%s' % item.id)
+    # #################################################
+    # # Delete Colinear Vertex
+    # lx.eval('select.type vertex')
+    # lx.eval('select.vertex add 4 0 (none)')
 
+    # CsVertex = len(mesh.geometry.vertex.selected)
+    # lx.out('Count Selected Poly',CsVertex)
+
+    # if CsVertex < 1:
+    # lx.out('No Colinear Vertex')
+    # elif CsVertex >= 1:
+    # SMO_SafetyCheck_min1PolygonSelected = 1
+    # lx.out('Colinear Vertex detected')
+    # lx.eval('!delete')
+    # #################################################
+
+    lx.eval('select.type item')
+
+    lx.eval('!!mesh.cleanup true true true true true true false true true true true')
+    lx.eval('select.type polygon')
+    lx.eval('paste')
+    lx.eval('select.drop polygon')
+    lx.eval('select.all')
+    lx.eval('select.polygon remove vertex curve 3')
+    lx.eval('select.useSet Polyflip deselect')
+
+    polygons = lx.eval('query layerservice poly.N ? selected')
+    if polygons >= 1:
+        lx.eval('poly.triple')
+
+    # Modollama Triangulation
+    # lx.eval('@SmartTriangulation.pl')
+
+    lx.eval('select.drop polygon')
+    lx.eval('select.useSet Polyflip select')
+
+    # lx.eval('select.pickWorkingSet Polyflip true')
+    # lx.eval('@lazySelect.pl selectAll')
+    lx.eval('smo.GC.SelectCoPlanarPoly 2 2 1000')
+    lx.eval('poly.flip')
+    lx.eval('select.drop polygon')
+    lx.eval('select.useSet Polyflip select')
+    # lx.eval('select.pickWorkingSet Polyflip true')
+    lx.eval('!delete')
+
+    polygons = 0
+    lx.eval('select.type item')
+# lx.eval('%s' % item.id)
 
 lx.eval('select.drop item locator')
 
-
-#-------------------------#
+# -------------------------#
 # Delete The Z Plane mesh #
-#-------------------------#
+# -------------------------#
 lx.eval('select.type item')
 lx.eval('select.useSet PlaneZ select')
 lx.eval('!delete')
 
-
-
-
-#-----------------------------------#
+# -----------------------------------#
 # Unmerge the resulting Mesh Layers #
-#-----------------------------------#
-if UnmergeAllIslands == 1 :
+# -----------------------------------#
+if UnmergeAllIslands == 1:
     lx.eval('select.itemType mesh')
     UnmergeMesh_list = scene.selectedByType(lx.symbol.sITYPE_MESH)
     for mesh in UnmergeMesh_list:
@@ -324,16 +306,15 @@ if UnmergeAllIslands == 1 :
         lx.eval('!layer.unmergeMeshes')
         lx.eval('select.drop item')
 
-
-#-------------------------------------------------------------------------#
+# -------------------------------------------------------------------------#
 # Reposition the Center to those MeshLayers using their Vertex as a guide #
-#-------------------------------------------------------------------------#
-if Recenter == 1 :
+# -------------------------------------------------------------------------#
+if Recenter == 1:
     lx.eval('select.itemType mesh')
     RecenterMesh_list = scene.selectedByType(lx.symbol.sITYPE_MESH)
     for mesh in RecenterMesh_list:
         mesh.select(True)
-        
+
         lx.eval('select.type vertex')
         lx.eval('select.all')
         lx.eval('workPlane.fitSelect')
@@ -344,19 +325,15 @@ if Recenter == 1 :
         lx.eval('workPlane.reset')
         lx.eval('select.type item')
 
-
-
-#-------------------------#
+# -------------------------#
 # Cleanup All Mesh Layers #
-#-------------------------#
-if Cleanup == 1 :
+# -------------------------#
+if Cleanup == 1:
     lx.eval('select.itemType mesh')
     CleanupMesh_list = scene.selectedByType(lx.symbol.sITYPE_MESH)
     for mesh in CleanupMesh_list:
         mesh.select(True)
         lx.eval('!!mesh.cleanup true true true true true true true true true true true')
-
-
 
 lx.eval('select.drop item')
 lx.eval('select.itemType mesh')

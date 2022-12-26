@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_PCLOUD_XYZ_VertexRoundValue_Cmd.py
 # Version:      1.0
 #
@@ -8,13 +8,16 @@
 #               Each line is a new Vertex and round the value to the Centimeter (2 Decimals)
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      29/11/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import modo, lx, lxu, os
+import lx
+import lxu
+import modo
+
 
 class SMO_PCLOUD_XYZ_VertexRoundValue_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -41,12 +44,8 @@ class SMO_PCLOUD_XYZ_VertexRoundValue_Cmd(lxu.command.BasicCommand):
     def basic_ButtonName (self):
         return 'SMO XYZ Vertex Rounded Value'
     
-    def cmd_Flags (self):
-        return lx.symbol.fCMD_UNDO
-    
     def basic_Enable (self, msg):
         return True
-        
     
     def basic_Execute(self, msg, flags):
         ITColor = self.dyna_Int (0)

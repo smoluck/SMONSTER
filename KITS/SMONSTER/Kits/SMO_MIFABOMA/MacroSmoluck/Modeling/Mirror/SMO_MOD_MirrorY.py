@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MOD_MirrorZ.py
 # Version: 1.0
 #
@@ -8,11 +8,11 @@
 # from the current Layer on Axis Y.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      16/09/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo
 scene = modo.scene.current()
@@ -30,9 +30,9 @@ lx.eval('tool.set actr.origin on')
 lx.eval('select.type polygon')
 lx.eval('tool.set *.mirror on')
 
-##############################
-## <----( Main Command )----> 
-##############################
+# -------------------------- #
+# <----( Main Command )----> 
+# -------------------------- #
 
 #Command Block Begin:  ToolAdjustment
 lx.eval('tool.setAttr gen.mirror frot axis')
@@ -68,9 +68,9 @@ if MIRROR_AXES == 2:
     lx.eval('tool.setAttr gen.mirror upZ 0.0')
 #Command Block End:  ToolAdjustment
 
-##############################
-## <----( Main Command )----> 
-##############################
+# -------------------------- #
+# <----( Main Command )----> 
+# -------------------------- #
 
 lx.eval('tool.doApply')
 lx.eval('select.nextMode')

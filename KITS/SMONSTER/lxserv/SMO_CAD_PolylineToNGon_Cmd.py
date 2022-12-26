@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_CAD_PolylineToNGon_Cmd.py
 # Version:      1.0
 #
@@ -8,15 +8,17 @@
 #               (You need to be in Polygon mode and have a loop of Polyline selected to run the script.)
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      07/09/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
 
 Cmd_Name = "smo.CAD.PolylineToNGon"
+
 
 class SMO_CAD_PolylineToNGon_Cmd(lxu.command.BasicCommand):
     def __init__(self):

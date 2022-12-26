@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MOD_Mirror.py
 # Version: 1.0
 #
@@ -8,11 +8,11 @@
 # from the current Layer on a defined Axis.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      16/09/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo
 scene = modo.scene.current()
@@ -21,9 +21,9 @@ CsPolys = len(mesh.geometry.polygons.selected)
 SelItems = (lx.evalN('query sceneservice selection ? locator'))
 lx.out('In Selected items, List of their Unique Name is:',SelItems)
 
-################################
-#<----[ DEFINE VARIABLES ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE VARIABLES )----> #
+# ------------------------------ #
 
 #####--- Define user value for all the different SafetyCheck --- START ---#####
 #####
@@ -35,24 +35,24 @@ lx.eval("user.defNew name:SMO_SafetyCheck_min1PolygonSelected type:integer life:
 
 
 #MIRROR_AXES = 0
-################################
-#<----[ DEFINE ARGUMENTS ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE ARGUMENTS )----> #
+# ------------------------------ #
 args = lx.args()
 lx.out(args)
 MIRROR_AXES = args[0]                         # Axes selection:                               X = 0 ### Y = 1 ### Z = 2
 # Expose the Result of the Arguments 
 lx.out(MIRROR_AXES)
-################################
-#<----[ DEFINE ARGUMENTS ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE ARGUMENTS )----> #
+# ------------------------------ #
 
 
 
-##############################
-####### SAFETY CHECK 1 #######
-##############################
-#####--------------------  safety check 1: Polygon Selection Mode enabled --- START --------------------#####
+# -------------------------- #
+# <---( SAFETY CHECK 1 )---> #
+# -------------------------- #
+# --------------------  safety check 1: Polygon Selection Mode enabled --- START
 
 selType = ""
 # Used to query layerservice for the list of polygons, edges or vertices.
@@ -106,14 +106,14 @@ else:
     lx.out('script Stopped: You must be in Polygon Mode to run that script')
     sys.exit
     #sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
-#####--------------------  safety check 1: Polygon Selection Mode enabled --- END --------------------#####
+# --------------------  safety check 1: Polygon Selection Mode enabled --- END
 
 
 
-##############################
-####### SAFETY CHECK 2 #######
-##############################
-#####--------------------  safety check 2: at Least 1 Polygons is selected --- START --------------------#####
+# -------------------------- #
+# <---( SAFETY CHECK 2 )---> #
+# -------------------------- #
+# at Least 1 Polygons is selected --- START
 lx.out('Count Selected Poly',CsPolys)
 
 if CsPolys < 1:
@@ -128,7 +128,7 @@ if CsPolys < 1:
 elif CsPolys >= 1:
     SMO_SafetyCheck_min1PolygonSelected = 1
     lx.out('script running: right amount of polygons in selection')
-#####--------------------  safety check 2: at Least 1 Polygons is selected --- END --------------------#####
+# at Least 1 Polygons is selected --- END
 
 
 
@@ -143,11 +143,11 @@ lx.out('Current Value',TotalSafetyCheck)
 
 
 
-##############################
-## <----( Main Macro )----> ##
-##############################
+# -------------------------- #
+# <----( Main Macro )----> #
+# -------------------------- #
 
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
 if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     if MIRROR_AXES == 0:
         lx.out('Mirror on X')
@@ -166,9 +166,9 @@ if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     lx.eval('tool.setAttr gen.mirror cenX 0.0')
     lx.eval('tool.setAttr gen.mirror cenY 0.0')
     lx.eval('tool.setAttr gen.mirror cenZ 0.0')
-    ##############################
-    ## <----( Main Command )----> 
-    ##############################
+    # -------------------------- #
+    # <----( Main Command )---->
+    # -------------------------- #
     if MIRROR_AXES == 0:
         lx.eval('tool.setAttr gen.mirror axis {%s}' % MIRROR_AXES)
         lx.eval('tool.setAttr gen.mirror leftX 0.0')
@@ -196,9 +196,9 @@ if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     #Command Block End:  ToolAdjustment
     lx.eval('tool.doApply')
     
-    ##############################
-    ## <----( Main Command )----> 
-    ##############################
+    # -------------------------- #
+    # <----( Main Command )---->
+    # -------------------------- #
     lx.eval('select.nextMode')
     lx.eval('select.drop polygon')
     lx.eval('item.refSystem {}')
@@ -210,4 +210,4 @@ elif TotalSafetyCheck != TotalSafetyCheckTrueValue:
     sys.exit
     
 lx.out('End of SMO_Mirror Script')
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END

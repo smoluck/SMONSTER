@@ -1,21 +1,25 @@
 # python
-import lx, modo, sys
+
+import lx
+import modo
+import sys
+
 python_majorver = sys.version_info.major
 # print('the Highest version number 2 for 2.7 release / 3 for 3.7 release')
 # print(python_majorver)
 
-if python_majorver == 2 :
+if python_majorver == 2:
     # print("do something for 2.X code")
     from smodule.commander import SmoCommanderClass
-elif python_majorver >= 3 :
+elif python_majorver >= 3:
     # print("do something for 3.X code")
     from smodule.commander.SMO_Commander import SmoCommanderClass
-
 
 SMO_GC_EXTRA_HOTKEYS = [
     {
         "contexts": [
-            [".global", "(stateless)", ".anywhere", "(contextless)", "@kit_SMO_GAME_CONTENT:MacroSmoluck/Unbevel/SMO_UnbevelPolyLoops.py 1"]
+            [".global", "(stateless)", ".anywhere", "(contextless)",
+             "@kit_SMO_GAME_CONTENT:MacroSmoluck/Unbevel/SMO_UnbevelPolyLoops.py 1"]
         ],
         "key": "ctrl-shift-k",
         "command": "smo.GC.UnbevelLoops 1",
@@ -25,7 +29,8 @@ SMO_GC_EXTRA_HOTKEYS = [
 
     {
         "contexts": [
-            [".global", "(stateless)", ".anywhere", "(contextless)", "@kit_SMO_GAME_CONTENT:MacroSmoluck/Unbevel/SMO_UnbevelPolyLoops.py 0"]
+            [".global", "(stateless)", ".anywhere", "(contextless)",
+             "@kit_SMO_GAME_CONTENT:MacroSmoluck/Unbevel/SMO_UnbevelPolyLoops.py 0"]
         ],
         "key": "ctrl-k",
         "command": "smo.GC.UnbevelLoops 0",
@@ -55,7 +60,8 @@ SMO_GC_EXTRA_HOTKEYS = [
 
     {
         "contexts": [
-            [".global", "(stateless)", ".anywhere", "(contextless)", "attr.formPopover {SMONSTER_SENECA_SUPERTAUT:sheet}"]
+            [".global", "(stateless)", ".anywhere", "(contextless)",
+             "attr.formPopover {SMONSTER_SENECA_SUPERTAUT:sheet}"]
         ],
         "key": "ctrl-alt-l",
         "command": "attr.formPopover {SMONSTER_SENECA_SUPERTAUT:sheet}",
@@ -65,7 +71,8 @@ SMO_GC_EXTRA_HOTKEYS = [
 
     {
         "contexts": [
-            [".global", "(stateless)", ".anywhere", ".componentMode", "@{kit_SMO_GAME_CONTENT:MacroSmoluck/Basic/SMO_BAS_JoinVertex.LXM}"]
+            [".global", "(stateless)", ".anywhere", ".componentMode",
+             "@{kit_SMO_GAME_CONTENT:MacroSmoluck/Basic/SMO_BAS_JoinVertex.LXM}"]
         ],
         "key": "ctrl-alt-w",
         "command": "@{kit_SMO_GAME_CONTENT:MacroSmoluck/Basic/SMO_BAS_JoinVertex.LXM}",
@@ -105,7 +112,8 @@ SMO_GC_EXTRA_HOTKEYS = [
 
     {
         "contexts": [
-            [".global", "(stateless)", ".anywhere", "(contextless)", "@{kit_SMO_GAME_CONTENT:MacroSmoluck/Basic/SMO_BAS_SetupColorScheme_ViewPortPref.LXM}"]
+            [".global", "(stateless)", ".anywhere", "(contextless)",
+             "@{kit_SMO_GAME_CONTENT:MacroSmoluck/Basic/SMO_BAS_SetupColorScheme_ViewPortPref.LXM}"]
         ],
         "key": "ctrl-alt-top3",
         "command": "@{kit_SMO_GAME_CONTENT:MacroSmoluck/Basic/SMO_BAS_SetupColorScheme_ViewPortPref.LXM}",
@@ -185,7 +193,8 @@ SMO_GC_EXTRA_HOTKEYS = [
 
     {
         "contexts": [
-            ["view3DSelect", "(stateless)", "polygon", "(contextless)", "@{kit_SMO_GAME_CONTENT:MacroSmoluck/Modeling/SMO_MOD_PolyBoundaryEdgeWeight.LXM}"]
+            ["view3DSelect", "(stateless)", "polygon", "(contextless)",
+             "@{kit_SMO_GAME_CONTENT:MacroSmoluck/Modeling/SMO_MOD_PolyBoundaryEdgeWeight.LXM}"]
         ],
         "key": "ctrl-alt-e",
         "command": "@{kit_SMO_GAME_CONTENT:MacroSmoluck/Modeling/SMO_MOD_PolyBoundaryEdgeWeight.LXM}",
@@ -195,7 +204,8 @@ SMO_GC_EXTRA_HOTKEYS = [
 
     {
         "contexts": [
-            ["view3DSelect", "(stateless)", "edge", "(contextless)", "@{kit_SMO_GAME_CONTENT:MacroSmoluck/Modeling/SMO_MOD_EdgeWeight.LXM}"]
+            ["view3DSelect", "(stateless)", "edge", "(contextless)",
+             "@{kit_SMO_GAME_CONTENT:MacroSmoluck/Modeling/SMO_MOD_EdgeWeight.LXM}"]
         ],
         "key": "ctrl-alt-e",
         "command": "@{kit_SMO_GAME_CONTENT:MacroSmoluck/Modeling/SMO_MOD_EdgeWeight.LXM}",
@@ -225,6 +235,7 @@ SMO_GC_EXTRA_HOTKEYS = [
 
 ]
 
+
 # max = len(SMO_GC_EXTRA_HOTKEYS)
 # lx.out(max)
 
@@ -234,10 +245,10 @@ class SMO_GC_EXTRA_KeymapCmdClass(SmoCommanderClass):
         args = []
         for n, hotkey in enumerate(SMO_GC_EXTRA_HOTKEYS):
             args.append({
-                'name':str(n),
-                'label':"%s \x03(c:25132927)(%s)" % (hotkey['name'], hotkey['info']),
-                'datatype':'boolean',
-                'default':False
+                'name': str(n),
+                'label': "%s \x03(c:25132927)(%s)" % (hotkey['name'], hotkey['info']),
+                'datatype': 'boolean',
+                'default': False
             })
         return args
 
@@ -265,12 +276,14 @@ class SMO_GC_EXTRA_KeymapCmdClass(SmoCommanderClass):
                 context = context_list[3]
 
                 try:
-                    lx.eval('!cmds.mapKey {%s} {%s} {%s} {%s} {%s} {%s}' % (key, command, mapping, state, region, context))
+                    lx.eval(
+                        '!cmds.mapKey {%s} {%s} {%s} {%s} {%s} {%s}' % (key, command, mapping, state, region, context))
                 except:
                     lx.out("Failed to set '%s' to '%s'." % (command, key))
 
         dialog_serv.MonitorRelease()
         # modo.dialogs.alert("Mapped Smonster Hotkeys", "Mapped %s Smonster hotkeys. See Help > Smonster Hotkey Reference" % n)
+
 
 lx.bless(SMO_GC_EXTRA_KeymapCmdClass, "smo.GC.EXTRA.MapDefaultHotkeys")
 
@@ -295,11 +308,14 @@ class RemoveSMO_GC_EXTRA_KeymapCmdClass(SmoCommanderClass):
                         lx.out("Could not clear mapping for '%s'." % key)
                 else:
                     try:
-                        lx.eval('!cmds.mapKey {%s} {%s} {%s} {%s} {%s} {%s}' % (key, default, mapping, state, region, context))
+                        lx.eval('!cmds.mapKey {%s} {%s} {%s} {%s} {%s} {%s}' % (
+                        key, default, mapping, state, region, context))
                     except:
                         lx.out("Could not set '%s' to '%s'." % (default, key))
 
-        modo.dialogs.alert("Reverted SMO GAME CONTENT: EXTRA Hotkeys", "Reverted %s SMO GAME CONTENT: EXTRA hotkeys to defaults." % len(SMO_GC_EXTRA_HOTKEYS))
+        modo.dialogs.alert("Reverted SMO GAME CONTENT: EXTRA Hotkeys",
+                           "Reverted %s SMO GAME CONTENT: EXTRA hotkeys to defaults." % len(SMO_GC_EXTRA_HOTKEYS))
+
 
 lx.bless(RemoveSMO_GC_EXTRA_KeymapCmdClass, "smo.GC.EXTRA.UnmapDefaultHotkeys")
 
@@ -324,6 +340,8 @@ class ClearSMO_GC_EXTRA_KeymapCmdClass(SmoCommanderClass):
                     except:
                         lx.out("Could not clear mapping for '%s'." % key)
 
-        modo.dialogs.alert("Cleared SMO GAME CONTENT: EXTRA Hotkeys", "Cleared %s SMO GAME CONTENT: EXTRA hotkeys attribution." % len(SMO_GC_EXTRA_HOTKEYS))
+        modo.dialogs.alert("Cleared SMO GAME CONTENT: EXTRA Hotkeys",
+                           "Cleared %s SMO GAME CONTENT: EXTRA hotkeys attribution." % len(SMO_GC_EXTRA_HOTKEYS))
+
 
 lx.bless(ClearSMO_GC_EXTRA_KeymapCmdClass, "smo.GC.EXTRA.ClearHotkeys")

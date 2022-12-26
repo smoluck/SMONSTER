@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_Venom_SelPoly.py
 # Version:      1.0
 # 
@@ -8,11 +8,12 @@
 # 
 # 
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 # 
 # Created:      01/04/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
+
 import lx
 import modo
 

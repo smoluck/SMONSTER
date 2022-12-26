@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_MatTag_and_PolySelSetTags_Cleanup_Cmd.py
 # Version:      1.01
 #
@@ -12,16 +12,20 @@
 #               Select Mesh Layers and run. 
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      20/09/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, lxifc, os, modo, random
+import lx
+import lxu
+import modo
+import random
 
 Cmd_Name = "smo.GC.MatTag.PolySelSetTag.Cleanup"
 # smo.GC.MatTag.PolySelSetTag.Cleanup
+
 
 class SMO_GC_MatTag_and_PolySelSetTags_Cleanup_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -78,24 +82,24 @@ class SMO_GC_MatTag_and_PolySelSetTags_Cleanup_Cmd(lxu.command.BasicCommand):
             except:
                 SMO_NoPolyBaseMesh = 1
                 lx.out('Polygon in BaseMesh: False')
-            ##############################
-            ####### SAFETY CHECK 1 #######
-            ##############################
-            #####--------------------  safety check 1: at Least 1 Polygons is selected --- START --------------------#####
+            # -------------------------- #
+            # <---( SAFETY CHECK 1 )---> #
+            # -------------------------- #
+            # --------------------  safety check 1: at Least 1 Polygons is selected --- START
             # SelPolyCount = selSvc.Count (selSvc.LookupType (lx.symbol.sSELTYP_POLYGON))
             # lx.out('In Selected items, Polygon count selected:',SelPolyCount)
             # lx.out('Count Selected Poly',CsPolys)
-            #####--------------------  safety check 1: at Least 1 Polygons is selected --- END --------------------#####
+            # --------------------  safety check 1: at Least 1 Polygons is selected --- END
             if SMO_NoPolyBaseMesh == 0:
                 lx.eval('select.editSet {SelSet_%s} add' % currentLayerName)
                 lx.eval('poly.setMaterial {%s_mat} {0,6 0,6 0,6} 0,8 0,04 true false' % currentLayerName)
-                for item in scene.selectedByType('advancedMaterial')[:1]:
+                for items in scene.selectedByType('advancedMaterial')[:1]:
                     random_numR = random.random()
-                    item.channel('diffCol.R').set(random_numR)
+                    items.channel('diffCol.R').set(random_numR)
                     random_numG = random.random()
-                    item.channel('diffCol.G').set(random_numG)
+                    items.channel('diffCol.G').set(random_numG)
                     random_numB = random.random()
-                    item.channel('diffCol.B').set(random_numB)
+                    items.channel('diffCol.B').set(random_numB)
                 lx.eval('select.type item')
             if SMO_NoPolyBaseMesh == 1:
                 lx.eval('select.type item')

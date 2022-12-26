@@ -1,7 +1,11 @@
 # python
 
-import lx, modo, os, re
 from smodule.commander.SMO_Commander import SmoCommanderClass
+
+import lx
+import modo
+import os
+import re
 
 CMD_NAME = 'smo.CLEANUP.Startup'
 

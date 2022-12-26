@@ -1,5 +1,5 @@
 #LXMacro#
-#-----------------------------------------
+# ----------------------------------------
 # Name:         SMO_MOD_Cut_on_2_vertex.LXM
 # Version:      1.0
 #
@@ -12,7 +12,7 @@
 #
 # Created:      XX/XX/2018-2019
 # Copyright:    (c) Franck Elisabeth 2019
-#-----------------------------------------
+# ----------------------------------------
 
 # replay name:"Align Work Plane to Selected"
 workPlane.fitSelect

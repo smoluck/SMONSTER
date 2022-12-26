@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_SoloInstanceInPlace_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #
 #
 # Author:       Franck ELISABETH (with the help of Pavel Efimov)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      16/04/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.SoloInstanceInPlace"
 # smo.GC.SoloInstanceInPlace
+
 
 class SMO_GC_SoloInstanceInPlace_Cmd(lxu.command.BasicCommand):
     def __init__(self):

@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_UV_UnwrapRectangleOrient_Cmd.py
 # Version:      1.0
 #
@@ -8,18 +8,20 @@
 #               and Orient the UV Island on defined direction (Via Arguments).
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      01/07/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo, sys
+import lx
+import lxu
+import modo
+import sys
 
 Cmd_Name = "smo.UV.UnwrapRectangleOrient"
-
-
 # smo.UV.UnwrapRectangleOrient 0
+
 
 class SMO_UV_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -68,14 +70,14 @@ class SMO_UV_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
 
         Int_OrientDir = self.dyna_Int(0)
 
-        ############### 2 ARGUMENTS ###############
+        # ------------- ARGUMENTS ------------- #
         args = lx.args()
         lx.out(args)
         # Orient U = 0
         # Orient V = 1
         OrientDir = Int_OrientDir
         lx.out('Orient Direction:', OrientDir)
-        ############### ARGUMENTS ###############
+        # ------------- ARGUMENTS ------------- #
 
         # Auto Update UV Seam map   Off = 0
         # Auto Update UV Seam map   On = 1
@@ -92,13 +94,13 @@ class SMO_UV_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
         RelocateInArea = lx.eval('user.value SMO_UseVal_UV_RelocateInArea ?')
         lx.out('Relocate In Area state:', RelocateInArea)
 
-        # ############### 1 ARGUMENT Test ###############
+        # # ------------- ARGUMENTS Test
         # Orient_Dir = 0
         # ############### ARGUMENT ###############
 
-        ################################
-        # <----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
         lx.eval("user.defNew name:SMO_SafetyCheck_UVUnwrapRectOri_VertexModeEnabled type:integer life:momentary")
@@ -116,9 +118,9 @@ class SMO_UV_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
         lx.eval('smo.GC.ClearSelectionVmap 6 1')
         lx.eval('smo.GC.ClearSelectionVmap 7 1')
 
-        ###############################################
-        ####### SAFETY CHECK 1 - UVMap Selected #######
-        ###############################################
+        # ----------------------------------------- #
+        # <---( SAFETY CHECK 1 )---> UVMap Selected #
+        # ----------------------------------------- #
         lx.out('<------------- START -------------->')
         lx.out('<--- UV Map Safety Check --->')
 
@@ -154,22 +156,22 @@ class SMO_UV_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
         lx.out('<------------- END -------------->')
         ###############################################
 
-        ##############################
-        ####### SAFETY CHECK 2 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 2 )---> #
+        # -------------------------- #
 
-        #####-------------------- safety check 2 : Only One Item Selected --- START --------------------#####
+        # --------------------  safety check 2 : Only One Item Selected --- START
         try:
             # test if there is actually an item layer selected
             meshseam = modo.Scene().selected[0]
             mesh = scene.selectedByType('mesh')[0]
             # if this command return an error then i will select the corresponding mesh layer on the next step.
         except:
-            ##############################
-            ####### SAFETY CHECK 3 #######
-            ##############################
+            # -------------------------- #
+            # <---( SAFETY CHECK 3 )---> #
+            # -------------------------- #
 
-            #####--------------------  safety check 3: Polygon or Edge Selection Mode enabled --- START --------------------#####
+            # Polygon or Edge Selection Mode enabled --- START
 
             selType = ""
             # Used to query layerservice for the list of polygons, edges or vertices.
@@ -226,7 +228,7 @@ class SMO_UV_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
                 lx.out('script Stopped: You must be in Polygon Mode to run that script')
                 sys.exit
                 # sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
-            #####--------------------  safety check 3: Polygon or Edge Selection Mode enabled --- END --------------------#####
+            # Polygon or Edge Selection Mode enabled --- END
 
             ItemLayerName = lx.eval('query layerservice layer.name ? 1')
             lx.out('Item Layer name is:', ItemLayerName)
@@ -259,7 +261,7 @@ class SMO_UV_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
             SMO_SafetyCheck_UVUnwrapRectOri_Only1MeshItemSelected = 1
             lx.out('Only One Item Selected:', SMO_SafetyCheck_UVUnwrapRectOri_Only1MeshItemSelected)
             lx.out('script running: right amount of Mesh Item selected')
-        #####-------------------- safety check 2 : Only One Item Selected --- END --------------------#####
+        # --------------------  safety check 2 : Only One Item Selected --- END
 
         CsPolys = len(mesh.geometry.polygons.selected)
         SelItems = (lx.evalN('query sceneservice selection ? locator'))
@@ -304,13 +306,13 @@ class SMO_UV_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
         # # lx.out('USER UVSEAM Map Name:', UserUVSEAMmapName)
 
         # lx.out('<----------- END ----------->')
-        # ################################
+        # # ------------------------------ #
 
-        ##############################
-        ####### SAFETY CHECK 2 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 2 )---> #
+        # -------------------------- #
 
-        #####--------------------  safety check 2: at Least 1 Polygons is selected --- START --------------------#####
+        # at Least 1 Polygons is selected --- START
         lx.out('Count Selected Poly', CsPolys)
 
         if CsPolys < 1:
@@ -325,13 +327,13 @@ class SMO_UV_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
         elif CsPolys >= 1:
             SMO_SafetyCheck_UVUnwrapRectOri_min1PolygonSelected = 1
             lx.out('script running: right amount of polygons in selection')
-        #####--------------------  safety check 2: at Least 1 Polygons is selected --- END --------------------#####
+        # at Least 1 Polygons is selected --- END
 
-        ##############################
-        ####### SAFETY CHECK 2 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 2 )---> #
+        # -------------------------- #
 
-        #####--------------------  safety check 2: Polygon or Edge Selection Mode enabled --- START --------------------#####
+        # Polygon or Edge Selection Mode enabled --- START
 
         selType = ""
         # Used to query layerservice for the list of polygons, edges or vertices.
@@ -389,7 +391,7 @@ class SMO_UV_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
             lx.out('script Stopped: You must be in Polygon Mode to run that script')
             sys.exit
             # sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
-        #####--------------------  safety check 2: Polygon or Edge Selection Mode enabled --- END --------------------#####
+        # Polygon or Edge Selection Mode enabled --- END
 
         #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
         #####
@@ -401,12 +403,12 @@ class SMO_UV_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
         #####
         #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
 
-        ################################
-        ## <----( Main Macro : )----> ##
-        ################################
+        # -------------------------- #
+        # <----( Main Macro : )----> #
+        # -------------------------- #
 
-        if SMO_SafetyCheck_UVUnwrapRectOri_UVMapCount == True:
-            #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+        if SMO_SafetyCheck_UVUnwrapRectOri_UVMapCount:
+            #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
             if TotalSafetyCheck == TotalSafetyCheckTrueValue:
 
                 # Tag the UV as Done
@@ -456,7 +458,7 @@ class SMO_UV_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
                     lx.eval('view3d.showUVSeam true active')
 
                 AutoHideState = lx.eval('user.value SMO_UseVal_UV_HideAfterUnwrap ?')
-                if AutoHideState == True:
+                if AutoHideState:
                     lx.eval('select.useSet UV_DONE select')
                     lx.eval('hide.sel')
 
@@ -467,7 +469,7 @@ class SMO_UV_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
                 sys.exit
 
             lx.out('End of Unwrap Planar Script')
-            #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+            #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
 lx.bless(SMO_UV_UnwrapRectangleOrient_Cmd, Cmd_Name)

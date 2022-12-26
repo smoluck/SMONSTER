@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name: Delete_QT_Blue.py
 # Version: 1.0
 #
@@ -8,13 +8,14 @@
 #               Creating the related Command Region to this Tag
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      10/01/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import modo
+import lx
+
 lx.eval('poly.pcrClear')
 lx.eval('!select.deleteSet SMO_QT_Blue')
 lx.eval('select.drop polygon')

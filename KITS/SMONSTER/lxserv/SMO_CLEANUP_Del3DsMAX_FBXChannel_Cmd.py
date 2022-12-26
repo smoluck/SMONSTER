@@ -1,5 +1,5 @@
-#python
-#---------------------------------------------
+# python
+"""
 # Name:         SMO_CLEANUP_Del3DsMAX_FBXChannel_Cmd.py
 # Version:      1.0
 #
@@ -8,20 +8,23 @@
 #               at FBX Export in the current scene.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      19/12/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------------
+"""
 
-
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.CLEANUP.Del3DsMAX.FBXChannel"
+
 
 class SMO_Cleanup_Del3DsMAX_FBXChannel_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
+
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
     

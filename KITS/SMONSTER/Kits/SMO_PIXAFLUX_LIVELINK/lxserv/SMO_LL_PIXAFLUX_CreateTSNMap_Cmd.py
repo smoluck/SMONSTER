@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_PixaFlux_CreateTSNMap_Cmd.py
 # Version:      1.0
 #
@@ -8,11 +8,11 @@
 #               Resolution defined by Argument in pixel.
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      12/08/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import lx, lxu, modo, os, traceback
 
@@ -51,13 +51,13 @@ class SMO_PixaFlux_CreateTSNMap_Cmd(lxu.command.BasicCommand):
     
     def basic_Execute(self, msg, flags):
         
-        ############### 1 ARGUMENTS ###############
+        # ------------- ARGUMENTS ------------- #
         # MapSize = 512
         # MapSize = 1024
         # MapSize = 2048
         # MapSize = 4096
         MapSize = self.dyna_Int (0)
-        ###########################################
+        # ------------------------------------- #
         
         
         scene = modo.scene.current()
@@ -101,7 +101,7 @@ class SMO_PixaFlux_CreateTSNMap_Cmd(lxu.command.BasicCommand):
         image_save_time = os.path.getmtime (image_export_path)
 ################################################
 
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
 lx.bless(SMO_PixaFlux_CreateTSNMap_Cmd, Cmd_Name)

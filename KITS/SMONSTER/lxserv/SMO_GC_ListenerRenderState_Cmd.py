@@ -1,18 +1,19 @@
 # python
 # Listener code by Andreas Ranman
 
+import lx
+import lxifc
 
-import lx, lxifc, lxu, modo
 
 class RenderListener(lxifc.RenderProgressListener):
-# Render Progress Listener with callbacks on success and abort.
+    # Render Progress Listener with callbacks on success and abort.
 
     def __init__(self, onSuccess=None, onAbort=None):
         # Validate that callbacks are callable
         assert (callable(onSuccess)), "onSuccess was not a callable."
         assert (callable(onAbort)), "onAbort was not a callable."
 
-        # Callbacks for succesful renders and aborts.
+        # Callbacks for successful renders and aborts.
         self.onSuccess = onSuccess
         self.onAbort = onAbort
 

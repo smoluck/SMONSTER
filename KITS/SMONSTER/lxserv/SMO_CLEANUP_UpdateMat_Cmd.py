@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_CLEANUP_UpdateMat_Cmd.py
 # Version:      1.0
 #
@@ -8,15 +8,17 @@
 #               set ON the Weight by Polygon Area according to SMO Modo Workflow.
 #
 # Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      17/02/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
 
 Cmd_Name = "smo.CLEANUP.UpdateMat"
+
 
 class SMO_Cleanup_UpdateMat_Cmd(lxu.command.BasicCommand):
     def __init__(self):

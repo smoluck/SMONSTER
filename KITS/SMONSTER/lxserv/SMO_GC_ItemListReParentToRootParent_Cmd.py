@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_ItemListReParentToRootParent_Cmd.py
 # Version:      1.0
 #
@@ -8,13 +8,17 @@
 #
 #
 # Author:       Franck ELISABETH ( Solution by Rouven Miller )
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      18/08/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo, sys
+import lx
+import lxu
+import modo
+import sys
+
 if sys.version_info < (3, 0):
     xrange = range
 

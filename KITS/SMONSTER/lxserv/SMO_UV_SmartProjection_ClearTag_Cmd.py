@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_UV_SmartProjection_ClearTag_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #               with the UV - Smart Projection Scripts
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.UV.SmartProjectionClearTag"
 # smo.UV.SmartProjectionClearTag
+
 
 class SMO_UV_SmartProjection_ClearTag_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -66,9 +69,9 @@ class SMO_UV_SmartProjection_ClearTag_Cmd(lxu.command.BasicCommand):
         CsVertex = len(mesh.geometry.vertices.selected)
         
         
-        ################################
-        #<----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
@@ -89,11 +92,11 @@ class SMO_UV_SmartProjection_ClearTag_Cmd(lxu.command.BasicCommand):
         #####--- Define user value for all the different SafetyCheck --- END ---#####
         
         
-        ##############################
-        ####### SAFETY CHECK 1 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 1 )---> #
+        # -------------------------- #
         
-        #####--------------------  safety check 1: Polygon Selection Mode enabled --- START --------------------#####
+        # --------------------  safety check 1: Polygon Selection Mode enabled --- START
         
         selType = ""
         # Used to query layerservice for the list of polygons, edges or vertices.
@@ -147,15 +150,15 @@ class SMO_UV_SmartProjection_ClearTag_Cmd(lxu.command.BasicCommand):
         
             lx.out('script Running: Item Component Selection Mode')
         
-        #####--------------------  safety check 1: Polygon Selection Mode enabled --- END --------------------#####
+        # --------------------  safety check 1: Polygon Selection Mode enabled --- END
         
         
         
-        ##############################
-        ## <----( Main Macro )----> ##
-        ##############################
+        # ------------------------ #
+        # <----( Main Macro )----> #
+        # ------------------------ #
         
-        #####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- START --------------------#####
+        #####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- START
         if SMO_SafetyCheck_VertexModeEnabled == 1:
             lx.eval('select.type polygon')
             
@@ -201,7 +204,7 @@ class SMO_UV_SmartProjection_ClearTag_Cmd(lxu.command.BasicCommand):
             lx.eval('select.type item')
         
         lx.out('End of Smart Projection ClearTag Script')
-        #####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- END --------------------#####
+        #####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- END
 
 
 lx.bless(SMO_UV_SmartProjection_ClearTag_Cmd, Cmd_Name)

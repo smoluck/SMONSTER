@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_ModollamaTriple_Cmd.py
 # Version:      1.0
 #
@@ -8,15 +8,18 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      27/05/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
-import lx, lxu, modo
+"""
+
+import lx
+import lxu
 
 Cmd_Name = "smo.GC.ModollamaTriple"
 # smo.GC.ModollamaTriple 8
+
 
 class SMO_GC_ModollamaTriple_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -52,7 +55,7 @@ class SMO_GC_ModollamaTriple_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
         Iteration = self.dyna_Int(0)
 
-        if self.SelModePoly == True:
+        if self.SelModePoly:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
 
         KitsList = ['modollama']

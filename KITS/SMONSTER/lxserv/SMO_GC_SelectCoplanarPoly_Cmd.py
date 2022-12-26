@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_SelectCoPlanarPoly_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #               
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      22/04/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.SelectCoPlanarPoly"
 # smo.GC.SelectCoPlanarPoly 0 20
+
 
 class SMO_GC_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -65,7 +68,7 @@ class SMO_GC_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
 
-        if self.SelModePoly == True:
+        if self.SelModePoly:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
 
 
@@ -92,9 +95,9 @@ class SMO_GC_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
 
 
 
-        ################################
-        # <----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
         lx.eval("user.defNew name:PolyCoPlanarAngle type:angle life:momentary")
@@ -107,13 +110,13 @@ class SMO_GC_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
         #####--- Define user value for all the different SafetyCheck --- END ---#####
 
         #################################
-        # <----[ DEFINE ARGUMENTS ]---->#
+        # <----( DEFINE ARGUMENTS )----> #
         #################################
         args = lx.args()
         lx.out(args)
         MODE = self.dyna_Int(0)         #  select = 0 (similarTouching)   ###   polygon(SimilarOnObject) = 1   ###   none = 2 (SimilarOnLayer)
         ANGLE = self.dyna_Int(1)  # in degree
-        if self.dyna_IsSet(2) == False:
+        if not self.dyna_IsSet(2):
             RANGE = 10000.0
         else:
             RANGE = self.dyna_Float(2)  # in distance
@@ -124,7 +127,7 @@ class SMO_GC_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
         # Expose the Result of the Arguments
         lx.out(MODE, ANGLE, RANGE)
         #################################
-        # <----[ DEFINE ARGUMENTS ]---->#
+        # <----( DEFINE ARGUMENTS )----> #
         #################################
 
         lx.eval('smo.MASTER.SelectModeDetector')
@@ -170,9 +173,9 @@ class SMO_GC_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
         lx.out('Multi Count Selected', CountPoly)
         lx.out('Multi Count Selected', CountItem)
 
-        ########################################
-        ## <----( Main Macro - POLYGON )----> ##
-        ########################################
+        # ---------------------------------- #
+        # <----( Main Macro - POLYGON )----> #
+        # ---------------------------------- #
         if ItemMode == 0 and VertMode == 0 and EdgeMode == 0 and PolyMode == 1 and CountItem > 0:
             if CountPoly > 0:
                 lx.eval('tool.set select.polygonCoplanar on')
@@ -187,9 +190,9 @@ class SMO_GC_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
                 # print(PolyCoPlanarConnect)
                 # print(PolyCoPlanarRange)
 
-                ###########################################
+                # ------------------------------------- #
                 ## Set defined Settings and Run the tool ##
-                ###########################################
+                # ------------------------------------- #
                 lx.eval('tool.attr select.polygonCoplanar angle %s' % ANGLE)
                 if MODE == 0 : # Similar Touching (Filter selection)
                     lx.eval('tool.attr select.polygonCoplanar connect select')
@@ -234,7 +237,7 @@ class SMO_GC_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
         #
         # if RefSystemActive == False:
         #     lx.eval('item.refSystem {}')
-        if RefSystemActive == True:
+        if RefSystemActive:
             lx.eval('item.refSystem %s' % CurrentRefSystemItem)
 
 

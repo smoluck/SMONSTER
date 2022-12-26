@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_UV_Unwrap_Rectangle_Orient_Horiz.py
 # Version: 1.0
 #
@@ -8,11 +8,11 @@
 # using rectangle method and Orient the UV Island on U.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      01/07/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import lx,sys
 

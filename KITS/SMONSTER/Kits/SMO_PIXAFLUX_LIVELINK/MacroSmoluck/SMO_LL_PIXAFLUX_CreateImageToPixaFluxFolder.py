@@ -1,17 +1,17 @@
-#python
-#---------------------------------------
-# Name:             SMO_PixaFlux_CreateImageToPixaFluxFolder.py
-# Version:          1.00
+# python
+"""
+# Name:         SMO_PixaFlux_CreateImageToPixaFluxFolder.py
+# Version:      1.00
 #
 # Purpose:      This Command is designed to :
 #                   
 #
-# Author:           Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Author:       Franck ELISABETH
+# Website:      https://www.smoluck.com
 #
-# Modified:          09/07/2020
+# Modified:     09/07/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import lx, lxifc, lxu.command, lxu.select, subprocess, os
 

@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_QT_Batch_SetSelSetColorIDRandomConstant_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #               It can runs over Selected Meshes or SceneWide, By Items or by Polygon Islands.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      12/04/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.QT.Batch.SetSelSetColorIDRandomConstant"
 # smo.QT.Batch.SetSelSetColorIDRandomConstant 1 1
+
 
 class SMO_QT_Batch_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -60,7 +63,7 @@ class SMO_QT_Batch_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
             SceneWide = False
         if self.dyna_Bool(0):
             SceneWide = self.dyna_Bool(0)
-        if SceneWide == True:
+        if SceneWide:
             lx.eval('smo.GC.DeselectAll')
             lx.eval('select.itemType mesh')
 
@@ -76,9 +79,9 @@ class SMO_QT_Batch_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         ### Grouping and Separate meshes parts
         for mesh in meshes_list:
             mesh.select(True)
-            if ByIslands == False:
+            if not ByIslands:
                 lx.eval('smo.QT.SetSelSetColorIDRandomConstant')
-            if ByIslands == True:
+            if ByIslands:
                 lx.eval('smo.QT.SetSelSetColorIDByMeshIslands')
             lx.eval('select.type polygon')
             lx.eval('select.drop polygon')

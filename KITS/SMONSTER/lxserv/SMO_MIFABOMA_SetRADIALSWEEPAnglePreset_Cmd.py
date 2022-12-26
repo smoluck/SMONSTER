@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MIFABOMA_SetRADIALSWEEPAnglePreset_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,18 @@
 #                   
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      16/09/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
 
 Cmd_Name = "smo.MIFABOMA.SetRadialSweepAnglePreset"
 # smo.MIFABOMA.SetRadialSweepAnglePreset 0 90 1
+
 
 class SMO_MIFABOMA_SetRadialSweepAnglePreset_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -54,9 +56,9 @@ class SMO_MIFABOMA_SetRadialSweepAnglePreset_Cmd(lxu.command.BasicCommand):
 
     def basic_Execute(self, msg, flags):
         
-        ################################
-        #<----[ DEFINE ARGUMENTS ]---->#                # smo.MIFABOMA.SetRadialSweepAnglePreset 0 90 1
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #                # smo.MIFABOMA.SetRadialSweepAnglePreset 0 90 1
+        # ------------------------------ #
         args = lx.args()
         lx.out(args)
         StartANGLE= self.dyna_Int (0)                   # Start Angle
@@ -64,9 +66,9 @@ class SMO_MIFABOMA_SetRadialSweepAnglePreset_Cmd(lxu.command.BasicCommand):
         InBetween= self.dyna_Bool (2)                   # Define the InBetween Mirror Mode    Off = 0 ### On = 1
         # Expose the Result of the Arguments 
         lx.out(StartANGLE,EndANGLE,InBetween)
-        ################################
-        #<----[ DEFINE ARGUMENTS ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #
+        # ------------------------------ #
         
         
         lx.eval('user.value  SMO_UseVal_MIFABOMA_RadialSweep_StartAngle_Preset %s' % StartANGLE)
@@ -75,7 +77,7 @@ class SMO_MIFABOMA_SetRadialSweepAnglePreset_Cmd(lxu.command.BasicCommand):
         lx.out('user.value SMO_UseVal_MIFABOMA_RadialSweep_StartAngle_Preset ?')
         lx.out('user.value SMO_UseVal_MIFABOMA_RadialSweep_EndAngle_Preset ?')
         
-        if InBetween == True  :
+        if InBetween:
             Inbetween_S_Angle = -(EndANGLE / 2)
             Inbetween_E_Angle = (EndANGLE / 2)
             lx.eval('user.value SMO_UseVal_MIFABOMA_RadialSweep_StartAngle_Preset %s' % Inbetween_S_Angle)

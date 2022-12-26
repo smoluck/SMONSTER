@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_UV_UnwrapCylindrical_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #               using Cylindrical Mode on Defined Axis.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo, sys
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.UV.Multi.UnwrapCylindrical"
 # smo.UV.Multi.UnwrapCylindrical 2 0 0
+
 
 class SMO_UV_Multi_UnwrapCylindrical_Cmd(lxu.command.BasicCommand):
     def __init__(self):

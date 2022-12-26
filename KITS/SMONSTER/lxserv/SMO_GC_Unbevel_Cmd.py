@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_Unbevel.py
 # Version: 1.0
 # 
@@ -8,16 +8,19 @@
 # 
 # 
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 # 
 # Created:      05/02/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.Unbevel"
 # smo.GC.Unbevel
+
 
 class SMO_GC_Unbevel_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -58,7 +61,7 @@ class SMO_GC_Unbevel_Cmd(lxu.command.BasicCommand):
 
     def basic_Execute(self, msg, flags):
         scene = modo.Scene()
-        if self.SelModeEdge == True:
+        if self.SelModeEdge:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
         mesh = scene.selectedByType('mesh')[0]
 
@@ -70,15 +73,15 @@ class SMO_GC_Unbevel_Cmd(lxu.command.BasicCommand):
         #lx.out('Modo Version:',Modo_ver)
 
 
-        if self.SelModeEdge == True:
-            ##############################
+        if self.SelModeEdge:
+            # -------------------------- #
             ####### SAFETY CHECK 4 #######
-            ##############################
+            # -------------------------- #
             CsEdges = len(mesh.geometry.edges.selected)
             lx.out('Count Selected Edges', CsEdges)
             SMO_SC_UnbevelPolyLoop_1EdgeSelected = 0
-            #####--------------------  safety check 4: at Least 1 Edge is selected --- START --------------------#####
-            if CsEdges == 0 :
+            # --------------------  safety check 4: at Least 1 Edge is selected --- START
+            if CsEdges == 0:
                 SMO_SC_UnbevelPolyLoop_1EdgeSelected = 0
                 lx.eval('dialog.setup info')
                 lx.eval('dialog.title {SMO GC Unbevel:}')
@@ -87,13 +90,13 @@ class SMO_GC_Unbevel_Cmd(lxu.command.BasicCommand):
                 #lx.out('script Stopped: Mouse over an Edge to validate the script requirements')
                 sys.exit
 
-            elif CsEdges >= 1 :
+            elif CsEdges >= 1:
                 SMO_SC_UnbevelPolyLoop_1EdgeSelected = 1
                 #lx.out('script running: right amount of Edges in selection')
-            #####--------------------  safety check 4: at Least 1 edge is selected --- END --------------------#####
+            # --------------------  safety check 4: at Least 1 edge is selected --- END
 
 
-            if SMO_SC_UnbevelPolyLoop_1EdgeSelected == 1 and Modo_ver >= 1520 :
+            if SMO_SC_UnbevelPolyLoop_1EdgeSelected == 1 and Modo_ver >= 1520:
                 lx.eval('tool.set edge.relax on')
                 SMO_GC_UnbevelConvergence = lx.eval('tool.attr edge.relax convergence ?')
                 #print (SMO_GC_UnbevelConvergence)
@@ -115,7 +118,7 @@ class SMO_GC_Unbevel_Cmd(lxu.command.BasicCommand):
                 lx.eval('tool.set edge.relax off')
                 lx.eval('select.drop edge')
 
-            if SMO_SC_UnbevelPolyLoop_1EdgeSelected == 1 and Modo_ver < 1520 :
+            if SMO_SC_UnbevelPolyLoop_1EdgeSelected == 1 and Modo_ver < 1520:
                 lx.eval('@unbevel.pl')
                     
         

@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_BAKE_PairsLinkConstraint_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      06/02/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.BAKE.PairsLinkConstraint"
 # smo.BAKE.PairsLinkConstraint
+
 
 class SMO_BAKE_PairsLinkConstraint_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -89,12 +92,12 @@ class SMO_BAKE_PairsLinkConstraint_Cmd(lxu.command.BasicCommand):
             if selitems == 2 :
                 lx.eval('select.drop item')
                 
-                Mesh_A_Name = (Mesh_A.name)
-                Mesh_B_Name = (Mesh_B.name)
+                Mesh_A_Name = Mesh_A.name
+                Mesh_B_Name = Mesh_B.name
                 # print(Mesh_A.name)
                 # print(Mesh_B.name)
 
-                if FirstMeshHighPoly == False :
+                if not FirstMeshHighPoly:
                     
                     ########################
                     # Select the High Item (constraint) then the Low (.
@@ -109,7 +112,7 @@ class SMO_BAKE_PairsLinkConstraint_Cmd(lxu.command.BasicCommand):
                     lx.eval('select.drop item')
                     
                     
-                if FirstMeshHighPoly == True :
+                if FirstMeshHighPoly:
                     
                     ########################
                     # Select the High Item (constraint) then the Low (.

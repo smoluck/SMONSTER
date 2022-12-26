@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_UV_AutoUnwrapSmartByAngle_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,20 @@
 #               defined by a Min and Max Angle as Seams.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      21/12/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo, sys
+import lx
+import lxu
+import modo
+import sys
 
 Cmd_Name = "smo.UV.AutoUnwrapSmartByAngle"
 # smo.UV.AutoUnwrapSmartByAngle 1 0 88 180
+
 
 class SMO_UV_AutoUnwrapSmartByAngle_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -104,7 +108,7 @@ class SMO_UV_AutoUnwrapSmartByAngle_Cmd(lxu.command.BasicCommand):
         if self.dyna_IsSet(3):
             AUSBA_MaxAngle = self.dyna_Float(3)
 
-        ############### 5 ARGUMENTS ###############
+        ############### 5 ARGUMENTS ------------- #
         args = lx.args()
         lx.out(args)
 
@@ -125,7 +129,7 @@ class SMO_UV_AutoUnwrapSmartByAngle_Cmd(lxu.command.BasicCommand):
         # 180 Degree
         MaxAngle = AUSBA_MaxAngle
         lx.out('Maximum Angle is:', MaxAngle)
-        ############### ARGUMENTS ###############
+        # ------------- ARGUMENTS ------------- #
 
         # Auto Update UV Seam map   Off = 0
         # Auto Update UV Seam map   On = 1
@@ -153,15 +157,15 @@ class SMO_UV_AutoUnwrapSmartByAngle_Cmd(lxu.command.BasicCommand):
         AutoExpandSel = lx.eval('user.value SMO_UseVal_UV_AutoExpandSelectionState ?')
         lx.out('Auto Expand Selection state:', AutoExpandSel)
 
-        # ############### 4 ARGUMENTS Test ###############
+        # # ------------- ARGUMENTS Test
         # UnwrapMethod = 0          --> Conformal
         # InitProjection = 1        --> Group Normal
         # IsRectangle = 0
-        # ############### ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
 
-        ################################
-        # <----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
         lx.eval("user.defNew name:SMO_SafetyCheck_AUSBA_PolygonModeEnabled type:integer life:momentary")
@@ -227,14 +231,14 @@ class SMO_UV_AutoUnwrapSmartByAngle_Cmd(lxu.command.BasicCommand):
         lx.out('<------------- END -------------->')
         ###############################################
 
-        #####-------------------- safety check 1 : Only One Item Selected --- END --------------------#####
+        # --------------------  safety check 1 : Only One Item Selected --- END
 
         ###############################################
-        ## <----( Main Macro for Polygon Mode )----> ##
+        # <----( Main Macro for Polygon Mode )----> #
         ###############################################
-        if SMO_SafetyCheck_AUSBA_UVMapCount == True:
+        if SMO_SafetyCheck_AUSBA_UVMapCount:
             AutoHideState = lx.eval('user.value SMO_UseVal_UV_HideAfterUnwrap ?')
-            #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+            #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
             if SelCompMode != 3:
                 lx.eval('select.type polygon')
             lx.eval('select.editSet name:UV_DONE mode:add')
@@ -272,7 +276,7 @@ class SMO_UV_AutoUnwrapSmartByAngle_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.type edge')
             if SelCompMode == 5:
                 lx.eval('select.type item')
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
 lx.bless(SMO_UV_AutoUnwrapSmartByAngle_Cmd, Cmd_Name)

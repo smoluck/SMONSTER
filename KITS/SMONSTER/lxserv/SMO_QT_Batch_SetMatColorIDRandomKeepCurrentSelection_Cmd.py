@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_QT_Batch_SetMatColorIDRandomKeepCurrentSelection_Cmd.py
 # Version:      1.00
 #
@@ -9,16 +9,19 @@
 #               to hide current Processed polygons
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      10/05/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import modo, lx, lxu, random
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.QT.Batch.SetMatColorIDRandomKeepCurrentSelection"
 # smo.QT.Batch.SetMatColorIDRandomKeepCurrentSelection
+
 
 class SMO_QT_Batch_SetMatColorIDRandomKeepCurrentSelection_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -61,13 +64,13 @@ class SMO_QT_Batch_SetMatColorIDRandomKeepCurrentSelection_Cmd(lxu.command.Basic
         ColorID_Suffix = "ColorID"
         ByItemMode = bool()
 
-        if self.SelModeItem == True:
+        if self.SelModeItem:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
             lx.eval('select.type polygon')
             lx.eval('select.all')
             ByItemMode = True
 
-        if self.SelModePoly == True:
+        if self.SelModePoly:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
             ByItemMode = False
 
@@ -97,9 +100,9 @@ class SMO_QT_Batch_SetMatColorIDRandomKeepCurrentSelection_Cmd(lxu.command.Basic
         PrstColorIDGrey = 15
         PrstColorIDWhite = 16
 
-        ################################
-        # <----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
 
         # #####--- Define user value for all the different SafetyCheck --- START ---#####
         # #####
@@ -118,11 +121,11 @@ class SMO_QT_Batch_SetMatColorIDRandomKeepCurrentSelection_Cmd(lxu.command.Basic
         lx.eval("user.defNew name:ColorIDConstantName type:string life:momentary")
         ###################
 
-        # ##############################
-        # ####### SAFETY CHECK 1 #######
-        # ##############################
+        # # -------------------------- #
+        # # <---( SAFETY CHECK 1 )---> #
+        # # -------------------------- #
         #
-        # #####--------------------  safety check 1: Polygon Selection Mode enabled --- START --------------------#####
+        # # --------------------  safety check 1: Polygon Selection Mode enabled --- START
         #
         # selType = ""
         # # Used to query layerservice for the list of polygons, edges or vertices.
@@ -176,13 +179,13 @@ class SMO_QT_Batch_SetMatColorIDRandomKeepCurrentSelection_Cmd(lxu.command.Basic
         #     lx.out('script Stopped: You must be in Polygon Mode to run that script')
         #     sys.exit
         #     # sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
-        # #####--------------------  safety check 1: Polygon Selection Mode enabled --- END --------------------#####
+        # # --------------------  safety check 1: Polygon Selection Mode enabled --- END
         #
-        # ##############################
-        # ####### SAFETY CHECK 2 #######
-        # ##############################
+        # # -------------------------- #
+        # # <---( SAFETY CHECK 2 )---> #
+        # # -------------------------- #
         #
-        # #####--------------------  safety check 2: at Least 1 Polygons is selected --- START --------------------#####
+        # # at Least 1 Polygons is selected --- START
         # lx.out('Count Selected Poly', CsPolys)
         #
         # if CsPolys < 1:
@@ -197,7 +200,7 @@ class SMO_QT_Batch_SetMatColorIDRandomKeepCurrentSelection_Cmd(lxu.command.Basic
         # elif CsPolys >= 1:
         #     SMO_SafetyCheck_min1PolygonSelected = 1
         #     lx.out('script running: right amount of polygons in selection')
-        # #####--------------------  safety check 2: at Least 1 Polygons is selected --- END --------------------#####
+        # # at Least 1 Polygons is selected --- END
         #
         # #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
         # #####
@@ -208,11 +211,11 @@ class SMO_QT_Batch_SetMatColorIDRandomKeepCurrentSelection_Cmd(lxu.command.Basic
         # #####
         # #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
 
-        ##############################
-        ## <----( Main Macro )----> ##
-        ##############################
+        # ------------------------ #
+        # <----( Main Macro )----> #
+        # ------------------------ #
 
-        # #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+        # #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
         # if TotalSafetyCheck == TotalSafetyCheckTrueValue:
         # Select the Base Shader to create and place ColorID group on top of current Material Groups
         # lx.eval('smo.QT.SelectBaseShader')
@@ -241,7 +244,7 @@ class SMO_QT_Batch_SetMatColorIDRandomKeepCurrentSelection_Cmd(lxu.command.Basic
             # lx.out('ColorID  Global Count channel already created')
             pass
 
-        if QTChannelExist == True:
+        if QTChannelExist:
             SceneConstantID = lx.eval('!item.channel MatColorIDGlobalCount ?')
             # lx.out('Constant ID Max in scene', SceneConstantID)
         # print(QTChannelExist)

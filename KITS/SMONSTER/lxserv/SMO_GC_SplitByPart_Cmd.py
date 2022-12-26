@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_SplitByPart_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      03/04/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.SplitByPart"
 # smo.GC.SplitByPart
+
 
 class SMO_GC_SplitByPart_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -62,7 +65,7 @@ class SMO_GC_SplitByPart_Cmd(lxu.command.BasicCommand):
             polys_left = lx.eval1('query layerservice poly.N ? all')
 
             # While it still has polygons left...
-            while (polys_left > 0):
+            while polys_left > 0:
                 # Get the part name of the first polygon in the item.
                 part_name = lx.eval1('query layerservice poly.part ? first')
                 # Select all polygons that have that part tag applied to them.

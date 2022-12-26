@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_URL_MARMOSET.py
 # Version:      1.0
 #
@@ -7,11 +7,11 @@
 #               open the MARMOSET Website
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      16/05/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 import lx
 filePathToOpen = lx.eval("query platformservice alias ? {kit_SMO_MARMOSET_LIVELINK:DOC/MARMOSET.url}")
 lx.eval('file.open {%s}' % filePathToOpen)

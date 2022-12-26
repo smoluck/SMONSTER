@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_QuickTag_SelectBaseShader_Cmd.py
 # Version:      1.00
 #
@@ -9,16 +9,19 @@
 #
 #
 # Author:       Franck ELISABETH (with the help of Timothee Yeramian)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      21/06/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.QT.SelectBaseShader"
 # smo.QT.SelectBaseShader
+
 
 class SMO_QT_SelectBaseShaderCmd(lxu.command.BasicCommand):
     def __init__(self):

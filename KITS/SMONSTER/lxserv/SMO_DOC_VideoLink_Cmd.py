@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_DOC_VideoLink_Cmd.py
 # Version:      1.0
 #
@@ -7,16 +7,18 @@
 #               Open the Tutorial Videos using a String Argument for Defined Kit and an integer as argument for Video ID.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      14/08/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
 
 Cmd_Name = "smo.DOC.VideoLink"
 # smo.DOC.VideoLink GAME 1
+
 
 class SMO_DOC_VideoLink_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -64,15 +66,15 @@ class SMO_DOC_VideoLink_Cmd(lxu.command.BasicCommand):
         TIME = "&t="
         TimeCount = 0
         
-        if QUALITY == 1080 :
+        if QUALITY == 1080:
             VidQua = "&vq=hd1080"
-        if QUALITY == 720 :
+        if QUALITY == 720:
             VidQua = "&vq=hd720"
-        if FULLSCREEN == True :
+        if FULLSCREEN:
             FullS = "&fs=1"
             WatchMode = "watch?v="
             # WatchMode = "watch_popup?v=" # This PopUp mode doesn't allow to start the video at specific time
-        if FULLSCREEN == False :
+        if not FULLSCREEN:
             FullS = "&fs=0"
             WatchMode = "watch?v="
 

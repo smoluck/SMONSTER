@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_ExportMeshOpRig_to_FBXSequence
 # Version: 1.01
 #
@@ -7,15 +7,16 @@
 # Select the MeshOp item and run. 
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      03/12/2018
 # Modified:		19/03/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-# import the necessary Python libraries
-import lx, os, modo
+import lx
+import modo
+import os
 
 scene = modo.Scene()
 

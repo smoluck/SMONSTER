@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_ArrayTarget
 # Version: 1.01
 #
@@ -11,12 +11,12 @@
 #			Then select the ArrayTarget Assembly
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      04/01/2019
 # Modified:		19/03/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 
 import	lx, lxifc, lxu.command, lxu.select, subprocess, os, modo
@@ -42,16 +42,16 @@ class SMO_ArrayTarget_Cmd (lxu.command.BasicCommand):
 		pass
 
 	def cmd_UserName (self):
- 		return 'SMOLUCK - Create ArrayTarget Setup'
+		return 'SMOLUCK - Create ArrayTarget Setup'
 
- 	def cmd_Desc (self):
- 		return 'Load FBX as Reference and Array it.'
+	def cmd_Desc (self):
+		return 'Load FBX as Reference and Array it.'
 
- 	def cmd_Tooltip (self):
- 		return 'Load FBX as Reference and Array it.'
+	def cmd_Tooltip (self):
+		return 'Load FBX as Reference and Array it.'
 
- 	def cmd_Help (self):
- 		return 'https://twitter.com/sm0luck'
+	def cmd_Help (self):
+		return 'https://twitter.com/sm0luck'
 
 	def basic_ButtonName (self):
 		return 'SMOLUCK - Create ArrayTarget Setup'

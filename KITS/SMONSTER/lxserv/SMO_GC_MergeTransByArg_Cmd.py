@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_MergeTransByArg_Cmd.py
 # Version:      1.0
 #
@@ -9,16 +9,19 @@
 #               Select the Mesh item and launch it.
 #
 # Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      03/03/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.MergeTransByArg"
 # smo.GC.MergeTransByArg 1
+
 
 class SMO_GC_MergeTransByArg_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -58,17 +61,17 @@ class SMO_GC_MergeTransByArg_Cmd(lxu.command.BasicCommand):
         rot = locsup.rotation
         sca = locsup.scale
         
-        # ############### 1 ARGUMENTS Test ###############
+        # # ------------- ARGUMENTS Test
         TransMode = self.dyna_Int (0)
         # Searched = "UVChannel_1"
         # OutputName = "TargetUVMap"
-        # ############### 1 ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
         # args = lx.args()
         # lx.out(args)
         
         # PreTransform = int(args[0])
         # lx.out('PreTransform search type:', PreTransform)
-        # ############### 1 ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
         
         
         if TransMode == 0 :

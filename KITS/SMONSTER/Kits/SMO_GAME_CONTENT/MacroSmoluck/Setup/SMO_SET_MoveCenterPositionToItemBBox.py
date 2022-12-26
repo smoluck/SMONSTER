@@ -1,5 +1,5 @@
 # python
-#---------------------------------------
+"""
 # Name:         SMO_SET_MoveCenterPositionRoItemBBox.py
 # Version: 1.0
 #
@@ -7,11 +7,11 @@
 # Move the Center of the Item at the Center of his Bounding Box.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 lx.eval('select.type polygon')
 lx.eval('select.all')

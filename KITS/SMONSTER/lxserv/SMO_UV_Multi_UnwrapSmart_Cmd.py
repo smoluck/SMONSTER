@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_UV_Multi_UnwrapSmart_Cmd.py
 # Version:      1.0
 #
@@ -9,16 +9,19 @@
 #               with various Unwrap Method, Rectangle Mode and Autoloop function using Arguments.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.UV.Multi.UnwrapSmart"
 # smo.UV.Multi.UnwrapSmart 2 0
+
 
 class SMO_UV_Multi_UnwrapSmart_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -79,7 +82,7 @@ class SMO_UV_Multi_UnwrapSmart_Cmd(lxu.command.BasicCommand):
         Modo_ver = int(lx.eval ('query platformservice appversion ?'))
         lx.out('Modo Version:', Modo_ver)
 
-        ############### 5 ARGUMENTS ###############
+        ############### 5 ARGUMENTS ------------- #
         args = lx.args()
         lx.out(args)
 
@@ -102,7 +105,7 @@ class SMO_UV_Multi_UnwrapSmart_Cmd(lxu.command.BasicCommand):
         # current selection + Add loop = 1
         SelectByLoop = MUS_SelectByLoop
         lx.out('Select by loop state:', SelectByLoop)
-        ############### ARGUMENTS ###############
+        # ------------- ARGUMENTS ------------- #
 
         selType = ""
         # Used to query layerservice for the list of polygons, edges or vertices.

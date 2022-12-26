@@ -1,3 +1,4 @@
+#python
 import os
 from os import mkdir
 from pathlib import Path
@@ -289,7 +290,7 @@ def kit_venom_fi():
 # Files contained in "Kits/SMO_MARMOSET_LIVELINK" folder
 def kit_ll_marmosettoolbag_fi():
     # Files that doesn't include the source code py files, but only the one that remains to the KeymapCommander and Startup scripts.
-    kitLLMARMO_files = [f for f in kit_marmo_dir.glob("**/*") if f.is_file() and not f.name.endswith((".pyc"))]
+    kitLLMARMO_files = [f for f in kit_marmo_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
     print("Files in Marmoset Toolbag LL kit folder:")
     print(kitLLMARMO_files)
     print("--------------")
@@ -299,7 +300,7 @@ def kit_ll_marmosettoolbag_fi():
 # Files contained in "Kits/SMO_PIXAFLUX_LIVELINK" folder
 def kit_ll_pixaflux_fi():
     # Files that doesn't include the source code py files, but only the one that remains to the KeymapCommander and Startup scripts.
-    kitLLPIXA_files = [f for f in kit_pixa_dir.glob("**/*") if f.is_file() and not f.name.endswith((".pyc"))]
+    kitLLPIXA_files = [f for f in kit_pixa_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
     print("Files in Pixaflux LL kit folder:")
     print(kitLLPIXA_files)
     print("--------------")
@@ -309,7 +310,7 @@ def kit_ll_pixaflux_fi():
 # Files contained in "Kits/SMO_RIZOMUV_LIVELINK" folder
 def kit_ll_rizomuv_fi():
     # Files that doesn't include the source code py files, but only the one that remains to the KeymapCommander and Startup scripts.
-    kitLLRIZOM_files = [f for f in kit_rizom_dir.glob("**/*") if f.is_file() and not f.name.endswith((".pyc"))]
+    kitLLRIZOM_files = [f for f in kit_rizom_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
     print("Files in RizomUV LL kit folder:")
     print("Files in RizomUV LL kit folder:")
     print(kitLLRIZOM_files)
@@ -493,7 +494,7 @@ with ZipFile(lpk_source_path, mode="w", compression=ZIP_DEFLATED) as lpk:
         print(file.relative_to(kit_dir))
         lpk.write(file, file.relative_to(kit_dir))
 
-    ###### STANDARD KITS ########
+    ###### STANDARD KITS
     print("----- Kits files -----")
     for file in kits_fi():
         print(file.relative_to(kit_dir))

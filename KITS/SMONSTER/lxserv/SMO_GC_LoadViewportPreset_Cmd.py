@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_LoadViewportPreset_Cmd.py
 # Version:      1.0
 #
@@ -7,16 +7,18 @@
 #               Load Corresponding Viewport Preset based on Modo Version to limit struggle with Preset form changes.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Modified:     13/10/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import modo, lx, lxu
+import lx
+import lxu
 
 Cmd_Name = "smo.GC.LoadViewportPreset"
 # smo.GC.LoadViewportPreset 1
+
 
 class SMO_GC_LoadViewportPreset_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -48,13 +50,13 @@ class SMO_GC_LoadViewportPreset_Cmd(lxu.command.BasicCommand):
         return True
 
     def basic_Execute(self, msg, flags):
-        ################################
-        # <----[ DEFINE ARGUMENTS ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #
+        # ------------------------------ #
         Preset_ID = self.dyna_Int(0)
-        ################################
-        # <----[ DEFINE ARGUMENTS ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #
+        # ------------------------------ #
 
         # MODO version checks.
         # Modo 14.0 aand 15.0 have different ViewportPresets.

@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name: Normalize_Pack.py
 # Version: 1.0
 #
@@ -8,18 +8,20 @@
 # them in 0-1 UVSpace.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo
+import lx
+
 scene = modo.scene.current()
 mesh = scene.selectedByType('mesh')[0]
 #lx.out('selitems',selitems)
 
-############### 2 ARGUMENTS ###############
+# ------------- ARGUMENTS ------------- #
 args = lx.args()
 lx.out(args)
 # no Flipped = 0
@@ -31,16 +33,11 @@ lx.out('Fix Flipped error UV Island:',FixFlippedUV)
 # Orient preprocess ON = 1
 Orient_Pass = int(args[1])
 lx.out('Orient preprocess state:',Orient_Pass)
-############### ARGUMENTS ###############
+# ------------- ARGUMENTS ------------- #
 
-# ############### 2 ARGUMENT Test ###############
-# FixFlippedUV = 1
-# Orient_Pass = 0
-# ############### ARGUMENT ###############
-
-################################
-#<----[ DEFINE VARIABLES ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE VARIABLES )----> #
+# ------------------------------ #
 
 #####--- Define user value for all the different SafetyCheck --- START ---#####
 #####
@@ -63,9 +60,9 @@ lx.eval("user.defNew name:SMO_SafetyCheckNP_ItemModeEnabled type:integer life:mo
 #####--- Define user value for all the different SafetyCheck --- END ---#####
 
 
-###############################################
-####### SAFETY CHECK 1 - UVMap Selected #######
-###############################################
+# ----------------------------------------- #
+# <---( SAFETY CHECK 1 )---> UVMap Selected #
+# ----------------------------------------- #
 
 ##########################
 lx.out('<------------- START -------------->')
@@ -106,7 +103,7 @@ lx.out('<------------- END -------------->')
 ####### SAFETY CHECK 2 -  Selection Mode #######
 ################################################
 
-#####--------------------  safety check 2: Component Selection Mode type --- START --------------------#####
+# Component Selection Mode type --- START
 
 selType = ""
 # Used to query layerservice for the list of polygons, edges or vertices.
@@ -160,11 +157,11 @@ else:
     
     lx.out('script Running: Item Component Selection Mode')
 
-#####--------------------  safety check 2: Component Selection Mode type --- END --------------------#####
+# Component Selection Mode type --- END
 
 
 ##########################################
-## <----( Main Macro : FixFlipped pass )----> ##
+# <----( Main Macro : FixFlipped pass )----> #
 ##########################################
 
 if SMO_SafetyCheckNP_VertexModeEnabled == 1:
@@ -205,11 +202,11 @@ if CsPolysNP == 0 or SMO_SafetyCheckNP_ItemModeEnabled == 1 or SMO_SafetyCheckNP
     if FixFlippedUV == 0 :
         lx.out('Fix Flipped error UV Island: NO')
 
-##############################
-####### SAFETY CHECK 3 #######
-##############################
+# -------------------------- #
+# <---( SAFETY CHECK 3 )---> #
+# -------------------------- #
 
-#####--------------------  safety check 3: at Least 1 Polygons is selected --- START --------------------#####
+# at Least 1 Polygons is selected --- START
 
 
 if CsPolysNP < 1:
@@ -219,12 +216,12 @@ if CsPolysNP < 1:
 elif CsPolysNP >= 1:
     SMO_SafetyCheckNP_min1PolygonSelected = 1
     lx.out('Normalize and Pack applied on Poly Selection Only')
-#####--------------------  safety check 3: at Least 1 Polygons is selected --- END --------------------#####
+# at Least 1 Polygons is selected --- END
 
 
 
 ##########################################
-## <----( Main Macro : Normalize )----> ##
+# <----( Main Macro : Normalize )----> #
 ##########################################
 
 if SMO_SafetyCheckNP_min1PolygonSelected >= 1 :

@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_REBUILD_With_CYLINDER_OrientedViaEdge.py
 # Version: 1.0
 #
@@ -11,11 +11,11 @@
 # (it will select the EdgeRing , Convert the selection to Poly, and replace all the connected Polygons to this Polyloop)
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      11/09/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo, lx
 
@@ -24,21 +24,21 @@ mesh = scene.selectedByType('mesh')[0]
 CsEdges = len(mesh.geometry.edges.selected)
 
 
-################################
-#<----[ DEFINE ARGUMENTS ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE ARGUMENTS )----> #
+# ------------------------------ #
 args = lx.args()
 lx.out(args)
 CYLINDER_CAPMODE = args[0]                      # Cap Mode:          0 = NoCap ### 1 = NGONCap ### 2 = QuadsCap ### 3 = RadialCap
 CYLINDER_SIDES_COUNT = args[1]                  # Sides Count for the Cylinder as an integer value
 # Expose the Result of the Arguments 
 lx.out(CYLINDER_SIDES_COUNT,CYLINDER_CAPMODE)
-############### ARGUMENTS ###############
+# ------------- ARGUMENTS ------------- #
 
 
-################################
-#<----[ DEFINE VARIABLES ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE VARIABLES )----> #
+# ------------------------------ #
 #####--- Define user value for all the different SafetyCheck --- START ---#####
 #####
 lx.eval("user.defNew name:SMO_SafetyCheck_PolygonModeEnabled type:integer life:momentary")
@@ -95,10 +95,10 @@ if User_Pref_PasteDeselect == 1:
 ################################################
 
 
-###########################################
+# ------------------------------------- #
 ####### SAFETY CHECK Component Mode #######
-###########################################
-#####--------------------  safety check 1: Polygon Selection Mode enabled --- START --------------------#####
+# ------------------------------------- #
+# --------------------  safety check 1: Polygon Selection Mode enabled --- START
 
 selType = ""
 # Used to query layerservice for the list of polygons, edges or vertices.
@@ -132,7 +132,7 @@ elif lx.eval1( "select.typeFrom typelist:polygon;vertex;edge;item ?" ):
     lx.eval('dialog.msg {You must be in Edge selection Mode to run that script}')
     lx.eval('+dialog.open')
     lx.out('script Stopped: You must be in Edge selection Mode to run that script')
-#####--------------------  safety check 1: Polygon Selection Mode enabled --- END --------------------#####
+# --------------------  safety check 1: Polygon Selection Mode enabled --- END
 
 
 
@@ -140,7 +140,7 @@ elif lx.eval1( "select.typeFrom typelist:polygon;vertex;edge;item ?" ):
 ################################################
 ####### SAFETY CHECK Selected Edge Count #######
 ################################################
-#####--------------------  safety check 2: 2 Edges are selected --- START --------------------#####
+# 2 Edges are selected --- START
 if SMO_SafetyCheck_EdgeModeEnabled == 1:
     lx.out('Count Selected Edges',CsEdges)
     if CsEdges != 2:
@@ -156,7 +156,7 @@ if SMO_SafetyCheck_EdgeModeEnabled == 1:
     elif CsEdges == 2:
         SMO_SafetyCheck_minEdgeSelected = 1
         lx.out('script running: right amount of Edges in selection')
-#####--------------------  safety check 2: 2 Edges are selected --- END --------------------#####
+# 2 Edges are selected --- END
 
 
 
@@ -171,11 +171,11 @@ lx.out('Current Value',TotalSafetyCheck)
 
 
 
-##############################
-## <----( Main Macro )----> ##
-##############################
+# -------------------------- #
+# <----( Main Macro )----> #
+# -------------------------- #
 lx.out('Start of SMO REBUILD With CYLINDER')
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
 if TotalSafetyCheck == TotalSafetyCheckTrueValue:
 
     # Tag the Edges to define the orientation
@@ -355,4 +355,4 @@ if User_Pref_PasteDeselectChangedState == 1 :
 ########################################################
 
 lx.out('End of SMO REBUILD With CYLINDER')
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END

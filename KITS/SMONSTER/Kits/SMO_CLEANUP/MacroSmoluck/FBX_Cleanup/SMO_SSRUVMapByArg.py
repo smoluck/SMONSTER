@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_SSRUVMapByArg.py
 # Version:      1.0
 #
@@ -8,26 +8,26 @@
 #               via String Argument.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      17/02/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import lx, lxu, modo
 
-# # ############### 1 ARGUMENTS Test ###############
+# # # ------------- ARGUMENTS Test
 # SearchStringArg = 'FBX_UDP3DSMAX'
-# # ############### ARGUMENTS ###############
+# # # ------------- ARGUMENTS ------------- #
 RenameByDefault = 1
 SearchString = "UVChannel_1"
 TargetString = "TargetUVMap"
-# # ############### 1 ARGUMENTS ###############
+# # # ------------- ARGUMENTS ------------- #
 # args = lx.args()
 # lx.out(args)
 # SearchStringArg = SearchString
 # lx.out('Searched String chain:', SearchStringArg)
-# # ############### ARGUMENTS ###############
+# # # ------------- ARGUMENTS ------------- #
 
 scn = modo.Scene()
 

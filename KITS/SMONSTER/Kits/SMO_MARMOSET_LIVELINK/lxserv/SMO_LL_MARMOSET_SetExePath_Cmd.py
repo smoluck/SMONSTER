@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_LL_MARMOSET_SetExePath_Cmd.py
 # Version:      1.95
 #
@@ -8,15 +8,18 @@
 #               It will prompt a File browser to get the EXE file Location.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Modified:     28/07/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxifc, lxu.command, lxu.select, subprocess, os
+import lx
+import lxu.command
+import lxu.select
 
 Cmd_Name = "smo.LL.MARMOSET.SetExePath"
+
 
 class SMO_MARMOSET_LIVELINK_SetExePath_Cmd(lxu.command.BasicCommand):
     def __init__(self):

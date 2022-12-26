@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_REBUILD_With_CUBE.py
 # Version: 1.0
 # 
@@ -11,11 +11,11 @@
 # (it will get the orientation based on Edges selected and eplace all the connected Polygons from the last polygon selection)
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      13/03/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo, lx
 
@@ -25,9 +25,9 @@ CsPolys = len(mesh.geometry.polygons.selected)
 CsEdges = len(mesh.geometry.edges.selected)
 
 
-################################
-#<----[ DEFINE VARIABLES ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE VARIABLES )----> #
+# ------------------------------ #
 
 #####--- Define user value for all the different SafetyCheck --- START ---#####
 #####
@@ -90,11 +90,11 @@ if User_Pref_PasteDeselect == 1:
 ################################################
 
 
-##############################
-####### SAFETY CHECK 1 #######
-##############################
+# -------------------------- #
+# <---( SAFETY CHECK 1 )---> #
+# -------------------------- #
 
-#####--------------------  safety check 1: Polygon Selection Mode enabled --- START --------------------#####
+# --------------------  safety check 1: Polygon Selection Mode enabled --- START
 
 selType = ""
 # Used to query layerservice for the list of polygons, edges or vertices.
@@ -148,14 +148,14 @@ else:
     lx.out('script Stopped: You must be in Polygon Mode to run that script')
     sys.exit
     #sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
-#####--------------------  safety check 1: Polygon Selection Mode enabled --- END --------------------#####
+# --------------------  safety check 1: Polygon Selection Mode enabled --- END
 
 
-##############################
-####### SAFETY CHECK 2 #######
-##############################
+# -------------------------- #
+# <---( SAFETY CHECK 2 )---> #
+# -------------------------- #
 
-#####--------------------  safety check 2: at Least 1 Polygons is selected --- START --------------------#####
+# at Least 1 Polygons is selected --- START
 lx.out('Count Selected Poly',CsPolys)
 
 if CsPolys < 1:
@@ -170,7 +170,7 @@ if CsPolys < 1:
 elif CsPolys >= 1:
     SMO_SafetyCheck_min1PolygonSelected = 1
     lx.out('script running: right amount of polygons in selection')
-#####--------------------  safety check 2: at Least 1 Polygons is selected --- END --------------------#####
+# at Least 1 Polygons is selected --- END
 
 
 
@@ -185,11 +185,11 @@ lx.out('Current Value',TotalSafetyCheck)
 
 
 
-##############################
-## <----( Main Macro )----> ##
-##############################
+# -------------------------- #
+# <----( Main Macro )----> #
+# -------------------------- #
 lx.out('Start of SMO REBUILD With CUBE')
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
 if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     # Switch to Edge Mode
     lx.eval('select.typeFrom edge')
@@ -346,4 +346,4 @@ if User_Pref_PasteDeselectChangedState == 1 :
 ########################################################
 
 lx.out('End of SMO REBUILD With CYLINDER')
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END

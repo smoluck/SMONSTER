@@ -1,5 +1,5 @@
-#python
-#---------------------------------------------
+# python
+"""
 # Name:         SMO_Set_MoveAndRotateCenterUsingOpenBoundary.py
 # Version:      1.0
 #
@@ -8,11 +8,14 @@
 #               the Center to Open boundary centroid and rotate it (use it in item mode)
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      20/06/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------------
+"""
+
+import lx
+
 lx.eval('script.run "macro.scriptservice:92663570022:macro"')
 lx.eval('poly.make auto')
 lx.eval('select.convert polygon')

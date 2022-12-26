@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_CLEANUP_RenameInstanceBySourceMeshName_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #
 #
 # Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      10/05/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.CLEANUP.RenameInstanceBySourceMeshName"
 # smo.CLEANUP.RenameInstanceBySourceMeshName
+
 
 class SMO_CLEANUP_RenameInstanceBySourceMeshName_Cmd(lxu.command.BasicCommand):
     def __init__(self):

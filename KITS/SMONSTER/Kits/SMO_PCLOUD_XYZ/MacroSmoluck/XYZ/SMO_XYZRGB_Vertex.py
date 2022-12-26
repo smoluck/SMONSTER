@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+# ---------------------------------------
 # Name:         SMO_XYZRGB_Vertex.py
 # Version: 1.0
 #
@@ -9,13 +9,14 @@
 #			Each line is a new Vertex
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      29/11/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+# ---------------------------------------
 
-import lx, lxu, os
+import lx
+import lxu
 
 # Get current scene
 scene = lxu.select.SceneSelection().current()
@@ -32,24 +33,24 @@ mesh = lx.object.Mesh(write_mesh_obj)
 
 lx.eval('vertMap.new type:rgb')
 
-PositionfloatList = [] # Define an array of floats
-file_path='C:\Temp\TEST.xyz' #Defines path of output text file
-FileDATA= open(file_path, 'r') #Opens and read file
+PositionfloatList = []  # Define an array of floats
+file_path = 'C:\Temp\TEST.xyz'  # Defines path of output text file
+FileDATA = open(file_path, 'r')  # Opens and read file
 
 with FileDATA as f:
-	line = f.readline()
-	pointAccessor = mesh.PointAccessor() # Add a point using the PointAccessor interface
-	
-	for line in f:
-		PositionfloatList = map (float, line.split (','))
-		# print('\n'.join([str(x) for x in PositionfloatList]))
-		newPointID = pointAccessor.New(PositionfloatList[0:3])
-		# Update the mesh
-		mesh.SetMeshEdits(lx.symbol.f_MESHEDIT_POINTS)
-		VertColor_R = PositionfloatList[3]
-		VertColor_G = PositionfloatList[4]
-		VertColor_B = PositionfloatList[5]
-		lx.eval('vertMap.setValue rgb 0 %f', VertColor_R) # Set R Value
-		lx.eval('vertMap.setValue rgb 1 %f', VertColor_G) # Set G Value
-		lx.eval('vertMap.setValue rgb 2 %f', VertColor_B) # Set B Value
-FileDATA.close() #Closes the file
+    line = f.readline()
+    pointAccessor = mesh.PointAccessor()  # Add a point using the PointAccessor interface
+
+    for line in f:
+        PositionfloatList = map(float, line.split(','))
+        # print('\n'.join([str(x) for x in PositionfloatList]))
+        newPointID = pointAccessor.New(PositionfloatList[0:3])
+        # Update the mesh
+        mesh.SetMeshEdits(lx.symbol.f_MESHEDIT_POINTS)
+        VertColor_R = PositionfloatList[3]
+        VertColor_G = PositionfloatList[4]
+        VertColor_B = PositionfloatList[5]
+        lx.eval('vertMap.setValue rgb 0 %f', VertColor_R)  # Set R Value
+        lx.eval('vertMap.setValue rgb 1 %f', VertColor_G)  # Set G Value
+        lx.eval('vertMap.setValue rgb 2 %f', VertColor_B)  # Set B Value
+FileDATA.close()  # Closes the file

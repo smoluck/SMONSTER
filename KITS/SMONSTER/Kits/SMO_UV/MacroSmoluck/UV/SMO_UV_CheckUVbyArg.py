@@ -1,5 +1,5 @@
-#python
-#---------------------------------------------
+# python
+"""
 # Name:         SMO_UV_CheckUVbyArg.py
 # Version:      1.0
 #
@@ -9,20 +9,22 @@
 #           
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      18/01/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------------
-import lx, lxu, modo
+"""
+import lx
+import modo
+
 scene = modo.scene.current()
 meshitems = [item for item in scene.items() if item.type == "mesh"]
 
-# # ############### 3 ARGUMENTS ###############
+# # # ------------- ARGUMENTS ------------- #
 # RenameByDefault = 1
 # SearchString = "UVChannel_1"
 # TargetString = "TargetUVMap"
-# # ############### 3 ARGUMENTS ###############
+# # # ------------- ARGUMENTS ------------- #
 # args = lx.args()
 # lx.out(args)
 
@@ -34,7 +36,7 @@ meshitems = [item for item in scene.items() if item.type == "mesh"]
 
 # TargetString = string(args[2])
 # lx.out('Target UVMap name:', TargetString)
-# # ############### ARGUMENTS ###############
+# # # ------------- ARGUMENTS ------------- #
 
 
 # Get the default UV Map name of the user
@@ -42,10 +44,9 @@ DefaultUVMapName =  lx.eval('pref.value application.defaultTexture ?')
 lx.out('Current Default UV Map name:', DefaultUVMapName)
 
 
-
 for item in meshitems:
     item.select(True)
-    if item.geometry.vmaps.uvMaps == True :
+    if item.geometry.vmaps.uvMaps:
         # print('number of UV maps: ', len(item.geometry.vmaps.uvMaps))
         UVMapCount = lx.evalN('query layerservice vmaps.N ? texture')
         lx.out('UV map Count:', UVMapCount)
@@ -61,7 +62,7 @@ for item in meshitems:
             if UVMapCount == 1 :
                 lx.eval('select.vertexMap {%s} txuv replace' % uvmap_name)
                 lx.eval('vertMap.rename {%s} {%s} txuv active' % (uvmap_name, DefaultUVMapName))
-    elif item.geometry.vmaps.uvMaps == False :
+    elif not item.geometry.vmaps.uvMaps:
         lx.eval('?vertMap.new {%s} txuv' % DefaultUVMapName)
         lx.eval('select.vertexMap {%s} txuv remove' % DefaultUVMapName)
 

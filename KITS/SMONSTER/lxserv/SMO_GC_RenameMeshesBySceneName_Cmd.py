@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_RenameMeshesBySceneName_Cmd.py
 # Version:      1.0
 #
@@ -9,17 +9,21 @@
 #               Script will save the scene in same places as the current opened scene.
 #
 # Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      30/09/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo, string
 from os import path
+
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.RenameMeshesBySceneName"
 # smo.GC.RenameMeshesBySceneName
+
 
 class SMO_GC_RenameMeshesBySceneName_Cmd(lxu.command.BasicCommand):
     def __init__(self):

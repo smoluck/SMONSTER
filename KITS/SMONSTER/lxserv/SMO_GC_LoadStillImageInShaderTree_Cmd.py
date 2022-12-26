@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_LoadStillImageInShaderTree_Cmd.py
 # Version:      1.0
 #
@@ -8,20 +8,24 @@
 # 
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      12/08/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.LoadStillImageInShaderTree"
 # smo.GC.LoadStillImageInShaderTree
 
+
 class SMO_GC_LoadStillImageInShaderTree_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
+
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
     
@@ -67,7 +71,7 @@ class SMO_GC_LoadStillImageInShaderTree_Cmd(lxu.command.BasicCommand):
         lx.eval('select.drop channel')
         lx.eval('select.drop link')
         
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
 lx.bless(SMO_GC_LoadStillImageInShaderTree_Cmd, Cmd_Name)

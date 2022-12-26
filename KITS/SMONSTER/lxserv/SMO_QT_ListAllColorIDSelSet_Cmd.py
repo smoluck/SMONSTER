@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_QT_ListAllColorIDSelSet_Cmd.py
 # Version:      1.00
 #
@@ -9,32 +9,37 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      17/05/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import modo, lx, lxu
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.QT.ListAllColorIDSelSet"
 # smo.QT.ListAllColorIDSelSet
-
-
 tag = "ColorID_"
+
+
 def GetColorIDSelSetList():
     listpolset = []
     lx.eval('select.itemType mesh')
     # lx.eval('query layerservice layer.id ? main')# select main layer
-    num_polset = lx.eval('query layerservice polset.N ? all')# number of Poly SS
+    num_polset = lx.eval('query layerservice polset.N ? all')  # number of Poly SS
     for i in range(num_polset):
-        polset_name = lx.eval('query layerservice polset.name ? %s' %i)
+        polset_name = lx.eval('query layerservice polset.name ? %s' % i)
         if polset_name.startswith(tag):
             listpolset.append(polset_name)
         # lx.out(sorted(listpolset))
     lx.eval('smo.GC.DeselectAll')
     return listpolset
+
+
 # print(GetColorIDSelSetList())
+
 
 class SMO_QT_ListAllColorIDSelSet_Cmd(lxu.command.BasicCommand):
     def __init__(self):

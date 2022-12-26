@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_ExportMeshOpRig_AudioNotification_Short.py
 # Version:      1.01
 #
@@ -7,11 +7,12 @@
 #               Plays an Audio track to prevent of a script end.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/05/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
+
 import lx
 
 OriginalTimeCurrentOut = lx.eval("time.range current out:?")

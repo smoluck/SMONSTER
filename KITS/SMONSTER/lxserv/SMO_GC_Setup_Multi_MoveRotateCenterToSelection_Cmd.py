@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------------
+"""
 # Name:         SMO_GC_Setup_Multi_MoveRotateCenterToSelection_Cmd.py
 # Version:      1.0
 #
@@ -7,16 +7,19 @@
 #               Move and / or Rotate the Center to Selection center (use it in item mode or Component mode).
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      22/08/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.Setup.Multi.MoveRotateCenterToSelection"
 # smo.GC.Setup.Multi.MoveRotateCenterToSelection 1 0
+
 
 class SMO_GC_Setup_Multi_MoveRotateCenterToSelection_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -195,7 +198,7 @@ class SMO_GC_Setup_Multi_MoveRotateCenterToSelection_Cmd(lxu.command.BasicComman
             # GOOOOOOOOOOOOD
         lx.eval('smo.GC.DeselectAll')
 
-        for item in (ComponentList):
+        for item in ComponentList:
             # print(item)
             if self.sel_mode == 1:
                 selected_mesh.geometry.vertices.select(item)

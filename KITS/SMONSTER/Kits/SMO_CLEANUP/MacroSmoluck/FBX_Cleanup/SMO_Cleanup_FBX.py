@@ -1,5 +1,5 @@
-#python
-#---------------------------------------------
+# python
+"""
 # Name:         SMO_Cleanup_FBX.py 1 1 1 1 1 1
 # Version:      1.0
 #
@@ -8,12 +8,14 @@
 #           
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      19/12/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------------
-import lx, lxu, modo
+"""
+
+import lx
+
 # if NoUndo == 1 :
     # lx.eval('!!app.undoSuspend')
 

@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_ExportMeshOpRig_to_OBJSequence
 # Version: 1.01
 #
@@ -7,12 +7,12 @@
 # Select the MeshOp item and run. 
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      03/12/2018
 # Modified:		03/06/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 #import the necessary Python libraries
 import lx, os, modo
@@ -113,7 +113,7 @@ while frame <= frameEnd:
 
 	# save result mesh to a file
 	objPath = dirPath + '\\' + shortFileName + '_' + str(frame) + '.obj'
-	lx.eval('!scene.saveAs "%s" wf_OBJ false' % (objPath))
+	lx.eval('!scene.saveAs "%s" wf_OBJ false' % objPath)
 
 	lx.eval('!scene.close')
 	# lx.eval('scene.set %s' %oldscene)

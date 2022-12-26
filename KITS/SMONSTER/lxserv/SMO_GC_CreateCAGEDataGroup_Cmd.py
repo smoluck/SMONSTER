@@ -1,23 +1,26 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_CreateCAGEDataGroup_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to:
-#               Select the Tagged LowPoly Meshes and create A new CAGE Data group out of their current Cage Morph map.
-#
+#               Select the Tagged LowPoly Meshes and create A new CAGE Data
+#               group out of their current Cage Morph map.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      30/11/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.CreateCloneCAGEData"
 # smo.GC.CreateCloneCAGEData
+
 
 class SMO_GC_CreateCAGEDataGroup_Cmd(lxu.command.BasicCommand):
     def __init__(self):

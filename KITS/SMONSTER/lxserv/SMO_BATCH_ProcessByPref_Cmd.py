@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_BATCH_ProcessByPref_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #
 #
 # Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      01/10/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, os, modo
+import lx
+import lxu
+import os
 
 Cmd_Name = "smo.BATCH.ProcessByPref"
 # smo.BATCH.ProcessByPref
+
 
 class SMO_BATCH_ProcessByPref_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -49,9 +52,9 @@ class SMO_BATCH_ProcessByPref_Cmd(lxu.command.BasicCommand):
 
     def basic_Execute(self, msg, flags):
         
-        ################################
-        #<----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         lx.eval("user.defNew name:BPLine001 type:string life:momentary")
         lx.eval("user.defNew name:BPLine002 type:string life:momentary")
         lx.eval("user.defNew name:BPLine003 type:string life:momentary")
@@ -72,7 +75,7 @@ class SMO_BATCH_ProcessByPref_Cmd(lxu.command.BasicCommand):
         lx.eval("user.defNew name:BPLine018 type:string life:momentary")
         lx.eval("user.defNew name:BPLine019 type:string life:momentary")
         lx.eval("user.defNew name:BPLine020 type:string life:momentary")
-        ################################
+        # ------------------------------ #
         
         
         BPLine001 = lx.eval('user.value SMO_UseVal_BATCH_String_Line001 ?')

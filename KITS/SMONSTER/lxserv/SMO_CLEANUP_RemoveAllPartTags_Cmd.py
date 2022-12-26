@@ -1,21 +1,24 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_CLEANUP_RemoveAllPartTags_Cmd.py
 # Version:      1.0
 #
 # Purpose:      Check for all Meshes in the current scene remove any part tags in it.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      21/10/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.CLEANUP.RemoveAllPartTags"
 # smo.CLEANUP.RemoveAllPartTags
+
 
 class SMO_CLEANUP_RemoveAllPartTags_Cmd(lxu.command.BasicCommand):
     def __init__(self):

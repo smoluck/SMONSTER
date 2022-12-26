@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_CAD_FixTransformOrderOnSelMeshAndInstances_Cmd.py
 # Version:      1.0
 #
@@ -8,15 +8,18 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      07/05/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.CAD.FixTransformOrderOnSelMeshAndInstances"
+
 
 class SMO_CAD_FixTransformOrderOnSelMeshAndInstances_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -51,7 +54,7 @@ class SMO_CAD_FixTransformOrderOnSelMeshAndInstances_Cmd(lxu.command.BasicComman
 
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
-        if self.SelModeItem == True :
+        if self.SelModeItem:
             SelItem = lxu.select.ItemSelection().current()
             # print SelItem
 

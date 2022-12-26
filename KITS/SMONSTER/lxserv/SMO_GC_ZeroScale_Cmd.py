@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_ZeroScale_Cmd.py
 # Version:      1.0
 #
@@ -8,15 +8,18 @@
 # 
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      13/01/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
-import lx, lxu, modo
+"""
+
+import lx
+import lxu
 
 Cmd_Name ="smo.GC.ZeroScale"
 # smo.GC.ZeroScale
+
 
 class SMO_GC_ZeroScale_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -61,7 +64,7 @@ class SMO_GC_ZeroScale_Cmd(lxu.command.BasicCommand):
             lx.eval('tool.set TransformScale on')
             lx.eval('tool.noChange')
             
-            if ToolScaleState == True :
+            if ToolScaleState:
                 ToolScaleX = lx.eval('tool.attr xfrm.transform SX ?')
                 lx.out('Tool Scale, Value on X:', ToolScaleX)
                 
@@ -73,26 +76,26 @@ class SMO_GC_ZeroScale_Cmd(lxu.command.BasicCommand):
                 
                 
                 
-                if ToolScaleX < ToolScaleY and ToolScaleX < ToolScaleZ :
+                if ToolScaleX < ToolScaleY and ToolScaleX < ToolScaleZ:
                     TSclXMin = 1
                     TSclYMin = 0
                     TSclZMin = 0
                     
-                if ToolScaleY < ToolScaleX and ToolScaleY < ToolScaleZ :
+                if ToolScaleY < ToolScaleX and ToolScaleY < ToolScaleZ:
                     TSclXMin = 0
                     TSclYMin = 1
                     TSclZMin = 0
                     
-                if ToolScaleZ < ToolScaleX and ToolScaleZ < ToolScaleY :
+                if ToolScaleZ < ToolScaleX and ToolScaleZ < ToolScaleY:
                     TSclXMin = 0
                     TSclYMin = 0
                     TSclZMin = 1
                     
-                if TSclXMin == 1 :
+                if TSclXMin == 1:
                     lx.eval('tool.setAttr xfrm.transform SX 0')
-                if TSclYMin == 1 :
+                if TSclYMin == 1:
                     lx.eval('tool.setAttr xfrm.transform SY 0')
-                if TSclZMin == 1 :
+                if TSclZMin == 1:
                     lx.eval('tool.setAttr xfrm.transform SZ 0')
                 
                 lx.eval('tool.doApply')

@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_BAKE_CreatePairsFromMesh_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      02/04/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.BAKE.CreatePairsFromMesh"
 # smo.BAKE.CreatePairsFromMesh
+
 
 class SMO_BAKE_CreatePairsFromMesh_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -85,7 +88,7 @@ class SMO_BAKE_CreatePairsFromMesh_Cmd(lxu.command.BasicCommand):
                 LowItemID = item.Ident()
             scene.select(LowItem)
 
-            if CreateTransferVertexNormalMapOnLowWhenCreateBakePairsFromHigh == True :
+            if CreateTransferVertexNormalMapOnLowWhenCreateBakePairsFromHigh:
                 # Vertex Nornmal Map (From CAD) Detection on HighPoly.
                 meshUpdateVNMap = modo.Mesh()
                 VMaps = meshUpdateVNMap.geometry.vmaps
@@ -121,11 +124,11 @@ class SMO_BAKE_CreatePairsFromMesh_Cmd(lxu.command.BasicCommand):
             lx.eval('select.item %s add' % HighItemID)
             lx.eval('smo.BAKE.SetBakePairs')
 
-            if AutoHide_Set_BakePairs == True :
+            if AutoHide_Set_BakePairs:
                 lx.eval('unhide')
 
             scene.select(LowItem)
-            if DeleteVertexNormalMapOnLowWhenCreateBakePairsFromHigh == True:
+            if DeleteVertexNormalMapOnLowWhenCreateBakePairsFromHigh:
                 # Vertex Nornmal Map (From CAD) Detection on HighPoly.
                 LowmeshUpdateVNMap = modo.Mesh()
                 LowVMaps = LowmeshUpdateVNMap.geometry.vmaps
@@ -152,9 +155,9 @@ class SMO_BAKE_CreatePairsFromMesh_Cmd(lxu.command.BasicCommand):
                                 except:
                                     pass
 
-            if IsolateInViewportWhenCreateBakePairsFromHigh == True :
+            if IsolateInViewportWhenCreateBakePairsFromHigh:
                 lx.eval('hide.unsel')
-            if RefSystemWhenCreateBakePairsFromHigh == True :
+            if RefSystemWhenCreateBakePairsFromHigh:
                 lx.eval('item.refSystem %s' % LowItemID)
                 lx.eval('select.type polygon')
                 lx.eval('viewport.fitSelected')

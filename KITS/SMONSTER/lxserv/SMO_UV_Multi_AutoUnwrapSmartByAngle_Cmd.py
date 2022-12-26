@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_UV_Multi_AutoUnwrapSmartByAngle_Cmd.py
 # Version:      1.0
 #
@@ -9,16 +9,19 @@
 #               defined by a Min and Max Angle as Seams.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      21/12/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.UV.Multi.AutoUnwrapSmartByAngle"
 # smo.UV.Multi.AutoUnwrapSmartByAngle 88 180
+
 
 class SMO_UV_Multi_AutoUnwrapSmartByAngle_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -89,7 +92,7 @@ class SMO_UV_Multi_AutoUnwrapSmartByAngle_Cmd(lxu.command.BasicCommand):
         Modo_ver = int(lx.eval ('query platformservice appversion ?'))
         lx.out('Modo Version:', Modo_ver)
 
-        ############### 5 ARGUMENTS ###############
+        ############### 5 ARGUMENTS ------------- #
         args = lx.args()
         lx.out(args)
 
@@ -110,7 +113,7 @@ class SMO_UV_Multi_AutoUnwrapSmartByAngle_Cmd(lxu.command.BasicCommand):
         # 180 Degree
         MaxAngle = MAUSBA_MaxAngle
         lx.out('Maximum Angle is:', MaxAngle)
-        ############### ARGUMENTS ###############
+        # ------------- ARGUMENTS ------------- #
 
         m = modo.Mesh()
         MAUSBA_SelItem = lxu.select.ItemSelection().current()
@@ -222,12 +225,17 @@ class SMO_UV_Multi_AutoUnwrapSmartByAngle_Cmd(lxu.command.BasicCommand):
             lx.eval('smo.UV.UpdateUVSeamCutMap')
             lx.eval('view3d.showUVSeam true active')
 
-        # select back the Polygons
         lx.eval('smo.GC.DeselectAll')
         scn.select(mesh)
-        lx.eval('smo.UV.SmartProjectionClearTag')
-        scn.select(mesh)
         lx.eval('select.type polygon')
+
+        if AutoHideState and not RelocateInArea:
+            lx.eval('unhide')
+            lx.eval('smo.UV.SelectUVArea -1 0')
+            lx.eval('select.editSet UV_DONE remove')
+            lx.eval('select.drop polygon')
+            lx.eval('select.useSet UV_DONE select')
+            lx.eval('hide.sel')
 
         if SelCompMode == 1:
             lx.eval('select.type vertex')

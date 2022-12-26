@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_QuickCreateCameraMatchSetup_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,20 @@
 #
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      12/08/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo, string, os
+import lx
+import lxu
+import modo
+import os
 
 Cmd_Name = "smo.GC.QuickCreateCameraMatchSetup"
 # smo.GC.QuickCreateCameraMatchSetup
+
 
 class SMO_GC_QuickCreateCameraMatchSetup_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -51,21 +55,21 @@ class SMO_GC_QuickCreateCameraMatchSetup_Cmd(lxu.command.BasicCommand):
         # Get the name of the scene, wihout the filepath and extension
         scene = modo.Scene()
 
-        ################################
-        # <----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         lx.eval("user.defNew name:InputFileFormat type:string life:momentary")
         lx.eval("user.defNew name:OutputFileFormat type:string life:momentary")
 
         lx.eval("user.defNew name:Target_Path type:string life:momentary")
-        ################################
+        # ------------------------------ #
 
-        # ############### ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
         InputFileFormat = "jpg"
         OutputFileFormat = ".lxo"
 
         PathSeparator = "/"
-        # ############### ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
 
         lx.eval('dialog.setup dir')
         lx.eval('dialog.title "Select the target Folder to Analyse and Process"')

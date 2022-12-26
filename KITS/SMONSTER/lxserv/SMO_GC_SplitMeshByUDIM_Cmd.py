@@ -1,23 +1,27 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_SplitMeshByUDIM_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to
-#               Split the current Mesh into multiple one using UDIM IDs. Create New Mesh Layers, using target Mesh Name + PrefixName + UDIM ID from selected Mesh.
-#
+#               Split the current Mesh into multiple one using UDIM IDs.
+#               Create New Mesh Layers, using target
+#               Mesh Name + PrefixName + UDIM ID from selected Mesh.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      23/02/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.SplitMeshByUDIM"
 # smo.GC.SplitMeshByUDIM {Boat} 1001 1014
+
 
 class SMO_GC_SplitMeshByUDIM_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -79,7 +83,7 @@ class SMO_GC_SplitMeshByUDIM_Cmd(lxu.command.BasicCommand):
 
         for i in range(0, Count):
             # print(i)
-            UDIMIndex = int((UDIMStart) + int(i))
+            UDIMIndex = int(UDIMStart + int(i))
             # print(UDIMIndex)
             MATNameList.append(PrefixName + "_" + str(UDIMIndex))
             UDIMIndexList.append(str(UDIMIndex))
@@ -100,7 +104,7 @@ class SMO_GC_SplitMeshByUDIM_Cmd(lxu.command.BasicCommand):
         lx.eval('tool.set util.udim on')
         CurrentUDIMIndicMode = bool(lx.eval('tool.attr util.udim manual ?'))
         print(CurrentUDIMIndicMode)
-        if CurrentUDIMIndicMode == True:
+        if CurrentUDIMIndicMode:
             UDIMIndicModeChanged = True
             lx.eval('tool.setAttr util.udim manual false')
             lx.eval('tool.doApply')
@@ -146,7 +150,7 @@ class SMO_GC_SplitMeshByUDIM_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.type item')
 
         # Reset UDIMIndicator tool settings to user current preferences
-        if UDIMIndicModeChanged == True:
+        if UDIMIndicModeChanged:
             lx.eval('tool.set util.udim on')
             lx.eval('tool.setAttr util.udim manual %s' % CurrentUDIMIndicMode)
             lx.eval('tool.set util.udim off')

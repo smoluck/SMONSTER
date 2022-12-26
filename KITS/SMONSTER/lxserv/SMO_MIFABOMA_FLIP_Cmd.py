@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MIFABOMA_FLIP_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,20 @@
 # 
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      27/02/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo, sys
+import lx
+import lxu
+import modo
+import sys
 
 Cmd_Name = "smo.MIFABOMA.Flip"
 # smo.MIFABOMA.Flip 0 1
+
 
 class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -56,7 +60,7 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
         mode = self.dyna_Int (0)
         scene = modo.scene.current()
-        if self.SelModePoly == True:
+        if self.SelModePoly:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
 
         mesh = scene.selectedByType('mesh')[0]
@@ -81,7 +85,7 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
         Int_Connected = self.dyna_Int (1)
         
         
-        ############### 2 ARGUMENTS ###############
+        # ------------- ARGUMENTS ------------- #
         args = lx.args()
         lx.out(args)
         # X Axis = 0
@@ -93,21 +97,17 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
         # Connected = 1
         Connected = Int_Connected
         lx.out('Apply to Connected Mode:',Connected)
-        ############### ARGUMENTS ###############
+        # ------------- ARGUMENTS ------------- #
         
         
-        
-        # ############### 2 ARGUMENT Test ###############
-        # FixFlippedUV = 1
-        # Orient_Pass = 0
-        # ############### ARGUMENT ###############
+
         
         
         
         
-        ################################
-        #<----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
@@ -168,11 +168,11 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
         
         
         
-        ##############################
-        ####### SAFETY CHECK 1 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 1 )---> #
+        # -------------------------- #
         
-        #####--------------------  safety check 1: Polygon Selection Mode enabled --- START --------------------#####
+        # --------------------  safety check 1: Polygon Selection Mode enabled --- START
         
         selType = ""
         # Used to query layerservice for the list of polygons, edges or vertices.
@@ -225,16 +225,16 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
             SMO_SafetyCheck_PolygonModeEnabled = 0
             SMO_SafetyCheck_ItemModeEnabled = 1
             lx.out('script Running: Correct Item Selection Mode')
-        #####--------------------  safety check 1: Polygon Selection Mode enabled --- END --------------------#####
+        # --------------------  safety check 1: Polygon Selection Mode enabled --- END
         
         
         
         
-        ##############################
-        ####### SAFETY CHECK 2 #######
-        ##############################
-        if SMO_SafetyCheck_PolygonModeEnabled == 1 :
-            #####--------------------  safety check 2: at Least 1 Polygons is selected --- START --------------------#####
+        # -------------------------- #
+        # <---( SAFETY CHECK 2 )---> #
+        # -------------------------- #
+        if SMO_SafetyCheck_PolygonModeEnabled == 1:
+            # at Least 1 Polygons is selected --- START
             lx.out('Count Selected Poly',CsPolys)
             
             if CsPolys < 1:
@@ -249,14 +249,14 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
             elif CsPolys >= 1:
                 SMO_SafetyCheck_min1PolygonSelected = 1
                 lx.out('script running: right amount of polygons in selection')
-            #####--------------------  safety check 2: at Least 1 Polygons is selected --- END --------------------#####
+            # at Least 1 Polygons is selected --- END
         
         
         
         ### Test Safety Check in Polygon Mode ###
         #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
         #####
-        if SMO_SafetyCheck_PolygonModeEnabled == 1 and SMO_SafetyCheck_ItemModeEnabled == 0 :
+        if SMO_SafetyCheck_PolygonModeEnabled == 1 and SMO_SafetyCheck_ItemModeEnabled == 0:
             TotalSafetyCheckTrueValue = 2
             lx.out('Desired Value',TotalSafetyCheckTrueValue)
             TotalSafetyCheck = (SMO_SafetyCheck_PolygonModeEnabled + SMO_SafetyCheck_min1PolygonSelected)
@@ -268,19 +268,19 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
         ### Test Safety Check in Item Mode ###
         #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
         #####
-        if SMO_SafetyCheck_PolygonModeEnabled == 0 and SMO_SafetyCheck_ItemModeEnabled == 1 :
+        if SMO_SafetyCheck_PolygonModeEnabled == 0 and SMO_SafetyCheck_ItemModeEnabled == 1:
             TotalSafetyCheckTrueValue = 1
             lx.out('Desired Value',TotalSafetyCheckTrueValue)
-            TotalSafetyCheck = (SMO_SafetyCheck_ItemModeEnabled)
+            TotalSafetyCheck = SMO_SafetyCheck_ItemModeEnabled
             lx.out('Current Value',TotalSafetyCheck)
         #####
         #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
         
         
         
-        ##############################
-        ## <----( Main Macro )----> ##
-        ##############################
+        # ------------------------ #
+        # <----( Main Macro )----> #
+        # ------------------------ #
 
         ####
         # Select the VertexNormal Map if it exist in order to update it.
@@ -303,23 +303,23 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
         # print(TargetVNMapName)
         ####
 
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
-        if TotalSafetyCheck == TotalSafetyCheckTrueValue :
+        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
+        if TotalSafetyCheck == TotalSafetyCheckTrueValue:
 
-            ########################################
-            ## <----( Main Macro - POLYGON )----> ##
-            ########################################
-            if SMO_SafetyCheck_PolygonModeEnabled == 1 :
+            # ---------------------------------- #
+            # <----( Main Macro - POLYGON )----> #
+            # ---------------------------------- #
+            if SMO_SafetyCheck_PolygonModeEnabled == 1:
 
                 lx.eval('select.type item')
-                if RefSystemActive == True:
+                if RefSystemActive:
                     lx.eval('item.refSystem {}')
                 lx.eval('workPlane.reset')
                 lx.eval('workPlane.fitSelect')
                 lx.eval('select.type polygon')
                 if CsPolys > 0:
                     lx.eval('hide.unsel')
-                if Connected == 1 :
+                if Connected == 1:
                     lx.eval('select.connect')
                 lx.eval('tool.set actr.origin on')
 
@@ -328,19 +328,19 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
                 lx.eval('tool.noChange')
                 OriginalNegScaleState = lx.eval('tool.attr xfrm.transform negScale ?')
                 OriginalVNormalEditState = lx.eval('tool.attr xfrm.transform normal ?')
-                if OriginalNegScaleState == False:
+                if not OriginalNegScaleState:
                     lx.eval('tool.attr xfrm.transform negScale true')
-                if OriginalVNormalEditState != "update" and VNMState == True :
+                if OriginalVNormalEditState != "update" and VNMState == True:
                     lx.eval('tool.attr xfrm.transform normal update')
-                if FlipAxis == 0 :
+                if FlipAxis == 0:
                     lx.eval('tool.attr xfrm.transform SX -1.0')
                     lx.eval('tool.attr xfrm.transform SY 1.0')
                     lx.eval('tool.attr xfrm.transform SZ 1.0')
-                if FlipAxis == 1 :
+                if FlipAxis == 1:
                     lx.eval('tool.attr xfrm.transform SX 1.0')
                     lx.eval('tool.attr xfrm.transform SY -1.0')
                     lx.eval('tool.attr xfrm.transform SZ 1.0')
-                if FlipAxis == 2 :
+                if FlipAxis == 2:
                     lx.eval('tool.attr xfrm.transform SX 1.0')
                     lx.eval('tool.attr xfrm.transform SY 1.0')
                     lx.eval('tool.attr xfrm.transform SZ -1.0')
@@ -356,7 +356,7 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
 
                 ####
                 # Correct and update the Vertex Normal Map accordingly to the PolyFlip.
-                if VNMState == True :
+                if VNMState:
                     lx.eval('smo.GC.FlipVertexNormalMap')
                     # VNMapCmd = "NORM[3]:"
                     # MathCmd = VNMapCmd + TargetVNMapName
@@ -373,16 +373,16 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
                 if OriginalNegScaleState == False or OriginalVNormalEditState == False :
                     lx.eval('tool.set TransformScale on')
                     lx.eval('tool.noChange')
-                    if OriginalNegScaleState == False :
+                    if not OriginalNegScaleState:
                         lx.eval('tool.attr xfrm.transform negScale false')
-                    if OriginalVNormalEditState == False :
+                    if not OriginalVNormalEditState:
                         lx.eval('tool.attr xfrm.transform normal %s' % OriginalVNormalEditState)
                     lx.eval('select.nextMode')
                     lx.eval('tool.set TransformScale off')
 
-                if RefSystemActive == False:
+                if not RefSystemActive:
                     lx.eval('item.refSystem {}')
-                if RefSystemActive == True:
+                if RefSystemActive:
                     lx.eval('item.refSystem %s' % CurrentRefSystemItem)
 
                 lx.eval('select.type polygon')
@@ -393,7 +393,7 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
                 ####### TOOL Action ######
                 #########################
                 #########################
-                ######## Test With Mirror tool in Replace Mode ##########
+                # ------ Test With Mirror tool in Replace Mode ##########
                 # lx.eval('tool.set *.mirror on')
                 # MirrorReplaceSourceState = lx.eval('tool.attr effector.clone replace ?')
                 # MirrorFlipPolyState = lx.eval('tool.attr effector.clone flip ?')
@@ -455,7 +455,7 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
             
             
             #####################################
-            ## <----( Main Macro - ITEM )----> ##
+            # <----( Main Macro - ITEM )----> #
             #####################################
             if SMO_SafetyCheck_ItemModeEnabled == 1 :
                 lx.eval('select.type item')
@@ -469,7 +469,7 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
                 lx.eval('tool.noChange')
                 OriginalNegScaleState = lx.eval('tool.attr xfrm.transform negScale ?')
                 OriginalVNormalEditState = lx.eval('tool.attr xfrm.transform normal ?')
-                if OriginalNegScaleState == False:
+                if not OriginalNegScaleState:
                     lx.eval('tool.attr xfrm.transform negScale true')
                 if OriginalVNormalEditState != "update":
                     lx.eval('tool.attr xfrm.transform normal update')
@@ -494,16 +494,16 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.type item')
                 lx.eval('workPlane.state false')
 
-                if OriginalNegScaleState == False:
+                if not OriginalNegScaleState:
                     lx.eval('tool.set TransformScale on')
                     lx.eval('tool.noChange')
                     lx.eval('tool.attr xfrm.transform negScale false')
                     lx.eval('select.nextMode')
 
 
-                if RefSystemActive == False:
+                if not RefSystemActive:
                     lx.eval('item.refSystem {}')
-                if RefSystemActive == True:
+                if RefSystemActive:
                     lx.eval('item.refSystem %s' % CurrentRefSystemItem)
                     lx.eval('viewport.fitSelected')
         
@@ -527,7 +527,7 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
             sys.exit
 
         lx.out('End of SMO_Bool_Subtract Script')
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
         
 
 lx.bless(SMO_MIFABOMA_Flip_Cmd, Cmd_Name)

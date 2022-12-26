@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_ConvertSceneTo_Cmd.py
 # Version:      1.0
 #
@@ -8,17 +8,22 @@
 #               and move the files to a Folder related to the file Format if Argument 1 is true.
 #
 # Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      30/09/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo, string, os
 from os import path
+
+import lx
+import lxu
+import modo
+import os
 
 Cmd_Name = "smo.GC.ConvertSceneTo"
 # smo.GC.ConvertSceneTo 1 LXO
+
 
 class SMO_GC_ConvertSceneTo_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -68,12 +73,12 @@ class SMO_GC_ConvertSceneTo_Cmd(lxu.command.BasicCommand):
         lx.out('Folder Path:', FolderPath)
         
         
-        if ConvertSceneToOutputFileFormat == "LXO" :
-            if ToFolder == 1 :
+        if ConvertSceneToOutputFileFormat == "LXO":
+            if ToFolder == 1:
                 OutputPath = "{}\LXO".format(FolderPath)
                 lx.out('Save As Path:', OutputPath)
                 SavePath_Filename = "{}\LXO\{}{}".format(FolderPath, SceneName, ".lxo")
-            if ToFolder == 0 :
+            if ToFolder == 0:
                 SavePath_Filename = "{}\{}{}".format(FolderPath, SceneName, ".lxo")
             lx.out('Save As: FullPath:', SavePath_Filename)
             if not os.path.exists(OutputPath):
@@ -81,12 +86,12 @@ class SMO_GC_ConvertSceneTo_Cmd(lxu.command.BasicCommand):
             lx.eval('!scene.saveAs {%s} $LXOB false' % SavePath_Filename)
             
             
-        if ConvertSceneToOutputFileFormat == "DXF" :
-            if ToFolder == 1 :
+        if ConvertSceneToOutputFileFormat == "DXF":
+            if ToFolder == 1:
                 OutputPath = "{}\DXF".format(FolderPath)
                 lx.out('Save As Path:', OutputPath)
                 SavePath_Filename = "{}\DXF\{}{}".format(FolderPath, SceneName, ".dxf")
-            if ToFolder == 0 :
+            if ToFolder == 0:
                 SavePath_Filename = "{}\{}{}".format(FolderPath, SceneName, ".dxf")
             lx.out('Save As: FullPath:', SavePath_Filename)
             if not os.path.exists(OutputPath):
@@ -94,12 +99,12 @@ class SMO_GC_ConvertSceneTo_Cmd(lxu.command.BasicCommand):
             lx.eval('!scene.saveAs {%s} DXF false' % SavePath_Filename)
             
             
-        if ConvertSceneToOutputFileFormat == "SVG" :
-            if ToFolder == 1 :
+        if ConvertSceneToOutputFileFormat == "SVG":
+            if ToFolder == 1:
                 OutputPath = "{}\SVG".format(FolderPath)
                 lx.out('Save As Path:', OutputPath)
                 SavePath_Filename = "{}\SVG\{}{}".format(FolderPath, SceneName, ".svg")
-            if ToFolder == 0 :
+            if ToFolder == 0:
                 SavePath_Filename = "{}\{}{}".format(FolderPath, SceneName, ".svg")
             lx.out('Save As: FullPath:', SavePath_Filename)
             if not os.path.exists(OutputPath):

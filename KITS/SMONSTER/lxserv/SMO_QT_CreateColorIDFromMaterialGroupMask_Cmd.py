@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_QT_CreateColorIDFromMaterialGroupMask_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,18 @@
 #               (Create a new Group Mask on top of the BaseShader with a Contant as Diffuse color (random values))
 #
 # Author:       Franck ELISABETH (with the help of Pavel Efimov)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      31/03/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
 
 Cmd_Name = "smo.QT.CreateColorIDFromMatGrpMask"
 # smo.QT.CreateColorIDFromMatGrpMask
+
 
 class SMO_QT_CreateColorIDFromMaterialGroupMask_Cmd(lxu.command.BasicCommand):
     def __init__(self):

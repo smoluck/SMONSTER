@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:             SMO_LL_PIXAFLUX_SendDataAuto_Cmd.py
 # Version:          1.00
 #
@@ -9,22 +9,29 @@
 #                   Resolution defined by Argument in pixel.
 #
 # Author:           Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Modified:          09/07/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
 # !/usr/bin/env python
 
-import lx, lxifc, lxu.command, lxu.select, subprocess, os, traceback
+import lx
+import lxu.command
+import lxu.select
+import os
+import subprocess
+import traceback
 
 Cmd_Name = "smo.LL.PIXAFLUX.SendDataAuto"
 # smo.LL.PIXAFLUX.SendDataAuto 1 0 2048
 
+
 class SMO_LL_PIXAFLUX_SendData_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
+        self.modo_ver = int(lx.eval('query platformservice appversion ?'))
         self.dyna_Add("Map Size", lx.symbol.sTYPE_INTEGER)
         self.basic_SetFlags(0, lx.symbol.fCMDARG_OPTIONAL)  # here the (0) define the argument index.
         self.dyna_Add("Explode Pre Pass", lx.symbol.sTYPE_INTEGER)
@@ -88,7 +95,7 @@ class SMO_LL_PIXAFLUX_SendData_Cmd(lxu.command.BasicCommand):
             except:
                 pass
 
-            return (lx.eval1('user.value Smo_PixaFluxPath ?') == pixaflux_exe_path)
+            return lx.eval1('user.value Smo_PixaFluxPath ?') == pixaflux_exe_path
         return False
 
     # Ask the user for the path to PixaFlux.
@@ -159,11 +166,11 @@ class SMO_LL_PIXAFLUX_SendData_Cmd(lxu.command.BasicCommand):
             lx.eval('user.value %s %s' % (name, value))
 
     def basic_Execute(self, msg, flags):
-        ############### 1 ARGUMENTS ###############
+        # ------------- ARGUMENTS ------------- #
         MapSize = self.dyna_Int(0)
         ExplodePrePass = self.dyna_Int(1)
         ExplodeDistanceByPrefs = self.dyna_Int(2)
-        ###########################################
+        # ------------------------------------- #
 
         if ExplodeDistanceByPrefs == 1 and ExplodePrePass == 1:
             lx.eval('smo.LL.PIXAFLUX.DupAndExplodeByDist 1')
@@ -175,7 +182,6 @@ class SMO_LL_PIXAFLUX_SendData_Cmd(lxu.command.BasicCommand):
         print(fbxSettings)
 
         # MODO version checks. Different versions have different FBX options.
-        self.modo_ver = int(lx.eval('query platformservice appversion ?'))
         if self.modo_ver < 901:
             lx.out('Requires Modo 901 or newer.')
             return
@@ -290,43 +296,43 @@ class SMO_LL_PIXAFLUX_SendData_Cmd(lxu.command.BasicCommand):
                 lx.eval1('user.value sceneio.fbx.save.tangentsBitangents 0')
             except RuntimeError:
                 pass
-        if self.modo_ver > 1000 and self.modo_ver <= 1011:
+        if 1000 < self.modo_ver <= 1011:
             try:
                 lx.eval('user.value sceneio.fbx.save.triangulate 1')
                 lx.eval('user.value sceneio.fbx.save.meshSmoothing 1')
             except RuntimeError:
                 pass
-        if self.modo_ver >= 1012 and self.modo_ver <= 1099:
+        if 1012 <= self.modo_ver <= 1099:
             try:
                 lx.eval('user.value sceneio.fbx.save.surfaceRefining FBXExportTriangles')
             except RuntimeError:
                 pass
-        if self.modo_ver >= 1100 and self.modo_ver <= 1199:
-            try:
-                lx.eval('user.value sceneio.fbx.save.surfaceRefining FBXExportTriangles')
-                lx.eval('user.value sceneio.fbx.save.format 4')
-            except RuntimeError:
-                pass
-        if self.modo_ver >= 1200 and self.modo_ver <= 1299:
+        if 1100 <= self.modo_ver <= 1199:
             try:
                 lx.eval('user.value sceneio.fbx.save.surfaceRefining FBXExportTriangles')
                 lx.eval('user.value sceneio.fbx.save.format 4')
             except RuntimeError:
                 pass
-        if self.modo_ver >= 1300 and self.modo_ver <= 1399:
+        if 1200 <= self.modo_ver <= 1299:
             try:
                 lx.eval('user.value sceneio.fbx.save.surfaceRefining FBXExportTriangles')
                 lx.eval('user.value sceneio.fbx.save.format 4')
             except RuntimeError:
                 pass
-        if self.modo_ver >= 1400 and self.modo_ver <= 1499:
+        if 1300 <= self.modo_ver <= 1399:
+            try:
+                lx.eval('user.value sceneio.fbx.save.surfaceRefining FBXExportTriangles')
+                lx.eval('user.value sceneio.fbx.save.format 4')
+            except RuntimeError:
+                pass
+        if 1400 <= self.modo_ver <= 1499:
             try:
                 # lx.eval ('user.value sceneio.fbx.save.surfaceRefining FBXExportSubDiv')
                 lx.eval('user.value sceneio.fbx.save.surfaceRefining FBXExportTriangles')
                 lx.eval('user.value sceneio.fbx.save.format 4')
             except RuntimeError:
                 pass
-        if self.modo_ver >= 1500 and self.modo_ver <= 1599:
+        if 1500 <= self.modo_ver <= 1599:
             try:
                 lx.eval ('user.value sceneio.fbx.save.surfaceRefining FBXExportSubDiv')
                 lx.eval ('user.value sceneio.fbx.save.format FBX2013')

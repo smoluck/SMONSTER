@@ -1,5 +1,5 @@
 #LXMacro#
-#-----------------------------------------
+# ----------------------------------------
 # Name:         SMO_EXP_FreezeMeshOps_Export_WithSAVE.LXM
 # Version:      1.0
 #
@@ -14,7 +14,7 @@
 #
 # Created:      XX/XX/2018-2019
 # Copyright:    (c) Franck Elisabeth 2019
-#-----------------------------------------
+# ----------------------------------------
 
 # replay name:"Item"
 select.typeFrom typelist:"item;pivot;center;edge;polygon;vertex;ptag" enable:true

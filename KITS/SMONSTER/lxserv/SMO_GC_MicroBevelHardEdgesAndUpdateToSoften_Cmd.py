@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_MicroBevelHardEdgesAndUpdateToSoften_Cmd.py
 # Version:      1.0
 #
@@ -8,17 +8,20 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      16/06/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.MicroBevelHardEdgesAndUpdateToSoften"
 # smo.GC.MicroBevelHardEdgesAndUpdateToSoften [1mm]
 # Using Square Brackets around values validate the use of units like "km", "m" , "cm", "mm", "um".
+
 
 class SMO_GC_MicroBevelHardEdgesAndUpdateToSoften_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -60,13 +63,13 @@ class SMO_GC_MicroBevelHardEdgesAndUpdateToSoften_Cmd(lxu.command.BasicCommand):
         return True
 
     def basic_Execute(self, msg, flags):
-        ################################
-        # <----[ DEFINE ARGUMENTS ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #
+        # ------------------------------ #
         ChamferValue = self.dyna_Float(0)              # Width size
-        ################################
-        # <----[ DEFINE ARGUMENTS ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #
+        # ------------------------------ #
 
         def scene_info():
             return modo.scene.current()

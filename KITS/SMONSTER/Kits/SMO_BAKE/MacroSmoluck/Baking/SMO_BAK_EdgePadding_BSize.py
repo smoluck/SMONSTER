@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_BAKE_EdgePadding_BSize.py
 # Version:      1.0
 #
@@ -7,18 +7,19 @@
 #               Set the Render Frame Size as well as the Edge Padding for bakes.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      10/09/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import modo, lx
+import lx
+import modo
 
 scene = modo.Scene()
 render_item = scene.item("Render")
 
-# ############### 3 ARGUMENTS ###############
+# # ------------- ARGUMENTS ------------- #
 # args = lx.args()
 # lx.out(args)
 # # Frame Size = 256
@@ -43,15 +44,15 @@ render_item = scene.item("Render")
 # # Border Size = 32 px
 # BakeBorderPix = int(args[2])
 # lx.out('Bake Border Size in pixel:',BakeBorderPX)
-# ############### ARGUMENTS ###############
+# # ------------- ARGUMENTS ------------- #
 
 
-FrameSizeX = lx.eval1 ('user.value SMO_UseVal_BAKE_FrameSizeX ?')
-lx.out('Render Frame Size X:',FrameSizeX)
-FrameSizeY = lx.eval1 ('user.value SMO_UseVal_BAKE_FrameSizeY ?')
-lx.out('Render Frame Size Y:',FrameSizeY)
-BakeBorderPix = lx.eval1 ('user.value SMO_UseVal_BAKE_EdgePaddingPix ?')
-lx.out('Bake Border Size in pixel:',BakeBorderPix)
+FrameSizeX = lx.eval1('user.value SMO_UseVal_BAKE_FrameSizeX ?')
+lx.out('Render Frame Size X:', FrameSizeX)
+FrameSizeY = lx.eval1('user.value SMO_UseVal_BAKE_FrameSizeY ?')
+lx.out('Render Frame Size Y:', FrameSizeY)
+BakeBorderPix = lx.eval1('user.value SMO_UseVal_BAKE_EdgePaddingPix ?')
+lx.out('Bake Border Size in pixel:', BakeBorderPix)
 
 x_channel = render_item.channel('bakeX')
 x_channel.set(FrameSizeX)

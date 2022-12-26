@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_BATCH_LoadFolderFilesFromUserPref_Cmd.py
 # Version:      1.0
 #
@@ -9,51 +9,57 @@
 #
 #
 # Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      01/10/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, os, modo, string, sys
 from os import path
+
+import lx
+import lxu
+import modo
+import os
+import sys
 
 Cmd_Name = "smo.BATCH.LoadFolderFilesFromUserPref"
 # smo.BATCH.LoadFolderFilesFromUserPref
 
+
 class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
-    
+
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL
-    
-    def cmd_Interact (self):
+
+    def cmd_Interact(self):
         pass
-    
-    def cmd_UserName (self):
+
+    def cmd_UserName(self):
         return 'SMO BATCH - Load Folder Files from User Prefs'
-    
-    def cmd_Desc (self):
+
+    def cmd_Desc(self):
         return 'Batch Load Files stored in a Folder and Process the data using User Defined Preferences.'
-    
-    def cmd_Tooltip (self):
+
+    def cmd_Tooltip(self):
         return 'Batch Load Files stored in a Folder and Process the data using User Defined Preferences.'
-    
-    def cmd_Help (self):
+
+    def cmd_Help(self):
         return 'https://twitter.com/sm0luck'
-    
-    def basic_ButtonName (self):
+
+    def basic_ButtonName(self):
         return 'SMO BATCH - Load Folder Files from User Prefs'
-    
-    def basic_Enable (self, msg):
+
+    def basic_Enable(self, msg):
         return True
 
     def basic_Execute(self, msg, flags):
 
-        ################################
-        #<----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         lx.eval("user.defNew name:InputFileFormat_DXF type:boolean life:momentary")
         lx.eval("user.defNew name:InputFileFormat_OBJ type:boolean life:momentary")
         lx.eval("user.defNew name:InputFileFormat_LXO type:boolean life:momentary")
@@ -74,7 +80,6 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
 
         lx.eval("user.defNew name:Target_Path type:string life:momentary")
 
-
         lx.eval("user.defNew name:MergeExistItems type:boolean life:momentary")
         lx.eval("user.defNew name:LoadGeo type:boolean life:momentary")
         lx.eval("user.defNew name:LoadNormals type:boolean life:momentary")
@@ -84,8 +89,6 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
         lx.eval("user.defNew name:LoadSelSets type:boolean life:momentary")
         lx.eval("user.defNew name:LoadMats type:boolean life:momentary")
         lx.eval("user.defNew name:InvertMatTransp type:boolean life:momentary")
-
-
 
         lx.eval("user.defNew name:BPLine001 type:string life:momentary")
         lx.eval("user.defNew name:BPLine002 type:string life:momentary")
@@ -107,16 +110,15 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
         lx.eval("user.defNew name:BPLine018 type:string life:momentary")
         lx.eval("user.defNew name:BPLine019 type:string life:momentary")
         lx.eval("user.defNew name:BPLine020 type:string life:momentary")
-        ################################
+        # ------------------------------ #
 
-
+        OutputFileFormat = ""
 
         ###########################################################################################
         # Get Current Checkbox state for Input File format from Preferences / SMO_BATCH
         ###########################################################################################
         OutputLXO_ConvertStaticMeshes = lx.eval('user.value SMO_UseVal_BATCH_ConvertToStaticMeshes ?')
         lx.out('Output LXO: Convert Meshes to Static Meshes State', OutputLXO_ConvertStaticMeshes)
-
 
         InputFileFormat_DXF = lx.eval('user.value SMO_UseVal_BATCH_InputFiles_DXF ?')
         lx.out('Input File Format DXF State:', InputFileFormat_DXF)
@@ -135,7 +137,6 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
 
         InputFileFormat_SLDPRT = lx.eval('user.value SMO_UseVal_BATCH_InputFiles_SLDPRT ?')
         lx.out('Input File Format SLDPRT State:', InputFileFormat_SLDPRT)
-        
 
         # Get Current Checkbox state for Output File format from Preferences / SMO_BATCH
         OutputFileFormat_DXF = lx.eval('user.value SMO_UseVal_BATCH_OutputFiles_DXF ?')
@@ -153,61 +154,51 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
         OutputFileFormat_FBX = lx.eval('user.value SMO_UseVal_BATCH_OutputFiles_FBX ?')
         lx.out('Output File Format FBX State:', OutputFileFormat_FBX)
 
-
-
-
-
         # Test Current Checkbox state for Input File format from Preferences / SMO_BATCH
         InputFileFormatTotal = InputFileFormat_DXF + InputFileFormat_SVG + InputFileFormat_OBJ + InputFileFormat_LXO + InputFileFormat_FBX + InputFileFormat_SLDPRT
-        if InputFileFormatTotal != 1 :
-            sys(exit)
+        # if InputFileFormatTotal != 1:
+        #     sys(exit)
 
-        if InputFileFormat_DXF == 1 and InputFileFormatTotal == 1 :
+        if InputFileFormat_DXF == 1 and InputFileFormatTotal == 1:
             InputFileFormat = "DXF"
 
-        if InputFileFormat_SVG == 1 and InputFileFormatTotal == 1 :
+        if InputFileFormat_SVG == 1 and InputFileFormatTotal == 1:
             InputFileFormat = "SVG"
 
-        if InputFileFormat_OBJ == 1 and InputFileFormatTotal == 1 :
+        if InputFileFormat_OBJ == 1 and InputFileFormatTotal == 1:
             InputFileFormat = "OBJ"
 
-        if InputFileFormat_LXO == 1 and InputFileFormatTotal == 1 :
+        if InputFileFormat_LXO == 1 and InputFileFormatTotal == 1:
             InputFileFormat = "LXO"
 
-        if InputFileFormat_FBX == 1 and InputFileFormatTotal == 1 :
+        if InputFileFormat_FBX == 1 and InputFileFormatTotal == 1:
             InputFileFormat = "FBX"
-            
-        if InputFileFormat_SLDPRT == 1 and InputFileFormatTotal == 1 :
+
+        if InputFileFormat_SLDPRT == 1 and InputFileFormatTotal == 1:
             InputFileFormat = "SLDPRT"
-
-
-
 
         # Test Current Checkbox state for Output File format from Preferences / SMO_BATCH
         OutputFileFormatTotal = OutputFileFormat_DXF + OutputFileFormat_SVG + OutputFileFormat_OBJ + OutputFileFormat_LXO + OutputFileFormat_FBX
-        if OutputFileFormatTotal != 1 :
-            sys(exit)
+        # if OutputFileFormatTotal != 1:
+        #     sys(exit)
 
-        if OutputFileFormat_DXF == 1 and OutputFileFormatTotal == 1 :
-            OutputFileFormat = "DXF"
+        if OutputFileFormatTotal == 1:
+            if OutputFileFormat_DXF == 1:
+                OutputFileFormat = "DXF"
 
-        if OutputFileFormat_SVG == 1 and OutputFileFormatTotal == 1 :
-            OutputFileFormat = "SVG"
+            if OutputFileFormat_SVG == 1:
+                OutputFileFormat = "SVG"
 
-        if OutputFileFormat_OBJ == 1 and OutputFileFormatTotal == 1 :
-            OutputFileFormat = "OBJ"
+            if OutputFileFormat_OBJ == 1:
+                OutputFileFormat = "OBJ"
 
-        if OutputFileFormat_LXO == 1 and OutputFileFormatTotal == 1 :
-            OutputFileFormat = "LXO"
+            if OutputFileFormat_LXO == 1:
+                OutputFileFormat = "LXO"
 
-        if OutputFileFormat_FBX == 1 and OutputFileFormatTotal == 1 :
-            OutputFileFormat = "FBX"
+            if OutputFileFormat_FBX == 1:
+                OutputFileFormat = "FBX"
 
         ###########################################################################################
-
-
-
-
 
         ###########################################################################################
         # Get Code lines from Preferences / SMO_BATCH
@@ -254,124 +245,106 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
         BPLine020 = lx.eval('user.value SMO_UseVal_BATCH_String_Line020 ?')
         lx.out('Batch Process Line 20:', BPLine020)
 
-
-
-
-
-        if len(BPLine001) == 0 :
+        if len(BPLine001) == 0:
             lx.out('NOTIFICATION: line 001 Empty')
-        if len(BPLine002) == 0 :
+        if len(BPLine002) == 0:
             lx.out('NOTIFICATION: line 002 Empty')
-        if len(BPLine003) == 0 :
+        if len(BPLine003) == 0:
             lx.out('NOTIFICATION: line 003 Empty')
-        if len(BPLine004) == 0 :
+        if len(BPLine004) == 0:
             lx.out('NOTIFICATION: line 004 Empty')
-        if len(BPLine005) == 0 :
+        if len(BPLine005) == 0:
             lx.out('NOTIFICATION: line 005 Empty')
-        if len(BPLine006) == 0 :
+        if len(BPLine006) == 0:
             lx.out('NOTIFICATION: line 006 Empty')
-        if len(BPLine007) == 0 :
+        if len(BPLine007) == 0:
             lx.out('NOTIFICATION: line 007 Empty')
-        if len(BPLine008) == 0 :
+        if len(BPLine008) == 0:
             lx.out('NOTIFICATION: line 008 Empty')
-        if len(BPLine009) == 0 :
+        if len(BPLine009) == 0:
             lx.out('NOTIFICATION: line 009 Empty')
-        if len(BPLine010) == 0 :
+        if len(BPLine010) == 0:
             lx.out('NOTIFICATION: line 010 Empty')
 
-        if len(BPLine011) == 0 :
+        if len(BPLine011) == 0:
             lx.out('NOTIFICATION: line 011 Empty')
-        if len(BPLine012) == 0 :
+        if len(BPLine012) == 0:
             lx.out('NOTIFICATION: line 012 Empty')
-        if len(BPLine013) == 0 :
+        if len(BPLine013) == 0:
             lx.out('NOTIFICATION: line 013 Empty')
-        if len(BPLine014) == 0 :
+        if len(BPLine014) == 0:
             lx.out('NOTIFICATION: line 014 Empty')
-        if len(BPLine015) == 0 :
+        if len(BPLine015) == 0:
             lx.out('NOTIFICATION: line 015 Empty')
-        if len(BPLine016) == 0 :
+        if len(BPLine016) == 0:
             lx.out('NOTIFICATION: line 016 Empty')
-        if len(BPLine017) == 0 :
+        if len(BPLine017) == 0:
             lx.out('NOTIFICATION: line 017 Empty')
-        if len(BPLine018) == 0 :
+        if len(BPLine018) == 0:
             lx.out('NOTIFICATION: line 018 Empty')
-        if len(BPLine019) == 0 :
+        if len(BPLine019) == 0:
             lx.out('NOTIFICATION: line 019 Empty')
-        if len(BPLine020) == 0 :
+        if len(BPLine020) == 0:
             lx.out('NOTIFICATION: line 020 Empty')
 
-
-
-
-
-
-        if len(BPLine001) != 0 :
+        if len(BPLine001) != 0:
             lx.out('NOTIFICATION: line 001 Used')
-        if len(BPLine002) != 0 :
+        if len(BPLine002) != 0:
             lx.out('NOTIFICATION: line 002 Used')
-        if len(BPLine003) != 0 :
+        if len(BPLine003) != 0:
             lx.out('NOTIFICATION: line 003 Used')
-        if len(BPLine004) != 0 :
+        if len(BPLine004) != 0:
             lx.out('NOTIFICATION: line 004 Used')
-        if len(BPLine005) != 0 :
+        if len(BPLine005) != 0:
             lx.out('NOTIFICATION: line 005 Used')
-        if len(BPLine006) != 0 :
+        if len(BPLine006) != 0:
             lx.out('NOTIFICATION: line 006 Used')
-        if len(BPLine007) != 0 :
+        if len(BPLine007) != 0:
             lx.out('NOTIFICATION: line 007 Used')
-        if len(BPLine008) != 0 :
+        if len(BPLine008) != 0:
             lx.out('NOTIFICATION: line 008 Used')
-        if len(BPLine009) != 0 :
+        if len(BPLine009) != 0:
             lx.out('NOTIFICATION: line 009 Used')
-        if len(BPLine010) != 0 :
+        if len(BPLine010) != 0:
             lx.out('NOTIFICATION: line 010 Used')
 
-        if len(BPLine011) != 0 :
+        if len(BPLine011) != 0:
             lx.out('NOTIFICATION: line 011 Used')
-        if len(BPLine012) != 0 :
+        if len(BPLine012) != 0:
             lx.out('NOTIFICATION: line 012 Used')
-        if len(BPLine013) != 0 :
+        if len(BPLine013) != 0:
             lx.out('NOTIFICATION: line 013 Used')
-        if len(BPLine014) != 0 :
+        if len(BPLine014) != 0:
             lx.out('NOTIFICATION: line 014 Used')
-        if len(BPLine015) != 0 :
+        if len(BPLine015) != 0:
             lx.out('NOTIFICATION: line 015 Used')
-        if len(BPLine016) != 0 :
+        if len(BPLine016) != 0:
             lx.out('NOTIFICATION: line 016 Used')
-        if len(BPLine017) != 0 :
+        if len(BPLine017) != 0:
             lx.out('NOTIFICATION: line 017 Used')
-        if len(BPLine018) != 0 :
+        if len(BPLine018) != 0:
             lx.out('NOTIFICATION: line 018 Used')
-        if len(BPLine019) != 0 :
+        if len(BPLine019) != 0:
             lx.out('NOTIFICATION: line 019 Used')
-        if len(BPLine020) != 0 :
+        if len(BPLine020) != 0:
             lx.out('NOTIFICATION: line 020 Used')
 
-
         ###########################################################################################
-
-
-
-
-
 
         ###########################################################################################
         # Open the Dialog window to get the Target Path
         ###########################################################################################
-        lx.eval ('dialog.setup dir')
-        lx.eval ('dialog.title "Select the target Folder to Analyse and Process"')
+        lx.eval('dialog.setup dir')
+        lx.eval('dialog.title "Select the target Folder to Analyse and Process"')
         # MODO version checks.
-        modo_ver = int(lx.eval ('query platformservice appversion ?'))
+        modo_ver = int(lx.eval('query platformservice appversion ?'))
         if modo_ver == 801:
-            lx.eval ('+dialog.open')
+            lx.eval('+dialog.open')
         else:
-            lx.eval ('dialog.open')
-        Target_Path = lx.eval ('dialog.result ?')
+            lx.eval('dialog.open')
+        Target_Path = lx.eval('dialog.result ?')
         lx.out('Path', Target_Path)
         ###########################################################################################
-
-
-
 
         ###########################################################################################
         # Open DXF Files
@@ -588,9 +561,6 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
 
             del (DXFPathList, CurratedDXFPathList)
 
-
-
-
         ###########################################################################################
         # Open SVG Files
         ###########################################################################################
@@ -805,9 +775,6 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
                     lx.out('Scene Closed')
 
             del (SVGPathList, CurratedSVGPathList)
-
-
-
 
         ###########################################################################################
         # Open OBJ Files
@@ -1037,9 +1004,6 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
 
             lx.eval('user.value sceneio.obj.import.static {%s}' % User_OBJImportStatic)
             del (OBJPathList, CurratedOBJPathList)
-
-
-
 
         ###########################################################################################
         # Open FBX Files
@@ -1271,9 +1235,6 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
 
             del (FBXPathList, CurratedFBXPathList)
 
-
-
-
         ###########################################################################################
         # Open LXO Files
         ###########################################################################################
@@ -1470,9 +1431,8 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
                     if len(BPLine020) == 0:
                         lx.out('NOTIFICATION: line 020 Empty')
 
-
                     # Converting Meshes to Static Meshes
-                    if OutputLXO_ConvertStaticMeshes :
+                    if OutputLXO_ConvertStaticMeshes:
                         lx.eval('select.itemType mesh')
                         lx.eval('item.setType triSurf locator')
 
@@ -1489,8 +1449,7 @@ class SMO_BATCH_LoadFolderFilesFromUserPref_Cmd(lxu.command.BasicCommand):
                     lx.out('Scene Closed')
 
             del (LXOPathList, CurratedLXOPathList)
-            
-            
+
         ###########################################################################################
         # Open SLDPRT Files
         ###########################################################################################

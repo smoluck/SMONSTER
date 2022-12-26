@@ -1,4 +1,6 @@
-#python
+# python
+
+import lx
 
 # selectRotChans.py
 #

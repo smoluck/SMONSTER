@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_UV_FixFlippedSoloV_Cmd.py
 # Version:      1.0
 # 
@@ -13,12 +13,16 @@
 # 
 # Created:      01/07/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo, sys
+import lx
+import lxu
+import modo
+import sys
 
 Cmd_Name = "smo.UV.FixFlippedSoloV"
 # smo.UV.FixFlippedSoloV
+
 
 class SMO_UV_FixFlippedSoloV_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -59,9 +63,9 @@ class SMO_UV_FixFlippedSoloV_Cmd(lxu.command.BasicCommand):
         
         
         
-        ################################
-        #<----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
         lx.eval("user.defNew name:SMO_SafetyCheck_PolygonModeEnabled type:integer life:momentary")
@@ -84,9 +88,9 @@ class SMO_UV_FixFlippedSoloV_Cmd(lxu.command.BasicCommand):
         
         
         
-        ###############################################
-        ####### SAFETY CHECK 1 - UVMap Selected #######
-        ###############################################
+        # ----------------------------------------- #
+        # <---( SAFETY CHECK 1 )---> UVMap Selected #
+        # ----------------------------------------- #
         lx.out('<------------- START -------------->')
         lx.out('<--- UV Map Safety Check --->')
         
@@ -132,7 +136,7 @@ class SMO_UV_FixFlippedSoloV_Cmd(lxu.command.BasicCommand):
         ####### SAFETY CHECK 2 -  Selection Mode #######
         ################################################
         
-        #####--------------------  safety check 2: Component Selection Mode type --- START --------------------#####
+        # Component Selection Mode type --- START
         
         selType = ""
         # Used to query layerservice for the list of polygons, edges or vertices.
@@ -186,7 +190,7 @@ class SMO_UV_FixFlippedSoloV_Cmd(lxu.command.BasicCommand):
             
             lx.out('script Running: Item Component Selection Mode')
         
-        #####--------------------  safety check 2: Component Selection Mode type --- END --------------------#####
+        # Component Selection Mode type --- END
         
         
         
@@ -232,11 +236,12 @@ class SMO_UV_FixFlippedSoloV_Cmd(lxu.command.BasicCommand):
         #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
         
         
-        ##############################
-        ## <----( Main Macro )----> ##
-        ##############################
-        if SMO_SafetyCheck_UVFixflippedSoloV_UVMapCount == True :
-            #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+        # ------------------------ #
+        # <----( Main Macro )----> #
+        # ------------------------ #
+
+        if SMO_SafetyCheck_UVFixflippedSoloV_UVMapCount:
+            #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
             if TotalSafetyCheckTrueValue == TotalSafetyCheck :
                 if CsPolys < 1:
                     SMO_SafetyCheck_min1PolygonSelected = 0
@@ -260,7 +265,7 @@ class SMO_UV_FixFlippedSoloV_Cmd(lxu.command.BasicCommand):
             elif TotalSafetyCheck != TotalSafetyCheckTrueValue:
                     lx.out('No UV Island to Flip')
             
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
 lx.bless(SMO_UV_FixFlippedSoloV_Cmd, Cmd_Name)

@@ -1,3 +1,5 @@
+# python
+
 import os
 from os import mkdir
 from pathlib import Path
@@ -101,6 +103,8 @@ def root_fi():
     print(root_files)
     print("--------------")
     return root_files
+
+
 # root_fi()
 
 
@@ -110,6 +114,8 @@ def config_fi():
     config_files = [f for f in config_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
     print(config_files)
     return config_files
+
+
 # config_fi()
 
 
@@ -119,6 +125,8 @@ def scripts_fi():
     scripts_files = [f for f in scripts_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
     print(scripts_files)
     return scripts_files
+
+
 # scripts_fi()
 
 
@@ -127,6 +135,8 @@ def smodule_fi():
     smodule_files = [f for f in smodule_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
     print(smodule_files)
     return smodule_files
+
+
 # smodule_fi()
 
 
@@ -151,6 +161,8 @@ def lxserv_fi():
     # for f in lxserv_files:
     #     kit_files.append(lxserv_files)
     return lxserv_files
+
+
 # lxserv_fi()
 
 
@@ -168,6 +180,8 @@ def training_fi():
     #     if not blacklistedstring:
     #         clean_training_files.append(f)
     return training_files
+
+
 # training_fi()
 
 
@@ -184,6 +198,8 @@ def kits_fi():
     print(kits_files)
     print("--------------")
     return kits_files
+
+
 # kits_fi()
 
 # # Files contained in "Kits/SMO_BAKE" folder
@@ -233,6 +249,8 @@ def kit_doc_fi():
     kitDOC_files = [f for f in kit_doc_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
     print(kitDOC_files)
     return kitDOC_files
+
+
 # kit_doc_fi()
 
 # # Files contained in "Kits/SMO_GAME_CONTENT" folder
@@ -247,6 +265,8 @@ def kit_master_fi():
     kitMASTER_files = [f for f in kit_master_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
     print(kitMASTER_files)
     return kitMASTER_files
+
+
 # kit_master_fi()
 
 # # Files contained in "Kits/SMO_MATH_TOOLS" folder
@@ -327,15 +347,16 @@ def kit_master_fi():
 # Files contained in "Kits/SMO_RIZOMUV_LIVELINK" folder
 def kit_ll_rizomuv_fi():
     # Files that doesn't include the source code py files, but only the one that remains to the KeymapCommander and Startup scripts.
-    kitLLRIZOM_files = [f for f in kit_rizom_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]   #Bugfix for Precompiled Scripts that wasn't working.
+    kitLLRIZOM_files = [f for f in kit_rizom_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]  # Bugfix for Precompiled Scripts that wasn't working.
     # kitLLRIZOM_files = [f for f in kit_rizom_dir.glob("**/*") if f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc", "SMO_LL_RIZOMUV_Basic_Cmd.py", "SMO_LL_RIZOMUV_SendDataAuto_Cmd.py", "SMO_LL_RIZOMUV_SetExePath_Cmd.py"))]
     print("Files in RizomUV LL kit folder:")
     print("Files in RizomUV LL kit folder:")
     print(kitLLRIZOM_files)
     print("--------------")
     return kitLLRIZOM_files
-# kit_ll_rizomuv_fi()
 
+
+# kit_ll_rizomuv_fi()
 
 
 # del config_files[:]
@@ -510,7 +531,7 @@ with ZipFile(lpk_source_path, mode="w", compression=ZIP_DEFLATED) as lpk:
         print(file.relative_to(kit_dir))
         lpk.write(file, file.relative_to(kit_dir))
 
-    ###### STANDARD KITS ########
+    ###### STANDARD KITS
     print("----- Kits files -----")
     for file in kits_fi():
         print(file.relative_to(kit_dir))

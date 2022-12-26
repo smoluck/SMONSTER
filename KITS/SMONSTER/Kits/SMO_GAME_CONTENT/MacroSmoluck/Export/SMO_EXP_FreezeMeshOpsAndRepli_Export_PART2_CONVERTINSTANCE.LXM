@@ -1,5 +1,5 @@
 #LXMacro#
-#-----------------------------------------
+# ----------------------------------------
 # Name:         SMO_EXP_FreezeMeshOpsAndRepli_Export_PART2_CONVERTINSTANCE.LXM
 # Version:      1.0
 #
@@ -14,7 +14,7 @@
 #
 # Created:      XX/XX/2018-2019
 # Copyright:    (c) Franck Elisabeth 2019
-#-----------------------------------------
+# ----------------------------------------
 
 # // START // OOOOOKKKKK
 # // Select back the Locator Parent of the Setup //

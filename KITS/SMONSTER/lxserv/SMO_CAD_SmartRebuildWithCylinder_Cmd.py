@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_CAD_SmartRebuildWithCylinder_Cmd.py
 # Version: 1.0
 #
@@ -12,16 +12,20 @@
 #                   a Hole
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      13/04/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo, sys
+import lx
+import lxu
+import modo
+import sys
 
 Cmd_Name = "smo.CAD.SmartRebuildWithCylinder"
 # smo.CAD.SmartRebuildWithCylinder 16 2 0 0
+
 
 class SMO_CAD_SmartRebuildWithCylinder_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -59,14 +63,14 @@ class SMO_CAD_SmartRebuildWithCylinder_Cmd(lxu.command.BasicCommand):
 
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
-        if self.SelModePoly == True:
+        if self.SelModePoly:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
 
 
 
-        # ################################
-        # #<----[ DEFINE ARGUMENTS ]---->#
-        # ################################
+        # # ------------------------------ #
+        # # <----( DEFINE ARGUMENTS )----> #
+        # # ------------------------------ #
         CYLINDER_SIDES_COUNT = self.dyna_Int(0)  # Sides Count for the Cylinder as an integer value
         CYLINDER_AXES = self.dyna_Int(1)  # Axes selection:                               X = 0 ### Y = 1 ### Z = 2
         CYLINDER_OPEN = self.dyna_Int(2)  # Open the Cylinder (Via delete NGon):          1 = Enable ### 0 = Disable
@@ -91,16 +95,16 @@ class SMO_CAD_SmartRebuildWithCylinder_Cmd(lxu.command.BasicCommand):
             except:
                 pass
         # lx.out(CYLINDER_SIDES_COUNT, CYLINDER_AXES, CYLINDER_OPEN, CYLINDER_TO_HOLE)
-        # ############### ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
 
-        # ##############################
-        # #<----[ TEST ARGUMENTS ]---->#
-        # ##############################
+        # # -------------------------- #
+        # # <----( TEST ARGUMENTS )----> #
+        # # -------------------------- #
         # CYLINDER_SIDES_COUNT = 16
         # CYLINDER_AXES = 0
         # CYLINDER_OPEN = 0
         # CYLINDER_TO_HOLE = 0
-        # ##############################
+        # # -------------------------- #
 
 
 
@@ -124,9 +128,9 @@ class SMO_CAD_SmartRebuildWithCylinder_Cmd(lxu.command.BasicCommand):
 
 
 
-        ################################
-        # <----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
 
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
@@ -183,11 +187,11 @@ class SMO_CAD_SmartRebuildWithCylinder_Cmd(lxu.command.BasicCommand):
         ################################################
 
 
-        ##############################
-        ####### SAFETY CHECK 1 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 1 )---> #
+        # -------------------------- #
 
-        #####--------------------  safety check 1: Polygon Selection Mode enabled --- START --------------------#####
+        # --------------------  safety check 1: Polygon Selection Mode enabled --- START
 
         selType = ""
         # Used to query layerservice for the list of polygons, edges or vertices.
@@ -241,14 +245,14 @@ class SMO_CAD_SmartRebuildWithCylinder_Cmd(lxu.command.BasicCommand):
             lx.out('script Stopped: You must be in Polygon Mode to run that script')
             sys.exit
             # sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
-        #####--------------------  safety check 1: Polygon Selection Mode enabled --- END --------------------#####
+        # --------------------  safety check 1: Polygon Selection Mode enabled --- END
 
 
-        ##############################
-        ####### SAFETY CHECK 2 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 2 )---> #
+        # -------------------------- #
 
-        #####--------------------  safety check 2: at Least 1 Polygons is selected --- START --------------------#####
+        # at Least 1 Polygons is selected --- START
         lx.out('Count Selected Poly', CsPolys)
 
         if CsPolys < 1:
@@ -263,7 +267,7 @@ class SMO_CAD_SmartRebuildWithCylinder_Cmd(lxu.command.BasicCommand):
         elif CsPolys >= 1:
             SMO_SafetyCheck_min1PolygonSelected = 1
             lx.out('script running: right amount of polygons in selection')
-        #####--------------------  safety check 2: at Least 1 Polygons is selected --- END --------------------#####
+        # at Least 1 Polygons is selected --- END
 
 
         #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
@@ -276,11 +280,12 @@ class SMO_CAD_SmartRebuildWithCylinder_Cmd(lxu.command.BasicCommand):
         #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
 
 
-        ##############################
-        ## <----( Main Macro )----> ##
-        ##############################
+        # ------------------------ #
+        # <----( Main Macro )----> #
+        # ------------------------ #
+
         lx.out('Start of SMO REBUILD With CYLINDER CLOSED / CYLINDER OPENED / HOLE')
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
         if TotalSafetyCheck == TotalSafetyCheckTrueValue:
             # Tag the Polygon to Rebuild From
             lx.eval('select.editSet name:TEMP_DATA_VOLUME mode:add')
@@ -461,9 +466,9 @@ class SMO_CAD_SmartRebuildWithCylinder_Cmd(lxu.command.BasicCommand):
             lx.out('"Deselect Elements Before Pasting" have been Restored')
         ########################################################
 
-        if RefSystemActive == False:
+        if not RefSystemActive:
             lx.eval('item.refSystem {}')
-        if RefSystemActive == True:
+        if RefSystemActive:
             lx.eval('item.refSystem %s' % CurrentRefSystemItem)
 
         lx.out('End of SMO REBUILD With CYLINDER CLOSED / CYLINDER OPENED / HOLE')
@@ -479,7 +484,6 @@ lx.bless(SMO_CAD_SmartRebuildWithCylinder_Cmd, Cmd_Name)
 
 #### NOTE ####
 
-# #python
 # import modo, lx
 
 # args = lx.args()

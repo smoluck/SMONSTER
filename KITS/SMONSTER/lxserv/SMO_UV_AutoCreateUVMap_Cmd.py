@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_UV_AutoCreateUVMap_Cmd.py
 # Version:      1.0
 # 
@@ -7,16 +7,19 @@
 #               Automatically Create a UV Map if missing using Default UVMap Name in Preferences.
 # 
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 # 
 # Created:      11/12/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo, sys
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.UV.AutoCreateUVMap"
 # smo.UV.AutoCreateUVMap
+
 
 class SMO_UV_AutoCreateUVMap_Cmd(lxu.command.BasicCommand):
     def __init__(self):

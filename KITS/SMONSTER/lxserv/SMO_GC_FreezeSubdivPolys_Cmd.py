@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_FreezeSubdivPolys_Cmd.py
 # Version:      1.0
 #
@@ -7,45 +7,48 @@
 #               Freeze the Subdiv or Catmull-Clark polygons in the given Mesh item.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      17/12/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
-Cmd_Name =  "smo.GC.FreezeSubdivPoly"
+Cmd_Name = "smo.GC.FreezeSubdivPoly"
 # smo.GC.FreezeSubdivPoly
+
 
 class SMO_GC_FreezeSubdivPolys_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
-    
+
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
-    
-    def cmd_Interact (self):
+
+    def cmd_Interact(self):
         pass
-    
-    def cmd_UserName (self):
+
+    def cmd_UserName(self):
         return 'SMO GC - Freeze Subdiv Polys'
-    
-    def cmd_Desc (self):
+
+    def cmd_Desc(self):
         return 'Freeze the Subdiv or Catmull-Clark polygons in the given Mesh item.'
-    
-    def cmd_Tooltip (self):
+
+    def cmd_Tooltip(self):
         return 'Freeze the Subdiv or Catmull-Clark polygons in the given Mesh item.'
-    
-    def cmd_Help (self):
+
+    def cmd_Help(self):
         return 'https://twitter.com/sm0luck'
-    
-    def basic_ButtonName (self):
+
+    def basic_ButtonName(self):
         return 'SMO GC -Freeze Subdiv Polys'
-    
-    def basic_Enable (self, msg):
+
+    def basic_Enable(self, msg):
         return True
-    
+
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
         meshes = scene.selectedByType(lx.symbol.sITYPE_MESH)
@@ -59,7 +62,7 @@ class SMO_GC_FreezeSubdivPolys_Cmd(lxu.command.BasicCommand):
             # select all Psubdiv polys (Catmull-Clark)
             lx.eval('select.polygon add type psubdiv 7')
 
-            SubdivState =  lx.eval('query layerservice polys ? selected')
+            SubdivState = lx.eval('query layerservice polys ? selected')
             # lx.out('state', SubdivState)
             if SubdivState is not None:
                 lx.out("There are subdivs in this mesh.")
@@ -70,7 +73,6 @@ class SMO_GC_FreezeSubdivPolys_Cmd(lxu.command.BasicCommand):
             lx.eval('!deformer.freeze false')
             lx.eval('select.drop polygon')
             lx.eval('select.type item')
-
 
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()

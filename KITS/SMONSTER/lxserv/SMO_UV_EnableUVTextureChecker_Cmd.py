@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_UV_EnableUVTextureChecker_Cmd.py
 # Version:      1.0
 #
@@ -7,16 +7,21 @@
 #               Enable the UV Texture Checker in the current Viewport using the UVGrid PNG files from the UV kit. (Argument define the file resolution)
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      14/04/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo, os, sys
+import lx
+import lxu
+import modo
+import os
+import sys
 
 Cmd_Name = "smo.UV.EnableUVTextureChecker"
 # smo.UV.EnableUVTextureChecker 1024
+
 
 class SMO_UV_EnableUVTextureChecker_Cmd(lxu.command.BasicCommand):
     def __init__(self):

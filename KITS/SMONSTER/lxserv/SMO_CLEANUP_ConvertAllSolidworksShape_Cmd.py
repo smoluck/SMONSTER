@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_CLEANUP_ConvertAllSolidWorksShape_Cmd.py
 # Version:      1.0
 #
@@ -9,16 +9,19 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      11/05/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.CLEANUP.ConvertAllSolidWorksShape"
 # smo.CLEANUP.ConvertAllSolidWorksShape
+
 
 class SMO_CLEANUP_ConvertAllSolidWorksShape_Cmd(lxu.command.BasicCommand):
     def __init__(self):

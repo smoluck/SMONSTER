@@ -1,9 +1,14 @@
 # python
 
-import lx, modo, os, re
 from smodule.commander.SMO_Commander import SmoCommanderClass
 
+import lx
+import modo
+import os
+import re
+
 CMD_NAME = 'smo.CB.Startup'
+
 
 class SMO_CB_BOOT_Cmd(SmoCommanderClass):
 
@@ -38,8 +43,9 @@ class SMO_CB_BOOT_Cmd(SmoCommanderClass):
             modo.dialogs.alert(
                 "New SMO COLOR BAR Version",
                 "IMPORTANT: New version of SMO COLOR BAR detected.\n \nIt is Recommended to Reset MODO prefs using:\nSystem --> Reset Preferences"
-                )
+            )
 
         lx.eval("user.value SMO_COLOR_BAR_version %s" % SMO_COLOR_BAR_version_installed)
+
 
 lx.bless(SMO_CB_BOOT_Cmd, CMD_NAME)

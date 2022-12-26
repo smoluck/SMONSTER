@@ -1,3 +1,5 @@
+#python
+
 from pathlib import Path
 
 # Get the root path to this repo
@@ -10,7 +12,7 @@ lxserv_dir = target_kit / "lxserv"
 training_dir = target_kit / "TRAINING_SCENES"
 
 
-###### SMONSTER BASE STRUCTURE #########################################################
+# ----- SMONSTER BASE STRUCTURE ----- #
 def midheader(name, restart="No"):
     # Header
     xml_header = "<?xml version=\"1.0\" encoding=\"utf-8\"?>"

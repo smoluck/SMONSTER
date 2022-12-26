@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_QT_SetSelSetColorID_ByNumber_Cmd.py
 # Version:      1.00
 #
@@ -9,18 +9,23 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      17/01/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import modo, lx, lxu, random, sys
+import lx
+import lxu
+import modo
+import sys
+
 if sys.version_info < (3, 0):
     xrange = range
 
 Cmd_Name = "smo.QT.SetSelSetColorIDByNumber"
 # smo.QT.SetSelSetColorIDByNumber 1
+
 
 def uNameItem():
     item = modo.item.Item()
@@ -136,7 +141,8 @@ def GetBaseShader():
 
 
 
-# test if there is already MaxColorID in the "Base Shader" Render Item by checking the presence of the Channel "SelSetColorIDConstantGlobalCount"
+# test if there is already MaxColorID in the "Base Shader" Render Item
+# by checking the presence of the Channel "SelSetColorIDConstantGlobalCount"
 def SetColorIDByNumberCheckSceneMaxColorID(IDNum):
     # Select the Base Shader to create and place ColorID group on top of current Material Groups
     scn = modo.scene.current()
@@ -203,7 +209,7 @@ def SetColorIDByNumberCheckSceneMaxColorID(IDNum):
     # print(QTChannelExist)
     # print(SceneConstantID_Int)
     scn.deselect(RenderItemBaseShader[0])
-    return (QTChannelExist, SceneConstantID_Int, RenderItemBaseShader[0])
+    return QTChannelExist, SceneConstantID_Int, RenderItemBaseShader[0]
 
 
 # print(SetColorIDByNumberCheckSceneMaxColorID(IDNum))
@@ -243,13 +249,13 @@ def IsThereTargetGrpMaskColorIDSelSet(ListGrpMaskColorID, IDNum):
                 ListTargetGrpMaskState.append(IsThereTargetGrpMaskColorIDSelSet)
         lx.eval('smo.GC.DeselectAll')
     for item in ListTargetGrpMaskState:
-        if item == True:
+        if item:
             GrpMaskAlreadyThere = True
             print('ColorID_%s Group Mask is already is the Shader Tree' % str(IDNum))
     if not GrpMaskAlreadyThere:
         print('No Group Mask called: %s' % ('ColorID_' + str(IDNum)))
         print('We need to create a new one')
-    return (GrpMaskAlreadyThere, IDNum)
+    return GrpMaskAlreadyThere, IDNum
 
 
 # print(IsThereTargetGrpMaskColorIDSelSet(ListGrpMaskColorIDSelSet(IDNum), IDNum))
@@ -294,7 +300,8 @@ def ListPSelSet():
 
 
 
-# test if there is already MaxColorID in the "Base Shader" Render Item by checking the presence of the Channel "SelSetColorIDConstantGlobalCount"
+# test if there is already MaxColorID in the "Base Shader" Render Item by
+# checking the presence of the Channel "SelSetColorIDConstantGlobalCount"
 def ProcessGrp_ColorID(TargetGrpMask, IDNum, baseShad):
     scn = modo.scene.current()
     GrpPresence = False
@@ -329,7 +336,7 @@ def ProcessGrp_ColorID(TargetGrpMask, IDNum, baseShad):
     # if not GrpPresence:
     #     lx.eval('texture.parent {%s} {%s} item:{%s}' % (baseShad, PosID, GrpColorIdent))
     scn.deselect(TargetGrpMask)
-    return (GrpColorIdent)
+    return GrpColorIdent
 
 
 
@@ -385,13 +392,13 @@ class SMO_QT_SetSelSetColorID_ByNumber_Cmd(lxu.command.BasicCommand):
 
         ByItemMode = bool()
 
-        if self.SelModeItem == True:
+        if self.SelModeItem:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
             lx.eval('select.type polygon')
             lx.eval('select.all')
             ByItemMode = True
 
-        if self.SelModePoly == True:
+        if self.SelModePoly:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
             ByItemMode = False
         meshes = scn.selectedByType('mesh')
@@ -513,7 +520,7 @@ class SMO_QT_SetSelSetColorID_ByNumber_Cmd(lxu.command.BasicCommand):
         # if GrpMaskExist:
         # SetColorOnNode(IDNum)
 
-        if self.SelModePoly == True:
+        if self.SelModePoly:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
 
         print(ListPSelSet())
@@ -522,7 +529,7 @@ class SMO_QT_SetSelSetColorID_ByNumber_Cmd(lxu.command.BasicCommand):
             if item != getTargetGrpMaskName(IDNum):
                 lx.eval('select.editSet %s remove' % item)
 
-        if ByItemMode == True:
+        if ByItemMode:
             lx.eval('select.type item')
 
 

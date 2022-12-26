@@ -1,5 +1,7 @@
-#python
+# python
+
 import modo
+import lx
 
 scene = modo.Scene()
 render_item = scene.item("Render")

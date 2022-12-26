@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_ExportMeshOpRig_to_LX0Sequence.py
 # Version: 1.01
 #
@@ -7,12 +7,12 @@
 # Select the MeshOp item and run. 
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/02/2018
 # Modified:		02/04/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 #import the necessary Python libraries
 import lx

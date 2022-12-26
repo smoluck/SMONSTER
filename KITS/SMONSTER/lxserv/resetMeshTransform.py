@@ -1,12 +1,14 @@
-#---------------------------------------
+# python
+# ---------------------------------------
 # Author:       James O'Hare
 # Website:      http://www.farfarer.com/
 # Copyright:    (c) James O'Hare
-#---------------------------------------
+# ---------------------------------------
 
-#!/usr/bin/env python
+# !/usr/bin/env python
 
 import lx, lxu, lxifc, lxu.command
+
 
 class ListVMaps(lxifc.Visitor):
     def __init__(self, meshmap):
@@ -16,6 +18,7 @@ class ListVMaps(lxifc.Visitor):
     def vis_Evaluate(self):
         self.meshmap_IDs.append(self.meshmap.ID())
 
+
 class RotateVMapsVert(lxifc.Visitor):
     def __init__(self, point, matrix, normalmaps, basismaps):
         self.point = point
@@ -23,8 +26,8 @@ class RotateVMapsVert(lxifc.Visitor):
         self.normalmaps = normalmaps
         self.basismaps = basismaps
 
-        self.normalvalue = lx.object.storage('f',3)
-        self.basisvalue = lx.object.storage('f',6)
+        self.normalvalue = lx.object.storage('f', 3)
+        self.basisvalue = lx.object.storage('f', 6)
 
     def vis_Evaluate(self):
         for normalmap in self.normalmaps:
@@ -45,6 +48,7 @@ class RotateVMapsVert(lxifc.Visitor):
                 self.basisvalue.set(basis)
                 self.point.SetMapValue(basismap, self.basisvalue)
 
+
 class RotateVMapsPoly(lxifc.Visitor):
     def __init__(self, polygon, matrix, normalmaps, basismaps):
         self.polygon = polygon
@@ -52,8 +56,8 @@ class RotateVMapsPoly(lxifc.Visitor):
         self.normalmaps = normalmaps
         self.basismaps = basismaps
 
-        self.normalvalue = lx.object.storage('f',3)
-        self.basisvalue = lx.object.storage('f',6)
+        self.normalvalue = lx.object.storage('f', 3)
+        self.basisvalue = lx.object.storage('f', 6)
 
     def vis_Evaluate(self):
         for x in range(self.polygon.VertexCount()):
@@ -77,9 +81,10 @@ class RotateVMapsPoly(lxifc.Visitor):
                     self.basisvalue.set(basis)
                     self.polygon.SetMapValue(pointID, basismap, self.basisvalue)
 
+
 class ResetMeshTransform_Cmd(lxu.command.BasicCommand):
 
-#______________________________________________________________________________________________ SETUP AND INITIALISATION
+    # ______________________________________________________________________________________________ SETUP AND INITIALISATION
 
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
@@ -168,5 +173,6 @@ class ResetMeshTransform_Cmd(lxu.command.BasicCommand):
         layer_scan.Apply()
 
         lx.eval('transform.freeze')
+
 
 lx.bless(ResetMeshTransform_Cmd, 'ffr.resetMeshTransform')

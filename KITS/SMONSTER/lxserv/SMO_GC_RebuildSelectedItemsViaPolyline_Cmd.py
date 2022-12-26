@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_RebuildSelectedItemsViaPolyline_Cmd
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #               Delete the original Data.
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      18/09/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.RebuildSelectedItemsViaPolyline"
 # smo.GC.RebuildSelectedItemsViaPolyline
+
 
 class SMO_GC_RebuildSelectedItemsViaPolyline_Cmd(lxu.command.BasicCommand):
     def __init__(self):

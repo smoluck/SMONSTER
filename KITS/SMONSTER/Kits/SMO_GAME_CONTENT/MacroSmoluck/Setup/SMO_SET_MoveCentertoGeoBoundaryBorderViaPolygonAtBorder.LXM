@@ -1,5 +1,5 @@
 #LXMacro#
-#-----------------------------------------
+# ----------------------------------------
 # Name:         SMO_SET_MoveCentertoGeoBoundaryBorderViaPolygonAtBorder.LXM
 # Version:      1.0
 #
@@ -11,7 +11,7 @@
 #
 # Created:      XX/XX/2018-2019
 # Copyright:    (c) Franck Elisabeth 2019
-#-----------------------------------------
+# ----------------------------------------
 
 select.convert type:edge
 # replay name:"Edit Selection Set"

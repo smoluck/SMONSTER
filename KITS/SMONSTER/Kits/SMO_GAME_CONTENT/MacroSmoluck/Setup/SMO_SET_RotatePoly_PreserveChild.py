@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_RotatePoly_PreserveChild.py
 # Version: 1.0
 #
@@ -8,11 +8,11 @@
 # and preserve the child orientation and parenting of this item.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      10/06/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 
 import modo, lx
@@ -29,62 +29,62 @@ lx.out('Desired Axe change:',RotAxe)
 
 
 
-#####--------------------  safety check 1: ITEM Selection Mode enabled --- START --------------------#####
+# --------------------  safety check 1: ITEM Selection Mode enabled --- START
 
 selType = ""
 # Used to query layerservice for the list of polygons, edges or vertices.
 attrType = ""
 
 if lx.eval1( "select.typeFrom typelist:vertex;polygon;edge;item;ptag ?" ):
-    selType = "vertex"
-    attrType = "vert"
+	selType = "vertex"
+	attrType = "vert"
 	
-    SMO_SafetyCheck_ItemModeEnabled = 0
-    lx.eval('dialog.setup info')
-    lx.eval('dialog.title {SMO_RotatePoly_PreserveChild:}')
-    lx.eval('dialog.msg {You must be in ITEM Mode to run that script}')
-    lx.eval('+dialog.open')
-    lx.out('script Stopped: You must be in ITEM Mode to run that script')
-    sys.exit
-    #sys.exit( "LXe_FAILED:Must be in ITEM selection mode." )
-    
+	SMO_SafetyCheck_ItemModeEnabled = 0
+	lx.eval('dialog.setup info')
+	lx.eval('dialog.title {SMO_RotatePoly_PreserveChild:}')
+	lx.eval('dialog.msg {You must be in ITEM Mode to run that script}')
+	lx.eval('+dialog.open')
+	lx.out('script Stopped: You must be in ITEM Mode to run that script')
+	sys.exit
+	#sys.exit( "LXe_FAILED:Must be in ITEM selection mode." )
+
 	
 elif lx.eval1( "select.typeFrom typelist:edge;vertex;polygon;item ?" ):
-    selType = "edge"
-    attrType = "edge"
+	selType = "edge"
+	attrType = "edge"
 	
-    SMO_SafetyCheck_ItemModeEnabled = 0
-    lx.eval('dialog.setup info')
-    lx.eval('dialog.title {SMO_RotatePoly_PreserveChild:}')
-    lx.eval('dialog.msg {You must be in ITEM Mode to run that script}')
-    lx.eval('+dialog.open')
-    lx.out('script Stopped: You must be in ITEM Mode to run that script')
-    sys.exit
-    #sys.exit( "LXe_FAILED:Must be in ITEM selection mode." )
+	SMO_SafetyCheck_ItemModeEnabled = 0
+	lx.eval('dialog.setup info')
+	lx.eval('dialog.title {SMO_RotatePoly_PreserveChild:}')
+	lx.eval('dialog.msg {You must be in ITEM Mode to run that script}')
+	lx.eval('+dialog.open')
+	lx.out('script Stopped: You must be in ITEM Mode to run that script')
+	sys.exit
+	#sys.exit( "LXe_FAILED:Must be in ITEM selection mode." )
 	
 elif lx.eval1( "select.typeFrom typelist:polygon;vertex;edge;item ?" ):
-    selType = "polygon"
-    attrType = "poly"
+	selType = "polygon"
+	attrType = "poly"
 	
-    SMO_SafetyCheck_ItemModeEnabled = 0
-    lx.eval('dialog.setup info')
-    lx.eval('dialog.title {SMO_RotatePoly_PreserveChild:}')
-    lx.eval('dialog.msg {You must be in ITEM Mode to run that script}')
-    lx.eval('+dialog.open')
-    lx.out('script Stopped: You must be in ITEM Mode to run that script')
-    sys.exit
-    #sys.exit( "LXe_FAILED:Must be in ITEM selection mode." )
+	SMO_SafetyCheck_ItemModeEnabled = 0
+	lx.eval('dialog.setup info')
+	lx.eval('dialog.title {SMO_RotatePoly_PreserveChild:}')
+	lx.eval('dialog.msg {You must be in ITEM Mode to run that script}')
+	lx.eval('+dialog.open')
+	lx.out('script Stopped: You must be in ITEM Mode to run that script')
+	sys.exit
+	#sys.exit( "LXe_FAILED:Must be in ITEM selection mode." )
 
 
 else:
 	# This only fails if none of the three supported selection
-    # modes have yet been used since the program started, or
-    # if "item" or "ptag" (ie: materials) is the current
-    # selection mode.
-    SMO_SafetyCheck_ItemModeEnabled = 1
-    lx.out('script Running: Correct Component Selection Mode')
+	# modes have yet been used since the program started, or
+	# if "item" or "ptag" (ie: materials) is the current
+	# selection mode.
+	SMO_SafetyCheck_ItemModeEnabled = 1
+	lx.out('script Running: Correct Component Selection Mode')
 
-#####--------------------  safety check 1: ITEM Selection Mode enabled --- END --------------------#####
+# --------------------  safety check 1: ITEM Selection Mode enabled --- END
 
 
 
@@ -92,17 +92,17 @@ else:
 #####
 TotalSafetyCheckTrueValue = 1
 lx.out('Desired Value',TotalSafetyCheckTrueValue)
-TotalSafetyCheck = (SMO_SafetyCheck_ItemModeEnabled)
+TotalSafetyCheck = SMO_SafetyCheck_ItemModeEnabled
 lx.out('Current Value',TotalSafetyCheck)
 #####
 #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
 
 
-##############################
-## <----( Main Macro )----> ##
-##############################
+# -------------------------- #
+# <----( Main Macro )----> #
+# -------------------------- #
 lx.out('Start of SMO_RotatePoly_PreserveChild')
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
 if TotalSafetyCheck == TotalSafetyCheckTrueValue:
 
 	lx.eval('workPlane.fitSelect')

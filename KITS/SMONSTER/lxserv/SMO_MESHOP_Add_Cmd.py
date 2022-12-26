@@ -1,21 +1,25 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_MESHOP_Add_Cmd.py
 # Version:      1.0
 #
 # Purpose:      Add a Meshop and add it to the Schematic.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      06/08/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo, sys
+import lx
+import lxu
+import modo
+import sys
 
 Cmd_Name = "smo.MESHOP.AddMeshop"
 # smo.MESHOP.AddMeshop Stack
+
 
 class SMO_MESHOP_Add_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -48,16 +52,16 @@ class SMO_MESHOP_Add_Cmd(lxu.command.BasicCommand):
 
     def basic_Execute(self, msg, flags):
 
-        ################################
-        # <----[ DEFINE ARGUMENTS ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #
+        # ------------------------------ #
         Name = self.dyna_String(0)              # MeshOp Name
-        ################################
-        # <----[ DEFINE ARGUMENTS ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #
+        # ------------------------------ #
 
-        ########################################
-        ## <----( Set Omnihaul Presets )----> ##
+        # ------------------------------- #
+        # <----( Set Omnihaul Presets )----> #
         Preset = "applyDefaultPreset:true"
         MeshOpState = False
         StackOp = False
@@ -120,7 +124,7 @@ class SMO_MESHOP_Add_Cmd(lxu.command.BasicCommand):
         #        lx.eval("schematic.addChannel chanIdx:{%s}" % cName_A)
 
         ##################################
-        ## <----( Stack Operator )----> ##
+        # <----( Stack Operator )----> #
         if modo_ver >= 1500:
             if Name == "Stack" and Added == False:
                 try:
@@ -130,7 +134,7 @@ class SMO_MESHOP_Add_Cmd(lxu.command.BasicCommand):
                     sys.exit
 
         ##################################
-        ## <----( Merge Mesh Operator )----> ##
+        # <----( Merge Mesh Operator )----> #
         if Name == "MergeMesh" and Added == False:
             try:
                 if modo_ver >= 1510:
@@ -143,7 +147,7 @@ class SMO_MESHOP_Add_Cmd(lxu.command.BasicCommand):
                 sys.exit
 
         ##################################
-        ## <----( Primitive Type )----> ##
+        # <----( Primitive Type )----> #
         if Name == "VertexCreate" and Added == False:
             try:
                 if modo_ver >= 1510:
@@ -243,8 +247,8 @@ class SMO_MESHOP_Add_Cmd(lxu.command.BasicCommand):
             except:
                 sys.exit
 
-        ##############################
-        ## <----( Bevel Type )----> ##
+        # -------------------------- #
+        # <----( Bevel Type )----> #
         if Name == "BevelEdge" and Added == False:
             try:
                 if modo_ver >= 1510:
@@ -300,8 +304,8 @@ class SMO_MESHOP_Add_Cmd(lxu.command.BasicCommand):
             except:
                 sys.exit
 
-        ################################
-        ## <----( Extrude Type )----> ##
+        # ------------------------------ #
+        # <----( Extrude Type )----> #
         if Name == "ExtrudePoly" and Added == False:
             try:
                 if modo_ver >= 1510:
@@ -368,8 +372,8 @@ class SMO_MESHOP_Add_Cmd(lxu.command.BasicCommand):
             except:
                 sys.exit
 
-        ################################
-        ## <----( Polygon Type )----> ##
+        # ------------------------------ #
+        # <----( Polygon Type )----> #
         if Name == "PolyExtrude" and Added == False:
             try:
                 if modo_ver >= 1510:
@@ -404,7 +408,7 @@ class SMO_MESHOP_Add_Cmd(lxu.command.BasicCommand):
                 sys.exit
 
         #############################
-        ## <----( Edge Type )----> ##
+        # <----( Edge Type )----> #
         if Name == "EdgeBevel" and Added == False:
             try:
                 if modo_ver >= 1510:
@@ -494,7 +498,7 @@ class SMO_MESHOP_Add_Cmd(lxu.command.BasicCommand):
                 sys.exit
 
         ###############################
-        ## <----( Vertex Type )----> ##
+        # <----( Vertex Type )----> #
         if Name == "VertexMerge":
             try:
                 if modo_ver >= 1510:
@@ -538,7 +542,7 @@ class SMO_MESHOP_Add_Cmd(lxu.command.BasicCommand):
                 sys.exit
 
         ###############################
-        ## <----( Smooth Type )----> ##
+        # <----( Smooth Type )----> #
         if Name == "SmoothShift":
             try:
                 if modo_ver >= 1510:
@@ -584,7 +588,7 @@ class SMO_MESHOP_Add_Cmd(lxu.command.BasicCommand):
                     sys.exit
 
         ###############################
-        ## <----( Curve Type )----> ##
+        # <----( Curve Type )----> #
         # if Name == "CurveExtrude":
         #     try:
         #         if modo_ver >= 1510:
@@ -613,7 +617,7 @@ class SMO_MESHOP_Add_Cmd(lxu.command.BasicCommand):
         #         sys.exit
 
         ###################################
-        ## <----( Specific Action )----> ##
+        # <----( Specific Action )----> #
         ###################################
 
         sel_svc_B = lx.service.Selection()

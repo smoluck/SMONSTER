@@ -1,5 +1,5 @@
-#python
-#---------------------------------------------
+# python
+"""
 # Name:         SMO_Cleanup_DelPreTransform.py
 # Version:      1.0
 #
@@ -8,19 +8,22 @@
 #           FBX Export in the current scene. Position / Rotation / Scale
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      03/03/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------------
-import lx, lxu, modo
+"""
+
+import lx
+import modo
+
 scene = modo.scene.current()
 
 
-# ############### 1 ARGUMENTS Test ###############
+# # ------------- ARGUMENTS Test
 # PreTransform = 1
 # FreezeRot = 1
-# ############### 1 ARGUMENTS ###############
+# # ------------- ARGUMENTS ------------- #
 args = lx.args()
 lx.out(args)
 
@@ -29,7 +32,7 @@ lx.out('Merge Transform Rotation:', MergeTransRot)
 
 FreezeRot = int(args[1])
 lx.out('Freeze Rotation:', FreezeRot)
-# ############### 1 ARGUMENTS ###############
+# # ------------- ARGUMENTS ------------- #
 
 
 

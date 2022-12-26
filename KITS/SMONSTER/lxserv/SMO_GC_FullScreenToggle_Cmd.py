@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_FullScreenToggle_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,18 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      06/12/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
 
 Cmd_Name = "smo.GC.FullScreenToggle"
 # smo.GC.FullScreenToggle
+
 
 class SMO_GC_FullScreenToggle_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -72,29 +74,29 @@ class SMO_GC_FullScreenToggle_Cmd(lxu.command.BasicCommand):
         lx.out('LayRightState %s' % LayRightState)
         lx.out('---')
 
-        if FullscreenState == False:
-            if LaySwitchState == True:
+        if not FullscreenState:
+            if LaySwitchState:
                 lx.eval('layout.switcherBar false')
-            if LayTopState == True:
+            if LayTopState:
                 lx.eval('viewport.collapse false hash LayoutModoXXSwitcherTop up "89528021001:xkey"')
-            if LayDownState == True:
+            if LayDownState:
                 lx.eval('viewport.collapse false hash LayoutModoXXSwitcherBottom down "56685021006:xkey"')
-            if LayLeftState == True:
+            if LayLeftState:
                 lx.eval('viewport.collapse false hash LayoutMODOXXLeftPanelGroup left "01869021009:xkey"')
-            if LayRightState == True:
+            if LayRightState:
                 lx.eval('viewport.collapse false hash LayoutMODOXXRightPanelGroup right "50054021014:xkey"')
             lx.eval('user.value SMO_UseVal_GC_FullscreenState true')
 
-        if FullscreenState == True:
-            if LaySwitchState == False:
+        if FullscreenState:
+            if not LaySwitchState:
                 lx.eval('layout.switcherBar true')
-            if LayTopState == False:
+            if not LayTopState:
                 lx.eval('viewport.collapse true hash LayoutModoXXSwitcherTop up "89528021001:xkey"')
-            if LayDownState == False:
+            if not LayDownState:
                 lx.eval('viewport.collapse true hash LayoutModoXXSwitcherBottom down "56685021006:xkey"')
-            if LayLeftState == False:
+            if not LayLeftState:
                 lx.eval('viewport.collapse true hash LayoutMODOXXLeftPanelGroup left "01869021009:xkey"')
-            if LayRightState == False:
+            if not LayRightState:
                 lx.eval('viewport.collapse true hash LayoutMODOXXRightPanelGroup right "50054021014:xkey"')
             lx.eval('user.value SMO_UseVal_GC_FullscreenState false')
 

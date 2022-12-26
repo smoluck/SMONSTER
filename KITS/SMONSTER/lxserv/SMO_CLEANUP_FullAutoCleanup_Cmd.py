@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_CLEANUP_FullAutoCleanup_Cmd.py
 # Version:      1.0
 #
@@ -8,15 +8,17 @@
 #
 #
 # Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      14/05/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
 
 Cmd_Name = "smo.CLEANUP.FullAutoCleanup"
+
 
 class SMO_Cleanup_FullAutoCleanup_Cmd(lxu.command.BasicCommand):
     def __init__(self):

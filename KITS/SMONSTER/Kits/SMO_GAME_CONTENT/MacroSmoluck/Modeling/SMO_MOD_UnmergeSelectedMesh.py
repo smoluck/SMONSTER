@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MOD_UnmergeSelectedMesh.py
 # Version: 1.0
 #
@@ -7,17 +7,17 @@
 # Unmerge / Separate all mesh item selected based on their continuity.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo
 scene = modo.scene.current()
 UnmergeSelectedMeshes = scene.selectedByType('mesh')
 
-############### 1 ARGUMENTS ###############
+# ------------- ARGUMENTS ------------- #
 args = lx.args()
 lx.out(args)
 # no RecenterCenter = 0
@@ -26,7 +26,7 @@ RecenterCenter = int(args[0])
 lx.out('Recenter Center to BoundingBox:',RecenterCenter)
 ############### ARGUMENT ###############
 
-# ############### 1 ARGUMENT Test ###############
+# # ------------- ARGUMENTS Test
 # RecenterCenter = 1
 # ############### ARGUMENT ###############
 

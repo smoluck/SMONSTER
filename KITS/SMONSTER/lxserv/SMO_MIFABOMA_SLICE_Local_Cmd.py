@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MIFABOMA_SLICE_Local_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,20 @@
 #               on a defined Axis (controlled by Argument).
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      16/09/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo, sys
+import lx
+import lxu
+import modo
+import sys
 
 Cmd_Name =  "smo.MIFABOMA.SliceLocal"
 # smo.MIFABOMA.SliceLocal 1 0 0
+
 
 class SMO_MIFABOMA_Slice_Local_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -56,7 +60,7 @@ class SMO_MIFABOMA_Slice_Local_Cmd(lxu.command.BasicCommand):
     
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
-        if self.SelModePoly == True:
+        if self.SelModePoly:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
 
         mesh = scene.selectedByType('mesh')[0]
@@ -79,9 +83,9 @@ class SMO_MIFABOMA_Slice_Local_Cmd(lxu.command.BasicCommand):
         
         
         
-        ################################
-        #<----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
         lx.eval("user.defNew name:SMO_SafetyCheck_PolygonModeEnabled type:integer life:momentary")
@@ -91,9 +95,9 @@ class SMO_MIFABOMA_Slice_Local_Cmd(lxu.command.BasicCommand):
         
         
         
-        ################################
-        #<----[ DEFINE ARGUMENTS ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #
+        # ------------------------------ #
         args = lx.args()
         lx.out(args)
         AXES = self.dyna_Int (0)                        # Axes selection:       X = 0 ### Y = 1 ### Z = 2
@@ -102,17 +106,17 @@ class SMO_MIFABOMA_Slice_Local_Cmd(lxu.command.BasicCommand):
         # Expose the Result of the Arguments 
         #lx.out(SLICE_AXES)
         lx.out(AXES, GAP_MODE, SPLIT_MODE)
-        ################################
-        #<----[ DEFINE ARGUMENTS ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #
+        # ------------------------------ #
         
         
         
         
-        ##############################
-        ####### SAFETY CHECK 1 #######
-        ##############################
-        #####--------------------  safety check 1: Polygon Selection Mode enabled --- START --------------------#####
+        # -------------------------- #
+        # <---( SAFETY CHECK 1 )---> #
+        # -------------------------- #
+        # --------------------  safety check 1: Polygon Selection Mode enabled --- START
         
         selType = ""
         # Used to query layerservice for the list of polygons, edges or vertices.
@@ -166,14 +170,14 @@ class SMO_MIFABOMA_Slice_Local_Cmd(lxu.command.BasicCommand):
             lx.out('script Stopped: You must be in Polygon Mode to run that script')
             sys.exit
             #sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
-        #####--------------------  safety check 1: Polygon Selection Mode enabled --- END --------------------#####
+        # --------------------  safety check 1: Polygon Selection Mode enabled --- END
         
         
         
-        ##############################
-        ####### SAFETY CHECK 2 #######
-        ##############################
-        #####--------------------  safety check 2: at Least 1 Polygons is selected --- START --------------------#####
+        # -------------------------- #
+        # <---( SAFETY CHECK 2 )---> #
+        # -------------------------- #
+        # at Least 1 Polygons is selected --- START
         lx.out('Count Selected Poly',CsPolys)
         
         if CsPolys < 1:
@@ -188,7 +192,7 @@ class SMO_MIFABOMA_Slice_Local_Cmd(lxu.command.BasicCommand):
         elif CsPolys >= 1:
             SMO_SafetyCheck_min1PolygonSelected = 1
             lx.out('script running: right amount of polygons in selection')
-        #####--------------------  safety check 2: at Least 1 Polygons is selected --- END --------------------#####
+        # at Least 1 Polygons is selected --- END
         
         
         
@@ -205,11 +209,11 @@ class SMO_MIFABOMA_Slice_Local_Cmd(lxu.command.BasicCommand):
         
         
         
-        ##############################
-        ## <----( Main Macro )----> ##
-        ##############################
+        # ------------------------ #
+        # <----( Main Macro )----> #
+        # ------------------------ #
         
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
         if TotalSafetyCheck == TotalSafetyCheckTrueValue:
             lx.eval('hide.unsel')
             lx.eval('tool.set actr.auto on 0')
@@ -253,9 +257,9 @@ class SMO_MIFABOMA_Slice_Local_Cmd(lxu.command.BasicCommand):
             
             
             lx.eval('tool.set poly.knife on')
-            ##############################
-            ## <----( Main Command )----> 
-            ##############################
+            # -------------------------- #
+            # <----( Main Command )---->
+            # -------------------------- #
             lx.eval('tool.setAttr poly.knife infinite true')
             lx.eval('tool.setAttr poly.knife axis custom')
             
@@ -361,9 +365,9 @@ class SMO_MIFABOMA_Slice_Local_Cmd(lxu.command.BasicCommand):
                 lx.eval('tool.setAttr poly.knife vectorZ 0.0')
             
             
-            ##############################
-            ## <----( Main Command )----> 
-            ##############################
+            # -------------------------- #
+            # <----( Main Command )---->
+            # -------------------------- #
             lx.eval('tool.doApply')
             lx.eval('select.drop polygon')
             lx.eval('select.nextMode')
@@ -371,9 +375,9 @@ class SMO_MIFABOMA_Slice_Local_Cmd(lxu.command.BasicCommand):
             lx.eval('tool.set actr.auto on 0')
             lx.eval('unhide')
 
-            if RefSystemActive == False:
+            if not RefSystemActive:
                 lx.eval('item.refSystem {}')
-            if RefSystemActive == True:
+            if RefSystemActive:
                 lx.eval('item.refSystem %s' % CurrentRefSystemItem)
 
 

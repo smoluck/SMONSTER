@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_RenderThumbPreset_Cmd.py
 # Version:      1.0
 #
@@ -7,15 +7,20 @@
 #               Replace the current Preset Thumbnail by SMO ThumbnailMaker_Template scene Render.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      03/02/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo, time, sys
+import lx
+import lxu
+import modo
+import sys
+import time
 
 Cmd_Name = "smo.GC.RenderThumbPreset"
+
 
 class SMO_GC_RenderThumbPreset_Cmd(lxu.command.BasicCommand):
     def __init__(self):

@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_CB_GetDrawingPackageState_Cmd.py
 # Version:      1.0
 #
@@ -8,21 +8,24 @@
 #
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      12/12/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.CB.GetDrawingPackageState"
 # query:        smo.CB.GetDrawingPackageState ?
 
-############# USE CASE
+# ----------- USE CASE
 # TestResult = lx.eval('smo.CB.GetDrawingPackageState ?')
 # lx.out('Drawing Package state is :',TestResult)
-######################
+# --------------------
+
 
 class SMO_CB_GetDrawingPackageState_Cmd(lxu.command.BasicCommand):
     def __init__(self):

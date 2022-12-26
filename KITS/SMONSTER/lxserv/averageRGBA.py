@@ -1,9 +1,9 @@
-#python
-#---------------------------------------
+# python
+"""
 # Author:       James O'Hare
 # Website:      http://www.farfarer.com/
 # Copyright:    (c) James O'Hare
-#---------------------------------------
+"""
 
 #!/usr/bin/env python
 import lx, lxifc, lxu.command

@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_Batch_ProcessByPref_revA_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #
 #
 # Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      01/10/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, os, modo
+import lx
+import lxu
+import os
 
 Cmd_Name = "smo.BATCH.ProcessByPref_revA"
 # smo.BATCH.ProcessByPref_revA
+
 
 class SMO_Batch_ProcessByPref_revA_Cmd(lxu.command.BasicCommand):
     def __init__(self):

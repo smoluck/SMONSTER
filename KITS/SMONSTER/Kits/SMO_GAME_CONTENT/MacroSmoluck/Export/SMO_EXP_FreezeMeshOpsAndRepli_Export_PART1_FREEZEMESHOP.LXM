@@ -1,5 +1,5 @@
 #LXMacro#
-#-----------------------------------------
+# ----------------------------------------
 # Name:         SMO_EXP_FreezeMeshOpsAndRepli_Export_PART1_FREEZEMESHOP.LXM
 # Version:      1.0
 #
@@ -14,7 +14,7 @@
 #
 # Created:      XX/XX/2018-2019
 # Copyright:    (c) Franck Elisabeth 2019
-#-----------------------------------------
+# ----------------------------------------
 
 # // START //  OOOOOKKKKK
 # // Change Item Color of the Selected Hierarchy //

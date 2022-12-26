@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_Multi_ModollamaRebuildNGontoTriangle_Cmd.py
 # Version:      1.0
 #
@@ -8,13 +8,15 @@
 #               Rebuild all NGons via Modollama Triangulation command to output Triangles.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      16/06/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.Multi.ModollamaRebuildNGontoTriangle"
 # smo.GC.Multi.ModollamaRebuildNGontoTriangle 1

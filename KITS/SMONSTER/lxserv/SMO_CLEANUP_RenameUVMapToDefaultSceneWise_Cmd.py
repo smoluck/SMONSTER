@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_CLEANUP_RenameUVMapToDefaultSceneWise_Cmd.py
 # Version:      1.0
 #
@@ -7,16 +7,19 @@
 #               first detected UVMap (by Index = 0) to Modo/Preferences/Defaults/Application name.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      21/10/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.CLEANUP.RenameUVMapToDefaultSceneWise"
 # smo.CLEANUP.RenameUVMapToDefaultSceneWise
+
 
 class SMO_CLEANUP_RenameUVMapToDefaultSceneWise_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -101,7 +104,7 @@ class SMO_CLEANUP_RenameUVMapToDefaultSceneWise_Cmd(lxu.command.BasicCommand):
                 print('Detected UV Map count %s:' % (len(VMap_NameList)))
                 # print('UVmap Detected', VMap_CountList)
 
-            if ZeroUVMap == False:
+            if not ZeroUVMap:
                 lx.eval('select.vertexMap {%s} txuv replace' % (VMap_NameList[0]))
                 DetectedVMapName = lx.eval('vertMap.list txuv ?')
                 if DetectedVMapName != DefaultUVMapName:
@@ -117,7 +120,7 @@ class SMO_CLEANUP_RenameUVMapToDefaultSceneWise_Cmd(lxu.command.BasicCommand):
             # print('---------')
 
             #Bugfix to create empty UV map if not present
-            if ZeroUVMap == True:
+            if ZeroUVMap:
                 lx.out('UVMap Renaming skipped, because not Detected')
                 lx.eval('vertMap.new {%s} txuv' % DefaultUVMapName)
                 lx.out('New UVMap {%s} created as it was missing' % DefaultUVMapName)

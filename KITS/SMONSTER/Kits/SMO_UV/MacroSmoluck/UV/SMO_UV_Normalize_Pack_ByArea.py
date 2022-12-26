@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_UV_Normalize_Pack_ByArea.py
 # Version: 1.0
 #
@@ -8,17 +8,19 @@
 # them in 0-1 UVSpace.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo
+import lx
+
 scene = modo.scene.current()
 mesh = scene.selectedByType('mesh')[0]
 
-############### 2 ARGUMENTS ###############
+# ------------- ARGUMENTS ------------- #
 args = lx.args()
 lx.out(args)
 # no Flipped = 0
@@ -38,18 +40,11 @@ lx.out('Area Value U:',ZoneAreaU)
 # 
 ZoneAreaV = int(args[3])
 lx.out('Area Value V:',ZoneAreaV)
-############### ARGUMENTS ###############
+# ------------- ARGUMENTS ------------- #
 
-# ############### 2 ARGUMENT Test ###############
-# FixFlippedUV = 1
-# Orient_Pass = 0
-# ZoneAreaU = -1
-# ZoneAreaV = -2
-# ############### ARGUMENT ###############
-
-################################
-#<----[ DEFINE VARIABLES ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE VARIABLES )----> #
+# ------------------------------ #
 
 #####--- Define user value for all the different SafetyCheck --- START ---#####
 #####
@@ -72,9 +67,9 @@ lx.eval("user.defNew name:SMO_SafetyCheckNPbA_ItemModeEnabled type:integer life:
 #####--- Define user value for all the different SafetyCheck --- END ---#####
 
 
-###############################################
-####### SAFETY CHECK 1 - UVMap Selected #######
-###############################################
+# ----------------------------------------- #
+# <---( SAFETY CHECK 1 )---> UVMap Selected #
+# ----------------------------------------- #
 
 ##########################
 lx.out('<------------- START -------------->')
@@ -115,7 +110,7 @@ lx.out('<------------- END -------------->')
 ####### SAFETY CHECK 2 -  Selection Mode #######
 ################################################
 
-#####--------------------  safety check 2: Component Selection Mode type --- START --------------------#####
+# Component Selection Mode type --- START
 
 selType = ""
 # Used to query layerservice for the list of polygons, edges or vertices.
@@ -169,13 +164,13 @@ else:
     
     lx.out('script Running: Item Component Selection Mode')
 
-#####--------------------  safety check 2: Component Selection Mode type --- END --------------------#####
+# Component Selection Mode type --- END
 
 
 
-################################
-## <----( Main Macro : )----> ##
-################################
+# ------------------------------ #
+# <----( Main Macro : )----> #
+# ------------------------------ #
 
 if SMO_SafetyCheckNPbA_VertexModeEnabled == 1:
     lx.eval('select.type polygon')

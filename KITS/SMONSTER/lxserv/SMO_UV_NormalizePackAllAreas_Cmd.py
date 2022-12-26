@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_UV_NormalizePackAllArea_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,20 @@
 #               them on every Areas (Unwrap, Planar, Cylindrical).
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo, sys
+import lx
+import lxu
+import modo
+import sys
 
 Cmd_Name = "smo.UV.NormalizePackAllArea"
 # smo.UV.NormalizePackAllArea 0 0
+
 
 class SMO_UV_NormalizePackAllArea_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -61,7 +65,7 @@ class SMO_UV_NormalizePackAllArea_Cmd(lxu.command.BasicCommand):
         
         
         
-        ############### 2 ARGUMENTS ###############
+        # ------------- ARGUMENTS ------------- #
         args = lx.args()
         lx.out(args)
         # no Flipped = 0
@@ -73,20 +77,15 @@ class SMO_UV_NormalizePackAllArea_Cmd(lxu.command.BasicCommand):
         # Orient preprocess ON = 1
         Orient_Pass = Int_Orient_Pass
         lx.out('Orient preprocess state:',Orient_Pass)
-        ############### ARGUMENTS ###############
+        # ------------- ARGUMENTS ------------- #
+        
+
         
         
         
-        # ############### 2 ARGUMENT Test ###############
-        # FixFlippedUV = 1
-        # Orient_Pass = 0
-        # ############### ARGUMENT ###############
-        
-        
-        
-        ################################
-        #<----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
         
@@ -110,9 +109,9 @@ class SMO_UV_NormalizePackAllArea_Cmd(lxu.command.BasicCommand):
         
         
         
-        ###############################################
-        ####### SAFETY CHECK 1 - UVMap Selected #######
-        ###############################################
+        # ----------------------------------------- #
+        # <---( SAFETY CHECK 1 )---> UVMap Selected #
+        # ----------------------------------------- #
         lx.out('<------------- START -------------->')
         lx.out('<--- UV Map Safety Check --->')
         
@@ -153,10 +152,10 @@ class SMO_UV_NormalizePackAllArea_Cmd(lxu.command.BasicCommand):
         
         
         
-        ################################
-        ## <----( Main Macro : )----> ##
-        ################################
-        if SMO_SafetyCheckNPAllArea_UVMapCount == True :
+        # ------------------------------ #
+        # <----( Main Macro : )----> #
+        # ------------------------------ #
+        if SMO_SafetyCheckNPAllArea_UVMapCount:
             
             # Unwrap Areas
             lx.eval('smo.UV.NormalizePackByArea %s %s 0 -1' % (FixFlippedUV, Orient_Pass) )  # Unwrap Conform

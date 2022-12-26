@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_MF_Sources_MatTag_PolySelSetTags_Cleanup_Cmd.py
 # Version:      1.3
 #
@@ -12,16 +12,20 @@
 # Select one Mesh Fusion Item and run. 
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      21/09/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, lxifc, os, modo, random
+import lx
+import lxu
+import modo
+import random
 
 Cmd_Name = "smo.GC.MFSourcesMatTagPolySelSetTagCleanup"
 # smo.GC.MFSourcesMatTagPolySelSetTagCleanup
+
 
 class SMO_GC_MF_Sources_MatTag_PolySelSetTags_Cleanup_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -99,7 +103,7 @@ class SMO_GC_MF_Sources_MatTag_PolySelSetTags_Cleanup_Cmd(lxu.command.BasicComma
                 #print('isProc: %s' % lyr_svc.IsProcedural(mesh.index))
             
             #check for command failure
-            ItemIsDirectMod = 0;
+            ItemIsDirectMod = 0
             try:
                 lx.eval('select.type polygon')
                 lx.eval('!!select.all')
@@ -116,13 +120,13 @@ class SMO_GC_MF_Sources_MatTag_PolySelSetTags_Cleanup_Cmd(lxu.command.BasicComma
                 lx.eval('!!select.all')
                 lx.eval('select.editSet {SelSet_%s} add' % currentLayerName)
                 lx.eval('poly.setMaterial {%s_mat} {0,6 0,6 0,6} 0,8 0,04 true false' % currentLayerName)
-                for item in scene.selectedByType('advancedMaterial')[:1]:
+                for items in scene.selectedByType('advancedMaterial')[:1]:
                     random_numR = random.random()
-                    item.channel('diffCol.R').set(random_numR)
+                    items.channel('diffCol.R').set(random_numR)
                     random_numG = random.random()
-                    item.channel('diffCol.G').set(random_numG)
+                    items.channel('diffCol.G').set(random_numG)
                     random_numB = random.random()
-                    item.channel('diffCol.B').set(random_numB)
+                    items.channel('diffCol.B').set(random_numB)
                 lx.eval('select.type item')
             if ItemMeshIsEmpty == 1 and ItemIsDirectMod == 0:
                 PMOD = 1

@@ -1,5 +1,5 @@
 #LXMacro#
-#-----------------------------------------
+# ----------------------------------------
 # Name:         Set_Color_Scheme_Dark.LXM
 # Version:      1.0
 #
@@ -12,7 +12,7 @@
 #
 # Created:      XX/XX/2018-2019
 # Copyright:    (c) Franck Elisabeth 2019
-#-----------------------------------------
+# ----------------------------------------
 
 !viewport.scheme SMOLUCK_Dark_ColorScheme.3d
 view3d.bgEnvironment background solid

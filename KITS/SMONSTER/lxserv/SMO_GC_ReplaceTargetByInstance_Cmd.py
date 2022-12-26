@@ -1,5 +1,5 @@
-#python
-#----------------------------------------------------
+# python
+"""
 # Name:         SMO_GC_ReplaceTargetByInstance_Cmd.py
 # Version:      1.0
 #
@@ -8,17 +8,20 @@
 #
 #
 # Author:       Franck ELISABETH (based on William Vaughan Script)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      19/06/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------------
+"""
 
-
-import lx, lxu, modo, sys
+import lx
+import lxu
+import modo
+import sys
 
 Cmd_Name = "smo.GC.ReplaceTargetByInstance"
 # smo.GC.ReplaceTargetByInstance 1 # copy in instance mode
+
 
 class SMO_GC_ReplaceTargetByInstance_Cmd(lxu.command.BasicCommand):
     def __init__(self):

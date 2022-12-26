@@ -1,9 +1,14 @@
 # python
 
-import lx, modo, os, re
 from smodule.commander.SMO_Commander import SmoCommanderClass
 
+import lx
+import modo
+import os
+import re
+
 CMD_NAME = 'smo.GC.Startup'
+
 
 class SMO_GC_BOOT_Cmd(SmoCommanderClass):
 
@@ -38,8 +43,9 @@ class SMO_GC_BOOT_Cmd(SmoCommanderClass):
             modo.dialogs.alert(
                 "New SMO  GAME CONTENT Version",
                 "IMPORTANT: New version of SMO GAME CONTENT detected.\n \nIt is Recommended to Reset MODO prefs using:\nSystem --> Reset Preferences"
-                )
+            )
 
         lx.eval("user.value SMO_GAME_CONTENT_version %s" % SMO_GAME_CONTENT_version_installed)
+
 
 lx.bless(SMO_GC_BOOT_Cmd, CMD_NAME)

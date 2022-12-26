@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_CAD_CopyAsChildOfCurrentMesh_Cmd.py
 # Version:      1.0
 #
@@ -8,41 +8,47 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      07/05/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.CAD.CopyCutAsChildOfCurrentMesh"
 # 4th Argument set to "True" will select resulting mesh instead of source
-# smo.CAD.CopyCutAsChildOfCurrentMesh 0 1 1 true        Copy Polygon Similar Touching -- To Visible Mesh - And Select that new Mesh
 
-# smo.CAD.CopyCutAsChildOfCurrentMesh 0 1          Copy Polygon Selection -- To Visible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 0 1 1        Copy Polygon Similar Touching -- To Visible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 0 1 2        Copy Polygon Similar Object -- To Visible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 0 1 3        Copy Polygon Similar on Layer -- To Visible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 0 1 4        Copy Connected Polygons -- To Visible Mesh
+"""
+# smo.CAD.CopyCutAsChildOfCurrentMesh 0 1 1 true   Copy Polygon Similar Touching (To Visible Mesh) and Select that new Mesh
 
-# smo.CAD.CopyCutAsChildOfCurrentMesh 1 1          Cut Polygon Selection -- To Visible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 1 1 1        Cut Polygon Similar Touching -- To Visible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 1 1 2        Cut Polygon Similar Object -- To Visible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 1 1 3        Cut Polygon Similar on Layer -- To Visible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 1 1 4        Cut Connected Polygons -- To Visible Mesh
+smo.CAD.CopyCutAsChildOfCurrentMesh 0 1          Copy Polygon Selection -- To Visible Mesh
+smo.CAD.CopyCutAsChildOfCurrentMesh 0 1 1        Copy Polygon Similar Touching -- To Visible Mesh
+smo.CAD.CopyCutAsChildOfCurrentMesh 0 1 2        Copy Polygon Similar Object -- To Visible Mesh
+smo.CAD.CopyCutAsChildOfCurrentMesh 0 1 3        Copy Polygon Similar on Layer -- To Visible Mesh
+smo.CAD.CopyCutAsChildOfCurrentMesh 0 1 4        Copy Connected Polygons -- To Visible Mesh
 
-# smo.CAD.CopyCutAsChildOfCurrentMesh 0 0          Copy Polygon Selection -- To Invisible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 0 0 1        Copy Polygon Similar Touching -- To Invisible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 0 0 2        Copy Polygon Similar Object -- To Invisible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 0 0 3        Copy Polygon Similar on Layer -- To Invisible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 0 0 4        Copy Connected Polygons -- To Invisible Mesh
+smo.CAD.CopyCutAsChildOfCurrentMesh 1 1          Cut Polygon Selection -- To Visible Mesh
+smo.CAD.CopyCutAsChildOfCurrentMesh 1 1 1        Cut Polygon Similar Touching -- To Visible Mesh
+smo.CAD.CopyCutAsChildOfCurrentMesh 1 1 2        Cut Polygon Similar Object -- To Visible Mesh
+smo.CAD.CopyCutAsChildOfCurrentMesh 1 1 3        Cut Polygon Similar on Layer -- To Visible Mesh
+smo.CAD.CopyCutAsChildOfCurrentMesh 1 1 4        Cut Connected Polygons -- To Visible Mesh
 
-# smo.CAD.CopyCutAsChildOfCurrentMesh 1 0          Cut Polygon Selection -- To Invisible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 1 0 1        Cut Polygon Similar Touching -- To Invisible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 1 0 2        Cut Polygon Similar Object -- To Invisible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 1 0 3        Cut Polygon Similar on Layer -- To Invisible Mesh
-# smo.CAD.CopyCutAsChildOfCurrentMesh 1 0 4        Cut Connected Polygons -- To Invisible Mesh
+smo.CAD.CopyCutAsChildOfCurrentMesh 0 0          Copy Polygon Selection -- To Invisible Mesh
+smo.CAD.CopyCutAsChildOfCurrentMesh 0 0 1        Copy Polygon Similar Touching -- To Invisible Mesh
+smo.CAD.CopyCutAsChildOfCurrentMesh 0 0 2        Copy Polygon Similar Object -- To Invisible Mesh
+smo.CAD.CopyCutAsChildOfCurrentMesh 0 0 3        Copy Polygon Similar on Layer -- To Invisible Mesh
+smo.CAD.CopyCutAsChildOfCurrentMesh 0 0 4        Copy Connected Polygons -- To Invisible Mesh
+
+smo.CAD.CopyCutAsChildOfCurrentMesh 1 0          Cut Polygon Selection -- To Invisible Mesh
+smo.CAD.CopyCutAsChildOfCurrentMesh 1 0 1        Cut Polygon Similar Touching -- To Invisible Mesh
+smo.CAD.CopyCutAsChildOfCurrentMesh 1 0 2        Cut Polygon Similar Object -- To Invisible Mesh
+smo.CAD.CopyCutAsChildOfCurrentMesh 1 0 3        Cut Polygon Similar on Layer -- To Invisible Mesh
+smo.CAD.CopyCutAsChildOfCurrentMesh 1 0 4        Cut Connected Polygons -- To Invisible Mesh
+"""
+
 
 class SMO_CAD_CopyCutAsChildOfCurrentMesh_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -103,7 +109,7 @@ class SMO_CAD_CopyCutAsChildOfCurrentMesh_Cmd(lxu.command.BasicCommand):
         elif self.dyna_Bool(3) == None:
             SelectCopyCutResultMesh = False
 
-        if self.SelModePoly == True:
+        if self.SelModePoly:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
         mesh = scene.selectedByType('mesh')[0]
 
@@ -200,9 +206,9 @@ class SMO_CAD_CopyCutAsChildOfCurrentMesh_Cmd(lxu.command.BasicCommand):
             if CoplanarConnectedMode == 4:
                 lx.eval('select.connect')
 
-        if CopyOrCut == False:
+        if not CopyOrCut:
             lx.eval('copy')
-        if CopyOrCut == True:
+        if CopyOrCut:
             lx.eval('cut')
         lx.eval('layer.new')
         lx.eval("item.name {%s} xfrmcore" % MeshName)
@@ -224,17 +230,17 @@ class SMO_CAD_CopyCutAsChildOfCurrentMesh_Cmd(lxu.command.BasicCommand):
             lx.eval('select.type polygon')
             #lx.eval('layer.setVisibility')
 
-        if SelectCopyCutResultMesh == False:
+        if not SelectCopyCutResultMesh:
             scene.select(Mesh_Source_ID)
-        if SelectCopyCutResultMesh == True:
+        if SelectCopyCutResultMesh:
             scene.select(Mesh_Child_ID)
         lx.eval('select.drop polygon')
 
 
 
-        if RefSystemActive == False:
+        if not RefSystemActive:
             lx.eval('item.refSystem {}')
-        if RefSystemActive == True:
+        if RefSystemActive:
             lx.eval('item.refSystem %s' % CurrentRefSystemItem)
 
 

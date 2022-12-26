@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_BAKE_CreateAndOrSelectCAGEMorph_Cmd.py
 # Version:      1.0
 #
@@ -7,16 +7,21 @@
 #               Check if CAGE Map exist on current Mesh. If not, create a new MorphMap, then Select that CAGE Morph.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Modified:     07/04/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import modo, lx, lxu
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.BAKE.CreateAndOrSelectCAGEMorph"
+
+
 # smo.BAKE.CreateAndOrSelectCAGEMorph
+
 
 class SMO_BAKE_CreateAndOrSelectCAGEMorph_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -112,17 +117,16 @@ class SMO_BAKE_CreateAndOrSelectCAGEMorph_Cmd(lxu.command.BasicCommand):
         # CLear Selection Set based on Mesh MTyp Tags
         lx.eval('smo.GC.CreateDeleteSelSetFromMTypTag 0')
 
-        if MissingCAGEState == False:
+        if not MissingCAGEState:
             scene.select(MeshItemList)
             # Old and Long Method to select Item by List
             # MeshItemCount = len(MeshItemList)
             # for i in range(MeshItemCount):
             #     lx.eval('select.subItem %s add mesh 0 0' % MeshIDList[i])
 
-        if MissingCAGEState == True:
+        if MissingCAGEState:
             # print(MissingCAGEMeshList)
             scene.select(MissingCAGEMeshList)
-
 
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()

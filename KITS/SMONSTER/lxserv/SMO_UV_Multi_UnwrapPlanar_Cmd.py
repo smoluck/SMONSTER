@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_UV_Multi_UnwrapPlanar_Cmd.py
 # Version:      1.0
 #
@@ -9,16 +9,19 @@
 #               on defined Axis.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.UV.Multi.UnwrapPlanar"
 # smo.UV.Multi.UnwrapPlanar 2 0
+
 
 class SMO_UV_Multi_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
     def __init__(self):

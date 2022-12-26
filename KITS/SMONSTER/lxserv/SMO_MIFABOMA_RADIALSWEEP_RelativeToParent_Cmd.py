@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MIFABOMA_RADIALSWEEP_RelativeToParent_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #               using Origin Center (World) or Item Center (Local). You need to get at least one Mesh item selected.
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      16/09/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.MIFABOMA.RadialSweepRelativeToParent"
 # smo.MIFABOMA.RadialSweepRelativeToParent 1 32 1 360 0 0
+
 
 class SMO_MIFABOMA_RadialSweepRelativeToParent_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -68,9 +71,9 @@ class SMO_MIFABOMA_RadialSweepRelativeToParent_Cmd(lxu.command.BasicCommand):
         
         
         
-        ################################
-        #<----[ DEFINE ARGUMENTS ]---->#                # smo.MIFABOMA.RadialSweep 1 32 1 0 0
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #                # smo.MIFABOMA.RadialSweep 1 32 1 0 0
+        # ------------------------------ #
         args = lx.args()
         lx.out(args)
         RADIAL_AXES = self.dyna_Int (0)                 # Axes selection:       X = 0 ### Y = 1 ### Z = 2
@@ -79,9 +82,9 @@ class SMO_MIFABOMA_RadialSweepRelativeToParent_Cmd(lxu.command.BasicCommand):
         SQUARE = self.dyna_Bool (3)                     # Off = 0 ### On = 1
         # Expose the Result of the Arguments 
         lx.out(RADIAL_AXES,ARRAY_COUNT,CAPS,SQUARE)
-        ################################
-        #<----[ DEFINE ARGUMENTS ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #
+        # ------------------------------ #
         
         
         
@@ -137,13 +140,13 @@ class SMO_MIFABOMA_RadialSweepRelativeToParent_Cmd(lxu.command.BasicCommand):
         
         
         
-        ########################################
-        ## <----( Main Macro - POLYGON )----> ##
-        ########################################
+        # ---------------------------------- #
+        # <----( Main Macro - POLYGON )----> #
+        # ---------------------------------- #
         if ItemMode == 0 and VertMode == 0 and EdgeMode == 0 and PolyMode == 1 and CountItem > 0 :
         
-            ######## PARENT  / CHILD Checkup ########
-            #########################################
+            # ------ PARENT  / CHILD Checkup ------ #
+            # ------------------------------------- #
             if CountPoly > 0 :
                 lx.eval('hide.unsel')
             lx.eval('tool.set actr.auto on 0')
@@ -199,7 +202,7 @@ class SMO_MIFABOMA_RadialSweepRelativeToParent_Cmd(lxu.command.BasicCommand):
                 
             lx.eval('select.drop item')
             lx.eval('select.useSet RadArr_ITEM_TARGET replace')
-            #########################################
+            # ------------------------------------- #
             
             
             
@@ -211,18 +214,18 @@ class SMO_MIFABOMA_RadialSweepRelativeToParent_Cmd(lxu.command.BasicCommand):
             lx.eval('select.type polygon')
             
             
-            #########################################
-            ######## Radial Sweep Tool Setup ########
-            #########################################
+            # ------------------------------------- #
+            # ------ Radial Sweep Tool Setup ------ #
+            # ------------------------------------- #
             lx.eval('tool.set "Radial Sweep" on')
-            if SQUARE == False :
+            if not SQUARE:
                 lx.eval('tool.setAttr gen.helix square false')
                 lx.eval('tool.setAttr gen.helix sides %s' % ARRAY_COUNT)
                 lx.eval('tool.setAttr gen.helix start %s' % StartANGLE)
                 lx.eval('tool.setAttr gen.helix end %s' % EndANGLE)
                 
             lx.eval('tool.setAttr effector.sweep flip false')
-            if SQUARE == True :
+            if SQUARE:
                 lx.eval('tool.setAttr gen.helix square true')
                 
             if CAPS == 0 :
@@ -258,7 +261,7 @@ class SMO_MIFABOMA_RadialSweepRelativeToParent_Cmd(lxu.command.BasicCommand):
                 lx.eval('tool.setAttr gen.helix vecX 0.0')
                 lx.eval('tool.setAttr gen.helix vecY 0.0')
                 lx.eval('tool.setAttr gen.helix vecZ 1.0')
-            ##############################
+            # -------------------------- #
             lx.eval('tool.doApply')
             lx.eval('select.drop polygon')
             lx.eval('select.nextMode')
@@ -267,17 +270,17 @@ class SMO_MIFABOMA_RadialSweepRelativeToParent_Cmd(lxu.command.BasicCommand):
             
             
             
-            ######## PARENT  / CHILD Checkup ########
-            #########################################
+            # ------ PARENT  / CHILD Checkup ------ #
+            # ------------------------------------- #
             lx.eval('select.type item')
             lx.eval('!select.deleteSet RadArr_ITEM_TARGET false')
             if ParentPresent == 1 :
                 lx.eval('!select.deleteSet RadArr_ITEM_PARENT false')
-            if ChildPresent == True :
+            if ChildPresent:
                 lx.eval('!select.deleteSet RadArr_ITEM_CHILD false')
             lx.eval('select.type polygon')
             lx.eval('unhide')
-            #########################################
+            # ------------------------------------- #
             lx.eval('select.type item')
             lx.eval('unhide')
             lx.eval('select.type polygon')
@@ -285,13 +288,13 @@ class SMO_MIFABOMA_RadialSweepRelativeToParent_Cmd(lxu.command.BasicCommand):
         
         
         
-        ########################################
-        ## <----( Main Macro - EDGE )----> ##
-        ########################################
+        # ------------------------------- #
+        # <----( Main Macro - EDGE )----> #
+        # ------------------------------- #
         if ItemMode == 0 and VertMode == 0 and EdgeMode == 1 and PolyMode == 0 and CountItem > 0 :
         
-            ######## PARENT  / CHILD Checkup ########
-            #########################################
+            # ------ PARENT  / CHILD Checkup ------ #
+            # ------------------------------------- #
             lx.eval('select.type item')
             # Tag TARGET
             lx.eval('select.editSet RadArr_ITEM_TARGET add')
@@ -341,7 +344,7 @@ class SMO_MIFABOMA_RadialSweepRelativeToParent_Cmd(lxu.command.BasicCommand):
                 lx.eval('item.refSystem %s' % SelItems)
                 lx.eval('select.drop item')
                 lx.eval('select.useSet RadArr_ITEM_TARGET replace')
-            #########################################
+            # ------------------------------------- #
             
             
             
@@ -354,17 +357,17 @@ class SMO_MIFABOMA_RadialSweepRelativeToParent_Cmd(lxu.command.BasicCommand):
             lx.eval('select.type edge')
             
             
-            #########################################
-            ######## Radial Sweep Tool Setup ########
-            #########################################
+            # ------------------------------------- #
+            # ------ Radial Sweep Tool Setup ------ #
+            # ------------------------------------- #
             lx.eval('tool.set "Radial Sweep" on')
-            if SQUARE == False :
+            if not SQUARE:
                 lx.eval('tool.setAttr gen.helix square false')
                 lx.eval('tool.setAttr gen.helix sides %s' % ARRAY_COUNT)
                 lx.eval('tool.setAttr gen.helix start %s' % StartANGLE)
                 lx.eval('tool.setAttr gen.helix end %s' % EndANGLE)
                 
-            if SQUARE == True :
+            if SQUARE:
                 lx.eval('tool.setAttr gen.helix square true')
                 
             lx.eval('tool.setAttr effector.sweep flip true')
@@ -391,7 +394,7 @@ class SMO_MIFABOMA_RadialSweepRelativeToParent_Cmd(lxu.command.BasicCommand):
                 lx.eval('tool.setAttr gen.helix vecX 0.0')
                 lx.eval('tool.setAttr gen.helix vecY 0.0')
                 lx.eval('tool.setAttr gen.helix vecZ 1.0')
-            ##############################
+            # -------------------------- #
             lx.eval('tool.doApply')
             lx.eval('select.drop edge')
             lx.eval('select.nextMode')
@@ -400,17 +403,17 @@ class SMO_MIFABOMA_RadialSweepRelativeToParent_Cmd(lxu.command.BasicCommand):
             
             
             
-            ######## PARENT  / CHILD Checkup ########
-            #########################################
+            # ------ PARENT  / CHILD Checkup ------ #
+            # ------------------------------------- #
             lx.eval('select.type item')
             lx.eval('unhide')
             lx.eval('!select.deleteSet RadArr_ITEM_TARGET false')
             if ParentPresent == 1 :
                 lx.eval('!select.deleteSet RadArr_ITEM_PARENT false')
-            if ChildPresent == True :
+            if ChildPresent:
                 lx.eval('!select.deleteSet RadArr_ITEM_CHILD false')
             lx.eval('select.type polygon')
-            #########################################
+            # ------------------------------------- #
             lx.eval('select.type item')
             lx.eval('unhide')
             lx.eval('select.type polygon')

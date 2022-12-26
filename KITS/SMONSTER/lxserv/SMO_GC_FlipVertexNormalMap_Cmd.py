@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_FlipVertexNormalMap_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      07/06/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.FlipVertexNormalMap"
 # smo.GC.FlipVertexNormalMap
+
 
 class SMO_GC_FlipVertexNormalMap_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -51,7 +54,7 @@ class SMO_GC_FlipVertexNormalMap_Cmd(lxu.command.BasicCommand):
 
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
-        if self.SelModePoly == True:
+        if self.SelModePoly:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
 
         mesh = scene.selectedByType('mesh')[0]
@@ -81,7 +84,7 @@ class SMO_GC_FlipVertexNormalMap_Cmd(lxu.command.BasicCommand):
 
         ####
         # Correct and update the Vertex Normal Map accordingly to the PolyFlip.
-        if VNMState == True:
+        if VNMState:
             VNMapCmd = "NORM[3]:"
             MathCmd = VNMapCmd + TargetVNMapName
             print(MathCmd)

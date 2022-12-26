@@ -1,5 +1,5 @@
-#python
-#---------------------------------------------
+# python
+"""
 # Name:         SMO_GC_Set_MoveAndRotateCenterUsingOpenBoundary_Cmd.py
 # Version:      1.0
 #
@@ -8,21 +8,24 @@
 #               the Center to Open boundary centroid and rotate it (use it in item mode)
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      20/06/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------------
+"""
 
-
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.Set.MoveAndRotateCenterUsingOpenBoundary"
 # smo.GC.Set.MoveAndRotateCenterUsingOpenBoundary
 
+
 class SMO_GC_Set_MoveAndRotateCenterUsingOpenBoundary_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
+
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
     

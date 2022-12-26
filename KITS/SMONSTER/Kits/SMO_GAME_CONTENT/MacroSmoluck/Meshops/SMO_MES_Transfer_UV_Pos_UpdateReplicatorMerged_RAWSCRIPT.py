@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_Transfer_UV_Pos_UpdateReplicatorMerged.py
 # Version: 1.00
 #
@@ -7,12 +7,12 @@
 # Transfer Original UV's from a Backup MeshItems to a set of Replicators Merged via MergeMesh 
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      29/03/2019
 # Modified:		01/04/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 #import the necessary Python libraries
 import lx, lxu, os, modo
@@ -23,9 +23,9 @@ selectedItems = scene.selected
 SOURCE_Mesh = scene.selectedByType('mesh')[0]
 TARGET_Mesh = scene.selectedByType('mesh')[1]
 
-################################
-#<----[ DEFINE VARIABLES ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE VARIABLES )----> #
+# ------------------------------ #
 #####--- Define the PolygonSelSet Name Prefix --- START ---#####
 #####
 lx.eval("user.defNew name:PolySelSetPrefixName type:string life:momentary")
@@ -39,7 +39,7 @@ lx.out('<----------- START ------------>')
 
 # check if exactly two Mesh Items are selected and raise an error if not
 if len(selectedItems) != 2:
-    raise Exception('Please select at least 2 Meshes')
+	raise Exception('Please select at least 2 Meshes')
 	
 if len(selectedItems) == 2:
 	lx.eval('select.editSet TRANSUVPOS_ALL add {}')

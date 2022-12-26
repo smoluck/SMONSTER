@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_BAKE_SetBakePairs_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      06/12/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.BAKE.SetBakePairs"
 # smo.BAKE.SetBakePairs
+
 
 class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -34,7 +37,7 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
             self.current_Selection = []
         
         # If we do have something selected, put it in self.current_Selection
-        if len(self.current_Selection) == 2 :
+        if len(self.current_Selection) == 2:
             self.current_Selection = self.current_Selection
         else:
             self.current_Selection = None
@@ -125,7 +128,7 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
             LP_GrpState = False
             HP_GrpState = False
             ############################################################################################################
-            if PutHighInGrpsSetBakePairs == True:
+            if PutHighInGrpsSetBakePairs:
                 # Check if Groups HIGHPOLY_MESHES is present to create it if needed.
                 # clear selection of any item in the scene.
                 lx.eval('smo.GC.DeselectAll')
@@ -165,7 +168,7 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
                         # print('Nice you have an LowPoly Group in Groups Tab !')
                         HP_GrpState = True
 
-                if HP_GrpState == False:
+                if not HP_GrpState:
                     lx.eval('group.create %s mode:empty' % GrpHighName)
                     lx.eval('item.editorColor blue')
                     HP_GrpState = True
@@ -175,7 +178,7 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
             lx.eval('smo.GC.DeselectAll')
 
             ############################################################################################################
-            if PutLowInGrpsSetBakePairs == True:
+            if PutLowInGrpsSetBakePairs:
                 # Check if Groups LOWPOLY_MESHES is present to create it if needed.
                 # clear selection of any item in the scene.
                 lx.eval('smo.GC.DeselectAll')
@@ -212,7 +215,7 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
                         # print('Nice you have an LowPoly Group in Groups Tab !')
                         LP_GrpState = True
 
-                if LP_GrpState == False:
+                if not LP_GrpState:
                     lx.eval('group.create %s mode:empty' % GrpLowName)
                     lx.eval('item.editorColor green')
                     LP_GrpState = True
@@ -225,8 +228,8 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
 
             ######################################
             # Check Items count in groups
-            if PutInGrpsSetBakePairsTopDownOrder == True:
-                if HP_GrpState == True:
+            if PutInGrpsSetBakePairsTopDownOrder:
+                if HP_GrpState:
                     lx.eval('select.item {%s} set' % GrpHighName)
                     HPGrpID = scene.selectedByType(lx.symbol.sITYPE_GROUP)[0]
                     # print(HPGrpID)
@@ -244,7 +247,7 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
                     print(HP_Pos)
                     lx.eval('smo.GC.DeselectAll')
 
-                if LP_GrpState == True:
+                if LP_GrpState:
                     lx.eval('select.item {%s} set' % GrpLowName)
                     LPGrpID = scene.selectedByType(lx.symbol.sITYPE_GROUP)[0]
                     #print(LPGrpID)
@@ -266,11 +269,11 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
 
 
             if selitems == 2:
-                if FirstMeshHighPoly == False:
+                if not FirstMeshHighPoly:
 
                     ########################
                     # Select the First Item.
-                    Mesh_A_Name = (Mesh_A.name)
+                    Mesh_A_Name = Mesh_A.name
                     lx.out('(LowPoly) Mesh A name is:', Mesh_A_Name)
                     lx.eval('select.subItem %s set mesh 0 0' % Mesh_A_Name)
 
@@ -285,7 +288,7 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
 
                     ########################
                     # Select the 2nd Item.
-                    Mesh_B_Name = (Mesh_B.name)
+                    Mesh_B_Name = Mesh_B.name
                     lx.out('(HighPoly) Mesh B name is: ', Mesh_B_Name)
                     lx.eval('select.subItem %s set mesh 0 0' % Mesh_B_Name)
 
@@ -299,17 +302,17 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
                     lx.eval('select.drop item')
 
                     ########################
-                    if CreatePosRotConstraints == True:
+                    if CreatePosRotConstraints:
                         lx.eval('select.subItem %s set mesh 0 0' % Mesh_A.name)
                         lx.eval('select.subItem %s add mesh 0 0' % Mesh_B.name)
                         lx.eval('smo.BAKE.PairsLinkConstraint')
                         lx.eval('smo.GC.DeselectAll')
 
-                if FirstMeshHighPoly == True:
+                if FirstMeshHighPoly:
 
                     ########################
                     # Select the First Item.
-                    Mesh_B_Name = (Mesh_B.name)
+                    Mesh_B_Name = Mesh_B.name
                     lx.out('(LowPoly) Mesh B name is: ', Mesh_B_Name)
                     lx.eval('select.subItem %s set mesh 0 0' % Mesh_B_Name)
 
@@ -324,7 +327,7 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
 
                     ########################
                     # Select the 2nd Item.
-                    Mesh_A_Name = (Mesh_A.name)
+                    Mesh_A_Name = Mesh_A.name
                     lx.out('(HighPoly) Mesh A name is: ', Mesh_A_Name)
                     lx.eval('select.subItem %s set mesh 0 0' % Mesh_A_Name)
 
@@ -338,7 +341,7 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
                     lx.eval('select.drop item')
 
                     ########################
-                    if CreatePosRotConstraints == True:
+                    if CreatePosRotConstraints:
                         lx.eval('select.subItem %s set mesh 0 0' % Mesh_A.name)
                         lx.eval('select.subItem %s add mesh 0 0' % Mesh_B.name)
                         lx.eval('smo.BAKE.PairsLinkConstraint')
@@ -347,45 +350,45 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
                 lx.eval('smo.GC.DeselectAll')
 
                 # # Put the HighPoly in a Group (HIGH).
-                if PutHighInGrpsSetBakePairs == True:
+                if PutHighInGrpsSetBakePairs:
 
                     lx.eval('select.item {%s} set' % GrpHighName)
-                    GH = (scene.selectedByType('group')[0].id)
+                    GH = scene.selectedByType('group')[0].id
                     lx.eval('smo.GC.DeselectAll')
                     # print(GH)
-                    if PutInGrpsSetBakePairsTopDownOrder == True :
-                        if FirstMeshHighPoly == True :
+                    if PutInGrpsSetBakePairsTopDownOrder:
+                        if FirstMeshHighPoly:
                             lx.eval('group.itemPos %s %s %i' % (Mesh_A.name, GH, HP_Pos))
-                        if FirstMeshHighPoly == False :
+                        if not FirstMeshHighPoly:
                             lx.eval('group.itemPos %s %s %i' % (Mesh_B.name, GH, HP_Pos))
-                    if PutInGrpsSetBakePairsTopDownOrder == False :
-                        if FirstMeshHighPoly == True :
+                    if not PutInGrpsSetBakePairsTopDownOrder:
+                        if FirstMeshHighPoly:
                             lx.eval('group.itemPos %s %s 0' % (Mesh_A.name, GH))
-                        if FirstMeshHighPoly == False :
+                        if not FirstMeshHighPoly:
                             lx.eval('group.itemPos %s %s 0' % (Mesh_B.name, GH))
 
                 lx.eval('smo.GC.DeselectAll')
 
                 # # Put the LowPoly in a Group (HIGH).
-                if PutLowInGrpsSetBakePairs == True:
+                if PutLowInGrpsSetBakePairs:
                     lx.eval('smo.GC.DeselectAll')
                     lx.eval('select.item {%s} set' % GrpLowName)
-                    GL = (scene.selectedByType('group')[0].id)
+                    GL = scene.selectedByType('group')[0].id
                     lx.eval('smo.GC.DeselectAll')
                     # print(GH)
-                    if PutInGrpsSetBakePairsTopDownOrder == True :
+                    if PutInGrpsSetBakePairsTopDownOrder:
                         if FirstMeshHighPoly == True and PutInGrpsSetBakePairsTopDownOrder == True :
                             lx.eval('group.itemPos %s %s %i' % (Mesh_B.name, GL, LP_Pos))
                         if FirstMeshHighPoly == False and PutInGrpsSetBakePairsTopDownOrder == True :
                             lx.eval('group.itemPos %s %s %i' % (Mesh_A.name, GL, LP_Pos))
-                    if PutInGrpsSetBakePairsTopDownOrder == False :
-                        if FirstMeshHighPoly == True :
+                    if not PutInGrpsSetBakePairsTopDownOrder:
+                        if FirstMeshHighPoly:
                             lx.eval('group.itemPos %s %s 0' % (Mesh_B.name, GL))
-                        if FirstMeshHighPoly == False :
+                        if not FirstMeshHighPoly:
                             lx.eval('group.itemPos %s %s 0' % (Mesh_A.name, GL))
 
                 # Autohide mode to declutter scene during Setup.
-                if AutoHide_Set_BakePairs == True:
+                if AutoHide_Set_BakePairs:
                     lx.eval('select.subItem %s set mesh 0 0' % Mesh_A.name)
                     lx.eval('select.subItem %s add mesh 0 0' % Mesh_B.name)
                     lx.eval('hide.sel')

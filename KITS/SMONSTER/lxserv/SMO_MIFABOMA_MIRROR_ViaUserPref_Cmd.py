@@ -1,24 +1,28 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MIFABOMA_MIRROR_ViaUserPref_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This Command is designed to
 #               Mirror current Polygon Selection (or all Poly if no selection)
 #               using Origin Center (World) or Item Center (Local).
-#               It use the User Preferences to define wich clone type you do and if you clone also the hierarchy.
+#               It use the User Preferences to define wich clone type you do
+#               and if you clone also the hierarchy.
 # 
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      16/09/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.MIFABOMA.Mirror_ViaUserPref"
 # smo.MIFABOMA.Mirror_ViaUserPref 1 8 1
+
 
 class SMO_MIFABOMA_Mirror_ViaUserPref_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -84,7 +88,7 @@ class SMO_MIFABOMA_Mirror_ViaUserPref_Cmd(lxu.command.BasicCommand):
         print(TargetMeshes)
 
 
-        if self.SelModePoly == True:
+        if self.SelModePoly:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
 
         SelItems = (lx.evalN('query sceneservice selection ? locator'))
@@ -105,9 +109,9 @@ class SMO_MIFABOMA_Mirror_ViaUserPref_Cmd(lxu.command.BasicCommand):
             
 
 
-        ################################
-        #<----[ DEFINE ARGUMENTS ]---->#                # smo.MIFABOMA.Mirror_ViaUserPref 1 8 1
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #                # smo.MIFABOMA.Mirror_ViaUserPref 1 8 1
+        # ------------------------------ #
         args = lx.args()
         lx.out(args)
         MIRROR_AXES = self.dyna_Int (0)                 # Axes selection:       X = 0 ### Y = 1 ### Z = 2
@@ -116,9 +120,9 @@ class SMO_MIFABOMA_Mirror_ViaUserPref_Cmd(lxu.command.BasicCommand):
         
         # Expose the Result of the Arguments 
         lx.out(MIRROR_AXES,LOCAL,MERGE_VERTEX)
-        ################################
-        #<----[ DEFINE ARGUMENTS ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #
+        # ------------------------------ #
 
 
         # MODO version checks.
@@ -143,9 +147,9 @@ class SMO_MIFABOMA_Mirror_ViaUserPref_Cmd(lxu.command.BasicCommand):
         lx.eval('smo.GC.DeselectAll')
         
         
-        ########################################
-        ## <----( Main Macro - POLYGON )----> ##
-        ########################################
+        # ------------------------------- #
+        # <----( Main Macro - POLYGON )----> #
+        # ------------------------------- #
         if ItemMode == 0 and VertMode == 0 and EdgeMode == 0 and PolyMode == 1:
             for item in SelectedMeshes:
                 item.select(True)
@@ -198,13 +202,13 @@ class SMO_MIFABOMA_Mirror_ViaUserPref_Cmd(lxu.command.BasicCommand):
                 # lx.eval('smo.GC.FlipVertexNormalMap')
 
 
-                ###################################
-                ######## Mirror Tool Setup ########
-                ###################################
+                # ------------------------------- #
+                # ------ Mirror Tool Setup ------ #
+                # ------------------------------- #
                 lx.eval('tool.set *.mirror on')
                 MirrorReplaceSourceState = lx.eval('tool.attr effector.clone replace ?')
                 MirrorFlipPolyState = lx.eval('tool.attr effector.clone flip ?')
-                if MirrorReplaceSourceState == True:
+                if MirrorReplaceSourceState:
                     lx.eval('tool.attr effector.clone replace false')
 
                 if modo_ver < 1520 and MirrorFlipPolyState == False:
@@ -246,7 +250,7 @@ class SMO_MIFABOMA_Mirror_ViaUserPref_Cmd(lxu.command.BasicCommand):
                     lx.eval('tool.setAttr gen.mirror upX 0.0')
                     lx.eval('tool.setAttr gen.mirror upY 1')
                     lx.eval('tool.setAttr gen.mirror upZ 0.0')
-                ##############################
+                # -------------------------- #
                 lx.eval('tool.doApply')
                 lx.eval('select.nextMode')
                 lx.eval('tool.set *.mirror off')
@@ -255,16 +259,16 @@ class SMO_MIFABOMA_Mirror_ViaUserPref_Cmd(lxu.command.BasicCommand):
                 if MirrorReplaceSourceState == False or MirrorFlipPolyState == False:
                     lx.eval('tool.set *.mirror on')
                     lx.eval('tool.noChange')
-                    if MirrorReplaceSourceState == False:
+                    if not MirrorReplaceSourceState:
                         lx.eval('tool.attr effector.clone replace {%s}' % MirrorReplaceSourceState)
-                    if MirrorFlipPolyState == False:
+                    if not MirrorFlipPolyState:
                         lx.eval('tool.attr effector.clone flip {%s}' % MirrorFlipPolyState)
                     lx.eval('select.nextMode')
                     lx.eval('tool.set *.mirror off')
                 lx.eval('select.type polygon')
 
                 if LOCAL == 1 :
-                    if RefSystemActive == False :
+                    if not RefSystemActive:
                         lx.eval('item.refSystem {}')
                     else :
                         print('Ref System activated')
@@ -289,7 +293,7 @@ class SMO_MIFABOMA_Mirror_ViaUserPref_Cmd(lxu.command.BasicCommand):
         
         
         ####################################
-        ## <----( Main Macro - ITEM)----> ##
+        # <----( Main Macro - ITEM)----> #
         ####################################
         if ItemMode == 1 and VertMode == 0 and EdgeMode == 0 and PolyMode == 0:
             for item in TargetMeshes:
@@ -307,7 +311,7 @@ class SMO_MIFABOMA_Mirror_ViaUserPref_Cmd(lxu.command.BasicCommand):
 
 
                 ###################################
-                ######## Mirror Tool Setup ########
+                # ------ Mirror Tool Setup ------ #
                 ###################################
                 lx.eval('tool.set *.mirror on')
                 lx.eval('tool.setAttr gen.mirror cenX 0.0')
@@ -345,12 +349,12 @@ class SMO_MIFABOMA_Mirror_ViaUserPref_Cmd(lxu.command.BasicCommand):
                     lx.eval('tool.setAttr gen.mirror upX 0.0')
                     lx.eval('tool.setAttr gen.mirror upY 1')
                     lx.eval('tool.setAttr gen.mirror upZ 0.0')
-                ##############################
+                # -------------------------- #
                 lx.eval('tool.doApply')
                 lx.eval('select.nextMode')
 
                 if LOCAL == 1 :
-                    if RefSystemActive == False :
+                    if not RefSystemActive:
                         lx.eval('item.refSystem {}')
                     else :
                         print('Ref System activated')
@@ -360,9 +364,9 @@ class SMO_MIFABOMA_Mirror_ViaUserPref_Cmd(lxu.command.BasicCommand):
 
 
 
-        if RefSystemActive == False:
+        if not RefSystemActive:
             lx.eval('item.refSystem {}')
-        if RefSystemActive == True:
+        if RefSystemActive:
             lx.eval('item.refSystem %s' % CurrentRefSystemItem)
 
         lx.out('End of SMO Mirror Command')

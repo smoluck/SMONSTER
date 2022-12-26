@@ -1,23 +1,25 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_StarTriple_Cmd
 # Version:      1.0
 #
 # Purpose:      This script is designed to:
 #               Star Triple area using touching polygons and same Facing Ratio.
 #
-#
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      15/04/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.StarTriple"
 # smo.GC.StarTriple
+
 
 class SMO_GC_StarTriple_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -54,7 +56,7 @@ class SMO_GC_StarTriple_Cmd(lxu.command.BasicCommand):
         VNMapName = lx.eval('pref.value application.defaultVertexNormals ?')
         # print(VNMapName)
 
-        if self.SelModePoly == True:
+        if self.SelModePoly:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
 
         mesh = scene.selectedByType('mesh')[0]
@@ -227,9 +229,9 @@ class SMO_GC_StarTriple_Cmd(lxu.command.BasicCommand):
         lx.eval('select.drop vertex')
         lx.eval('select.type polygon')
 
-        if RefSystemActive == False:
+        if not RefSystemActive:
             lx.eval('item.refSystem {}')
-        if RefSystemActive == True:
+        if RefSystemActive:
             lx.eval('item.refSystem %s' % CurrentRefSystemItem)
 
         # #################################

@@ -1,5 +1,5 @@
 #LXMacro#
-#-----------------------------------------
+# ----------------------------------------
 # Name:         SMO_MOD_DeleteEdgeInsidePoly_Island.LXM
 # Version:      1.0
 #
@@ -16,7 +16,7 @@
 #
 # Created:      XX/XX/2018-2019
 # Copyright:    (c) Franck Elisabeth 2019
-#-----------------------------------------
+# ----------------------------------------
 
 ## user.value sene_LS_facingRatio 0.5
 ## script.implicit name:"lazySelect.pl" args:selectAll

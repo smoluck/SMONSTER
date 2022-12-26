@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+# ---------------------------------------
 # Name: Select_QT_White.py
 # Version: 1.0
 #
@@ -8,13 +8,13 @@
 #               Creating the related Command Region to this Tag
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      10/01/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+# ---------------------------------------
 
-import modo
+import lx
 
 lx.eval('select.type polygon')
 lx.eval('select.useSet SMO_QT_White select')

@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_UV_UnwrapSmart_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,20 @@
 #               with various Unwrap Method, Rectangle Mode and Autoloop function using Arguments.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo, sys
+import lx
+import lxu
+import modo
+import sys
 
 Cmd_Name = "smo.UV.UnwrapSmart"
 # smo.UV.UnwrapSmart 0 0 0 0
+
 
 class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -85,7 +89,7 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
         US_IsRectangle = self.dyna_Int(2)
         US_SelectByLoop = self.dyna_Int(3)
 
-        ############### 5 ARGUMENTS ###############
+        ############### 5 ARGUMENTS ------------- #
         args = lx.args()
         lx.out(args)
 
@@ -108,7 +112,7 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
         # current selection + Add loop = 1
         SelectByLoop = US_SelectByLoop
         lx.out('Select by loop state:', SelectByLoop)
-        ############### ARGUMENTS ###############
+        # ------------- ARGUMENTS ------------- #
 
         # Auto Update UV Seam map   Off = 0
         # Auto Update UV Seam map   On = 1
@@ -136,16 +140,16 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
         AutoExpandSel = lx.eval('user.value SMO_UseVal_UV_AutoExpandSelectionState ?')
         lx.out('Auto Expand Selection state:', AutoExpandSel)
 
-        # ############### 4 ARGUMENTS Test ###############
+        # # ------------- ARGUMENTS Test
         # UnwrapMethod = 0          --> Conformal
         # InitProjection = 1        --> Group Normal
         # IsRectangle = 0
         # SelectByLoop = 0
-        # ############### ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
 
-        ################################
-        # <----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
         lx.eval("user.defNew name:SMO_SafetyCheck_UVUnwrapSmart_PolygonModeEnabled type:integer life:momentary")
@@ -172,9 +176,9 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
         lx.eval('smo.GC.ClearSelectionVmap 7 1')
         lx.eval('smo.GC.ClearSelectionVmap 8 1')
 
-        ###################################################
-        ####### SAFETY CHECK 1 - One UVMap Selected #######
-        ###################################################
+        # ----------------------------------------- #
+        # <---( SAFETY CHECK 1 )---> UVMap Selected #
+        # ----------------------------------------- #
         lx.out('<------------- START -------------->')
         lx.out('<--- UV Map Safety Check --->')
 
@@ -188,24 +192,26 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
         lx.eval('smo.GC.ClearSelectionVmap 1 1')
         lx.eval('select.vertexMap %s txuv replace' % UVUnwrapSmart_UVMapName)
 
+        SMO_SafetyCheck_UVUnwrapSmart_UVMapCount = True
         if SelectedMeshUVMapsCount > 1:
             lx.eval('dialog.setup info')
             lx.eval('dialog.title {SMONSTER - UV - Unwrap Smart:}')
             lx.eval('dialog.msg {Please select Only One Vertex Map and run that script again.}')
             lx.eval('dialog.open')
-            sys.exit()
             SMO_SafetyCheck_UVUnwrapSmart_UVMapCount = False
+            sys.exit()
 
         if SelectedMeshUVMapsCount < 1:
             lx.eval('dialog.setup info')
             lx.eval('dialog.title {SMONSTER - UV - Unwrap Smart:}')
             lx.eval('dialog.msg {You must have a UV map selected to run this script.}')
             lx.eval('dialog.open')
-            sys.exit()
             SMO_SafetyCheck_UVUnwrapSmart_UVMapCount = False
+            sys.exit()
 
         if SelectedMeshUVMapsCount == 1:
             SMO_SafetyCheck_UVUnwrapSmart_UVMapCount = True
+
 
         # UserUVMapName = lx.eval1('query layerservice vmap.name ? %s' % UVmap_Selected)
         # lx.out('USER UV Map Name:', UserUVMapName)
@@ -213,22 +219,22 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
         lx.out('<------------- END -------------->')
         ###############################################
 
-        ##############################
-        ####### SAFETY CHECK 1 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 1 )---> #
+        # -------------------------- #
 
-        #####-------------------- safety check 1 : Only One Item Selected --- START --------------------#####
+        # --------------------  safety check 1 : Only One Item Selected --- START
         try:
             # test if there is actually an item layer selected
             mesh = scene.selectedByType('mesh')[0]
             meshseam = modo.Scene().selected[0]
             # if this command return an error then i will select the corresponding mesh layer on the next step.
         except:
-            ##############################
-            ####### SAFETY CHECK 2 #######
-            ##############################
+            # -------------------------- #
+            # <---( SAFETY CHECK 2 )---> #
+            # -------------------------- #
 
-            #####--------------------  safety check 2: Polygon or Edge Selection Mode enabled --- START --------------------#####
+            # Polygon or Edge Selection Mode enabled --- START
 
             selType = ""
             # Used to query layerservice for the list of polygons, edges or vertices.
@@ -285,7 +291,7 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
                 lx.out('script Stopped: You must be in Polygon Mode to run that script')
                 sys.exit
                 # sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
-            #####--------------------  safety check 2: Polygon or Edge Selection Mode enabled --- END --------------------#####
+            # Polygon or Edge Selection Mode enabled --- END
 
             ItemLayerName = lx.eval('query layerservice layer.name ? 1')
             lx.out('Item Layer name is:', ItemLayerName)
@@ -318,7 +324,7 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
             SMO_SafetyCheck_Only1MeshItemSelected = 1
             lx.out('Only One Item Selected:', SMO_SafetyCheck_Only1MeshItemSelected)
             lx.out('script running: right amount of Mesh Item selected')
-        #####-------------------- safety check 1 : Only One Item Selected --- END --------------------#####
+        # --------------------  safety check 1 : Only One Item Selected --- END
 
         CsPolys = len(mesh.geometry.polygons.selected)
         CsEdges = len(mesh.geometry.edges.selected)
@@ -362,13 +368,13 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
         # # lx.out('USER UVSEAM Map Name:', UserUVSEAMmapName)
 
         # lx.out('<----------- END ----------->')
-        # ################################
+        # # ------------------------------ #
 
-        ##############################
-        ####### SAFETY CHECK 2 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 2 )---> #
+        # -------------------------- #
 
-        #####--------------------  safety check 2: Polygon or Edge Selection Mode enabled --- START --------------------#####
+        # Polygon or Edge Selection Mode enabled --- START
 
         selType = ""
         # Used to query layerservice for the list of polygons, edges or vertices.
@@ -426,13 +432,13 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
             lx.out('script Stopped: You must be in Polygon Mode to run that script')
             sys.exit
             # sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
-        #####--------------------  safety check 2: Polygon or Edge Selection Mode enabled --- END --------------------#####
+        # Polygon or Edge Selection Mode enabled --- END
 
-        ##############################
-        ####### SAFETY CHECK 3 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 3 )---> #
+        # -------------------------- #
 
-        #####--------------------  safety check 3: at Least 1 Polygons is selected --- START --------------------#####
+        # at Least 1 Polygons is selected --- START
         if SMO_SafetyCheck_UVUnwrapSmart_PolygonModeEnabled == 1 and SMO_SafetyCheck_UVUnwrapSmart_EdgeModeEnabled == 0:
             lx.out('Count Selected Poly', CsPolys)
 
@@ -450,9 +456,9 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
                 SMO_SafetyCheck_UVUnwrapSmart_min1PolygonSelected = 1
                 SMO_SafetyCheck_UVUnwrapSmart_min3EdgeSelected = 0
                 lx.out('script running: right amount of polygons in selection')
-        #####--------------------  safety check 3: at Least 1 Polygons is selected --- END --------------------#####
+        # at Least 1 Polygons is selected --- END
 
-        #####--------------------  safety check 3: at Least 3 Edges are selected --- START --------------------#####
+        # at Least 3 Edges are selected --- START
         if SMO_SafetyCheck_UVUnwrapSmart_EdgeModeEnabled == 1 and SMO_SafetyCheck_UVUnwrapSmart_PolygonModeEnabled == 0:
             lx.out('Count Selected Edges', CsEdges)
 
@@ -470,7 +476,7 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
                 SMO_SafetyCheck_UVUnwrapSmart_min1PolygonSelected = 0
                 SMO_SafetyCheck_UVUnwrapSmart_min3EdgeSelected = 1
                 lx.out('script running: right amount of Edges in selection')
-        #####--------------------  safety check 3: at Least 3 Edges are selected --- END --------------------#####
+        # at Least 3 Edges are selected --- END
 
         #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
         #####
@@ -492,11 +498,11 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
         #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
 
         ###############################################
-        ## <----( Main Macro for Polygon Mode )----> ##
+        # <----( Main Macro for Polygon Mode )----> #
         ###############################################
-        if SMO_SafetyCheck_UVUnwrapSmart_UVMapCount == True:
+        if SMO_SafetyCheck_UVUnwrapSmart_UVMapCount:
             AutoHideState = lx.eval('user.value SMO_UseVal_UV_HideAfterUnwrap ?')
-            #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+            #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
             if TotalSafetyCheckPolygon == TotalSafetyCheckTrueValuePoly:
                 if SelectByLoop == 1:
                     # replay name:"Edit Selection Set"
@@ -735,10 +741,10 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
                     lx.eval('hide.sel')
 
             ###############################################
-            ## <----( Main Macro for Edge Mode )----> ##
+            # <----( Main Macro for Edge Mode )----> #
             ###############################################
 
-            #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+            #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
             if TotalSafetyCheckEdge == TotalSafetyCheckTrueValueEdge:
                 lx.eval('select.type polygon')
                 lx.eval('select.all')
@@ -883,7 +889,7 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
                 lx.out('script Stopped: your mesh does not match the requirement for that script.')
                 sys.exit
 
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
 lx.bless(SMO_UV_UnwrapSmart_Cmd, Cmd_Name)

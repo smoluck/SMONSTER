@@ -1,5 +1,5 @@
-#python
-#-----------------------------------------------
+# python
+"""
 # Name:         SMO_GC_Multi_RebuildCurve_Cmd.py
 # Version:      1.0
 #
@@ -7,15 +7,19 @@
 #               Rebuild the current selected Mesh layer (curve Data) to Polylines.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      19/12/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo, sys
+import lx
+import lxu
+import modo
+import sys
 
 Cmd_Name = "smo.GC.Multi.RebuildCurve"
+
 
 class SMO_GC_Multi_RebuildCurve_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -51,11 +55,11 @@ class SMO_GC_Multi_RebuildCurve_Cmd(lxu.command.BasicCommand):
         samplingPrecision = self.dyna_Float (0)
         
         
-        # # ############### 2 ARGUMENTS Test ###############
+        # # # ------------- ARGUMENTS Test
         # samplingPrecisionSize = 1
-        # # ############### ARGUMENTS ###############
+        # # # ------------- ARGUMENTS ------------- #
         
-        # ############### 2 ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
         args = lx.args()
         lx.out(args)
         # Draw Option OFF = 0 
@@ -64,15 +68,15 @@ class SMO_GC_Multi_RebuildCurve_Cmd(lxu.command.BasicCommand):
         # Draw Option ON Shaded & Wireframe = 3
         samplingPrecisionSize = samplingPrecision
         lx.out('Desired Resampling maximum size:', samplingPrecisionSize)
-        # ############### ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
         
         
         
         
         
-        ################################
-        #<----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
@@ -94,11 +98,11 @@ class SMO_GC_Multi_RebuildCurve_Cmd(lxu.command.BasicCommand):
         
         
         
-        ##############################
-        ####### SAFETY CHECK 2 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 2 )---> #
+        # -------------------------- #
         
-        #####--------------------  safety check 2: Component Selection Mode type --- START --------------------#####
+        # Component Selection Mode type --- START
         
         selType = ""
         # Used to query layerservice for the list of polygons, edges or vertices.
@@ -152,8 +156,8 @@ class SMO_GC_Multi_RebuildCurve_Cmd(lxu.command.BasicCommand):
             
             lx.out('script Running: Item Component Selection Mode')
             
-        #####--------------------  safety check 2: Component Selection Mode type --- END --------------------#####
-        #####--------------------  safety check 2: Component Selection Mode type --- END --------------------#####
+        # Component Selection Mode type --- END
+        # Component Selection Mode type --- END
             
         lx.out('-------------------------------')
         lx.out('Start of SMO_RebuildCurve Script')
@@ -261,7 +265,7 @@ class SMO_GC_Multi_RebuildCurve_Cmd(lxu.command.BasicCommand):
         lx.eval('select.drop item locator')
         lx.out('End of SMO_RebuildCurve Script')
         lx.out('-------------------------------')
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
     def cmd_Query(self, index, vaQuery):

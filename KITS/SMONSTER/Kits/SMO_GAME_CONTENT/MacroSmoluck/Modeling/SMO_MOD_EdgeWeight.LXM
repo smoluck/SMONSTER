@@ -1,5 +1,5 @@
 #LXMacro#
-#-----------------------------------------
+# ----------------------------------------
 # Name:         SMO_MOD_EdgeWeight.LXM
 # Version:      1.0
 #
@@ -14,7 +14,7 @@
 #
 # Created:      XX/XX/2018-2019
 # Copyright:    (c) Franck Elisabeth 2019
-#-----------------------------------------
+# ----------------------------------------
 
 #If Edge Selection
 # replay name:"Edge Weight Tool"

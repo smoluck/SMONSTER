@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------------
+"""
 # Name:         SMO_GC_Setup_MoveRotateCenterToSelectionWithNNrm_Cmd.py
 # Version:      1.0
 #
@@ -9,21 +9,26 @@
 #               This build is for supporting VertexNormal Data
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      19/03/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------------
+"""
 
-import lx, lxu, modo, math
 from math import degrees
+
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.Setup.MoveRotateCenterToSelectionWithVNrm"
 # smo.GC.Setup.MoveRotateCenterToSelectionWithVNrm 1 1
 
+
 # Function for Radian to Degree
 def rad(a):
     return [degrees(a)]
+
 
 class SMO_GC_Setup_MoveRotateCenterToSelectionWithNNrm_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -97,12 +102,12 @@ class SMO_GC_Setup_MoveRotateCenterToSelectionWithNNrm_Cmd(lxu.command.BasicComm
 
 
 
-        if RefSystemActive == True:
+        if RefSystemActive:
             lx.eval('item.refSystem {}')
 
 
         if MoveCenter == 1:
-            if SelModeVert == True:
+            if SelModeVert:
                 lx.eval('smo.MASTER.SelectModeDetector')
                 CountVert = lx.eval1('user.value SMO_SelectModeDetector_CountVertSelected ?')
                 # print(CountVert)
@@ -114,15 +119,15 @@ class SMO_GC_Setup_MoveRotateCenterToSelectionWithNNrm_Cmd(lxu.command.BasicComm
             lx.eval('matchWorkplanePos')
             lx.eval('workPlane.reset')
 
-            if SelModePoly == True :
+            if SelModePoly:
                 lx.eval('select.type polygon')
-            if SelModeEdge == True :
+            if SelModeEdge:
                 lx.eval('select.type edge')
-            if SelModeVert == True :
+            if SelModeVert:
                 lx.eval('select.type vertex')
 
         if RotateCenter == 1:
-            if SelModeVert == True:
+            if SelModeVert:
                 lx.eval('smo.MASTER.SelectModeDetector')
                 CountVert = lx.eval1('user.value SMO_SelectModeDetector_CountVertSelected ?')
                 # print(CountVert)
@@ -130,7 +135,7 @@ class SMO_GC_Setup_MoveRotateCenterToSelectionWithNNrm_Cmd(lxu.command.BasicComm
                 lx.eval('select.convert edge')
             lx.eval('workPlane.fitSelect')
 
-            if VNormMap == True:
+            if VNormMap:
                 # ItemCenX = lx.eval('workplane.edit ? 0 0 0 0 0')
                 # ItemCenY = lx.eval('workplane.edit 0 ? 0 0 0 0')
                 # ItemCenZ = lx.eval('workplane.edit 0 0 ? 0 0 0')
@@ -164,7 +169,7 @@ class SMO_GC_Setup_MoveRotateCenterToSelectionWithNNrm_Cmd(lxu.command.BasicComm
         lx.eval('matchWorkplaneRot')
         lx.eval('workPlane.reset')
 
-        if VNormMap == True:
+        if VNormMap:
             lx.eval('select.type polygon')
             lx.eval('select.all')
             lx.eval('delete')

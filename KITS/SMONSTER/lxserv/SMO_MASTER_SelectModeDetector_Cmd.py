@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MASTER_SelectModeDetector_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #               user values based on the detection for further use of the tool.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      17/05/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.MASTER.SelectModeDetector"
 # smo.MASTER.SelectModeDetector 1
+
 
 class SMO_MASTER_SelectModeDetector_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -57,9 +60,9 @@ class SMO_MASTER_SelectModeDetector_Cmd(lxu.command.BasicCommand):
         DEBUG_MODE = self.dyna_Int (0)
         
         
-        ################################
-        #<----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
         lx.eval("user.defNew name:SMO_MASTER_SelectModeDetector_ItemModeEnabled type:integer life:momentary")
@@ -169,26 +172,26 @@ class SMO_MASTER_SelectModeDetector_Cmd(lxu.command.BasicCommand):
             if DEBUG_MODE == 1 :
                 lx.out('Count Selected Vertex',CsVert)
             if SMO_MASTER_SelectModeDetector_VertModeEnabled == 1 :
-                #####--------------------  safety check 2: at Least 1 Polygons is selected --- START --------------------#####
+                # at Least 1 Polygons is selected --- START
                 if CsVert < 1:
                     SMO_MASTER_SelectModeDetector_min1VertSelected = 0
                 
                 elif CsVert >= 1:
                     SMO_MASTER_SelectModeDetector_min1VertSelected = 1
-                #####--------------------  safety check 2: at Least 1 Polygons is selected --- END --------------------#####
+                # at Least 1 Polygons is selected --- END
                 
                 
             CsEdges = len(mesh.geometry.edges.selected)
             if DEBUG_MODE == 1 :
                 lx.out('Count Selected Edge',CsEdges)
             if SMO_MASTER_SelectModeDetector_EdgeModeEnabled == 1 :
-                #####--------------------  safety check 2: at Least 1 Polygons is selected --- START --------------------#####
+                # at Least 1 Polygons is selected --- START
                 if CsEdges < 1:
                     SMO_MASTER_SelectModeDetector_min1EdgeSelected = 0
                 
                 elif CsEdges >= 1:
                     SMO_MASTER_SelectModeDetector_min1EdgeSelected = 1
-                #####--------------------  safety check 2: at Least 1 Polygons is selected --- END --------------------#####
+                # at Least 1 Polygons is selected --- END
             
             
             CsPolys = len(mesh.geometry.polygons.selected)
@@ -196,18 +199,18 @@ class SMO_MASTER_SelectModeDetector_Cmd(lxu.command.BasicCommand):
                 lx.out('Count Selected Polygon',CsPolys)
             
             if SMO_MASTER_SelectModeDetector_PolyModeEnabled == 1 :
-                #####--------------------  safety check 2: at Least 1 Polygons is selected --- START --------------------#####
+                # at Least 1 Polygons is selected --- START
                 if CsPolys < 1:
                     SMO_MASTER_SelectModeDetector_min1PolySelected = 0
                 
                 elif CsPolys >= 1:
                     SMO_MASTER_SelectModeDetector_min1PolySelected = 1
-                #####--------------------  safety check 2: at Least 1 Polygons is selected --- END --------------------#####
+                # at Least 1 Polygons is selected --- END
                 
                 
                 
             # if SMO_MASTER_SelectModeDetector_ItemModeEnabled == 1 :
-            #####--------------------  safety check 2: at Least 1 Polygons is selected --- START --------------------#####
+            # at Least 1 Polygons is selected --- START
             SelectedMeshItemCount = len(scene.selectedByType(lx.symbol.sTYPE_MESH))
             if DEBUG_MODE == 1 :
                 lx.out('Selected Item Mesh Count',SelectedMeshItemCount)
@@ -223,7 +226,7 @@ class SMO_MASTER_SelectModeDetector_Cmd(lxu.command.BasicCommand):
             elif SelectedMeshItemCount > 1 :
                 SMO_MASTER_SelectModeDetector_min1ItemSelected = 1
                 SMO_MASTER_SelectModeDetector_MultiItemSelected = 1
-            #####--------------------  safety check 2: at Least 1 Polygons is selected --- END --------------------#####
+            # at Least 1 Polygons is selected --- END
                 
                 
                 
@@ -238,7 +241,7 @@ class SMO_MASTER_SelectModeDetector_Cmd(lxu.command.BasicCommand):
                 
             
             
-            #####--------------------  safety check 1: Polygon Selection Mode enabled --- END --------------------#####
+            # --------------------  safety check 1: Polygon Selection Mode enabled --- END
             
             
             if SMO_MASTER_SelectModeDetector_VertModeEnabled == 1 :

@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_CLEANUP_ConvertHardEdge_Cmd.py
 # Version:      1.0
 #
@@ -9,13 +9,15 @@
 #               smo.CLEANUP.ConvertHardEdge 0 1 or 1 1
 #
 # Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      17/02/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.CLEANUP.ConvertHardEdge"
 
@@ -58,7 +60,7 @@ class SMO_Cleanup_ConvertHardEdge_Cmd(lxu.command.BasicCommand):
         IntAlign = self.dyna_Int (1)
         
         
-        # ############### 5 ARGUMENTS ###############
+        # ############### 5 ARGUMENTS ------------- #
         args = lx.args()
         lx.out(args)
         
@@ -71,7 +73,7 @@ class SMO_Cleanup_ConvertHardEdge_Cmd(lxu.command.BasicCommand):
         # 1 TriRadial by EdgeExtend
         Align = IntAlign
         lx.out('Align all polygons', Align)
-        # ############### ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
         
         
         lx.eval('select.drop item')

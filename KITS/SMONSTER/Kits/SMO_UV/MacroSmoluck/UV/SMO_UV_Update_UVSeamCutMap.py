@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         Update_UVSeamCutMap.py
 # Version:      1.0
 #
@@ -7,11 +7,11 @@
 #               Update the UVseam Cut Map based on the current UVMap
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo
 scene = modo.scene.current()
@@ -22,9 +22,9 @@ CsEdges = len(mesh.geometry.edges.selected)
 CsVertex = len(mesh.geometry.vertices.selected)
 
 
-################################
-#<----[ DEFINE VARIABLES ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE VARIABLES )----> #
+# ------------------------------ #
 
 #####--- Define user value for all the different SafetyCheck --- START ---#####
 #####
@@ -77,11 +77,11 @@ lx.out('UV SEAM Map Name:', DetectedUVSEAMmapName)
 ##### UV SEAM Map Detection #####
 
 
-##############################
-####### SAFETY CHECK 1 #######
-##############################
+# -------------------------- #
+# <---( SAFETY CHECK 1 )---> #
+# -------------------------- #
 
-#####--------------------  safety check 1: Polygon Selection Mode enabled --- START --------------------#####
+# --------------------  safety check 1: Polygon Selection Mode enabled --- START
 
 selType = ""
 # Used to query layerservice for the list of polygons, edges or vertices.
@@ -135,7 +135,7 @@ else:
     
     lx.out('script Running: Item Component Selection Mode')
     
-#####--------------------  safety check 1: Polygon Selection Mode enabled --- END --------------------#####
+# --------------------  safety check 1: Polygon Selection Mode enabled --- END
 
 
 if Modo_ver >= 1300:
@@ -155,13 +155,13 @@ if Modo_ver >= 1300:
     # lx.out('USER UVSEAM Map Name:', UserUVSEAMmapName)
     
     lx.out('<----------- END ----------->')
-################################
+# ------------------------------ #
 
-##############################
-## <----( Main Macro )----> ##
-##############################
+# -------------------------- #
+# <----( Main Macro )----> #
+# -------------------------- #
 
-#####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- START --------------------#####
+#####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- START
 if SMO_SafetyCheck_VertexModeEnabled == 1:
     lx.eval('select.type polygon')
     lx.eval('uv.selectBorder')
@@ -198,4 +198,4 @@ if SMO_SafetyCheck_ItemModeEnabled == 1:
     lx.eval('select.type item')
 
 lx.out('End of Update UVSeam Cut Map Script')
-#####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- END --------------------#####
+#####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- END

@@ -1,5 +1,5 @@
 #python
-#---------------------------------------
+"""
 # Name:         SMO_AutoImporter_V4.py
 # Version:      1.10
 #
@@ -14,7 +14,7 @@
 #
 # Created:      15/11/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import mset, os, tempfile, string
 import json as j

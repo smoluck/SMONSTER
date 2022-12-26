@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MOD_FallOff_Axe.py
 # Version: 1.0
 #
@@ -7,11 +7,11 @@
 # set automaticly a defined Falloff
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      16/09/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo
 # scene = modo.scene.current()
@@ -21,20 +21,20 @@ import modo
 # lx.out('In Selected items, List of their Unique Name is:',SelItems)
 
 #Auto_AXES = 0
-################################
-#<----[ DEFINE ARGUMENTS ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE ARGUMENTS )----> #
+# ------------------------------ #
 args = lx.args()
 lx.out(args)
 
 Auto_AXES = args[0]                         # Axes selection:                       X = 0 / Y = 1 / Z = 2
 # Expose the Result of the Arguments 
 lx.out(Auto_AXES)
-################################
-#<----[ DEFINE ARGUMENTS ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE ARGUMENTS )----> #
+# ------------------------------ #
 
-## <----( Linear FallOff )----> ##
+# <----( Linear FallOff )----> #
 if lx.eval('tool.set falloff.linear ? ') == 'on':
     lx.eval('tool.set falloff.linear on')
     FallOff_Mode = 0
@@ -51,7 +51,7 @@ if lx.eval('tool.set falloff.linear ? ') == 'on':
         lx.eval('falloff.axisAutoSize axis:2')
         lx.eval('falloff.autoSize')
         
-## <----( Cylinder FallOff )----> ##
+# <----( Cylinder FallOff )----> #
 if lx.eval('tool.set falloff.cylinder ? ') == 'on':
     lx.eval('tool.set falloff.cylinder on')
     FallOff_Mode = 1

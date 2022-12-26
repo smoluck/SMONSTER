@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_SelectImageMaps_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 # 
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      12/08/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.SelectImageMaps"
 # smo.GC.SelectImageMaps 0
+
 
 class SMO_GC_SelectImageMaps_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -30,6 +33,7 @@ class SMO_GC_SelectImageMaps_Cmd(lxu.command.BasicCommand):
         self.basic_SetFlags (2, lx.symbol.fCMDARG_OPTIONAL)
         self.dyna_Add("Effect Mode", lx.symbol.sTYPE_INTEGER)
         self.basic_SetFlags (3, lx.symbol.fCMDARG_OPTIONAL)
+
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
     
@@ -59,7 +63,7 @@ class SMO_GC_SelectImageMaps_Cmd(lxu.command.BasicCommand):
         
         
         
-        ############### 4 ARGUMENTS ###############
+        # ------------- ARGUMENTS ------------- #
         # 0 = Select the image
         # 1 = Create it
         ActionMode = self.dyna_Bool (0)
@@ -82,7 +86,7 @@ class SMO_GC_SelectImageMaps_Cmd(lxu.command.BasicCommand):
         # 5 = Object ID Map
         # 6 = Thickness Map
         EffectMode = self.dyna_Int (3)
-        ###########################################
+        # ------------------------------------- #
         
         
         

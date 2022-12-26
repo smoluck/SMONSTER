@@ -1,6 +1,8 @@
 # python
 
-import lx, lxifc, lxu.command
+import lx
+import lxifc
+import lxu.command
 
 CMD_NAME = 'smo.CAD.RemappingFCL'
 

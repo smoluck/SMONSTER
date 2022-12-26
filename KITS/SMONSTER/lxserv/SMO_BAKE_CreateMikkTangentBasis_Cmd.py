@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_BAKE_CreateMikkTangentBasis_Cmd.py
 # Version:      1.20
 #
@@ -7,15 +7,18 @@
 #               Select the LowPoly meshes and Create MikkTangent Basis Map.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Modified:     09/07/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import modo, lx, lxifc, lxu.command, lxu.select, subprocess, os
+import lx
+import lxu.command
+import lxu.select
 
 Cmd_Name = "smo.BAKE.CreateMikkTangentBasis"
+
 
 class SMO_BAKE_CreateMikkTangentBasis_Cmd(lxu.command.BasicCommand):
     def __init__(self):

@@ -1,9 +1,10 @@
 # python
 
-import lx, lxifc, lxu.command
+import lx
+import lxifc
+import lxu.command
 
 CMD_NAME = 'smo.CB.RemappingFCL'
-
 
 FORMS = [
     {
@@ -26,16 +27,17 @@ FORMS = [
 
 ]
 
+
 # max = len(FORMS)
 # lx.out(max)
 
 def list_commands():
     fcl = []
-    for n, form in enumerate(sorted(FORMS, key=lambda k: k['label']) ):
+    for n, form in enumerate(sorted(FORMS, key=lambda k: k['label'])):
         fcl.append("smo.labeledPopover {%s} {%s} {%s}" % (form["cmd"], form["label"], form["recommended"]))
         fcl.append("smo.labeledMapKey {%s} {%s}" % (form["cmd"], form["label"]))
 
-        if n < len(FORMS)-1:
+        if n < len(FORMS) - 1:
             fcl.append('- ')
 
     return fcl
@@ -51,7 +53,7 @@ class SMO_COLOR_BAR_KeymapCmdListClass(lxifc.UIValueHints):
     def uiv_FormCommandListCount(self):
         return len(self._items)
 
-    def uiv_FormCommandListByIndex(self,index):
+    def uiv_FormCommandListByIndex(self, index):
         return self._items[index]
 
 
@@ -66,10 +68,11 @@ class SMO_CB_KeymapCmdClass(lxu.command.BasicCommand):
         if index == 0:
             return SMO_COLOR_BAR_KeymapCmdListClass(list_commands())
 
-    def cmd_Execute(self,flags):
+    def cmd_Execute(self, flags):
         pass
 
-    def cmd_Query(self,index,vaQuery):
+    def cmd_Query(self, index, vaQuery):
         pass
+
 
 lx.bless(SMO_CB_KeymapCmdClass, CMD_NAME)

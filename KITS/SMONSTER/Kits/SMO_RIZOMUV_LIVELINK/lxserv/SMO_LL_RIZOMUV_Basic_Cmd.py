@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:             SMO_LL_RIZOMUV_Basic_Cmd.py
 # Version:          1.95
 #
@@ -10,11 +10,11 @@
 #                   (original file overwritted by RizomUV).
 #
 # Author:           Franck ELISABETH
-# Website:          http://www.smoluck.com
+# Website:          https://www.smoluck.com
 #
 # Modified:         22/05/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 #!/usr/bin/env python
 
@@ -25,7 +25,8 @@ Cmd_Name = "smo.LL.RIZOMUV.Basic"
 class SMO_LL_RIZOMUV_Basic_Cmd (lxu.command.BasicCommand):
     def __init__ (self):
         lxu.command.BasicCommand.__init__ (self)
-        
+
+        self.modo_ver = int(lx.eval ('query platformservice appversion ?'))
         self.scrp_svc = lx.service.ScriptSys ()
         self.sel_svc = lx.service.Selection ()
         
@@ -55,7 +56,7 @@ class SMO_LL_RIZOMUV_Basic_Cmd (lxu.command.BasicCommand):
     
     # Validate the path to RizomUV is good.
     def validRizomUVPath (self, rizomuv_exe_path):
-        return ((rizomuv_exe_path != None) and os.path.lexists (rizomuv_exe_path) and (os.path.splitext (rizomuv_exe_path)[1].lower () == '.exe'))
+        return (rizomuv_exe_path != None) and os.path.lexists (rizomuv_exe_path) and (os.path.splitext (rizomuv_exe_path)[1].lower () == '.exe')
     
     def getUVSelection (self):
         uv_selection = []
@@ -81,7 +82,7 @@ class SMO_LL_RIZOMUV_Basic_Cmd (lxu.command.BasicCommand):
             except:
                 pass
                 
-            return (lx.eval1 ('user.value Smo_RizomUVPath ?') == rizomuv_exe_path)
+            return lx.eval1 ('user.value Smo_RizomUVPath ?') == rizomuv_exe_path
         return False
     
     # Ask the user for the path to RizomUV.
@@ -159,7 +160,6 @@ class SMO_LL_RIZOMUV_Basic_Cmd (lxu.command.BasicCommand):
         print(fbxSettings)
         
         # MODO version checks. Different versions have different FBX options.
-        self.modo_ver = int(lx.eval ('query platformservice appversion ?'))
         if self.modo_ver < 901:
             lx.out ('Requires Modo 901 or newer.')
             return
@@ -274,48 +274,49 @@ class SMO_LL_RIZOMUV_Basic_Cmd (lxu.command.BasicCommand):
                 lx.eval1('user.value sceneio.fbx.save.tangentsBitangents 0')
             except RuntimeError:
                 pass
-        if self.modo_ver > 1000 and self.modo_ver <= 1011:
+        # Same as : if self.modo_ver >= 1300 and self.modo_ver <= 1399:
+        if 1000 < self.modo_ver <= 1011:
             try:
                 lx.eval('user.value sceneio.fbx.save.triangulate 0')
                 lx.eval('user.value sceneio.fbx.save.meshSmoothing 1')
             except RuntimeError:
                 pass
-        if self.modo_ver >= 1012 and self.modo_ver <= 1099:
+        if 1012 <= self.modo_ver <= 1099:
             try:
                 lx.eval('user.value sceneio.fbx.save.surfaceRefining FBXExportSubDiv')
             except RuntimeError:
                 pass
-        if self.modo_ver >= 1100 and self.modo_ver <= 1199:
-            try:
-                lx.eval('user.value sceneio.fbx.save.surfaceRefining FBXExportSubDiv')
-                lx.eval('user.value sceneio.fbx.save.format 4')
-            except RuntimeError:
-                pass
-        if self.modo_ver >= 1200 and self.modo_ver <= 1299:
+        if 1100 <= self.modo_ver <= 1199:
             try:
                 lx.eval('user.value sceneio.fbx.save.surfaceRefining FBXExportSubDiv')
                 lx.eval('user.value sceneio.fbx.save.format 4')
             except RuntimeError:
                 pass
-        if self.modo_ver >= 1300 and self.modo_ver <= 1399:
+        if 1200 <= self.modo_ver <= 1299:
             try:
                 lx.eval('user.value sceneio.fbx.save.surfaceRefining FBXExportSubDiv')
                 lx.eval('user.value sceneio.fbx.save.format 4')
             except RuntimeError:
                 pass
-        if self.modo_ver >= 1400 and self.modo_ver <= 1499:
+        if 1300 <= self.modo_ver <= 1399:
             try:
                 lx.eval('user.value sceneio.fbx.save.surfaceRefining FBXExportSubDiv')
                 lx.eval('user.value sceneio.fbx.save.format 4')
             except RuntimeError:
                 pass
-        if self.modo_ver >= 1500 and self.modo_ver <= 1699:
+        if 1400 <= self.modo_ver <= 1499:
+            try:
+                lx.eval('user.value sceneio.fbx.save.surfaceRefining FBXExportSubDiv')
+                lx.eval('user.value sceneio.fbx.save.format 4')
+            except RuntimeError:
+                pass
+        if 1500 <= self.modo_ver <= 1699:
             try:
                 lx.eval('user.value sceneio.fbx.save.surfaceRefining FBXExportSubDiv')
                 lx.eval('user.value sceneio.fbx.save.format FBX2013')
             except RuntimeError:
                 pass
-        if self.modo_ver >= 1510 and self.modo_ver <= 1699:
+        if 1510 <= self.modo_ver <= 1699:
             try:
                 lx.eval('user.value sceneio.fbx.save.embedMedia false')
             except RuntimeError:

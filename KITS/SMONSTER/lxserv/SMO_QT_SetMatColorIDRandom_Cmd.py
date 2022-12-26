@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_QT_SetMatColorIDRandom_Cmd.py
 # Version:      1.00
 #
@@ -8,16 +8,19 @@
 #               Named the new Mat using "ColorID" as Prefix.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      19/01/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import modo, lx, lxu
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.QT.SetMatColorIDRandom"
 # smo.QT.SetMatColorIDRandom
+
 
 class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -87,9 +90,9 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
         # ItemUniqueName = lx.eval('query layerservice layer.id ? main')  # store the Unique name of the current mesh layer
         # lx.out('Item Unique Name:', ItemUniqueName)
 
-        ################################
-        # <----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         lx.eval("user.defNew name:SceneConstantID type:integer life:momentary")
         lx.eval("user.defNew name:ColorID_Suffix type:string life:momentary")
         lx.eval("user.defNew name:ColorIDMatName type:string life:momentary")
@@ -115,7 +118,7 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
         PrstColorIDGrey = 15
         PrstColorIDWhite = 16
 
-        ###########  Check User Values  ###########
+        # ---------  Check User Values  ------- #
         GC_OriginalModoMaterialOverride = bool(lx.eval('user.value SMO_UseVal_GC_OriginalModoMaterialOverride ?'))
         GC_MatDefaultSmooAngle = lx.eval('user.value SMO_UseVal_GC_MatDefaultSmooAngle ?')
         GC_WeightByPolyArea = lx.eval('user.value SMO_UseVal_GC_WeightByPolyArea ?')
@@ -290,43 +293,43 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
 
         ###### Modo
         if GC_MatShadingModel < 4:
-            if GC_OriginalModoMaterialOverride == False:
+            if not GC_OriginalModoMaterialOverride:
                 lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
-            if GC_OriginalModoMaterialOverride == True:
+            if GC_OriginalModoMaterialOverride:
                 lx.eval('poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false type:default' % (ColorIDMatName, R, G, B))
                 lx.eval('material.new {} true false'.format(ColorIDMatName))
             SetColorOnNode(IDNum)
         ###### Unreal
         if GC_MatShadingModel == 4:
-            if GC_OriginalModoMaterialOverride == False:
+            if not GC_OriginalModoMaterialOverride:
                 lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
-            if GC_OriginalModoMaterialOverride == True:
+            if GC_OriginalModoMaterialOverride:
                 lx.eval('poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false type:unreal' % (ColorIDMatName, R, G, B))
                 lx.eval('material.new {} true false unreal'.format(ColorIDMatName))
             SetColorOnNode(IDNum)
         ###### Unity
         if GC_MatShadingModel == 5:
-            if GC_OriginalModoMaterialOverride == False:
+            if not GC_OriginalModoMaterialOverride:
                 lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
-            if GC_OriginalModoMaterialOverride == True:
+            if GC_OriginalModoMaterialOverride:
                 lx.eval(
                     'poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false false type:unity' % (ColorIDMatName, R, G, B))
                 lx.eval('material.new {} true false unity'.format(ColorIDMatName))
             SetColorOnNode(IDNum)
         ###### glTF
         if GC_MatShadingModel == 6:
-            if GC_OriginalModoMaterialOverride == False:
+            if not GC_OriginalModoMaterialOverride:
                 lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
-            if GC_OriginalModoMaterialOverride == True:
+            if GC_OriginalModoMaterialOverride:
                 lx.eval(
                     'poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false false type:gltf' % (ColorIDMatName, R, G, B))
                 lx.eval('material.new {} true false gltf'.format(ColorIDMatName))
             SetColorOnNode(IDNum)
         ###### AxF
         if GC_MatShadingModel == 7:
-            if GC_OriginalModoMaterialOverride == False:
+            if not GC_OriginalModoMaterialOverride:
                 lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
-            if GC_OriginalModoMaterialOverride == True:
+            if GC_OriginalModoMaterialOverride:
                 lx.eval('poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false type:axf' % (ColorIDMatName, R, G, B))
                 lx.eval('material.new {} true false axf'.format(ColorIDMatName))
             SetColorOnNode(IDNum)
@@ -441,7 +444,7 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
                             # print(cname)
                             # print(cid)
                             lx.eval('smo.GC.DeselectAll')
-                indddex = indddex + 1
+                indddex += 1
             del indddex
             del MatchingGrpMask
             return
@@ -513,7 +516,7 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
         lx.eval('select.type polygon')
         lx.eval('select.drop polygon')
 
-        if ByItemMode == True:
+        if ByItemMode:
             lx.eval('select.type item')
 
         # elif TotalSafetyCheck != TotalSafetyCheckTrueValue:

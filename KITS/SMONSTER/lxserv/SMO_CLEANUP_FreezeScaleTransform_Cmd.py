@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------------
+"""
 # Name:         SMO_CLEANUP_FreezeScaleTransform_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,18 @@
 #               it retain Instances scale to 100 percent or -100 percent as well.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      02/06/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------------
+"""
 
-
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.CLEANUP.FreezeScaleTransform"
+
 
 class SMO_CLEANUP_FreezeScaleTransform_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -116,7 +118,7 @@ class SMO_CLEANUP_FreezeScaleTransform_Cmd(lxu.command.BasicCommand):
                 except:
                     InstState = False
                 print(InstState)
-                if InstState == True:
+                if InstState:
                     InstanceList = lxu.select.ItemSelection().current()
                     if InstanceList > 0:
                         for instance in InstanceList:
@@ -155,19 +157,19 @@ class SMO_CLEANUP_FreezeScaleTransform_Cmd(lxu.command.BasicCommand):
 
                             print('------ Instances changed ------')
                             if InstchanSclX != 1.0 or InstchanSclX != -1.0:
-                                if InstPositiveSclX == True:
+                                if InstPositiveSclX:
                                     lx.eval('transform.channel scl.X 1.0')
                                 else:
                                     lx.eval('transform.channel scl.X -1.0')
 
                             if InstchanSclY != 1.0 or InstchanSclY != -1.0:
-                                if InstPositiveSclY == True:
+                                if InstPositiveSclY:
                                     lx.eval('transform.channel scl.Y 1.0')
                                 else:
                                     lx.eval('transform.channel scl.Y -1.0')
 
                             if InstchanSclZ != 1.0 or InstchanSclZ != -1.0:
-                                if InstPositiveSclZ == True:
+                                if InstPositiveSclZ:
                                     lx.eval('transform.channel scl.Z 1.0')
                                 else:
                                     lx.eval('transform.channel scl.Z -1.0')

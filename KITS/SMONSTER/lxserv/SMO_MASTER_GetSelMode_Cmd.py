@@ -1,21 +1,23 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_MASTER_GetSelMode_Cmd.py
 # Version:      1.0
 #
 # Purpose:      Give current Selection Mode Type and set it to String User Value.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      19/10/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
 
 Cmd_Name = "smo.Master.GetSelMode"
 # smo.Master.GetSelMode
+
 
 class SMO_MASTER_GetSelMode_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -64,13 +66,13 @@ class SMO_MASTER_GetSelMode_Cmd(lxu.command.BasicCommand):
 
         Value = lx.eval('user.value SMO_UseVal_MASTER_GetSelMode ?')
         print(Value)
-        if (lx.eval('select.typeFrom typelist:vertex;polygon;edge;item;ptag ?')) == True:
+        if lx.eval('select.typeFrom typelist:vertex;polygon;edge;item;ptag ?'):
             Value = "Vertex"
-        if (lx.eval('select.typeFrom typelist:edge;vertex;polygon;item ?')) == True:
+        if lx.eval('select.typeFrom typelist:edge;vertex;polygon;item ?'):
             Value = "Edge"
-        if (lx.eval('select.typeFrom typelist:polygon;vertex;edge;item ?')) == True:
+        if lx.eval('select.typeFrom typelist:polygon;vertex;edge;item ?'):
             Value = "Polygon"
-        if (lx.eval('select.typeFrom typelist:item;pivot;center;edge;polygon;vertex;ptag ?')) == True:
+        if lx.eval('select.typeFrom typelist:item;pivot;center;edge;polygon;vertex;ptag ?'):
             Value = "Item"
 
         va = lx.object.ValueArray()

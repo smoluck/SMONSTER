@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_ConvertToHardEdgeWorkflowUsingGeoBoundaryAsHardEdge_Cmd.py
 # Version:      1.0
 #
@@ -9,16 +9,19 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      11/05/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.ConvertToHardEdgeWorkflowUsingGeoBoundaryAsHardEdge"
 # smo.GC.ConvertToHardEdgeWorkflowUsingGeoBoundaryAsHardEdge 1
+
 
 class SMO_GC_ConvertToHardEdgeWorkflowUsingGeoBoundaryAsHardEdge_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -72,7 +75,7 @@ class SMO_GC_ConvertToHardEdgeWorkflowUsingGeoBoundaryAsHardEdge_Cmd(lxu.command
             if KeepVNrmData:
                 lx.eval('hardedge.convert true false')
             polys_count = lx.eval1('query layerservice poly.N ? all')
-            if (polys_count > 0):
+            if polys_count > 0:
                 lx.eval('@AddBoundary.py')
                 lx.eval('hardedge.set hard clear:true')
                 lx.eval('select.drop edge')

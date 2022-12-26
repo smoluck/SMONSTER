@@ -1,21 +1,22 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_RemoveCoPlanar6Side_AUDIO.py
 # Version: 1.0
 #
 # Purpose:      Select the Mesh in Item Mode
-#               It only cleanup Polygons that are perfectly perpendicular to X Y Z Axis in both direction
-#               (Some of the code is related to the Sceneca  LazySelect script. Thanks to him for let me integrate it here)
+#               It only cleanup Polygons that are perfectly perpendicular
+#               to X Y Z Axis in both direction
+#               (Some of the code is related to the Seneca LazySelect script. Thanks to him for let me integrate it here)
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/05/2018
 # Modified:		03/06/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import modo, lx
+import lx
 
 OriginalTimeCurrentOut = lx.eval("time.range current out:?")
 # lx.out('Original Time Current Out: {%s}' % OriginalTimeCurrentOut )

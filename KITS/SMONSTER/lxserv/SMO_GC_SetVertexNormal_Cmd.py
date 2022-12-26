@@ -1,23 +1,26 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_SetVertexNormal_Cmd
 # Version:      1.0
 #
 # Purpose:      This script is designed to:
-#               Set Vertex Normals on current Selection using user preferences VertexNormalMap name string.
+#               Set Vertex Normals on current Selection using user
+#               preferences VertexNormalMap name string.
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/05/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
 
 Cmd_Name = "smo.GC.SetVertexNormal"
 # smo.GC.SetVertexNormal
+
 
 class SMO_GC_SetVertexNormal_Cmd(lxu.command.BasicCommand):
     def __init__(self):

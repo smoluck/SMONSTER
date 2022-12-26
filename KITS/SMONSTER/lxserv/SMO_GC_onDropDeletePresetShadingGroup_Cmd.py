@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_onDropDeletePresetShadingGroup_Cmd.py
 # Version:      1.0
 #
@@ -9,13 +9,15 @@
 #               (Attach SMO_GC_onDrop_RotateTool.py script to the selected MeshPreset file via PB_View and smo.GC.AttachScriptToPreset command.)
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      01/10/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu.select, modo
+import lx
+import lxu.select
+import modo
 
 Cmd_Name = "smo.GC.OnDropDeletePresetShadingGroup"
 

@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------------
+"""
 # Name:         SMO_GC_Setup_MoveRotateCenterToSelection_Cmd.py
 # Version:      1.0
 #
@@ -7,17 +7,19 @@
 #               Move and / or Rotate the Center to Selection center (use it in item mode or Component mode).
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      21/05/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------------
+"""
 
-
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.Setup.MoveRotateCenterToSelection"
 # smo.GC.Setup.MoveRotateCenterToSelection 1 1
+
 
 class SMO_GC_Setup_MoveRotateCenterToSelection_Cmd(lxu.command.BasicCommand):
     def __init__(self):

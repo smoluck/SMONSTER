@@ -1,24 +1,26 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_UV_FixFlipped.py
-# Version: 1.0
+# Version:      1.0
 #
-# Purpose: This script is designed to
-# Unwrap the current Polygon Selection
-# on X Axis.
+# Purpose:      This script is designed to
+#               Unwrap the current Polygon Selection
+#               on X Axis.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      01/07/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo
+import lx
+
 scene = modo.scene.current()
 mesh = scene.selectedByType('mesh')[0]
 
-############### 1 ARGUMENT ###############
+# ------------- ARGUMENTS ------------- #
 args = lx.args()
 lx.out(args)
 # Flip U = 0
@@ -27,14 +29,14 @@ FlipAxes = int(args[0])
 lx.out('Desired flip axes:',FlipAxes)
 ############### ARGUMENT ###############
 
-# ############### 1 ARGUMENT Test ###############
+# # ------------- ARGUMENTS Test
 # FlipAxes = 0
 # ############### ARGUMENT ###############
 
 
-################################
-#<----[ DEFINE VARIABLES ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE VARIABLES )----> #
+# ------------------------------ #
 #####--- Define user value for all the different SafetyCheck --- START ---#####
 #####
 lx.eval("user.defNew name:SMO_SafetyCheck_PolygonModeEnabled type:integer life:momentary")
@@ -47,9 +49,9 @@ lx.eval("user.defNew name:SMO_SafetyCheck_min1PolygonSelected type:integer life:
 lx.out('Start of SMO_UV_FixFlipped Script')
 
 
-###############################################
-####### SAFETY CHECK 1 - UVMap Selected #######
-###############################################
+# ----------------------------------------- #
+# <---( SAFETY CHECK 1 )---> UVMap Selected #
+# ----------------------------------------- #
 
 ##########################
 lx.out('<------------- START -------------->')
@@ -88,7 +90,7 @@ lx.out('<------------- END -------------->')
 ####### SAFETY CHECK 2 -  Selection Mode #######
 ################################################
 
-#####--------------------  safety check 2: Component Selection Mode type --- START --------------------#####
+# Component Selection Mode type --- START
 
 selType = ""
 # Used to query layerservice for the list of polygons, edges or vertices.
@@ -142,7 +144,7 @@ else:
     
     lx.out('script Running: Item Component Selection Mode')
 
-#####--------------------  safety check 2: Component Selection Mode type --- END --------------------#####
+# Component Selection Mode type --- END
 
 
 
@@ -188,11 +190,11 @@ lx.out('Current Value',TotalSafetyCheck)
 #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
 
 
-##############################
-## <----( Main Macro )----> ##
-##############################
+# ------------------------ #
+# <----( Main Macro )----> #
+# ------------------------ #
 
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
 if TotalSafetyCheckTrueValue == TotalSafetyCheck :
     if CsPolys < 1:
         SMO_SafetyCheck_min1PolygonSelected = 0
@@ -217,4 +219,4 @@ elif TotalSafetyCheck != TotalSafetyCheckTrueValue:
         lx.out('No UV Island to Flip')
     
 lx.out('End of SMO_UV_FixFlipped Script')
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END

@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_CB_CycleColor_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 # to the corresponding color.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      04/11/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.CB.CycleColor"
 # smo.CB.CycleColor 1
+
 
 class SMO_CB_CycleColor_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -56,11 +59,11 @@ class SMO_CB_CycleColor_Cmd(lxu.command.BasicCommand):
         locators = scene.selectedByType(lx.symbol.sITYPE_LOCATOR)
         
         
-        # # ############### 2 ARGUMENTS Test ###############
+        # # # ------------- ARGUMENTS Test
         # DrawOption = 1
-        # # ############### ARGUMENTS ###############
+        # # # ------------- ARGUMENTS ------------- #
         
-        # ############### 2 ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
         args = lx.args()
         lx.out(args)
         # Draw Option OFF = 0 
@@ -69,7 +72,7 @@ class SMO_CB_CycleColor_Cmd(lxu.command.BasicCommand):
         # Draw Option ON Shaded & Wireframe = 3
         DrawOption = DrawOpt
         lx.out('Desired Draw Option Mode:',DrawOption)
-        # ############### ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
         
         
         
@@ -95,9 +98,9 @@ class SMO_CB_CycleColor_Cmd(lxu.command.BasicCommand):
         
         
         
-        ################################
-        #<----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
@@ -127,11 +130,11 @@ class SMO_CB_CycleColor_Cmd(lxu.command.BasicCommand):
         
         
         
-        ##############################
-        ####### SAFETY CHECK 2 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 2 )---> #
+        # -------------------------- #
         
-        #####--------------------  safety check 2: Component Selection Mode type --- START --------------------#####
+        # Component Selection Mode type --- START
         
         selType = ""
         # Used to query layerservice for the list of polygons, edges or vertices.
@@ -185,14 +188,14 @@ class SMO_CB_CycleColor_Cmd(lxu.command.BasicCommand):
             
             # lx.out('script Running: Item Component Selection Mode')
         
-        #####--------------------  safety check 2: Component Selection Mode type --- END --------------------#####
-        #####--------------------  safety check 2: Component Selection Mode type --- END --------------------#####
+        # Component Selection Mode type --- END
+        # Component Selection Mode type --- END
         
         # lx.out('-------------------------------')
         # lx.out('Start of SMO_DIS_ItemColor Script')
         
         
-        #####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- START --------------------#####
+        #####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- START
         if SMO_SafetyCheckIteCol_VertexModeEnabled == 1:
             lx.eval('select.type item')
         
@@ -206,48 +209,49 @@ class SMO_CB_CycleColor_Cmd(lxu.command.BasicCommand):
             lx.eval('select.type item')
         
         
-        ##############################
-        ## <----( Main Macro )----> ##
-        ##############################
+        # ------------------------ #
+        # <----( Main Macro )----> #
+        # ------------------------ #
+
         CurrentItemListColor = lx.eval('item.editorColor ?')
         # lx.out('Current Item Color: ', CurrentItemListColor)
         
         
-        if CurrentItemListColor == 'none' :
+        if CurrentItemListColor == 'none':
             ItemListColor = 1
-        if CurrentItemListColor == 'red' :
+        if CurrentItemListColor == 'red':
             ItemListColor = 2
-        if CurrentItemListColor == 'magenta' :
+        if CurrentItemListColor == 'magenta':
             ItemListColor = 3
-        if CurrentItemListColor == 'pink' :
+        if CurrentItemListColor == 'pink':
             ItemListColor = 4
-        if CurrentItemListColor == 'brown' :
+        if CurrentItemListColor == 'brown':
             ItemListColor = 5
-        if CurrentItemListColor == 'orange' :
+        if CurrentItemListColor == 'orange':
             ItemListColor = 6
-        if CurrentItemListColor == 'yellow' :
+        if CurrentItemListColor == 'yellow':
             ItemListColor = 7
-        if CurrentItemListColor == 'green' :
+        if CurrentItemListColor == 'green':
             ItemListColor = 8
-        if CurrentItemListColor == 'lightgreen' :
+        if CurrentItemListColor == 'lightgreen':
             ItemListColor = 9
-        if CurrentItemListColor == 'cyan' :
+        if CurrentItemListColor == 'cyan':
             ItemListColor = 10
-        if CurrentItemListColor == 'blue' :
+        if CurrentItemListColor == 'blue':
             ItemListColor = 11
-        if CurrentItemListColor == 'lightblue' :
+        if CurrentItemListColor == 'lightblue':
             ItemListColor = 12
-        if CurrentItemListColor == 'ultramarine' :
+        if CurrentItemListColor == 'ultramarine':
             ItemListColor = 13
-        if CurrentItemListColor == 'purple' :
+        if CurrentItemListColor == 'purple':
             ItemListColor = 14
-        if CurrentItemListColor == 'lightpurple' :
+        if CurrentItemListColor == 'lightpurple':
             ItemListColor = 15
-        if CurrentItemListColor == 'darkgrey' :
+        if CurrentItemListColor == 'darkgrey':
             ItemListColor = 16
-        if CurrentItemListColor == 'grey' :
+        if CurrentItemListColor == 'grey':
             ItemListColor = 17
-        if CurrentItemListColor == 'white' :
+        if CurrentItemListColor == 'white':
             ItemListColor = 0
         
         lx.out('expected Item Color:', ItemListColor)
@@ -621,7 +625,7 @@ class SMO_CB_CycleColor_Cmd(lxu.command.BasicCommand):
         
         # lx.out('End of SMO_DIS_ItemColor Script')
         # lx.out('-------------------------------')
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
     def cmd_Query(self, index, vaQuery):

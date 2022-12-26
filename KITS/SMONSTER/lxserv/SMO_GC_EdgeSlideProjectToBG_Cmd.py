@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_EdgeSlideProjectToBG_Cmd.py
 # Version:      1.0
 #
@@ -7,17 +7,22 @@
 #               Extend the current Opened Boundary Edge Loop to nearest BG Mesh using BG Constraint.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      04/12/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo, sys
 from math import degrees
+
+import lx
+import lxu
+import modo
+import sys
 
 Cmd_Name = "smo.GC.EdgeSlideProjectToBG"
 # smo.GC.EdgeSlideProjectToBG
+
 
 class SMO_GC_EdgeSlideProjectToBG_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -77,7 +82,7 @@ class SMO_GC_EdgeSlideProjectToBG_Cmd(lxu.command.BasicCommand):
         TransfVNormBG = bool(lx.eval('user.value SMO_UseVal_GC_ProjectNFuseTransfVNorm ?'))
         # lx.out(TransfVNormBG)
 
-        if self.SelModeEdge == True:
+        if self.SelModeEdge:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
             lx.eval('select.type edge')
             lx.eval('select.createSet GC_EdgeSlideToBGSource')
@@ -99,16 +104,16 @@ class SMO_GC_EdgeSlideProjectToBG_Cmd(lxu.command.BasicCommand):
         def rad(a):
             return [degrees(a)]
 
-        # ############### 1 ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
         # args = lx.args()
         # #lx.out(args)
         EdgeSlideValue = -2
         # lx.out('Edge Slide Value:', EdgeSlideValue)
-        # ############### ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
 
-        ################################
-        # <----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
 
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
@@ -122,10 +127,10 @@ class SMO_GC_EdgeSlideProjectToBG_Cmd(lxu.command.BasicCommand):
         #####
         #####--- Define user value for all the different SafetyCheck --- END ---#####
 
-        ##############################
-        ####### SAFETY CHECK 1 #######
-        ##############################
-        #####--------------------  safety check 1: Polygon Selection Mode enabled --- START --------------------#####
+        # -------------------------- #
+        # <---( SAFETY CHECK 1 )---> #
+        # -------------------------- #
+        # --------------------  safety check 1: Polygon Selection Mode enabled --- START
 
         selType = ""
         # Used to query layerservice for the list of polygons, edges or vertices.
@@ -174,7 +179,7 @@ class SMO_GC_EdgeSlideProjectToBG_Cmd(lxu.command.BasicCommand):
             SMO_SafetyCheck_PolygonModeEnabled = 0
             SMO_SafetyCheck_EdgeModeEnabled = 0
             # lx.out('script Running: Correct Item Selection Mode')
-        #####--------------------  safety check 1: Polygon Selection Mode enabled --- END --------------------#####
+        # --------------------  safety check 1: Polygon Selection Mode enabled --- END
 
         #####-------------------------------------------------------------------------------#####
         ####### Track Mouse Over Selection. Is there a polygon under Mouse and select it. #######
@@ -211,7 +216,7 @@ class SMO_GC_EdgeSlideProjectToBG_Cmd(lxu.command.BasicCommand):
             except:
                 success = False
             # print(success)
-            if success == True:
+            if success:
                 scene.select(BGmesh)
                 lx.eval('select.type polygon')
                 lx.eval('select.3DElementUnderMouse')
@@ -250,7 +255,7 @@ class SMO_GC_EdgeSlideProjectToBG_Cmd(lxu.command.BasicCommand):
         items = scene.selected
         # lx.out('Processed Mesh Item:', items)
 
-        if self.SelModeEdge == True:
+        if self.SelModeEdge:
             lx.eval('select.type edge')
             lx.eval('select.useSet GC_EdgeSlideToBGSource replace')
             lx.eval('select.type item')
@@ -266,19 +271,19 @@ class SMO_GC_EdgeSlideProjectToBG_Cmd(lxu.command.BasicCommand):
             RefSystemActive = False
         # print(RefSystemActive)
 
-        if RefSystemActive == False:
-            lx.eval('item.refSystem %s' % (items[0].id))
+        if not RefSystemActive:
+            lx.eval('item.refSystem %s' % items[0].id)
 
         # target_positions = selected_mesh.transforms.position.get()
         # #lx.out(target_positions)
         # target_rotations = selected_mesh.transforms.rotation.get()
         # #lx.out(target_rotations)
 
-        ##############################
-        ####### SAFETY CHECK 2 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 2 )---> #
+        # -------------------------- #
         CsEdges = len(selected_mesh.geometry.edges.selected)
-        #####--------------------  safety check 2: at Least 1 Edge is selected --- START --------------------#####
+        # at Least 1 Edge is selected --- START
         # lx.out('Count Selected Edge', CsEdges)
 
         if CsEdges < 1:
@@ -293,7 +298,7 @@ class SMO_GC_EdgeSlideProjectToBG_Cmd(lxu.command.BasicCommand):
         elif CsEdges >= 1:
             SMO_SafetyCheck_min1EdgeSelected = 1
             # lx.out('script running: right amount of Edges in selection')
-        #####--------------------  safety check 2: at Least 1 Edge is selected --- END --------------------#####
+        # at Least 1 Edge is selected --- END
 
         #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
         #####
@@ -313,10 +318,10 @@ class SMO_GC_EdgeSlideProjectToBG_Cmd(lxu.command.BasicCommand):
         Modo_ver = int(lx.eval('query platformservice appversion ?'))
         # print('Modo Version:', Modo_ver)
 
-        ##############################
-        ## <----( Main Macro )----> ##
-        ##############################
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+        # ------------------------ #
+        # <----( Main Macro )----> #
+        # ------------------------ #
+        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
         # Isolate the 2 Targeted Meshes (FG and BG)
         lx.eval('select.type item')
         scene.select(selected_mesh)
@@ -382,7 +387,7 @@ class SMO_GC_EdgeSlideProjectToBG_Cmd(lxu.command.BasicCommand):
             lx.eval('select.nextMode')
             lx.eval('select.type edge')
 
-        if RefSystemActive == False:
+        if not RefSystemActive:
             lx.eval('item.refSystem {}')
 
         # if VeNomItemAsRotation == True :
@@ -406,7 +411,7 @@ class SMO_GC_EdgeSlideProjectToBG_Cmd(lxu.command.BasicCommand):
             lx.eval('select.type item')
             lx.eval('unhide')
             lx.eval('smo.GC.DeselectAll')
-            if FGMeshAndBGMeshSame == True:
+            if FGMeshAndBGMeshSame:
                 scene.select(BGmesh)
                 lx.eval('select.type item')
                 lx.eval('!delete')

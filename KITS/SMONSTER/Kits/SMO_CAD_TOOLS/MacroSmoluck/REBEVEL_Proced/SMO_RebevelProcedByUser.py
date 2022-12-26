@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_RebevelProcedByUser
 # Version:      1.0
 #
@@ -9,20 +9,20 @@
 #               rebevel on the selected patch
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      03/01/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 import lx, modo
 
 scene = modo.scene.current()
 mesh = scene.selectedByType('mesh')[0]
 
 
-################################
-#<----[ DEFINE VARIABLES ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE VARIABLES )----> #
+# ------------------------------ #
 
 #####--- Define user value for all the different SafetyCheck --- START ---#####
 #####
@@ -80,11 +80,11 @@ if User_Pref_PasteDeselect == 1:
 ################################################
 
 
-##############################
-####### SAFETY CHECK 1 #######
-##############################
+# -------------------------- #
+# <---( SAFETY CHECK 1 )---> #
+# -------------------------- #
 
-#####-------------------- safety check 1 : Only One Item Selected --- START --------------------#####
+# --------------------  safety check 1 : Only One Item Selected --- START
 ItemCount = lx.eval('query layerservice layer.N ? fg')
 lx.out('Selected Item count:', ItemCount)
 
@@ -102,15 +102,15 @@ else:
     SMO_SafetyCheck_Only1MeshItemSelected = 1
     lx.out('Only One Item Selected:', SMO_SafetyCheck_Only1MeshItemSelected)
     lx.out('script running: right amount of Mesh Item selected')
-#####-------------------- safety check 1 : Only One Item Selected --- END --------------------#####
+# --------------------  safety check 1 : Only One Item Selected --- END
 
 
 
-##############################
-####### SAFETY CHECK 2 #######
-##############################
+# -------------------------- #
+# <---( SAFETY CHECK 2 )---> #
+# -------------------------- #
 
-#####--------------------  safety check 2: Polygon Selection Mode enabled --- START --------------------#####
+# Polygon Selection Mode enabled --- START
 selType = ""
 # Used to query layerservice for the list of polygons, edges or vertices.
 attrType = ""
@@ -160,15 +160,15 @@ else:
     lx.eval('+dialog.open')
     lx.out('script Stopped: You must be in Polygon Mode to run that script')
     sys.exit
-#####--------------------  safety check 2: Polygon Selection Mode enabled --- END --------------------#####
+# Polygon Selection Mode enabled --- END
 
 
 
-##############################
-####### SAFETY CHECK 3 #######
-##############################
+# -------------------------- #
+# <---( SAFETY CHECK 3 )---> #
+# -------------------------- #
 
-#####--------------------  safety check 3: at Least 3 Polygons are selected --- START --------------------#####
+# at Least 3 Polygons are selected --- START
 try:
     #####--- Get current selected polygon count --- START ---#####
     #####
@@ -191,7 +191,7 @@ try:
     elif CsPolys >= 3:
         SMO_SafetyCheck_min3PolygonSelected = 1
         lx.out('script running: right amount of polygons in selection')
-    #####--------------------  safety check 3: at Least 3 Polygons are selected --- END --------------------#####
+    # at Least 3 Polygons are selected --- END
 except:
         sys.exit
         
@@ -207,11 +207,11 @@ lx.out('SafetyCheck Current Value',TotalSafetyCheck)
 
 
 
-##############################
-## <----( Main Macro )----> ##
-##############################
+# -------------------------- #
+# <----( Main Macro )----> #
+# -------------------------- #
 
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
 if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     # Main Rebevel Macro
 
@@ -492,4 +492,4 @@ if User_Pref_PasteDeselectChangedState == 1 :
 ########################################################
 
 lx.out('End of Rebevel Script')
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END

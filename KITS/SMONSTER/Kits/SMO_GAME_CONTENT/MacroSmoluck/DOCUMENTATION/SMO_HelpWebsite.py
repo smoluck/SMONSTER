@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_HelpWebsiteCMD.py
 # Version:      1.0
 #
@@ -7,16 +7,16 @@
 #               open the Smoluck Help Website
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      03/03/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 lx.eval('layout.create width:1024 height:768 style:palette')
 lx.eval('viewport.restore {} false webView')
 lx.eval('select.viewport viewport:0 frame:4')
-lx.eval('webview.homePageURL "http://smoluck.com/"')
+lx.eval('webview.homePageURL "https://smoluck.com/"')
 lx.eval('webview.homePageAlways true')
 lx.eval('webview.goHome')
 

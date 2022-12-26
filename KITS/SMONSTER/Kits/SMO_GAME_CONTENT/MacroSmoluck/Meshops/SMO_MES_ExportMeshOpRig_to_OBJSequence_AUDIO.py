@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_ExportMeshOpRig_to_OBJSequence_AUDIO.py
 # Version: 1.0
 #
@@ -7,12 +7,12 @@
 # Select the MeshOp item and run. 
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/05/2018
 # Modified:		03/06/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo, lx
 

@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_SMONSTER_SetAllKeymapsToOn_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,18 @@
 #
 #
 # Author:       Franck ELISABETH (with the help of Pavel Efimov)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      26/03/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
 
 Cmd_Name = "smo.SMONSTER.SetAllKeymapsToOn"
 # smo.SMONSTER.SetAllKeymapsToOn
+
 
 class SMO_SMONSTER_SetAllKeymapsToOn_Cmd(lxu.command.BasicCommand):
     def __init__(self):

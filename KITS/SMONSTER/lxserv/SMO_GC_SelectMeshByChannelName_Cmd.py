@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_SelectMeshByChannelName_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #               select back the items that have that channel via rgument #2.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/07/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.SelectMeshByChannelName"
 # smo.GC.SelectMeshByChannelName TgLP 1
+
 
 class SMO_GC_SelectMeshByChannelName_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -52,17 +55,17 @@ class SMO_GC_SelectMeshByChannelName_Cmd(lxu.command.BasicCommand):
         return True
     
     def basic_Execute(self, msg, flags):
-        # # ############### 1 ARGUMENTS Test ###############
+        # # # ------------- ARGUMENTS Test
         # SearchStringArg = 'FBX_UDP3DSMAX'
-        # # ############### ARGUMENTS ###############
+        # # # ------------- ARGUMENTS ------------- #
         SearchString = self.dyna_String (0)
         Reselect = self.dyna_Int (1)
-        # # ############### 1 ARGUMENTS ###############
+        # # # ------------- ARGUMENTS ------------- #
         # args = lx.args()
         # lx.out(args)
         # SearchStringArg = SearchString
         # lx.out('Searched String chain:', SearchStringArg)
-        # # ############### ARGUMENTS ###############
+        # # # ------------- ARGUMENTS ------------- #
         
 
         scn = modo.scene.current()

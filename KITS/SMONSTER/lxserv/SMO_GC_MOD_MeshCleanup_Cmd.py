@@ -1,23 +1,29 @@
 # python
-# ---------------------------------------------
+"""
 # Name:         SMO_GC_MOD_MeshCleanup_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to:
-#               Do a Mesh Cleanup of the current Mesh (only visible components) using Vertex merge by distance in Arguments,
-#               As well it can MergeCoplanar Polygons if one polygon is selected and then remove All Colinear Vertex and finaly Triple the resulting Ngon.
+#               Do a Mesh Cleanup of the current Mesh (only visible components)
+#               using Vertex merge by distance in Arguments. As well it can
+#               MergeCoplanar Polygons if one polygon is selected and then remove
+#               All Colinear Vertex and finaly Triple the resulting Ngon.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      03/06/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.MOD.MeshCleanup"
-# smo.GC.MOD.MeshCleanup [2um] 1                # Using Square Brackets around values validate the use of units like "km", "m" , "cm", "mm", "um".
+# smo.GC.MOD.MeshCleanup [2um] 1
+# Using Square Brackets around values validate the use of units like "km", "m" , "cm", "mm", "um".
+
 
 class SMO_GC_MOD_MeshCleanup_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -61,17 +67,17 @@ class SMO_GC_MOD_MeshCleanup_Cmd(lxu.command.BasicCommand):
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
         mesh = scene.selectedByType('mesh')[0]
 
-        ################################
-        # <----[ DEFINE ARGUMENTS ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #
+        # ------------------------------ #
         Dist = self.dyna_Float(0)              # Width size
 
         MergeModeFlat = self.dyna_Int(1)
         # Expose the Result of the Arguments
         # lx.out(Value)
-        ################################
-        # <----[ DEFINE ARGUMENTS ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #
+        # ------------------------------ #
 
 
         # BugFix to preserve the state of the RefSystem (item at origin in viewport)
@@ -86,7 +92,7 @@ class SMO_GC_MOD_MeshCleanup_Cmd(lxu.command.BasicCommand):
         # print(RefSystemActive)
 
 
-        if RefSystemActive == True:
+        if RefSystemActive:
             lx.eval('item.refSystem {}')
 
 
@@ -142,9 +148,9 @@ class SMO_GC_MOD_MeshCleanup_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.type polygon')
                 lx.eval('smo.CAD.MergeCoplanarPoly 0 2')
 
-            ##############################
-            ## <----( Main Macro )----> ##
-            ##############################
+            # -------------------------- #
+            # <----( Main Macro )----> #
+            # -------------------------- #
             lx.eval('!vert.merge range:fixed keep:false dist:{%f} morph:false disco:false' % Dist)
             lx.eval('select.type item')
             lx.eval('!!mesh.cleanup floatingVertex:true onePointPolygon:true twoPointPolygon:true dupPointPolygon:true colinear:true faceNormal:true mergeVertex:false mergeDisco:true unifyPolygon:true forceUnify:true removeDiscoWeight:true')
@@ -156,17 +162,17 @@ class SMO_GC_MOD_MeshCleanup_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.convert polygon')
                 lx.eval('poly.triple')
 
-            if self.SelModePoly == True :
+            if self.SelModePoly:
                 lx.eval('select.type polygon')
-            if self.SelModeEdge == True :
+            if self.SelModeEdge:
                 lx.eval('select.type edge')
-            if self.SelModeVert == True :
+            if self.SelModeVert:
                 lx.eval('select.type vertex')
 
 
-            if RefSystemActive == False:
+            if not RefSystemActive:
                 lx.eval('item.refSystem {}')
-            if RefSystemActive == True:
+            if RefSystemActive:
                 lx.eval('item.refSystem %s' % CurrentRefSystemItem)
 
 

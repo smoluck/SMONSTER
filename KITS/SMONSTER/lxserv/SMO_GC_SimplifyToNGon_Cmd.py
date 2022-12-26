@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_SimplifyToNGon_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #               Via argument you can also update the HardEdges data for a better end result.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      15/06/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.SimplifyToNGon"
 # smo.GC.SimplifyToNGon 1
+
 
 class SMO_GC_SimplifyToNGon_Cmd(lxu.command.BasicCommand):
     def __init__(self):

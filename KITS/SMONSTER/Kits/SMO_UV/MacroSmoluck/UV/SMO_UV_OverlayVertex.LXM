@@ -1,5 +1,5 @@
 #LXMacro#
-#-----------------------------------------
+# ----------------------------------------
 # Name:         SMO_UV_OverlayVertex.LXM
 # Version:      1.0
 #
@@ -14,7 +14,7 @@
 #
 # Created:      XX/XX/2018-2019
 # Copyright:    (c) Franck Elisabeth 2019
-#-----------------------------------------
+# ----------------------------------------
 
 uv.align up/down/left/right:Left low/center/average/high:Low
 uv.align up/down/left/right:Down low/center/average/high:Low

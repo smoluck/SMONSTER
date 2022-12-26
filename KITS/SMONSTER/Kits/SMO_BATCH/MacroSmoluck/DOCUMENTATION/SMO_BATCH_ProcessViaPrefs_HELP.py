@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_CLEANUP_CycleItem_HELP.py
 # Version: 1.01
 #
@@ -7,11 +7,12 @@
 #               Open the weblink to the help page
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      02/11/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
+
 import lx
 
 filePathToOpen = lx.eval("query platformservice alias ? {https://wp.me/p1xA5h-rb}")

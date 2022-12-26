@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_CAD_MergeCoplanarPoly_Cmd.py
 # Version:      1.0
 #
@@ -9,15 +9,20 @@
 #               Edges inside those Polygons.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      22/01/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
-import lx, lxu, modo, sys
+"""
+
+import lx
+import lxu
+import modo
+import sys
 
 Cmd_Name = "smo.CAD.MergeCoplanarPoly"
 # smo.CAD.MergeCoplanarPoly 0 2
+
 
 class SMO_CAD_MergeCoplanarPoly_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -54,15 +59,15 @@ class SMO_CAD_MergeCoplanarPoly_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
 
-        if self.SelModePoly == True:
+        if self.SelModePoly:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
 
-        # ############### 1 ARGUMENTS Test ###############
+        # # ------------- ARGUMENTS Test
         # LS_Mode = 0
         # Angle = 2
-        # ############### ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
 
-        ############### 5 ARGUMENTS ###############
+        ############### 5 ARGUMENTS ------------- #
         # LS_Mode = 0 (Similar Touching Mode)
         # LS_Mode = 1 (Similar on Object Mode)
         # LS_Mode = 2 (Similar on Item Mode)
@@ -71,14 +76,14 @@ class SMO_CAD_MergeCoplanarPoly_Cmd(lxu.command.BasicCommand):
 
         Angle = self.dyna_Int(1)
         lx.out('Lazy Select Facing Ratio Angle:', Angle)
-        ############### ARGUMENTS ###############
+        # ------------- ARGUMENTS ------------- #
 
 
-        ##############################
-        ####### SAFETY CHECK 1 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 1 )---> #
+        # -------------------------- #
         lx.eval("user.defNew name:SMO_SafetyCheck_Only1MeshItemSelected type:integer life:momentary")
-        #####-------------------- safety check 1 : Only One Item Selected --- START --------------------#####
+        # --------------------  safety check 1 : Only One Item Selected --- START
         ItemCount = lx.eval('query layerservice layer.N ? fg')
         lx.out('Selected Item count:', ItemCount)
 
@@ -97,16 +102,16 @@ class SMO_CAD_MergeCoplanarPoly_Cmd(lxu.command.BasicCommand):
             SMO_SafetyCheck_Only1MeshItemSelected = 1
             lx.out('Only One Item Selected:', SMO_SafetyCheck_Only1MeshItemSelected)
             lx.out('script running: right amount of Mesh Item selected')
-        #####-------------------- safety check 1 : Only One Item Selected --- END --------------------#####
+        # --------------------  safety check 1 : Only One Item Selected --- END
 
 
         mesh = scene.selectedByType('mesh')[0]
 
-        ##############################
-        ####### SAFETY CHECK 2 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 2 )---> #
+        # -------------------------- #
         lx.eval("user.defNew name:SMO_SafetyCheck_PolygonModeEnabled type:integer life:momentary")
-        #####--------------------  safety check 2: Polygon Selection Mode enabled --- START --------------------#####
+        # Polygon Selection Mode enabled --- START
         selType = ""
         # Used to query layerservice for the list of polygons, edges or vertices.
         attrType = ""
@@ -155,14 +160,14 @@ class SMO_CAD_MergeCoplanarPoly_Cmd(lxu.command.BasicCommand):
             lx.eval('+dialog.open')
             lx.out('script Stopped: You must be in Polygon Mode to run that script')
             sys.exit
-        #####--------------------  safety check 2: Polygon Selection Mode enabled --- END --------------------#####
+        # Polygon Selection Mode enabled --- END
 
 
-        ##############################
-        ####### SAFETY CHECK 3 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 3 )---> #
+        # -------------------------- #
         lx.eval("user.defNew name:SMO_SafetyCheck_min1PolygonSelected type:integer life:momentary")
-        #####--------------------  safety check 3: at Least 3 Polygons are selected --- START --------------------#####
+        # at Least 3 Polygons are selected --- START
         #####--- Get current selected polygon count --- START ---#####
         #####
         CsPolys = len(mesh.geometry.polygons.selected)
@@ -183,7 +188,7 @@ class SMO_CAD_MergeCoplanarPoly_Cmd(lxu.command.BasicCommand):
         elif CsPolys >= 1:
             SMO_SafetyCheck_min1PolygonSelected = 1
             lx.out('script running: right amount of polygons in selection')
-        #####--------------------  safety check 3: at Least 3 Polygons are selected --- END --------------------#####
+        # at Least 3 Polygons are selected --- END
 
 
         if SMO_SafetyCheck_Only1MeshItemSelected == 1 and SMO_SafetyCheck_PolygonModeEnabled == 1 and SMO_SafetyCheck_min1PolygonSelected == 1:

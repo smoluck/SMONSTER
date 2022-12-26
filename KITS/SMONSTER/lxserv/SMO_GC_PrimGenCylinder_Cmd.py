@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_PrimGenCylinder_Cmd.py
 # Version:      1.0
 #
@@ -8,15 +8,18 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      21/08/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
-import lx, lxu, modo
+"""
+
+import lx
+import lxu
 
 Cmd_Name = "smo.GC.PrimGenCyl"
 # smo.GC.PrimGenCyl x 32 [10cm] [56cm] 0 1 1
+
 
 class SMO_GC_PrimGenCylinder_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -73,7 +76,7 @@ class SMO_GC_PrimGenCylinder_Cmd(lxu.command.BasicCommand):
         User_DefUnit = lx.eval("pref.value units.default ?")
         lx.out(User_DefUnit)
 
-        # # ############### 2 ARGUMENTS Test ###############
+        # # # ------------- ARGUMENTS Test
         # Diameter = 75
         # # Diameter_mm = 75.0
         # # Diameter_mm = Diameter + 'mm'

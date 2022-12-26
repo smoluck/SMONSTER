@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_CAD_FixTransformOrder_Cmd.py
 # Version:      1.0
 #
@@ -8,15 +8,18 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      07/05/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.CAD.FixTransformOrder"
+
 
 class SMO_CAD_FixTransformOrder_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -51,7 +54,7 @@ class SMO_CAD_FixTransformOrder_Cmd(lxu.command.BasicCommand):
 
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
-        if self.SelModeItem == True :
+        if self.SelModeItem:
 
 
             # BugFix to preserve the state of the RefSystem (item at origin in viewport)
@@ -98,7 +101,7 @@ class SMO_CAD_FixTransformOrder_Cmd(lxu.command.BasicCommand):
                     # print(rot_z_value)
 
             # when the Transform Rotation is set then we have to do the Transform Order Fix via Locator to get it back in line.
-            if ItemHaveRotationTransform == True :
+            if ItemHaveRotationTransform:
                 if rot_x_value != 0.0 or rot_y_value != 0.0 or rot_z_value != 0.0 or rot_x_value != -0.0 or rot_y_value != -0.0 or rot_z_value != -0.0:
                     lx.eval('item.create locator')
                     Loc_Child = scene.selectedByType('locator')[0]
@@ -149,9 +152,9 @@ class SMO_CAD_FixTransformOrder_Cmd(lxu.command.BasicCommand):
                     lx.eval('transform.channel order xyz')
 
 
-            if RefSystemActive == False:
+            if not RefSystemActive:
                 lx.eval('item.refSystem {}')
-            if RefSystemActive == True:
+            if RefSystemActive:
                 lx.eval('item.refSystem %s' % CurrentRefSystemItem)
 
 

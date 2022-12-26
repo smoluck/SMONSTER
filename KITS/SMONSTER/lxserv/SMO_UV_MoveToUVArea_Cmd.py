@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_UV_MoveToUVArea_Cmd.py
 # Version:      1.0
 # 
@@ -8,16 +8,20 @@
 # 
 # 
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 # 
 # Created:      28/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo, sys
+import lx
+import lxu
+import modo
+import sys
 
 Cmd_Name = "smo.UV.MoveToUVArea"
 # smo.UV.MoveToUVArea -1 -1
+
 
 class SMO_UV_MoveToUVArea_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -59,7 +63,7 @@ class SMO_UV_MoveToUVArea_Cmd(lxu.command.BasicCommand):
         Int_ZoneAreaU = self.dyna_Int (0)
         Int_ZoneAreaV = self.dyna_Int (1)
         
-        ############### 2 ARGUMENTS ###############
+        # ------------- ARGUMENTS ------------- #
         args = lx.args()
         lx.out(args)
         #
@@ -70,20 +74,16 @@ class SMO_UV_MoveToUVArea_Cmd(lxu.command.BasicCommand):
         # 
         ZoneAreaV = Int_ZoneAreaV
         lx.out('Area Value V:',ZoneAreaV)
-        ############### ARGUMENTS ###############
-        
-        # ############### 2 ARGUMENT Test ###############
-        # ZoneAreaU = -1
-        # ZoneAreaV = -2
-        # ############### ARGUMENT ###############
+        # ------------- ARGUMENTS ------------- #
+
         
         
         
         
         
-        ###############################################
-        ####### SAFETY CHECK 1 - UVMap Selected #######
-        ###############################################
+        # ----------------------------------------- #
+        # <---( SAFETY CHECK 1 )---> UVMap Selected #
+        # ----------------------------------------- #
         
         ##########################
         lx.out('<------------- START -------------->')

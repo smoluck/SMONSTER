@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MIFABOMA_BOOL_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #               (Connected Polygons) from the current Layer.
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      27/02/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.MIFABOMA.Boolean"
 # smo.MIFABOMA.Boolean 0
+
 
 class SMO_MIFABOMA_Bool_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -53,7 +56,7 @@ class SMO_MIFABOMA_Bool_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
         mode = self.dyna_Int(0)
         scene = modo.scene.current()
-        if self.SelModePoly == True:
+        if self.SelModePoly:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
 
         mesh = scene.selectedByType('mesh')[0]
@@ -61,8 +64,7 @@ class SMO_MIFABOMA_Bool_Cmd(lxu.command.BasicCommand):
 
 
 
-        #-----############################################-----#
-        # <----[ Get currently Visible Items in Viewport ]---->#
+        # <----( Get currently Visible Items in Viewport )----> #
         lx.eval('select.itemType mesh')
         SceneMeshes = list(scene.selectedByType("mesh"))
         TCount = len(SceneMeshes)
@@ -77,20 +79,19 @@ class SMO_MIFABOMA_Bool_Cmd(lxu.command.BasicCommand):
             if itemType == "mesh" or itemType == "meshInst":
                 isVisible = lx.eval("layer.setVisibility {%s} ?" % ID)
                 # print(isVisible)
-                if isVisible == True:
+                if isVisible:
                     VisibleNameList.append(item.UniqueName())
                     VisibleIDList.append(ID)
         # print(VisibleNameList)
         # print(VisibleIDList)
-        #-----############################################-----#
         scene.select(mesh)
         lx.eval('select.type polygon')
 
 
 
-        ################################
-        # <----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
 
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
@@ -99,7 +100,7 @@ class SMO_MIFABOMA_Bool_Cmd(lxu.command.BasicCommand):
         #####
         #####--- Define user value for all the different SafetyCheck --- END ---#####
 
-        ###############COPY/PASTE Check Procedure#################
+        ############### COPY/PASTE Check Procedure #################
         ## create variables
         lx.eval("user.defNew name:User_Pref_CopyDeselectChangedState type:boolean life:momentary")
         lx.eval("user.defNew name:User_Pref_PasteSelectionChangedState type:boolean life:momentary")
@@ -145,11 +146,11 @@ class SMO_MIFABOMA_Bool_Cmd(lxu.command.BasicCommand):
             User_Pref_PasteDeselectChangedState = 0
         ################################################
 
-        ##############################
-        ####### SAFETY CHECK 1 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 1 )---> #
+        # -------------------------- #
 
-        #####--------------------  safety check 1: Polygon Selection Mode enabled --- START --------------------#####
+        # --------------------  safety check 1: Polygon Selection Mode enabled --- START
 
         selType = ""
         # Used to query layerservice for the list of polygons, edges or vertices.
@@ -203,13 +204,13 @@ class SMO_MIFABOMA_Bool_Cmd(lxu.command.BasicCommand):
             lx.out('script Stopped: You must be in Polygon Mode to run that script')
             sys.exit
             # sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
-        #####--------------------  safety check 1: Polygon Selection Mode enabled --- END --------------------#####
+        # --------------------  safety check 1: Polygon Selection Mode enabled --- END
 
-        ##############################
-        ####### SAFETY CHECK 2 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 2 )---> #
+        # -------------------------- #
 
-        #####--------------------  safety check 2: at Least 1 Polygons is selected --- START --------------------#####
+        # at Least 1 Polygons is selected --- START
         lx.out('Count Selected Poly', CsPolys)
 
         if CsPolys < 1:
@@ -224,7 +225,7 @@ class SMO_MIFABOMA_Bool_Cmd(lxu.command.BasicCommand):
         elif CsPolys >= 1:
             SMO_SafetyCheck_min1PolygonSelected = 1
             lx.out('script running: right amount of polygons in selection')
-        #####--------------------  safety check 2: at Least 1 Polygons is selected --- END --------------------#####
+        # at Least 1 Polygons is selected --- END
 
         #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
         #####
@@ -235,11 +236,11 @@ class SMO_MIFABOMA_Bool_Cmd(lxu.command.BasicCommand):
         #####
         #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
 
-        ##############################
-        ## <----( Main Macro )----> ##
-        ##############################
+        # ------------------------ #
+        # <----( Main Macro )----> #
+        # ------------------------ #
 
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+        # -------------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- START
         if TotalSafetyCheck == TotalSafetyCheckTrueValue:
             # replay name:"Edit Selection Set"
             lx.eval('select.editSet name:Bool_Selected_Tag mode:add')
@@ -284,9 +285,9 @@ class SMO_MIFABOMA_Bool_Cmd(lxu.command.BasicCommand):
             # replay name:"Use Selection Set"
             lx.eval('select.useSet name:Bool_Parent_Tag mode:select')
 
-            ##############################
-            ## <----( Main Command )---->
-            ##############################
+            # -------------------------- #
+            # <----( Main Command )---->
+            # -------------------------- #
             if mode == 0:
                 # replay name:"Boolean Action SUBTRACT"
                 lx.eval('poly.boolean mode:subtract cutmesh:background')
@@ -296,9 +297,9 @@ class SMO_MIFABOMA_Bool_Cmd(lxu.command.BasicCommand):
             if mode == 2:
                 # replay name:"Boolean Action SUBTRACT"
                 lx.eval('poly.boolean mode:intersect cutmesh:background')
-            ##############################
-            ## <----( Main Command )---->
-            ##############################
+            # -------------------------- #
+            # <----( Main Command )---->
+            # -------------------------- #
 
             lx.eval('select.type polygon')
             # replay name:"Selection All"
@@ -354,9 +355,7 @@ class SMO_MIFABOMA_Bool_Cmd(lxu.command.BasicCommand):
 
 
 
-        #-------############################################--------#
-        # <----[ Get Back currently Visible Items in Viewport ]---->#
-        #-------############################################--------#
+        # <----( Get Back currently Visible Items in Viewport )----> #
         lx.eval('select.type item')
         lx.eval('unhide')
         lx.eval('smo.GC.DeselectAll')
@@ -366,10 +365,9 @@ class SMO_MIFABOMA_Bool_Cmd(lxu.command.BasicCommand):
         lx.eval('smo.GC.DeselectAll')
         scene.select(mesh)
         lx.eval('select.type polygon')
-        #-------############################################--------#
 
         lx.out('End of SMO_Bool_Subtract Script')
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
     def cmd_Query(self, index, vaQuery):

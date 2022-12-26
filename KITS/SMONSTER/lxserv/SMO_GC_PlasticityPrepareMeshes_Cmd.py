@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_PlasticityPrepareMeshes_Cmd.py
 # Version:      1.0
 #
@@ -7,19 +7,19 @@
 #               Cleanup Meshes data from Plasticity creating Polygons Parts, Unwrapped UVMaps and Merging Solid items.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      04/12/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
-from math import degrees
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.PlasticityPrepareMeshes"
-
-
 # smo.GC.PlasticityPrepareMeshes 0 1 1 1 1 1
+
 
 class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -174,7 +174,7 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
         print(NewNameList)
         print(GrpNewNameList)
 
-        if CreatePartTags == True:
+        if CreatePartTags:
             ### Set Parts to each Meshes using their name
             for item in GrpNewNameList:
                 PartTargetsList = []

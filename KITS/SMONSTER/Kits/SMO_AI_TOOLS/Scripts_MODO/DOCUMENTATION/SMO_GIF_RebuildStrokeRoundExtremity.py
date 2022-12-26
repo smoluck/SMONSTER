@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_RebuildStrokeRoundExtremity.py
 # Version:      1.01
 #
@@ -7,12 +7,14 @@
 #               Open the GIF  as documentation helper
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      30/05/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
+
 import lx
+
 filePathToOpen = lx.eval("query platformservice alias ? {kit_SMO_AI_TOOLS:Scripts_MODO/DOCUMENTATION/SMO_RebuildStrokeRoundExtremity.gif}")
 
 # Open gif file

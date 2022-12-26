@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_BATCH_LoadFolderFiles_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #
 #
 # Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      01/10/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, os, modo
+import lx
+import lxu
+import os
 
 Cmd_Name = "smo.BATCH.LoadFolderFiles"
 # smo.BATCH.LoadFolderFiles {DXF} {LXO}
+
 
 class SMO_BATCH_LoadFolderFiles_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -53,17 +56,17 @@ class SMO_BATCH_LoadFolderFiles_Cmd(lxu.command.BasicCommand):
 
     def basic_Execute(self, msg, flags):
 
-        ################################+
-        # <----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         lx.eval("user.defNew name:InputFileFormat type:string life:momentary")
         lx.eval("user.defNew name:OutputFileFormat type:string life:momentary")
-        ################################
+        # ------------------------------ #
 
-        # ############### ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
         InputFileFormat = self.dyna_String(0)
         OutputFileFormat = self.dyna_String(1)
-        # ############### ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
 
         lx.eval('dialog.setup dir')
         lx.eval('dialog.title "Select the target Folder to Analyse and Process"')

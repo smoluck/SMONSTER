@@ -1,4 +1,4 @@
-#python
+# python
 import modo
 
 lx.eval('select.type edge')

@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_XYZ_Vertex_RoundedValue.py
 # Version: 1.0
 #
@@ -8,11 +8,11 @@
 #			Each line is a new Vertex and round the value to the Centimeter (2 Decimals)
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      29/11/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo, lx, lxu, os
 

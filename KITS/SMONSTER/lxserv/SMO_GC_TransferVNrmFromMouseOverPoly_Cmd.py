@@ -1,23 +1,26 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_TransferVNrmFromMouseSurface_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to:
-#               VertexNormalTransfer on current Selected component from the Surface under mouse pointer (mouseOver).
+#               VertexNormalTransfer on current Selected component
+#               from the Surface under mouse pointer (mouseOver).
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      31/12/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo, math
-from math import degrees
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.TransferVNrmFromMouseOverSurface"
 # smo.GC.TransferVNrmFromMouseOverSurface
+
 
 class SMO_GC_TransferVNrmFromMouseOverSurface_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -146,7 +149,7 @@ class SMO_GC_TransferVNrmFromMouseOverSurface_Cmd(lxu.command.BasicCommand):
             except:
                 TargetMeshList = []
 
-            if SelModeVert == True:
+            if SelModeVert:
                 selected_mesh = scene.selected[0]
                 CsVert = len(selected_mesh.geometry.vertices.selected)
                 if CsVert >= 1:
@@ -154,7 +157,7 @@ class SMO_GC_TransferVNrmFromMouseOverSurface_Cmd(lxu.command.BasicCommand):
                 else:
                     Check = False
 
-            if SelModeEdge == True:
+            if SelModeEdge:
                 selected_mesh = scene.selected[0]
                 CsEdges = len(selected_mesh.geometry.edges.selected)
                 if CsEdges >= 1:
@@ -162,7 +165,7 @@ class SMO_GC_TransferVNrmFromMouseOverSurface_Cmd(lxu.command.BasicCommand):
                 else:
                     Check = False
 
-            if SelModePoly == True:
+            if SelModePoly:
                 selected_mesh = scene.selected[0]
                 CsVert = len(selected_mesh.geometry.polygons.selected)
                 if CsVert >= 1:
@@ -170,7 +173,7 @@ class SMO_GC_TransferVNrmFromMouseOverSurface_Cmd(lxu.command.BasicCommand):
                 else:
                     Check = False
             # print(Check)
-            if Check == True:
+            if Check:
                 lx.eval('select.editSet TransfVNrmFromMouseOverSurface add {}')
 
             # If we do have something selected, put it in self.TargetMeshList
@@ -189,7 +192,7 @@ class SMO_GC_TransferVNrmFromMouseOverSurface_Cmd(lxu.command.BasicCommand):
                 Target = scene.select(item)
             MeshTarget = modo.Scene().selected
 
-        if Check == True:
+        if Check:
             lx.eval('query view3dservice mouse ?')
             view_under_mouse = lx.eval('query view3dservice mouse.view ?')
             lx.eval('query view3dservice view.index ? %s' % view_under_mouse)
@@ -219,9 +222,9 @@ class SMO_GC_TransferVNrmFromMouseOverSurface_Cmd(lxu.command.BasicCommand):
             lx.eval('smo.GC.DeselectAll')
 
 
-            ##############################
-            ## <----( Main Macro )----> ##
-            ##############################
+            # ------------------------ #
+            # <----( Main Macro )----> #
+            # ------------------------ #
         if Check == True and BGSuccess == True:
             if MeshTarget != MeshBG :
                 lx.eval('select.type item')
@@ -230,23 +233,23 @@ class SMO_GC_TransferVNrmFromMouseOverSurface_Cmd(lxu.command.BasicCommand):
                 lx.eval('hide.unsel')
                 lx.eval('smo.GC.DeselectAll')
                 scene.select(MeshTarget)
-                if SelModeVert == True:
+                if SelModeVert:
                     lx.eval('select.type vertex')
-                if SelModeEdge == True:
+                if SelModeEdge:
                     lx.eval('select.type edge')
-                if SelModePoly == True:
+                if SelModePoly:
                     lx.eval('select.type polygon')
                 lx.eval('select.useSet TransfVNrmFromMouseOverSurface select')
                 lx.eval('vertMap.transferNormals false')
-                if LockElem == True:
+                if LockElem:
                     lx.eval('lock.sel')
                 lx.eval('select.type item')
                 lx.eval('unhide')
-                if SelModeVert == True:
+                if SelModeVert:
                     lx.eval('select.drop vertex')
-                if SelModeEdge == True:
+                if SelModeEdge:
                     lx.eval('select.drop edge')
-                if SelModePoly == True:
+                if SelModePoly:
                     lx.eval('select.drop polygon')
                 lx.eval('select.deleteSet TransfVNrmFromMouseOverSurface')
 
@@ -263,7 +266,7 @@ class SMO_GC_TransferVNrmFromMouseOverSurface_Cmd(lxu.command.BasicCommand):
                     Pol = True
                 except:
                     Pol = False
-                if Pol == True:
+                if Pol:
                     # lx.eval('smo.GC.SelectCoPlanarPoly 0 2')
                     lx.eval('select.connect')
                     lx.eval('smo.CAD.CopyCutAsChildOfCurrentMesh false true 1 true')
@@ -274,25 +277,25 @@ class SMO_GC_TransferVNrmFromMouseOverSurface_Cmd(lxu.command.BasicCommand):
                     lx.eval('hide.unsel')
                     lx.eval('smo.GC.DeselectAll')
                 scene.select(MeshTarget)
-                if SelModeVert == True:
+                if SelModeVert:
                     lx.eval('select.type vertex')
-                if SelModeEdge == True:
+                if SelModeEdge:
                     lx.eval('select.type edge')
-                if SelModePoly == True:
+                if SelModePoly:
                     lx.eval('select.type polygon')
                 lx.eval('select.useSet TransfVNrmFromMouseOverSurface select')
                 lx.eval('vertMap.transferNormals false')
-                if LockElem == True:
+                if LockElem:
                     lx.eval('lock.sel')
                 lx.eval('select.type item')
                 lx.eval('unhide')
-                if SelModeVert == True:
+                if SelModeVert:
                     lx.eval('select.type vertex')
                     lx.eval('select.drop vertex')
-                if SelModeEdge == True:
+                if SelModeEdge:
                     lx.eval('select.type edge')
                     lx.eval('select.drop edge')
-                if SelModePoly == True:
+                if SelModePoly:
                     lx.eval('select.type polygon')
                     lx.eval('select.drop polygon')
                 lx.eval('select.deleteSet TransfVNrmFromMouseOverSurface')
@@ -300,11 +303,11 @@ class SMO_GC_TransferVNrmFromMouseOverSurface_Cmd(lxu.command.BasicCommand):
                 scene.select(MeshBG)
                 lx.eval('!delete')
                 scene.select(MeshTarget)
-                if SelModeVert == True:
+                if SelModeVert:
                     lx.eval('select.type vertex')
-                if SelModeEdge == True:
+                if SelModeEdge:
                     lx.eval('select.type edge')
-                if SelModePoly == True:
+                if SelModePoly:
                     lx.eval('select.type polygon')
 
 

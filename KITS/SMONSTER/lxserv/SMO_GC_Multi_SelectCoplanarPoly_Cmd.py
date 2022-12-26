@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_Multi_SelectCoPlanarPoly_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      26/08/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.Multi.SelectCoPlanarPoly"
 # smo.GC.Multi.SelectCoPlanarPoly 0 20
+
 
 class SMO_GC_Multi_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -56,11 +59,11 @@ class SMO_GC_Multi_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
 
     def basic_Execute(self, msg, flags):
         #################################
-        # <----[ DEFINE ARGUMENTS ]---->#
+        # <----( DEFINE ARGUMENTS )----> #
         #################################
         MODE = self.dyna_Int(0)         #  select = 0 (similarTouching)   ###   polygon(SimilarOnObject) = 1   ###   none = 2 (SimilarOnLayer)
         ANGLE = self.dyna_Int(1)  # in degree
-        if self.dyna_IsSet(2) == False:
+        if not self.dyna_IsSet(2):
             RANGE = 10000.0
         else:
             RANGE = self.dyna_Float(2)  # in distance
@@ -71,7 +74,7 @@ class SMO_GC_Multi_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
         # Expose the Result of the Arguments
         lx.out(MODE, ANGLE, RANGE)
         #################################
-        # <----[ DEFINE ARGUMENTS ]---->#
+        # <----( DEFINE ARGUMENTS )----> #
         #################################
 
         scene = modo.scene.current()
@@ -158,7 +161,7 @@ class SMO_GC_Multi_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
         lx.eval('select.type polygon')
 
 
-        for item in (CoplanarSelPolyList):
+        for item in CoplanarSelPolyList:
             # print(item)
             selected_mesh.geometry.polygons.select(item)
 

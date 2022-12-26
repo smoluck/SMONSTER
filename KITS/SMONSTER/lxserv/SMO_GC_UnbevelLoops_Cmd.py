@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_UnbevelLoops.py
 # Version: 1.0
 # 
@@ -8,16 +8,19 @@
 # 
 # 
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 # 
 # Created:      05/02/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.UnbevelLoops"
 # smo.GC.UnbevelLoops 0
+
 
 class SMO_GC_UnbevelLoops_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -59,13 +62,13 @@ class SMO_GC_UnbevelLoops_Cmd(lxu.command.BasicCommand):
 
     def basic_Execute(self, msg, flags):
         scene = modo.Scene()
-        if self.SelModePoly == True:
+        if self.SelModePoly:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
         mesh = scene.selectedByType('mesh')[0]
 
-        ################################
-        # <----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
         lx.eval("user.defNew name:SMO_SC_UnbevelPolyLoop_min1PolygonSelected type:integer life:momentary")
@@ -73,9 +76,9 @@ class SMO_GC_UnbevelLoops_Cmd(lxu.command.BasicCommand):
         #####
         #####--- Define user value for all the different SafetyCheck --- END ---#####
 
-        ##############################
-        ####### SAFETY CHECK 3 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 3 )---> #
+        # -------------------------- #
         CsPolys = len(mesh.geometry.polygons.selected)
         lx.out('Count Selected Poly', CsPolys)
 
@@ -91,7 +94,7 @@ class SMO_GC_UnbevelLoops_Cmd(lxu.command.BasicCommand):
         elif CsPolys >= 1:
             SMO_SC_UnbevelPolyLoop_min1PolygonSelected = 1
             lx.out('script running: right amount of Edges in selection')
-        #####--------------------  safety check 3: at Least 1 Polygon is selected --- END --------------------#####
+        # at Least 1 Polygon is selected --- END
 
 
 
@@ -102,7 +105,7 @@ class SMO_GC_UnbevelLoops_Cmd(lxu.command.BasicCommand):
         lx.out('Modo Version:',Modo_ver)
 
 
-        ############### 5 ARGUMENTS ###############
+        ############### 5 ARGUMENTS ------------- #
         args = lx.args()
         lx.out(args)
 
@@ -110,15 +113,15 @@ class SMO_GC_UnbevelLoops_Cmd(lxu.command.BasicCommand):
         # Angle Based = 1
         CornerMethod = self.dyna_Int (0)
         lx.out('Corner solver method:',CornerMethod)
-        ############### ARGUMENTS ###############
+        # ------------- ARGUMENTS ------------- #
 
 
-        # ############### 1 ARGUMENTS Test ###############
+        # # ------------- ARGUMENTS Test
         # CornerMethod = 1
-        # ############### ARGUMENTS ######################
+        # # ------------- ARGUMENTS -------------
 
 
-        if self.SelModePoly == True:
+        if self.SelModePoly:
             # Select the Edge via Mouse Over function
             lx.eval('select.type edge')
 
@@ -142,13 +145,13 @@ class SMO_GC_UnbevelLoops_Cmd(lxu.command.BasicCommand):
             except:
                 success = False
 
-        ##############################
+        # -------------------------- #
         ####### SAFETY CHECK 4 #######
-        ##############################
+        # -------------------------- #
         CsEdges = len(mesh.geometry.edges.selected)
         lx.out('Count Selected Edges', CsEdges)
-        #####--------------------  safety check 4: at Least 1 Edge is selected --- START --------------------#####
-        if CsEdges == 0 :
+        # --------------------  safety check 4: at Least 1 Edge is selected --- START
+        if CsEdges == 0:
             SMO_SC_UnbevelPolyLoop_1EdgeSelected = 0
             lx.eval('dialog.setup info')
             lx.eval('dialog.title {SMO UnbevelPolyLoops:}')
@@ -157,10 +160,10 @@ class SMO_GC_UnbevelLoops_Cmd(lxu.command.BasicCommand):
             lx.out('script Stopped: Mouse over an Edge to validate the script requirements')
             sys.exit
 
-        elif CsEdges >= 1 :
+        elif CsEdges >= 1:
             SMO_SC_UnbevelPolyLoop_1EdgeSelected = 1
             lx.out('script running: right amount of Edges in selection')
-        #####--------------------  safety check 4: at Least 1 edge is selected --- END --------------------#####
+        # --------------------  safety check 4: at Least 1 edge is selected --- END
 
 
         if SMO_SC_UnbevelPolyLoop_1EdgeSelected == 1:
@@ -196,10 +199,10 @@ class SMO_GC_UnbevelLoops_Cmd(lxu.command.BasicCommand):
             lx.eval('!select.deleteSet UnbevelEdgeGuide')
             lx.eval('!select.deleteSet UnbevelNoEdgeRing')
             lx.eval('select.type polygon')
-            if CornerMethod == 1 :
+            if CornerMethod == 1:
                 lx.eval('script.run "macro.scriptservice:92663570022:macro"')
                 CsEdges = len(mesh.geometry.edges.selected)
-                if CsEdges >=3 :
+                if CsEdges >=3:
                     lx.eval('poly.make auto')
                     lx.eval('select.type polygon')
                     lx.eval('poly.triple')
@@ -207,7 +210,7 @@ class SMO_GC_UnbevelLoops_Cmd(lxu.command.BasicCommand):
                     lx.eval('select.type edge')
                     lx.eval('select.drop edge')
                     lx.eval('select.type polygon')
-                if CsEdges <2 :
+                if CsEdges <2:
                     lx.eval('select.drop polygon')
                     lx.eval('select.type edge')
                     lx.eval('select.drop edge')

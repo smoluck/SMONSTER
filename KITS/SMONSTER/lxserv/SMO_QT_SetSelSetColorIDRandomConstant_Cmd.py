@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_QT_SetSelSetColorIDRandomConstant_Cmd.py
 # Version:      1.00
 #
@@ -9,18 +9,23 @@
 # 
 # 
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      12/01/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import modo, lx, lxu, random, sys
+import lx
+import lxu
+import modo
+import sys
+
 if sys.version_info < (3, 0):
     xrange = range
 
 Cmd_Name = "smo.QT.SetSelSetColorIDRandomConstant"
 # smo.QT.SetSelSetColorIDRandomConstant
+
 
 def ListPSelSet():
     # scene service, reference of the scene and a channel read object
@@ -97,13 +102,13 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         ColorID_Suffix = "ColorID"
         ByItemMode = bool()
 
-        if self.SelModeItem == True:
+        if self.SelModeItem:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
             lx.eval('select.type polygon')
             lx.eval('select.all')
             ByItemMode = True
 
-        if self.SelModePoly == True:
+        if self.SelModePoly:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
             ByItemMode = False
 
@@ -132,9 +137,9 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         PrstColorIDGrey = 15
         PrstColorIDWhite = 16
 
-        ################################
-        # <----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
 
         # #####--- Define user value for all the different SafetyCheck --- START ---#####
         # #####
@@ -153,11 +158,11 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         lx.eval("user.defNew name:ColorIDConstantName type:string life:momentary")
         ###################
 
-        # ##############################
-        # ####### SAFETY CHECK 1 #######
-        # ##############################
+        # # -------------------------- #
+        # # <---( SAFETY CHECK 1 )---> #
+        # # -------------------------- #
         #
-        # #####--------------------  safety check 1: Polygon Selection Mode enabled --- START --------------------#####
+        # # --------------------  safety check 1: Polygon Selection Mode enabled --- START
         #
         # selType = ""
         # # Used to query layerservice for the list of polygons, edges or vertices.
@@ -211,16 +216,16 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         #     lx.out('script Stopped: You must be in Polygon Mode to run that script')
         #     sys.exit
         #     #sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
-        # #####--------------------  safety check 1: Polygon Selection Mode enabled --- END --------------------#####
+        # # --------------------  safety check 1: Polygon Selection Mode enabled --- END
         #
         #
         #
         #
-        # ##############################
-        # ####### SAFETY CHECK 2 #######
-        # ##############################
+        # # -------------------------- #
+        # # <---( SAFETY CHECK 2 )---> #
+        # # -------------------------- #
         #
-        # #####--------------------  safety check 2: at Least 1 Polygons is selected --- START --------------------#####
+        # # at Least 1 Polygons is selected --- START
         # lx.out('Count Selected Poly',CsPolys)
         #
         # if CsPolys < 1:
@@ -235,7 +240,7 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         # elif CsPolys >= 1:
         #     SMO_SafetyCheck_min1PolygonSelected = 1
         #     lx.out('script running: right amount of polygons in selection')
-        # #####--------------------  safety check 2: at Least 1 Polygons is selected --- END --------------------#####
+        # # at Least 1 Polygons is selected --- END
         #
         #
         #
@@ -248,11 +253,11 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         # #####
         # #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
 
-        ##############################
-        ## <----( Main Macro )----> ##
-        ##############################
+        # ------------------------ #
+        # <----( Main Macro )----> #
+        # ------------------------ #
 
-        # #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+        # #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
         # Select the Base Shader to create and place ColorID group on top of current Material Groups
 
         ### Selection of ShaderItem have been dedicated to custom command below smo.QT.SelectBaseShader.
@@ -296,7 +301,7 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
             # lx.out('ColorID  Global Count channel already created')
             pass
 
-        if QTChannelExist == True:
+        if QTChannelExist:
             SceneConstantID = lx.eval('!item.channel SelSetColorIDConstantGlobalCount ?')
             lx.out('Constant ID Max in scene', SceneConstantID)
         # print(QTChannelExist)
@@ -520,7 +525,7 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         # print(ListPSelSet())
         # print('latest ColorID created')
         # print(ColorIDSelSetName)
-        if ByItemMode == False:
+        if not ByItemMode:
             # print(len(ListPSelSet()))
             if len(ListPSelSet()) > 1:
                 for i in ListPSelSet():
@@ -537,7 +542,7 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
                         lx.eval('select.drop polygon')
         lx.eval('select.useSet %s replace' % ColorIDSelSetName)
 
-        if ByItemMode == True:
+        if ByItemMode:
             lx.eval('select.type item')
 
         # elif TotalSafetyCheck != TotalSafetyCheckTrueValue:

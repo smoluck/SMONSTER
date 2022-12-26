@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_SelectVertexByLocalAxis_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,18 @@
 #               it use X Y Z axis as argument and Positive or Negative Direction as selection mode.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      17/08/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu
+import lx
+import lxu
 
 Cmd_Name = "smo.GC.SelectVertexByLocalAxis"
 # smo.GC.SelectVertexByLocalAxis z true
+
 
 class SMO_GC_SelectVertexByLocalAxis_Cmd(lxu.command.BasicCommand):
     def __init__(self):

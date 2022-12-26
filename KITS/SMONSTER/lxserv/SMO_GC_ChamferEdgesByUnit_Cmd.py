@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_ChamferEdgesByUnit_Cmd.py
 # Version:      1.0
 #
@@ -7,16 +7,19 @@
 #               Chamfer currently selected Edges (or Selection Boundary Edges if in Polygon Mode) with a Chamfer set to 1 Side, using arguments by unit and width.
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      16/09/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.ChamferEdgesByUnit"
 # smo.GC.ChamferEdgesByUnit [1mm]       # Using Square Brackets around values validate the use of units like "km", "m" , "cm", "mm", "um".
+
 
 class SMO_GC_ChamferEdgesByUnit_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -59,9 +62,9 @@ class SMO_GC_ChamferEdgesByUnit_Cmd(lxu.command.BasicCommand):
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
 
         #######################################################
-        ## <----( Convert to Boundary if POLYGON Mode )----> ##
+        # <----( Convert to Boundary if POLYGON Mode )----> #
         #######################################################
-        if self.SelModePoly == True:
+        if self.SelModePoly:
             lx.eval('script.run "macro.scriptservice:92663570022:macro"')
             lx.eval('select.type edge')
 
@@ -69,16 +72,16 @@ class SMO_GC_ChamferEdgesByUnit_Cmd(lxu.command.BasicCommand):
         SelItems = (lx.evalN('query sceneservice selection ? locator'))
         lx.out('Selected items is:', SelItems)
 
-        ################################
-        # <----[ DEFINE ARGUMENTS ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #
+        # ------------------------------ #
         Value = self.dyna_Float(0)              # Width size
 
         # Expose the Result of the Arguments
         # lx.out(Value)
-        ################################
-        # <----[ DEFINE ARGUMENTS ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #
+        # ------------------------------ #
 
 
         lx.eval('smo.MASTER.SelectModeDetector')
@@ -126,15 +129,15 @@ class SMO_GC_ChamferEdgesByUnit_Cmd(lxu.command.BasicCommand):
 
 
 
-        ########################################
-        ## <----( Main Macro - EDGE )----> ##
-        ########################################
+        # ------------------------------- #
+        # <----( Main Macro - EDGE )----> #
+        # ------------------------------- #
         if ItemMode == 0 and VertMode == 0 and PolyMode == 0 and CountItem > 0:
             if EdgeMode == 1 :
                 # if CountEdge >= 1 :
 
                 ###################################
-                ######## Mirror Tool Setup ########
+                # ------ Mirror Tool Setup ------ #
                 ###################################
                 lx.eval('tool.snapState false')
                 lx.eval('tool.set edge.chamfer on')
@@ -157,14 +160,14 @@ class SMO_GC_ChamferEdgesByUnit_Cmd(lxu.command.BasicCommand):
                 lx.eval('tool.setAttr edge.chamfer boundExtend true')
                 lx.eval('tool.setAttr edge.chamfer reversex false')
                 lx.eval('tool.setAttr edge.chamfer reversey false')
-                ##############################
+                # -------------------------- #
                 lx.eval('tool.doApply')
                 lx.eval('select.drop edge')
                 lx.eval('select.nextMode')
 
                 lx.out('End of SMO GC ChamferEdgesHardWay Command')
 
-        if self.SelModePoly == True:
+        if self.SelModePoly:
             lx.eval('select.type polygon')
             lx.eval('select.drop polygon')
 

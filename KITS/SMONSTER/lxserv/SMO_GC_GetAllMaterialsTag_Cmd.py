@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_GetAllMaterialsTag_Cmd.py
 # Version:      1.0
 #
@@ -8,21 +8,23 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      12/08/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.GetAllMaterialsTag"
-# query:        smo.GC.GetAllMaterialsTag ?
+# query:    smo.GC.GetAllMaterialsTag ?
 
-############# USE CASE
+# ----------- USE CASE
 # TestResult = lx.eval('smo.GC.GetAllMaterialsTag ?')
 # lx.out('Scene have those Materials:',TestResult)
-######################
+# --------------------
 
 
 class SMO_GC_GetAllMaterialsTag_Cmd(lxu.command.BasicCommand):

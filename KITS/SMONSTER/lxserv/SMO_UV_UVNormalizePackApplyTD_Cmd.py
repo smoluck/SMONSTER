@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_UV_UVNormalizePackApplyTD_Cmd.py
 # Version:      1.0
 #
@@ -7,16 +7,19 @@
 #               UVNormalize Pack and Apply Texel Density on the current UVMap
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.UV.UVNormalizePackApplyTD"
 # smo.UV.UVNormalizePackApplyTD
+
 
 class SMO_UV_UVNormalizePackApplyTD_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -96,13 +99,14 @@ class SMO_UV_UVNormalizePackApplyTD_Cmd(lxu.command.BasicCommand):
             # lx.out('USER UVSEAM Map Name:', UserUVSEAMmapName)
             
             lx.out('<----------- END ----------->')
-        ################################
+        # ------------------------------ #
         
-        ##############################
-        ## <----( Main Macro )----> ##
-        ##############################
+        # ------------------------ #
+        # <----( Main Macro )----> #
+        # ------------------------ #
+
         lx.out('Start of Update UVNormalizePackApplyTexelDensity Script')
-        #####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- START --------------------#####
+        #####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- START
         
         lx.eval('texeldensity.normalize')
         lx.eval('uv.pack pack:true stretch:false orient:false direction:auto gaps:"0.2" byPixel:false gapsByPixel:"10.24" bbox:false stack:false region:normalized udim:1001 regionX:"-1.0" regionY:"-1.0" regionW:"3.0" regionH:"3.0" tileU:1 tileV:1 polygonTag:material background:false writeNew:false')
@@ -111,7 +115,7 @@ class SMO_UV_UVNormalizePackApplyTD_Cmd(lxu.command.BasicCommand):
         lx.eval('texeldensity.set per:island mode:all')
         
         lx.out('End of Update UVNormalizePackApplyTexelDensity Script')
-        #####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- END --------------------#####
+        #####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- END
         
     
 lx.bless(SMO_UV_UVNormalizePackApplyTD_Cmd, Cmd_Name)

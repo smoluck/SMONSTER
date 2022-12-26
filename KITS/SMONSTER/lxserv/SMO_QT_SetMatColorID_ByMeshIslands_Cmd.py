@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_QT_SetMatColorID_ByMeshIslands_Cmd.py
 # Version:      1.00
 #
@@ -9,45 +9,56 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      29/04/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import modo, lx, lxu, random
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.QT.SetMatColorIDByMeshIslands"
 # smo.QT.SetMatColorIDByMeshIslands
 
+
 def scene():
     return modo.scene.current()
+
 
 def first_item_selected():
     return scene().selected[0]
 
+
 def item_name():
-    return  modo.Item(first_item_selected()).name
+    return modo.Item(first_item_selected()).name
+
 
 def item_type():
-    return  modo.Item(first_item_selected()).type
+    return modo.Item(first_item_selected()).type
+
 
 def item_id():
-    return  modo.Item(first_item_selected()).id
+    return modo.Item(first_item_selected()).id
+
 
 def item_is_a_mesh():
     return True if item_type() == 'mesh' else False
 
+
 def mesh_layer_poly_count():
     return modo.MeshGeometry(item_id()).numPolygons
 
-def mesh_layer_visible_poly():
-    return lx.eval('query layerservice poly.N ? visible') #visible poly count
 
-#def mesh_layer_edge_count():
+def mesh_layer_visible_poly():
+    return lx.eval('query layerservice poly.N ? visible')  # visible poly count
+
+
+# def mesh_layer_edge_count():
 #    return modo.MeshGeometry(item_id()).numEdges
 #
-#def mesh_layer_vert_count():
+# def mesh_layer_vert_count():
 #    return modo.MeshGeometry(item_id()).numVertices
 
 def mesh_layer_poly_list():
@@ -95,7 +106,7 @@ class SMO_QT_SetMatColorID_ByMeshIslands_Cmd(lxu.command.BasicCommand):
         if self.SelModeItem == True or self.SelModeVert == True or self.SelModeEdge == True:
             lx.eval('select.type polygon')
 
-        if self.SelModePoly == True:
+        if self.SelModePoly:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
 
         lx.eval('select.type item')
@@ -164,11 +175,11 @@ class SMO_QT_SetMatColorID_ByMeshIslands_Cmd(lxu.command.BasicCommand):
         lx.eval('select.type item')
         lx.eval('unhide')
 
-        if self.SelModeItem == True:
+        if self.SelModeItem:
             lx.eval('select.type item')
-        if self.SelModeVert == True:
+        if self.SelModeVert:
             lx.eval('select.type vertex')
-        if self.SelModeEdge == True:
+        if self.SelModeEdge:
             lx.eval('select.type edge')
 
 

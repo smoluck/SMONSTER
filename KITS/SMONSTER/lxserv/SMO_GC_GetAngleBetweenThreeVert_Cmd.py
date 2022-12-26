@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_GetAngleBetweenThreeVert_Cmd.py
 # Version:      1.0
 #
@@ -10,26 +10,30 @@
 #
 # Author:       Franck ELISABETH
 # GetRotFromThreeVector based on code from  Avatar "rockjail" on https://gist.github.com/rockjail/9e9379c4e52e72cb4cba
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      03/12/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo, string, lxu.vector, math
+import lx
+import lxu
+import lxu.vector
+import math
+import modo
 
 Cmd_Name = "smo.GC.GetAngleBetweenThreeVert"
 # smo.GC.GetAngleBetweenThreeVert ?
 
-############# USE CASE
+# ----------- USE CASE
 # TestResult = lx.eval('smo.GC.GetAngleBetweenThreeVert ?')
 # lx.out('Angle at Corner is: ',TestResult)
-######################
-
-
+# --------------------
 
 # create a function to get Rotation angle out of 3 Vectors ( created from 3 Vertex positions)
 # if you'd like to know more about it have a look at this: http://www.soi.city.ac.uk/~sbbh653/publications/euler.pdf
+
+
 def GetRotFromThreeVector(m):
     if m[0][0] == 1.0:
         x = math.atan2(m[0][2],m[2][3])
@@ -43,7 +47,7 @@ def GetRotFromThreeVector(m):
         x = math.atan2(-m[2][0],m[0][0])
         y = math.asin(m[1][0])
         z = math.atan2(-m[1][2],m[1][1])
-    return ( math.degrees(z), math.degrees(x), math.degrees(y))
+    return math.degrees(z), math.degrees(x), math.degrees(y)
 
 
 class SMO_GC_GetAngleBetweenThreeVert_Cmd(lxu.command.BasicCommand):

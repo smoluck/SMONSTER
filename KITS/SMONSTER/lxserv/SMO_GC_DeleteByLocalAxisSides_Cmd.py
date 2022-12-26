@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_DeleteByLocalAxisSides_Cmd.py
 # Version:      1.0
 #
@@ -7,16 +7,19 @@
 #               Delete vertex by Local Axis Side (positive or negative).
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      17/08/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.DeleteByLocalAxisSides"
 # smo.GC.DeleteByLocalAxisSides z true
+
 
 class SMO_GC_DeleteByLocalAxisSides_Cmd(lxu.command.BasicCommand):
     def __init__(self):

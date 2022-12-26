@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_CLEANUP_DelEverythingExceptMeshes_Cmd.py
 # Version:      1.0
 #
@@ -9,16 +9,19 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      11/05/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.CLEANUP.DelEverythingExceptMeshes"
 # smo.CLEANUP.DelEverythingExceptMeshes
+
 
 class SMO_CLEANUP_DelEverythingExceptMeshes_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -44,9 +47,6 @@ class SMO_CLEANUP_DelEverythingExceptMeshes_Cmd(lxu.command.BasicCommand):
 
     def basic_ButtonName(self):
         return 'SMO CLEANUP - Delete everything Except Meshes items.'
-
-    def cmd_Flags(self):
-        return lx.symbol.fCMD_UNDO
 
     def basic_Enable(self, msg):
         return True

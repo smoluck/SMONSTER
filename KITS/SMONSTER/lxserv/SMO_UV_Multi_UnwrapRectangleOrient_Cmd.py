@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_UV_Multi_UnwrapRectangleOrient_Cmd.py
 # Version:      1.0
 #
@@ -9,13 +9,15 @@
 #               on defined Axis.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      26/08/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.UV.Multi.UnwrapRectangleOrient"
 # smo.UV.Multi.UnwrapRectangleOrient 0
@@ -191,7 +193,7 @@ class SMO_UV_Multi_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
         lx.eval('smo.GC.DeselectAll')
         scene.select(mesh)
         lx.eval('select.type polygon')
-        for item in (MURO_PolysList):
+        for item in MURO_PolysList:
             # print(item)
             selected_mesh.geometry.polygons.select(item)
 
@@ -201,7 +203,7 @@ class SMO_UV_Multi_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
         lx.eval('smo.GC.DeselectAll')
         scene.select(mesh)
         lx.eval('select.type polygon')
-        for item in (MURO_PolysList):
+        for item in MURO_PolysList:
             # print(item)
             selected_mesh.geometry.polygons.select(item)
 
@@ -210,7 +212,7 @@ class SMO_UV_Multi_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
             lx.eval('view3d.showUVSeam true active')
 
         AutoHideState = lx.eval('user.value SMO_UseVal_UV_HideAfterUnwrap ?')
-        if AutoHideState == True:
+        if AutoHideState:
             lx.eval('select.useSet UV_DONE select')
             lx.eval('hide.sel')
 

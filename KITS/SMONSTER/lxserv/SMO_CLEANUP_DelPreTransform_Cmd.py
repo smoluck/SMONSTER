@@ -1,5 +1,5 @@
-#python
-#---------------------------------------------
+# python
+"""
 # Name:         SMO_CLEANUP_DelPreTransform_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,18 @@
 #               FBX Export in the current scene. Position / Rotation / Scale
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      03/03/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------------
+"""
 
-
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.CLEANUP.DelPreTransform"
+
 
 class SMO_Cleanup_DelPreTransform_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -56,10 +58,10 @@ class SMO_Cleanup_DelPreTransform_Cmd(lxu.command.BasicCommand):
         IntMergeTransRot = self.dyna_Int (0)
         IntFreezeRot = self.dyna_Int (1)
         
-        # ############### 1 ARGUMENTS Test ###############
+        # # ------------- ARGUMENTS Test
         # PreTransform = 1
         # FreezeRot = 1
-        # ############### 1 ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
         args = lx.args()
         lx.out(args)
 
@@ -118,7 +120,7 @@ class SMO_Cleanup_DelPreTransform_Cmd(lxu.command.BasicCommand):
         
         FreezeRot = IntFreezeRot
         lx.out('Freeze Rotation:', FreezeRot)
-        # ############### 1 ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
         
         lx.eval('select.drop item')
         lx.eval('select.itemType mesh')

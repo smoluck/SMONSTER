@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_UV_SSRUVMapByArg.py
 # Version:      1.0
 #
@@ -8,21 +8,21 @@
 #               via String Argument.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      17/02/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import lx, lxu, modo
 scn = modo.Scene()
 
 
-# # ############### 3 ARGUMENTS ###############
+# # # ------------- ARGUMENTS ------------- #
 # RenameByDefault = 1
 # SearchString = "UVChannel_1"
 # TargetString = "TargetUVMap"
-# # ############### 3 ARGUMENTS ###############
+# # # ------------- ARGUMENTS ------------- #
 args = lx.args()
 lx.out(args)
 
@@ -34,7 +34,7 @@ lx.out('Searched UVMap name:', SearchString)
 
 TargetString = string(args[2])
 lx.out('Target UVMap name:', TargetString)
-# # ############### ARGUMENTS ###############
+# # # ------------- ARGUMENTS ------------- #
 
 
 DetectedVMapCount = len(lx.evalN('vertMap.list all ?'))

@@ -1,5 +1,6 @@
-#python
-import lx, lxu, modo
+# python
+
+import lx
 
 lx.eval('smo.BATCH.SetInputFileTypeViaPref {DXF}')
 lx.eval('smo.BATCH.SetOutputFileTypeViaPref {LXO}')

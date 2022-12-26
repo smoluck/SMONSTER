@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MES_Add_DefFolder.py
 # Version:      1.0
 #
@@ -7,11 +7,11 @@
 #               Add a Deform Folder and add it to the Schematic.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      07/03/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo
 
@@ -37,7 +37,7 @@ if bDoChannels:
     lx.eval("schematic.addChannel chanIdx:{%s}" % cName)
 
 ###################################
-## <----( Specific Action )----> ##
+# <----( Specific Action )----> #
 ###################################
 try:
     lx.eval('schematic.deformerCreate deformFolder')
@@ -45,5 +45,5 @@ try:
 except:
     sys.exit
 ###################################
-## <----( Specific Action )----> ##
+# <----( Specific Action )----> #
 ###################################

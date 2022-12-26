@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MOD_PolyLazySelect.py
 # Version: 1.0
 #
@@ -8,14 +8,14 @@
 # is sharing the same normal in a range of 40 Degree
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      01/07/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 
-############### 2 ARGUMENTS ###############
+# ------------- ARGUMENTS ------------- #
 args = lx.args()
 lx.out(args)
 # Similar Touching Fast = 0
@@ -28,15 +28,15 @@ lx.out('Desired Axe change:',LSMode)
 # LS_Angle 40 Deg = 40
 LS_Angle = int(args[1])
 lx.out('Desired Axe change:',LS_Angle)
-################# ARGUMENTS ###############
+### ------------- ARGUMENTS ------------- #
 
 
-# ############### 2 ARGUMENTS Test ########
+# # ------------- ARGUMENTS Test ------ #
 # LSMode = 1
 # lx.out('Lazy Select Mode:', LSMode)
 # LS_Angle = 2
 # lx.out('Lazy Defined Value:', LS_Angle)
-# ############### ARGUMENTS ###############
+# # ------------- ARGUMENTS ------------- #
 
 # LazySelectUserValue = lx.eval('user.value sene_LS_facingRatio ?')
 # lx.out('Lazy Select User Value:', LazySelectUserValue)

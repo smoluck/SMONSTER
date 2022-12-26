@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MES_Add_CurveExtrudeMeshOp.py
 # Version:      1.0
 #
@@ -7,17 +7,17 @@
 #               Add a Curve Extrude Meshop and add it to the Schematic.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      07/03/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo
 
 
 ###################################
-## <----( Specific Action )----> ##
+# <----( Specific Action )----> #
 ###################################
 try:
     lx.eval('meshop.create curve.extrude.item')
@@ -25,7 +25,7 @@ try:
 except:
     sys.exit
 ###################################
-## <----( Specific Action )----> ##
+# <----( Specific Action )----> #
 ###################################
 
 sel_svc = lx.service.Selection()

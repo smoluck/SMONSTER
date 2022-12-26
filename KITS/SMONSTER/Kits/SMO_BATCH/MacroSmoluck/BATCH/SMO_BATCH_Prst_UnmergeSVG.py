@@ -1,5 +1,6 @@
-#python
-import lx, lxu, modo
+# python
+
+import lx
 
 lx.eval('smo.BATCH.SetInputFileTypeViaPref {SVG}')
 lx.eval('smo.BATCH.SetOutputFileTypeViaPref {LXO}')

@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_UV_Multi_SmartOrient_Cmd.py
 # Version:      1.0
 #
@@ -8,18 +8,18 @@
 #               on Poly or Edge Selection
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
 
 Cmd_Name = "smo.UV.Multi.SmartOrient"
-
-
 # smo.UV.Multi.SmartOrient 0
+
 
 class SMO_UV_Multi_SmartOrient_Cmd(lxu.command.BasicCommand):
     def __init__(self):

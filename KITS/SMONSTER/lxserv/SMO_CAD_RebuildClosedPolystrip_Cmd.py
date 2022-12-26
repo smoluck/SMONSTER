@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_CAD_RebuildClosedPolyStrip_Cmd.py
 # Version:      1.0
 #
@@ -9,21 +9,28 @@
 #               rebuild on the selected polystrip Closed band (via 2 set of Edges Loops).
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      06/05/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
-import lx, lxu, modo, sys
+"""
+
+import lx
+import lxu
+import modo
+import sys
 
 Cmd_Name = "smo.CAD.RebuildClosedPolyStrip"
+
+
 # smo.CAD.RebuildClosedPolyStrip 12
+
 
 class SMO_CAD_RebuildClosedPolyStrip_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Side count", lx.symbol.sTYPE_INTEGER)
-        self.basic_SetFlags (0, lx.symbol.fCMDARG_OPTIONAL)				# here the (0) define the argument index.
+        self.basic_SetFlags(0, lx.symbol.fCMDARG_OPTIONAL)  # here the (0) define the argument index.
 
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
@@ -53,41 +60,40 @@ class SMO_CAD_RebuildClosedPolyStrip_Cmd(lxu.command.BasicCommand):
         scene = modo.scene.current()
         mesh = scene.selectedByType('mesh')[0]
 
-
+        RebSideCount = int()
         ######################################
-        # <----[ Check Arguments State ]---->#
+        # <----( Check Arguments State )----> #
         ######################################
         # If not Set, ask value to user via Popup window with textt field
         if self.dyna_IsSet(0):
-            RebSideCount = (self.dyna_Int(0) - 1)       # Minus 1 is for Solving the count offset on Closed Curves
+            RebSideCount = (self.dyna_Int(0) - 1)  # Minus 1 is for Solving the count offset on Closed Curves
         if not self.dyna_IsSet(0):
-            RebSideCount = (4 - 1)                      # Minus 1 is for Solving the count offset on Closed Curves
+            RebSideCount = (4 - 1)  # Minus 1 is for Solving the count offset on Closed Curves
             try:
                 #####--- Define User Value for Count --- START ---#####
                 #####
-                #Create a user value that define the Count for the Command.
+                # Create a user value that define the Count for the Command.
                 lx.eval("user.defNew name:Count type:integer life:momentary")
-                #Set the title name for the dialog window
+                # Set the title name for the dialog window
                 lx.eval('user.def Count dialogname "SMO CAD - Rebuild Polystrip"')
-                #Set the input field name for the value that the users will see
+                # Set the input field name for the value that the users will see
                 lx.eval("user.def Count username {Set the side count value}")
-                #The '?' before the user.value calls a popup to have the user set the value
+                # The '?' before the user.value calls a popup to have the user set the value
                 lx.eval("?user.value Count")
-                #Now that the user set the value, i can query it
+                # Now that the user set the value, i can query it
                 UserInput_Count = lx.eval("user.value Count ?")
-                lx.out('User Count:',UserInput_Count)
+                lx.out('User Count:', UserInput_Count)
                 RebSideCount = UserInput_Count
             except:
                 pass
         print(RebSideCount)
 
-
-        # ############### 1 ARGUMENT Test ###############
+        # # ------------- ARGUMENTS Test
         # RebSideCount= self.dyna_Int(0)
         # RebSideCount = 16
-        # ############### ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
 
-        # # ############### 1 ARGUMENT ###############
+        # # # ------------- ARGUMENTS ------------- #
         # args = lx.args()
         # lx.out(args)
         #
@@ -95,11 +101,11 @@ class SMO_CAD_RebuildClosedPolyStrip_Cmd(lxu.command.BasicCommand):
         # # 1 = Radial Triple
         # RebSideCount = int(args[0])
         # lx.out('Rebuild Mode:', RebSideCount)
-        # # ############### ARGUMENTS ###############
+        # # # ------------- ARGUMENTS ------------- #
 
-        ################################
-        # <----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
 
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
@@ -155,11 +161,11 @@ class SMO_CAD_RebuildClosedPolyStrip_Cmd(lxu.command.BasicCommand):
             User_Pref_PasteDeselectChangedState = 0
         ################################################
 
-        ##############################
-        ####### SAFETY CHECK 1 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 1 )---> #
+        # -------------------------- #
 
-        #####-------------------- safety check 1 : Only One Item Selected --- START --------------------#####
+        # --------------------  safety check 1 : Only One Item Selected --- START
         ItemCount = lx.eval('query layerservice layer.N ? fg')
         lx.out('Selected Item count:', ItemCount)
 
@@ -178,13 +184,13 @@ class SMO_CAD_RebuildClosedPolyStrip_Cmd(lxu.command.BasicCommand):
             SMO_SafetyCheck_Only1MeshItemSelected = 1
             lx.out('Only One Item Selected:', SMO_SafetyCheck_Only1MeshItemSelected)
             lx.out('script running: right amount of Mesh Item selected')
-        #####-------------------- safety check 1 : Only One Item Selected --- END --------------------#####
+        # --------------------  safety check 1 : Only One Item Selected --- END
 
-        ##############################
-        ####### SAFETY CHECK 2 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 2 )---> #
+        # -------------------------- #
 
-        #####--------------------  safety check 2: Edge Selection Mode enabled --- START --------------------#####
+        # Edge Selection Mode enabled --- START
         selType = ""
         # Used to query layerservice for the list of polygons, edges or vertices.
         attrType = ""
@@ -235,13 +241,13 @@ class SMO_CAD_RebuildClosedPolyStrip_Cmd(lxu.command.BasicCommand):
             lx.eval('+dialog.open')
             lx.out('script Stopped: You must be in Edge Mode to run that script')
             sys.exit
-        #####--------------------  safety check 2: Edge Selection Mode enabled --- END --------------------#####
+        # Edge Selection Mode enabled --- END
 
-        ##############################
-        ####### SAFETY CHECK 3 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 3 )---> #
+        # -------------------------- #
 
-        #####--------------------  safety check 3: at Least 4 Edges are selected --- START --------------------#####
+        # at Least 4 Edges are selected --- START
         try:
             #####--- Get current selected edge count --- START ---#####
             #####
@@ -269,16 +275,16 @@ class SMO_CAD_RebuildClosedPolyStrip_Cmd(lxu.command.BasicCommand):
         TotalSafetyCheckTrueValue = 3
         lx.out('SafetyCheck Desired Value', TotalSafetyCheckTrueValue)
         TotalSafetyCheck = (
-                    SMO_SafetyCheck_Only1MeshItemSelected + SMO_SafetyCheck_EdgeModeEnabled + SMO_SafetyCheck_min4EdgeSelected)
+                SMO_SafetyCheck_Only1MeshItemSelected + SMO_SafetyCheck_EdgeModeEnabled + SMO_SafetyCheck_min4EdgeSelected)
         lx.out('SafetyCheck Current Value', TotalSafetyCheck)
         #####
         #####--- Define user value for the Prerequisite TotalSafetyCheck --- END ---#####
 
-        ##############################
-        ## <----( Main Macro )----> ##
-        ##############################
+        # ------------------------ #
+        # <----( Main Macro )----> #
+        # ------------------------ #
 
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
         if TotalSafetyCheck == TotalSafetyCheckTrueValue:
             # Main Rebevel Macro
             lx.eval('select.type item')
@@ -390,7 +396,7 @@ class SMO_CAD_RebuildClosedPolyStrip_Cmd(lxu.command.BasicCommand):
             lx.eval('select.useSet name:REBUILDPSTRIP_CRV mode:select')
             lx.eval('!select.deleteSet name:REBUILDPSTRIP_CRV all:false')
             lx.eval('!!delete')
-            lx.eval('select.type item')             # missing Delete Sel Set in Item Mode
+            lx.eval('select.type item')  # missing Delete Sel Set in Item Mode
             lx.eval('select.useSet name:REBUILDPSTRIP_ITEM mode:select')
             lx.eval('!select.deleteSet name:REBUILDPSTRIP_ITEM all:false')
             lx.eval('select.type edge')
@@ -415,7 +421,7 @@ class SMO_CAD_RebuildClosedPolyStrip_Cmd(lxu.command.BasicCommand):
         ########################################################
 
         lx.out('End of SMO_CAD_RebuildPolystrip Script')
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
 lx.bless(SMO_CAD_RebuildClosedPolyStrip_Cmd, Cmd_Name)

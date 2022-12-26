@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GIF_UV_Normalize_Pack_fixFlipped.py
 # Version: 1.01
 #
@@ -7,11 +7,11 @@
 #               Open the GIF  as documentation helper
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      30/05/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 import lx
 filePathToOpen = lx.eval("query platformservice alias ? {kit_SMO_GAME_CONTENT:MacroSmoluck/DOCUMENTATION/UV_Normalize_Pack_fixFlipped.gif}")
 

@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_GetShaderItemPosIndex_Cmd.py
 # Version:      1.0
 #
@@ -8,21 +8,23 @@
 #
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      12/08/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.GetShaderItemPosIndex"
 # query:        smo.GC.GetShaderItemPosIndex ?
 
-############# USE CASE
+# ----------- USE CASE
 # TestResult = lx.eval('smo.GC.GetShaderItemPosIndex ?')
 # lx.out('Position Index of the Shader Item (in the Shader Tree) is :',TestResult)
-######################
+# --------------------
 
 
 class SMO_GC_GetShaderItemPosIndex_Cmd(lxu.command.BasicCommand):

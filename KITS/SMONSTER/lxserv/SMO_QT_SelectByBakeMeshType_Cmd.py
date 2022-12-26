@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_QuickTag_SelectByBakeMeshType_Cmd.py
 # Version:      1.0
 #
@@ -8,15 +8,19 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      25/11/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
-import lx, lxu, modo
+"""
+
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.QT.SelectByBakeMeshType"
 # smo.QT.SelectByBakeMeshType 0
+
 
 class SMO_QT_SelectByBakeMeshType_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -50,18 +54,18 @@ class SMO_QT_SelectByBakeMeshType_Cmd(lxu.command.BasicCommand):
     
     def basic_Execute(self, msg, flags):
         
-        ################################
-        #<----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         lx.eval("user.defNew name:SelectByBakeMeshType type:integer life:momentary")
-        ################################
+        # ------------------------------ #
         
-        # ############### ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
         SelectByBakeMeshType = self.dyna_Int (0)
         # 1 = low
         # 2 = cage
         # 3 = high
-        # ############### ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
         scene = modo.scene.current()
         searchedtag = 'MTyp'
 

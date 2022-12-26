@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_UV_UpdateUVSeamCutMap_Cmd.py
 # Version:      1.0
 #
@@ -7,16 +7,20 @@
 #               Update the UVseam Cut Map based on the current UVMap
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
+import sys
 
 Cmd_Name ="smo.UV.UpdateUVSeamCutMap"
 # smo.UV.UpdateUVSeamCutMap
+
 
 class SMO_UV_UpdateUVSeamCutMap_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -63,9 +67,9 @@ class SMO_UV_UpdateUVSeamCutMap_Cmd(lxu.command.BasicCommand):
         
         
         
-        ################################
-        #<----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
@@ -121,17 +125,17 @@ class SMO_UV_UpdateUVSeamCutMap_Cmd(lxu.command.BasicCommand):
             lx.eval('dialog.title {SMONSTER - UV - Unwrap Planar:}')
             lx.eval('dialog.msg {Please select Only One Vertex Map and run that script again.}')
             lx.eval('dialog.open')
-            sys.exit()
             SMO_SafetyCheck_UVUpdateUVSeam_UVMapCount = False
-        
+            sys.exit()
+
         if SelectedMeshUVMapsCount < 1 :
             lx.eval('dialog.setup info')
             lx.eval('dialog.title {SMONSTER - UV - Unwrap Planar:}')
             lx.eval('dialog.msg {You must have a UV map selected to run this script.}')
             lx.eval('dialog.open')
-            sys.exit()
             SMO_SafetyCheck_UVUpdateUVSeam_UVMapCount = False
-        
+            sys.exit()
+
         if SelectedMeshUVMapsCount == 1 :
             SMO_SafetyCheck_UVUpdateUVSeam_UVMapCount = True
             
@@ -210,11 +214,11 @@ class SMO_UV_UpdateUVSeamCutMap_Cmd(lxu.command.BasicCommand):
         
         
         
-        ##############################
-        ####### SAFETY CHECK 1 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 1 )---> #
+        # -------------------------- #
         
-        #####--------------------  safety check 1: Polygon Selection Mode enabled --- START --------------------#####
+        # --------------------  safety check 1: Polygon Selection Mode enabled --- START
         
         selType = ""
         # Used to query layerservice for the list of polygons, edges or vertices.
@@ -268,7 +272,7 @@ class SMO_UV_UpdateUVSeamCutMap_Cmd(lxu.command.BasicCommand):
             
             lx.out('script Running: Item Component Selection Mode')
             
-        #####--------------------  safety check 1: Polygon Selection Mode enabled --- END --------------------#####
+        # --------------------  safety check 1: Polygon Selection Mode enabled --- END
         
         
         if Modo_ver >= 1300:
@@ -295,16 +299,16 @@ class SMO_UV_UpdateUVSeamCutMap_Cmd(lxu.command.BasicCommand):
                 lx.eval('vertMap.list seam %s' % UVSeamName)
                 
             lx.out('<----------- END ----------->')
-        ################################
+        # ------------------------------ #
         
         
         
         
-        ##############################
-        ## <----( Main Macro )----> ##
-        ##############################
+        # ------------------------ #
+        # <----( Main Macro )----> #
+        # ------------------------ #
         
-        #####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- START --------------------#####
+        #####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- START
         if SMO_SafetyCheck_VertexModeEnabled == 1:
             lx.eval('select.type polygon')
             lx.eval('uv.selectBorder')
@@ -341,7 +345,7 @@ class SMO_UV_UpdateUVSeamCutMap_Cmd(lxu.command.BasicCommand):
             lx.eval('select.type item')
         
         lx.out('End of Update UVSeam Cut Map Script')
-        #####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- END --------------------#####
+        #####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- END
         
     
 lx.bless(SMO_UV_UpdateUVSeamCutMap_Cmd, Cmd_Name)

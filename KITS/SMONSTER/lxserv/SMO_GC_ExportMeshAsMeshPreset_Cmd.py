@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_ExportMeshAsMeshPreset_Cmd.py
 # Version:      1.0
 #
@@ -9,17 +9,20 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      27/10/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, os, modo, string
-from os import path
+import lx
+import lxu
+import modo
+import os
 
 Cmd_Name = "smo.GC.ExportMeshAsMeshPreset"
 # smo.GC.ExportMeshAsMeshPreset {C:\TEMP\Target}
+
 
 class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -65,7 +68,7 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
         PBState = bool()
         Good = bool()
         PBState = bool(lx.eval('layout.createOrClose PresetBrowser presetBrowserPalette ?'))
-        if PBState == False:
+        if not PBState:
             lx.eval(
                 'layout.createOrClose PresetBrowser presetBrowserPalette true Presets width:800 height:600 persistent:true style:palette')
         Good = bool(lx.eval('layout.createOrClose PresetBrowser presetBrowserPalette ?'))
@@ -113,7 +116,7 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
 
             # In case a Path is defined directly with the path argument we overwrite the path
             if self.dyna_IsSet(0):
-                DestinationPath = (TargetDirPath)
+                DestinationPath = TargetDirPath
 
             if not self.dyna_IsSet(0) and SpecificFolderState == True:
                 DestinationPath = SetSpecificPathDialog()

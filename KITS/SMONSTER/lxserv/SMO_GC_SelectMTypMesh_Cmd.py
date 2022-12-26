@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_SelectMTypMesh_Cmd.py
 # Version:      1.0
 #
@@ -7,15 +7,16 @@
 #               Select corresponding LowPoly / Cage / HighPoly meshes for further FBX Export.
 #
 #
-#
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      30/11/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.SelectMTypMesh"
 # smo.GC.SelectMTypMesh 0 ------ > Select LowPoly
@@ -62,20 +63,20 @@ class SMO_GC_SelectMTypMesh_Cmd(lxu.command.BasicCommand):
         
         SelectMTypTag = self.dyna_Int (0)
         
-        ################################
-        #<----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         # lx.eval("user.defNew name:itemUniqueName type:string life:momentary")
         # lx.eval("user.defNew name:MtypeTagValue type:string life:momentary")
         # lx.eval("user.defNew name:TagDetected type:boolean life:momentary")
         # lx.eval("user.defNew name:TagDetectedCount type:integer life:momentary")
-        ################################
+        # ------------------------------ #
         
-        if SelectMTypTag == 0 :
+        if SelectMTypTag == 0:
             lx.eval('!select.useSet MTyp_LowPoly select')
-        if SelectMTypTag == 1 :
+        if SelectMTypTag == 1:
             lx.eval('!select.useSet MTyp_Cage select')
-        if SelectMTypTag == 2 :
+        if SelectMTypTag == 2:
             lx.eval('!select.useSet MTyp_HighPoly select')
 
     

@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_UV_RelaxUV_Cmd.py
 # Version:      1.0
 # 
@@ -7,16 +7,20 @@
 #               Relax the UV's of the current Polygon Selection
 # 
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 # 
 # Created:      10/10/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo, sys
+import lx
+import lxu
+import modo
+import sys
 
 Cmd_Name = "smo.UV.Relax"
 #smo.UV.Relax 256
+
 
 class SMO_UV_RelaxUV_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -55,7 +59,7 @@ class SMO_UV_RelaxUV_Cmd(lxu.command.BasicCommand):
         IntRelaxCount = self.dyna_Int (0)
         
         
-        ############### 1 ARGUMENT ###############
+        # ------------- ARGUMENTS ------------- #
         args = lx.args()
         lx.out(args)
         
@@ -63,11 +67,8 @@ class SMO_UV_RelaxUV_Cmd(lxu.command.BasicCommand):
         # Angle Based = 1
         RelaxUV_Iter = IntRelaxCount
         lx.out('Relax UV iteration Count: %s' % RelaxUV_Iter)
-        ############### ARGUMENTS ###############
-        
-        # ############### ARGUMENT Test ###############
-        # RelaxUV_Iter = 16         --> Iteration Count
-        # ############### ARGUMENT ###############
+        # ------------- ARGUMENTS ------------- #
+
         
         
         
@@ -80,9 +81,9 @@ class SMO_UV_RelaxUV_Cmd(lxu.command.BasicCommand):
         lx.out('Modo Version:',Modo_ver)
         ##### UV SEAM Map Detection #####
         
-        ################################
-        #<----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
         lx.eval("user.defNew name:UVConstraints type:string life:momentary")
@@ -106,9 +107,9 @@ class SMO_UV_RelaxUV_Cmd(lxu.command.BasicCommand):
         
 
 
-        ###############################################
-        ####### SAFETY CHECK 1 - UVMap Selected #######
-        ###############################################
+        # ----------------------------------------- #
+        # <---( SAFETY CHECK 1 )---> UVMap Selected #
+        # ----------------------------------------- #
         lx.out('<------------- START -------------->')
         lx.out('<--- UV Map Safety Check --->')
 
@@ -122,7 +123,7 @@ class SMO_UV_RelaxUV_Cmd(lxu.command.BasicCommand):
         lx.eval('smo.GC.ClearSelectionVmap 1 1')
         lx.eval('select.vertexMap %s txuv replace' % UVRelax_UVMapName)
         
-        if SelectedMeshUVMapsCount > 1 :
+        if SelectedMeshUVMapsCount > 1:
             lx.eval('dialog.setup info')
             lx.eval('dialog.title {SMONSTER - Relax UVs:}')
             lx.eval('dialog.msg {Please select Only One Vertex Map and run that script again.}')
@@ -131,7 +132,7 @@ class SMO_UV_RelaxUV_Cmd(lxu.command.BasicCommand):
             sys.exit()
 
         
-        if SelectedMeshUVMapsCount < 1 :
+        if SelectedMeshUVMapsCount < 1:
             lx.eval('dialog.setup info')
             lx.eval('dialog.title {SMONSTER - Relax UVs:}')
             lx.eval('dialog.msg {You must have a UV map selected to run this script.}')
@@ -140,7 +141,7 @@ class SMO_UV_RelaxUV_Cmd(lxu.command.BasicCommand):
             sys.exit()
 
         
-        if SelectedMeshUVMapsCount == 1 :
+        if SelectedMeshUVMapsCount == 1:
             SMO_SafetyCheckUVRelax_UVMapCount = True
             
         # UserUVMapName = lx.eval1('query layerservice vmap.name ? %s' %UVmap_Selected)
@@ -179,8 +180,8 @@ class SMO_UV_RelaxUV_Cmd(lxu.command.BasicCommand):
         ## UV Constraint Map Selection Check To bugfix the UV Constraint VMap creation ##
         lx.out('<--- UV Constraint Map Safety Check --->')
         lx.out('<---------- START ---------->')
-        if Modo_ver <= 1399 :
-            if DetectedVMapPickCount >= 1 and DetectedVMapPickName == UVConstraints :
+        if Modo_ver <= 1399:
+            if DetectedVMapPickCount >= 1 and DetectedVMapPickName == UVConstraints:
                 lx.out('UV Constraints junk map detected')
                 lx.eval('!vertMap.deleteByName pick "UV Constraints"')
                 if Modo_ver >= 1300:
@@ -189,10 +190,10 @@ class SMO_UV_RelaxUV_Cmd(lxu.command.BasicCommand):
                     except:
                         ReplaceUVSeamFailed = 1
                         # lx.out('UV Seam map NOT detected')
-                    if ReplaceUVSeamFailed == 1 :
+                    if ReplaceUVSeamFailed == 1:
                         lx.eval('smo.UV.UpdateUVSeamCutMap')
                         lx.eval('select.type polygon')
-            elif DetectedVMapPickCount <= 0 and DetectedVMapPickName != UVConstraints :
+            elif DetectedVMapPickCount <= 0 and DetectedVMapPickName != UVConstraints:
                 lx.out('UV Constraints junk map NOT detected')
         
     

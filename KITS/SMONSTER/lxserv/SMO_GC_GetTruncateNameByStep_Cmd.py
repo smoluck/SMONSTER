@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_GetTruncateNameByStep_Cmd.py
 # Version:      1.0
 #
@@ -9,21 +9,23 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      03/12/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo, string
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.GetTruncateNameByStep"
 # smo.GC.GetTruncateNameByStep 1 ?
 
-############# USE CASE
+# ----------- USE CASE
 # TestResult = lx.eval('smo.GC.GetTruncateNameByStep 2 ?')
 # lx.out('Truncated name is ',TestResult)
-######################
+# --------------------
 
 
 class SMO_GC_GetTruncateNameByStep_Cmd(lxu.command.BasicCommand):
@@ -86,7 +88,7 @@ class SMO_GC_GetTruncateNameByStep_Cmd(lxu.command.BasicCommand):
         return valid_selection
 
     def cmd_Query(self, index, vaQuery):
-        if self.current_Selection is not None :
+        if self.current_Selection is not None:
             scene = modo.scene.current()
             TruncateSteps = self.dyna_Int (0)
             MeshItem_List = scene.selected

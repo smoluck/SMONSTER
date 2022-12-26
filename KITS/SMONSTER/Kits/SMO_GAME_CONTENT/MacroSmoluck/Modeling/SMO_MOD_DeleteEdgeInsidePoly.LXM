@@ -1,5 +1,5 @@
 #LXMacro#
-#-----------------------------------------
+# ----------------------------------------
 # Name:         SMO_MOD_DeleteEdgeInsidePoly.LXM
 # Version:      1.0
 #
@@ -13,7 +13,7 @@
 #
 # Created:      XX/XX/2018-2019
 # Copyright:    (c) Franck Elisabeth 2019
-#-----------------------------------------
+# ----------------------------------------
 
 # simple than old macro: PolyMerge command
 poly.merge

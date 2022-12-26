@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_CAD_RebevelProcedByUser_Cmd.py
 # Version:      1.0
 #
@@ -9,15 +9,20 @@
 #               rebevel on the selected patch
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      06/05/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
-import lx, lxu, modo, sys
+"""
+
+import lx
+import lxu
+import modo
+import sys
 
 Cmd_Name = "smo.CAD.RebevelProcedByUser"
 # smo.CAD.RebevelProcedByUser 8
+
 
 class SMO_CAD_RebevelProcedByUser_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -53,7 +58,7 @@ class SMO_CAD_RebevelProcedByUser_Cmd(lxu.command.BasicCommand):
 
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
-        if self.SelModePoly == True:
+        if self.SelModePoly:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
 
         mesh = scene.selectedByType('mesh')[0]
@@ -61,7 +66,7 @@ class SMO_CAD_RebevelProcedByUser_Cmd(lxu.command.BasicCommand):
 
 
         ######################################
-        # <----[ Check Arguments State ]---->#
+        # <----( Check Arguments State )----> #
         ######################################
         # If not Set, ask value to user via Popup window with textt field
         if self.dyna_IsSet(0):
@@ -101,9 +106,9 @@ class SMO_CAD_RebevelProcedByUser_Cmd(lxu.command.BasicCommand):
         # print(RefSystemActive)
 
 
-        ################################
-        # <----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
 
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
@@ -159,11 +164,11 @@ class SMO_CAD_RebevelProcedByUser_Cmd(lxu.command.BasicCommand):
             User_Pref_PasteDeselectChangedState = 0
         ################################################
 
-        ##############################
-        ####### SAFETY CHECK 1 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 1 )---> #
+        # -------------------------- #
 
-        #####-------------------- safety check 1 : Only One Item Selected --- START --------------------#####
+        # --------------------  safety check 1 : Only One Item Selected --- START
         ItemCount = lx.eval('query layerservice layer.N ? fg')
         lx.out('Selected Item count:', ItemCount)
 
@@ -182,13 +187,13 @@ class SMO_CAD_RebevelProcedByUser_Cmd(lxu.command.BasicCommand):
             SMO_SafetyCheck_Only1MeshItemSelected = 1
             lx.out('Only One Item Selected:', SMO_SafetyCheck_Only1MeshItemSelected)
             lx.out('script running: right amount of Mesh Item selected')
-        #####-------------------- safety check 1 : Only One Item Selected --- END --------------------#####
+        # --------------------  safety check 1 : Only One Item Selected --- END
 
-        ##############################
-        ####### SAFETY CHECK 2 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 2 )---> #
+        # -------------------------- #
 
-        #####--------------------  safety check 2: Polygon Selection Mode enabled --- START --------------------#####
+        # Polygon Selection Mode enabled --- START
         selType = ""
         # Used to query layerservice for the list of polygons, edges or vertices.
         attrType = ""
@@ -238,13 +243,13 @@ class SMO_CAD_RebevelProcedByUser_Cmd(lxu.command.BasicCommand):
             lx.eval('+dialog.open')
             lx.out('script Stopped: You must be in Polygon Mode to run that script')
             sys.exit
-        #####--------------------  safety check 2: Polygon Selection Mode enabled --- END --------------------#####
+        # Polygon Selection Mode enabled --- END
 
-        ##############################
-        ####### SAFETY CHECK 3 #######
-        ##############################
+        # -------------------------- #
+        # <---( SAFETY CHECK 3 )---> #
+        # -------------------------- #
 
-        #####--------------------  safety check 3: at Least 3 Polygons are selected --- START --------------------#####
+        # at Least 3 Polygons are selected --- START
         try:
             #####--- Get current selected polygon count --- START ---#####
             #####
@@ -265,7 +270,7 @@ class SMO_CAD_RebevelProcedByUser_Cmd(lxu.command.BasicCommand):
             elif CsPolys >= 3:
                 SMO_SafetyCheck_min3PolygonSelected = 1
                 lx.out('script running: right amount of polygons in selection')
-            #####--------------------  safety check 3: at Least 3 Polygons are selected --- END --------------------#####
+            # at Least 3 Polygons are selected --- END
         except:
             sys.exit
 
@@ -279,11 +284,11 @@ class SMO_CAD_RebevelProcedByUser_Cmd(lxu.command.BasicCommand):
         #####
         #####--- Define user value for the Prerequisite TotalSafetyCheck --- END ---#####
 
-        ##############################
-        ## <----( Main Macro )----> ##
-        ##############################
+        # ------------------------ #
+        # <----( Main Macro )----> #
+        # ------------------------ #
 
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
         if TotalSafetyCheck == TotalSafetyCheckTrueValue:
             # Main Rebevel Macro
 
@@ -561,7 +566,7 @@ class SMO_CAD_RebevelProcedByUser_Cmd(lxu.command.BasicCommand):
         ########################################################
 
         lx.out('End of Rebevel Script')
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
 lx.bless(SMO_CAD_RebevelProcedByUser_Cmd, Cmd_Name)

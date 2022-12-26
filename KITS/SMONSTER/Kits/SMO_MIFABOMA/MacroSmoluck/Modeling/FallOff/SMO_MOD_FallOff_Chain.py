@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MOD_FallOff_Mode.py
 # Version: 1.0
 #
@@ -7,11 +7,11 @@
 # set automaticly a defined Falloff
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      16/09/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo
 # scene = modo.scene.current()
@@ -21,18 +21,18 @@ import modo
 # lx.out('In Selected items, List of their Unique Name is:',SelItems)
 
 #FallOff_Mode = 0
-################################
-#<----[ DEFINE ARGUMENTS ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE ARGUMENTS )----> #
+# ------------------------------ #
 args = lx.args()
 lx.out(args)
 
 FallOff_Mode = args[0]                      # Falloff mode:                         Linear = 0 / Cylinder = 1 / Radial = 2
 # Expose the Result of the Arguments 
 lx.out(FallOff_Mode)
-################################
-#<----[ DEFINE ARGUMENTS ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE ARGUMENTS )----> #
+# ------------------------------ #
 
 lx.eval('tool.set actr.auto on')
 FallOff_Status = lx.eval('falloff.state ?')
@@ -52,9 +52,9 @@ else:
 
 
 if FallOff_Mode == 0:
-    lx.eval('tool.set falloff.linear on')
+	lx.eval('tool.set falloff.linear on')
 if FallOff_Mode == 1:
-    lx.eval('tool.set falloff.cylinder on')
+	lx.eval('tool.set falloff.cylinder on')
 
 
 # CALLING the FALLOFF DECAY SHAPE Pie Menu

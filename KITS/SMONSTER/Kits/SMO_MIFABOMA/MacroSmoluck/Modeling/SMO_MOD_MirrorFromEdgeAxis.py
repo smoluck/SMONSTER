@@ -1,16 +1,16 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MOD_MirrorFromEdgeAxis.py
 # Version:      1.0
 #
 # Purpose:      This Macro mirror the current Selection using 2 edges
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo
 scene = modo.scene.current()
@@ -18,9 +18,9 @@ mesh = scene.selectedByType('mesh')[0]
 CsEdges = len(mesh.geometry.edges.selected)
 
 
-################################
-#<----[ DEFINE VARIABLES ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE VARIABLES )----> #
+# ------------------------------ #
 
 #####--- Define user value for all the different SafetyCheck --- START ---#####
 #####
@@ -31,11 +31,11 @@ lx.eval("user.defNew name:SMO_SafetyCheck_min1EdgesSelected type:integer life:mo
 
 
 
-##############################
-####### SAFETY CHECK 1 #######
-##############################
+# -------------------------- #
+# <---( SAFETY CHECK 1 )---> #
+# -------------------------- #
 
-#####--------------------  safety check 1: Polygon Selection Mode enabled --- START --------------------#####
+# --------------------  safety check 1: Polygon Selection Mode enabled --- START
 
 selType = ""
 # Used to query layerservice for the list of polygons, edges or vertices.
@@ -91,15 +91,15 @@ else:
     lx.out('script Stopped: You must be in Edge Mode to run that script')
     sys.exit
     #sys.exit( "LXe_FAILED:Must be in edge selection mode." )
-#####--------------------  safety check 1: Edge Selection Mode enabled --- END --------------------#####
+# --------------------  safety check 1: Edge Selection Mode enabled --- END
 
 
 
-##############################
-####### SAFETY CHECK 2 #######
-##############################
+# -------------------------- #
+# <---( SAFETY CHECK 2 )---> #
+# -------------------------- #
 
-#####--------------------  safety check 2: at Least 1 Edge is selected --- START --------------------#####
+# at Least 1 Edge is selected --- START
 lx.out('Selected Edges Count',CsEdges)
 
 if CsEdges < 1:
@@ -120,7 +120,7 @@ if CsEdges == 2:
     SMO_SafetyCheck_min1EdgesSelected = 1
     MirrorAxe = 1
     lx.out('script running: right amount of Edges in selection')
-#####--------------------  safety check 2: at Least 1 Edge is selected --- END --------------------#####
+# at Least 1 Edge is selected --- END
 
 
 
@@ -135,11 +135,11 @@ lx.out('Current Value',TotalSafetyCheck)
 
 
 
-##############################
-## <----( Main Macro )----> ##
-##############################
+# -------------------------- #
+# <----( Main Macro )----> #
+# -------------------------- #
 
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
 if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     lx.eval('workPlane.reset')
     lx.eval('workPlane.fitSelect')
@@ -158,4 +158,4 @@ if TotalSafetyCheck != TotalSafetyCheckTrueValue:
     sys.exit
     
 lx.out('End of SMO_HardenPolyIsland')
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END

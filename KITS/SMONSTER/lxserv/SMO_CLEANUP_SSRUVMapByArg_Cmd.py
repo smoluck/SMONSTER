@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_CLEANUP_SSRUVMapByArg_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #               Rename it according to Arguments.
 #
 # Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      17/02/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.CLEANUP.SSRUVMapByArg"
 # smo.CLEANUP.SSRUVMapByArg 1 {UVChannel_1} {TargetUVMap}
+
 
 class SMO_Cleanup_SSRUVMapByArg_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -55,11 +58,11 @@ class SMO_Cleanup_SSRUVMapByArg_Cmd(lxu.command.BasicCommand):
     
     def basic_Execute(self, msg, flags):
         scn = modo.Scene()
-        # ############### ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
         RenameByDefault = self.dyna_Bool (0)
         SearchString = self.dyna_String (1)
         TargetString = self.dyna_String (2)
-        # ############### ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
         
         DetectedVMapCount = len(lx.evalN('vertMap.list all ?'))
         lx.out('Vmap Count:', DetectedVMapCount)

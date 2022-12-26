@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_SMONSTER_Club_SetAllKeymaps_Cmd.py
 # Version:      1.0
 #
@@ -7,15 +7,17 @@
 #               Launch all the Popup Window dialog to set all the default keymaps for Smonster Kits.
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      31/01/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
 
 CMD_NAME = 'smo.SMONSTER.QuickSetAllKeymaps'
+
 
 class SMONSTER_CLUB_SetAllKeymaps_Cmd(lxu.command.BasicCommand):
     def __init__(self):

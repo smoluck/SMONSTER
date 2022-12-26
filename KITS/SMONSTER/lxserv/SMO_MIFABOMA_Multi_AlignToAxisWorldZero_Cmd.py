@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_MIFABOMA_Multi_AlignToAxisWorldZero_Cmd.py
 # Version:      1.0
 #
@@ -8,13 +8,15 @@
 #               It use X Y Z axis as argument for the direction.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      17/08/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.MIFABOMA.Multi.AlignToAxisWorldZero"
 # smo.MIFABOMA.Multi.AlignToAxisWorldZero z

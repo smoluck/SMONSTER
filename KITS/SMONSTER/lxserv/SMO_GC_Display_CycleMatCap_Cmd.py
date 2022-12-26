@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_Display_CycleMatCap_Cmd.py
 # Version:      1.0
 #
@@ -10,13 +10,15 @@
 # Select in Item Mode or in Component Mode
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      14/02/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo, os
+import lx
+import lxu
+import os
 
 Cmd_Name = "smo.GC.Display.CycleMatCap"
 
@@ -25,6 +27,7 @@ Cmd_Name = "smo.GC.Display.CycleMatCap"
 
 # Backward Mode
 # smo.GC.Display.CycleMatCap 1
+
 
 class SMO_GC_Display_CycleMatCap_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -57,14 +60,14 @@ class SMO_GC_Display_CycleMatCap_Cmd(lxu.command.BasicCommand):
         return True
     
     def basic_Execute(self, msg, flags):
-        # ############### 1 ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
         args = lx.args()
         #lx.out(args)
         # ReverseDirection = 0      # Forward Cycle
         # ReverseDirection = 1      # Backward Cycle
         ReverseDirection = self.dyna_Int(0)
         # lx.out('Cycle Direction Mode:',ReverseDirection)
-        # ############### ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
         SMO_MatCapId = lx.eval('user.value SMO_MatCapId ?')
         # lx.out('MatCap Current Index:', SMO_MatCapId)
 
@@ -92,11 +95,11 @@ class SMO_GC_Display_CycleMatCap_Cmd(lxu.command.BasicCommand):
 
 
 
-            if SMO_MatCapId == None :
+            if SMO_MatCapId == None:
                 SMO_MatCapId = lx.eval('user.value SMO_MatCapId 0')
                 # lx.out('MatCap Current Index:', SMO_MatCapId)
 
-            if SMO_MatCapId != None :
+            if SMO_MatCapId != None:
                 SMO_MatCapId = lx.eval('user.value SMO_MatCapId ?')
                 # print(SMO_MatCapId)
 
@@ -132,11 +135,11 @@ class SMO_GC_Display_CycleMatCap_Cmd(lxu.command.BasicCommand):
 
 
 
-            if SMO_MatCapId == None :
+            if SMO_MatCapId == None:
                 SMO_MatCapId = lx.eval('user.value SMO_MatCapId 0')
                 # lx.out('MatCap Current Index:', SMO_MatCapId)
 
-            if SMO_MatCapId != None :
+            if SMO_MatCapId != None:
                 SMO_MatCapId = lx.eval('user.value SMO_MatCapId ?')
                 # print(SMO_MatCapId)
 

@@ -1,21 +1,21 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MATH_MultiMultiply.py
 # Version: 1.0
 #
 # Purpose: Add a Multi multiply node to the current link and divide it by 2 by default.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/10/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo
 
 ###################################
-## <----( Specific Action )----> ##
+# <----( Specific Action )----> #
 ###################################
 try:
     lx.eval('modifier.create "cmMathMulti:mul" insert:true')
@@ -24,7 +24,7 @@ try:
 except:
     sys.exit
 ###################################
-## <----( Specific Action )----> ##
+# <----( Specific Action )----> #
 ###################################
 
 sel_svc = lx.service.Selection()

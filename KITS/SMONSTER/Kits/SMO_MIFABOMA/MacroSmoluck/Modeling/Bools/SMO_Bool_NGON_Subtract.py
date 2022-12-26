@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_Bool_NGON_Subtract.py
 # Version:      1.0
 #
@@ -8,13 +8,15 @@
 #               (Connected Polygons) from the current Layer.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      27/02/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo
+import lx
+
 scene = modo.scene.current()
 mesh = scene.selectedByType('mesh')[0]
 CsPolys = len(mesh.geometry.polygons.selected)
@@ -22,9 +24,9 @@ CsPolys = len(mesh.geometry.polygons.selected)
 
 
 
-################################
-#<----[ DEFINE VARIABLES ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE VARIABLES )----> #
+# ------------------------------ #
 
 #####--- Define user value for all the different SafetyCheck --- START ---#####
 #####
@@ -84,11 +86,11 @@ if User_Pref_PasteDeselect == 1:
 
 
 
-##############################
-####### SAFETY CHECK 1 #######
-##############################
+# -------------------------- #
+# <---( SAFETY CHECK 1 )---> #
+# -------------------------- #
 
-#####--------------------  safety check 1: Polygon Selection Mode enabled --- START --------------------#####
+# --------------------  safety check 1: Polygon Selection Mode enabled --- START
 
 selType = ""
 # Used to query layerservice for the list of polygons, edges or vertices.
@@ -142,16 +144,16 @@ else:
     lx.out('script Stopped: You must be in Polygon Mode to run that script')
     sys.exit
     #sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
-#####--------------------  safety check 1: Polygon Selection Mode enabled --- END --------------------#####
+# --------------------  safety check 1: Polygon Selection Mode enabled --- END
 
 
 
 
-##############################
-####### SAFETY CHECK 2 #######
-##############################
+# -------------------------- #
+# <---( SAFETY CHECK 2 )---> #
+# -------------------------- #
 
-#####--------------------  safety check 2: at Least 1 Polygons is selected --- START --------------------#####
+# at Least 1 Polygons is selected --- START
 lx.out('Count Selected Poly',CsPolys)
 
 if CsPolys < 1:
@@ -166,7 +168,7 @@ if CsPolys < 1:
 elif CsPolys >= 1:
     SMO_SafetyCheck_min1PolygonSelected = 1
     lx.out('script running: right amount of polygons in selection')
-#####--------------------  safety check 2: at Least 1 Polygons is selected --- END --------------------#####
+# at Least 1 Polygons is selected --- END
 
 
 
@@ -182,9 +184,9 @@ lx.out('Current Value',TotalSafetyCheck)
 
 
 ##########################################
-## <----( Detection Intersection )----> ##
+# <----( Detection Intersection )----> #
 ##########################################
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START --------------------#####
+#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
 if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     # replay name:"Edit Selection Set"
     lx.eval('select.editSet name:Bool_Selected_BOOLNGON_Tag mode:add')
@@ -322,7 +324,7 @@ if TotalSafetyCheck == TotalSafetyCheckTrueValue:
 
 
     ################### END ##################
-    ## <----( Detection Intersection )----> ##
+    # <----( Detection Intersection )----> #
     ##########################################
 
 
@@ -330,7 +332,7 @@ if TotalSafetyCheck == TotalSafetyCheckTrueValue:
 
 
     ##################################
-    ## <----( Boolean Passes )----> ##
+    # <----( Boolean Passes )----> #
     ##################################
 
 
@@ -379,14 +381,14 @@ if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     lx.eval('select.useSet name:Bool_Parent_Tag mode:select')
 
 
-    ##############################
-    ## <----( Main Command )----> 
-    ##############################
+    # -------------------------- #
+    # <----( Main Command )---->
+    # -------------------------- #
     # replay name:"Boolean Action SUBTRACT"
     lx.eval('!!poly.boolean mode:subtract cutmesh:background')
-    ##############################
-    ## <----( Main Command )----> 
-    ##############################
+    # -------------------------- #
+    # <----( Main Command )---->
+    # -------------------------- #
 
 
     lx.eval('select.type polygon')
@@ -480,5 +482,5 @@ if User_Pref_PasteDeselectChangedState == 1 :
 ########################################################
 
 lx.out('End of SMO_Bool_Subtract Script')
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 # @C:\Users\Franck\AppData\Roaming\Luxology\Kits\SMO_MIFABOMA\MacroSmoluck\Modeling\Bools\SMO_Bool_NGON_Subtract.py

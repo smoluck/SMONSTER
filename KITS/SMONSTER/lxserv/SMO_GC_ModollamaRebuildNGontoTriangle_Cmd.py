@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_ModollamaRebuildNGontoTriangle_Cmd.py
 # Version:      1.0
 #
@@ -7,18 +7,21 @@
 #               Rebuild all NGons via Modollama Triangulation command to output Triangles.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      16/06/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.ModollamaRebuildNGontoTriangle"
 # smo.GC.ModollamaRebuildNGontoTriangle 1
 # Modo Method = False
 # Modollama Method = True
+
 
 class SMO_GC_ModollamaRebuildNGontoTriangle_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -177,7 +180,7 @@ class SMO_GC_ModollamaRebuildNGontoTriangle_Cmd(lxu.command.BasicCommand):
                 lx.eval('+dialog.open')
                 lx.out('You must have ModoLllama kit enabled and loaded if you want to use that function')
                 Function = False
-        if Function == True:
+        if Function:
             for item in items:
                 action_ngontotri()
                 lx.eval('select.drop item')

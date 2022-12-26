@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MIFABOMA_FALLOFF_Cmd.py
 # Version:      1.0
 #
@@ -8,15 +8,17 @@
 #               on a defined Axis (controlled by Argument).
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      16/09/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
 
 Cmd_Name = "smo.MIFABOMA.FallOff"
+
 
 class SMO_MIFABOMA_FallOff_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -63,9 +65,9 @@ class SMO_MIFABOMA_FallOff_Cmd(lxu.command.BasicCommand):
         #Auto_AXES = 2
         #Decay_Shape = 1
         #Sym_Mode = 1
-        ################################
-        #<----[ DEFINE ARGUMENTS ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #
+        # ------------------------------ #
         args = lx.args()
         lx.out(args)
         FallOff_Mode = Falloffmode                      # Falloff mode:                         Linear = 0 / Cylinder = 1 / Radial = 2
@@ -80,9 +82,9 @@ class SMO_MIFABOMA_FallOff_Cmd(lxu.command.BasicCommand):
         Sym_Mode = Sym                          # Symmetry mode:                        None = 0 ### Start = 1 ### End = 2
         # Expose the Result of the Arguments
         lx.out(Sym_Mode)
-        ################################
-        #<----[ DEFINE ARGUMENTS ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #
+        # ------------------------------ #
 
 
 
@@ -108,7 +110,7 @@ class SMO_MIFABOMA_FallOff_Cmd(lxu.command.BasicCommand):
         if Auto_AXES == 2:
             lx.out('FallOff on Z')
 
-        ## <----( FallOff MODE)###########################  to test:       lx.eval('falloff.axisAutoSize "falloff.linear" 0')
+        # <----( FallOff MODE)###########################  to test:       lx.eval('falloff.axisAutoSize "falloff.linear" 0')
 
         if FallOff_Mode == 0:
             lx.eval('tool.set falloff.linear on')
@@ -117,9 +119,9 @@ class SMO_MIFABOMA_FallOff_Cmd(lxu.command.BasicCommand):
             lx.eval('tool.set falloff.cylinder on')
             lx.out('FallOff Mode: Cylinder')
 
-        ## <----( SYMMETRY)###########################
+        # <----( SYMMETRY)###########################
 
-        ## Linear <----( Symmetry Mode )----> ##
+        ## Linear <----( Symmetry Mode )----> #
         if FallOff_Mode == 0:
             if Sym_Mode == 0:
                 lx.eval('tool.setAttr falloff.linear symmetric none')
@@ -131,7 +133,7 @@ class SMO_MIFABOMA_FallOff_Cmd(lxu.command.BasicCommand):
                 lx.eval('tool.setAttr falloff.linear symmetric end')
                 lx.out('FallOff Symmetry: End')
 
-        ## Cylinder <----( Symmetry Mode )----> ##
+        ## Cylinder <----( Symmetry Mode )----> #
         if FallOff_Mode == 1:
             if Sym_Mode == 0:
                 lx.eval('tool.setAttr falloff.cylinder symmetric none')
@@ -143,9 +145,9 @@ class SMO_MIFABOMA_FallOff_Cmd(lxu.command.BasicCommand):
                 lx.eval('tool.setAttr falloff.cylinder symmetric end')
                 lx.out('FallOff Symmetry: End')
 
-        ## <----( DECAY SHAPE)###########################
+        # <----( DECAY SHAPE)###########################
 
-        ## Linear <----(Decay shape)----> ##
+        ## Linear <----(Decay shape)----> #
         if FallOff_Mode == 0 and Decay_Shape == 0:
             lx.eval('tool.setAttr falloff.linear shape linear')
             lx.out('FallOff Decay Shape: Linear')
@@ -159,9 +161,9 @@ class SMO_MIFABOMA_FallOff_Cmd(lxu.command.BasicCommand):
             lx.eval('tool.setAttr falloff.linear shape smooth')
             lx.out('FallOff Decay Shape: Smooth')
 
-        ## <----( FallOff AXIS)###########################
+        # <----( FallOff AXIS)###########################
 
-        ## <----( Linear FallOff )----> ##
+        # <----( Linear FallOff )----> #
         if FallOff_Mode == 0 and Auto_AXES == 0:
             # lx.eval('@kit_SMO_MIFABOMA:MacroSmoluck/Modeling/FallOff/SMO_MOD_FallOffLinearAxis.LXM 0')
             lx.eval('falloff.axisAutoSize axis:0')
@@ -175,7 +177,7 @@ class SMO_MIFABOMA_FallOff_Cmd(lxu.command.BasicCommand):
             lx.eval('falloff.axisAutoSize axis:2')
             lx.out('FallOff AutoSize on Z')
 
-        ## <----( Cylinder FallOff )----> ##
+        # <----( Cylinder FallOff )----> #
         if FallOff_Mode == 1 and Auto_AXES == 0:
             lx.eval('tool.setAttr falloff.cylinder axis 0')
             lx.eval('falloff.autoSize')

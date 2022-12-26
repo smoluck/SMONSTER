@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_LL_PIXAFLUX_ScaleUniformRecenter_Cmd.py
 # Version:      1.0
 #
@@ -8,11 +8,11 @@
 #               (Connected Polygons) from the current Layer.
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      18/07/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import lx, lxu, modo
 

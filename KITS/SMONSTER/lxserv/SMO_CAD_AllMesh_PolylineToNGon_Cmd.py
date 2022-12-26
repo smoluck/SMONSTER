@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_CAD_AllMesh_PolylineToNGon_Cmd.py
 # Version:      1.0
 #
@@ -7,15 +7,18 @@
 #               Convert A;; Meshes in scene from Polyline to Polygon NGon. 
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      07/09/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.CAD.AllMesh.PolylineToNGon"
+
 
 class SMO_CAD_AllMesh_PolylineToNGon_Cmd(lxu.command.BasicCommand):
     def __init__(self):

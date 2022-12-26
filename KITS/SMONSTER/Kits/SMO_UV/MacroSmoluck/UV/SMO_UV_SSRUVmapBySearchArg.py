@@ -2,11 +2,11 @@ import lx, lxu, modo
 scn = modo.Scene()
 
 
-# # ############### 3 ARGUMENTS ###############
+# # # ------------- ARGUMENTS ------------- #
 # RenameByDefault = 1
 # SearchString = "UVChannel_1"
 # TargetString = "TargetUVMap"
-# # ############### 3 ARGUMENTS ###############
+# # # ------------- ARGUMENTS ------------- #
 args = lx.args()
 lx.out(args)
 
@@ -18,7 +18,7 @@ lx.out('Searched UVMap name:', SearchString)
 
 TargetString = string(args[2])
 lx.out('Target UVMap name:', TargetString)
-# # ############### ARGUMENTS ###############
+# # # ------------- ARGUMENTS ------------- #
 
 
 DetectedVMapCount = len(lx.evalN('vertMap.list all ?'))

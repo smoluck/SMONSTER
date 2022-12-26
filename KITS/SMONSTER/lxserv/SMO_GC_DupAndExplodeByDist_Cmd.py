@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_DupAndExplodeByDist_Cmd.py
 # Version:      1.0
 #
@@ -9,16 +9,20 @@
 #               and Freeze the deformation / delete the motrph map in order to export that to PixaFlux
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      09/07/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo, random
+import lx
+import lxu
+import modo
+import random
 
 Cmd_Name = "smo.GC.DupAndExplodeByDist"
 # smo.GC.DupAndExplodeByDist
+
 
 class SMO_GC_DupAndExplodeByDist_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -60,9 +64,9 @@ class SMO_GC_DupAndExplodeByDist_Cmd(lxu.command.BasicCommand):
         
         
         
-        ################################
-        #<----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         
         
         
@@ -119,7 +123,7 @@ class SMO_GC_DupAndExplodeByDist_Cmd(lxu.command.BasicCommand):
         
         
         ##################################################################
-        ## <----( Main Macro )----> Create the Duplicated Exploded Mesh ##
+        # <----( Main Macro )----> Create the Duplicated Exploded Mesh ##
         ##################################################################
         
         lx.eval('select.type item')
@@ -288,7 +292,7 @@ class SMO_GC_DupAndExplodeByDist_Cmd(lxu.command.BasicCommand):
             lx.out('"Deselect Elements Before Pasting" have been Restored')
         ########################################################
         
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
     def cmd_Query(self, index, vaQuery):

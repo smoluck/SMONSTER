@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_QuickTag_BakeMeshType_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      25/11/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, os, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.QT.TagBakeMeshType"
 # smo.QT.TagBakeMeshType 0
+
 
 class SMO_QT_TagBakeMeshType_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -51,20 +54,20 @@ class SMO_QT_TagBakeMeshType_Cmd(lxu.command.BasicCommand):
     
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
-        ################################
-        #<----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         lx.eval("user.defNew name:Tag_BakeMeshType type:integer life:momentary")
-        ################################
+        # ------------------------------ #
         
         
-        # ############### ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
         Tag_BakeMeshType = self.dyna_Int (0)
         # 0 = Remove tag
         # 1 = low
         # 2 = cage
         # 3 = high
-        # ############### ARGUMENTS ###############
+        # # ------------- ARGUMENTS ------------- #
         
         MeshItem_List = scene.selected
         # MeshItem_List = scene.selectedByType(lx.symbol.sITYPE_MESH)
@@ -72,15 +75,15 @@ class SMO_QT_TagBakeMeshType_Cmd(lxu.command.BasicCommand):
             mesh.select(True)
             
             # Tag "MTyp" is for: Mesh Type
-            if Tag_BakeMeshType == 0 :
+            if Tag_BakeMeshType == 0:
                 lx.eval ('!item.tagRemove MTyp')
-            if Tag_BakeMeshType == 1 :
+            if Tag_BakeMeshType == 1:
                 lx.eval ('item.tag string MTyp LowPoly')
                 lx.eval ('!smo.CB.ItemColor 8 0')
-            if Tag_BakeMeshType == 2 :
+            if Tag_BakeMeshType == 2:
                 lx.eval ('item.tag string MTyp Cage')
                 lx.eval ('!smo.CB.ItemColor 7 0')
-            if Tag_BakeMeshType == 3 :
+            if Tag_BakeMeshType == 3:
                 lx.eval ('item.tag string MTyp HighPoly')
                 lx.eval ('!smo.CB.ItemColor 11 0')
         

@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_ConvertPolygonsToPolylineAndMergeToDXFLayer_Cmd.py
 # Version:      1.0
 #
@@ -8,17 +8,19 @@
 #               to Polyline data and then merge all the lines into a single mesh for DXF export.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/09/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.ConvertPolygonsToPolylineAndMergeToDXFLayer"
 # smo.GC.ConvertPolygonsToPolylineAndMergeToDXFLayer 1 1
+
 
 class SMO_GC_ConvertPolygonsToPolylineAndMergeToDXFLayer_Cmd(lxu.command.BasicCommand):
     def __init__(self):

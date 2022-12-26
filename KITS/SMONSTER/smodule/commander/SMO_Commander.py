@@ -1,23 +1,27 @@
 # python
 
-import lx, lxu, traceback, sys
-from lxifc import UIValueHints
 from operator import ior
+
+import lx
+import lxu
+import sys
+import traceback
+from lxifc import UIValueHints
 
 python_majorver = sys.version_info.major
 # print('the Highest version number 2 for 2.7 release / 3 for 3.7 release')
 # print(python_majorver)
 
-if python_majorver == 2 :
+if python_majorver == 2:
     # print("do something for 2.X code")
     from smodule.commander.SMO_Var import *
-elif python_majorver >= 3 :
+elif python_majorver >= 3:
     # print("do something for 3.X code")
     # from smodule.commander import SMO_Var
     from smodule.commander.SMO_Var import *
 
-class SmoCommanderClass(lxu.command.BasicCommand):
 
+class SmoCommanderClass(lxu.command.BasicCommand):
     """Wrapper for lxu.command.BasicCommand. Improves and simplifies common
     command UI implementations, like popups, sPresetText fields, and
     Form Command Lists. Allows for virtually any type of command.
@@ -171,7 +175,6 @@ class SmoCommanderClass(lxu.command.BasicCommand):
         You should never need to touch this."""
         cls._commander_stored_values.append(value)
 
-
     def commander_arg_value(self, index, default=None):
         """Return a command argument value by index.
         If no argument value exists, returns the default parameter.
@@ -226,7 +229,7 @@ class SmoCommanderClass(lxu.command.BasicCommand):
         You should never need to touch this."""
         for i, tup in enumerate(self.notifier_tuples):
             if self.notifiers[i] is None:
-                self.notifiers[i] = self.not_svc.Spawn (self.notifier_tuples[i][0], self.notifier_tuples[i][1])
+                self.notifiers[i] = self.not_svc.Spawn(self.notifier_tuples[i][0], self.notifier_tuples[i][1])
 
             self.notifiers[i].AddClient(object)
 
@@ -445,7 +448,7 @@ class FormCommandListClass(UIValueHints):
     def uiv_FormCommandListCount(self):
         return len(self._items)
 
-    def uiv_FormCommandListByIndex(self,index):
+    def uiv_FormCommandListByIndex(self, index):
         return self._items[index]
 
 
@@ -483,8 +486,8 @@ class PopupClass(UIValueHints):
     def uiv_PopCount(self):
         return len(self._internal)
 
-    def uiv_PopUserName(self,index):
+    def uiv_PopUserName(self, index):
         return self._user[index]
 
-    def uiv_PopInternalName(self,index):
+    def uiv_PopInternalName(self, index):
         return self._internal[index]

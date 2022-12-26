@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_CreateDeleteSelSetFromMTypTag_Cmd.py
 # Version:      1.0
 #
@@ -10,17 +10,23 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      30/11/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.CreateDeleteSelSetFromMTypTag"
-# smo.GC.CreateDeleteSelSetFromMTypTag 1 ------ > Detect if MTyp Tags exist. Then Create the Selection Set related to that tag for LowPoly / Cage / HighPoly.
-# smo.GC.CreateDeleteSelSetFromMTypTag 0 ------ > Delete the Selection Set related to that tag for LowPoly / Cage / HighPoly.
+# Detect if MTyp Tags exist. Then Create the Selection Set related to that tag for LowPoly / Cage / HighPoly.
+# smo.GC.CreateDeleteSelSetFromMTypTag 1
+
+# Delete the Selection Set related to that tag for LowPoly / Cage / HighPoly.
+# smo.GC.CreateDeleteSelSetFromMTypTag 0
+
 
 class SMO_GC_CreateDeleteSelSetFromMTypTag_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -61,14 +67,14 @@ class SMO_GC_CreateDeleteSelSetFromMTypTag_Cmd(lxu.command.BasicCommand):
         
         ActionMethodOnTag = self.dyna_Int (0)
         
-        ################################
-        #<----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         lx.eval("user.defNew name:itemUniqueName type:string life:momentary")
         lx.eval("user.defNew name:MtypeTagValue type:string life:momentary")
         lx.eval("user.defNew name:TagDetected type:boolean life:momentary")
         lx.eval("user.defNew name:TagDetectedCount type:integer life:momentary")
-        ################################
+        # ------------------------------ #
         
         TagDetectedCount = 0
         
@@ -94,7 +100,7 @@ class SMO_GC_CreateDeleteSelSetFromMTypTag_Cmd(lxu.command.BasicCommand):
                 except :
                     TagDetected = False
                 
-                if TagDetected == True :
+                if TagDetected:
                     if MtypeTagValue == "LowPoly" :
                         lx.eval('select.editSet MTyp_LowPoly add')
                         

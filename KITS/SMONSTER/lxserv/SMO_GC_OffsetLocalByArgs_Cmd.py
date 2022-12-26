@@ -1,23 +1,24 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_OffsetLocalByArgs_Cmd.py
 # Version:      1.0
 #
 # Purpose:      This script is designed to:
 #               Move the current Selection by a specific distance in Float on X Y Z.
 #
-#
 # Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/03/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, os, modo
+import lx
+import lxu
 
 Cmd_Name = "smo.GC.OffsetLocalByArgs"
 # smo.GC.OffsetLocalByArgs 0.101382531226 0.0613391231745 0.00526303052902
+
 
 class SMO_GC_OffsetLocalByArgs_Cmd(lxu.command.BasicCommand):
     def __init__(self):

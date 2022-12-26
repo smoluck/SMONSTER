@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_DuplicateToCageAndRename_Cmd.py
 # Version:      1.0
 #
@@ -9,16 +9,19 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      03/12/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo, string
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.DuplicateToCageAndRename"
 # smo.GC.DuplicateToCageAndRename
+
 
 class SMO_GC_DuplicateToCageAndRename_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -49,19 +52,19 @@ class SMO_GC_DuplicateToCageAndRename_Cmd(lxu.command.BasicCommand):
             
             
             
-            ################################
-            #<----[ CREATE VARIABLES ]---->#
-            ################################
+            # ------------------------------ #
+            # <----( CREATE VARIABLES )----> #
+            # ------------------------------ #
             # lx.eval("user.defNew name:searchedStr_A type:string life:momentary")
             # lx.eval("user.defNew name:searchedStr_B type:string life:momentary")
             # lx.eval("user.defNew name:searchedStr_C type:string life:momentary")
             # lx.eval("user.defNew name:OutputPrefixString type:string life:momentary")
             # lx.eval("user.defNew name:UserItemIndexStyle type:string life:momentary")
-            ################################
+            # ------------------------------ #
             
-            ################################
-            #<----[ DEFINE VARIABLES ]---->#
-            ################################
+            # ------------------------------ #
+            # <----( DEFINE VARIABLES )----> #
+            # ------------------------------ #
             searchedStr_A = "low"
             searchedStr_B = "cage"
             searchedStr_C = "exploded"
@@ -100,7 +103,8 @@ class SMO_GC_DuplicateToCageAndRename_Cmd(lxu.command.BasicCommand):
         return 'SMO GC - Duplicate Mesh to Cage and Rename it'
     
     def basic_Enable(self, msg):
-        """ Perform the checks for when the command is supposed to be enabled,
+        """
+        Perform the checks for when the command is supposed to be enabled,
         so users will be informed the command is unavailable by the button being
         grayed out.
         :param msg:

@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_MIFABOMA_CleanupMirroredMeshOverLocalAxis_Cmd.py
 # Version:      1.0
 #
@@ -9,16 +9,19 @@
 #               (Positive or Negative). Then recreate instances out of that mesh along that axis.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      17/08/2022
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.MIFABOMA.CleanupMirroredMeshOverLocalAxis"
 # smo.MIFABOMA.CleanupMirroredMeshOverLocalAxis z true
+
 
 class SMO_MIFABOMA_CleanupMirroredMeshOverLocalAxis_Cmd(lxu.command.BasicCommand):
     def __init__(self):

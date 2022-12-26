@@ -1,23 +1,26 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_CB_LocatorShape_Cmd.py
 # Version:      1.0
 #
-# Purpose: This script is designed to
-# Define a new item Color and set the Draw Option
-# to the corresponding color.
+# Purpose:      This script is designed to
+#               Define a new item Color and set the Draw Option
+#               to the corresponding color.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      18/02/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.CB.LocatorShape"
 # smo.CB.LocatorShape 2 1 1
+
 
 class SMO_CB_LocatorShape_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -84,13 +87,13 @@ class SMO_CB_LocatorShape_Cmd(lxu.command.BasicCommand):
             selected_locators = scene.selectedByType(lx.symbol.sITYPE_LOCATOR)
 
 
-            # # ############### 3 ARGUMENTS Test ###############
+            # # # ------------- ARGUMENTS Test
             # LocShape = 2
             # LocSolid = 1
             # LocAxis = 0
-            # # ############### ARGUMENTS ###############
+            # # # ------------- ARGUMENTS ------------- #
 
-            # ############### 3 ARGUMENTS ###############
+            # # ------------- ARGUMENTS ------------- #
             args = lx.args()
             lx.out(args)
 
@@ -118,13 +121,13 @@ class SMO_CB_LocatorShape_Cmd(lxu.command.BasicCommand):
             # None = 4
             LocAxis = self.dyna_Int (2)
             # lx.out('Desired Axis:',LocAxis)
-            # ############### ARGUMENTS ###############
+            # # ------------- ARGUMENTS ------------- #
 
 
 
-            ################################
-            #<----[ DEFINE VARIABLES ]---->#
-            ################################
+            # ------------------------------ #
+            # <----( DEFINE VARIABLES )----> #
+            # ------------------------------ #
 
             #####--- Define user value for all the different SafetyCheck --- START ---#####
             #####
@@ -146,11 +149,11 @@ class SMO_CB_LocatorShape_Cmd(lxu.command.BasicCommand):
 
 
 
-            ##############################
-            ####### SAFETY CHECK 2 #######
-            ##############################
+            # -------------------------- #
+            # <---( SAFETY CHECK 2 )---> #
+            # -------------------------- #
 
-            #####--------------------  safety check 2: Component Selection Mode type --- START --------------------#####
+            # Component Selection Mode type --- START
 
             selType = ""
             # Used to query layerservice for the list of polygons, edges or vertices.
@@ -204,13 +207,13 @@ class SMO_CB_LocatorShape_Cmd(lxu.command.BasicCommand):
 
                 # lx.out('script Running: Item Component Selection Mode')
 
-            #####--------------------  safety check 2: Component Selection Mode type --- END --------------------#####
+            # Component Selection Mode type --- END
 
 
             # lx.out('Start of SMO_DIS_ItemColor Script')
 
 
-            #####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- START --------------------#####
+            #####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- START
             if SMO_SafetyCheckLocShape_VertexModeEnabled == 1:
                 lx.eval('select.type item')
 
@@ -223,41 +226,41 @@ class SMO_CB_LocatorShape_Cmd(lxu.command.BasicCommand):
             if SMO_SafetyCheckLocShape_ItemModeEnabled == 1:
                 lx.eval('select.type item')
 
-            ##############################
-            ## <----( Main Macro )----> ##
-            ##############################
+            # -------------------------- #
+            # <----( Main Macro )----> #
+            # -------------------------- #
 
             ##################### For Locators ######################
             ################## Test Draw Pack #####################
             for item in selected_locators:
                 lx.eval('item.channel locator$drawShape custom')
-                if LocShape == 1 :
+                if LocShape == 1:
                     lx.eval('item.channel locator$isShape box')
-                if LocShape == 2 :
+                if LocShape == 2:
                     lx.eval('item.channel locator$isShape pyramid')
-                if LocShape == 3 :
+                if LocShape == 3:
                     lx.eval('item.channel locator$isShape rhombus')
-                if LocShape == 4 :
+                if LocShape == 4:
                     lx.eval('item.channel locator$isShape cylinder')
-                if LocShape == 5 :
+                if LocShape == 5:
                     lx.eval('item.channel locator$isShape cone')
-                if LocShape == 6 :
+                if LocShape == 6:
                     lx.eval('item.channel locator$isShape sphere')
-                if LocShape == 7 :
+                if LocShape == 7:
                     lx.eval('item.channel locator$isShape plane')
-                if LocShape == 8 :
+                if LocShape == 8:
                     lx.eval('item.channel locator$isShape point')
-                if LocShape == 9 :
+                if LocShape == 9:
                     lx.eval('item.channel locator$isShape circle')
 
-                if LocAxis >= 0 and LocAxis < 3 and LocShape > 0 :
-                    if LocShape == 4 or LocShape == 5 :
+                if 0 <= LocAxis < 3 and LocShape > 0:
+                    if LocShape == 4 or LocShape == 5:
                         lx.eval('item.channel locator$isRadius 0.1')
 
-                    if LocShape == 6 or LocShape == 9 :
+                    if LocShape == 6 or LocShape == 9:
                         lx.eval('item.channel locator$isRadius 0.5')
 
-                    if LocAxis == 0 :
+                    if LocAxis == 0:
                         lx.eval('item.channel locator$isAxis x')
                         if LocShape == 1 or LocShape == 2 or LocShape == 3 or LocShape == 4 or LocShape == 5 :
                             lx.eval('item.channel locator$isSize.X 1.0')
@@ -339,7 +342,7 @@ class SMO_CB_LocatorShape_Cmd(lxu.command.BasicCommand):
                     lx.eval('smo.CB.ItemColor 5 2')
                     lx.eval('item.channel locator$isAlign true')
 
-                if LocAxis >= 0 and LocAxis <= 3 and LocShape > 0:
+                if 0 <= LocAxis <= 3 and LocShape > 0:
                     LocUniName = item.id
                     lx.out('current Locator Unique name is: ', LocUniName)
                     lx.eval('select.channel {%s:isRadius} add' % LocUniName)

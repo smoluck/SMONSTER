@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_MES_MF_MatTag_and_SelSetPolyTag_byItemName.py
 # Version:      1.01
 #
@@ -8,12 +8,12 @@
 #               Select MeshFusion item and run. 
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      03/12/2018
 # Modified:     19/03/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 #import the necessary Python libraries
 import lx
@@ -58,14 +58,14 @@ for item in SelItems:
     except:
         SMO_NoPolyBaseMesh = 1
         # lx.out('Polygon in BaseMesh: False')
-    ##############################
-    ####### SAFETY CHECK 1 #######
-    ##############################
-    #####--------------------  safety check 1: at Least 1 Polygons is selected --- START --------------------#####
+    # -------------------------- #
+    # <---( SAFETY CHECK 1 )---> #
+    # -------------------------- #
+    # --------------------  safety check 1: at Least 1 Polygons is selected --- START
     # SelPolyCount = selSvc.Count (selSvc.LookupType (lx.symbol.sSELTYP_POLYGON))
     # lx.out('In Selected items, Polygon count selected:',SelPolyCount)
     # lx.out('Count Selected Poly',CsPolys)
-    #####--------------------  safety check 1: at Least 1 Polygons is selected --- END --------------------#####
+    # --------------------  safety check 1: at Least 1 Polygons is selected --- END
     if SMO_NoPolyBaseMesh == 0:
         lx.eval('select.editSet {SelSet_%s} add' % currentLayerName)
         lx.eval('tagger.setMaterial_pTag {%s_mat} random selected material use' % currentLayerName) 

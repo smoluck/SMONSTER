@@ -1,5 +1,5 @@
 # python
-# ---------------------------------------
+"""
 # Name:         SMO_GC_CheckLXLTag_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,18 @@
 #
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      08/11/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
 
-import lx, lxu, os, modo, string
-from os import path
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.CheckLXLTag"
+
 
 class SMO_GC_CheckLXLTag_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -94,13 +96,13 @@ class SMO_GC_CheckLXLTag_Cmd(lxu.command.BasicCommand):
         # print (SceneID)
         lx.eval('select.subItem %s set scene' % SceneID)
 
-        if Mode == True:
+        if Mode:
             LXLTag = lx.eval('item.tag mode:string tag:"LXLT" value:?')
             # print(LXLTag)
             Subfolder = SetLXLTagDialog()
             lx.eval('item.tag mode:string tag:LXLT value:"%s"' % Subfolder)
 
-        if Mode == False:
+        if not Mode:
             lx.eval('select.subItem %s set scene' % SceneID)
             LXLTag = lx.eval('item.tagRemove LXLT')
         lx.eval('smo.GC.DeselectAll')

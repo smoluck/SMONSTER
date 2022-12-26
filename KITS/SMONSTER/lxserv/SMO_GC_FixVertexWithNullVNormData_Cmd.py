@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_FixVertexWithNullVNormData_Cmd.py
 # Version:      1.0
 #
@@ -10,21 +10,26 @@
 #
 #
 # Author:       Franck ELISABETH (with the help of Andreas Ranman (aka Roberyman))
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      07/12/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import modo, lx, lxifc, lxu
+import lx
+import lxifc
+import lxu
 import lxu.command as SAC
 
 Cmd_Name = "smo.GC.FixVertexWithNullVNormData"
 # smo.GC.FixVertexWithNullVNormData
 
+
 class InvalidMeshMapVisitor(lxifc.Visitor):
-    """ Used to enumerate polygons to select invalid or zero value
-    float3 vmaps. """
+    """
+    Used to enumerate polygons to select invalid or zero value
+    float3 vmaps.
+    """
     def __init__(self, mesh, polygon, mesh_map):
         """
 
@@ -59,7 +64,6 @@ class InvalidMeshMapVisitor(lxifc.Visitor):
                 )
 
 def SelectInvalidVNorm():
-    """ """
     layer_service = lx.service.Layer()
     layer_scan = lx.object.LayerScan(
         layer_service.ScanAllocate(lx.symbol.f_LAYERSCAN_EDIT))

@@ -1,16 +1,19 @@
 # python
-import lx, modo, sys
+
+import lx
+import modo
+import sys
+
 python_majorver = sys.version_info.major
 # print('the Highest version number 2 for 2.7 release / 3 for 3.7 release')
 # print(python_majorver)
 
-if python_majorver == 2 :
+if python_majorver == 2:
     # print("do something for 2.X code")
     from smodule.commander import SmoCommanderClass
-elif python_majorver >= 3 :
+elif python_majorver >= 3:
     # print("do something for 3.X code")
     from smodule.commander.SMO_Commander import SmoCommanderClass
-
 
 SMO_GC_MAIN_HOTKEYS = [
     {
@@ -174,7 +177,7 @@ SMO_GC_MAIN_HOTKEYS = [
     },
 
     {
-        "contexts":[
+        "contexts": [
             ["view3DSelect", "(stateless)", "item", "(contextless)", "attr.formPopover {itemprops:general}"],
             ["shaderTree", "(stateless)", ".anywhere", "(contextless)", None],
             ["deformerList", "(stateless)", ".anywhere", "(contextless)", None],
@@ -189,9 +192,9 @@ SMO_GC_MAIN_HOTKEYS = [
             ["meshList", "(stateless)", "cinemaName", "(contextless)", None],
             ["vpgroups", "(stateless)", ".anywhere", "(contextless)", None]
         ],
-        "key":"mmb",
-        "command":"attr.formPopover {itemprops:general}",
-        "name":"GAME CONTENT: Middle Mouse show Item Properties",
+        "key": "mmb",
+        "command": "attr.formPopover {itemprops:general}",
+        "name": "GAME CONTENT: Middle Mouse show Item Properties",
         "info": "Middle Mouse Button"
     },
 
@@ -207,7 +210,8 @@ SMO_GC_MAIN_HOTKEYS = [
 
     {
         "contexts": [
-            [".global", "(stateless)", ".anywhere", "(contextless)", "attr.formPopover {SMO_GC_PieSwitcherBorderToggle:sheet}"]
+            [".global", "(stateless)", ".anywhere", "(contextless)",
+             "attr.formPopover {SMO_GC_PieSwitcherBorderToggle:sheet}"]
         ],
         "key": "ctrl-alt-space",
         "command": "attr.formPopover {SMO_GC_PieSwitcherBorderToggle:sheet}",
@@ -217,7 +221,8 @@ SMO_GC_MAIN_HOTKEYS = [
 
     {
         "contexts": [
-            [".global", "(stateless)", ".anywhere", ".componentMode", "attr.formPopover {SMO_CAD_TOOLS_CopyOrCut_PM:sheet}"]
+            [".global", "(stateless)", ".anywhere", ".componentMode",
+             "attr.formPopover {SMO_CAD_TOOLS_CopyOrCut_PM:sheet}"]
         ],
         "key": "ctrl-shift-c",
         "command": "attr.formPopover {SMO_CAD_TOOLS_CopyOrCut_PM:sheet}",
@@ -235,8 +240,8 @@ SMO_GC_MAIN_HOTKEYS = [
         "info": "M"
     }
 
-
 ]
+
 
 # max = len(SMO_GC_MAIN_HOTKEYS)
 # lx.out(max)
@@ -247,10 +252,10 @@ class SMO_GC_MAIN_KeymapCmdClass(SmoCommanderClass):
         args = []
         for n, hotkey in enumerate(SMO_GC_MAIN_HOTKEYS):
             args.append({
-                'name':str(n),
-                'label':"%s \x03(c:25132927)(%s)" % (hotkey['name'], hotkey['info']),
-                'datatype':'boolean',
-                'default':True
+                'name': str(n),
+                'label': "%s \x03(c:25132927)(%s)" % (hotkey['name'], hotkey['info']),
+                'datatype': 'boolean',
+                'default': True
             })
         return args
 
@@ -278,12 +283,14 @@ class SMO_GC_MAIN_KeymapCmdClass(SmoCommanderClass):
                 context = context_list[3]
 
                 try:
-                    lx.eval('!cmds.mapKey {%s} {%s} {%s} {%s} {%s} {%s}' % (key, command, mapping, state, region, context))
+                    lx.eval(
+                        '!cmds.mapKey {%s} {%s} {%s} {%s} {%s} {%s}' % (key, command, mapping, state, region, context))
                 except:
                     lx.out("Failed to set '%s' to '%s'." % (command, key))
 
         dialog_serv.MonitorRelease()
         # modo.dialogs.alert("Mapped Smonster Hotkeys", "Mapped %s Smonster hotkeys. See Help > Smonster Hotkey Reference" % n)
+
 
 lx.bless(SMO_GC_MAIN_KeymapCmdClass, "smo.GC.MAIN.MapDefaultHotkeys")
 
@@ -308,11 +315,14 @@ class RemoveSMO_GC_MAIN_KeymapCmdClass(SmoCommanderClass):
                         lx.out("Could not clear mapping for '%s'." % key)
                 else:
                     try:
-                        lx.eval('!cmds.mapKey {%s} {%s} {%s} {%s} {%s} {%s}' % (key, default, mapping, state, region, context))
+                        lx.eval('!cmds.mapKey {%s} {%s} {%s} {%s} {%s} {%s}' % (
+                        key, default, mapping, state, region, context))
                     except:
                         lx.out("Could not set '%s' to '%s'." % (default, key))
 
-        modo.dialogs.alert("Reverted SMO GAME CONTENT: MAIN Hotkeys", "Reverted %s SMO GAME CONTENT: MAIN hotkeys to defaults." % len(SMO_GC_MAIN_HOTKEYS))
+        modo.dialogs.alert("Reverted SMO GAME CONTENT: MAIN Hotkeys",
+                           "Reverted %s SMO GAME CONTENT: MAIN hotkeys to defaults." % len(SMO_GC_MAIN_HOTKEYS))
+
 
 lx.bless(RemoveSMO_GC_MAIN_KeymapCmdClass, "smo.GC.MAIN.UnmapDefaultHotkeys")
 
@@ -337,6 +347,8 @@ class ClearSMO_GC_MAIN_KeymapCmdClass(SmoCommanderClass):
                     except:
                         lx.out("Could not clear mapping for '%s'." % key)
 
-        modo.dialogs.alert("Cleared SMO GAME CONTENT: MAIN Hotkeys", "Cleared %s SMO GAME CONTENT: MAIN hotkeys attribution." % len(SMO_GC_MAIN_HOTKEYS))
+        modo.dialogs.alert("Cleared SMO GAME CONTENT: MAIN Hotkeys",
+                           "Cleared %s SMO GAME CONTENT: MAIN hotkeys attribution." % len(SMO_GC_MAIN_HOTKEYS))
+
 
 lx.bless(ClearSMO_GC_MAIN_KeymapCmdClass, "smo.GC.MAIN.ClearHotkeys")

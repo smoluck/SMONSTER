@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name: Normalize_Pack_AREAS.py
 # Version: 1.0
 #
@@ -8,19 +8,20 @@
 # Tagging and Pack them in place
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import modo
+
 scene = modo.scene.current()
 mesh = scene.selectedByType('mesh')[0]
 meshseam = modo.Scene().selected[0]
 lx.out('selected items:',mesh)
 
-############### 2 ARGUMENTS ###############
+# ------------- ARGUMENTS ------------- #
 # args = lx.args()
 # lx.out(args)
 # # no Flipped = 0
@@ -28,13 +29,13 @@ lx.out('selected items:',mesh)
 # # Flipped U = 2
 # FixFlippedUV = int(args[0])
 # lx.out('Fix Flipped error UV Island:',FixFlippedUV)
-############### ARGUMENTS ###############
+# ------------- ARGUMENTS ------------- #
 
 
 
-################################
-#<----[ DEFINE VARIABLES ]---->#
-################################
+# ------------------------------ #
+# <----( DEFINE VARIABLES )----> #
+# ------------------------------ #
 
 #####--- Define user value for all the different SafetyCheck --- START ---#####
 #####
@@ -55,9 +56,9 @@ lx.eval("user.defNew name:SMO_SafetyCheck_ItemModeEnabled type:integer life:mome
 #####--- Define user value for all the different SafetyCheck --- END ---#####
 
 
-##############################
-####### SAFETY CHECK 1 #######
-##############################
+# -------------------------- #
+# <---( SAFETY CHECK 1 )---> #
+# -------------------------- #
 
 ##########################
 lx.out('<------------- START -------------->')
@@ -94,11 +95,11 @@ lx.out('<------------- END -------------->')
 
 
 
-##############################
-####### SAFETY CHECK 2 #######
-##############################
+# -------------------------- #
+# <---( SAFETY CHECK 2 )---> #
+# -------------------------- #
 
-#####--------------------  safety check 2: Component Selection Mode type --- START --------------------#####
+# Component Selection Mode type --- START
 
 selType = ""
 # Used to query layerservice for the list of polygons, edges or vertices.
@@ -152,12 +153,12 @@ else:
     
     lx.out('script Running: Item Component Selection Mode')
 
-#####--------------------  safety check 2: Component Selection Mode type --- END --------------------#####
+# Component Selection Mode type --- END
 
 
 
 
-#####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- START --------------------#####
+#####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- START
 if SMO_SafetyCheck_VertexModeEnabled == 1:
     lx.eval('select.type polygon')
     

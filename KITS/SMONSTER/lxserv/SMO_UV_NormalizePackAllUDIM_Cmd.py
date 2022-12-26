@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_UV_NormalizePackAllUDIM_Cmd.py
 # Version:      1.0
 #
@@ -8,15 +8,19 @@
 #               them on every UDIM Tiles from UDIM 1001 to 1100.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/12/2018
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo, sys
+import lx
+import lxu
+import modo
+import sys
 
 Cmd_Name = "smo.UV.NormalizePackAllUDIM"
+
 
 class SMO_UV_NormalizePackAllUDIM_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -60,7 +64,7 @@ class SMO_UV_NormalizePackAllUDIM_Cmd(lxu.command.BasicCommand):
         
         
         
-        ############### 2 ARGUMENTS ###############
+        # ------------- ARGUMENTS ------------- #
         args = lx.args()
         lx.out(args)
         # no Flipped = 0
@@ -72,20 +76,15 @@ class SMO_UV_NormalizePackAllUDIM_Cmd(lxu.command.BasicCommand):
         # Orient preprocess ON = 1
         Orient_Pass = Int_Orient_Pass
         lx.out('Orient preprocess state:',Orient_Pass)
-        ############### ARGUMENTS ###############
+        # ------------- ARGUMENTS ------------- #
+        
+
         
         
         
-        # ############### 2 ARGUMENT Test ###############
-        # FixFlippedUV = 1
-        # Orient_Pass = 0
-        # ############### ARGUMENT ###############
-        
-        
-        
-        ################################
-        #<----[ DEFINE VARIABLES ]---->#
-        ################################
+        # ------------------------------ #
+        # <----( DEFINE VARIABLES )----> #
+        # ------------------------------ #
         #####--- Define user value for all the different SafetyCheck --- START ---#####
         #####
         
@@ -108,9 +107,9 @@ class SMO_UV_NormalizePackAllUDIM_Cmd(lxu.command.BasicCommand):
         
         
         
-        ###############################################
-        ####### SAFETY CHECK 1 - UVMap Selected #######
-        ###############################################
+        # ----------------------------------------- #
+        # <---( SAFETY CHECK 1 )---> UVMap Selected #
+        # ----------------------------------------- #
         lx.out('<------------- START -------------->')
         lx.out('<--- UV Map Safety Check --->')
         
@@ -151,10 +150,10 @@ class SMO_UV_NormalizePackAllUDIM_Cmd(lxu.command.BasicCommand):
         
         
         
-        ################################
-        ## <----( Main Macro : )----> ##
-        ################################
-        if SMO_SafetyCheckNPAllUDIM_UVMapCount == True :
+        # -------------------------- #
+        # <----( Main Macro : )----> #
+        # -------------------------- #
+        if SMO_SafetyCheckNPAllUDIM_UVMapCount:
             lx.eval('smo.UV.NormalizePackByUDIM %s %s 0 0' % (FixFlippedUV, Orient_Pass) )  # 1001
             lx.eval('smo.UV.NormalizePackByUDIM %s %s 1 0' % (FixFlippedUV, Orient_Pass) )  # 1002
             lx.eval('smo.UV.NormalizePackByUDIM %s %s 2 0' % (FixFlippedUV, Orient_Pass) )  # 1003

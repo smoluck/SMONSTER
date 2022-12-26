@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_ImportMultipleFBXasReference
 # Version: 1.0
 #
@@ -11,12 +11,12 @@
 #			Then select the ArrayTarget Assembly
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      04/01/2019
 # Modified:		19/03/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 import	lx
 import	lxifc

@@ -4,7 +4,6 @@ import lx, lxifc, lxu.command
 
 CMD_NAME = 'smo.CLEANUP.RemappingFCL'
 
-
 FORMS = [
     {
         "label": "CLEANUP: Popover Menu",
@@ -13,13 +12,14 @@ FORMS = [
     }
 ]
 
+
 def list_commands():
     fcl = []
-    for n, form in enumerate(sorted(FORMS, key=lambda k: k['label']) ):
+    for n, form in enumerate(sorted(FORMS, key=lambda k: k['label'])):
         fcl.append("smo.labeledPopover {%s} {%s} {%s}" % (form["cmd"], form["label"], form["recommended"]))
         fcl.append("smo.labeledMapKey {%s} {%s}" % (form["cmd"], form["label"]))
 
-        if n < len(FORMS)-1:
+        if n < len(FORMS) - 1:
             fcl.append('- ')
 
     return fcl
@@ -35,7 +35,7 @@ class SMO_CLEANUP_KeymapCmdListClass(lxifc.UIValueHints):
     def uiv_FormCommandListCount(self):
         return len(self._items)
 
-    def uiv_FormCommandListByIndex(self,index):
+    def uiv_FormCommandListByIndex(self, index):
         return self._items[index]
 
 
@@ -50,10 +50,11 @@ class SMO_CLEANUP_KeymapCmdClass(lxu.command.BasicCommand):
         if index == 0:
             return SMO_CLEANUP_KeymapCmdListClass(list_commands())
 
-    def cmd_Execute(self,flags):
+    def cmd_Execute(self, flags):
         pass
 
-    def cmd_Query(self,index,vaQuery):
+    def cmd_Query(self, index, vaQuery):
         pass
+
 
 lx.bless(SMO_CLEANUP_KeymapCmdClass, CMD_NAME)

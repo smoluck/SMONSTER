@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_ClearSelectionVmap_Cmd.py
 # Version:      1.0
 #
@@ -8,16 +8,19 @@
 #               on specified type via arguments.
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      12/08/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
-import lx, lxu, modo
+import lx
+import lxu
+import modo
 
 Cmd_Name = "smo.GC.ClearSelectionVmap"
 # smo.GC.ClearSelectionVmap 1 1
+
 
 class SMO_GC_ClearSelectionVmap_Cmd(lxu.command.BasicCommand):
     def __init__(self):
@@ -55,7 +58,7 @@ class SMO_GC_ClearSelectionVmap_Cmd(lxu.command.BasicCommand):
         scene = modo.scene.current()
         mesh = modo.Mesh()
         
-        ############### 2 ARGUMENTS ###############
+        # ------------- ARGUMENTS ------------- #
         
         # VMapType = 0 -> ALLLLLLL Maps
         # VMapType = 1 -> UV Map
@@ -72,7 +75,7 @@ class SMO_GC_ClearSelectionVmap_Cmd(lxu.command.BasicCommand):
         #ActionMode = 0 -> Select
         #ActionMode = 1 -> Deselect
         ActionMode = self.dyna_Int (1)
-        ###########################################
+        # ------------------------------------- #
 
         VMap_NameList = []
         VMap_TypeList = []
@@ -203,7 +206,7 @@ class SMO_GC_ClearSelectionVmap_Cmd(lxu.command.BasicCommand):
 
         del VMap_NameList[:]
         del VMap_TypeList[:]
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END --------------------#####
+        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
 lx.bless(SMO_GC_ClearSelectionVmap_Cmd, Cmd_Name)

@@ -1,17 +1,17 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_ExportMeshOpRig_AudioNotification.py
 # Version: 1.01
 #
 # Purpose: This script plays n Audio track to prevent of a script end.
 #
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      28/02/2018
 # Modified:		02/04/2019
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 import lx
 
 lx.eval('scene.new')

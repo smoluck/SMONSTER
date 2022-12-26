@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_Venom_VeNomDisplayMode.py
 # Version:      1.0
 # 
@@ -9,11 +9,13 @@
 # 
 # 
 # Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 # 
 # Created:      15/04/2020
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
+
+import lx
 
 lx.eval('view3d.selItemMode none')
 lx.eval('tool.set util.normshow off')

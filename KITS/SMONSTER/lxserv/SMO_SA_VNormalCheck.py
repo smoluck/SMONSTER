@@ -1,5 +1,5 @@
-#python
-#---------------------------------------
+# python
+"""
 # Name:         SMO_GC_SelectStillImageItem_Cmd.py
 # Version:      1.0
 #
@@ -8,21 +8,24 @@
 #
 #
 # Author:       Franck ELISABETH (with the help of Tom Dymond)
-# Website:      http://www.smoluck.com
+# Website:      https://www.smoluck.com
 #
 # Created:      06/12/2021
 # Copyright:    (c) Franck Elisabeth 2017-2022
-#---------------------------------------
+"""
 
 # Is there some code example to add more checking process to the Static Analysis Tree ?
 # I'm looking for adding VertexNormals presence on mesh for instance
 
-# You can take a look at the once provided by modo: https://learn.foundry.com/modo/content/help/pages/modeling/edit_geometry/static_analysis.html
+# You can take a look at the once provided by modo:
+# https://learn.foundry.com/modo/content/help/pages/modeling/edit_geometry/static_analysis.html
+
 import modo
 import lx, lxifc, lxu
 import lxu.command as SAC
 
 Cmd_Name = "smo.SA.VNormalCheck"
+
 
 class SMO_SA_VNormalCheck(SAC.StaticAnalysisCommand):
     def __init__(self):
