@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_GIF_UV_FixFlipped_and_Normalize_Repack.py
-# Version: 1.01
-#
-# Purpose:      This script is designed to:
-#               Open the GIF  as documentation helper
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      30/05/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GIF_UV_FixFlipped_and_Normalize_Repack.py
+
+Purpose:      This script is designed to:
+              Open the GIF  as documentation helper
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      30/05/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

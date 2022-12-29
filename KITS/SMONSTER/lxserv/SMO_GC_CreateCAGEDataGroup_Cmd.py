@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_GC_CreateCAGEDataGroup_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Select the Tagged LowPoly Meshes and create A new CAGE Data
-#               group out of their current Cage Morph map.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      30/11/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_CreateCAGEDataGroup_Cmd.py
+
+Purpose:      This script is designed to:
+              Select the Tagged LowPoly Meshes and create A new CAGE Data
+              group out of their current Cage Morph map.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      30/11/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -90,10 +88,10 @@ class SMO_GC_CreateCAGEDataGroup_Cmd(lxu.command.BasicCommand):
 
             # Select Morph maps
             lx.eval('smo.GC.ClearSelectionVmap 3 0')
-            # # Get the number of Morph map available on mesh ////// DOESN'T WORK /////////
+            # Get the number of Morph map available on mesh ////// DOESN'T WORK /////////
             # DetectedMorphmapCount = len(lx.evalN('vertMap.list morf ?'))
             # lx.out('Morph Map Count:', DetectedMorphmapCount)
-            # # Get the name of UV Seam map available on mesh
+            # Get the name of UV Seam map available on mesh
             # DetectedMorphmapName = lx.eval('vertMap.list all ?')
             # lx.out('Morph Map Name:', DetectedMorphmapName)
             # ##### Morph Map Detection #####

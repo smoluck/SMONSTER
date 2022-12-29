@@ -1,18 +1,15 @@
 # python
 """
-# Name:         SMO_GC_Multi_MicroBevelHardEdgesAndUpdateToSoften_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This Command is designed to
-#               (for Multiple Mesh)
-#               Micro Bevel HardEdges (usually after a SimplyToNgon), then Soften all edges.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      16/06/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_Multi_MicroBevelHardEdgesAndUpdateToSoften_Cmd.py
+
+Purpose:      This Command is designed to
+              (for Multiple Mesh)
+              Micro Bevel HardEdges (usually after a SimplyToNgon), then Soften all edges.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      16/06/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_GC_SelectPolyRenderItem_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Select the PolyRender Item of the current scene or query is Ident name.
-#
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond)
-# Website:      https://www.smoluck.com
-#
-# Created:      12/08/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_SelectPolyRenderItem_Cmd.py
+
+Purpose:      This script is designed to
+              Select the PolyRender Item of the current scene or query is Ident name.
+
+Author:       Franck ELISABETH (with the help of Tom Dymond)
+Website:      https://www.smoluck.com
+Created:      12/08/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

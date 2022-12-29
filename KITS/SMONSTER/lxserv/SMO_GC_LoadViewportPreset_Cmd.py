@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_GC_LoadViewportPreset_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This Command is designed to :
-#               Load Corresponding Viewport Preset based on Modo Version to limit struggle with Preset form changes.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Modified:     13/10/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_LoadViewportPreset_Cmd.py
+
+Purpose:      This Command is designed to :
+              Load Corresponding Viewport Preset based on Modo Version to limit struggle with Preset form changes.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:     13/10/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

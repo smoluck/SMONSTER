@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_GC_GetMaterialsTagInSelection_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Get the Material Tags on current selection.
-#
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond)
-# Website:      https://www.smoluck.com
-#
-# Created:      12/08/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_GetMaterialsTagInSelection_Cmd.py
+
+Purpose:      This script is designed to
+              Get the Material Tags on current selection.
+
+Author:       Franck ELISABETH (with the help of Tom Dymond)
+Website:      https://www.smoluck.com
+Created:      12/08/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

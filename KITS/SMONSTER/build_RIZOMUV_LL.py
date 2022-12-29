@@ -144,7 +144,7 @@ def smodule_fi():
 def lxserv_fi():
     lxserv_files = []
     for f in lxserv_dir.glob("**/*"):
-        # # Files that are compiled
+        # Files that are compiled
         # if f.is_file() and f.name.endswith(".pyc"):
         #     if not f.name.startswith(("SMO_SMONSTER_")):
         #         lxserv_files.append(f)
@@ -171,9 +171,9 @@ def training_fi():
     # Get Base files in folders "Config" "scripts" "TRAINING_SCENES" and make sure no pyc files come along
     training_files = [f for f in training_dir_rizomuv_ll.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
     print(training_files)
-    # # Filter All files in this directory and remove corresponding folders
+    # Filter All files in this directory and remove corresponding folders
     # clean_training_files = []
-    # # blacklistedstring = "SMO_BAKE"
+    # blacklistedstring = "SMO_BAKE"
     # blacklistedstring = ["SMO_BAKE", "SMO_BATCH", "SMO_CAD_TOOLS", "SMO_CLEANUP", "SMO_COLOR_BAR", "SMO_GAME_CONTENT", "SMO_MARMOSET_TOOLBAG_LIVELINK", "SMO_MESHOPS", "SMO_MIFABOMA", "SMO_PIXAFLUX_LIVELINK", "SMO_QUICK_TAG", "SMO_UV", "SMO_VENOM"]
     # for f in training_files:
     #     # if not training_files.find(blacklistedstring):
@@ -202,47 +202,47 @@ def kits_fi():
 
 # kits_fi()
 
-# # Files contained in "Kits/SMO_BAKE" folder
+# Files contained in "Kits/SMO_BAKE" folder
 # def kitAI_fi():
 #     kitAI_files = [f for f in kit_ai_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
 #     print(kitAI_files)
 #     return kitAI_files
-# # kitAI_fi()
+# kitAI_fi()
 
-# # Files contained in "Kits/SMO_BAKE" folder
+# Files contained in "Kits/SMO_BAKE" folder
 # def kit_bake_fi():
 #     kitBAKE_files = [f for f in kit_bake_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
 #     print(kitBAKE_files)
 #     return kitBAKE_files
-# # kit_bake_fi()
+# kit_bake_fi()
 #
-# # Files contained in "Kits/SMO_BATCH" folder
+# Files contained in "Kits/SMO_BATCH" folder
 # def kit_batch_fi():
 #     kitBATCH_files = [f for f in kit_batch_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
 #     print(kitBATCH_files)
 #     return kitBATCH_files
-# # kit_batch_fi()
+# kit_batch_fi()
 #
-# # Files contained in "Kits/SMO_CAD_TOOLS" folder
+# Files contained in "Kits/SMO_CAD_TOOLS" folder
 # def kit_cad_fi():
 #     kitCAD_files = [f for f in kit_cad_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
 #     print(kitCAD_files)
 #     return kitCAD_files
-# # kit_cad_fi()
+# kit_cad_fi()
 #
-# # Files contained in "Kits/SMO_CLEANUP" folder
+# Files contained in "Kits/SMO_CLEANUP" folder
 # def kit_cleanup_fi():
 #     kitCLEANUP_files = [f for f in kit_cleanup_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
 #     print(kitCLEANUP_files)
 #     return kitCLEANUP_files
-# # kit_cleanup_fi()
+# kit_cleanup_fi()
 #
-# # Files contained in "Kits/SMO_COLOR_BAR" folder
+# Files contained in "Kits/SMO_COLOR_BAR" folder
 # def kit_colorbar_fi():
 #     kitCB_files = [f for f in kit_cb_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
 #     print(kitCB_files)
 #     return kitCB_files
-# # kit_colorbar_fi()
+# kit_colorbar_fi()
 
 # Files contained in "Kits/SMO_DOC" folder
 def kit_doc_fi():
@@ -253,12 +253,12 @@ def kit_doc_fi():
 
 # kit_doc_fi()
 
-# # Files contained in "Kits/SMO_GAME_CONTENT" folder
+# Files contained in "Kits/SMO_GAME_CONTENT" folder
 # def kit_gamecontent_fi():
 #     kitGC_files = [f for f in kit_gc_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
 #     print(kitGC_files)
 #     return kitGC_files
-# # kit_gamecontent_fi()
+# kit_gamecontent_fi()
 
 # Files contained in "Kits/SMO_MASTER" folder
 def kit_master_fi():
@@ -269,62 +269,62 @@ def kit_master_fi():
 
 # kit_master_fi()
 
-# # Files contained in "Kits/SMO_MATH_TOOLS" folder
+# Files contained in "Kits/SMO_MATH_TOOLS" folder
 # def kit_mathtools_fi():
 #     kitMATH_files = [f for f in kit_math_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
 #     print(kitMATH_files)
 #     return kitMATH_files
-# # kit_mathtools_fi()
+# kit_mathtools_fi()
 #
-# # Files contained in "Kits/SMO_MESHOPS" folder
+# Files contained in "Kits/SMO_MESHOPS" folder
 # def kit_meshops_fi():
 #     kitMESHOPS_files = [f for f in kit_meshops_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
 #     print(kitMESHOPS_files)
 #     return kitMESHOPS_files
-# # kit_meshops_fi()
+# kit_meshops_fi()
 #
-# # Files contained in "Kits/SMO_MIFABOMA" folder
+# Files contained in "Kits/SMO_MIFABOMA" folder
 # def kit_mifaboma_fi():
 #     kitMIFABOMA_files = [f for f in kit_mifaboma_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
 #     print(kitMIFABOMA_files)
 #     return kitMIFABOMA_files
-# # kit_mifaboma_fi()
+# kit_mifaboma_fi()
 
-# # Files contained in "Kits/SMO_PCLOUD_XYZ" folder
+# Files contained in "Kits/SMO_PCLOUD_XYZ" folder
 # def kitPCLOUD_fi():
 #     kitPCLOUD_files = [f for f in kit_pcloud_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
 #     print(kitPCLOUD_files)
 #     return kitPCLOUD_files
-# # kitPCLOUD_fi()
+# kitPCLOUD_fi()
 
-# # Files contained in "Kits/SMO_QUICK_TAG" folder
+# Files contained in "Kits/SMO_QUICK_TAG" folder
 # def kit_qtag_fi():
 #     kitQTAG_files = [f for f in kit_qt_dir.glob("**/*") if
 #                      f.is_file() and not f.name.endswith(".pyc")]
 #     print(kitQTAG_files)
 #     return kitQTAG_files
-# # kit_qtag_fi()
+# kit_qtag_fi()
 #
-# # Files contained in "Kits/SMO_UV" folder
+# Files contained in "Kits/SMO_UV" folder
 # def kit_uv_fi():
 #     kitUV_files = [f for f in kit_uv_dir.glob("**/*") if
 #                    f.is_file() and not f.name.endswith(".pyc")]
 #     print(kitUV_files)
 #     return kitUV_files
-# # kit_uv_fi()
+# kit_uv_fi()
 #
-# # Files contained in "Kits/SMO_VENOM" folder
+# Files contained in "Kits/SMO_VENOM" folder
 # def kit_venom_fi():
 #     kitVENOM_files = [f for f in kit_venom_dir.glob("**/*") if
 #                       f.is_file() and not f.name.endswith("_KeymapCommander.pyc") and not f.name.endswith(
 #                           "_Startup.pyc")]
 #     print(kitVENOM_files)
 #     return kitVENOM_files
-# # kit_venom_fi()
+# kit_venom_fi()
 
 
 ###### LIVELINK KITS #########################################################
-# # Files contained in "Kits/SMO_MARMOSET_LIVELINK" folder
+# Files contained in "Kits/SMO_MARMOSET_LIVELINK" folder
 # def kit_ll_marmosettoolbag_fi():
 #     # Files that doesn't include the source code py files, but only the one that remains to the KeymapCommander and Startup scripts.
 #     kitLLMARMO_files = [f for f in kit_marmo_dir.glob("**/*") if f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc", "SMO_LL_MARMOSET_AutoSegmentedExport_Cmd.py", "SMO_LL_MARMOSET_CreateMikkTangentBasisMap_Cmd.py", "SMO_LL_MARMOSET_ExportFBXBakes_Cmd.py", "SMO_LL_MARMOSET_SetExePath_Cmd.py"))]
@@ -332,9 +332,9 @@ def kit_master_fi():
 #     print(kitLLMARMO_files)
 #     print("--------------")
 #     return kitLLMARMO_files
-# # kit_ll_marmosettoolbag_fi()
+# kit_ll_marmosettoolbag_fi()
 #
-# # Files contained in "Kits/SMO_PIXAFLUX_LIVELINK" folder
+# Files contained in "Kits/SMO_PIXAFLUX_LIVELINK" folder
 # def kit_ll_pixaflux_fi():
 #     # Files that doesn't include the source code py files, but only the one that remains to the KeymapCommander and Startup scripts.
 #     kitLLPIXA_files = [f for f in kit_pixa_dir.glob("**/*") if f.is_file() and not f.name.endswith(("_KeymapCommander.pyc", "_Startup.pyc", "SMO_LL_PIXAFLUX_CreateTSNMap_Cmd.py", "SMO_LL_PIXAFLUX_DupAndExplodeByDist_Cmd.py", "SMO_LL_PIXAFLUX_ScaleUniformRecenter_Cmd.py", "SMO_LL_PIXAFLUX_SendDataAuto_Cmd.py", "SMO_LL_PIXAFLUX_SetExePath_Cmd.py"))]
@@ -342,7 +342,7 @@ def kit_master_fi():
 #     print(kitLLPIXA_files)
 #     print("--------------")
 #     return kitLLPIXA_files
-# # kit_ll_pixaflux_fi()
+# kit_ll_pixaflux_fi()
 
 # Files contained in "Kits/SMO_RIZOMUV_LIVELINK" folder
 def kit_ll_rizomuv_fi():

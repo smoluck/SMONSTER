@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_GC_SelectPolyByVertCount_Cmd.py
-# Version:      1.01
-#
-# Purpose:      This script is designed to:
-#               Select Polygons based on the vertex count they share. (Coded by Tom Dymond)
-#               Select Mesh Layers and run. 
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      08/07/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_SelectPolyByVertCount_Cmd.py
+
+Purpose:      This script is designed to:
+              Select Polygons based on the vertex count they share.
+              Select Mesh Layers and run.
+
+Author:       Franck ELISABETH (with the help of Tom Dymond)
+Website:      https://www.smoluck.com
+Created:      08/07/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

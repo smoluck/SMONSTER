@@ -1,18 +1,16 @@
 # python
 """
-# Name:         SMO_UV_Multi_AutoUnwrapSmartByAngle_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               (for Multiple Mesh)
-#               MULTI - Auto Unwrap the current Mesh item by using Sharp Edges
-#               defined by a Min and Max Angle as Seams.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      21/12/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_UV_Multi_AutoUnwrapSmartByAngle_Cmd.py
+
+Purpose:      This script is designed to
+              (for Multiple Mesh)
+              MULTI - Auto Unwrap the current Mesh item by using Sharp Edges
+              defined by a Min and Max Angle as Seams.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      21/12/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -92,7 +90,7 @@ class SMO_UV_Multi_AutoUnwrapSmartByAngle_Cmd(lxu.command.BasicCommand):
         Modo_ver = int(lx.eval ('query platformservice appversion ?'))
         lx.out('Modo Version:', Modo_ver)
 
-        ############### 5 ARGUMENTS ------------- #
+        # ------------- ARGUMENT ------------- #
         args = lx.args()
         lx.out(args)
 

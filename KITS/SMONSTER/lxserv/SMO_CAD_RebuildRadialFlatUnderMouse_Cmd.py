@@ -1,17 +1,16 @@
 # python
 """
-# Name:         SMO_CAD_RebuildRadialFlatUnderMouse_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Select the Item and Polygon under mouse, select similar touching polygons, then delete and recreate the PolyLoop Patch and update the VertexNormal Map if needed.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      22/09/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CAD_RebuildRadialFlatUnderMouse_Cmd.py
+
+Purpose:      This script is designed to:
+              Select the Item and Polygon under mouse, select similar touching polygons,
+              then delete and recreate the PolyLoop Patch and
+              update the VertexNormal Map if needed.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      22/09/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -61,34 +60,34 @@ class SMO_CAD_RebuildRadialFlatUnderMouse_Cmd(lxu.command.BasicCommand):
         scene = modo.scene.current()
 
 
-        # # ############### 5 ARGUMENTS ------------- #
+        # ------------- 5 ARGUMENTS ------------- #
         # args = lx.args()
         # lx.out(args)
         #
-        # # 0 = Similar Touching
-        # # 1 = Similar Object
-        # # 2 = Similar Layer
+        # 0 = Similar Touching
+        # 1 = Similar Object
+        # 2 = Similar Layer
         # SimilarMode = IntSimilarMode
         # lx.out('Similar Selection Mode:', SimilarMode)
         #
-        # # 0 = Select Loop
-        # # 1 = Keep current selection
+        # 0 = Select Loop
+        # 1 = Keep current selection
         # SelectLoop = IntSelectLoop
         # lx.out('Select Loop Automatic:', SelectLoop)
-        # # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
 
         # ------------------------------ #
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
 
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
         lx.eval("user.defNew name:SMO_SafetyCheck_PolygonModeEnabled type:integer life:momentary")
 
         lx.eval("user.defNew name:SMO_SafetyCheck_ItemModeEnabled type:integer life:momentary")
         lx.eval("user.defNew name:SMO_SafetyCheck_min1PolygonSelected type:integer life:momentary")
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
 
         # -------------------------- #
         # <---( SAFETY CHECK 1 )---> #
@@ -226,7 +225,7 @@ class SMO_CAD_RebuildRadialFlatUnderMouse_Cmd(lxu.command.BasicCommand):
             lx.out('script running: right amount of polygons in selection')
         # at Least 1 Polygons is selected --- END
 
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- START
         #####
         TotalSafetyCheckTrueValue = 2
         lx.out('Desired Value', TotalSafetyCheckTrueValue)
@@ -235,7 +234,7 @@ class SMO_CAD_RebuildRadialFlatUnderMouse_Cmd(lxu.command.BasicCommand):
             lx.out('Current Value', TotalSafetyCheck)
 
         #####
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- END
 
         # Modo_ver = int(lx.eval ('query platformservice appversion ?'))
         # lx.out('Modo Version:',Modo_ver)
@@ -244,7 +243,7 @@ class SMO_CAD_RebuildRadialFlatUnderMouse_Cmd(lxu.command.BasicCommand):
         # <----( Main Macro )----> #
         # ------------------------ #
 
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- START
         if TotalSafetyCheck == TotalSafetyCheckTrueValue:
             # Polygon Undermouse Selection Mode. You must be in Item Mode
             if SMO_SafetyCheck_ItemModeEnabled == 1:
@@ -286,7 +285,7 @@ class SMO_CAD_RebuildRadialFlatUnderMouse_Cmd(lxu.command.BasicCommand):
                             if CurrentVertexNormalMapName is not None:
                                 # HardSet Flat vertex Normals
                                 lx.eval('vertMap.normals {%s} false 0.0' % CurrentVertexNormalMapName)
-                                # # HardSet Smooth Vertex Normals
+                                # HardSet Smooth Vertex Normals
                                 # lx.eval('vertMap.normals {%s} true 1.0 "" false' % CurrentVertexNormalMapName)
 
                 lx.eval('select.drop polygon')

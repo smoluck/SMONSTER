@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_GC_ModollamaRebuildNGontoTriangle_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This Command is designed to
-#               Rebuild all NGons via Modollama Triangulation command to output Triangles.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      16/06/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_ModollamaRebuildNGontoTriangle_Cmd.py
+
+Purpose:      This Command is designed to
+              Rebuild all NGons via Modollama Triangulation command to output Triangles.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      16/06/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

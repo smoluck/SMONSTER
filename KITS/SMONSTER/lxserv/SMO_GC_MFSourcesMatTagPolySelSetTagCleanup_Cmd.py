@@ -1,21 +1,20 @@
 # python
 """
-# Name:         SMO_GC_MF_Sources_MatTag_PolySelSetTags_Cleanup_Cmd.py
-# Version:      1.3
-#
-# Purpose:      This script is designed to:
-#               Create random Materials and Selection Set (polygons)
-#               to the SOURCES of the selected Mesh Fusion Item
-#                   Each Mesh Layer will have is own:
-#                       Material Tag                ==> "MeshName"_mat
-#                       Polygon Selection Set       ==> SelSet_"MeshName"
-# Select one Mesh Fusion Item and run. 
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      21/09/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_MF_Sources_MatTag_PolySelSetTags_Cleanup_Cmd.py
+
+Purpose:      This script is designed to:
+              Create random Materials and Selection Set (polygons)
+              to the SOURCES of the selected Mesh Fusion Item
+                  Each Mesh Layer will have its own:
+                      Material Tag                ==> "MeshName"_mat
+                      Polygon Selection Set       ==> SelSet_"MeshName"
+
+              Select one Mesh Fusion Item and run.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      21/09/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

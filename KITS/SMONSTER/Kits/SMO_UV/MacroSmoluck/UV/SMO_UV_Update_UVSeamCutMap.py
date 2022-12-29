@@ -1,19 +1,19 @@
 # python
 """
-# Name:         Update_UVSeamCutMap.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Update the UVseam Cut Map based on the current UVMap
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      28/12/2018
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:           SMO_UV_Update_UVSeamCutMap.py
+
+Purpose:		This script is designed to:
+                Update the UVSeam Cut Map based on the current UVMap
+
+Author:         Franck ELISABETH
+Website:        https://www.smoluck.com
+Created:        28/12/2018
+Copyright:      (c) Franck Elisabeth 2017-2022
 """
 
+import lx
 import modo
+
 scene = modo.scene.current()
 mesh = scene.selectedByType('mesh')[0]
 meshseam = modo.Scene().selected[0]
@@ -26,32 +26,32 @@ CsVertex = len(mesh.geometry.vertices.selected)
 # <----( DEFINE VARIABLES )----> #
 # ------------------------------ #
 
-#####--- Define user value for all the different SafetyCheck --- START ---#####
+# ---------------- Define user value for all the different SafetyCheck --- START
 #####
 
-## Vertex
+# Vertex
 lx.eval("user.defNew name:SMO_SafetyCheck_VertexModeEnabled type:integer life:momentary")
 
 lx.eval("user.defNew name:SMO_SafetyCheck_minVertexSelected type:integer life:momentary")
 
-## Edges
+# Edges
 lx.eval("user.defNew name:SMO_SafetyCheck_EdgeModeEnabled type:integer life:momentary")
 
 lx.eval("user.defNew name:SMO_SafetyCheck_minEdgeSelected type:integer life:momentary")
 
-## Polygon
+# Polygon
 lx.eval("user.defNew name:SMO_SafetyCheck_PolygonModeEnabled type:integer life:momentary")
 
 lx.eval("user.defNew name:SMO_SafetyCheck_minPolygonSelected type:integer life:momentary")
 
-## Item
+# Item
 lx.eval("user.defNew name:SMO_SafetyCheck_ItemModeEnabled type:integer life:momentary")
 
 #####
-#####--- Define user value for all the different SafetyCheck --- END ---#####
+# ---------------- Define user value for all the different SafetyCheck --- END
 
 
-##### UV SEAM Map Detection #####
+# ------------- UV SEAM Map Detection
 # MODO version checks.
 # Modo 13.0 and up have UV Seam map.
 # Version below 13.0 haven't
@@ -74,7 +74,7 @@ lx.out('UV SEAM Map Count:', DetectedUVSEAMmapCount)
 # Get the name of UV Seam map available on mesh
 DetectedUVSEAMmapName = lx.eval('vertMap.list seam ?')
 lx.out('UV SEAM Map Name:', DetectedUVSEAMmapName)
-##### UV SEAM Map Detection #####
+# ------------- UV SEAM Map Detection
 
 
 # -------------------------- #
@@ -139,7 +139,7 @@ else:
 
 
 if Modo_ver >= 1300:
-## UVSEAM Map Selection Check ##
+    # UVSEAM Map Selection Check ##
     lx.out('<--- UVSEAM Map Safety Check --->')
     lx.out('<---------- START ---------->')
     if DetectedUVSEAMmapName == NoUVSeamMap:
@@ -161,7 +161,7 @@ if Modo_ver >= 1300:
 # <----( Main Macro )----> #
 # -------------------------- #
 
-#####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- START
+# ------------- Compare SafetyCheck value and decide or not to continue the process  --- START
 if SMO_SafetyCheck_VertexModeEnabled == 1:
     lx.eval('select.type polygon')
     lx.eval('uv.selectBorder')

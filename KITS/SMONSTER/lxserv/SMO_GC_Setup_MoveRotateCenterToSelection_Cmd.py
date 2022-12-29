@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_GC_Setup_MoveRotateCenterToSelection_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Move and / or Rotate the Center to Selection center (use it in item mode or Component mode).
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      21/05/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_Setup_MoveRotateCenterToSelection_Cmd.py
+
+Purpose:      This script is designed to:
+              Move and / or Rotate the Center to Selection center (use it in item mode or Component mode).
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      21/05/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

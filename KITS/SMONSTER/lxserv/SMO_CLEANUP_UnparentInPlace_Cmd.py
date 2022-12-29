@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_CLEANUP_UnparentInPlace_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Search if a specific UV Map exist, select it and rename it
-#               via String Argument.
-#
-# Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      https://www.smoluck.com
-#
-# Created:      17/02/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CLEANUP_UnparentInPlace_Cmd.py
+
+Purpose:      This script is designed to:
+              Search if a specific UV Map exist, select it and rename it
+              via String Argument.
+
+Author:       Franck ELISABETH (with the help of James O'Hare)
+Website:      https://www.smoluck.com
+Created:      17/02/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

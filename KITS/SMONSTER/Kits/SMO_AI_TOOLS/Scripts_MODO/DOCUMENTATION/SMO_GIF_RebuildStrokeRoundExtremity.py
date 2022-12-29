@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_RebuildStrokeRoundExtremity.py
-# Version:      1.01
-#
-# Purpose:      This script is designed to:
-#               Open the GIF  as documentation helper
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      30/05/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_RebuildStrokeRoundExtremity.py
+
+Purpose:      This script is designed to:
+              Open the GIF  as documentation helper
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      30/05/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

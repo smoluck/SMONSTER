@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_MIFABOMA_FALLOFF_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This Command is designed to Mirror
-#               a Polygon Selection from the current Layer
-#               on a defined Axis (controlled by Argument).
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      https://www.smoluck.com
-#
-# Created:      16/09/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_MIFABOMA_FALLOFF_Cmd.py
+
+Purpose:      This Command is designed to Mirror
+              a Polygon Selection from the current Layer
+              on a defined Axis (controlled by Argument).
+
+Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
+Website:      https://www.smoluck.com
+Created:      16/09/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

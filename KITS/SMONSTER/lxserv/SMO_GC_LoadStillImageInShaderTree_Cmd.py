@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_GC_LoadStillImageInShaderTree_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Select the still images (clips) Item of the current scene.
-# 
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond)
-# Website:      https://www.smoluck.com
-#
-# Created:      12/08/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_LoadStillImageInShaderTree_Cmd.py
+
+Purpose:      This script is designed to
+              Select the still images (clips) Item of the current scene.
+
+Author:       Franck ELISABETH (with the help of Tom Dymond)
+Website:      https://www.smoluck.com
+Created:      12/08/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -71,7 +68,7 @@ class SMO_GC_LoadStillImageInShaderTree_Cmd(lxu.command.BasicCommand):
         lx.eval('select.drop channel')
         lx.eval('select.drop link')
         
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
 lx.bless(SMO_GC_LoadStillImageInShaderTree_Cmd, Cmd_Name)

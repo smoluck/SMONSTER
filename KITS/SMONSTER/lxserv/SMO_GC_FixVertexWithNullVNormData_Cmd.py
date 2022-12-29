@@ -1,19 +1,16 @@
 # python
 """
-# Name:         SMO_GC_FixVertexWithNullVNormData_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Check current selected mesh, analyse the vertex data of Vertex Normal Maps.
-#               If those value are Null, it select the vertex and apply a Set Vertex Normal command.
-#               If you add the argument True it will automatically fix those vertex.
-#
-#
-# Author:       Franck ELISABETH (with the help of Andreas Ranman (aka Roberyman))
-# Website:      https://www.smoluck.com
-#
-# Created:      07/12/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_FixVertexWithNullVNormData_Cmd.py
+
+Purpose:      This script is designed to
+              Check current selected mesh, analyse the vertex data of Vertex Normal Maps.
+              If those value are Null, it selects the vertex and apply a Set Vertex Normal command.
+              If you add the argument True it will automatically fix those vertex.
+
+Author:       Franck ELISABETH (with the help of Andreas Ranman (aka Roberyman))
+Website:      https://www.smoluck.com
+Created:      07/12/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_Unbevel.py
-# Version: 1.0
-# 
-# Purpose:      This script is designed to:
-#               Unbevel Edge Selection Selection, by using the MouseOver the Edge Ring
-# 
-# 
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-# 
-# Created:      05/02/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_Unbevel.py
+
+Purpose:      This script is designed to:
+              Unbevel current Edge Selection, by using the MouseOver the Edge Ring
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      05/02/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

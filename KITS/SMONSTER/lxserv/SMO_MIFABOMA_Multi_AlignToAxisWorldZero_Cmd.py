@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_MIFABOMA_Multi_AlignToAxisWorldZero_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Align selected Mesh/Instances/Locator/GroupLocator items to World Axis.
-#               It use X Y Z axis as argument for the direction.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      17/08/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_MIFABOMA_Multi_AlignToAxisWorldZero_Cmd.py
+
+Purpose:      This script is designed to
+              Align selected Mesh/Instances/Locator/GroupLocator items to World Axis.
+              It use X Y Z axis as argument for the direction.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      17/08/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

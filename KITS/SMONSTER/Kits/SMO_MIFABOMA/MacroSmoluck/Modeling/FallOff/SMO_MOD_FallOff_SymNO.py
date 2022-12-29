@@ -1,19 +1,19 @@
 # python
 """
-# Name:         SMO_MOD_FallOff_Sym.py
-# Version: 1.0
-#
-# Purpose: This script is designed to
-# set automaticly a defined Falloff
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      16/09/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:               SMO_MOD_FallOff_SymNO.py
+
+Purpose:            This Script is designed to:
+                    Set automatically a defined Falloff
+
+Author:             Franck ELISABETH
+Website:            https://www.smoluck.com
+Created:            16/09/2019
+Copyright:          (c) Franck Elisabeth 2017-2022
 """
 
+import lx
 import modo
+
 # scene = modo.scene.current()
 # mesh = scene.selectedByType('mesh')[0]
 # CsPolys = len(mesh.geometry.polygons.selected)
@@ -28,7 +28,7 @@ Sym_Mode = 0
 # lx.out(args)
 
 # Sym_Mode = args[0]                          # Symmetry mode:                        None = 0 ### Start = 1 ### End = 2
-# # Expose the Result of the Arguments 
+# Expose the Result of the Arguments 
 # lx.out(Sym_Mode)
 # ------------------------------ #
 # <----( DEFINE ARGUMENTS )----> #
@@ -39,7 +39,7 @@ Sym_Mode = 0
 if lx.eval('tool.set falloff.linear ? ') == 'on':
     # lx.eval('tool.set falloff.linear on')
     FallOff_Mode = 0
-    ## Linear <----( Symetry Mode )----> #
+    # Linear <----( Symetry Mode )----> #
     if Sym_Mode == 0:
         lx.eval('tool.setAttr falloff.linear symmetric none')
     if Sym_Mode == 1:
@@ -55,7 +55,7 @@ if lx.eval('tool.set falloff.linear ? ') == 'on':
 if lx.eval('tool.set falloff.cylinder ? ') == 'on':
     # lx.eval('tool.set falloff.cylinder on')
     FallOff_Mode = 1
-    ## Cylinder <----( Symetry Mode )----> #
+    # Cylinder <----( Symetry Mode )----> #
     if Sym_Mode == 0:
         lx.eval('tool.setAttr falloff.cylinder symmetric none')
     if Sym_Mode == 1:

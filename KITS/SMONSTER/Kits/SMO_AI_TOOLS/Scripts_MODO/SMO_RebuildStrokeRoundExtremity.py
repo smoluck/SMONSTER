@@ -1,17 +1,15 @@
 # python
 """
 Name:         SMO_RebuildStrokeRoundExtremity.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Rebuild the topology of the current selected Vertex set (Stroke Round Extremity)
-#               to a better Polygon topology.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      13/01/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+
+Purpose:      This script is designed to:
+              Rebuild the topology of the current selected Vertex set (Stroke Round Extremity)
+              to a better Polygon topology.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      13/01/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -25,12 +23,12 @@ mesh = scene.selectedByType('mesh')[0]
 CsVert = len(mesh.geometry.vertices.selected)
 lx.out('Count Selected Vert:', CsVert)
 
-# # # ------------- ARGUMENTS Test
+# ------------- ARGUMENTS Test
 # BuildMode = 2
 # TriRadial_Mode = 1
-# # # ------------- ARGUMENTS ------------- #
+# ------------- ARGUMENTS ------------- #
 
-# ############### 5 ARGUMENTS ------------- #
+# ------------- 5 ARGUMENTS ------------- #
 args = lx.args()
 lx.out(args)
 
@@ -49,35 +47,33 @@ lx.out('User define Side Count:', User_Mode)
 
 SideCount = int(args[3])
 lx.out('Side Count Argument Value:', SideCount)
-# # ------------- ARGUMENTS ------------- #
+# ------------- ARGUMENTS ------------- #
 
 
 # ------------------------------ #
 # <----( DEFINE VARIABLES )----> #
 # ------------------------------ #
-
-#####--- Define user value for all the different SafetyCheck --- START ---#####
+# ---------------- Define user value for all the different SafetyCheck --- START
 #####
 # Only one Item Selected
 lx.eval("user.defNew name:SMO_SC_Only1MeshItemSelected type:integer life:momentary")
 
-## Vertex
+# Vertex
 lx.eval("user.defNew name:SMO_SC_VertexModeEnabled type:integer life:momentary")
-## Edges
+# Edges
 lx.eval("user.defNew name:SMO_SC_EdgeModeEnabled type:integer life:momentary")
-## Polygon
+# Polygon
 lx.eval("user.defNew name:SMO_SC_PolygonModeEnabled type:integer life:momentary")
-## Item
+# Item
 lx.eval("user.defNew name:SMO_SC_ItemModeEnabled type:integer life:momentary")
 
 # Min Vertex count selected
 lx.eval("user.defNew name:SMO_SC_min3VertexSelected type:integer life:momentary")
 #####
-#####--- Define user value for all the different SafetyCheck --- END ---#####
+# ---------------- Define user value for all the different SafetyCheck --- END
 
 
-###############COPY/PASTE Check Procedure#################
-## create variables
+# ---------------- COPY/PASTE Check Procedure ---------------- #
 lx.eval("user.defNew name:User_Pref_CopyDeselectChangedState type:boolean life:momentary")
 lx.eval("user.defNew name:User_Pref_PasteSelectionChangedState type:boolean life:momentary")
 lx.eval("user.defNew name:User_Pref_PasteDeselectChangedState type:boolean life:momentary")
@@ -85,7 +81,6 @@ lx.eval("user.defNew name:User_Pref_PasteDeselectChangedState type:boolean life:
 lx.eval("user.defNew name:User_Pref_CopyDeselect type:boolean life:momentary")
 lx.eval("user.defNew name:User_Pref_PasteSelection type:boolean life:momentary")
 lx.eval("user.defNew name:User_Pref_PasteDeselect type:boolean life:momentary")
-###################
 
 # Look at current Copy / Paste user Preferences:
 User_Pref_CopyDeselect = lx.eval('pref.value application.copyDeSelection ?')
@@ -120,7 +115,7 @@ if User_Pref_PasteSelection == 1:
 # Is Paste Deselect True ?
 if User_Pref_PasteDeselect == 1:
     User_Pref_PasteDeselectChangedState = 0
-################################################
+# -------------------------------------------- #
 
 
 # -------------------------- #
@@ -386,9 +381,9 @@ if SMO_SC_VertexModeEnabled == 1 and SMO_SC_min3VertSelected == 1 and SMO_SC_Onl
         lx.eval('unhide')
         lx.eval('select.type vertex')
 
-        # ----------------------------------#
+        # ---------------------------------#
         # Create a Z positive Face Polygon #
-        # ----------------------------------#
+        # ---------------------------------#
         lx.eval('item.create mesh')
         lx.eval('item.name PlaneZ xfrmcore')
         lx.eval('select.type polygon')
@@ -405,7 +400,6 @@ if SMO_SC_VertexModeEnabled == 1 and SMO_SC_min3VertSelected == 1 and SMO_SC_Onl
         lx.eval('select.type item')
         lx.eval('select.createSet PlaneZ')
         lx.eval('select.drop item')
-        ####################################
 
         # Paste the PlaneZ Data to fix the flipped Polys to point in the Z direction at the end.
         lx.eval('select.useSet TreatenItem select')
@@ -422,9 +416,9 @@ if SMO_SC_VertexModeEnabled == 1 and SMO_SC_min3VertSelected == 1 and SMO_SC_Onl
         # lx.eval('select.pickWorkingSet Polyflip true')
         lx.eval('!delete')
 
-        # -------------------------#
+        # ------------------------#
         # Delete The Z Plane mesh #
-        # -------------------------#
+        # ------------------------#
         lx.eval('select.type item')
         lx.eval('select.drop item')
         lx.eval('select.useSet PlaneZ select')
@@ -440,7 +434,7 @@ if SMO_SC_VertexModeEnabled == 1 and SMO_SC_min3VertSelected == 1 and SMO_SC_Onl
 
     if BuildMode == 2:
         if User_Mode == 1:
-            #####--- Define User Value for Rebevel Count --- START ---#####
+            # ------------- Define User Value for Rebevel Count --- START
             #####
             # Create a user value that define the EdgeCount for the Rebevel.
             lx.eval("user.defNew name:RebuildEdgeCount type:integer life:momentary")
@@ -454,7 +448,7 @@ if SMO_SC_VertexModeEnabled == 1 and SMO_SC_min3VertSelected == 1 and SMO_SC_Onl
             user_inputReuildCount = lx.eval("user.value RebuildEdgeCount ?")
             lx.out('Edge Count:', user_inputReuildCount)
         #####
-        #####---  Define User Value for Rebevel Count --- END ---#####
+        # ------------- Define User Value for Rebevel Count --- END
         if User_Mode == 0:
             user_inputReuildCount = SideCount
             lx.out('Edge Count:', user_inputReuildCount)
@@ -515,12 +509,12 @@ if SMO_SC_VertexModeEnabled == 1 and SMO_SC_min3VertSelected == 1 and SMO_SC_Onl
             # example:
             # mypath = lx.eval("query platformservice alias ? {kit_eterea_swissknife:scripts/geometry}")
             # lx.eval("preset.do {%s/Bowl.lxl}" % mypath)
-            #####--- Define the Preset directory of the Custom CAD Presets to load the Rebevel Assembly --- START ---#####
+            # ------------- Define the Preset directory of the Custom CAD Presets to load the Rebevel Assembly --- START
             #####
             SMOAIPath = lx.eval("query platformservice alias ? {kit_SMO_AI_TOOLS:Presets}")
             lx.out('RebuildPresetPath:', SMOAIPath)
             #####
-            #####--- Define the Preset directory of the Custom CAD Presets to load the Rebevel Assembly --- START ---#####
+            # ------------- Define the Preset directory of the Custom CAD Presets to load the Rebevel Assembly --- START
             lx.eval('preset.do {%s/SMO_RebuildStrokeRoundExtremity.lxp}' % SMOAIPath)
             lx.eval('select.type item')
             lx.eval('select.drop item')
@@ -856,7 +850,7 @@ if SMO_SC_VertexModeEnabled == 1 and SMO_SC_min3VertSelected == 1 and SMO_SC_Onl
         lx.out('End of SMO_RebuildCurve Script')
         lx.out('-------------------------------')
 
-###############COPY/PASTE END Procedure#################
+# -------------- COPY/PASTE END Procedure  -------------- #
 # Restore user Preferences:
 if User_Pref_CopyDeselectChangedState == 1:
     lx.eval('pref.value application.copyDeSelection false')
@@ -867,4 +861,4 @@ if User_Pref_PasteSelectionChangedState == 1:
 if User_Pref_PasteDeselectChangedState == 1:
     lx.eval('pref.value application.pasteDeSelection false')
     lx.out('"Deselect Elements Before Pasting" have been Restored')
-########################################################
+# -------------------------------------------- #

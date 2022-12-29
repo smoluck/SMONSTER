@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_GC_StarTriple_Cmd
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Star Triple area using touching polygons and same Facing Ratio.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      15/04/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_StarTriple_Cmd
+
+Purpose:      This script is designed to:
+              Star Triple area using touching polygons and same Facing Ratio.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      15/04/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -216,7 +214,7 @@ class SMO_GC_StarTriple_Cmd(lxu.command.BasicCommand):
                                 # lx.eval('vertMap.new name:"Vertex Normal" type:norm init:false')
                             except:
                                 pass
-        # # Create an empty VertexNormalMap if there is no Vertex Normals on Original HighPoly Mesh Source
+        # Create an empty VertexNormalMap if there is no Vertex Normals on Original HighPoly Mesh Source
         # if len(VertNrnMapList) == 0:
         #     lx.eval('vertMap.new name:{%s} type:norm init:false' % VNMapName)
 

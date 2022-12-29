@@ -1,18 +1,15 @@
 # python
 """
-# Name:         SMO_Cleanup_DeleteChannels.py
-# Version:      1.0
-#
-# Purpose:  This script is designed to:
-#           Test the channel created in the current selected mesh
-#           and delete a defined channel if it exist (via string Argument)
-#           
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      14/02/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:           SMO_Cleanup_DeleteChannels.py
+
+Purpose:        This script is designed to:
+                Test the channel created in the current selected mesh
+                and delete a defined channel if it exists (via string Argument)
+
+Author:         Franck ELISABETH
+Website:        https://www.smoluck.com
+Created:        14/02/2020
+Copyright:      (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -20,17 +17,17 @@ import modo
 
 scene = modo.scene.current()
 
-# # # ------------- ARGUMENTS Test
+# ------------- ARGUMENTS Test
 Search_name = "FBX_MaxHandle"
-# # # ------------- ARGUMENTS ------------- #
+# ------------- ARGUMENTS ------------- #
 
-# # # ------------- ARGUMENTS ------------- #
+# ------------- ARGUMENTS ------------- #
 # args = lx.args()
 # lx.out(args)
 
 # Search_name = string(args[0])
 # lx.out('Channel Name to delete:', Search_name)
-# # # ------------- ARGUMENTS ------------- #
+# ------------- ARGUMENTS ------------- #
 
 
 selected_Meshes = lx.evalN('query sceneservice selection ? mesh')

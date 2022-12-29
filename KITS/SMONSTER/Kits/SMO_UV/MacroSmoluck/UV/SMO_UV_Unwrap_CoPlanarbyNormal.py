@@ -1,18 +1,18 @@
 # python
 """
-# Name: Unwrap_CoPlanarbyNormal.py
-# Version: 1.00
-#
-# Purpose: Select one Polygon an is will unwrap all the adjacent polygons based on the Normal of theis CoPlanar Island. 
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      11/04/2019
-# Modified:		11/04/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:			Unwrap_CoPlanarbyNormal.py
+
+Purpose:		Select one Polygon an is will unwrap all the adjacent
+				polygons based on the Normal of theis CoPlanar Island.
+
+Author:			Franck ELISABETH
+Website:		https://www.smoluck.com
+Created:		11/04/2019
+Copyright:		(c) Franck Elisabeth 2017-2022
 """
 
+import lx
+import sys
 
 lx.eval('cmd @kit_SMO_GAME_CONTENT:MacroSmoluck/Modeling/SMO_MOD_PolyLazySelect.py 1 2')
 
@@ -24,11 +24,6 @@ lx.eval('tool.set uv.create off')
 
 # lx.eval('cmd @{kit_SMO_UV:MacroSmoluck/UV/SMO_UV_Unwrap_PlanarPosY_512px10cm.py}')
 
-
-
-# python
-# Made with Replay
-# mechanicalcolor.com
 
 lx.eval('tool.set preset:"uv.create" mode:on')
 lx.eval('tool.setAttr tool:"uv.create" attr:mode value:manual')
@@ -78,10 +73,10 @@ except:
 lx.eval('select.nextMode')
 
 # ###########################
-# # Set specific Texel Density
-# # replay name:"User Value"
+# Set specific Texel Density
+# replay name:"User Value"
 # lx.eval('user.value name:"texeldensity.size3D" value:"0.1"')
-# # replay name:"User Value"
+# replay name:"User Value"
 # lx.eval('user.value name:"texeldensity.sizeUV" value:"512.0"')
 # ###########################
 

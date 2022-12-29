@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_GC_EdgeSlideProjectToBG_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Extend the current Opened Boundary Edge Loop to nearest BG Mesh using BG Constraint.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      04/12/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_EdgeSlideProjectToBG_Cmd.py
+
+Purpose:      This script is designed to:
+              Extend the current Opened Boundary Edge Loop to nearest BG Mesh using BG Constraint.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      04/12/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 from math import degrees
@@ -104,18 +102,18 @@ class SMO_GC_EdgeSlideProjectToBG_Cmd(lxu.command.BasicCommand):
         def rad(a):
             return [degrees(a)]
 
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         # args = lx.args()
         # #lx.out(args)
         EdgeSlideValue = -2
         # lx.out('Edge Slide Value:', EdgeSlideValue)
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
 
         # ------------------------------ #
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
 
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
         lx.eval("user.defNew name:SMO_SafetyCheck_PolygonModeEnabled type:integer life:momentary")
 
@@ -125,7 +123,7 @@ class SMO_GC_EdgeSlideProjectToBG_Cmd(lxu.command.BasicCommand):
         lx.eval("user.defNew name:SMO_SafetyCheck_EdgeModeEnabled type:integer life:momentary")
         lx.eval("user.defNew name:SMO_SafetyCheck_min1EdgeSelected type:integer life:momentary")
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
 
         # -------------------------- #
         # <---( SAFETY CHECK 1 )---> #
@@ -300,7 +298,7 @@ class SMO_GC_EdgeSlideProjectToBG_Cmd(lxu.command.BasicCommand):
             # lx.out('script running: right amount of Edges in selection')
         # at Least 1 Edge is selected --- END
 
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- START
         #####
         TotalSafetyCheckTrueValue = 2
         # lx.out('Desired Value', TotalSafetyCheckTrueValue)
@@ -313,7 +311,7 @@ class SMO_GC_EdgeSlideProjectToBG_Cmd(lxu.command.BasicCommand):
             # lx.out('Current Value', TotalSafetyCheck)
 
         #####
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- END
 
         Modo_ver = int(lx.eval('query platformservice appversion ?'))
         # print('Modo Version:', Modo_ver)
@@ -321,7 +319,7 @@ class SMO_GC_EdgeSlideProjectToBG_Cmd(lxu.command.BasicCommand):
         # ------------------------ #
         # <----( Main Macro )----> #
         # ------------------------ #
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- START
         # Isolate the 2 Targeted Meshes (FG and BG)
         lx.eval('select.type item')
         scene.select(selected_mesh)
@@ -330,7 +328,7 @@ class SMO_GC_EdgeSlideProjectToBG_Cmd(lxu.command.BasicCommand):
         lx.eval('smo.GC.DeselectAll')
         scene.select(selected_mesh)
 
-        # # Manual Selection Mode via a set of edges
+        # Manual Selection Mode via a set of edges
         if SMO_SafetyCheck_EdgeModeEnabled == 1:
             scene.select(selected_mesh)
             lx.eval('select.type edge')

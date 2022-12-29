@@ -1,19 +1,17 @@
 # python
 """
-# Name:         SMO_MIFABOMA_MIRROR_ViaUserPref_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This Command is designed to
-#               Mirror current Polygon Selection (or all Poly if no selection)
-#               using Origin Center (World) or Item Center (Local).
-#               It use the User Preferences to define wich clone type you do
-#               and if you clone also the hierarchy.
-# 
-# Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      https://www.smoluck.com
-#
-# Created:      16/09/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_MIFABOMA_MIRROR_ViaUserPref_Cmd.py
+
+Purpose:      This Command is designed to
+              Mirror current Polygon Selection (or all Poly if no selection)
+              using Origin Center (World) or Item Center (Local).
+              It use the User Preferences to define wich clone type you do
+              and if you clone also the hierarchy.
+
+Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
+Website:      https://www.smoluck.com
+Created:      16/09/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -310,9 +308,9 @@ class SMO_MIFABOMA_Mirror_ViaUserPref_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.type item')
 
 
-                ###################################
+                # -------------------------------------------- #
                 # ------ Mirror Tool Setup ------ #
-                ###################################
+                # -------------------------------------------- #
                 lx.eval('tool.set *.mirror on')
                 lx.eval('tool.setAttr gen.mirror cenX 0.0')
                 lx.eval('tool.setAttr gen.mirror cenY 0.0')

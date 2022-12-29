@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_UV_SmartOrient_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Orient the current UV Island (Horizontally or Vertically)
-#               based on Poly or Edge Selection.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      28/12/2018
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_UV_SmartOrient_Cmd.py
+
+Purpose:      This script is designed to:
+              Orient the current UV Island (Horizontally or Vertically)
+              based on Poly or Edge Selection.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      28/12/2018
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -215,7 +213,7 @@ class SMO_UV_SmartOrient_Cmd(lxu.command.BasicCommand):
         CsPolys = len(mesh.geometry.polygons.selected)
         CsEdges = len(mesh.geometry.edges.selected)
 
-        ##### UV SEAM Map Detection #####
+        # ------------- UV SEAM Map Detection
         # MODO version checks.
         # Modo 13.0 and up have UV Seam map.
         # Version below 13.0 haven't
@@ -237,10 +235,10 @@ class SMO_UV_SmartOrient_Cmd(lxu.command.BasicCommand):
         # Get the name of UV Seam map available on mesh
         DetectedUVSEAMmapName = lx.eval('vertMap.list seam ?')
         lx.out('UV SEAM Map Name:', DetectedUVSEAMmapName)
-        ##### UV SEAM Map Detection #####
+        # ------------- UV SEAM Map Detection
 
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
 
         if Modo_ver >= 1300:
             ## UVSEAM Map Selection Check ##
@@ -369,7 +367,7 @@ class SMO_UV_SmartOrient_Cmd(lxu.command.BasicCommand):
                 lx.out('script running: right amount of Edges in selection')
         # at Least 3 Edges are selected --- END
 
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- START
         #####
         TotalSafetyCheckTrueValuePoly = 3
         lx.out('Desired Value for Polygon Mode', TotalSafetyCheckTrueValuePoly)
@@ -386,13 +384,13 @@ class SMO_UV_SmartOrient_Cmd(lxu.command.BasicCommand):
         lx.out('Current Edge Check Value', TotalSafetyCheckEdge)
 
         #####
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- END
 
         # ----------------------------------------- #
         # <----( Main Macro for Polygon Mode )----> #
         # ----------------------------------------- #
 
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- START
         if TotalSafetyCheckPolygon == TotalSafetyCheckTrueValuePoly:
             lx.eval('tool.viewType uv')
             # lx.eval('select.type polygon')
@@ -406,7 +404,7 @@ class SMO_UV_SmartOrient_Cmd(lxu.command.BasicCommand):
         # <----( Main Macro for Edge Mode )----> #
         # -------------------------------------- #
 
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- START
         if TotalSafetyCheckEdge == TotalSafetyCheckTrueValueEdge:
             lx.eval('tool.viewType uv')
             # lx.eval('select.type edge')

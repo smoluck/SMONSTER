@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_BATCH_ProcessByPref_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Batch Process a set of files stored in a Folder, using User Defined Preferences.
-#
-#
-# Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      https://www.smoluck.com
-#
-# Created:      01/10/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_BATCH_ProcessByPref_Cmd.py
+
+Purpose:      This script is designed to:
+              Batch Process a set of files stored in a Folder, using User Defined Preferences.
+
+Author:       Franck ELISABETH (with the help of James O'Hare)
+Website:      https://www.smoluck.com
+Created:      01/10/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

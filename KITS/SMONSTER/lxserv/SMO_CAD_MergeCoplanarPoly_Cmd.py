@@ -1,18 +1,16 @@
 # python
 """
-# Name:         SMO_CAD_MergeCoplanarPoly_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Merge the selected Polygons based
-#               on their facing Angle to delete the
-#               Edges inside those Polygons.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      22/01/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CAD_MergeCoplanarPoly_Cmd.py
+
+Purpose:      This script is designed to:
+              Merge the selected Polygons based
+              on their facing Angle to delete the
+              Edges inside those Polygons.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      22/01/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -62,12 +60,12 @@ class SMO_CAD_MergeCoplanarPoly_Cmd(lxu.command.BasicCommand):
         if self.SelModePoly:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
 
-        # # ------------- ARGUMENTS Test
+        # ------------- ARGUMENTS Test
         # LS_Mode = 0
         # Angle = 2
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
 
-        ############### 5 ARGUMENTS ------------- #
+        # ------------- ARGUMENT ------------- #
         # LS_Mode = 0 (Similar Touching Mode)
         # LS_Mode = 1 (Similar on Object Mode)
         # LS_Mode = 2 (Similar on Item Mode)

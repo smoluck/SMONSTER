@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_GC_ItemListReParentToRootParent_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               ReParent selected item to the Root Parent of the current hierarchy.
-#
-#
-# Author:       Franck ELISABETH ( Solution by Rouven Miller )
-# Website:      https://www.smoluck.com
-#
-# Created:      18/08/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_ItemListReParentToRootParent_Cmd.py
+
+Purpose:      This script is designed to
+              ReParent selected item to the Root Parent of the current hierarchy.
+
+Author:       Franck ELISABETH ( Solution by Rouven Miller )
+Website:      https://www.smoluck.com
+Created:      18/08/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_UV_FixFlipped_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Fix the Flipped UVs in the current UVMap.
-# 
-#
-# Author:       Franck ELISABETH
-# Website:      ttp://www.smoluck.com
-#
-# Created:      01/07/2018
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_UV_FixFlipped_Cmd.py
+
+Purpose:      This script is designed to
+              Fix the Flipped UVs in the current UVMap.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      01/07/2018
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -76,20 +73,20 @@ class SMO_UV_FixFlipped_Cmd(lxu.command.BasicCommand):
         # Flip V = 1
         FlipAxes = Int_FlipAxes
         lx.out('Desired flip axes:',FlipAxes)
-        ############### ARGUMENT ###############
+        # ------------- ARGUMENTS ------------- #
         
         
         
-        # # ------------- ARGUMENTS Test
+        # ------------- ARGUMENTS Test
         # FlipAxes = 0
-        # ############### ARGUMENT ###############
+        # ------------- ARGUMENT ------------- #
         
         
         
         # ------------------------------ #
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
         lx.eval("user.defNew name:SMO_SafetyCheck_PolygonModeEnabled type:integer life:momentary")
         lx.eval("user.defNew name:SMO_SafetyCheck_min1PolygonSelected type:integer life:momentary")
@@ -99,7 +96,7 @@ class SMO_UV_FixFlipped_Cmd(lxu.command.BasicCommand):
         ## Selected UVmap Name
         lx.eval("user.defNew name:UVFixflippedSoloV_UVMapName type:string life:momentary")
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
         
         
         
@@ -155,9 +152,9 @@ class SMO_UV_FixFlipped_Cmd(lxu.command.BasicCommand):
         
         
         
-        ################################################
-        ####### SAFETY CHECK 2 -  Selection Mode #######
-        ################################################
+        # -------------------------------------------- #
+        # ----- SAFETY CHECK 2 -  Selection Mode ----- #
+        # -------------------------------------------- #
         
         # Component Selection Mode type --- START
         
@@ -249,21 +246,21 @@ class SMO_UV_FixFlipped_Cmd(lxu.command.BasicCommand):
             lx.out('script running: Flipped UV Island Detected')
         
         
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- START
         #####
         TotalSafetyCheckTrueValue = 2
         lx.out('Desired Value',TotalSafetyCheckTrueValue)
         TotalSafetyCheck = (SMO_SafetyCheck_PolygonModeEnabled + SMO_SafetyCheck_min1PolygonSelected)
         lx.out('Current Value',TotalSafetyCheck)
         #####
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- END
         
         
         # ------------------------ #
         # <----( Main Macro )----> #
         # ------------------------ #
 
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- START
         if SMO_SafetyCheck_UVFixflipped_UVMapCount:
             if TotalSafetyCheckTrueValue == TotalSafetyCheck:
                 if CsPolys < 1:
@@ -292,7 +289,7 @@ class SMO_UV_FixFlipped_Cmd(lxu.command.BasicCommand):
                 lx.out('No UV Island to Flip')
             
         lx.out('End of SMO_UV_FixFlipped Script')
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
 lx.bless(SMO_UV_FixFlipped_Cmd, Cmd_Name)

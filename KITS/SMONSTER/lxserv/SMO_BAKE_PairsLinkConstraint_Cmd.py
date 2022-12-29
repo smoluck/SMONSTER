@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_BAKE_PairsLinkConstraint_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Create a Position/Rotation Constraint according to selection order and user preferences. low --> high OR  high --> low.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      06/02/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_BAKE_PairsLinkConstraint_Cmd.py
+
+Purpose:      This script is designed to:
+              Create a Position/Rotation Constraint according to selection
+              order and user preferences. low --> high OR  high --> low.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      06/02/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

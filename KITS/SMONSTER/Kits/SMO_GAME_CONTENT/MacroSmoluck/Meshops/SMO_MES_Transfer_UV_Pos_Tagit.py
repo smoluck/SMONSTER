@@ -1,20 +1,18 @@
 # python
 """
-# Name:         SMO_Transfer_UV_Pos_Tagit.py
-# Version: 1.00
-#
-# Purpose: This script is designed to PreTag a set of 2 polygons on the Source Mesh
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      29/03/2019
-# Modified:		01/04/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_Transfer_UV_Pos_Tagit.py
+
+Purpose: 	  This script is designed to:
+			  PreTag a set of 2 polygons on the Source Mesh
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      29/03/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
-#import the necessary Python libraries
-import lx, lxu, os, modo
+import lx
+import modo
 
 # get selected items using TD SDK
 scene = modo.Scene()
@@ -120,14 +118,14 @@ elif CsPolys == 2:
 
 
 
-#####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
+# ---------------- Define current value for the Prerequisite TotalSafetyCheck --- START
 #####
 TotalSafetyCheckTrueValue = 2
 lx.out('Desired Value',TotalSafetyCheckTrueValue)
 TotalSafetyCheck = (SMO_SafetyCheck_PolygonModeEnabled + SMO_SafetyCheck_2PolygonSelected)
 lx.out('Current Value',TotalSafetyCheck)
 #####
-#####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
+# ---------------- Define current value for the Prerequisite TotalSafetyCheck --- END
 
 
 
@@ -135,14 +133,14 @@ lx.out('Current Value',TotalSafetyCheck)
 # <----( Main Macro )----> #
 # -------------------------- #
 
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
+# ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- START
 if TotalSafetyCheck == TotalSafetyCheckTrueValue:
 	
 	## Transfer UV Position TAGGER ## LOOP
 	lx.out('<--- Transfer UV Position TAGGER --->')
 	lx.out('<----------- START ---------->')
 	try:
-		#####--- Define User Value for Rebevel Count --- START ---#####
+		# ------------- Define User Value for Rebevel Count --- START
 		#####
 		# Create a user value that define the EdgeCount for the Rebevel.
 		lx.eval("user.defNew name:Tag_ID type:string life:momentary")
@@ -162,7 +160,7 @@ if TotalSafetyCheck == TotalSafetyCheckTrueValue:
 		lx.eval('select.editSet TRANSPOS_POLYISLAND_DONE add')
 		lx.eval('hide.sel')
 		#####
-		#####---  Define User Value for Rebevel Count --- END ---#####
+		# ------------- Define User Value for Rebevel Count --- END
 		
 	except:
 		sys.exit

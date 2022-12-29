@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_MIFABOMA_SetRADIALSWEEPAnglePreset_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This Command is designed to :
-#               Set the current Angle Preset for Radial Sweep.
-#                   
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      https://www.smoluck.com
-#
-# Created:      16/09/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_MIFABOMA_SetRADIALSWEEPAnglePreset_Cmd.py
+
+Purpose:      This Command is designed to :
+              Set the current Angle Preset for Radial Sweep.
+
+Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
+Website:      https://www.smoluck.com
+Created:      16/09/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

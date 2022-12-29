@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_CLEANUP_Del3DsMAX_FBXChannel_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Delete all 3DSMAX related Channels created
-#               at FBX Export in the current scene.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      19/12/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CLEANUP_Del3DsMAX_FBXChannel_Cmd.py
+
+Purpose:      This script is designed to:
+              Delete all 3DSMAX related Channels created
+              at FBX Export in the current scene.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      19/12/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

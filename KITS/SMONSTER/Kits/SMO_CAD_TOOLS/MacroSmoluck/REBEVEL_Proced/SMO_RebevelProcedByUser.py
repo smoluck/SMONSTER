@@ -1,40 +1,39 @@
 # python
 """
-# Name:         SMO_RebevelProcedByUser
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Test if 1 Item is selected and if more than 2
-#               Polygons are selected, then process a
-#               rebevel on the selected patch
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      03/01/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_RebevelProcedByUser
+
+Purpose:      This script is designed to:
+              Test if 1 Item is selected and if more than 2
+              Polygons are selected, then process a
+              rebevel on the selected patch
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      03/01/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
-import lx, modo
+
+import lx
+import modo
+import sys
 
 scene = modo.scene.current()
 mesh = scene.selectedByType('mesh')[0]
-
 
 # ------------------------------ #
 # <----( DEFINE VARIABLES )----> #
 # ------------------------------ #
 
-#####--- Define user value for all the different SafetyCheck --- START ---#####
+# ---------------- Define user value for all the different SafetyCheck --- START
 #####
 lx.eval("user.defNew name:SMO_SafetyCheck_Only1MeshItemSelected type:integer life:momentary")
 lx.eval("user.defNew name:SMO_SafetyCheck_PolygonModeEnabled type:integer life:momentary")
 lx.eval("user.defNew name:SMO_SafetyCheck_min3PolygonSelected type:integer life:momentary")
 #####
-#####--- Define user value for all the different SafetyCheck --- END ---#####
+# ---------------- Define user value for all the different SafetyCheck --- END
 
 
-###############COPY/PASTE Check Procedure#################
-## create variables
+# ---------------- COPY/PASTE Check Procedure ---------------- #
 lx.eval("user.defNew name:User_Pref_CopyDeselectChangedState type:boolean life:momentary")
 lx.eval("user.defNew name:User_Pref_PasteSelectionChangedState type:boolean life:momentary")
 lx.eval("user.defNew name:User_Pref_PasteDeselectChangedState type:boolean life:momentary")
@@ -55,29 +54,29 @@ lx.out('User Pref: Deselect Elements Before Pasting', User_Pref_PasteDeselect)
 if User_Pref_CopyDeselect == 0:
     lx.eval('pref.value application.copyDeSelection true')
     User_Pref_CopyDeselectChangedState = 1
-    
+
 # Is Paste Selection False ?
 if User_Pref_PasteSelection == 0:
     lx.eval('pref.value application.pasteSelection true')
     User_Pref_PasteSelectionChangedState = 1
-    
+
 # Is Paste Deselect False ?
 if User_Pref_PasteDeselect == 0:
     lx.eval('pref.value application.pasteDeSelection true')
     User_Pref_PasteDeselectChangedState = 1
-    
+
 # Is Copy Deselect True ?
 if User_Pref_CopyDeselect == 1:
     User_Pref_CopyDeselectChangedState = 0
-    
+
 # Is Paste Selection True ?
 if User_Pref_PasteSelection == 1:
     User_Pref_PasteSelectionChangedState = 0
-    
+
 # Is Paste Deselect True ?
 if User_Pref_PasteDeselect == 1:
     User_Pref_PasteDeselectChangedState = 0
-################################################
+# -------------------------------------------- #
 
 
 # -------------------------- #
@@ -92,18 +91,18 @@ if ItemCount != 1:
     SMO_SafetyCheck_Only1MeshItemSelected = 0
     lx.eval('dialog.setup info')
     lx.eval('dialog.title {SMO_Rebevel:}')
-    lx.eval('dialog.msg {You must only select the Mesh Item layer you are working on, in Item List, to run that script}')
+    lx.eval(
+        'dialog.msg {You must only select the Mesh Item layer you are working on, in Item List, to run that script}')
     lx.eval('+dialog.open')
     lx.out('Only One Item Selected result:', SMO_SafetyCheck_Only1MeshItemSelected)
     lx.out('script Stopped: Select only one Mesh Item')
     sys.exit
-    
+
 else:
     SMO_SafetyCheck_Only1MeshItemSelected = 1
     lx.out('Only One Item Selected:', SMO_SafetyCheck_Only1MeshItemSelected)
     lx.out('script running: right amount of Mesh Item selected')
 # --------------------  safety check 1 : Only One Item Selected --- END
-
 
 
 # -------------------------- #
@@ -115,10 +114,10 @@ selType = ""
 # Used to query layerservice for the list of polygons, edges or vertices.
 attrType = ""
 
-if lx.eval1( "select.typeFrom typelist:vertex;polygon;edge;item;ptag ?" ):
+if lx.eval1("select.typeFrom typelist:vertex;polygon;edge;item;ptag ?"):
     selType = "vertex"
     attrType = "vert"
-    
+
     SMO_SafetyCheck_PolygonModeEnabled = 0
     lx.eval('dialog.setup info')
     lx.eval('dialog.title {SMO_Rebevel:}')
@@ -126,12 +125,12 @@ if lx.eval1( "select.typeFrom typelist:vertex;polygon;edge;item;ptag ?" ):
     lx.eval('+dialog.open')
     lx.out('script Stopped: You must be in Polygon Mode to run that script')
     sys.exit
-    
-    
-elif lx.eval1( "select.typeFrom typelist:edge;vertex;polygon;item ?" ):
+
+
+elif lx.eval1("select.typeFrom typelist:edge;vertex;polygon;item ?"):
     selType = "edge"
     attrType = "edge"
-    
+
     SMO_SafetyCheck_PolygonModeEnabled = 0
     lx.eval('dialog.setup info')
     lx.eval('dialog.title {SMO_Rebevel:}')
@@ -139,11 +138,11 @@ elif lx.eval1( "select.typeFrom typelist:edge;vertex;polygon;item ?" ):
     lx.eval('+dialog.open')
     lx.out('script Stopped: You must be in Polygon Mode to run that script')
     sys.exit
-    
-elif lx.eval1( "select.typeFrom typelist:polygon;vertex;edge;item ?" ):
+
+elif lx.eval1("select.typeFrom typelist:polygon;vertex;edge;item ?"):
     selType = "polygon"
     attrType = "poly"
-    
+
     SMO_SafetyCheck_PolygonModeEnabled = 1
     lx.out('script Running: Correct Component Selection Mode')
 
@@ -163,7 +162,6 @@ else:
 # Polygon Selection Mode enabled --- END
 
 
-
 # -------------------------- #
 # <---( SAFETY CHECK 3 )---> #
 # -------------------------- #
@@ -173,11 +171,9 @@ try:
     #####--- Get current selected polygon count --- START ---#####
     #####
     CsPolys = len(mesh.geometry.polygons.selected)
-    lx.out('Count Selected Poly',CsPolys)
+    lx.out('Count Selected Poly', CsPolys)
     #####
     #####--- Get current selected polygon count --- END ---#####
-
-
 
     if CsPolys <= 2:
         SMO_SafetyCheck_min3PolygonSelected = 0
@@ -193,25 +189,24 @@ try:
         lx.out('script running: right amount of polygons in selection')
     # at Least 3 Polygons are selected --- END
 except:
-        sys.exit
-        
+    sys.exit
 
-#####--- Define user value for the Prerequisite TotalSafetyCheck --- START ---#####
+# ------------- Define user value for the Prerequisite TotalSafetyCheck --- START
 #####
 TotalSafetyCheckTrueValue = 3
-lx.out('SafetyCheck Desired Value',TotalSafetyCheckTrueValue)
-TotalSafetyCheck = (SMO_SafetyCheck_Only1MeshItemSelected + SMO_SafetyCheck_PolygonModeEnabled + SMO_SafetyCheck_min3PolygonSelected)
-lx.out('SafetyCheck Current Value',TotalSafetyCheck)
+lx.out('SafetyCheck Desired Value', TotalSafetyCheckTrueValue)
+TotalSafetyCheck = (
+            SMO_SafetyCheck_Only1MeshItemSelected + SMO_SafetyCheck_PolygonModeEnabled + SMO_SafetyCheck_min3PolygonSelected)
+lx.out('SafetyCheck Current Value', TotalSafetyCheck)
 #####
-#####--- Define user value for the Prerequisite TotalSafetyCheck --- END ---#####
-
+# ------------- Define user value for the Prerequisite TotalSafetyCheck --- END
 
 
 # -------------------------- #
 # <----( Main Macro )----> #
 # -------------------------- #
 
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
+# ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- START
 if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     # Main Rebevel Macro
 
@@ -227,62 +222,58 @@ if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     lx.eval('select.loop')
     lx.eval('select.createSet name:SelSet_PolyLoop')
     lx.eval('select.expand')
-    lx.eval('copy')	
-
+    lx.eval('copy')
 
     ### Part 2 : Load the Predefined Assembly Preset 
 
     try:
         ### Load Rebevel Preset for the processing ###
         # example:
-        #mypath = lx.eval("query platformservice alias ? {kit_eterea_swissknife:scripts/geometry}")
-        #lx.eval("preset.do {%s/Bowl.lxl}" % mypath)
-        #####--- Define the Preset directory of the Custom CAD Presets to load the Rebevel Assembly --- START ---#####
+        # mypath = lx.eval("query platformservice alias ? {kit_eterea_swissknife:scripts/geometry}")
+        # lx.eval("preset.do {%s/Bowl.lxl}" % mypath)
+        # ------------- Define the Preset directory of the Custom CAD Presets to load the Rebevel Assembly --- START
         #####
         SMOCADPath = lx.eval("query platformservice alias ? {kit_SMO_CAD_TOOLS:Presets}")
-        lx.out('RebevelPresetPath:',SMOCADPath)
+        lx.out('RebevelPresetPath:', SMOCADPath)
         #####
-        #####--- Define the Preset directory of the Custom CAD Presets to load the Rebevel Assembly --- START ---#####
+        # ------------- Define the Preset directory of the Custom CAD Presets to load the Rebevel Assembly --- START
         lx.eval('preset.do {%s/SMO_REBEVEL_ASS.lxp}' % SMOCADPath)
         lx.eval('select.type item')
         lx.eval('select.drop item')
-        
+
     except:
         sys.exit
-      
 
-      
     try:
-        #####--- Define User Value for Rebevel Count --- START ---#####
+        # ------------- Define User Value for Rebevel Count --- START
         #####
-        #Create a user value that define the EdgeCount for the Rebevel.
+        # Create a user value that define the EdgeCount for the Rebevel.
         lx.eval("user.defNew name:RebevelEdgeCount type:integer life:momentary")
-        #Set the title name for the dialog window
+        # Set the title name for the dialog window
         lx.eval('user.def RebevelEdgeCount dialogname "SMO_Rebevel Count"')
-        #Set the input field name for the value that the users will see
+        # Set the input field name for the value that the users will see
         lx.eval("user.def RebevelEdgeCount username {Enter edge count here}")
-        #The '?' before the user.value calls a popup to have the user set the value
+        # The '?' before the user.value calls a popup to have the user set the value
         lx.eval("?user.value RebevelEdgeCount")
-        #Now that the user set the value, i can query it
+        # Now that the user set the value, i can query it
         user_inputRebevelCount = lx.eval("user.value RebevelEdgeCount ?")
-        lx.out('EdgeCount:',user_inputRebevelCount)
+        lx.out('EdgeCount:', user_inputRebevelCount)
         lx.eval('select.drop item')
         lx.eval('select.useSet name:SMO_REBEVEL_Loc_control mode:select')
-        
+
         # Set and get the value of the focal length channel
-        #item.channel('Count').set(user_inputRebevelCount)
-        #print(item.channel('Count').get())
-        
+        # item.channel('Count').set(user_inputRebevelCount)
+        # print(item.channel('Count').get())
+
         lx.eval('item.channel Count %s' % user_inputRebevelCount)
         lx.eval('select.drop item')
         lx.eval('select.useSet SMO_REBEVEL_SOURCEMesh select')
         #####
-        #####---  Define User Value for Rebevel Count --- END ---#####
-        
+        # ------------- Define User Value for Rebevel Count --- END
+
     except:
         sys.exit
-        
-        
+
     ### Part 3 : Paste the Curve into the Meshop Container to rebuild the Curve, then freeze the mesh and Bridge the 2 Edges Strips
 
     lx.eval('paste')
@@ -298,7 +289,7 @@ if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     lx.eval('select.type item')
     lx.eval('select.drop type:item')
     lx.eval('select.useSet name:SMO_REBEVEL_RESULT_Freezed mode:select')
-    lx.eval('deformer.freeze duplicate:false')                              ##### ERROR
+    lx.eval('deformer.freeze duplicate:false')  ##### ERROR
     lx.eval('select.drop type:item')
     lx.eval('select.useSet name:SMO_REBEVEL_RESULT_Freezed mode:select')
     lx.eval('select.type edge')
@@ -362,7 +353,6 @@ if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     # replay name:"Copy Selection"
     lx.eval('copy')
 
-
     ### Part 5 Go back to the Original scene and select the current item to be updated, then swithch to Polygon Mode
 
     lx.eval('select.drop type:item')
@@ -370,7 +360,6 @@ if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     # replay name:"Use Selection Set"
     lx.eval('select.useSet name:REBEVEL_ITEM mode:select')
     lx.eval('select.type polygon')
-
 
     ### Part 6
 
@@ -423,7 +412,6 @@ if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     # replay name:"Use Selection Set"
     lx.eval('select.useSet name:Top_Bottom mode:select')
 
-
     ### Part 7 Reconnect all the polygon parts on both side of the Rebeveled polyStrips
 
     # replay name:"MergeCoplanarPoly.LXM"
@@ -435,12 +423,10 @@ if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     lx.eval('select.type item')
     lx.eval('select.drop type:item')
 
-
     ### Part 8 Delete the Rebevel Assembly
 
     lx.eval('select.item Smo_REBEVEL_ASS set')
     lx.eval('!!delete')
-
 
     ### Part 9 Remove all the Temp SelectionSets on Edges / Vertex / Polygons
 
@@ -472,24 +458,23 @@ if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     lx.eval('select.all')
     # replay name:"Invert Selection"
     lx.eval('select.invert')
-    
+
 elif TotalSafetyCheck != TotalSafetyCheckTrueValue:
     lx.out('script Stopped: your mesh does not match the requirement for that script.')
     sys.exit
-    
-    
-###############COPY/PASTE END Procedure#################
+
+# -------------- COPY/PASTE END Procedure  -------------- #
 # Restore user Preferences:
-if User_Pref_CopyDeselectChangedState == 1 :
+if User_Pref_CopyDeselectChangedState == 1:
     lx.eval('pref.value application.copyDeSelection false')
     lx.out('"Deselect Elements after Copying" have been Restored')
-if User_Pref_PasteSelectionChangedState == 1 :
+if User_Pref_PasteSelectionChangedState == 1:
     lx.eval('pref.value application.pasteSelection false')
     lx.out('"Select Pasted Elements" have been Restored')
-if User_Pref_PasteDeselectChangedState == 1 :
+if User_Pref_PasteDeselectChangedState == 1:
     lx.eval('pref.value application.pasteDeSelection false')
     lx.out('"Deselect Elements Before Pasting" have been Restored')
-########################################################
+# -------------------------------------------- #
 
 lx.out('End of Rebevel Script')
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
+# ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- END

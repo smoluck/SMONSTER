@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_UV_SelectUVArea_Cmd.py
-# Version:      1.0
-# 
-# Purpose:      This script is designed to
-#               Select the Polygons in a defined UV Area (Via Arguments).
-# 
-# 
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-# 
-# Created:      28/12/2018
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_UV_SelectUVArea_Cmd.py
+
+Purpose:      This script is designed to:
+              Select the Polygons in a defined UV Area (Via Arguments).
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      28/12/2018
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -81,12 +78,12 @@ class SMO_UV_SelectUVArea_Cmd(lxu.command.BasicCommand):
         # ------------------------------ #
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
         ## UVmap Selected Count
         lx.eval("user.defNew name:SMO_SafetyCheckSelectUVArea_UVMapCount type:boolean life:momentary")
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
         
         
         

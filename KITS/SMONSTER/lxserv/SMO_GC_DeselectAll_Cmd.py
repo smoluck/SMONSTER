@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_GC_DeselectAll_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Deselect anything in the current scene. Items(Meshes, Lights, etc) / Materials or Schematic Nodes.
-#
-#
-# Author:       Franck ELISABETH (with the help of Pavel Efimov)
-# Website:      https://www.smoluck.com
-#
-# Created:      26/03/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_DeselectAll_Cmd.py
+
+Purpose:      This script is designed to
+              Deselect anything in the current scene. Items(Meshes, Lights, etc) / Materials or Schematic Nodes.
+
+Author:       Franck ELISABETH (with the help of Pavel Efimov)
+Website:      https://www.smoluck.com
+Created:      26/03/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

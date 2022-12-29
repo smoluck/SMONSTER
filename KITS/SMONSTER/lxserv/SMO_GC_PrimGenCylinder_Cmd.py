@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_GC_PrimGenCylinder_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Create a Cylinder or disk based on Arguments
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      21/08/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_PrimGenCylinder_Cmd.py
+
+Purpose:      This script is designed to:
+              Create a Cylinder or disk based on Arguments
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      21/08/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -76,10 +73,10 @@ class SMO_GC_PrimGenCylinder_Cmd(lxu.command.BasicCommand):
         User_DefUnit = lx.eval("pref.value units.default ?")
         lx.out(User_DefUnit)
 
-        # # # ------------- ARGUMENTS Test
+        # ------------- ARGUMENTS Test
         # Diameter = 75
-        # # Diameter_mm = 75.0
-        # # Diameter_mm = Diameter + 'mm'
+        # Diameter_mm = 75.0
+        # Diameter_mm = Diameter + 'mm'
 
         # Lenght_m = 177.59
         # lx.out('The Diameter size is:', Diameter)

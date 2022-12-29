@@ -1,18 +1,16 @@
 # python
 """
-# Name:         SMO_DeleteEdgeInsidePoly_LS.py
-# Version: 1.0
-#
-# Purpose:      This script is designed to:
-#               Merge the selected Polygons based
-#               on their facing Angle to delete the
-#               Edges inside those Polygons.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      22/01/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_DeleteEdgeInsidePoly_LS.py
+
+Purpose:      This script is designed to:
+              Merge the selected Polygons based
+              on their facing Angle to delete the
+              Edges inside those Polygons.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      22/01/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -21,10 +19,10 @@ import sys
 
 scene = modo.scene.current()
 
-# # ------------- ARGUMENTS Test
+# ------------- ARGUMENTS Test
 # Angle = 2
 # LS_Mode = 0
-# # ------------- ARGUMENTS ------------- #
+# ------------- ARGUMENTS ------------- #
 
 # ------------- ARGUMENTS ------------- #
 args = lx.args()

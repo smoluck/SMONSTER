@@ -1,18 +1,18 @@
 # python
 """
-# Name:         SMO_GIF_UV_SmartProjectionCylindrical_AutoLoopRectangle2.py
-# Version: 1.01
-#
-# Purpose:      This script is designed to:
-#               Open the GIF  as documentation helper
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      30/05/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:           SMO_GIF_UV_SmartProjectionCylindrical_AutoLoopRectangle2.py
+
+Purpose:		This script is designed to:
+                Open the GIF  as documentation helper
+
+Author:         Franck ELISABETH
+Website:        https://www.smoluck.com
+Created:        30/05/2019
+Copyright:      (c) Franck Elisabeth 2017-2022
 """
+
 import lx
+
 filePathToOpen = lx.eval("query platformservice alias ? {kit_SMO_GAME_CONTENT:MacroSmoluck/DOCUMENTATION/UV_SmartProjectionCylindrical_AutoLoopRectangle2.gif}")
 
 # Open gif file

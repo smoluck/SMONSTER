@@ -1,23 +1,20 @@
 # python
 """
-# Name:         SMO_MES_TagbyItemName.py
-# Version:      1.01
-#
-# Purpose:      This script is designed to create random Materials and Selection Set (polygons) to each selected Mesh
-#               Select a list of mesh layer and run. 
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      03/12/2018
-# Modified:     19/03/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_MES_TagbyItemName.py
+
+Purpose:      This script is designed to:
+              create random Materials and Selection Set (polygons) to each selected Mesh
+              Select a list of mesh layer and run.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      03/12/2018
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
-#import the necessary Python libraries
 import lx
-import os
 import modo
+
 scene = modo.scene.current()
 
 # For each selected item in the selected list of items

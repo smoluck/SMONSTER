@@ -1,16 +1,15 @@
 # python
 """
-# Name:         SMO_MASTER_ForceSelectMeshItem_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Select the Mesh Item related to current Selected Component when it's the Foreground Mesh. Filter only the Mesh Item to be selected at the end.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      25/04/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_MASTER_ForceSelectMeshItem_Cmd.py
+
+Purpose:      This script is designed to:
+              Select the Mesh Item related to current Selected Component when it's the Foreground Mesh.
+              Filter only the Mesh Item to be selected at the end.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      25/04/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

@@ -1,18 +1,17 @@
 # python
 """
-# Name:         SMO_PasteSOURCE_UpdateDATA.py
-# Version: 1.00
-#
-# Purpose: This script is designed Paste the SOURCE DATA (Polygon and UVs) and save the Scene
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      29/03/2019
-# Modified:		01/04/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_PasteSOURCE_UpdateDATA.py
+
+Purpose:      This script is designed to:
+              Paste the SOURCE DATA (Polygon and UVs) and save the Scene
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      29/03/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
+import lx
 
 lx.eval('layer.new')
 lx.eval('item.name SOURCE xfrmcore')

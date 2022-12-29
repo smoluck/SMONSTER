@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_MergeItems_and_MergeVertex.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Merge the selected Mesh Layers and reconnect their boundary
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      22/01/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_MergeItems_and_MergeVertex.py
+
+Purpose:      This script is designed to:
+              Merge the selected Mesh Layers and reconnect their boundary
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      22/01/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -20,8 +18,7 @@ import sys
 scene = modo.scene.current()
 mesh = scene.selectedByType('mesh')
 
-###############COPY/PASTE Check Procedure#################
-## create variables
+# ---------------- COPY/PASTE Check Procedure ---------------- #
 lx.eval("user.defNew name:User_Pref_CopyDeselectChangedState type:boolean life:momentary")
 lx.eval("user.defNew name:User_Pref_PasteSelectionChangedState type:boolean life:momentary")
 lx.eval("user.defNew name:User_Pref_PasteDeselectChangedState type:boolean life:momentary")
@@ -29,7 +26,7 @@ lx.eval("user.defNew name:User_Pref_PasteDeselectChangedState type:boolean life:
 lx.eval("user.defNew name:User_Pref_CopyDeselect type:boolean life:momentary")
 lx.eval("user.defNew name:User_Pref_PasteSelection type:boolean life:momentary")
 lx.eval("user.defNew name:User_Pref_PasteDeselect type:boolean life:momentary")
-###################
+# -------------------------- #
 
 # Look at current Copy / Paste user Preferences:
 User_Pref_CopyDeselect = lx.eval('pref.value application.copyDeSelection ?')
@@ -64,7 +61,7 @@ if User_Pref_PasteSelection == 1:
 # Is Paste Deselect True ?
 if User_Pref_PasteDeselect == 1:
     User_Pref_PasteDeselectChangedState = 0
-################################################
+# -------------------------- #
 
 
 # -------------------------- #
@@ -113,7 +110,7 @@ if SMO_SafetyCheck_AtLeast2MeshItemSelected == 1:
     # replay name:"Select by Items"
     lx.eval('select.type item')
 
-###############COPY/PASTE END Procedure#################
+# -------------- COPY/PASTE END Procedure  -------------- #
 # Restore user Preferences:
 if User_Pref_CopyDeselectChangedState == 1:
     lx.eval('pref.value application.copyDeSelection false')
@@ -124,4 +121,4 @@ if User_Pref_PasteSelectionChangedState == 1:
 if User_Pref_PasteDeselectChangedState == 1:
     lx.eval('pref.value application.pasteDeSelection false')
     lx.out('"Deselect Elements Before Pasting" have been Restored')
-########################################################
+# -------------------------------------------- #

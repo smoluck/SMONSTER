@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_GC_Multi_SelectCoPlanarPoly_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This Command is designed to
-#               (Replace the old Seneca Lazy Select by the Built in Select CoPlanar poly tool.)
-#
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      https://www.smoluck.com
-#
-# Created:      26/08/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_Multi_SelectCoPlanarPoly_Cmd.py
+
+Purpose:      This Command is designed to
+              (Replace the old Seneca Lazy Select by the Built-in Select CoPlanar poly tool.)
+
+Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
+Website:      https://www.smoluck.com
+Created:      26/08/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

@@ -1,19 +1,17 @@
 # python
 """
-# Name:         SMO_LL_MARMOSET_AutoSegmentedExport_Cmd.py
-# Version:      1.40
-#
-# Purpose:      This Command is designed to :
-#               Export LowPoly/Cage/HighPoly Meshes from current scene,
-#               based on MTyp Tag, as FBX to MarmosetToolbag temp Folder.
-#               Create a Texture to store the TSNM.
-#               Resolution defined by User value in Prefs (in pixel).
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Modified:     09/07/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_LL_MARMOSET_AutoSegmentedExport_Cmd.py
+
+Purpose:      This Command is designed to :
+              Export LowPoly/Cage/HighPoly Meshes from current scene,
+              based on MTyp Tag, as FBX to MarmosetToolbag temp Folder.
+              Create a Texture to store the TSNM.
+              Resolution defined by User value in Prefs (in pixel).
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Modified:     09/07/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import json as j
@@ -121,17 +119,17 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
     # ###########################################################################
     # ################   MarmosetToolbag Scene Template   #######################
 
-    # # Validate the path to MarmosetToolbag Scene Template is good.
+    # Validate the path to MarmosetToolbag Scene Template is good.
     # def valid_MarmosetTemplateScenePath (self, marmoset_tbscene_Path):
     # return ((marmoset_tbscene_Path != None) and os.path.lexists (marmoset_tbscene_Path) and (os.path.splitext (marmoset_tbscene_Path)[1].lower () == '.tbscene'))
 
-    # # Set the path to MarmosetToolbag in a user variable.
+    # Set the path to MarmosetToolbag in a user variable.
     # def set_MarmosetTemplateScenePath (self, marmoset_tbscene_Path):
     # if self.valid_MarmosetTemplateScenePath (marmoset_tbscene_Path):
-    # # try:
-    # # lx.eval ('!!user.defNew name:SMO_UseVal_MARMOSET_ExePath type:string life:config')
-    # # except:
-    # # pass
+    # try:
+    # lx.eval ('!!user.defNew name:SMO_UseVal_MARMOSET_ExePath type:string life:config')
+    # except:
+    # pass
 
     # try:
     # lx.eval ('!!user.value SMO_UseVal_MARMOSET_TemplateScenePath {%s}' % marmoset_tbscene_Path)
@@ -141,7 +139,7 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
     # return (lx.eval1 ('user.value SMO_UseVal_MARMOSET_TemplateScenePath ?') == marmoset_tbscene_Path)
     # return False
 
-    # # Ask the user for the path to MarmosetToolbag.
+    # Ask the user for the path to MarmosetToolbag.
     # def find_MarmosetTemplateScenePath (self):
     # HardCoded_TBScene_Path = lx.eval('query platformservice alias ? {kit_SMO_MARMOSET_LIVELINK:Kits/SMO_MARMOSET_LIVELINK/MarmosetToolbag_Scene_Template/MarmosetToolbag_v4_Scene_Template.tbscene}')
     # print (HardCoded_TBScene_Path)
@@ -172,11 +170,11 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
     # #########################################################################
     # ###################   MarmosetToolbag Python Script   ###################
 
-    # # Validate the path to MarmosetToolbag Python Script is good.
+    # Validate the path to MarmosetToolbag Python Script is good.
     # def valid_MarmosetScriptPath (self, marmoset_python_path):
     # return ((marmoset_python_path != None) and os.path.lexists (marmoset_python_path) and (os.path.splitext (marmoset_python_path)[1].lower () == '.py'))
 
-    # # Set the path to Marmoset Python Script in a user variable.
+    # Set the path to Marmoset Python Script in a user variable.
     # def set_MarmosetScriptPath (self, marmoset_python_path):
     # if self.valid_MarmosetScriptPath (marmoset_python_path):
 
@@ -188,7 +186,7 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
     # return (lx.eval1 ('user.value SMO_UseVal_MARMOSET_ScriptPath ?') == marmoset_python_path)
     # return False
 
-    # # Ask the user for the path to Marmoset Python Script.
+    # Ask the user for the path to Marmoset Python Script.
     # def find_MarmosetScriptPath (self):
     # default_script_path = lx.eval('query platformservice alias ? {kit_SMO_MARMOSET_LIVELINK:Kits/SMO_MARMOSET_LIVELINK/Marmoset_Script/autoimporter_backup.py}')
     # if self.set_MarmosetScriptPath (default_script_path):
@@ -429,14 +427,14 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
         Smo_MarmosetToolbagVersion = lx.eval1('user.value SMO_UseVal_MARMOSET_Version ?')
 
         # fbxSettings = self.storeFBXSettings ()
-        # # print (fbxSettings)
+        # print (fbxSettings)
 
         # MODO version checks. Different versions have different FBX options.
         if self.modo_ver < 1300:
             lx.out('Requires Modo 13.0 or newer.')
             return
 
-        # # Get the selected UV names.
+        # Get the selected UV names.
         # selected_uv_names = self.getUVSelection ()
         # if len (selected_uv_names) == 0:
         # lx.out ('No UV maps selected.')
@@ -628,7 +626,7 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
 
         ############################ Export FBX Data #############################
 
-        # # Store user's FBX preferences for restoring later.
+        # Store user's FBX preferences for restoring later.
         # fbxSettings = self.storeFBXSettings ()
 
         # get modo's temp dir
@@ -845,7 +843,7 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
                 lx.eval('item.channel textureLayer$enable true')
             if not Smo_MarmosetToolbag_AO:
                 lx.eval('item.channel textureLayer$enable false')
-        ################################################
+        # -------------------------------------------- #
 
         ############################ Create AO MAP Floor Image Data #############################
         if Smo_MarmosetToolbag_AOF == 1:
@@ -920,7 +918,7 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
                 lx.eval('item.channel textureLayer$enable true')
             if not Smo_MarmosetToolbag_AOF:
                 lx.eval('item.channel textureLayer$enable false')
-        ################################################
+        # -------------------------------------------- #
 
         ############################ Create TANGENT SPACE NORMAL MAP Image Data #############################
         if Smo_MarmosetToolbag_TSNRM == 1:
@@ -989,7 +987,7 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
                 lx.eval('item.channel textureLayer$enable true')
             if not Smo_MarmosetToolbag_TSNRM:
                 lx.eval('item.channel textureLayer$enable false')
-        ################################################
+        # -------------------------------------------- #
 
         ############################ Create OBJECT SPACE NORMAL MAP Image Data #############################
         if Smo_MarmosetToolbag_OSNRM == 1:
@@ -1060,7 +1058,7 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
                 lx.eval('item.channel textureLayer$enable true')
             if not Smo_MarmosetToolbag_OSNRM:
                 lx.eval('item.channel textureLayer$enable false')
-        ################################################
+        # -------------------------------------------- #
 
         ############################ Create POSITION MAP Image Data #############################
         if Smo_MarmosetToolbag_POS == 1:
@@ -1131,7 +1129,7 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
                 lx.eval('item.channel textureLayer$enable true')
             if not Smo_MarmosetToolbag_POS:
                 lx.eval('item.channel textureLayer$enable false')
-        ################################################
+        # -------------------------------------------- #
 
         ############################ Create CURVATURE MAP Image Data #############################
         if Smo_MarmosetToolbag_CUR == 1:
@@ -1202,7 +1200,7 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
                 lx.eval('item.channel textureLayer$enable true')
             if not Smo_MarmosetToolbag_CUR:
                 lx.eval('item.channel textureLayer$enable false')
-        ################################################
+        # -------------------------------------------- #
 
         ############################ Create OBJECT ID MAP Image Data #############################
         if Smo_MarmosetToolbag_OBJID == 1:
@@ -1273,7 +1271,7 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
                 lx.eval('item.channel textureLayer$enable true')
             if not Smo_MarmosetToolbag_OBJID:
                 lx.eval('item.channel textureLayer$enable false')
-        ################################################
+        # -------------------------------------------- #
 
         ############################ Create THICKNESS MAP Image Data #############################
         if Smo_MarmosetToolbag_THI == 1:
@@ -1344,7 +1342,7 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
                 lx.eval('item.channel textureLayer$enable true')
             if not Smo_MarmosetToolbag_THI:
                 lx.eval('item.channel textureLayer$enable false')
-        ################################################
+        # -------------------------------------------- #
 
         ############################ Create MATERIAL ID MAP Image Data #############################
         if Smo_MarmosetToolbag_MATID == 1:
@@ -1419,7 +1417,7 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
                 lx.eval('item.channel textureLayer$enable true')
             if not Smo_MarmosetToolbag_MATID:
                 lx.eval('item.channel textureLayer$enable false')
-        ################################################
+        # -------------------------------------------- #
 
         ############################ Create ALBEDO MAP Image Data #############################
         if Smo_MarmosetToolbag_ALBEDO == 1:
@@ -1495,7 +1493,7 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
                 lx.eval('item.channel textureLayer$enable true')
             if not Smo_MarmosetToolbag_ALBEDO:
                 lx.eval('item.channel textureLayer$enable false')
-        ################################################
+        # -------------------------------------------- #
 
         ############################ Create UV Island ID MAP Image Data #############################
         if Smo_MarmosetToolbag_UVID == 1:
@@ -1570,7 +1568,7 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
                 lx.eval('item.channel textureLayer$enable true')
             if not Smo_MarmosetToolbag_UVID:
                 lx.eval('item.channel textureLayer$enable false')
-        ################################################
+        # -------------------------------------------- #
 
         # Marmo_Launch_viaTbscene_Cmd = (Smo_MarmosetToolbagExe_AbsPath + " " + Smo_MarmosetToolbagTemplateScene_AbsPath)
         # print Marmo_Launch_viaTbscene_Cmd
@@ -1580,7 +1578,7 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
         # print Marmo_Launch_viaPython_Cmd
         # lx.out('Marmoset Load Data via Python Script: ', Marmo_Launch_viaPython_Cmd)
 
-        # # Call MarmosetToolbag.
+        # Call MarmosetToolbag.
         # proc = subprocess.Popen([Smo_MarmosetToolbagExe_AbsPath, " ", Smo_MarmosetToolbagScript_AbsPath], executable=Smo_MarmosetToolbagExe_AbsPath, stdout=subprocess.PIPE)
         # stdout, stderr = proc.communicate()
         # rc = proc.returncode
@@ -1630,7 +1628,7 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
         # write variables to filename [Data] and close it.
         j.dump(Data, f)
         f.close()
-        ##########################################
+        # ------------------------------------------ #
 
         # ------------------------------ #    To set the AutoLoad Method
         LoadViaPythonMode = bool(lx.eval('user.value SMO_UseVal_MARMOSET_LoadViaPythonMode ?'))
@@ -1656,7 +1654,7 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
             lx.out('Error Output: %s' % stderr)
 
         if rc != 0 and Bool_AutoCloseMarmo == 1:
-            # # Get the modified time of the export file.
+            # Get the modified time of the export file.
             #
             # if Smo_MarmosetToolbag_AO == True:
             #     if os.path.lexists (image_export_path_AO):
@@ -1996,18 +1994,18 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
                     lx.eval('select.drop link')
 
             # if ExplodePrePass == 1 :
-            # # Get the Unique name of the current Exploded Meshlayer and save it in User Values
+            # Get the Unique name of the current Exploded Meshlayer and save it in User Values
             # TempExplodedMeshMarmosetToolbag = lx.eval ('!!user.value SMO_UseVal_MARMOSET_TempExplodedMesh ?')
             # lx.eval('select.subItem {%s} set mesh;replicator;meshInst;camera;light;txtrLocator;backdrop;groupLocator;replicator;surfGen;locator;falloff;deform;locdeform;weightContainer;morphContainer;deformGroup;deformMDD2;ABCStreamingDeformer;morphDeform;itemInfluence;genInfluence;deform.push;deform.wrap;softLag;ABCCurvesDeform.sample;ABCdeform.sample;force.root;baseVolume;chanModify;itemModify;meshoperation;chanEffect;defaultShader;defaultShader 0 0' % TempExplodedMeshMarmosetToolbag)
             # lx.eval('!delete')
 
             # if ExplodePrePass == 0 :
-            # # Get the Unique name of the current Exploded Meshlayer and save it in User Values
+            # Get the Unique name of the current Exploded Meshlayer and save it in User Values
             # TempExplodedMeshMarmosetToolbag = lx.eval ('!!user.value SMO_UseVal_MARMOSET_TempExplodedMesh ?')
             # lx.eval('select.subItem {%s} set mesh;replicator;meshInst;camera;light;txtrLocator;backdrop;groupLocator;replicator;surfGen;locator;falloff;deform;locdeform;weightContainer;morphContainer;deformGroup;deformMDD2;ABCStreamingDeformer;morphDeform;itemInfluence;genInfluence;deform.push;deform.wrap;softLag;ABCCurvesDeform.sample;ABCdeform.sample;force.root;baseVolume;chanModify;itemModify;meshoperation;chanEffect;defaultShader;defaultShader 0 0' % TempExplodedMeshMarmosetToolbag)
             # lx.eval('item.channel locator$visible off')
 
-            # # Get the Unique name of the current Target Meshlayer and save it in User Values
+            # Get the Unique name of the current Target Meshlayer and save it in User Values
             # TargetMeshMarmosetToolbag = lx.eval ('!!user.value SMO_UseVal_MARMOSET_TargetMesh ?')
             # lx.eval('select.subItem {%s} set mesh;replicator;meshInst;camera;light;txtrLocator;backdrop;groupLocator;replicator;surfGen;locator;falloff;deform;locdeform;weightContainer;morphContainer;deformGroup;deformMDD2;ABCStreamingDeformer;morphDeform;itemInfluence;genInfluence;deform.push;deform.wrap;softLag;ABCCurvesDeform.sample;ABCdeform.sample;force.root;baseVolume;chanModify;itemModify;meshoperation;chanEffect;defaultShader;defaultShader 0 0' % TargetMeshMarmosetToolbag)
 

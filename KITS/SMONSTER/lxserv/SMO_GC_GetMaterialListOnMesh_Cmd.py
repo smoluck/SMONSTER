@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_GC_GetMaterialListOnMesh_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Get the Material List applied on current selected Mesh.
-# 
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      12/08/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_GetMaterialListOnMesh_Cmd.py
+
+Purpose:      This script is designed to
+              Get the Material List applied on current selected Mesh.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      12/08/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

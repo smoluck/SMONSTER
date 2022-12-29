@@ -1,17 +1,17 @@
 # python
 """
-# Name:         SMO_HelpWebsiteCMD.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               open the Smoluck Help Website
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      03/03/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:           SMO_HelpWebsiteCMD.py
+
+Purpose:		This script is designed to:
+                Open the Smoluck Help Website
+
+Author:         Franck ELISABETH
+Website:        https://www.smoluck.com
+Created:        03/03/2020
+Copyright:      (c) Franck Elisabeth 2017-2022
 """
+
+import lx
 
 lx.eval('layout.create width:1024 height:768 style:palette')
 lx.eval('viewport.restore {} false webView')
@@ -25,7 +25,7 @@ lx.eval('webview.goHome')
 # import PySide
 # from PySide.QtWebKit import *
 
-# # Subclassing from lxifc.CustomView
+# Subclassing from lxifc.CustomView
 # class SmoluckWebsite(lxifc.CustomView):
 
     # def customview_Init(self, pane):
@@ -38,17 +38,17 @@ lx.eval('webview.goHome')
         # if not custPane.test():
             # return False
 
-        # # get the parent object
+        # get the parent object
         # parent = custPane.GetParent()
 
-        # # convert to PySide QWidget
+        # convert to PySide QWidget
         # p = lx.getQWidget(parent)
 
-        # # Check that it suceeds
+        # Check that it suceeds
         # if p is not None:
             # layout = PySide.QtGui.QVBoxLayout()
 
-            # # Creating a QWebView widget
+            # Creating a QWebView widget
             # web = QWebView()
             # web.load("http://smoluck.com/")
             # web.show()

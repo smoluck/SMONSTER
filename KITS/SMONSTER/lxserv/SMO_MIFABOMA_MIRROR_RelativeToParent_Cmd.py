@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_MIFABOMA_MIRROR_RelativeToParent_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This Command is designed to
-#               Mirror current Polygon Selection (or all Poly
-#               if no selection) relative To Parent center.
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      https://www.smoluck.com
-#
-# Created:      16/09/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_MIFABOMA_MIRROR_RelativeToParent_Cmd.py
+
+Purpose:      This Command is designed to
+              Mirror current Polygon Selection (or all Poly
+              if no selection) relative To Parent center.
+
+Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
+Website:      https://www.smoluck.com
+Created:      16/09/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -232,9 +230,9 @@ class SMO_MIFABOMA_Mirror_RelativeToParent_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.drop item')
                 lx.eval('select.useSet RadArr_ITEM_TARGET replace')
                 lx.eval('select.type polygon')
-                ###################################
+                # -------------------------------------------- #
                 # ------ Mirror Tool Setup ------ #
-                ###################################
+                # -------------------------------------------- #
                 lx.eval('tool.set *.mirror on')
                 MirrorReplaceSourceState = lx.eval('tool.attr effector.clone replace ?')
                 MirrorFlipPolyState = lx.eval('tool.attr effector.clone flip ?')

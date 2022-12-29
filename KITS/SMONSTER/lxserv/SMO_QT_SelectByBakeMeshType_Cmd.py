@@ -1,17 +1,16 @@
 # python
 """
-# Name:         SMO_QuickTag_SelectByBakeMeshType_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Add an MTyp Tag to the current selected Mesh item. it define it as low or high poly mesh for Baking purpose.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      25/11/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_QuickTag_SelectByBakeMeshType_Cmd.py
+Version:      1.0
+
+Purpose:      This script is designed to:
+              Add an MTyp Tag to the current selected Mesh item.
+              It define it as low or high poly mesh for Baking purpose.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      25/11/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -60,12 +59,12 @@ class SMO_QT_SelectByBakeMeshType_Cmd(lxu.command.BasicCommand):
         lx.eval("user.defNew name:SelectByBakeMeshType type:integer life:momentary")
         # ------------------------------ #
         
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         SelectByBakeMeshType = self.dyna_Int (0)
         # 1 = low
         # 2 = cage
         # 3 = high
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         scene = modo.scene.current()
         searchedtag = 'MTyp'
 

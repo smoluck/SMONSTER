@@ -1,15 +1,14 @@
 # python
 """
-# Name:         SMO_SafetyCheck_PolygonModeEnabled
-# Version: 1.0
-#
-# Purpose: This script is designed to test if the Polygon Selection Mode is enabled
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      27/12/2018
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         	SMO_SafetyCheck_PolygonModeEnabled
+
+Purpose: 		This script is designed to:
+				Test if the Polygon Selection Mode is enabled
+
+Author:       	Franck ELISABETH
+Website:      	https://www.smoluck.com
+Created:      	27/12/2018
+Copyright:    	(c) Franck Elisabeth 2017-2022
 """
 
 import modo

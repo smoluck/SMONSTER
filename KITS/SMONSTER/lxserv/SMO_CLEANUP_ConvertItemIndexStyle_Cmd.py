@@ -1,18 +1,16 @@
 # python
 """
-# Name:         SMO_CLEANUP_ConvertItemIndexStyle_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Check if the current Modo Item Index Style set in Preferences and
-#               Rename all the selected items, if they use mixed Index Style or 
-#               if they use a different Index Style than the one in Modo Preferences.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      27/12/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CLEANUP_ConvertItemIndexStyle_Cmd.py
+
+Purpose:      This script is designed to:
+              Check if the current Modo Item Index Style set in Preferences and
+              Rename all the selected items, if they use mixed Index Style or
+              if they use a different Index Style than the one in Modo Preferences.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      27/12/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

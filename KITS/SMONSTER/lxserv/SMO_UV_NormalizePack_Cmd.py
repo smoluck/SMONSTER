@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_UV_NormalizePack_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Normalize all the UV Islands and Pack
-#               them in 0-1 UVSpace.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      28/12/2018
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_UV_NormalizePack_Cmd.py
+
+Purpose:      This script is designed to
+              Normalize all the UV Islands and Pack
+              them in 0-1 UVSpace.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      28/12/2018
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -83,21 +81,21 @@ class SMO_UV_NormalizePack_Cmd(lxu.command.BasicCommand):
         # ------------------------------ #
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
 
-        ## Vertex
+        # Vertex
         lx.eval("user.defNew name:SMO_SafetyCheckNP_VertexModeEnabled type:integer life:momentary")
 
-        ## Edges
+        # Edges
         lx.eval("user.defNew name:SMO_SafetyCheckNP_EdgeModeEnabled type:integer life:momentary")
 
-        ## Polygon
+        # Polygon
         lx.eval("user.defNew name:SMO_SafetyCheckNP_PolygonModeEnabled type:integer life:momentary")
-        ## Polygon Count
+        # Polygon Count
         lx.eval("user.defNew name:SMO_SafetyCheckNP_minPolygonSelected type:integer life:momentary")
 
-        ## Item
+        # Item
         lx.eval("user.defNew name:SMO_SafetyCheckNP_ItemModeEnabled type:integer life:momentary")
 
         ## Selected UVmap Count
@@ -105,7 +103,7 @@ class SMO_UV_NormalizePack_Cmd(lxu.command.BasicCommand):
         ## Selected UVmap Name
         lx.eval("user.defNew name:NP_UVMapName type:string life:momentary")
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
 
 
 
@@ -166,9 +164,9 @@ class SMO_UV_NormalizePack_Cmd(lxu.command.BasicCommand):
         
         
         
-        ################################################
-        ####### SAFETY CHECK 2 -  Selection Mode #######
-        ################################################
+        # -------------------------------------------- #
+        # ----- SAFETY CHECK 2 -  Selection Mode ----- #
+        # -------------------------------------------- #
         # Component Selection Mode type --- START
         
         selType = ""

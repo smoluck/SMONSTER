@@ -1,4 +1,17 @@
 # python
+"""
+Name:         SMO_SMONSTER_Startup_Cmd.py
+
+Purpose:      This script is designed to
+              It start all the attached keymap
+              commander for each kits.
+
+Author:       Franck ELISABETH (with the help of Pavel Efimov)
+Website:      https://www.smoluck.com
+Created:      26/03/2018
+Copyright:    (c) Franck Elisabeth 2017-2022
+"""
+
 
 import lx
 import modo

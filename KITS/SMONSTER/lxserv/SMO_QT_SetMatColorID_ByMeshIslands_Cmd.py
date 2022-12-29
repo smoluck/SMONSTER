@@ -1,18 +1,15 @@
 # python
 """
-# Name:         SMO_QT_SetMatColorID_ByMeshIslands_Cmd.py
-# Version:      1.00
-#
-# Purpose:      This script is designed to
-#               Set a Diffuse Color override using Material Tag on the selected Mesh Layers by Polygons Continuity (Islands).
-#               Named the new Mat using "ColorID" as Prefix.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      29/04/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_QT_SetMatColorID_ByMeshIslands_Cmd.py
+
+Purpose:      This script is designed to
+              Set a Diffuse Color override using Material Tag on the selected Mesh Layers by Polygons Continuity (Islands).
+              Named the new Mat using "ColorID" as Prefix.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      29/04/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

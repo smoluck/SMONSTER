@@ -1,30 +1,28 @@
 # python
 """
-# Name:         SMO_UV_CheckUVbyArg.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Search if a specific UV Map exist, select it and rename it
-#               via String Argument.
-#           
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      18/01/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:           SMO_UV_CheckUVbyArg.py
+
+Purpose:        This script is designed to:
+                Search if a specific UV Map exist, select it and rename it
+                via String Argument.
+
+Author:         Franck ELISABETH
+Website:        https://www.smoluck.com
+Created:        18/01/2019
+Copyright:      (c) Franck Elisabeth 2017-2022
 """
+
 import lx
 import modo
 
 scene = modo.scene.current()
 meshitems = [item for item in scene.items() if item.type == "mesh"]
 
-# # # ------------- ARGUMENTS ------------- #
+# ------------- ARGUMENTS ------------- #
 # RenameByDefault = 1
 # SearchString = "UVChannel_1"
 # TargetString = "TargetUVMap"
-# # # ------------- ARGUMENTS ------------- #
+# ------------- ARGUMENTS ------------- #
 # args = lx.args()
 # lx.out(args)
 
@@ -36,7 +34,7 @@ meshitems = [item for item in scene.items() if item.type == "mesh"]
 
 # TargetString = string(args[2])
 # lx.out('Target UVMap name:', TargetString)
-# # # ------------- ARGUMENTS ------------- #
+# ------------- ARGUMENTS ------------- #
 
 
 # Get the default UV Map name of the user

@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_CLEANUP_SetUVMapRenameMethod_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Set the current Renaming Method for UVMap by setting User Defined Preferences.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      21/06/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CLEANUP_SetUVMapRenameMethod_Cmd.py
+
+Purpose:      This script is designed to:
+              Set the current Renaming Method for UVMap by setting User Defined Preferences.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      21/06/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -51,9 +48,9 @@ class SMO_Cleanup_SetUVMapRenameMethod_Cmd(lxu.command.BasicCommand):
         return True
     
     def basic_Execute(self, msg, flags):
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         RenameByDefault = self.dyna_Bool (0)
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         if RenameByDefault == 1 :
             lx.eval('user.value SMO_UseVal_CLEANUP_FullAuto_RenameUVToDefault true')
             lx.eval('user.value SMO_UseVal_CLEANUP_FullAuto_RenameUVToUserPref false')

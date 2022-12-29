@@ -1,19 +1,15 @@
 # python
 """
-# Name:         SMO_GC_CreateDeleteSelSetFromMTypTag_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Read current defined Tags for Livelink Exports.
-#               Then Create OR Delete the Selection Set related to that tag for LowPoly / Cage / HighPoly.
-#
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      30/11/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_CreateDeleteSelSetFromMTypTag_Cmd.py
+
+Purpose:      This script is designed to:
+              Read current defined Tags for Livelink Exports.
+              Then Create OR Delete the Selection Set related to that tag for LowPoly / Cage / HighPoly.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      30/11/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

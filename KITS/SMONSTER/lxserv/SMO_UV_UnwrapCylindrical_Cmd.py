@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_UV_UnwrapCylindrical_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Unwrap the current Polygon Selection
-#               using Cylindrical Mode on Defined Axis.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      28/12/2018
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_UV_UnwrapCylindrical_Cmd.py
+
+Purpose:      This script is designed to
+              Unwrap the current Polygon Selection
+              using Cylindrical Mode on Defined Axis.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      28/12/2018
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -145,16 +143,16 @@ class SMO_UV_UnwrapCylindrical_Cmd(lxu.command.BasicCommand):
         RelocateInArea = lx.eval('user.value SMO_UseVal_UV_RelocateInArea ?')
         lx.out('Relocate In Area state:', RelocateInArea)
 
-        # # ------------- ARGUMENTS Test
+        # ------------- ARGUMENTS Test
         # UVProjAxe = 2
         # IsRectangle = 1
         # SelectByLoop = 1
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
 
         # ------------------------------ #
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
         lx.eval("user.defNew name:SMO_SafetyCheck_UVUnwrapCyl_PolygonModeEnabled type:integer life:momentary")
         lx.eval("user.defNew name:SMO_SafetyCheck_UVUnwrapCyl_min1PolygonSelected type:integer life:momentary")
@@ -164,7 +162,7 @@ class SMO_UV_UnwrapCylindrical_Cmd(lxu.command.BasicCommand):
         ## Selected UVmap Name
         lx.eval("user.defNew name:UVUnwrapCyl_UVMapName type:string life:momentary")
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
 
         lx.eval('smo.GC.ClearSelectionVmap 2 1')
         lx.eval('smo.GC.ClearSelectionVmap 3 1')
@@ -296,7 +294,7 @@ class SMO_UV_UnwrapCylindrical_Cmd(lxu.command.BasicCommand):
             lx.out('script running: right amount of polygons in selection')
         # at Least 1 Polygons is selected --- END
 
-        # ##### UV SEAM Map Detection #####
+        # # ------------- UV SEAM Map Detection
 
         # #Define the UV Seam vmap name Search case.
         # lx.eval("user.defNew name:UVUnwrapCyl_DesiredUVSEAMmapName type:string life:momentary")
@@ -306,38 +304,38 @@ class SMO_UV_UnwrapCylindrical_Cmd(lxu.command.BasicCommand):
         # lx.eval("user.defNew name:UVUnwrapCyl_NoUVSeamMap type:string life:momentary")
         # UVUnwrapCyl_NoUVSeamMap = '_____n_o_n_e_____'
 
-        # # Get the number of UV Seam map available on mesh
+        # Get the number of UV Seam map available on mesh
         # DetectedUVSEAMmapCount = len(lx.evalN('vertMap.list seam ?'))
         # lx.out('UV SEAM Map Count:', DetectedUVSEAMmapCount)
 
-        # # Get the name of UV Seam map available on mesh
+        # Get the name of UV Seam map available on mesh
         # DetectedUVSEAMmapName = lx.eval('vertMap.list seam ?')
         # lx.out('UV SEAM Map Name:', DetectedUVSEAMmapName)
-        # ##### UV SEAM Map Detection #####
+        # # ------------- UV SEAM Map Detection
 
         # #####
-        # #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
 
         # if Modo_ver >= 1300:
         # ## UVSEAM Map Selection Check ##
         # lx.out('<--- UVSEAM Map Safety Check --->')
         # lx.out('<---------- START ---------->')
         # if DetectedUVSEAMmapName == UVUnwrapCyl_NoUVSeamMap:
-        # # lx.eval('vertMap.list seam ?')
-        # # lx.eval('vertMap.list seam _____n_e_w_____')
+        # lx.eval('vertMap.list seam ?')
+        # lx.eval('vertMap.list seam _____n_e_w_____')
         # lx.eval('vertMap.new "UV Seam" seam true {0.78 0.78 0.78} 2.0')
         # lx.eval('vertMap.list seam "UV Seam"')
 
         # elif DetectedUVSEAMmapName == UVUnwrapCyl_DesiredUVSEAMmapName:
         # lx.out('UV Map and UVSEAM Map Selected')
         # lx.eval('vertMap.list seam "UV Seam"')
-        # # UserUVSEAMmapName = lx.eval1('query layerservice vmap.name ? %s' %UVSEAM_Selected)
-        # # lx.out('USER UVSEAM Map Name:', UserUVSEAMmapName)
+        # UserUVSEAMmapName = lx.eval1('query layerservice vmap.name ? %s' %UVSEAM_Selected)
+        # lx.out('USER UVSEAM Map Name:', UserUVSEAMmapName)
 
         # lx.out('<----------- END ----------->')
-        # # ------------------------------ #
+        # ------------------------------ #
 
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- START
         #####
         TotalSafetyCheckTrueValue = 2
         lx.out('Desired Value', TotalSafetyCheckTrueValue)
@@ -345,13 +343,13 @@ class SMO_UV_UnwrapCylindrical_Cmd(lxu.command.BasicCommand):
                     SMO_SafetyCheck_UVUnwrapCyl_PolygonModeEnabled + SMO_SafetyCheck_UVUnwrapCyl_min1PolygonSelected)
         lx.out('Current Value', TotalSafetyCheck)
         #####
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- END
 
         # ------------------------ #
         # <----( Main Macro )----> #
         # ------------------------ #
 
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- START
         lx.eval('select.type item')
         lx.eval('item.refSystem %s' % SelItems)
         lx.eval('select.type polygon')
@@ -552,7 +550,7 @@ class SMO_UV_UnwrapCylindrical_Cmd(lxu.command.BasicCommand):
             lx.out('script Stopped: your mesh does not match the requirement for that script.')
             sys.exit
 
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
 lx.bless(SMO_UV_UnwrapCylindrical_Cmd, Cmd_Name)

@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_CLEANUP_RenameInstanceBySourceMeshName_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Select all the Mesh instances of the current scene and rename them all to use the name of the Source Mesh.
-#
-#
-# Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      https://www.smoluck.com
-#
-# Created:      10/05/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CLEANUP_RenameInstanceBySourceMeshName_Cmd.py
+
+Purpose:      This script is designed to:
+              Select all the Mesh instances of the current scene and rename them all to use the name of the Source Mesh.
+
+Author:       Franck ELISABETH (with the help of James O'Hare)
+Website:      https://www.smoluck.com
+Created:      10/05/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

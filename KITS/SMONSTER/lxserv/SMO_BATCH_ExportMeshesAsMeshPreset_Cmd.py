@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_BATCH_ExportMeshesAsMeshPreset_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Batch Export Meshes As MeshPreset LXL file into Target Path.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      27/10/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_BATCH_ExportMeshesAsMeshPreset_Cmd.py
+
+Purpose:      This script is designed to:
+              Batch Export Meshes As MeshPreset LXL file into Target Path.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      27/10/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -87,7 +84,7 @@ class SMO_BATCH_ExportMeshesAsMeshPreset_Cmd(lxu.command.BasicCommand):
                 # MeshID = i.id
                 # print(MeshID)
                 # itemType = modo.Item().type
-                # # print(itemType)
+                # print(itemType)
                 # item = lx.object.Item(i)
                 # item_name = item.UniqueName()
                 # if itemType != "mesh":

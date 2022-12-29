@@ -1,32 +1,32 @@
 # python
 """
-# Name:         SMO_ExportMeshOpRig_to_OBJSequence
-# Version: 1.01
-#
-# Purpose: This script is designed to test Export MeshOps rig as a freezed Mesh, over time, as an FBX sequence.
-# Select the MeshOp item and run. 
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      03/12/2018
-# Modified:		03/06/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         	SMO_ExportMeshOpRig_to_OBJSequence
+
+Purpose: 		This script is designed to:
+				Test Export MeshOps rig as a freezed Mesh,
+				over time, as an FBX sequence.
+				Select the MeshOp item and run.
+
+Author:       	Franck ELISABETH
+Website:      	https://www.smoluck.com
+Created:      	03/12/2018
+Copyright:    	(c) Franck Elisabeth 2017-2022
 """
 
-#import the necessary Python libraries
-import lx, os, modo
+import lx
+import modo
+import os
 
 scene = modo.Scene()
 
-# # # Set the Undo to PAUSE Mode during the execution of that Script.
-# # lx.eval('app.undoSuspend')
+# # Set the Undo to PAUSE Mode during the execution of that Script.
+# lx.eval('app.undoSuspend')
 
 
 # init File Dialog
 try:
 	
-	# # Get the directory to export to.
+	# Get the directory to export to.
 	# lx.eval('dialog.setup fileSave')
 	# lx.eval('dialog.title \"Select path to export to ...\"')
 	# lx.eval('dialog.fileTypeCustom fbx \'Fbx\' \'*.fbx\' fbx')
@@ -49,7 +49,7 @@ except RuntimeError:
 	lx.out('script Stopped')
 	sys.exit
 
-# # store current scene
+# store current scene
 oldscene = lx.eval('query sceneservice scene.index ? current')
 
 # manage time frame
@@ -102,7 +102,7 @@ while frame <= frameEnd:
 	# go back to old scene and throw item over to a new scene
 	lx.eval('scene.set %s' %oldscene)
 
-	# # select prev selected meshes
+	# select prev selected meshes
 	lx.eval('select.useSet SOURCE_MESH select')
 
 	# Freeze the Meshop Stack

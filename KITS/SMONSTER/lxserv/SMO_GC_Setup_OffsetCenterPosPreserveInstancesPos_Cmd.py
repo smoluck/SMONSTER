@@ -1,18 +1,15 @@
 # python
 """
-# Name:         SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Offset Center Position on selected Mesh Item,
-#               but preserve the Instances Positions in Worldspace.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      19/04/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd
+
+Purpose:      This script is designed to:
+              Offset Center Position on selected Mesh Item,
+              but preserve the Instances Positions in Worldspace.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      19/04/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -71,7 +68,7 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
         def rad(a):
             return a * 57.2957795130
 
-        ###############COPY/PASTE Check Procedure#################
+        # ---------------- COPY/PASTE Check Procedure ---------------- #
         ## create variables
         lx.eval("user.defNew name:User_Pref_CopyDeselectChangedState type:boolean life:momentary")
         lx.eval("user.defNew name:User_Pref_PasteSelectionChangedState type:boolean life:momentary")
@@ -115,7 +112,7 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
         # Is Paste Deselect True ?
         if User_Pref_PasteDeselect == 1:
             User_Pref_PasteDeselectChangedState = 0
-        ################################################
+        # -------------------------------------------- #
 
         ### 1 ######################################################################################
         ################ Calculate the Offset needed ###############################################
@@ -503,7 +500,7 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
             #     except:
             #         pass
             # print(TotalInstancesList)
-            # # del TotalInstancesList [:]  # Delete A List , Used at the end of a script to be sure it's cleared.
+            # del TotalInstancesList [:]  # Delete A List , Used at the end of a script to be sure it's cleared.
             # lx.eval('smo.GC.DeselectAll')
             # for i in range(len(TotalInstancesList)) :
             #     scene.select(TotalInstancesList[i])
@@ -536,7 +533,7 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
             #     lx.eval('channel.value {%s} channel:{%s:pos.Z}' % (NewInstaPosZ, InstanceXfrm))
             #
             #
-            #     # # Transform Move Tool Solution --> Not working actually
+            #     # Transform Move Tool Solution --> Not working actually
             #     # lx.eval('tool.set actr.localAxis on')
             #     # lx.eval('tool.set TransformMove on')
             #     # lx.eval('tool.viewType type:xyz')
@@ -562,8 +559,8 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
                 lx.eval('!delete')
 
 
-            ################################################
-            ################################################
+            # -------------------------------------------- #
+            # -------------------------------------------- #
             # Parent instances back to their original parent
             # print(InstID_List)
             # print(Inst_Parent_List)
@@ -576,8 +573,8 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
                 if State_InstanceParent[inst_num]:
                     scene.select(Inst_Parent_List[inst_num], "add")
                     lx.eval('!item.parent inPlace:1')
-            ################################################
-            ################################################
+            # -------------------------------------------- #
+            # -------------------------------------------- #
 
 
 
@@ -585,7 +582,7 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
             scene.select(selected_Items)
             lx.eval('select.type polygon')
 
-        ###############COPY/PASTE END Procedure#################
+        # -------------- COPY/PASTE END Procedure  -------------- #
         # Restore user Preferences:
         if User_Pref_CopyDeselectChangedState == 1:
             lx.eval('pref.value application.copyDeSelection false')
@@ -596,7 +593,7 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
         if User_Pref_PasteDeselectChangedState == 1:
             lx.eval('pref.value application.pasteDeSelection false')
             lx.out('"Deselect Elements Before Pasting" have been Restored')
-        ########################################################
+        # -------------------------------------------- #
 
         del instance_ident
         del TargetList

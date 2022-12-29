@@ -1,18 +1,16 @@
 # python
 """
-# Name:         SMO_CAD_Rebevel_Cmd.py
-# Version:      1.2021.3
-#
-# Purpose:      This script is designed to test
-#               if 1 Item is selected and if more than 2
-#               Polygons are selected, then process a
-#               rebevel on the selected patch of Quads
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      05/04/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:           SMO_CAD_Rebevel_Cmd.py
+
+Purpose:        This script is designed to
+                Test if 1 Item is selected and if more than 2
+                Polygons are selected, then process a
+                rebevel on the selected patch of Quads
+
+Author:         Franck ELISABETH
+Website:        https://www.smoluck.com
+Created:        05/04/2021
+Copyright:      (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -105,33 +103,33 @@ class SMO_CAD_Rebevel_Cmd(lxu.command.BasicCommand):
                 pass
         print(RebSideCount)
 
-        # # # # ------------- ARGUMENTS Test
-        # # BuildMode = 0
-        # # # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS Test
+        # BuildMode = 0
+        # ------------- ARGUMENTS ------------- #
         #
-        # # ############### 5 ARGUMENTS ------------- #
+        # ------------- 5 ARGUMENTS ------------- #
         # args = lx.args()
         # lx.out(args)
         #
-        # # 0 = Simple Ngon
-        # # 1 = Radial Triple
+        # 0 = Simple Ngon
+        # 1 = Radial Triple
         # RebSideCount = int(args[0])
         # lx.out('Rebuild Mode:', RebSideCount)
-        # # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
 
         # ------------------------------ #
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
 
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
         lx.eval("user.defNew name:SMO_SafetyCheck_Only1MeshItemSelected type:integer life:momentary")
         lx.eval("user.defNew name:SMO_SafetyCheck_PolygonModeEnabled type:integer life:momentary")
         lx.eval("user.defNew name:SMO_SafetyCheck_min3PolygonSelected type:integer life:momentary")
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
 
-        ###############COPY/PASTE Check Procedure#################
+        # ---------------- COPY/PASTE Check Procedure ---------------- #
         ## create variables
         lx.eval("user.defNew name:User_Pref_CopyDeselectChangedState type:boolean life:momentary")
         lx.eval("user.defNew name:User_Pref_PasteSelectionChangedState type:boolean life:momentary")
@@ -175,7 +173,7 @@ class SMO_CAD_Rebevel_Cmd(lxu.command.BasicCommand):
         # Is Paste Deselect True ?
         if User_Pref_PasteDeselect == 1:
             User_Pref_PasteDeselectChangedState = 0
-        ################################################
+        # -------------------------------------------- #
 
         # -------------------------- #
         # <---( SAFETY CHECK 1 )---> #
@@ -287,7 +285,7 @@ class SMO_CAD_Rebevel_Cmd(lxu.command.BasicCommand):
         except:
             sys.exit
 
-        #####--- Define user value for the Prerequisite TotalSafetyCheck --- START ---#####
+        # ------------- Define user value for the Prerequisite TotalSafetyCheck --- START
         #####
         TotalSafetyCheckTrueValue = 3
         lx.out('SafetyCheck Desired Value', TotalSafetyCheckTrueValue)
@@ -295,13 +293,13 @@ class SMO_CAD_Rebevel_Cmd(lxu.command.BasicCommand):
                     SMO_SafetyCheck_Only1MeshItemSelected + SMO_SafetyCheck_PolygonModeEnabled + SMO_SafetyCheck_min3PolygonSelected)
         lx.out('SafetyCheck Current Value', TotalSafetyCheck)
         #####
-        #####--- Define user value for the Prerequisite TotalSafetyCheck --- END ---#####
+        # ------------- Define user value for the Prerequisite TotalSafetyCheck --- END
 
         # ------------------------ #
         # <----( Main Macro )----> #
         # ------------------------ #
 
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- START
         if TotalSafetyCheck == TotalSafetyCheckTrueValue:
             # Main Rebevel Macro
 
@@ -328,12 +326,12 @@ class SMO_CAD_Rebevel_Cmd(lxu.command.BasicCommand):
                 # example:
                 # mypath = lx.eval("query platformservice alias ? {kit_eterea_swissknife:scripts/geometry}")
                 # lx.eval("preset.do {%s/Bowl.lxl}" % mypath)
-                #####--- Define the Preset directory of the Custom CAD Presets to load the Rebevel Assembly --- START ---#####
+                # ------------- Define the Preset directory of the Custom CAD Presets to load the Rebevel Assembly --- START
                 #####
                 SMOCADPath = lx.eval("query platformservice alias ? {kit_SMO_CAD_TOOLS:Presets}")
                 lx.out('RebevelPresetPath:', SMOCADPath)
                 #####
-                #####--- Define the Preset directory of the Custom CAD Presets to load the Rebevel Assembly --- START ---#####
+                # ------------- Define the Preset directory of the Custom CAD Presets to load the Rebevel Assembly --- START
                 lx.eval('preset.do {%s/SMO_REBEVEL_ASS_2021.lxp}' % SMOCADPath)
                 lx.eval('select.type item')
                 lx.eval('select.drop item')
@@ -478,7 +476,7 @@ class SMO_CAD_Rebevel_Cmd(lxu.command.BasicCommand):
             lx.out('script Stopped: your mesh does not match the requirement for that script.')
             sys.exit
 
-        ###############COPY/PASTE END Procedure#################
+        # -------------- COPY/PASTE END Procedure  -------------- #
         # Restore user Preferences:
         if User_Pref_CopyDeselectChangedState == 1:
             lx.eval('pref.value application.copyDeSelection false')
@@ -489,7 +487,7 @@ class SMO_CAD_Rebevel_Cmd(lxu.command.BasicCommand):
         if User_Pref_PasteDeselectChangedState == 1:
             lx.eval('pref.value application.pasteDeSelection false')
             lx.out('"Deselect Elements Before Pasting" have been Restored')
-        ########################################################
+        # -------------------------------------------- #
 
         lx.out('End of Rebevel Script')
 
@@ -498,7 +496,7 @@ class SMO_CAD_Rebevel_Cmd(lxu.command.BasicCommand):
         if RefSystemActive:
             lx.eval('item.refSystem %s' % CurrentRefSystemItem)
 
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
 lx.bless(SMO_CAD_Rebevel_Cmd, Cmd_Name)

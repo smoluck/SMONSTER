@@ -1,19 +1,17 @@
 # python
 """
-# Name:         SMO_MIFABOMA_CleanupMirroredPairOfMeshesOverWorldAxis_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Cleanup selected Pairs of Meshes in order to align them over world axis
-#               and recreate instances out of that mesh.
-#               it use X Y Z axis as argument and Positive or Negative Direction
-#               to define what is the Side part that we preserve.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      17/08/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_MIFABOMA_CleanupMirroredPairOfMeshesOverWorldAxis_Cmd.py
+
+Purpose:      This script is designed to
+              Cleanup selected Pairs of Meshes in order to align them over world axis
+              and recreate instances out of that mesh.
+              it use X Y Z axis as argument and Positive or Negative Direction
+              to define what is the Side part that we preserve.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      17/08/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

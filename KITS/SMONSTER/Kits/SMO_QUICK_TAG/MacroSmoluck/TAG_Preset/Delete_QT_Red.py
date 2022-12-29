@@ -1,17 +1,16 @@
 # python
 """
-# Name: Delete_QT_Red.py
-# Version: 1.0
-#
-# Purpose: This script is designed to apply a Selection Set to the current selection of polygons
-#               OR
-#               Creating the related Command Region to this Tag
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      10/01/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:           Delete_QT_Red.py
+
+Purpose:        This script is designed to:
+                Apply a Selection Set to the current selection of polygons
+                OR
+                Creating the related Command Region to this Tag
+
+Author:         Franck ELISABETH
+Website:        https://www.smoluck.com
+Created:        10/01/2020
+Copyright:      (c) Franck Elisabeth 2017-2022
 """
 
 import lx

@@ -1,33 +1,32 @@
 # python
 """
-# Name:         SMO_SSRUVMapByArg.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Search if a specific UV Map exist, select it and rename it
-#               via String Argument.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      17/02/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_SSRUVMapByArg.py
+
+Purpose:      This script is designed to:
+              Search if a specific UV Map exist, select it and rename it
+              via String Argument.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      17/02/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
-import lx, lxu, modo
+import lx
+import modo
 
-# # # ------------- ARGUMENTS Test
+# ------------- ARGUMENTS Test
 # SearchStringArg = 'FBX_UDP3DSMAX'
-# # # ------------- ARGUMENTS ------------- #
+# ------------- ARGUMENTS ------------- #
 RenameByDefault = 1
 SearchString = "UVChannel_1"
 TargetString = "TargetUVMap"
-# # # ------------- ARGUMENTS ------------- #
+# ------------- ARGUMENTS ------------- #
 # args = lx.args()
 # lx.out(args)
 # SearchStringArg = SearchString
 # lx.out('Searched String chain:', SearchStringArg)
-# # # ------------- ARGUMENTS ------------- #
+# ------------- ARGUMENTS ------------- #
 
 scn = modo.Scene()
 

@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_GC_SimplifyToNGon_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This Command is designed to
-#               Merge every polygons that have same coplanar polygon direction to simplify a given set of meshes.
-#               Via argument you can also update the HardEdges data for a better end result.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      15/06/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_SimplifyToNGon_Cmd.py
+
+Purpose:      This Command is designed to
+              Merge every polygon that have same coplanar polygon direction to simplify a given set of meshes.
+              Via argument, you can also update the HardEdges data for a better end result.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      15/06/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

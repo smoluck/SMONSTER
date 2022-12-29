@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_CB_CycleColor_Cmd.py
-# Version:      1.0
-#
-# Purpose: This script is designed to
-# Define a new item Color and set the Draw Option
-# to the corresponding color.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      04/11/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CB_CycleColor_Cmd.py
+
+Purpose:      This script is designed to:
+              Define a new item Color and set the
+              Draw Option to the corresponding color.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      04/11/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -59,11 +57,11 @@ class SMO_CB_CycleColor_Cmd(lxu.command.BasicCommand):
         locators = scene.selectedByType(lx.symbol.sITYPE_LOCATOR)
         
         
-        # # # ------------- ARGUMENTS Test
+        # ------------- ARGUMENTS Test
         # DrawOption = 1
-        # # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         args = lx.args()
         lx.out(args)
         # Draw Option OFF = 0 
@@ -72,7 +70,7 @@ class SMO_CB_CycleColor_Cmd(lxu.command.BasicCommand):
         # Draw Option ON Shaded & Wireframe = 3
         DrawOption = DrawOpt
         lx.out('Desired Draw Option Mode:',DrawOption)
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         
         
         
@@ -102,31 +100,31 @@ class SMO_CB_CycleColor_Cmd(lxu.command.BasicCommand):
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
         
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
         
-        ## Vertex
+        # Vertex
         lx.eval("user.defNew name:SMO_SafetyCheckIteCol_VertexModeEnabled type:integer life:momentary")
         
-        ## Edges
+        # Edges
         lx.eval("user.defNew name:SMO_SafetyCheckIteCol_EdgeModeEnabled type:integer life:momentary")
         
-        ## Polygon
+        # Polygon
         lx.eval("user.defNew name:SMO_SafetyCheckIteCol_PolygonModeEnabled type:integer life:momentary")
         
-        ## Item
+        # Item
         lx.eval("user.defNew name:SMO_SafetyCheckIteCol_ItemModeEnabled type:integer life:momentary")
         
         ## Current Item List Color
         lx.eval("user.defNew name:CurrentItemListColor type:string life:momentary")
         
-        ## Item
+        # Item
         lx.eval("user.defNew name:ItemListColor type:integer life:momentary")
         ## Draw Pack
         lx.eval("user.defNew name:DrawPack type:integer life:momentary")
         
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
         
         
         
@@ -195,7 +193,7 @@ class SMO_CB_CycleColor_Cmd(lxu.command.BasicCommand):
         # lx.out('Start of SMO_DIS_ItemColor Script')
         
         
-        #####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- START
+        # ------------- Compare SafetyCheck value and decide or not to continue the process  --- START
         if SMO_SafetyCheckIteCol_VertexModeEnabled == 1:
             lx.eval('select.type item')
         
@@ -625,7 +623,7 @@ class SMO_CB_CycleColor_Cmd(lxu.command.BasicCommand):
         
         # lx.out('End of SMO_DIS_ItemColor Script')
         # lx.out('-------------------------------')
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
     def cmd_Query(self, index, vaQuery):

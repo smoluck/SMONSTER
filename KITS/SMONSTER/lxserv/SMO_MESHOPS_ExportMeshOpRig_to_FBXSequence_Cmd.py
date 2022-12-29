@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_MESHOPS_ExportMeshOpRigToFBXSequence_Cmd
-# Version:      1.00
-#
-# Purpose:      This script is designed to
-#               Export MeshOps rig as a freezed Mesh, over time, as an FBX sequence.
-#               Select the MeshOp item and run.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      08/06/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_MESHOPS_ExportMeshOpRigToFBXSequence_Cmd
+
+Purpose:      This script is designed to
+              Export MeshOps rig as a freezed Mesh, over time, as an FBX sequence.
+              Select the MeshOp item and run.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      08/06/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

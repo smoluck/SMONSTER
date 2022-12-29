@@ -1,19 +1,17 @@
 # python
 """
-# Name:         SMO_LL_MARMOSET_ExportFBXBakes_Cmd.py
-# Version:      1.20
-#
-# Purpose:      This Command is designed to :
-#               Export LowPoly/Cage/HighPoly Meshes from current scene,
-#               based on MTyp Tag, as FBX to MarmosetToolbag temp Folder.
-#               Create a Texture to store the TSNM.
-#               Resolution defined by Argument in pixel.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Modified:     09/07/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_LL_MARMOSET_ExportFBXBakes_Cmd.py
+
+Purpose:      This Command is designed to :
+              Export LowPoly/Cage/HighPoly Meshes from current scene,
+              based on MTyp Tag, as FBX to MarmosetToolbag temp Folder.
+              Create a Texture to store the TSNM.
+              Resolution defined by Argument in pixel.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:     09/07/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

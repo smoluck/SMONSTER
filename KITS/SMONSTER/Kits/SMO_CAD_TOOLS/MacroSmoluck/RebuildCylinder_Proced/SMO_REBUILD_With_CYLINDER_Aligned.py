@@ -1,23 +1,24 @@
 # python
 """
-# Name:         SMO_REBUILD_With_CUBE.py
-# Version: 1.0
-# 
-# Purpose: This script is designed to Rebuild the
-# selected Volume with just a Cylinder that 
-# got the same size as the Bounding Box of this Volume.
-#
-# Select at least 2 edges then at least one Polygon and run the script
-# (it will get the orientation based on Edges selected and eplace all the connected Polygons from the last polygon selection)
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      13/03/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:           SMO_REBUILD_With_CUBE.py
+
+Purpose:        This script is designed to:
+                Rebuild the selected Volume with just a Cylinder
+                that got the same size as the Bounding Box of this Volume.
+
+                Select at least 2 edges then at least one Polygon and run the script
+                (it will get the orientation based on Edges selected and eplace all
+                the connected Polygons from the last polygon selection)
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      13/03/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
-import modo, lx
+import lx
+import modo
+import sys
 
 scene = modo.scene.current()
 mesh = scene.selectedByType('mesh')[0]
@@ -29,21 +30,21 @@ CsEdges = len(mesh.geometry.edges.selected)
 # <----( DEFINE VARIABLES )----> #
 # ------------------------------ #
 
-#####--- Define user value for all the different SafetyCheck --- START ---#####
+# ---------------- Define user value for all the different SafetyCheck --- START
 #####
 ## Polygons
 lx.eval("user.defNew name:SMO_SafetyCheck_PolygonModeEnabled type:integer life:momentary")
 lx.eval("user.defNew name:SMO_SafetyCheck_min1PolygonSelected type:integer life:momentary")
 
-## Edges
+# Edges
 lx.eval("user.defNew name:SMO_SafetyCheck_EdgeModeEnabled type:integer life:momentary")
 lx.eval("user.defNew name:SMO_SafetyCheck_minEdgeSelected type:integer life:momentary")
 #####
-#####--- Define user value for all the different SafetyCheck --- END ---#####
+# ---------------- Define user value for all the different SafetyCheck --- END
 
 
 
-###############COPY/PASTE Check Procedure#################
+# ---------------- COPY/PASTE Check Procedure ---------------- #
 ## create variables
 lx.eval("user.defNew name:User_Pref_CopyDeselectChangedState type:boolean life:momentary")
 lx.eval("user.defNew name:User_Pref_PasteSelectionChangedState type:boolean life:momentary")
@@ -87,7 +88,7 @@ if User_Pref_PasteSelection == 1:
 # Is Paste Deselect True ?
 if User_Pref_PasteDeselect == 1:
     User_Pref_PasteDeselectChangedState = 0
-################################################
+# -------------------------------------------- #
 
 
 # -------------------------- #
@@ -174,14 +175,14 @@ elif CsPolys >= 1:
 
 
 
-#####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
+# ---------------- Define current value for the Prerequisite TotalSafetyCheck --- START
 #####
 TotalSafetyCheckTrueValue = 2
 lx.out('Desired Value',TotalSafetyCheckTrueValue)
 TotalSafetyCheck = (SMO_SafetyCheck_PolygonModeEnabled + SMO_SafetyCheck_min1PolygonSelected)
 lx.out('Current Value',TotalSafetyCheck)
 #####
-#####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
+# ---------------- Define current value for the Prerequisite TotalSafetyCheck --- END
 
 
 
@@ -189,7 +190,7 @@ lx.out('Current Value',TotalSafetyCheck)
 # <----( Main Macro )----> #
 # -------------------------- #
 lx.out('Start of SMO REBUILD With CUBE')
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
+# ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- START
 if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     # Switch to Edge Mode
     lx.eval('select.typeFrom edge')
@@ -213,12 +214,12 @@ if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     ### Part 2 : Load the Predefined Assembly Preset (it will switch the Selection mode to ITEM)
     try:
         ### Load Rebevel Preset for the processing ###
-        #####--- Define the Preset directory of the Custom CAD Presets to load the Rebevel Assembly --- START ---#####
+        # ------------- Define the Preset directory of the Custom CAD Presets to load the Rebevel Assembly --- START
         #####
         SMOCADPath = lx.eval("query platformservice alias ? {kit_SMO_CAD_TOOLS:Presets}")
         lx.out('SMOCAD Preset Path:',SMOCADPath)
         #####
-        #####--- Define the Preset directory of the Custom CAD Presets to load the Rebevel Assembly --- START ---#####
+        # ------------- Define the Preset directory of the Custom CAD Presets to load the Rebevel Assembly --- START
         lx.eval('preset.do {%s/SMO_REBUILD_WITH_CYLINDER_Assembly_ViaWorkplane.lxp}' % SMOCADPath)
         lx.eval('select.type item')
         lx.eval('select.drop item')
@@ -332,7 +333,7 @@ elif TotalSafetyCheck != TotalSafetyCheckTrueValue:
     sys.exit
     
     
-###############COPY/PASTE END Procedure#################
+# -------------- COPY/PASTE END Procedure  -------------- #
 # Restore user Preferences:
 if User_Pref_CopyDeselectChangedState == 1 :
     lx.eval('pref.value application.copyDeSelection false')
@@ -343,7 +344,7 @@ if User_Pref_PasteSelectionChangedState == 1 :
 if User_Pref_PasteDeselectChangedState == 1 :
     lx.eval('pref.value application.pasteDeSelection false')
     lx.out('"Deselect Elements Before Pasting" have been Restored')
-########################################################
+# -------------------------------------------- #
 
 lx.out('End of SMO REBUILD With CYLINDER')
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
+# ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- END

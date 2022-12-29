@@ -1,19 +1,18 @@
 # python
 """
-# Name:         SMO_PixaFlux_CreateImageToPixaFluxFolder.py
-# Version:      1.00
-#
-# Purpose:      This Command is designed to :
-#                   
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Modified:     09/07/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_PixaFlux_CreateImageToPixaFluxFolder.py
+
+Purpose:      This Command is designed to:
+              Create Image to PixaFlux Folder to Temp folder
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Modified:     09/07/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
-import lx, lxifc, lxu.command, lxu.select, subprocess, os
+import lx
+import os
 
 ############################ Export FBX Data #############################
 # get modo's temp dir

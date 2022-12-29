@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_HardEdgeWeight_SimilarOnObjectPoly.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Select similar facing Polygon on object
-#               anfd assign to their EdgeBorders a Subdivision Weight of 100%
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      22/01/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_HardEdgeWeight_SimilarOnObjectPoly.py
+
+Purpose:      This script is designed to:
+              Select similar facing Polygon on object
+              and assign to their EdgeBorders a Subdivision Weight of 100%
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      22/01/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

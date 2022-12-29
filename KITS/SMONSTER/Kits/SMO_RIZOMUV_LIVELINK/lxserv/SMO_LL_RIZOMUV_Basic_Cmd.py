@@ -1,24 +1,26 @@
 # python
 """
-# Name:             SMO_LL_RIZOMUV_Basic_Cmd.py
-# Version:          1.95
-#
-# Purpose:      This Command is designed to :
-#                   Send as an FBX file (Prompt to FBX file save Destination)
-#                   the current selected Meshes as FBX 2013 to RizomUV and
-#                   get back the UV data updated in Modo, once the FBX file is saved back 
-#                   (original file overwritted by RizomUV).
-#
-# Author:           Franck ELISABETH
-# Website:          https://www.smoluck.com
-#
-# Modified:         22/05/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_LL_RIZOMUV_Basic_Cmd.py
+
+Purpose:      This Command is designed to:
+              Send as an FBX file (Prompt to FBX file save Destination)
+              the current selected Meshes as FBX 2013 to RizomUV and
+              get back the UV data updated in Modo, once the FBX file is saved back
+              (original file overwritted by RizomUV).
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      22/02/2017
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 #!/usr/bin/env python
 
-import	lx, lxifc, lxu.command, lxu.select, subprocess, os
+import lx
+import lxu.command
+import lxu.select
+import os
+import subprocess
 
 Cmd_Name = "smo.LL.RIZOMUV.Basic"
 

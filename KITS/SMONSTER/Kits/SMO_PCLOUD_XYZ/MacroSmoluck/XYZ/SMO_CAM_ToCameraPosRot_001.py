@@ -1,17 +1,16 @@
 # python
 """
-# Name:         SMO_XYZ_Vertex.py
-# Version: 1.0
-#
-# Purpose:	Open a txt file (Target) and create 
-# 			Vertex at current position defined by the target File 3 float value (separated by a coma)
-#			Each line is a new Vertex
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      29/11/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:               SMO_XYZ_Vertex.py
+
+Purpose:            This Script is designed to:
+                    Open a txt file (Target) and create
+                    Vertex at current position defined by the target File 3 float value
+                    (separated by a coma). Each line is a new Vertex
+
+Author:             Franck ELISABETH
+Website:            https://www.smoluck.com
+Created:            29/11/2019
+Copyright:          (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -34,7 +33,7 @@ Pi = 3.14159265358979323846
 Radian = (180 / Pi)
 
 PositionfloatList = []  # Define an array of floats
-file_path = 'D:\EXTRIPLE\POSCO\CLOUDCOMP\ROOM_B\Cam_ROOM_B_000000.cam'  # Defines path of output text file
+file_path = 'D:\CLOUDCOMPARE\Cam_A_000000.cam'  # Defines path of output text file
 FileDATA = open(file_path, 'r')  # Opens and read file
 
 with FileDATA as f:

@@ -1,18 +1,16 @@
 # python
 """
-# Name:         SMO_CAD_RebuildPolyStrip_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Test if 1 Item is selected and if more than 3
-#               Edges are selected, then process a
-#               rebuild on the selected polystrip band (via 2 set of Edges).
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      31/03/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CAD_RebuildPolyStrip_Cmd.py
+Version:      1.0
+Purpose:      This script is designed to:
+              Test if 1 Item is selected and if more than 3
+              Edges are selected, then process a
+              rebuild on the selected polystrip band (via 2 set of Edges).
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      31/03/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -120,34 +118,34 @@ class SMO_CAD_RebuildPolyStrip_Cmd(lxu.command.BasicCommand):
                 pass
         print(CircleMode)
 
-        # # ------------- ARGUMENTS Test
+        # ------------- ARGUMENTS Test
         # RebSideCount= self.dyna_Int(0)
         # RebSideCount = 16
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
 
-        # # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         # args = lx.args()
         # lx.out(args)
         #
-        # # 0 = Simple Ngon
-        # # 1 = Radial Triple
+        # 0 = Simple Ngon
+        # 1 = Radial Triple
         # RebSideCount = int(args[0])
         # lx.out('Rebuild Mode:', RebSideCount)
-        # # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
 
         # ------------------------------ #
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
 
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
         lx.eval("user.defNew name:SMO_SafetyCheck_Only1MeshItemSelected type:integer life:momentary")
         lx.eval("user.defNew name:SMO_SafetyCheck_EdgeModeEnabled type:integer life:momentary")
         lx.eval("user.defNew name:SMO_SafetyCheck_minEdgeSelected type:integer life:momentary")
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
 
-        ###############COPY/PASTE Check Procedure#################
+        # ---------------- COPY/PASTE Check Procedure ---------------- #
         ## create variables
         lx.eval("user.defNew name:User_Pref_CopyDeselectChangedState type:boolean life:momentary")
         lx.eval("user.defNew name:User_Pref_PasteSelectionChangedState type:boolean life:momentary")
@@ -191,7 +189,7 @@ class SMO_CAD_RebuildPolyStrip_Cmd(lxu.command.BasicCommand):
         # Is Paste Deselect True ?
         if User_Pref_PasteDeselect == 1:
             User_Pref_PasteDeselectChangedState = 0
-        ################################################
+        # -------------------------------------------- #
 
         # -------------------------- #
         # <---( SAFETY CHECK 1 )---> #
@@ -294,12 +292,12 @@ class SMO_CAD_RebuildPolyStrip_Cmd(lxu.command.BasicCommand):
         SMO_SafetyCheck_minEdgeSelected = int(0)
         # at Least 4 Edges are selected --- START
         if CircleMode == 0:
-            #####--- Get current selected edge count --- START ---#####
+            # ------------- Get current selected edge count --- START
             #####
             CsEdges = len(mesh.geometry.edges.selected)
             lx.out('Count Selected Edges', CsEdges)
             #####
-            #####--- Get current selected edge count --- END ---#####
+            # ------------- Get current selected edge count --- END
             if CsEdges < 4:
                 SMO_SafetyCheck_minEdgeSelected = 0
                 lx.eval('dialog.setup info')
@@ -313,12 +311,12 @@ class SMO_CAD_RebuildPolyStrip_Cmd(lxu.command.BasicCommand):
                 lx.out('script running: right amount of edges in selection')
 
         if CircleMode == 1:
-            #####--- Get current selected edge count --- START ---#####
+            # ------------- Get current selected edge count --- START
             #####
             CsEdges = len(mesh.geometry.edges.selected)
             lx.out('Count Selected Edges', CsEdges)
             #####
-            #####--- Get current selected edge count --- END ---#####
+            # ------------- Get current selected edge count --- END
             if CsEdges < 1:
                 SMO_SafetyCheck_minEdgeSelected = 0
                 lx.eval('dialog.setup info')
@@ -331,20 +329,20 @@ class SMO_CAD_RebuildPolyStrip_Cmd(lxu.command.BasicCommand):
                 SMO_SafetyCheck_minEdgeSelected = 1
                 lx.out('script running: right amount of edges in selection')
 
-        #####--- Define user value for the Prerequisite TotalSafetyCheck --- START ---#####
+        # ------------- Define user value for the Prerequisite TotalSafetyCheck --- START
         #####
         TotalSafetyCheckTrueValue = 3
         lx.out('SafetyCheck Desired Value', TotalSafetyCheckTrueValue)
         TotalSafetyCheck = (SMO_SafetyCheck_Only1MeshItemSelected + SMO_SafetyCheck_EdgeModeEnabled + SMO_SafetyCheck_minEdgeSelected)
         lx.out('SafetyCheck Current Value', TotalSafetyCheck)
         #####
-        #####--- Define user value for the Prerequisite TotalSafetyCheck --- END ---#####
+        # ------------- Define user value for the Prerequisite TotalSafetyCheck --- END
 
         # ------------------------ #
         # <----( Main Macro )----> #
         # ------------------------ #
 
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- START
         if TotalSafetyCheck == TotalSafetyCheckTrueValue:
             # Main Rebevel Macro
             lx.eval('select.type item')
@@ -382,12 +380,12 @@ class SMO_CAD_RebuildPolyStrip_Cmd(lxu.command.BasicCommand):
                 # example:
                 # mypath = lx.eval("query platformservice alias ? {kit_eterea_swissknife:scripts/geometry}")
                 # lx.eval("preset.do {%s/Bowl.lxl}" % mypath)
-                #####--- Define the Preset directory of the Custom CAD Presets to load the Rebevel Assembly --- START ---#####
+                # ------------- Define the Preset directory of the Custom CAD Presets to load the Rebevel Assembly --- START
                 #####
                 SMOCADPath = lx.eval("query platformservice alias ? {kit_SMO_CAD_TOOLS:Presets}")
                 lx.out('RebevelPresetPath:', SMOCADPath)
                 #####
-                #####--- Define the Preset directory of the Custom CAD Presets to load the Rebevel Assembly --- START ---#####
+                # ------------- Define the Preset directory of the Custom CAD Presets to load the Rebevel Assembly --- START
                 lx.eval('preset.do {%s/SMO_REBPOLYSTRIP_ASS.lxp}' % SMOCADPath)
                 lx.eval('select.type item')
                 lx.eval('select.drop item')
@@ -409,7 +407,7 @@ class SMO_CAD_RebuildPolyStrip_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.drop item')
                 lx.eval('select.useSet SelSetRebPS_ITEM_DATA select')
                 #####
-                #####---  Define User Value for Rebevel Count --- END ---#####
+                # ------------- Define User Value for Rebevel Count --- END
             except:
                 sys.exit()
 
@@ -471,7 +469,7 @@ class SMO_CAD_RebuildPolyStrip_Cmd(lxu.command.BasicCommand):
             lx.out('script Stopped: your mesh does not match the requirement for that script.')
             sys.exit()
 
-        ###############COPY/PASTE END Procedure#################
+        # -------------- COPY/PASTE END Procedure  -------------- #
         # Restore user Preferences:
         if User_Pref_CopyDeselectChangedState == 1:
             lx.eval('pref.value application.copyDeSelection false')
@@ -482,10 +480,10 @@ class SMO_CAD_RebuildPolyStrip_Cmd(lxu.command.BasicCommand):
         if User_Pref_PasteDeselectChangedState == 1:
             lx.eval('pref.value application.pasteDeSelection false')
             lx.out('"Deselect Elements Before Pasting" have been Restored')
-        ########################################################
+        # -------------------------------------------- #
 
         lx.out('End of SMO_CAD_RebuildPolystrip Script')
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
 lx.bless(SMO_CAD_RebuildPolyStrip_Cmd, Cmd_Name)

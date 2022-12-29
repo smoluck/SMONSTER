@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_CB_LocatorShape_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Define a new item Color and set the Draw Option
-#               to the corresponding color.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      18/02/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CB_LocatorShape_Cmd.py
+
+Purpose:      This script is designed to:
+              Define a new item Color and set the Draw Option
+              to the corresponding color.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      18/02/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -87,13 +85,13 @@ class SMO_CB_LocatorShape_Cmd(lxu.command.BasicCommand):
             selected_locators = scene.selectedByType(lx.symbol.sITYPE_LOCATOR)
 
 
-            # # # ------------- ARGUMENTS Test
+            # ------------- ARGUMENTS Test
             # LocShape = 2
             # LocSolid = 1
             # LocAxis = 0
-            # # # ------------- ARGUMENTS ------------- #
+            # ------------- ARGUMENTS ------------- #
 
-            # # ------------- ARGUMENTS ------------- #
+            # ------------- ARGUMENTS ------------- #
             args = lx.args()
             lx.out(args)
 
@@ -121,7 +119,7 @@ class SMO_CB_LocatorShape_Cmd(lxu.command.BasicCommand):
             # None = 4
             LocAxis = self.dyna_Int (2)
             # lx.out('Desired Axis:',LocAxis)
-            # # ------------- ARGUMENTS ------------- #
+            # ------------- ARGUMENTS ------------- #
 
 
 
@@ -129,23 +127,23 @@ class SMO_CB_LocatorShape_Cmd(lxu.command.BasicCommand):
             # <----( DEFINE VARIABLES )----> #
             # ------------------------------ #
 
-            #####--- Define user value for all the different SafetyCheck --- START ---#####
+            # ---------------- Define user value for all the different SafetyCheck --- START
             #####
 
-            ## Vertex
+            # Vertex
             lx.eval("user.defNew name:SMO_SafetyCheckLocShape_VertexModeEnabled type:integer life:momentary")
 
-            ## Edges
+            # Edges
             lx.eval("user.defNew name:SMO_SafetyCheckLocShape_EdgeModeEnabled type:integer life:momentary")
 
-            ## Polygon
+            # Polygon
             lx.eval("user.defNew name:SMO_SafetyCheckLocShape_PolygonModeEnabled type:integer life:momentary")
 
-            ## Item
+            # Item
             lx.eval("user.defNew name:SMO_SafetyCheckLocShape_ItemModeEnabled type:integer life:momentary")
 
             #####
-            #####--- Define user value for all the different SafetyCheck --- END ---#####
+            # ---------------- Define user value for all the different SafetyCheck --- END
 
 
 
@@ -213,7 +211,7 @@ class SMO_CB_LocatorShape_Cmd(lxu.command.BasicCommand):
             # lx.out('Start of SMO_DIS_ItemColor Script')
 
 
-            #####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- START
+            # ------------- Compare SafetyCheck value and decide or not to continue the process  --- START
             if SMO_SafetyCheckLocShape_VertexModeEnabled == 1:
                 lx.eval('select.type item')
 

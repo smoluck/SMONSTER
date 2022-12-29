@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_Transfer_UV_Pos_UpdateReplicatorMerged.py
-# Version: 1.00
-#
-# Purpose: This script is designed to Copy and 
-# Transfer Original UV's from a Backup MeshItems to a set of Replicators Merged via MergeMesh 
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      29/03/2019
-# Modified:		01/04/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_Transfer_UV_Pos_UpdateReplicatorMerged.py
+
+Purpose:	  This script is designed to:
+			  Copy and Transfer Original UV's from a Backup
+			  MeshItems to a set of Replicators Merged via MergeMesh
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      29/03/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 #import the necessary Python libraries

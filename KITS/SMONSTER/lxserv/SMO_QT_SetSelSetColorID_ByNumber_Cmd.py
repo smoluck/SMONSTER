@@ -1,18 +1,15 @@
 # python
 """
-# Name:         SMO_QT_SetSelSetColorID_ByNumber_Cmd.py
-# Version:      1.00
-#
-# Purpose:      This script is designed to
-#               Set a Diffuse Color override using Selection Set (polygons) on the selected Mesh Layers.
-#               Named the new Mat using "ColorID" as Prefix. Color ID Number set by Argument.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      17/01/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_QT_SetSelSetColorID_ByNumber_Cmd.py
+
+Purpose:      This script is designed to
+              Set a Diffuse Color override using Selection Set (polygons) on the selected Mesh Layers.
+              Named the new Mat using "ColorID" as Prefix. Color ID Number set by Argument.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      17/01/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

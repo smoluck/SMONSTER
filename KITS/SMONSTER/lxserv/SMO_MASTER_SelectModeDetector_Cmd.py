@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_MASTER_SelectModeDetector_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This Command is designed to Mirror
-#               Detect the current Component Mode and iterate
-#               user values based on the detection for further use of the tool.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      17/05/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_MASTER_SelectModeDetector_Cmd.py
+
+Purpose:      This Command is designed to Mirror
+              Detect the current Component Mode and iterate
+              user values based on the detection for further use of the tool.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      17/05/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -63,7 +61,7 @@ class SMO_MASTER_SelectModeDetector_Cmd(lxu.command.BasicCommand):
         # ------------------------------ #
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
         lx.eval("user.defNew name:SMO_MASTER_SelectModeDetector_ItemModeEnabled type:integer life:momentary")
         lx.eval("user.defNew name:SMO_MASTER_SelectModeDetector_min1ItemSelected type:integer life:momentary")
@@ -78,7 +76,7 @@ class SMO_MASTER_SelectModeDetector_Cmd(lxu.command.BasicCommand):
         lx.eval("user.defNew name:SMO_MASTER_SelectModeDetector_VertModeEnabled type:integer life:momentary")
         lx.eval("user.defNew name:SMO_MASTER_SelectModeDetector_min1VertSelected type:integer life:momentary")
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
         
         
         
@@ -165,9 +163,9 @@ class SMO_MASTER_SelectModeDetector_Cmd(lxu.command.BasicCommand):
             
             
             
-            ################################################
+            # -------------------------------------------- #
             ####### SAFETY CHECK 2 - Component Count #######
-            ################################################
+            # -------------------------------------------- #
             CsVert = len(mesh.geometry.vertices.selected)
             if DEBUG_MODE == 1 :
                 lx.out('Count Selected Vertex',CsVert)

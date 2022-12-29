@@ -1,17 +1,16 @@
 # python
 """
-# Name:         SMO_Unbevel_Ring.py
-# Version: 1.0
-#
-# Purpose:  This script is designed to Rebuild the
-#           selected Volume (Polygon Mode) with just a CYLINDER that 
-#           got the same Radius and Length as the Source volume it can be:
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      16/04/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:           SMO_Unbevel_Ring.py
+
+Purpose:        This script is designed to:
+                Rebuild the selected Volume (Polygon Mode)
+                with just a CYLINDER that got the same Radius
+                and Length as the Source volume it can be:
+
+Author:         Franck ELISABETH
+Website:        https://www.smoluck.com
+Created:        16/04/2019
+Copyright:      (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -27,27 +26,27 @@ CsEdges = len(mesh.geometry.edges.selected)
 # <----( DEFINE VARIABLES )----> #
 # ------------------------------ #
 
-#####--- Define user value for all the different SafetyCheck --- START ---#####
+# ---------------- Define user value for all the different SafetyCheck --- START
 #####
 lx.eval("user.defNew name:SMO_SafetyCheck_EdgeModeEnabled type:integer life:momentary")
 lx.eval("user.defNew name:SMO_SafetyCheck_min3EdgeSelected type:integer life:momentary")
 #####
-#####--- Define user value for all the different SafetyCheck --- END ---#####
+# ---------------- Define user value for all the different SafetyCheck --- END
 
 
 lx.out('Start of SMO Unbevel Ring')
 
 
-# # ------------------------------ #
-# # <----( DEFINE ARGUMENTS )----> #
-# # ------------------------------ #
+# ------------------------------ #
+# <----( DEFINE ARGUMENTS )----> #
+# ------------------------------ #
 # args = lx.args()
 # lx.out(args)
 # CYLINDER_SIDES_COUNT = args[0]                  # Sides Count for the Cylinder as an integer value
 # CYLINDER_AXES = args[1]                         # Axes selection:                               X = 0 ### Y = 1 ### Z = 2
 # CYLINDER_OPEN = args[2]                         # Open the Cylinder (Via delete NGon):          1 = Enable ### 0 = Disable
 # CYLINDER_TO_HOLE = args[3]                      # Change the Cylinder to an Hole:               1 = Enable ### 0 = Disable
-# # Expose the Result of the Arguments 
+# Expose the Result of the Arguments 
 # lx.out(CYLINDER_SIDES_COUNT,CYLINDER_AXES,CYLINDER_OPEN,CYLINDER_TO_HOLE)
 
 
@@ -136,14 +135,14 @@ elif CsEdges >= 3:
 
 
 
-#####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
+# ---------------- Define current value for the Prerequisite TotalSafetyCheck --- START
 #####
 TotalSafetyCheckTrueValue = 2
 lx.out('Desired Value',TotalSafetyCheckTrueValue)
 TotalSafetyCheck = (SMO_SafetyCheck_EdgeModeEnabled + SMO_SafetyCheck_min3EdgeSelected)
 lx.out('Current Value',TotalSafetyCheck)
 #####
-#####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
+# ---------------- Define current value for the Prerequisite TotalSafetyCheck --- END
 
 
 
@@ -151,7 +150,7 @@ lx.out('Current Value',TotalSafetyCheck)
 # <----( Main Macro )----> #
 # ------------------------ #
 
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
+# ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- START
 if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     # lx.eval('@lazySelect.pl selectTouching 2')
     lx.eval('smo.GC.SelectCoPlanarPoly 0 2 0')
@@ -167,13 +166,13 @@ elif TotalSafetyCheck != TotalSafetyCheckTrueValue:
     sys.exit
 
 lx.out('End of SMO Unbevel Ring')
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
+# ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
 
-#### NOTE ####
+# ------- NOTE ------- #
 
-# # python
+# python
 # import modo, lx
 
 # args = lx.args()
@@ -183,7 +182,7 @@ lx.out('End of SMO Unbevel Ring')
 # ARG_3rd = args[2]	# Function A State: true or false                
 # ARG_4th = args[3]	# Function B State: true or false
 
-# # Expose the Result of the Arguments 
+# Expose the Result of the Arguments 
 # lx.out(ARG_1st,ARG_2nd,ARG_3rd,ARG_4th)
 
 

@@ -1,22 +1,23 @@
 # python
 """
-# Name:         SMO_LL_RIZOMUV_SetExePath_Cmd.py
-# Version:      1.95
-#
-# Purpose:      This Command is designed to
-#               Set the RizomUV exe path to create the LiveLink.
-#               It will prompt a File browser to get the EXE file Location.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Modified:     22/05/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_LL_RIZOMUV_SetExePath_Cmd.py
+
+Purpose:      This Command is designed to
+              Set the RizomUV exe path to create the LiveLink.
+              It will prompt a File browser to get the EXE file Location.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Modified:     22/05/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
-import lx, lxifc, lxu.command, lxu.select, subprocess, os
+import lx
+import lxu.command
+import lxu.select
 
 Cmd_Name = "smo.LL.RIZOMUV.SetExePath"
+
 
 class SMO_LL_RIZOMUV_SetExePath_Cmd(lxu.command.BasicCommand):
     def __init__(self):

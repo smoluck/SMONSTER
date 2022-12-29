@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_CLEANUP_DelEmptyMeshItem_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Delete Empty Mesh Layers (default Mesh Layer) in current scene.
-#
-#
-# Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      https://www.smoluck.com
-#
-# Created:      17/02/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CLEANUP_DelEmptyMeshItem_Cmd.py
+
+Purpose:      This script is designed to:
+              Delete Empty Mesh Layers (default Mesh Layer) in current scene.
+
+Author:       Franck ELISABETH (with the help of James O'Hare)
+Website:      https://www.smoluck.com
+Created:      17/02/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -55,7 +52,7 @@ class SMO_Cleanup_DelEmptyMeshItem_Cmd(lxu.command.BasicCommand):
         # Delete Empty Mesh Layers (default Mesh Layer) #
         # -----------------------------------------------#
 
-        # # First we must select the scene and then all the mesh layers in our scene.
+        # First we must select the scene and then all the mesh layers in our scene.
         lx.eval('select.drop item')
         lx.eval('select.itemType mesh')
         # lx.eval('select.layerTree all:1')

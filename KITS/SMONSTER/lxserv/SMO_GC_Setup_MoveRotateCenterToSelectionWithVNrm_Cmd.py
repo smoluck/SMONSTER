@@ -1,18 +1,16 @@
 # python
 """
-# Name:         SMO_GC_Setup_MoveRotateCenterToSelectionWithNNrm_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Select an Opened Mesh Move and Rotate
-#               the Center to Open boundary centroid and rotate it (use it in item mode).
-#               This build is for supporting VertexNormal Data
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      19/03/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_Setup_MoveRotateCenterToSelectionWithNNrm_Cmd.py
+
+Purpose:      This script is designed to:
+              Select an Opened Mesh Move and Rotate
+              the Center to Open boundary centroid and rotate it (use it in item mode).
+              This build is for supporting VertexNormal Data
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      19/03/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 from math import degrees

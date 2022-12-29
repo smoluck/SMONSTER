@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_GC_Set_MoveAndRotateCenterUsingOpenBoundary_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Select an Opened Mesh Move and Rotate
-#               the Center to Open boundary centroid and rotate it (use it in item mode)
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      20/06/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_Set_MoveAndRotateCenterUsingOpenBoundary_Cmd.py
+
+Purpose:      This script is designed to:
+              Select an Opened Mesh Move and Rotate
+              the Center to Open boundary centroid and rotate it (use it in item mode)
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      20/06/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

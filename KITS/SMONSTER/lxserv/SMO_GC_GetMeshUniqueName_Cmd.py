@@ -1,18 +1,14 @@
 # python
 """
-# Name:         SMO_GC_GetMeshUniqueName_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Get the Mesh Unique Name of the current mesh item selected.
-#
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      03/12/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_GetMeshUniqueName_Cmd.py
+
+Purpose:      This script is designed to:
+              Get the Mesh Unique Name of the current mesh item selected.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      03/12/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

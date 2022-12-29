@@ -1,17 +1,13 @@
 # python
 """
-# Name:         SMO_Venom_SelPoly.py
-# Version:      1.0
-# 
-# Purpose:      This script is designed to:
-#               
-# 
-# 
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-# 
-# Created:      01/04/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_Venom_SelPoly.py
+
+Purpose:      This script is designed to:
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      01/04/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -28,7 +24,7 @@ lx.eval('select.connect')
 lx.eval('cut')
 lx.eval('layer.new')
 lx.eval('select.type item')
-lx.eval('select.editSet SelSet_VeNomTempLayer add {}') #Unparent maybe needed
+lx.eval('select.editSet SelSet_VeNomTempLayer add {}')      # Unparent maybe needed
 lx.eval('select.type polygon')
 lx.eval('paste')
 lx.eval('select.drop polygon')
@@ -70,9 +66,9 @@ lx.eval('select.useSet SelSet_VeNomTarget select')
 lx.eval('select.type polygon')
 lx.eval('paste')
 lx.eval('select.type vertex')
-try :
+try:
     lx.eval('!select.deleteSet SelSet_VeNomTargetVertex false')
-except :
+except:
     pass
 lx.eval('select.type polygon')
 lx.eval('workPlane.state false')
@@ -82,24 +78,24 @@ lx.eval('select.drop item')
 lx.eval('select.useSet SelSet_VeNomTempLayer select')
 lx.eval('select.useSet SelSet_VeNomBG select')
 
-try :
+try:
     lx.eval('!select.deleteSet SelSet_VeNomBG')
-except :
+except:
     pass
-    
-try :
+
+try:
     lx.eval('!select.deleteSet SelSet_VeNomTempLayer false')
-except :
+except:
     pass
-    
+
 lx.eval('!delete')
 lx.eval('select.useSet SelSet_VeNomTarget select')
-try :
+try:
     lx.eval('!select.deleteSet SelSet_VeNomTarget false')
-except :
+except:
     pass
 lx.eval('select.type polygon')
-try :
-   lx.eval('!select.deleteSet SelSet_VeNomTargetPoly false')
-except :
-   pass
+try:
+    lx.eval('!select.deleteSet SelSet_VeNomTargetPoly false')
+except:
+    pass

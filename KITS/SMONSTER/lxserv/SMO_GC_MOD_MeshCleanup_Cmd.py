@@ -1,19 +1,17 @@
 # python
 """
-# Name:         SMO_GC_MOD_MeshCleanup_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Do a Mesh Cleanup of the current Mesh (only visible components)
-#               using Vertex merge by distance in Arguments. As well it can
-#               MergeCoplanar Polygons if one polygon is selected and then remove
-#               All Colinear Vertex and finaly Triple the resulting Ngon.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      03/06/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_MOD_MeshCleanup_Cmd.py
+
+Purpose:      This script is designed to:
+              Do a Mesh Cleanup of the current Mesh (only visible components)
+              using Vertex merge by distance in Arguments. As well it can
+              MergeCoplanar Polygons if one polygon is selected and then remove
+              All Colinear Vertex and finaly Triple the resulting Ngon.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      03/06/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

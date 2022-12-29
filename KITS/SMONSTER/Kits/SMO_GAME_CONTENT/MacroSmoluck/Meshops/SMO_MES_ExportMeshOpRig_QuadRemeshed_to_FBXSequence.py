@@ -1,23 +1,23 @@
 # python
 """
-# Name:         SMO_MES_ExportMeshOpRig_QuadRemeshed_to_FBXSequence.py
-# Version: 5.00
-#
-# Purpose: This script is designed to test Export MeshOps rig as a freezed Mesh, over time, as an FBX sequence.
-# Select the MeshOp item and run. 
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      03/12/2018
-# Modified:		19/03/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         	SMO_MES_ExportMeshOpRig_QuadRemeshed_to_FBXSequence.py
+
+Purpose: 		This script is designed to:
+				Test Export MeshOps rig as a freezed Mesh,
+				over time, as an FBX sequence.
+				Select the MeshOp item and run.
+
+Author:       	Franck ELISABETH
+Website:      	https://www.smoluck.com
+Created:      	03/12/2018
+Copyright:    	(c) Franck Elisabeth 2017-2022
 """
 
-#import the necessary Python libraries
 import lx
 import os
 import modo
+import sys
+
 scene = modo.scene.current()
 mesh = scene.selectedByType('mesh')
 
@@ -41,9 +41,9 @@ except RuntimeError:
 	sys.exit
 	
 	
-##########################################
+# -------------------------------------- #
 # DEFINE USER Variable for QUAD REMESHER #
-##########################################
+# -------------------------------------- #
 #####--- Define User Value for PolyCount max to be used by QuadRemesh Processing --- START ---#####
 #Create a user value that define the EdgeCount for the Rebevel.
 lx.eval("user.defNew name:PolyCountQuadRemesh type:integer life:momentary")
@@ -58,9 +58,9 @@ user_inputPolyCountQuadRemesh = lx.eval("user.value PolyCountQuadRemesh ?")
 lx.out('PolyCountQuadRemesh:',user_inputPolyCountQuadRemesh)
 
 
-##########################################
+# -------------------------------------- #
 # Get current Variable for QUAD REMESHER #
-##########################################
+# -------------------------------------- #
 lx.out('-------- QR User Values: --------')
 lx.eval("user.defNew name:USER_QR_TargPCount type:integer life:momentary")
 USER_QR_TargPCount = lx.eval1('user.value xr.TargetQuadCount ?')
@@ -102,13 +102,13 @@ lx.eval("user.defNew name:USER_QR_AutoFreeze type:boolean life:momentary")
 USER_QR_AutoFreeze = lx.eval1('user.value xr.FreezeInputMesh ?')
 lx.out('QR State - Auto Freeze Input Mesh:',USER_QR_AutoFreeze)
 lx.out('-------- QR User Values: --------')
-##########################################
+# ------------------------------------------ #
 
 lx.out('-')
 lx.out('-')
 lx.out('-')
 
-# # store current scene
+# store current scene
 # oldscene = lx.eval('query sceneservice scene.index ? current')
 
 # manage time frame

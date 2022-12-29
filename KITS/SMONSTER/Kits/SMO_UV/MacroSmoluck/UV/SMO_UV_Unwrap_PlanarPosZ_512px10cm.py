@@ -50,10 +50,10 @@ except:
 lx.eval('select.nextMode')
 
 # ###########################
-# # Set specific Texel Density
-# # replay name:"User Value"
+# Set specific Texel Density
+# replay name:"User Value"
 # lx.eval('user.value name:"texeldensity.size3D" value:"0.1"')
-# # replay name:"User Value"
+# replay name:"User Value"
 # lx.eval('user.value name:"texeldensity.sizeUV" value:"512.0"')
 # ###########################
 

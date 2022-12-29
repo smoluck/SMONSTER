@@ -1,26 +1,24 @@
 # python
 """
-# Name:         SMO_Cleanup_FBX.py 1 1 1 1 1 1
-# Version:      1.0
-#
-# Purpose:  This script is designed to:
-#           Cleanup scene to get only the Meshes and remove the 3dsmax channels if present
-#           
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      19/12/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:           SMO_Cleanup_FBX.py 1 1 1 1 1 1
+
+Purpose:        This script is designed to:
+                Cleanup scene to get only the Meshes and remove
+                the 3dsmax channels if present
+
+Author:         Franck ELISABETH
+Website:        https://www.smoluck.com
+Created:        19/12/2019
+Copyright:      (c) Franck Elisabeth 2017-2022
 """
 
 import lx
 
 # if NoUndo == 1 :
-    # lx.eval('!!app.undoSuspend')
+#     lx.eval('!!app.undoSuspend')
 
 
-# ############### Look at User Prefs ###############
+# ------------- Look at User Prefs ------------- #
 FullAutoDelCam = lx.eval('user.value SMO_UseVal_CLEANUP_FullAuto_DeleteCam ?')
 lx.out('Delete all Cameras:', FullAutoDelCam)
 
@@ -44,26 +42,22 @@ lx.out('Update Materials Smoothing Angle:', FullAutoUpdateMat)
 
 FullAutoConvHardEdge = lx.eval('user.value SMO_UseVal_CLEANUP_FullAuto_HardEdgeWork ?')
 lx.out('Convert all Mesh to HardEdge workflow:', FullAutoConvHardEdge)
-# ############### Look at User Prefs ###############
+# ------------- Look at User Prefs ------------- #
 
 
-
-
-if FullAutoDelCam == 1 :
+if FullAutoDelCam == 1:
     lx.eval('smo.CLEANUP.DelCam')
-if FullAutoDelLight == 1 :
+if FullAutoDelLight == 1:
     lx.eval('smo.CLEANUP.DelLight')
-if FullAutoEmptyMesh == 1 :
+if FullAutoEmptyMesh == 1:
     lx.eval('smo.CLEANUP.DelEmptyMeshItem')
-if FullAutoDelFBXChannels == 1 :
+if FullAutoDelFBXChannels == 1:
     lx.eval('@kit_SMO_GAME_CONTENT:MacroSmoluck/FBX_Cleanup/SMO_Cleanup_3DsMAX_FBXChannel.py')
-if FullAutoUnparentInPlace == 1 :
+if FullAutoUnparentInPlace == 1:
     lx.eval('smo.CLEANUP.UnparentInPlace')
-if FullAutoFixUVmapName == 1 :
+if FullAutoFixUVmapName == 1:
     lx.eval('smo.SSRUVMapByArg 1 {UVChannel_1} {TargetUVMap}')
-if FullAutoUpdateMat == 1 :
+if FullAutoUpdateMat == 1:
     lx.eval('smo.CLEANUP.UpdateMat')
-if FullAutoConvHardEdge == 1 :
+if FullAutoConvHardEdge == 1:
     lx.eval('smo.CLEANUP.ConvertHardEdge')
-
-

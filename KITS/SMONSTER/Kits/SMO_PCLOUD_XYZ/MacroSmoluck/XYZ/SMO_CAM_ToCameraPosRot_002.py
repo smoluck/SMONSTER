@@ -1,17 +1,16 @@
 # python
 """
-# Name:         SMO_XYZ_Vertex.py
-# Version: 1.0
-#
-# Purpose:	Open a txt file (Target) and create
-# 			Vertex at current position defined by the target File 3 float value (separated by a coma)
-#			Each line is a new Vertex
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      29/11/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:               SMO_XYZ_Vertex.py
+
+Purpose:            This Script is designed to:
+                    Open a txt file (Target) and create
+                    Vertex at current position defined by the target File 3 float value
+                    (separated by a coma). Each line is a new Vertex
+
+Author:             Franck ELISABETH
+Website:            https://www.smoluck.com
+Created:            29/11/2019
+Copyright:          (c) Franck Elisabeth 2017-2022
 """
 
 import lx

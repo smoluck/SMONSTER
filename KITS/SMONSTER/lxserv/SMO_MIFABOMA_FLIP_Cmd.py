@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_MIFABOMA_FLIP_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Flip the Mesh or the Polygon selection using the Local Axis.
-# 
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      https://www.smoluck.com
-#
-# Created:      27/02/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_MIFABOMA_FLIP_Cmd.py
+
+Purpose:      This script is designed to
+              Flip the Mesh or the Polygon selection using the Local Axis.
+
+Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
+Website:      https://www.smoluck.com
+Created:      27/02/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -109,17 +106,17 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
         
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
         lx.eval("user.defNew name:SMO_SafetyCheck_PolygonModeEnabled type:integer life:momentary")
         lx.eval("user.defNew name:SMO_SafetyCheck_min1PolygonSelected type:integer life:momentary")
         lx.eval("user.defNew name:SMO_SafetyCheck_ItemModeEnabled type:integer life:momentary")
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
         
         
         
-        ###############COPY/PASTE Check Procedure#################
+        # ---------------- COPY/PASTE Check Procedure ---------------- #
         ## create variables
         lx.eval("user.defNew name:User_Pref_CopyDeselectChangedState type:boolean life:momentary")
         lx.eval("user.defNew name:User_Pref_PasteSelectionChangedState type:boolean life:momentary")
@@ -163,7 +160,7 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
         # Is Paste Deselect True ?
         if User_Pref_PasteDeselect == 1:
             User_Pref_PasteDeselectChangedState = 0
-        ################################################
+        # -------------------------------------------- #
         
         
         
@@ -254,7 +251,7 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
         
         
         ### Test Safety Check in Polygon Mode ###
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- START
         #####
         if SMO_SafetyCheck_PolygonModeEnabled == 1 and SMO_SafetyCheck_ItemModeEnabled == 0:
             TotalSafetyCheckTrueValue = 2
@@ -262,11 +259,11 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
             TotalSafetyCheck = (SMO_SafetyCheck_PolygonModeEnabled + SMO_SafetyCheck_min1PolygonSelected)
             lx.out('Current Value',TotalSafetyCheck)
         #####
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- END
         
         
         ### Test Safety Check in Item Mode ###
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- START
         #####
         if SMO_SafetyCheck_PolygonModeEnabled == 0 and SMO_SafetyCheck_ItemModeEnabled == 1:
             TotalSafetyCheckTrueValue = 1
@@ -274,7 +271,7 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
             TotalSafetyCheck = SMO_SafetyCheck_ItemModeEnabled
             lx.out('Current Value',TotalSafetyCheck)
         #####
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- END
         
         
         
@@ -303,7 +300,7 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
         # print(TargetVNMapName)
         ####
 
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- START
         if TotalSafetyCheck == TotalSafetyCheckTrueValue:
 
             # ---------------------------------- #
@@ -508,7 +505,7 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
                     lx.eval('viewport.fitSelected')
         
         
-        ###############COPY/PASTE END Procedure#################
+        # -------------- COPY/PASTE END Procedure  -------------- #
         # Restore user Preferences:
         if User_Pref_CopyDeselectChangedState == 1 :
             lx.eval('pref.value application.copyDeSelection false')
@@ -519,7 +516,7 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
         if User_Pref_PasteDeselectChangedState == 1 :
             lx.eval('pref.value application.pasteDeSelection false')
             lx.out('"Deselect Elements Before Pasting" have been Restored')
-        ########################################################
+        # -------------------------------------------- #
         
         
         elif TotalSafetyCheck != TotalSafetyCheckTrueValue:
@@ -527,7 +524,7 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
             sys.exit
 
         lx.out('End of SMO_Bool_Subtract Script')
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- END
         
 
 lx.bless(SMO_MIFABOMA_Flip_Cmd, Cmd_Name)

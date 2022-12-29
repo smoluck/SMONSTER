@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_QT_Batch_SetMatColorIDRandom_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Set a random Diffuse Color override using Material Tag.
-#               It can runs over Selected Meshes or SceneWide, By Items or by Polygon Islands.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      12/04/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_QT_Batch_SetMatColorIDRandom_Cmd.py
+
+Purpose:      This script is designed to:
+              Set a random Diffuse Color override using Material Tag.
+              It can run over Selected Meshes or SceneWide, By Items or by Polygon Islands.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      12/04/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

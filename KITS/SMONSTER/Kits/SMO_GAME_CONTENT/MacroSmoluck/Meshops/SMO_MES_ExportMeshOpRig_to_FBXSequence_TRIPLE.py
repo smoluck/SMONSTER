@@ -1,17 +1,16 @@
 # python
 """
-# Name:         SMO_ExportMeshOpRig_to_FBXSequence
-# Version: 1.01
-#
-# Purpose: This script is designed to test Export MeshOps rig as a freezed Mesh, over time, as an FBX sequence.
-# Select the MeshOp item and run. 
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      03/12/2018
-# Modified:		19/03/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:           SMO_ExportMeshOpRig_to_FBXSequence
+
+Purpose:        This script is designed to:
+                Test Export MeshOps rig as a freezed Mesh,
+                over time, as an FBX sequence.
+                Select the MeshOp item and run.
+
+Author:         Franck ELISABETH
+Website:        https://www.smoluck.com
+Created:        03/12/2018
+Copyright:      (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -20,30 +19,30 @@ import os
 
 scene = modo.Scene()
 
-# # # Set the Undo to PAUSE Mode during the execution of that Script.
-# # lx.eval('app.undoSuspend')
+# # Set the Undo to PAUSE Mode during the execution of that Script.
+# lx.eval('app.undoSuspend')
 
 
 # Save the current Scene (.lxo) to the same directory of FBX export
-# # get modo's temp dir
+# get modo's temp dir
 # temp_dir = lx.eval('query platformservice path.path ? temp')
-# # name our temp file
+# name our temp file
 # temp_file = "SMO_ExportMeshOpRig_ToFBXSequence.lxo"
-# # builds the complete path out of the temp dir and the temp file name
+# builds the complete path out of the temp dir and the temp file name
 # temp_path = os.path.join(temp_dir, "SMO_ExportMeshOpRig_ToFBXSequence", temp_file)
 
-# # make sure the SMO_REBEVEL directory exists, if not create it
+# make sure the SMO_REBEVEL directory exists, if not create it
 # if not os.path.exists(os.path.dirname(temp_path)):
-# # try to create the directory.
+# try to create the directory.
 # try:
 # os.makedirs(os.path.dirname(temp_path))
 # except:
-# # if that fails for any reason print out the error
+# if that fails for any reason print out the error
 # print(traceback.format_exc())
 
-# # replay name:"Save Scene As"
-# # here we just call the save as command with our new custom
-# # path Python style instead of macro style.
+# replay name:"Save Scene As"
+# here we just call the save as command with our new custom
+# path Python style instead of macro style.
 # lx.eval('!scene.saveAs filename:"{}" format:"$LXOB" export:false'.format(temp_path))
 
 
@@ -67,7 +66,7 @@ except RuntimeError:
     lx.out('script Stopped')
     sys.exit
 
-# # store current scene
+# store current scene
 # oldscene = lx.eval('query sceneservice scene.index ? current')
 
 # manage time frame
@@ -132,10 +131,10 @@ lx.out('-')
 # lx.out('Vertex Map Selected and Index Test')
 
 # if Vmap_FirstSelected == Vmap_UVIndex:
-# # Select the first UV Map
+# Select the first UV Map
 # lx.out('Good')
 # elif Vmap_FirstSelected != Vmap_UVIndex:
-# # Select the first UV Map
+# Select the first UV Map
 # lx.out('Bad')
 
 # lx.out('-')
@@ -146,7 +145,7 @@ lx.out('-')
 # lx.out('<------------- START -------------->')
 # lx.out('<--- UV Map Safety Check --->')
 #
-# # Get info about the selected UVMap.
+# Get info about the selected UVMap.
 # UVmap_Selected = lx.evalN('query layerservice vmaps ? selected')
 # UVmap_SelectedN = len(lx.evalN('query layerservice vmaps ? selected'))
 # lx.out('Selected UV Map Index:', UVmap_SelectedN)

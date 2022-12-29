@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_GC_FullScreenToggle_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Toggle the Side Bars On or Off
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      06/12/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_FullScreenToggle_Cmd.py
+
+Purpose:      This script is designed to:
+              Toggle the Side Bars On or Off
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      06/12/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -148,9 +145,9 @@ lx.bless(SMO_GC_FullScreenToggle_Cmd, Cmd_Name)
 #     lx.eval('user.value SMO_UseVal_GC_ExpandedRightState %s' % ExpandedRightState)
 #
 # ###############################################
-# # Test and Query current Layout State ### START
+# Test and Query current Layout State ### START
 # LaySwitchState = bool(lx.eval('layout.switcherBar ?'))
-# # print(LaySwitchState)
+# print(LaySwitchState)
 #
 # try:
 #     LayTopState = bool(lx.eval('viewport.collapse ? hash LayoutModoXXSwitcherTop up "89528021001:xkey"'))
@@ -175,14 +172,14 @@ lx.bless(SMO_GC_FullScreenToggle_Cmd, Cmd_Name)
 #
 # print('Current Expanded Configuration Saved:',
 #       (LaySwitchState, LayTopState, LayDownState, LayLeftState, LayRightState))
-# # Test and Query current Layout State ### END
+# Test and Query current Layout State ### END
 # #############################################
 #
 #
 #
 #
 # #############################################################
-# # Reset current state to Fulscreen as a Temporary base state.
+# Reset current state to Fulscreen as a Temporary base state.
 # if LaySwitchState == True:
 #     lx.eval('layout.switcherBar false')
 # if LayTopState == True:

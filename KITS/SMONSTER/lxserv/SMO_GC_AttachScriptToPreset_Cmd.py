@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_GC_AttachScriptToPreset_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Attach SMO_GC_onDrop_RotateTool.py script to the selected MeshPreset file via PB_View and smo.GC.AttachScriptToPreset command.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      03/02/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_AttachScriptToPreset_Cmd.py
+
+Purpose:      This script is designed to:
+              Attach SMO_GC_onDrop_RotateTool.py script to the selected MeshPreset file via PB_View and smo.GC.AttachScriptToPreset command.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      03/02/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

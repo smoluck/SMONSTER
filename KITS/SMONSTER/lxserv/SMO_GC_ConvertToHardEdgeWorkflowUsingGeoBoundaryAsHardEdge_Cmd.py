@@ -1,18 +1,15 @@
 # python
 """
-# Name:         SMO_GC_ConvertToHardEdgeWorkflowUsingGeoBoundaryAsHardEdge_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               On current Mesh item, convert Shading Method to HardEdge Workflow using geometry boundary
-#               as "HardEdge" and set all other Edges as "Smooth".
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      11/05/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_ConvertToHardEdgeWorkflowUsingGeoBoundaryAsHardEdge_Cmd.py
+
+Purpose:      This script is designed to:
+              On current Mesh item, convert Shading Method to HardEdge Workflow using geometry boundary
+              as "HardEdge" and set all other Edges as "Smooth".
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      11/05/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

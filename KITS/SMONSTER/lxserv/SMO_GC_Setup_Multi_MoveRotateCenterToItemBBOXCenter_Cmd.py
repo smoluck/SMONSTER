@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_GC_Setup_Multi_MoveRotateCenterToItemBBOXCenter_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Move Center to Item BBOX Center
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      22/08/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_Setup_Multi_MoveRotateCenterToItemBBOXCenter_Cmd.py
+
+Purpose:      This script is designed to
+              Move Center to Item BBOX Center
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      22/08/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

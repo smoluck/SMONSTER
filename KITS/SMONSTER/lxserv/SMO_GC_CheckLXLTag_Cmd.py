@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_GC_CheckLXLTag_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Check Scene LXLT tag state and give the ability to change the Mesh Preset Tag name.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      08/11/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_CheckLXLTag_Cmd.py
+
+Purpose:      This script is designed to:
+              Check Scene LXLT tag state and give the ability to change the Mesh Preset Tag name.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      08/11/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

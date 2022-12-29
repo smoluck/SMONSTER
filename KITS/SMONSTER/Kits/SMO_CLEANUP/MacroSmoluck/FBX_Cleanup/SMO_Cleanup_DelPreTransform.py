@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_Cleanup_DelPreTransform.py
-# Version:      1.0
-#
-# Purpose:  This script is designed to:
-#           Delete all 3DSMAX related PreTransform Channels created at
-#           FBX Export in the current scene. Position / Rotation / Scale
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      03/03/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:           SMO_Cleanup_DelPreTransform.py
+
+Purpose:        This script is designed to:
+                Delete all 3DSMAX related PreTransform Channels created at
+                FBX Export in the current scene. Position / Rotation / Scale
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      03/03/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -20,10 +18,10 @@ import modo
 scene = modo.scene.current()
 
 
-# # ------------- ARGUMENTS Test
+# ------------- ARGUMENTS Test
 # PreTransform = 1
 # FreezeRot = 1
-# # ------------- ARGUMENTS ------------- #
+# ------------- ARGUMENTS ------------- #
 args = lx.args()
 lx.out(args)
 
@@ -32,7 +30,7 @@ lx.out('Merge Transform Rotation:', MergeTransRot)
 
 FreezeRot = int(args[1])
 lx.out('Freeze Rotation:', FreezeRot)
-# # ------------- ARGUMENTS ------------- #
+# ------------- ARGUMENTS ------------- #
 
 
 
@@ -58,7 +56,7 @@ lx.eval('select.type item')
 # Delete all 3DSMAX related PreRotation Channels #
 #------------------------------------------------#
 
-# # Variables
+# Variables
 # DelPreTraList = []
 # DelPreTraList = lx.eval('query sceneservice selected ? mesh') # mesh item layers
 # for mesh in DelPreTraList:
@@ -66,7 +64,7 @@ lx.eval('select.type item')
 
 
 # #------------------------------------------------#
-# # Delete all 3DSMAX related PreRotation Channels #
+# Delete all 3DSMAX related PreRotation Channels #
 # #------------------------------------------------#
 
 # PrePos = "*PrePosition*"
@@ -75,18 +73,18 @@ lx.eval('select.type item')
 
 # Detected = 0
 
-# # Variables
+# Variables
 # DelPreTraList = []
 # DelPreTraList = lx.eval('query sceneservice selected ? mesh') # mesh item layers
 # for mesh in DelPreTraList:
-    # # mesh.select(True)
+    # mesh.select(True)
     # lx.eval('select.type polygon')
     # lx.eval('select.all')
     # lx.eval('cut')
     # lx.eval('select.type item')
     
     
-    # # NOT VALID I must find a way to select only the related PreTransform item on the current selected Mesh
+    # NOT VALID I must find a way to select only the related PreTransform item on the current selected Mesh
     # try:
         # if PreTransform == 0 :
             # lx.eval('selectPattern.pattern %s' % PrePos)
@@ -102,7 +100,7 @@ lx.eval('select.type item')
     # if Detected == 1 :
         # lx.eval('selectPattern.apply set')
         # lx.eval('!delete')
-    # # NOT VALID
+    # NOT VALID
     
     
     # lx.eval('select.type polygon')

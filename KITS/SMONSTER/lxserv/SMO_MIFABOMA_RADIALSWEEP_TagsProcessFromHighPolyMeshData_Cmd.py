@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_MIFABOMA_RADIALSWEEP_TagsProcessFromHighPolyMeshData_Cmd.py
-# Version: 1.0
-# 
-# Purpose:      This script is designed to:
-#               Create tags for MiFaBoMa RadialSweepLocal from Edges.
-# 
-# 
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-# 
-# Created:      05/02/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_MIFABOMA_RADIALSWEEP_TagsProcessFromHighPolyMeshData_Cmd.py
+
+Purpose:      This script is designed to:
+              Create tags for MiFaBoMa RadialSweepLocal from Edges.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      05/02/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -110,7 +107,7 @@ class SMO_MIFABOMA_RADIALSWEEP_TagsProcessFromHighPolyMeshData_Cmd(lxu.command.B
         # Is Paste Deselect True ?
         if User_Pref_PasteDeselect == 1:
             User_Pref_PasteDeselectChangedState = 0
-        ################################################
+        # -------------------------------------------- #
 
 
         
@@ -158,7 +155,7 @@ class SMO_MIFABOMA_RADIALSWEEP_TagsProcessFromHighPolyMeshData_Cmd(lxu.command.B
 
 
 
-        ###############COPY/PASTE END Procedure#################
+        # -------------- COPY/PASTE END Procedure  -------------- #
         # Restore user Preferences:
         if User_Pref_CopyDeselectChangedState == 1 :
             lx.eval('pref.value application.copyDeSelection false')
@@ -169,7 +166,7 @@ class SMO_MIFABOMA_RADIALSWEEP_TagsProcessFromHighPolyMeshData_Cmd(lxu.command.B
         if User_Pref_PasteDeselectChangedState == 1 :
             lx.eval('pref.value application.pasteDeSelection false')
             lx.out('"Deselect Elements Before Pasting" have been Restored')
-        ########################################################
+        # -------------------------------------------- #
 
 
 lx.bless(SMO_MIFABOMA_RADIALSWEEP_TagsProcessFromHighPolyMeshData_Cmd, Cmd_Name)

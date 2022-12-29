@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_QT_CreateColorIDFromMaterialGroupMask_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Create a ColorID on the currently selected Material Group Mask.
-#               (Create a new Group Mask on top of the BaseShader with a Contant as Diffuse color (random values))
-#
-# Author:       Franck ELISABETH (with the help of Pavel Efimov)
-# Website:      https://www.smoluck.com
-#
-# Created:      31/03/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_QT_CreateColorIDFromMaterialGroupMask_Cmd.py
+
+Purpose:      This script is designed to
+              Create a ColorID on the currently selected Material Group Mask.
+              (Create a new Group Mask on top of the BaseShader with a Contant as Diffuse color (random values))
+
+Author:       Franck ELISABETH (with the help of Pavel Efimov)
+Website:      https://www.smoluck.com
+Created:      31/03/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

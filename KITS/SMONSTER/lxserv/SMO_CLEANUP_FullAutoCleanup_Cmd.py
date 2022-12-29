@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_CLEANUP_FullAutoCleanup_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Cleanup all the scene using User Defined Preferences.
-#
-#
-# Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      https://www.smoluck.com
-#
-# Created:      14/05/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CLEANUP_FullAutoCleanup_Cmd.py
+
+Purpose:      This script is designed to:
+              Cleanup all the scene using User Defined Preferences.
+
+Author:       Franck ELISABETH (with the help of James O'Hare)
+Website:      https://www.smoluck.com
+Created:      14/05/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -51,7 +48,7 @@ class SMO_Cleanup_FullAutoCleanup_Cmd(lxu.command.BasicCommand):
     
     def basic_Execute(self, msg, flags):
         
-        # ############### Look at User Prefs ###############
+        # ------------- Look at User Prefs ------------- #
         FullAutoDelCam = lx.eval('user.value SMO_UseVal_CLEANUP_FullAuto_DeleteCam ?')
         lx.out('Delete all Cameras:', FullAutoDelCam)
         
@@ -122,7 +119,7 @@ class SMO_Cleanup_FullAutoCleanup_Cmd(lxu.command.BasicCommand):
         
         ConvertItemIndexStyleSceneWise = lx.eval('user.value SMO_UseVal_CLEANUP_FullAuto_ConvertItemIndexStyleSceneWise ?')
         lx.out('Convert all Space and/or Underscore in Meshes/Locator/GroupLocator names to match the current Modo Prefs Index Style:', ConvertItemIndexStyleSceneWise)
-        # ############### Look at User Prefs ###############
+        # ------------- Look at User Prefs ------------- #
         
         
         

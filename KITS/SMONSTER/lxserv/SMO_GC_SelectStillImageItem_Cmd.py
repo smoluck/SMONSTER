@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_GC_SelectStillImageItem_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Create a still images (clips) Item of the current scene.
-#
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond)
-# Website:      https://www.smoluck.com
-#
-# Created:      12/08/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_SelectStillImageItem_Cmd.py
+
+Purpose:      This script is designed to
+              Create a still images (clips) Item of the current scene.
+
+Author:       Franck ELISABETH (with the help of Tom Dymond)
+Website:      https://www.smoluck.com
+Created:      12/08/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -61,7 +58,7 @@ class SMO_GC_SelectStillImageItem_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
         
-        # # clear selection of any item in the scene.
+        # clear selection of any item in the scene.
         # lx.eval('select.clear item')
         # lx.eval('select.drop schmNode')
         # lx.eval('select.drop channel')
@@ -84,7 +81,7 @@ class SMO_GC_SelectStillImageItem_Cmd(lxu.command.BasicCommand):
     def cmd_Query(self, index, vaQuery):
         scene = modo.scene.current()
         
-        # # clear selection of any item in the scene.
+        # clear selection of any item in the scene.
         # lx.eval('select.clear item')
         # lx.eval('select.drop schmNode')
         # lx.eval('select.drop channel')

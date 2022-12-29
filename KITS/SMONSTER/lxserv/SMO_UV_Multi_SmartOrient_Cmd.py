@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_UV_Multi_SmartOrient_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Orient the current UV island based
-#               on Poly or Edge Selection
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      28/12/2018
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_UV_Multi_SmartOrient_Cmd.py
+
+Purpose:      This script is designed to
+              Orient the current UV island based
+              on Poly or Edge Selection
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      28/12/2018
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -72,11 +70,11 @@ class SMO_UV_Multi_SmartOrient_Cmd(lxu.command.BasicCommand):
         # scene = modo.scene.current()
         #
         # SO_SelItem = lxu.select.ItemSelection().current()
-        # # print('lxu.object.Item : ', SO_SelItem)
+        # print('lxu.object.Item : ', SO_SelItem)
         #
         # mesh = scene.selectedByType('mesh')
-        # # print('modo.Mesh :', mesh)
-        # # print('modo.Mesh list length:', len(mesh))
+        # print('modo.Mesh :', mesh)
+        # print('modo.Mesh list length:', len(mesh))
         #
         # SO_TargetIDList = []
         # for item in mesh:
@@ -87,7 +85,7 @@ class SMO_UV_Multi_SmartOrient_Cmd(lxu.command.BasicCommand):
         #         ID = item.Ident()
         #         # print(ID)
         #         SO_TargetIDList.append(ID)
-        # # print(SO_TargetIDList)
+        # print(SO_TargetIDList)
         #
         # SO_ComponentsTuple = []
         # if CM == 2:
@@ -174,14 +172,14 @@ class SMO_UV_Multi_SmartOrient_Cmd(lxu.command.BasicCommand):
         # scene.select(mesh)
         #
         # #####################################################
-        # # MODO version checks.
-        # # Modo 13.0 and up have UV Seam map.
-        # # Version below 13.0 haven't
+        # MODO version checks.
+        # Modo 13.0 and up have UV Seam map.
+        # Version below 13.0 haven't
         # Modo_ver = int(lx.eval('query platformservice appversion ?'))
         # lx.out('Modo Version:', Modo_ver)
         # #####################################################
         #
-        # # select back the Polygons
+        # select back the Polygons
         # lx.eval('smo.GC.DeselectAll')
         # scene.select(mesh)
         # if CM == 2:

@@ -1,18 +1,16 @@
 # python
 """
-# Name:         SMO_VENOM_MainCommand_Cmd.py
-# Version:      6.0
-# 
-# Purpose:      This script is designed to:
-#               Hard Set Vertex Normal on current Mesh layer using
-#               Facing Ratio to flatten the area and fix jagged Vertex Normals.
-#               Mouse over a polygon in item mode and launch
-# 
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-# 
-# Created:      22/09/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_VENOM_MainCommand_Cmd.py
+
+Purpose:      This script is designed to:
+              Hard Set Vertex Normal on current Mesh layer using
+              Facing Ratio to flatten the area and fix jagged Vertex Normals.
+              Mouse over a polygon in item mode and launch
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      22/09/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 from math import degrees
@@ -125,7 +123,7 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
             return [degrees(a)]
 
 
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         args = lx.args()
         #lx.out(args)
 
@@ -140,22 +138,22 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
         # 1 = Select Loop
         SelectLoop = IntSelectLoop
         #lx.out('Select Loop Automatic:', SelectLoop)
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
 
         # ------------------------------ #
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
 
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
         lx.eval("user.defNew name:SMO_SafetyCheck_PolygonModeEnabled type:integer life:momentary")
 
         lx.eval("user.defNew name:SMO_SafetyCheck_ItemModeEnabled type:integer life:momentary")
         lx.eval("user.defNew name:SMO_SafetyCheck_min1PolygonSelected type:integer life:momentary")
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
 
-        ###############COPY/PASTE Check Procedure#################
+        # ---------------- COPY/PASTE Check Procedure ---------------- #
         ## create variables
         lx.eval("user.defNew name:User_Pref_CopyDeselectChangedState type:boolean life:momentary")
         lx.eval("user.defNew name:User_Pref_PasteSelectionChangedState type:boolean life:momentary")
@@ -199,9 +197,9 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
         # Is Paste Deselect True ?
         if User_Pref_PasteDeselect == 1:
             User_Pref_PasteDeselectChangedState = 0
-        ################################################
+        # -------------------------------------------- #
 
-        ################################################
+        # -------------------------------------------- #
         VMapsName = lx.eval('pref.value application.defaultVertexNormals ?')
         #lx.out(VMapsName)
 
@@ -210,7 +208,7 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
 
         ShowVNVectors = bool(lx.eval('user.value SMO_UseVal_VENOM_ShowVNVectors ?'))
         #lx.out(ShowVNVectors)
-        ################################################
+        # -------------------------------------------- #
 
         # -------------------------- #
         # <---( SAFETY CHECK 1 )---> #
@@ -461,7 +459,7 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
             #lx.out('script running: right amount of polygons in selection')
         # at Least 1 Polygons is selected --- END
 
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- START
         #####
         TotalSafetyCheckTrueValue = 2
         lx.out('Desired Value', TotalSafetyCheckTrueValue)
@@ -474,7 +472,7 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
             lx.out('Current Value', TotalSafetyCheck)
 
         #####
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- END
 
         Modo_ver = int(lx.eval ('query platformservice appversion ?'))
         print('Modo Version:',Modo_ver)
@@ -483,12 +481,12 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
         # <----( Main Macro )----> #
         # ------------------------ #
         
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- START
         if TotalSafetyCheck == TotalSafetyCheckTrueValue:
             #############
-            # # Make Inactive Items Invisible for editing
+            # Make Inactive Items Invisible for editing
             # lx.eval('view3d.inactiveInvisible true')
-            # # Hide Locator visibility
+            # Hide Locator visibility
             # lx.eval('view3d.showLocators false')
 
             # Load the AVP VeNom Preset to help work.
@@ -773,7 +771,7 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
             # lx.eval('smo.GC.DeselectAll') Bugfix to keep current selection active in Item Mode
 
 
-        ###############COPY/PASTE END Procedure#################
+        # -------------- COPY/PASTE END Procedure  -------------- #
         # Restore user Preferences:
         if User_Pref_CopyDeselectChangedState == 1:
             lx.eval('pref.value application.copyDeSelection false')
@@ -784,7 +782,7 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
         if User_Pref_PasteDeselectChangedState == 1:
             lx.eval('pref.value application.pasteDeSelection false')
             lx.out('"Deselect Elements Before Pasting" have been Restored')
-        ########################################################
+        # -------------------------------------------- #
 
         if IsolateMode:
             lx.eval('view3d.inactiveInvisible true')

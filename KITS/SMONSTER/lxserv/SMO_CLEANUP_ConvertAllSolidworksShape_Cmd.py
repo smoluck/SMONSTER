@@ -1,18 +1,15 @@
 # python
 """
-# Name:         SMO_CLEANUP_ConvertAllSolidWorksShape_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Search for all Solidworks Shape Items in the scene and convert them to regular Meshes.
-#               Delete the empty meshes in the process as well.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      11/05/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CLEANUP_ConvertAllSolidWorksShape_Cmd.py
+
+Purpose:      This script is designed to:
+              Search for all Solidworks Shape Items in the scene and convert them to regular Meshes.
+              Delete the empty meshes in the process as well.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      11/05/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

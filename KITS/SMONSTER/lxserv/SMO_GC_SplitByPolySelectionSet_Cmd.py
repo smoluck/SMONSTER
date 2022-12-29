@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_GC_SplitByPolySelectionSet_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Split the current MeshLayer by reading the Polygon Selection Sets
-#               and using their names to split the mesh in multiple mesh Layers, with corresponding names.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      28/09/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_SplitByPolySelectionSet_Cmd.py
+
+Purpose:      This script is designed to:
+              Split the current MeshLayer by reading the Polygon Selection Sets
+              and using their names to split the mesh in multiple mesh Layers, with corresponding names.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      28/09/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -78,7 +76,7 @@ class SMO_GC_SplitByPolySelectionSet_Cmd(lxu.command.BasicCommand):
             TargetName = lx.eval('item.name ? xfrmcore')
             lx.out('Current Mesh name is ', TargetName)
 
-            ###############COPY/PASTE Check Procedure#################
+            # ---------------- COPY/PASTE Check Procedure ---------------- #
             ## create variables
             lx.eval("user.defNew name:User_Pref_CopyDeselectChangedState type:boolean life:momentary")
             lx.eval("user.defNew name:User_Pref_PasteSelectionChangedState type:boolean life:momentary")
@@ -122,7 +120,7 @@ class SMO_GC_SplitByPolySelectionSet_Cmd(lxu.command.BasicCommand):
             # Is Paste Deselect True ?
             if User_Pref_PasteDeselect == 1:
                 User_Pref_PasteDeselectChangedState = 0
-            ################################################
+            # -------------------------------------------- #
 
             # Get the list of all Polygons Selection Sets using the SelSet ID count.
             selSets = []
@@ -188,7 +186,7 @@ class SMO_GC_SplitByPolySelectionSet_Cmd(lxu.command.BasicCommand):
                     pass
             del selSets[:]
 
-            ###############COPY/PASTE END Procedure#################
+            # -------------- COPY/PASTE END Procedure  -------------- #
             # Restore user Preferences:
             if User_Pref_CopyDeselectChangedState == 1:
                 lx.eval('pref.value application.copyDeSelection false')
@@ -199,7 +197,7 @@ class SMO_GC_SplitByPolySelectionSet_Cmd(lxu.command.BasicCommand):
             if User_Pref_PasteDeselectChangedState == 1:
                 lx.eval('pref.value application.pasteDeSelection false')
                 lx.out('"Deselect Elements Before Pasting" have been Restored')
-            ########################################################
+            # -------------------------------------------- #
 
             ''' Script with lx.Service
             # Layer service

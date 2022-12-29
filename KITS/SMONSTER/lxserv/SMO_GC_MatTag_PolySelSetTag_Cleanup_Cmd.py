@@ -1,21 +1,19 @@
 # python
 """
-# Name:         SMO_GC_MatTag_and_PolySelSetTags_Cleanup_Cmd.py
-# Version:      1.01
-#
-# Purpose:      This script is designed to:
-#               Create random Materials and Selection Set (polygons) to the selected Mesh Layers
-#               Each Mesh Layer will have is own:
-#                       Material Tag                ==> "MeshName"_mat
-#                       Polygon Selection Set       ==> SelSet_"MeshName"
-#
-#               Select Mesh Layers and run. 
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      20/09/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_MatTag_and_PolySelSetTags_Cleanup_Cmd.py
+
+Purpose:      This script is designed to:
+              Create random Materials and Selection Set (polygons) to the selected Mesh Layers
+              Each Mesh Layer will have its own:
+                      Material Tag                ==> "MeshName"_mat
+                      Polygon Selection Set       ==> SelSet_"MeshName"
+
+              Select Mesh Layers and run.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      20/09/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

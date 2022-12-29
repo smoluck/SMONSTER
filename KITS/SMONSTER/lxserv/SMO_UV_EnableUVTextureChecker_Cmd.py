@@ -1,16 +1,15 @@
 # python
 """
-# Name:         SMO_UV_EnableUVTextureChecker_Cmd.py
-# Version:      1.0
-#
-# Purpose:      Select the Mesh in Item Mode
-#               Enable the UV Texture Checker in the current Viewport using the UVGrid PNG files from the UV kit. (Argument define the file resolution)
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      14/04/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_UV_EnableUVTextureChecker_Cmd.py
+
+Purpose:      Select the Mesh in Item Mode
+              Enable the UV Texture Checker in the current Viewport using the UVGrid
+              PNG files from the UV kit. (Argument define the file resolution)
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      14/04/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -57,7 +56,7 @@ class SMO_UV_EnableUVTextureChecker_Cmd(lxu.command.BasicCommand):
         RES = self.dyna_Int(0)
 
         ### Load RemoveCoPlanar6Side Preset for the processing ###
-        #####--- Define the Preset directory of the Custom CAD Presets to load the RemoveCoPlanar6Side Assembly --- START ---#####
+        # ---------------- Define the Preset directory of the Custom CAD Presets to load the RemoveCoPlanar6Side Assembly
         #####
         SMO_UVGrid_Path = lx.eval("query platformservice alias ? {kit_SMO_UV:UVGrid}")
         # lx.out('SMO UVGrid Path:', SMO_UVGrid_Path)
@@ -78,7 +77,7 @@ class SMO_UV_EnableUVTextureChecker_Cmd(lxu.command.BasicCommand):
             UVGridFile = (os.path.join(SMO_UVGrid_Path + "\\" + SMO_UVGrid_File_4096))
         # print(UVGridFile)
         #####
-        #####--- Define the Preset directory of the Custom CAD Presets to load the RemoveCoPlanar6Side Assembly --- START ---#####
+        # ---------------- Define the Preset directory of the Custom CAD Presets to load the RemoveCoPlanar6Side Assembly
 
         try:
             lx.eval('layout.window UVsPBGlobal')

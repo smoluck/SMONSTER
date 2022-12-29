@@ -1,19 +1,14 @@
 # python
 """
-# Name:         SMO_GC_ReadTags_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Read value of defined Tags (by Args)
-#
-#
-#
-# Author:       (Code by Ivo Grigull -- CmdSetTag.py command)
-#               Adapted to kit needs:     Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      30/11/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_ReadTags_Cmd.py
+
+Purpose:      This script is designed to:
+              Read value of defined Tags (by Args)
+
+Author:       (Code by Ivo Grigull -- CmdSetTag.py command)
+              Adapted to kit needs:     Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      30/11/2020
 """
 
 import lx

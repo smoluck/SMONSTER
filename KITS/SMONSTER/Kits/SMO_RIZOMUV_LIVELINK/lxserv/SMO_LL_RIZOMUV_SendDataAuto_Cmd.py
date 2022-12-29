@@ -1,18 +1,16 @@
 # python
 """
-# Name:             SMO_LL_RIZOMUV_SendDataAuto_Cmd.py
-# Version:          1.95
-#
-# Purpose:          This Command is designed to :
-#                   Send as an FBX file, the current selected Meshes as FBX 2013 to RizomUV 
-#                   and get back the UV data updated in Modo, once the FBX file is saved back 
-#                   (original file overwritted by RizomUV).
-#
-# Author:           Franck ELISABETH (With the help of James O'Hare (Farfarer)
-# Website:          https://www.smoluck.com
-#
-# Modified:         22/05/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:           SMO_LL_RIZOMUV_SendDataAuto_Cmd.py
+
+Purpose:        This Command is designed to:
+                Send as an FBX file, the current selected Meshes as FBX 2013 to RizomUV
+                and get back the UV data updated in Modo, once the FBX file is saved back
+                (original file overwritted by RizomUV).
+
+Author:         Franck ELISABETH (With the help of James O'Hare (Farfarer)
+Website:        https://www.smoluck.com
+Created:        22/05/2017
+Copyright:      (c) Franck Elisabeth 2017-2022
 """
 
 # !/usr/bin/env python
@@ -170,7 +168,7 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd(lxu.command.BasicCommand):
             lx.out('Requires Modo 901 or newer.')
             return
 
-        # # Automatically Select UV Maps on the meshs selected
+        # Automatically Select UV Maps on the meshs selected
         # lx.eval('smo.GC.ClearSelectionVmap 1 0')
 
         # Get the selected UV names.

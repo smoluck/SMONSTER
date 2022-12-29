@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_CLEANUP_UpdateMat_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Update Materials Smoothing Angle to 179 Degree and
-#               set ON the Weight by Polygon Area according to SMO Modo Workflow.
-#
-# Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      https://www.smoluck.com
-#
-# Created:      17/02/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CLEANUP_UpdateMat_Cmd.py
+
+Purpose:      This script is designed to:
+              Update Materials Smoothing Angle to 179 Degree and
+              set ON the Weight by Polygon Area according to SMO Modo Workflow.
+
+Author:       Franck ELISABETH (with the help of James O'Hare)
+Website:      https://www.smoluck.com
+Created:      17/02/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

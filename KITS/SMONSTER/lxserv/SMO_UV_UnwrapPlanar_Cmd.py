@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_UV_UnwrapPlanar_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Unwrap the current Polygon Selection
-#               on defined Axis.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      28/12/2018
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_UV_UnwrapPlanar_Cmd.py
+
+Purpose:      This script is designed to
+              Unwrap the current Polygon Selection
+              on defined Axis.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      28/12/2018
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -138,16 +136,16 @@ class SMO_UV_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
         AutoExpandSel = lx.eval('user.value SMO_UseVal_UV_AutoExpandSelectionState ?')
         lx.out('Auto Expand Selection state:', AutoExpandSel)
 
-        # # ------------- ARGUMENTS Test
+        # ------------- ARGUMENTS Test
         # UVProjAxe = 1
         # Similar = 0
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
 
 
         # ------------------------------ #
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
         lx.eval("user.defNew name:SMO_SafetyCheck_UVUnwrapPlanar_VertexModeEnabled type:integer life:momentary")
         lx.eval("user.defNew name:SMO_SafetyCheck_UVUnwrapPlanar_EdgeModeEnabled type:integer life:momentary")
@@ -158,7 +156,7 @@ class SMO_UV_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
         ## Selected UVmap Name
         lx.eval("user.defNew name:UVUnwrapPlanar_UVMapName type:string life:momentary")
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
 
         # Deselect all other VertexMaps other than UV Maps
         lx.eval('smo.GC.ClearSelectionVmap 2 1')
@@ -353,7 +351,7 @@ class SMO_UV_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
         SelItems = (lx.evalN('query sceneservice selection ? locator'))
         lx.out('Selected items is:', SelItems)
 
-        # ##### UV SEAM Map Detection #####
+        # # ------------- UV SEAM Map Detection
 
         # #Define the UV Seam vmap name Search case.
         # lx.eval("user.defNew name:UnwrapPlanar_DesiredUVSEAMmapName type:string life:momentary")
@@ -363,36 +361,36 @@ class SMO_UV_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
         # lx.eval("user.defNew name:UnwrapPlanar_NoUVSeamMap type:string life:momentary")
         # UnwrapPlanar_NoUVSeamMap = '_____n_o_n_e_____'
 
-        # # Get the number of UV Seam map available on mesh
+        # Get the number of UV Seam map available on mesh
         # DetectedUVSEAMmapCount = len(lx.evalN('vertMap.list seam ?'))
         # lx.out('UV SEAM Map Count:', DetectedUVSEAMmapCount)
 
-        # # Get the name of UV Seam map available on mesh
+        # Get the name of UV Seam map available on mesh
         # DetectedUVSEAMmapName = lx.eval('vertMap.list seam ?')
         # lx.out('UV SEAM Map Name:', DetectedUVSEAMmapName)
-        # ##### UV SEAM Map Detection #####
+        # # ------------- UV SEAM Map Detection
 
         # #####
-        # #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
 
         # if Modo_ver >= 1300 :
         # ## UVSEAM Map Selection Check ##
         # lx.out('<--- UVSEAM Map Safety Check --->')
         # lx.out('<---------- START ---------->')
         # if DetectedUVSEAMmapName == UnwrapPlanar_NoUVSeamMap:
-        # # lx.eval('vertMap.list seam ?')
-        # # lx.eval('vertMap.list seam _____n_e_w_____')
+        # lx.eval('vertMap.list seam ?')
+        # lx.eval('vertMap.list seam _____n_e_w_____')
         # lx.eval('vertMap.new "UV Seam" seam true {0.78 0.78 0.78} 2.0')
         # lx.eval('vertMap.list seam "UV Seam"')
 
         # elif DetectedUVSEAMmapName == UnwrapPlanar_DesiredUVSEAMmapName:
         # lx.out('UV Map and UVSEAM Map Selected')
         # lx.eval('vertMap.list seam "UV Seam"')
-        # # UserUVSEAMmapName = lx.eval1('query layerservice vmap.name ? %s' %UVSEAM_Selected)
-        # # lx.out('USER UVSEAM Map Name:', UserUVSEAMmapName)
+        # UserUVSEAMmapName = lx.eval1('query layerservice vmap.name ? %s' %UVSEAM_Selected)
+        # lx.out('USER UVSEAM Map Name:', UserUVSEAMmapName)
 
         # lx.out('<----------- END ----------->')
-        # # ------------------------------ #
+        # ------------------------------ #
 
         # -------------------------- #
         # <---( SAFETY CHECK 2 )---> #
@@ -478,7 +476,7 @@ class SMO_UV_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
             # sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
         # Polygon or Edge Selection Mode enabled --- END
 
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- START
         #####
         TotalSafetyCheckTrueValue = 3
         lx.out('Desired Value', TotalSafetyCheckTrueValue)
@@ -486,7 +484,7 @@ class SMO_UV_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
                     SMO_SafetyCheck_Only1MeshItemSelected + SMO_SafetyCheck_UVUnwrapPlanar_PolygonModeEnabled + SMO_SafetyCheck_UVUnwrapPlanar_min1PolygonSelected)
         lx.out('Current Value', TotalSafetyCheck)
         #####
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- END
 
         # BugFix Selection Facing ratio value = flat 2 degree
         LazySelectUserValue = 2
@@ -495,20 +493,20 @@ class SMO_UV_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
         # <----( Main Macro : )----> #
         # -------------------------- #
         if SMO_SafetyCheck_UVUnwrapPlanar_UVMapCount:
-            #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
+            # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- START
             if TotalSafetyCheck == TotalSafetyCheckTrueValue:
                 lx.eval('select.type item')
                 lx.eval('item.refSystem %s' % SelItems[0])
                 lx.eval('select.type polygon')
                 if Similar == 1:
-                    # # LazySelectUserValue = lx.eval('user.value sene_LS_facingRatio ?')
+                    # LazySelectUserValue = lx.eval('user.value sene_LS_facingRatio ?')
                     # lx.out('Lazy Select Value:', LazySelectUserValue)
                     # lx.eval('user.value sene_LS_facingRatio 2')
                     # lx.eval('@lazySelect.pl selectTouching 2')
                     lx.eval('smo.GC.SelectCoPlanarPoly 0 2 0')
                     # lx.eval('user.value sene_LS_facingRatio {%s}' % LazySelectUserValue)
                 if Similar == 2:
-                    # # LazySelectUserValue = lx.eval('user.value sene_LS_facingRatio ?')
+                    # LazySelectUserValue = lx.eval('user.value sene_LS_facingRatio ?')
                     # lx.out('Lazy Select Value:', LazySelectUserValue)
                     # lx.eval('user.value sene_LS_facingRatio 2')
                     # lx.eval('@lazySelect.pl selectOnObject')
@@ -696,7 +694,7 @@ class SMO_UV_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
             sys.exit
 
         lx.out('End of Unwrap Planar Script')
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
 lx.bless(SMO_UV_UnwrapPlanar_Cmd, Cmd_Name)

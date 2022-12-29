@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_GC_CheckAndSetFullScreenState_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Check Top/Down/Left/Right Side Bars State.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      06/12/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_CheckAndSetFullScreenState_Cmd.py
+
+Purpose:      This script is designed to:
+              Check Top/Down/Left/Right Side Bars State.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      06/12/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

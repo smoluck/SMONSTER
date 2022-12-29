@@ -1,18 +1,14 @@
 # python
 """
-# Name:         SMO_QT_MoveColorIDGrpMaskToTopMostPos_Cmd.py
-# Version:      1.00
-#
-# Purpose:      This script is designed to
-#               Select BaseShader Item in current Scene (Assuming there is only one)
-#
-#
-#
-# Author:       Franck ELISABETH (with the help of Mateusz Losinski )
-# Website:      https://www.smoluck.com
-#
-# Created:      13/12/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_QT_MoveColorIDGrpMaskToTopMostPos_Cmd.py
+
+Purpose:      This script is designed to
+              Select BaseShader Item in current Scene (Assuming there is only one)
+
+Author:       Franck ELISABETH (with the help of Mateusz Losinski )
+Website:      https://www.smoluck.com
+Created:      13/12/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

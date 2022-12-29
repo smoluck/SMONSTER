@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_GC_SelectMTypMesh_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Select corresponding LowPoly / Cage / HighPoly meshes for further FBX Export.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      30/11/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_SelectMTypMesh_Cmd.py
+
+Purpose:      This script is designed to:
+              Select corresponding LowPoly / Cage / HighPoly meshes for further FBX Export.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      30/11/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

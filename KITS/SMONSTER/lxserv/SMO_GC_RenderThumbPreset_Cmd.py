@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_GC_RenderThumbPreset_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Replace the current Preset Thumbnail by SMO ThumbnailMaker_Template scene Render.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      03/02/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_RenderThumbPreset_Cmd.py
+
+Purpose:      This script is designed to:
+              Replace the current Preset Thumbnail by SMO ThumbnailMaker_Template scene Render.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      03/02/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

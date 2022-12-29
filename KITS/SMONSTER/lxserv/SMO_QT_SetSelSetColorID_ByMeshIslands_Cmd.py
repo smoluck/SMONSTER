@@ -1,18 +1,16 @@
 # python
 """
-# Name:         SMO_QT_SetSelSetColorID_ByMeshIslands_Cmd.py
-# Version:      1.00
-#
-# Purpose:      This script is designed to
-#               Set a Diffuse Color override using Selection Set (polygons) on the selected Mesh Layers by Polygons Continuity (Islands).
-#               Named the new Mat using "ColorID" as Prefix.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      12/04/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_QT_SetSelSetColorID_ByMeshIslands_Cmd.py
+
+Purpose:      This script is designed to
+              Set a Diffuse Color override using Selection Set (polygons)
+              on the selected Mesh Layers by Polygons Continuity (Islands).
+              Named the new Mat using "ColorID" as Prefix.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      12/04/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

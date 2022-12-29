@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_QT_SetMatColorIDRandom_Cmd.py
-# Version:      1.00
-#
-# Purpose:      This script is designed to
-#               Set a random Diffuse Color using Material Tag (polygons) on the selected Mesh Layers.
-#               Named the new Mat using "ColorID" as Prefix.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      19/01/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_QT_SetMatColorIDRandom_Cmd.py
+
+Purpose:      This script is designed to
+              Set a random Diffuse Color using Material Tag (polygons) on the selected Mesh Layers.
+              Named the new Mat using "ColorID" as Prefix.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      19/01/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -415,10 +413,10 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
         # lx.eval('smo.GC.DeselectAll')
         # lx.eval('smo.QT.SelectBaseShader')
         # baseShad = lx.eval('query sceneservice defaultShader.parent ? {Base Shader}')
-        # # print(baseShad)
+        # print(baseShad)
         # scene.select(GrpMask)
         # TargetGrpMask = ItemIdent()
-        # # print(TargetGrpMask)
+        # print(TargetGrpMask)
         # lx.eval('texture.parent {%s} {%s} item:{%s}' % (baseShad, NewID, TargetGrpMask))
         #############
 

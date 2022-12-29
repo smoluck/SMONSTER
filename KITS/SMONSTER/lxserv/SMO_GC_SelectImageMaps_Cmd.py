@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_GC_SelectImageMaps_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Select a still images (clips) Item of the current scene and set is Effect mode via arguments.
-# 
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond)
-# Website:      https://www.smoluck.com
-#
-# Created:      12/08/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_SelectImageMaps_Cmd.py
+
+Purpose:      This script is designed to
+              Select a still images (clips) Item of the current
+              scene and set is Effect mode via arguments.
+
+Author:       Franck ELISABETH (with the help of Tom Dymond)
+Website:      https://www.smoluck.com
+Created:      12/08/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

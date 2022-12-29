@@ -1,18 +1,16 @@
 # python
 """
-# Name:         SMO_GC_SplitMeshByUDIM_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Split the current Mesh into multiple one using UDIM IDs.
-#               Create New Mesh Layers, using target
-#               Mesh Name + PrefixName + UDIM ID from selected Mesh.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      23/02/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_SplitMeshByUDIM_Cmd.py
+
+Purpose:      This script is designed to
+              Split the current Mesh into multiple one using UDIM IDs.
+              Create New Mesh Layers, using target
+              Mesh Name + PrefixName + UDIM ID from selected Mesh.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      23/02/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_UV_UnwrapRectangleOrient_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Unwrap the current Polygon Selection using Rectangle method 
-#               and Orient the UV Island on defined direction (Via Arguments).
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      01/07/2018
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_UV_UnwrapRectangleOrient_Cmd.py
+
+Purpose:      This script is designed to
+              Unwrap the current Polygon Selection using Rectangle method
+              and Orient the UV Island on defined direction (Via Arguments).
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      01/07/2018
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -94,14 +92,14 @@ class SMO_UV_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
         RelocateInArea = lx.eval('user.value SMO_UseVal_UV_RelocateInArea ?')
         lx.out('Relocate In Area state:', RelocateInArea)
 
-        # # ------------- ARGUMENTS Test
+        # ------------- ARGUMENTS Test
         # Orient_Dir = 0
-        # ############### ARGUMENT ###############
+        # ------------- ARGUMENT ------------- #
 
         # ------------------------------ #
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
         lx.eval("user.defNew name:SMO_SafetyCheck_UVUnwrapRectOri_VertexModeEnabled type:integer life:momentary")
         lx.eval("user.defNew name:SMO_SafetyCheck_UVUnwrapRectOri_EdgeModeEnabled type:integer life:momentary")
@@ -110,7 +108,7 @@ class SMO_UV_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
         ## UVmap Selected Count
         lx.eval("user.defNew name:SMO_SafetyCheck_UVUnwrapRectOri_UVMapCount type:boolean life:momentary")
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
 
         lx.eval('smo.GC.ClearSelectionVmap 3 1')
         lx.eval('smo.GC.ClearSelectionVmap 4 1')
@@ -267,7 +265,7 @@ class SMO_UV_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
         SelItems = (lx.evalN('query sceneservice selection ? locator'))
         lx.out('Selected items is:', SelItems)
 
-        # ##### UV SEAM Map Detection #####
+        # # ------------- UV SEAM Map Detection
 
         # #Define the UV Seam vmap name Search case.
         # lx.eval("user.defNew name:UnwrapRectOri_DesiredUVSEAMmapName type:string life:momentary")
@@ -277,36 +275,36 @@ class SMO_UV_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
         # lx.eval("user.defNew name:UnwrapRectOri_NoUVSeamMap type:string life:momentary")
         # UnwrapRectOri_NoUVSeamMap = '_____n_o_n_e_____'
 
-        # # Get the number of UV Seam map available on mesh
+        # Get the number of UV Seam map available on mesh
         # DetectedUVSEAMmapCount = len(lx.evalN('vertMap.list seam ?'))
         # lx.out('UV SEAM Map Count:', DetectedUVSEAMmapCount)
 
-        # # Get the name of UV Seam map available on mesh
+        # Get the name of UV Seam map available on mesh
         # DetectedUVSEAMmapName = lx.eval('vertMap.list seam ?')
         # lx.out('UV SEAM Map Name:', DetectedUVSEAMmapName)
-        # ##### UV SEAM Map Detection #####
+        # # ------------- UV SEAM Map Detection
 
         # #####
-        # #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
 
         # if Modo_ver >= 1300 :
         # ## UVSEAM Map Selection Check ##
         # lx.out('<--- UVSEAM Map Safety Check --->')
         # lx.out('<---------- START ---------->')
         # if DetectedUVSEAMmapName == UnwrapRectOri_NoUVSeamMap:
-        # # lx.eval('vertMap.list seam ?')
-        # # lx.eval('vertMap.list seam _____n_e_w_____')
+        # lx.eval('vertMap.list seam ?')
+        # lx.eval('vertMap.list seam _____n_e_w_____')
         # lx.eval('vertMap.new "UV Seam" seam true {0.78 0.78 0.78} 2.0')
         # lx.eval('vertMap.list seam "UV Seam"')
 
         # elif DetectedUVSEAMmapName == UnwrapRectOri_DesiredUVSEAMmapName:
         # lx.out('UV Map and UVSEAM Map Selected')
         # lx.eval('vertMap.list seam "UV Seam"')
-        # # UserUVSEAMmapName = lx.eval1('query layerservice vmap.name ? %s' %UVSEAM_Selected)
-        # # lx.out('USER UVSEAM Map Name:', UserUVSEAMmapName)
+        # UserUVSEAMmapName = lx.eval1('query layerservice vmap.name ? %s' %UVSEAM_Selected)
+        # lx.out('USER UVSEAM Map Name:', UserUVSEAMmapName)
 
         # lx.out('<----------- END ----------->')
-        # # ------------------------------ #
+        # ------------------------------ #
 
         # -------------------------- #
         # <---( SAFETY CHECK 2 )---> #
@@ -393,7 +391,7 @@ class SMO_UV_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
             # sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
         # Polygon or Edge Selection Mode enabled --- END
 
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- START
         #####
         TotalSafetyCheckTrueValue = 3
         lx.out('Desired Value', TotalSafetyCheckTrueValue)
@@ -401,14 +399,14 @@ class SMO_UV_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
                     SMO_SafetyCheck_UVUnwrapRectOri_Only1MeshItemSelected + SMO_SafetyCheckUVUnwrapSmart_PolygonModeEnabled + SMO_SafetyCheck_UVUnwrapRectOri_min1PolygonSelected)
         lx.out('Current Value', TotalSafetyCheck)
         #####
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- END
 
         # -------------------------- #
         # <----( Main Macro : )----> #
         # -------------------------- #
 
         if SMO_SafetyCheck_UVUnwrapRectOri_UVMapCount:
-            #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
+            # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- START
             if TotalSafetyCheck == TotalSafetyCheckTrueValue:
 
                 # Tag the UV as Done
@@ -418,7 +416,7 @@ class SMO_UV_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
                 lx.eval('tool.apply')
                 lx.eval('tool.doapply')
                 lx.eval('select.nextMode')
-                # # replay name:"Normalize Texel Density"
+                # replay name:"Normalize Texel Density"
                 # lx.eval('texeldensity.normalize')
                 lx.eval('!uv.rectangle false 0.2 false false')
                 if OrientDir == 0:
@@ -469,7 +467,7 @@ class SMO_UV_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
                 sys.exit
 
             lx.out('End of Unwrap Planar Script')
-            #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
+            # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
 lx.bless(SMO_UV_UnwrapRectangleOrient_Cmd, Cmd_Name)

@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_BAKE_CreateMikkTangentBasis_Cmd.py
-# Version:      1.20
-#
-# Purpose:      This Command is designed to :
-#               Select the LowPoly meshes and Create MikkTangent Basis Map.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Modified:     09/07/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_BAKE_CreateMikkTangentBasis_Cmd.py
+
+Purpose:      This Command is designed to:
+              Select the LowPoly meshes and Create MikkTangent Basis Map.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:     09/07/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

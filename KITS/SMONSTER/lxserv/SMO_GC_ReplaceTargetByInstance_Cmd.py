@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_GC_ReplaceTargetByInstance_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               From selected targets, create a copy or an instance of the last selected Mesh, without or with a Guide Mesh creation.
-#
-#
-# Author:       Franck ELISABETH (based on William Vaughan Script)
-# Website:      https://www.smoluck.com
-#
-# Created:      19/06/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_ReplaceTargetByInstance_Cmd.py
+
+Purpose:      This script is designed to:
+              From selected targets, create a copy or an instance of the last
+              selected Mesh, without or with a Guide Mesh creation.
+
+Author:       Franck ELISABETH (based on William Vaughan Script)
+Website:      https://www.smoluck.com
+Created:      19/06/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

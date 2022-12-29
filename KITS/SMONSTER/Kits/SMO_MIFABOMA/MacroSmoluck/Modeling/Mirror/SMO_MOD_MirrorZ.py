@@ -1,27 +1,26 @@
 # python
 """
-# Name:         SMO_MOD_MirrorZ.py
-# Version: 1.0
-#
-# Purpose: This script is designed to
-# Mirror the last Polygon Selection
-# from the current Layer on Axis Z.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      16/09/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:               SMO_MOD_MirrorZ.py
+
+Purpose:            This Script is designed to:
+                    Mirror the last Polygon Selection
+                    from the current Layer on Axis Z.
+
+Author:             Franck ELISABETH
+Website:            https://www.smoluck.com
+Created:            16/09/2019
+Copyright:          (c) Franck Elisabeth 2017-2022
 """
 
+import lx
 import modo
+
 scene = modo.scene.current()
 mesh = scene.selectedByType('mesh')[0]
 CsPolys = len(mesh.geometry.polygons.selected)
 SelItems = (lx.evalN('query sceneservice selection ? locator'))
-lx.out('In Selected items, List of their Unique Name is:',SelItems)
+lx.out('In Selected items, List of their Unique Name is:', SelItems)
 MIRROR_AXES = 2
-
 
 lx.eval('tool.set actr.auto on 0')
 lx.eval('select.type item')
@@ -34,7 +33,7 @@ lx.eval('tool.set *.mirror on')
 # <----( Main Command )----> 
 # -------------------------- #
 
-#Command Block Begin:  ToolAdjustment
+# Command Block Begin:  ToolAdjustment
 lx.eval('tool.setAttr gen.mirror frot axis')
 lx.eval('tool.setAttr gen.mirror cenX 0.0')
 lx.eval('tool.setAttr gen.mirror cenY 0.0')
@@ -66,7 +65,7 @@ if MIRROR_AXES == 2:
     lx.eval('tool.setAttr gen.mirror upX 0.0')
     lx.eval('tool.setAttr gen.mirror upY 1')
     lx.eval('tool.setAttr gen.mirror upZ 0.0')
-#Command Block End:  ToolAdjustment
+# Command Block End:  ToolAdjustment
 
 # -------------------------- #
 # <----( Main Command )----> 

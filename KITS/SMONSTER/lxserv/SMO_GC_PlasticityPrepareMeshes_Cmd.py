@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_GC_PlasticityPrepareMeshes_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Cleanup Meshes data from Plasticity creating Polygons Parts, Unwrapped UVMaps and Merging Solid items.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      04/12/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_PlasticityPrepareMeshes_Cmd.py
+
+Purpose:      This script is designed to:
+              Cleanup Meshes data from Plasticity creating Polygons Parts, Unwrapped UVMaps and Merging Solid items.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      04/12/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -45,12 +43,12 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
         # except:
         # self.TargetMeshList = []
 
-        # # If we do have something selected, put it in self.TargetMeshList
+        # If we do have something selected, put it in self.TargetMeshList
         # if len(self.TargetMeshList) > 0:
         # self.TargetMeshList = self.TargetMeshList
         # else:
         # self.TargetMeshList = None
-        # # print(self.TargetMeshList)
+        # print(self.TargetMeshList)
 
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO

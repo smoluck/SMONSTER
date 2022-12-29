@@ -1,20 +1,17 @@
 # python
 """
-# Name:         SMO_Cleanup_FBX_from_MAX
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Cleanup Files that comes from 3DS MAX:
-#               Removing custom user channels
-#               Cleanup Mesh Topology
-#               Consolidate materials using Tagger command
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      30/05/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_Cleanup_FBX_from_MAX
+
+Purpose:      This script is designed to:
+              Cleanup Files that comes from 3DS MAX:
+              Removing custom user channels
+              Cleanup Mesh Topology
+              Consolidate materials using Tagger command
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      30/05/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -28,7 +25,7 @@ lx.eval('select.itemType mesh')
 
 lx.eval('!mesh.cleanup true mergeVertex:false')
 
-########################### 1 ############################
+# -------------- 1 --------------
 lx.eval('select.drop item')
 lx.eval('select.itemType mesh')
 # Select current scene for query.
@@ -51,7 +48,7 @@ lx.eval('channel.delete')
 lx.eval('select.drop item')
 
 
-########################### 2 ############################
+# -------------- 2 --------------
 lx.eval('select.drop item')
 lx.eval('select.itemType mesh')
 # Select current scene for query.
@@ -69,7 +66,7 @@ lx.eval('channel.delete')
 lx.eval('select.drop item')
 
 
-########################### 3 ############################
+# -------------- 3 --------------
 lx.eval('select.drop item')
 lx.eval('select.itemType mesh')
 # Select current scene for query.
@@ -87,7 +84,7 @@ lx.eval('channel.delete')
 lx.eval('select.drop item')
 
 
-########################### 4 ############################
+# -------------- 4 --------------
 lx.eval('select.itemType mesh')
 # Select current scene for query.
 lx.eval('query sceneservice scene.index ? current')
@@ -104,7 +101,7 @@ lx.eval('channel.delete')
 lx.eval('select.drop item')
 
 
-########################### 5 ############################
+# -------------- 5 --------------
 lx.eval('select.itemType mesh')
 # Select current scene for query.
 lx.eval('query sceneservice scene.index ? current')

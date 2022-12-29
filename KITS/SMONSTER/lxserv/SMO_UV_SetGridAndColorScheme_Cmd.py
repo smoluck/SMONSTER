@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_UV_SetGridAndColorScheme_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Activate the Dark Color Scheme in current UV View
-#               and set the Grid Settings for the Smart Unwrap Tools.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      27/10/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_UV_SetGridAndColorScheme_Cmd.py
+
+Purpose:      This script is designed to:
+              Activate the Dark Color Scheme in current UV View
+              and set the Grid Settings for the Smart Unwrap Tools.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      27/10/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

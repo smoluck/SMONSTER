@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_CAD_CopyAsChildOfCurrentMesh_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Copy selected Polygons to a new mesh as a child of the current mesh item.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      07/05/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CAD_CopyAsChildOfCurrentMesh_Cmd.py
+
+Purpose:      This script is designed to:
+              Copy selected Polygons to a new mesh as a child of the current mesh item.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      07/05/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -143,7 +140,7 @@ class SMO_CAD_CopyCutAsChildOfCurrentMesh_Cmd(lxu.command.BasicCommand):
         # print(RefSystemActive)
 
 
-        ###############COPY/PASTE Check Procedure#################
+        # ---------------- COPY/PASTE Check Procedure ---------------- #
         ## create variables
         lx.eval("user.defNew name:User_Pref_CopyDeselectChangedState type:boolean life:momentary")
         lx.eval("user.defNew name:User_Pref_PasteSelectionChangedState type:boolean life:momentary")
@@ -187,7 +184,7 @@ class SMO_CAD_CopyCutAsChildOfCurrentMesh_Cmd(lxu.command.BasicCommand):
         # Is Paste Deselect True ?
         if User_Pref_PasteDeselect == 1:
             User_Pref_PasteDeselectChangedState = 0
-        ################################################
+        # -------------------------------------------- #
 
 
 
@@ -245,7 +242,7 @@ class SMO_CAD_CopyCutAsChildOfCurrentMesh_Cmd(lxu.command.BasicCommand):
 
 
 
-        ###############COPY/PASTE END Procedure#################
+        # -------------- COPY/PASTE END Procedure  -------------- #
         # Restore user Preferences:
         if User_Pref_CopyDeselectChangedState == 1:
             lx.eval('pref.value application.copyDeSelection false')
@@ -256,7 +253,7 @@ class SMO_CAD_CopyCutAsChildOfCurrentMesh_Cmd(lxu.command.BasicCommand):
         if User_Pref_PasteDeselectChangedState == 1:
             lx.eval('pref.value application.pasteDeSelection false')
             lx.out('"Deselect Elements Before Pasting" have been Restored')
-        ########################################################
+        # -------------------------------------------- #
 
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()

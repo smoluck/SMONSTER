@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_GC_ChamferEdgesByUnit_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This Command is designed to
-#               Chamfer currently selected Edges (or Selection Boundary Edges if in Polygon Mode) with a Chamfer set to 1 Side, using arguments by unit and width.
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      https://www.smoluck.com
-#
-# Created:      16/09/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_ChamferEdgesByUnit_Cmd.py
+
+Purpose:      This Command is designed to
+              Chamfer currently selected Edges (or Selection Boundary Edges if in Polygon Mode) with a Chamfer set to 1 Side, using arguments by unit and width.
+
+Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
+Website:      https://www.smoluck.com
+Created:      16/09/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -136,9 +134,9 @@ class SMO_GC_ChamferEdgesByUnit_Cmd(lxu.command.BasicCommand):
             if EdgeMode == 1 :
                 # if CountEdge >= 1 :
 
-                ###################################
+                # -------------------------------------------- #
                 # ------ Mirror Tool Setup ------ #
-                ###################################
+                # -------------------------------------------- #
                 lx.eval('tool.snapState false')
                 lx.eval('tool.set edge.chamfer on')
                 lx.eval('tool.setAttr edge.chamfer offset {%f}' % Value)

@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_SMONSTER_Club_SetAllKeymaps_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This Command is designed to :
-#               Launch all the Popup Window dialog to set all the default keymaps for Smonster Kits.
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      https://www.smoluck.com
-#
-# Created:      31/01/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_SMONSTER_Club_SetAllKeymaps_Cmd.py
+
+Purpose:      This Command is designed to :
+              Launch all the Popup Window dialog to set all the default keymaps for Smonster Kits.
+
+Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
+Website:      https://www.smoluck.com
+Created:      31/01/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

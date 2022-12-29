@@ -1,18 +1,15 @@
 # python
 """
-# Name:         SMO_GC_CheckMeshBakeName_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Check if the current Mesh item have low / cage / high strings in is name.
-#               It applies different method for renaming based on User Index Style defined in Modo Preferences.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      03/12/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_CheckMeshBakeName_Cmd.py
+
+Purpose:      This script is designed to:
+              Check if the current Mesh item have low / cage / high strings in is name.
+              It applies different method for renaming based on User Index Style defined in Modo Preferences.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      03/12/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

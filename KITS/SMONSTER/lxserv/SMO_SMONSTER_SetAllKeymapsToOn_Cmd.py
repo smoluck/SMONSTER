@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_SMONSTER_SetAllKeymapsToOn_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Set all the Smonster Keymaps Options to TRUE. Setting all Keymap in one Click.
-#
-#
-# Author:       Franck ELISABETH (with the help of Pavel Efimov)
-# Website:      https://www.smoluck.com
-#
-# Created:      26/03/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_SMONSTER_SetAllKeymapsToOn_Cmd.py
+
+Purpose:      This script is designed to
+              Set all the Smonster Keymaps Options to TRUE. Setting all Keymap in one Click.
+
+
+Author:       Franck ELISABETH (with the help of Pavel Efimov)
+Website:      https://www.smoluck.com
+Created:      26/03/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

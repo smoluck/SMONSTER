@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_GC_RebuildSelectedItemsViaPolyline_Cmd
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Merge Selected Items and recreate a Polyline from the resulting edges.
-#               Delete the original Data.
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      https://www.smoluck.com
-#
-# Created:      18/09/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_RebuildSelectedItemsViaPolyline_Cmd
+
+Purpose:      This script is designed to
+              Merge Selected Items and recreate a Polyline from the resulting edges.
+              Delete the original Data.
+
+Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
+Website:      https://www.smoluck.com
+Created:      18/09/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

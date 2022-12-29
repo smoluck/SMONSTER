@@ -1,18 +1,16 @@
 # python
 """
-# Name:         SMO_GC_MergeTransByArg_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Merge the multiple Pos/Rot/Sca Transform into only one Transform Matrix.
-#               via String Argument to define wich Transform to update: POSition / ROTation / SCAle
-#               Select the Mesh item and launch it.
-#
-# Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      https://www.smoluck.com
-#
-# Created:      03/03/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_MergeTransByArg_Cmd.py
+
+Purpose:      This script is designed to:
+              Merge the multiple Pos/Rot/Sca Transform into only one Transform Matrix.
+              via String Argument to define wich Transform to update: POSition / ROTation / SCAle
+              Select the Mesh item and launch it.
+
+Author:       Franck ELISABETH (with the help of James O'Hare)
+Website:      https://www.smoluck.com
+Created:      03/03/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -61,17 +59,17 @@ class SMO_GC_MergeTransByArg_Cmd(lxu.command.BasicCommand):
         rot = locsup.rotation
         sca = locsup.scale
         
-        # # ------------- ARGUMENTS Test
+        # ------------- ARGUMENTS Test
         TransMode = self.dyna_Int (0)
         # Searched = "UVChannel_1"
         # OutputName = "TargetUVMap"
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         # args = lx.args()
         # lx.out(args)
         
         # PreTransform = int(args[0])
         # lx.out('PreTransform search type:', PreTransform)
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         
         
         if TransMode == 0 :

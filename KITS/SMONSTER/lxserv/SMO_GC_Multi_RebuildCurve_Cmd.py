@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_GC_Multi_RebuildCurve_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Rebuild the current selected Mesh layer (curve Data) to Polylines.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      19/12/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_Multi_RebuildCurve_Cmd.py
+
+Purpose:      This script is designed to
+              Rebuild the current selected Mesh layer (curve Data) to Polylines.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      19/12/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -55,11 +53,11 @@ class SMO_GC_Multi_RebuildCurve_Cmd(lxu.command.BasicCommand):
         samplingPrecision = self.dyna_Float (0)
         
         
-        # # # ------------- ARGUMENTS Test
+        # ------------- ARGUMENTS Test
         # samplingPrecisionSize = 1
-        # # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         args = lx.args()
         lx.out(args)
         # Draw Option OFF = 0 
@@ -68,7 +66,7 @@ class SMO_GC_Multi_RebuildCurve_Cmd(lxu.command.BasicCommand):
         # Draw Option ON Shaded & Wireframe = 3
         samplingPrecisionSize = samplingPrecision
         lx.out('Desired Resampling maximum size:', samplingPrecisionSize)
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         
         
         
@@ -78,23 +76,23 @@ class SMO_GC_Multi_RebuildCurve_Cmd(lxu.command.BasicCommand):
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
         
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
         
-        ## Vertex
+        # Vertex
         lx.eval("user.defNew name:SMO_SafetyCheckIteCol_VertexModeEnabled type:integer life:momentary")
         
-        ## Edges
+        # Edges
         lx.eval("user.defNew name:SMO_SafetyCheckIteCol_EdgeModeEnabled type:integer life:momentary")
         
-        ## Polygon
+        # Polygon
         lx.eval("user.defNew name:SMO_SafetyCheckIteCol_PolygonModeEnabled type:integer life:momentary")
         
-        ## Item
+        # Item
         lx.eval("user.defNew name:SMO_SafetyCheckIteCol_ItemModeEnabled type:integer life:momentary")
         
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
         
         
         
@@ -178,27 +176,27 @@ class SMO_GC_Multi_RebuildCurve_Cmd(lxu.command.BasicCommand):
         # meshItemList = []
         # numOfVerts = ''
         
-        # # First we must select the scene and then all the mesh layers in our scene.
+        # First we must select the scene and then all the mesh layers in our scene.
         # lx.eval('select.drop item')
         # lx.eval('select.layerTree all:1')
         # meshItemList = lx.eval('query sceneservice selection ? mesh') # mesh item layers
         
-        # # Create the monitor item
+        # Create the monitor item
         # m = lx.Monitor()
         # m.init(len(meshItemList))
         
-        # # For each mesh item layer, we check to see if there are any verts in the layer...
+        # For each mesh item layer, we check to see if there are any verts in the layer...
         # for meshItem in meshItemList:
             # lx.eval('select.drop item')
             # lx.eval('select.item %s' % meshItem)
             # lx.eval('query layerservice layer.index ? selected') # scene
             # numOfVerts = lx.eval('query layerservice vert.N ? all')
             
-            # # If there are no verts, we delete the mesh item layer.
+            # If there are no verts, we delete the mesh item layer.
             # if numOfVerts == 0:
                 # lx.eval('!item.delete')
             
-            # # Increare progress monitor
+            # Increare progress monitor
             # m.step(1)
         
         # Drop layer selection
@@ -265,7 +263,7 @@ class SMO_GC_Multi_RebuildCurve_Cmd(lxu.command.BasicCommand):
         lx.eval('select.drop item locator')
         lx.out('End of SMO_RebuildCurve Script')
         lx.out('-------------------------------')
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
     def cmd_Query(self, index, vaQuery):

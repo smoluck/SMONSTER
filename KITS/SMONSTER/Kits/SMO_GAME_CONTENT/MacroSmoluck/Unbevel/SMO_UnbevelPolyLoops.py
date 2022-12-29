@@ -1,21 +1,19 @@
 # python
 """
-# Name:         SMO_UnbevelLoops.py
-# Version: 1.0
-#
-# Purpose:      This script is designed to:
-#               Unbevel the Polygon Selection, by using the MouseOver an Edge
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      05/02/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:           SMO_UnbevelLoops.py
+
+Purpose:		This script is designed to:
+                Unbevel the Polygon Selection, by using the MouseOver an Edge
+
+Author:         Franck ELISABETH
+Website:        https://www.smoluck.com
+Created:        05/02/2020
+Copyright:      (c) Franck Elisabeth 2017-2022
 """
 
-import modo
 import lx
+import modo
+import sys
 
 scene = modo.Scene()
 items = scene.selected
@@ -24,7 +22,7 @@ lx.out(items)
 Modo_ver = int(lx.eval('query platformservice appversion ?'))
 lx.out('Modo Version:', Modo_ver)
 
-############### 5 ARGUMENTS ------------- #
+# ------------- ARGUMENT ------------- #
 args = lx.args()
 lx.out(args)
 
@@ -35,15 +33,15 @@ lx.out('Corner solver method:', CornerMethod)
 # ------------- ARGUMENTS ------------- #
 
 
-# # ------------- ARGUMENTS Test
+# ------------- ARGUMENTS Test
 # CornerMethod = 1
-# # ------------- ARGUMENTS ------------- #
+# ------------- ARGUMENTS ------------- #
 
 
 # ------------------------------ #
 # <----( DEFINE VARIABLES )----> #
 # ------------------------------ #
-#####--- Define user value for all the different SafetyCheck --- START ---#####
+# ---------------- Define user value for all the different SafetyCheck --- START
 #####
 lx.eval("user.defNew name:SMO_SC_UnbevelPolyLoop_PolygonModeEnabled type:integer life:momentary")
 lx.eval("user.defNew name:SMO_SC_UnbevelPolyLoop_min1PolygonSelected type:integer life:momentary")
@@ -54,7 +52,7 @@ lx.eval("user.defNew name:SMO_SC_UnbevelPolyLoop_1EdgeSelected type:integer life
 lx.eval("user.defNew name:TotalSafetyCheckPolygon type:integer life:momentary")
 lx.eval("user.defNew name:TotalSafetyCheckEdge type:integer life:momentary")
 #####
-#####--- Define user value for all the different SafetyCheck --- END ---#####
+# ---------------- Define user value for all the different SafetyCheck --- END
 
 
 # -------------------------- #
@@ -300,7 +298,7 @@ elif CsEdges >= 1:
 # --------------------  safety check 4: at Least 1 edge is selected --- END
 
 
-#####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
+# ---------------- Define current value for the Prerequisite TotalSafetyCheck --- START
 #####
 TotalSafetyCheckTrueValuePoly = 4
 lx.out('Desired Value for Polygon Mode', TotalSafetyCheckTrueValuePoly)
@@ -309,10 +307,10 @@ TotalSafetyCheckTrueValueEdge = 7
 lx.out('Desired Value for Edge Mode', TotalSafetyCheckTrueValueEdge)
 
 TotalSafetyCheckPolygon = (
-            SMO_SC__Only1MeshItemSelected + SMO_SC_UnbevelPolyLoop_PolygonModeEnabled + SMO_SC_UnbevelPolyLoop_min1PolygonSelected + SMO_SC_UnbevelPolyLoop_1EdgeSelected)
+        SMO_SC__Only1MeshItemSelected + SMO_SC_UnbevelPolyLoop_PolygonModeEnabled + SMO_SC_UnbevelPolyLoop_min1PolygonSelected + SMO_SC_UnbevelPolyLoop_1EdgeSelected)
 lx.out('Current Polygon Check Value', TotalSafetyCheckPolygon)
 #####
-#####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
+# ---------------- Define current value for the Prerequisite TotalSafetyCheck --- END
 
 
 if TotalSafetyCheckPolygon == TotalSafetyCheckTrueValuePoly:

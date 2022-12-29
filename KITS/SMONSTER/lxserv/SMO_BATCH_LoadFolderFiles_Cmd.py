@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_BATCH_LoadFolderFiles_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Batch Load Files stored in a Folder and Process the data using User Defined Preferences.
-#
-#
-# Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      https://www.smoluck.com
-#
-# Created:      01/10/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_BATCH_LoadFolderFiles_Cmd.py
+
+Purpose:      This script is designed to:
+              Batch Load Files stored in a Folder and Process the data using User Defined Preferences.
+
+Author:       Franck ELISABETH (with the help of James O'Hare)
+Website:      https://www.smoluck.com
+Created:      01/10/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -63,10 +60,10 @@ class SMO_BATCH_LoadFolderFiles_Cmd(lxu.command.BasicCommand):
         lx.eval("user.defNew name:OutputFileFormat type:string life:momentary")
         # ------------------------------ #
 
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         InputFileFormat = self.dyna_String(0)
         OutputFileFormat = self.dyna_String(1)
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
 
         lx.eval('dialog.setup dir')
         lx.eval('dialog.title "Select the target Folder to Analyse and Process"')

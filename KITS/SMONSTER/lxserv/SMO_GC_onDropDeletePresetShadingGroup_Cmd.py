@@ -1,18 +1,19 @@
 # python
 """
-# Name:         SMO_GC_onDropDeletePresetShadingGroup_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Automatically Remove the Shading Group "meshPresetName.lxl" created by Modo when we drop a meshpreset in the scene.
-#               It also setup the Transform tool ON, with Background MeshConstraint, and Action Center to Local mode, for easy adjustment.
-#               (Attach SMO_GC_onDrop_RotateTool.py script to the selected MeshPreset file via PB_View and smo.GC.AttachScriptToPreset command.)
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      01/10/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_onDropDeletePresetShadingGroup_Cmd.py
+Version:      1.0
+
+Purpose:      This script is designed to:
+              Automatically Remove the Shading Group "meshPresetName.lxl" created by Modo
+              when we drop a meshpreset in the scene. It also setup the Transform tool ON,
+              with Background MeshConstraint, and Action Center to Local mode, for easy adjustment.
+              (Attach SMO_GC_onDrop_RotateTool.py script to the selected MeshPreset
+              file via PB_View and smo.GC.AttachScriptToPreset command.)
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      01/10/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

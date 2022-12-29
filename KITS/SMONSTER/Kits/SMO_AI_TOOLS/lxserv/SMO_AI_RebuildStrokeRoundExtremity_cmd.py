@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_AI_RebuildStrokeRoundExtremity.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Rebuild the topology of the current selected Vertex set (Stroke Round Extremity)
-#               to a better Polygon topology.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      13/01/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_AI_RebuildStrokeRoundExtremity.py
+
+Purpose:      This script is designed to:
+              Rebuild the topology of the current selected Vertex set (Stroke Round Extremity)
+              to a better Polygon topology.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      13/01/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -96,26 +94,26 @@ class SMO_AI_RebuildStrokeRoundExtremity_Cmd(lxu.command.BasicCommand):
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
 
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
         # Only one Item Selected
         lx.eval("user.defNew name:SMO_SC_Only1MeshItemSelected type:integer life:momentary")
 
-        ## Vertex
+        # Vertex
         lx.eval("user.defNew name:SMO_SC_VertexModeEnabled type:integer life:momentary")
-        ## Edges
+        # Edges
         lx.eval("user.defNew name:SMO_SC_EdgeModeEnabled type:integer life:momentary")
-        ## Polygon
+        # Polygon
         lx.eval("user.defNew name:SMO_SC_PolygonModeEnabled type:integer life:momentary")
-        ## Item
+        # Item
         lx.eval("user.defNew name:SMO_SC_ItemModeEnabled type:integer life:momentary")
 
         # Min Vertex count selected
         lx.eval("user.defNew name:SMO_SC_min3VertexSelected type:integer life:momentary")
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
 
-        ###############COPY/PASTE Check Procedure#################
+        # ---------------- COPY/PASTE Check Procedure ---------------- #
         ## create variables
         lx.eval("user.defNew name:User_Pref_CopyDeselectChangedState type:boolean life:momentary")
         lx.eval("user.defNew name:User_Pref_PasteSelectionChangedState type:boolean life:momentary")
@@ -159,7 +157,7 @@ class SMO_AI_RebuildStrokeRoundExtremity_Cmd(lxu.command.BasicCommand):
         # Is Paste Deselect True ?
         if User_Pref_PasteDeselect == 1:
             User_Pref_PasteDeselectChangedState = 0
-        ################################################
+        # -------------------------------------------- #
 
         # -------------------------- #
         # <---( SAFETY CHECK 1 )---> #
@@ -476,7 +474,7 @@ class SMO_AI_RebuildStrokeRoundExtremity_Cmd(lxu.command.BasicCommand):
 
             if BuildMode == 2:
                 if User_Mode == 1:
-                    #####--- Define User Value for Rebevel Count --- START ---#####
+                    # ------------- Define User Value for Rebevel Count --- START
                     #####
                     # Create a user value that define the EdgeCount for the Rebevel.
                     lx.eval("user.defNew name:RebuildEdgeCount type:integer life:momentary")
@@ -490,7 +488,7 @@ class SMO_AI_RebuildStrokeRoundExtremity_Cmd(lxu.command.BasicCommand):
                     user_inputReuildCount = lx.eval("user.value RebuildEdgeCount ?")
                     lx.out('Edge Count:', user_inputReuildCount)
                     #####
-                    #####---  Define User Value for Rebevel Count --- END ---#####
+                    # ------------- Define User Value for Rebevel Count --- END
                 if User_Mode == 0:
                     user_inputReuildCount = SideCount
                     lx.out('Edge Count:', user_inputReuildCount)
@@ -551,12 +549,12 @@ class SMO_AI_RebuildStrokeRoundExtremity_Cmd(lxu.command.BasicCommand):
                     # example:
                     # mypath = lx.eval("query platformservice alias ? {kit_eterea_swissknife:scripts/geometry}")
                     # lx.eval("preset.do {%s/Bowl.lxl}" % mypath)
-                    #####--- Define the Preset directory of the Custom CAD Presets to load the Rebevel Assembly --- START ---#####
+                    # ------------- Define the Preset directory of the Custom CAD Presets to load the Rebevel Assembly --- START
                     #####
                     SMOAIPath = lx.eval("query platformservice alias ? {kit_SMO_AI_TOOLS:Presets}")
                     lx.out('RebuildPresetPath:', SMOAIPath)
                     #####
-                    #####--- Define the Preset directory of the Custom CAD Presets to load the Rebevel Assembly --- START ---#####
+                    # ------------- Define the Preset directory of the Custom CAD Presets to load the Rebevel Assembly --- START
                     lx.eval('preset.do {%s/SMO_RebuildStrokeRoundExtremity.lxp}' % SMOAIPath)
                     lx.eval('select.type item')
                     lx.eval('select.drop item')
@@ -892,7 +890,7 @@ class SMO_AI_RebuildStrokeRoundExtremity_Cmd(lxu.command.BasicCommand):
                 lx.out('End of SMO_RebuildCurve Script')
                 lx.out('-------------------------------')
 
-        ###############COPY/PASTE END Procedure#################
+        # -------------- COPY/PASTE END Procedure  -------------- #
         # Restore user Preferences:
         if User_Pref_CopyDeselectChangedState == 1:
             lx.eval('pref.value application.copyDeSelection false')
@@ -903,7 +901,7 @@ class SMO_AI_RebuildStrokeRoundExtremity_Cmd(lxu.command.BasicCommand):
         if User_Pref_PasteDeselectChangedState == 1:
             lx.eval('pref.value application.pasteDeSelection false')
             lx.out('"Deselect Elements Before Pasting" have been Restored')
-        ########################################################
+        # -------------------------------------------- #
 
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()

@@ -1,18 +1,15 @@
 # python
 """
-# Name:         SMO_GC_SetMatColorID_ByUser_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Set a random Diffuse Color using Material Tag (polygons) on the selected Mesh Layers.
-#               Named the new Mat using "ColorID" as Prefix. Color ID Number set by User value in Popup field.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      19/01/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_SetMatColorID_ByUser_Cmd.py
+
+Purpose:      This script is designed to
+              Set a random Diffuse Color using Material Tag (polygons) on the selected Mesh Layers.
+              Named the new Mat using "ColorID" as Prefix. Color ID Number set by User value in Popup field.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      19/01/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

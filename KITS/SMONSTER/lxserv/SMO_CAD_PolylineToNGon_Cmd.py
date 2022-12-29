@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_CAD_PolylineToNGon_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Convert the current Polyline Selection to an NGon. 
-#               (You need to be in Polygon mode and have a loop of Polyline selected to run the script.)
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      https://www.smoluck.com
-#
-# Created:      07/09/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CAD_PolylineToNGon_Cmd.py
+
+Purpose:      This script is designed to
+              Convert the current Polyline Selection to an NGon.
+              (You need to be in Polygon mode and have a loop of Polyline selected to run the script.)
+
+Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
+Website:      https://www.smoluck.com
+Created:      07/09/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -51,7 +49,7 @@ class SMO_CAD_PolylineToNGon_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
 
 
-        ###############COPY/PASTE Check Procedure#################
+        # ---------------- COPY/PASTE Check Procedure ---------------- #
         ## create variables
         lx.eval("user.defNew name:User_Pref_CopyDeselectChangedState type:boolean life:momentary")
         lx.eval("user.defNew name:User_Pref_PasteSelectionChangedState type:boolean life:momentary")
@@ -95,7 +93,7 @@ class SMO_CAD_PolylineToNGon_Cmd(lxu.command.BasicCommand):
         # Is Paste Deselect True ?
         if User_Pref_PasteDeselect == 1:
             User_Pref_PasteDeselectChangedState = 0
-        ################################################
+        # -------------------------------------------- #
 
 
 
@@ -116,7 +114,7 @@ class SMO_CAD_PolylineToNGon_Cmd(lxu.command.BasicCommand):
 
 
 
-        ###############COPY/PASTE END Procedure#################
+        # -------------- COPY/PASTE END Procedure  -------------- #
         # Restore user Preferences:
         if User_Pref_CopyDeselectChangedState == 1 :
             lx.eval('pref.value application.copyDeSelection false')
@@ -127,7 +125,7 @@ class SMO_CAD_PolylineToNGon_Cmd(lxu.command.BasicCommand):
         if User_Pref_PasteDeselectChangedState == 1 :
             lx.eval('pref.value application.pasteDeSelection false')
             lx.out('"Deselect Elements Before Pasting" have been Restored')
-        ########################################################
+        # -------------------------------------------- #
 
 
 

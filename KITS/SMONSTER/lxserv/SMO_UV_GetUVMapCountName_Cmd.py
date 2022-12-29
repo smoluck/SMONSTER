@@ -1,19 +1,16 @@
 
 # python
 """
-# Name:         SMO_UV_GetUVMapCountName_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Query UV Map count and name in all the scene and
-#               query UV Map count and name in selected meshes.
-#
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      https://www.smoluck.com
-#
-# Created:      29/07/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_UV_GetUVMapCountName_Cmd.py
+
+Purpose:      This script is designed to
+              Query UV Map count and name in all the scene and
+              query UV Map count and name in selected meshes.
+
+Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
+Website:      https://www.smoluck.com
+Created:      29/07/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

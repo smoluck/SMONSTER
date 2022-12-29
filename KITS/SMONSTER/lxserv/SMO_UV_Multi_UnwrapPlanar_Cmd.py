@@ -1,18 +1,16 @@
 # python
 """
-# Name:         SMO_UV_Multi_UnwrapPlanar_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               (for Multiple Mesh)
-#               Unwrap the current Polygon Selection
-#               on defined Axis.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      28/12/2018
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_UV_Multi_UnwrapPlanar_Cmd.py
+
+Purpose:      This script is designed to
+              (for Multiple Mesh)
+              Unwrap the current Polygon Selection
+              on defined Axis.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      28/12/2018
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -74,25 +72,25 @@ class SMO_UV_Multi_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
         # lx.out('<------------- START -------------->')
         # lx.out('<--- UV Map Safety Check --->')
         # ###
-        # # Create a UV Map automatically in case there is no UVMaps
+        # Create a UV Map automatically in case there is no UVMaps
         # DefaultUVMapName = lx.eval('pref.value application.defaultTexture ?')
-        # # print(DefaultUVMapName)
+        # print(DefaultUVMapName)
         #
         # m = modo.Mesh()
-        # # print(m.name)
+        # print(m.name)
         # maps = m.geometry.vmaps.getMapsByType([lx.symbol.i_VMAP_TEXTUREUV])  # same as m.geometry.vmaps.uvMaps
-        # # print(maps)
-        # # print(len(maps))
+        # print(maps)
+        # print(len(maps))
         #
-        # # if len(maps) == 0:
+        # if len(maps) == 0:
         # #     lx.eval('vertMap.new {%s} txuv' % DefaultUVMapName)
         # #     print('New UVMap created')
         # #     print('UV map name is: %s' % DefaultUVMapName)
         # #
-        # # if len(maps) == 1:
+        # if len(maps) == 1:
         # #     lx.eval('select.vertexMap {%s} txuv replace' % maps[0].name)
         # #
-        # # if len(maps) > 1:
+        # if len(maps) > 1:
         # #     # get the current select UV Map name
         # #     print(lx.eval('vertMap.list type:txuv ?'))
         #

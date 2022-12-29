@@ -1,18 +1,15 @@
 # python
 """
-# Name:         SMO_GC_ExportMeshAsMeshPreset_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Export current Mesh As MeshPreset LXL file into Target Path.
-#               (optional: Define Path destination as argument)
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      27/10/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_ExportMeshAsMeshPreset_Cmd.py
+
+Purpose:      This script is designed to:
+              Export current Mesh As MeshPreset LXL file into Target Path.
+              (optional: Define Path destination as argument)
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      27/10/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

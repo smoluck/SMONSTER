@@ -1,18 +1,15 @@
 # python
 """
-# Name:         SMO_QT_SetSelSetColorIDRandomConstant_Cmd.py
-# Version:      1.00
-#
-# Purpose:      This script is designed to
-#               Set a random Diffuse Color override
-#               using Selection Set (polygons) and Constant item on the selected Mesh Layers
-# 
-# 
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      12/01/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_QT_SetSelSetColorIDRandomConstant_Cmd.py
+
+Purpose:      This script is designed to
+              Set a random Diffuse Color override
+              using Selection Set (polygons) and Constant item on the selected Mesh Layers
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      12/01/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -141,14 +138,14 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
 
-        # #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         # #####
         # lx.eval("user.defNew name:SMO_SafetyCheck_PolygonModeEnabled type:integer life:momentary")
         # lx.eval("user.defNew name:SMO_SafetyCheck_min1PolygonSelected type:integer life:momentary")
         # #####
-        # #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
 
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
         lx.eval("user.defNew name:SceneConstantID type:integer life:momentary")
         lx.eval("user.defNew name:ColorID_Suffix type:string life:momentary")
@@ -158,14 +155,14 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         lx.eval("user.defNew name:ColorIDConstantName type:string life:momentary")
         ###################
 
-        # # -------------------------- #
-        # # <---( SAFETY CHECK 1 )---> #
-        # # -------------------------- #
+        # -------------------------- #
+        # <---( SAFETY CHECK 1 )---> #
+        # -------------------------- #
         #
-        # # --------------------  safety check 1: Polygon Selection Mode enabled --- START
+        # --------------------  safety check 1: Polygon Selection Mode enabled --- START
         #
         # selType = ""
-        # # Used to query layerservice for the list of polygons, edges or vertices.
+        # Used to query layerservice for the list of polygons, edges or vertices.
         # attrType = ""
         #
         # if lx.eval1( "select.typeFrom typelist:vertex;polygon;edge;item;ptag ?" ):
@@ -216,16 +213,16 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         #     lx.out('script Stopped: You must be in Polygon Mode to run that script')
         #     sys.exit
         #     #sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
-        # # --------------------  safety check 1: Polygon Selection Mode enabled --- END
+        # --------------------  safety check 1: Polygon Selection Mode enabled --- END
         #
         #
         #
         #
-        # # -------------------------- #
-        # # <---( SAFETY CHECK 2 )---> #
-        # # -------------------------- #
+        # -------------------------- #
+        # <---( SAFETY CHECK 2 )---> #
+        # -------------------------- #
         #
-        # # at Least 1 Polygons is selected --- START
+        # at Least 1 Polygons is selected --- START
         # lx.out('Count Selected Poly',CsPolys)
         #
         # if CsPolys < 1:
@@ -240,24 +237,24 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         # elif CsPolys >= 1:
         #     SMO_SafetyCheck_min1PolygonSelected = 1
         #     lx.out('script running: right amount of polygons in selection')
-        # # at Least 1 Polygons is selected --- END
+        # at Least 1 Polygons is selected --- END
         #
         #
         #
-        # #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- START
         # #####
         # TotalSafetyCheckTrueValue = 2
         # lx.out('Desired Value',TotalSafetyCheckTrueValue)
         # TotalSafetyCheck = (SMO_SafetyCheck_PolygonModeEnabled + SMO_SafetyCheck_min1PolygonSelected)
         # lx.out('Current Value',TotalSafetyCheck)
         # #####
-        # #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- END
 
         # ------------------------ #
         # <----( Main Macro )----> #
         # ------------------------ #
 
-        # #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- START
         # Select the Base Shader to create and place ColorID group on top of current Material Groups
 
         ### Selection of ShaderItem have been dedicated to custom command below smo.QT.SelectBaseShader.
@@ -269,7 +266,7 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         #     # print(item.id)
         #     SceneShaderItemName.append(item.id)
         # scene.select(SceneShaderItemList[0])
-        # # print(SceneShaderItemName)
+        # print(SceneShaderItemName)
 
         lx.eval('smo.QT.SelectBaseShader')
         SceneShaderItemID = []
@@ -469,11 +466,11 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         # print(TargetGrpMask)
         lx.eval('texture.parent {%s} {%s} item:{%s}' % (baseShad, NewID, TargetGrpMask))
 
-        # # Here we make sure the ColorID_0 is at the BottomMost in the hierarchy
+        # Here we make sure the ColorID_0 is at the BottomMost in the hierarchy
         # if ColorIDSelSetName == "ColorID_0":
         # 	lx.eval('texture.parent {%s} 0 item:{%s}' % (baseShad, TargetGrpMask))  # '0' argument #2 is the relative position
         #
-        # # Here we make sure that all other ColorID superior to 0 we be put on top of previously created Grp Mask
+        # Here we make sure that all other ColorID superior to 0 we be put on top of previously created Grp Mask
         # if ColorIDSelSetName == "ColorID_1":
         # 	lx.eval('texture.parent {%s} 1 item:{%s}' % (baseShad, TargetGrpMask)) # '0' argument #2 is the relative position
 

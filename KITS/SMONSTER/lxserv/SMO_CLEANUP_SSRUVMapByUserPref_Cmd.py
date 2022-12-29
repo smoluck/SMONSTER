@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_CLEANUP_SSRUVMapByUserPref_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Search if the user preferences Source UVMap exist, Select it
-#                and Rename it to default or Target UVMap.
-#
-# Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      https://www.smoluck.com
-#
-# Created:      21/06/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CLEANUP_SSRUVMapByUserPref_Cmd.py
+
+Purpose:      This script is designed to:
+              Search if the user preferences Source UVMap exist, Select it
+               and Rename it to default or Target UVMap.
+
+Author:       Franck ELISABETH (with the help of James O'Hare)
+Website:      https://www.smoluck.com
+Created:      21/06/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -54,9 +52,9 @@ class SMO_Cleanup_SSRUVMapByUserPref_Cmd(lxu.command.BasicCommand):
     
     def basic_Execute(self, msg, flags):
         scn = modo.Scene()
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         RenameByDefault = self.dyna_Bool (0)
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
 
         DetectedVMapCount = len(lx.evalN('vertMap.list all ?'))
         lx.out('Vmap Count:', DetectedVMapCount)

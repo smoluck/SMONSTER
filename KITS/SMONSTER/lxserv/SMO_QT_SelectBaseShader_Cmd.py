@@ -1,18 +1,14 @@
 # python
 """
-# Name:         SMO_QuickTag_SelectBaseShader_Cmd.py
-# Version:      1.00
-#
-# Purpose:      This script is designed to
-#               Select BaseShader Item in current Scene (Assuming there is only one)
-#
-#
-#
-# Author:       Franck ELISABETH (with the help of Timothee Yeramian)
-# Website:      https://www.smoluck.com
-#
-# Created:      21/06/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_QuickTag_SelectBaseShader_Cmd.py
+
+Purpose:      This script is designed to
+              Select BaseShader Item in current Scene (Assuming there is only one)
+
+Author:       Franck ELISABETH (with the help of Timothee Yeramian)
+Website:      https://www.smoluck.com
+Created:      21/06/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

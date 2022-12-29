@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_GC_SelectStillImageItem_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               get used in Static analysis. It check if a mesh have a VertexNormal Map.
-#
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond)
-# Website:      https://www.smoluck.com
-#
-# Created:      06/12/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_SelectStillImageItem_Cmd.py
+
+Purpose:      This script is designed to
+              get used in Static analysis. It checks if a mesh have a VertexNormal Map.
+
+Author:       Franck ELISABETH (with the help of Tom Dymond)
+Website:      https://www.smoluck.com
+Created:      06/12/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 # Is there some code example to add more checking process to the Static Analysis Tree ?

@@ -1,41 +1,38 @@
 # python
 """
-# Name:         SMO_RemoveCoPlanar6Side.py
-# Version:      1.0
-#
-# Purpose:      Select the Mesh in Item Mode
-#               It only cleanup Polygons that are perfectly perpendicular to X Y Z Axis in both direction
-#               (Some of the code is related to the Sceneca  LazySelect script. Thanks to him for let me integrate it here)
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      14/04/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_RemoveCoPlanar6Side.py
+
+Purpose:      Select the Mesh in Item Mode
+              It only cleanup Polygons that are perfectly perpendicular to X Y Z
+              Axis in both direction (Some code is related to the Sceneca
+              LazySelect script. Thanks to him for let me integrate it here)
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      14/04/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
 import modo
+import sys
 
 scene = modo.scene.current()
 mesh = scene.selectedByType('mesh')[0]
 CsPolys = len(mesh.geometry.polygons.selected)
 
-
 # ------------------------------ #
 # <----( DEFINE VARIABLES )----> #
 # ------------------------------ #
 
-#####--- Define user value for all the different SafetyCheck --- START ---#####
+# ---------------- Define user value for all the different SafetyCheck --- START
 #####
 lx.eval("user.defNew name:SMO_SafetyCheck_ItemModeEnabled type:integer life:momentary")
 #####
-#####--- Define user value for all the different SafetyCheck --- END ---#####
+# ---------------- Define user value for all the different SafetyCheck --- END
 
 
-
-###############COPY/PASTE Check Procedure#################
-## create variables
+# ---------------- COPY/PASTE Check Procedure ---------------- #
 lx.eval("user.defNew name:User_Pref_CopyDeselectChangedState type:boolean life:momentary")
 lx.eval("user.defNew name:User_Pref_PasteSelectionChangedState type:boolean life:momentary")
 lx.eval("user.defNew name:User_Pref_PasteDeselectChangedState type:boolean life:momentary")
@@ -56,30 +53,29 @@ lx.out('User Pref: Deselect Elements Before Pasting', User_Pref_PasteDeselect)
 if User_Pref_CopyDeselect == 0:
     lx.eval('pref.value application.copyDeSelection true')
     User_Pref_CopyDeselectChangedState = 1
-    
+
 # Is Paste Selection False ?
 if User_Pref_PasteSelection == 0:
     lx.eval('pref.value application.pasteSelection true')
     User_Pref_PasteSelectionChangedState = 1
-    
+
 # Is Paste Deselect False ?
 if User_Pref_PasteDeselect == 0:
     lx.eval('pref.value application.pasteDeSelection true')
     User_Pref_PasteDeselectChangedState = 1
-    
+
 # Is Copy Deselect True ?
 if User_Pref_CopyDeselect == 1:
     User_Pref_CopyDeselectChangedState = 0
-    
+
 # Is Paste Selection True ?
 if User_Pref_PasteSelection == 1:
     User_Pref_PasteSelectionChangedState = 0
-    
+
 # Is Paste Deselect True ?
 if User_Pref_PasteDeselect == 1:
     User_Pref_PasteDeselectChangedState = 0
-################################################
-
+# -------------------------------------------- #
 
 
 # -------------------------- #
@@ -92,10 +88,10 @@ selType = ""
 # Used to query layerservice for the list of polygons, edges or vertices.
 attrType = ""
 
-if lx.eval1( "select.typeFrom typelist:vertex;polygon;edge;item;ptag ?" ):
+if lx.eval1("select.typeFrom typelist:vertex;polygon;edge;item;ptag ?"):
     selType = "vertex"
     attrType = "vert"
-    
+
     SMO_SafetyCheck_ItemModeEnabled = 0
     lx.eval('dialog.setup info')
     lx.eval('dialog.title {SMO REBUILD With CUBE:}')
@@ -103,13 +99,13 @@ if lx.eval1( "select.typeFrom typelist:vertex;polygon;edge;item;ptag ?" ):
     lx.eval('+dialog.open')
     lx.out('script Stopped: You must be in ITEM Mode to run that script')
     sys.exit
-    #sys.exit( "LXe_FAILED:Must be in ITEM selection mode." )
-    
-    
-elif lx.eval1( "select.typeFrom typelist:edge;vertex;polygon;item ?" ):
+    # sys.exit( "LXe_FAILED:Must be in ITEM selection mode." )
+
+
+elif lx.eval1("select.typeFrom typelist:edge;vertex;polygon;item ?"):
     selType = "edge"
     attrType = "edge"
-    
+
     SMO_SafetyCheck_ItemModeEnabled = 0
     lx.eval('dialog.setup info')
     lx.eval('dialog.title {SMO REBUILD With CUBE:}')
@@ -117,12 +113,12 @@ elif lx.eval1( "select.typeFrom typelist:edge;vertex;polygon;item ?" ):
     lx.eval('+dialog.open')
     lx.out('script Stopped: You must be in ITEM Mode to run that script')
     sys.exit
-    #sys.exit( "LXe_FAILED:Must be in ITEM selection mode." )
-    
-elif lx.eval1( "select.typeFrom typelist:polygon;vertex;edge;item ?" ):
+    # sys.exit( "LXe_FAILED:Must be in ITEM selection mode." )
+
+elif lx.eval1("select.typeFrom typelist:polygon;vertex;edge;item ?"):
     selType = "polygon"
     attrType = "poly"
-    
+
     SMO_SafetyCheck_ItemModeEnabled = 0
     lx.eval('dialog.setup info')
     lx.eval('dialog.title {SMO REBUILD With CUBE:}')
@@ -130,7 +126,7 @@ elif lx.eval1( "select.typeFrom typelist:polygon;vertex;edge;item ?" ):
     lx.eval('+dialog.open')
     lx.out('script Stopped: You must be in ITEM Mode to run that script')
     sys.exit
-    #sys.exit( "LXe_FAILED:Must be in ITEM selection mode." )
+    # sys.exit( "LXe_FAILED:Must be in ITEM selection mode." )
 
 
 else:
@@ -144,27 +140,25 @@ else:
 # --------------------  safety check 1: ITEM Selection Mode enabled --- END
 
 
-
-#####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
+# ---------------- Define current value for the Prerequisite TotalSafetyCheck --- START
 #####
 TotalSafetyCheckTrueValue = 1
-lx.out('Desired Value',TotalSafetyCheckTrueValue)
+lx.out('Desired Value', TotalSafetyCheckTrueValue)
 TotalSafetyCheck = SMO_SafetyCheck_ItemModeEnabled
-lx.out('Current Value',TotalSafetyCheck)
+lx.out('Current Value', TotalSafetyCheck)
 #####
-#####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
-
+# ---------------- Define current value for the Prerequisite TotalSafetyCheck --- END
 
 
 # -------------------------- #
 # <----( Main Macro )----> #
 # -------------------------- #
 lx.out('Start of SMO Remove CoPlanar 6 Side')
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
+# ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- START
 if TotalSafetyCheck == TotalSafetyCheckTrueValue:
 
     ############################################################
-    ### Tag the target Mesh and initialize the script.
+    # Tag the target Mesh and initialize the script.
     # Tag the Source Mesh
     lx.eval('select.editSet name:TARGET_RemoveCoPlanar6Side mode:add')
     # replay name:"Prepare LazySelect Loading"
@@ -175,35 +169,26 @@ if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     lx.eval('hide.unsel')
     ############################################################
 
-
-
-
     ############################################################
-    ### Load the Mesh Data for the cleanup ###
+    # Load the Mesh Data for the cleanup ###
     try:
-        ### Load RemoveCoPlanar6Side Preset for the processing ###
-        #####--- Define the Preset directory of the Custom CAD Presets to load the RemoveCoPlanar6Side Assembly --- START ---#####
-        #####
+        # Load RemoveCoPlanar6Side Preset for the processing ###
+        # ---------------- Define the Preset directory of the Custom CAD Presets to load the RemoveCoPlanar6Side Assembly
         SMOCADPath = lx.eval("query platformservice alias ? {kit_SMO_CAD_TOOLS:Presets}")
-        lx.out('SMOCAD Preset Path:',SMOCADPath)
-        #####
-        #####--- Define the Preset directory of the Custom CAD Presets to load the RemoveCoPlanar6Side Assembly --- START ---#####
+        lx.out('SMOCAD Preset Path:', SMOCADPath)
         lx.eval('preset.do {%s/SMO_RemoveCoPlanar6Side_Assembly.lxp}' % SMOCADPath)
         lx.eval('select.type item')
         lx.eval('select.drop item')
-        
+
     except:
         sys.exit
     ############################################################
-        
-        
-        
-        
+
     ############################################################
-    ### Copy the Cube DATA
+    # Copy the Cube DATA
     # Select the DATA Container
     lx.eval('select.useSet name:SMO_CUBE_RemoveCoPlanar mode:select')
-    ### Copy Data and go back to the previous scene ###
+    # Copy Data and go back to the previous scene ###
 
     # replay name:"Select by Items"
     lx.eval('select.type polygon')
@@ -213,10 +198,8 @@ if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     lx.eval('copy')
     ############################################################
 
-
-
     ############################################################
-    ### Paste the Cube DATA in the TARGET
+    # Paste the Cube DATA in the TARGET
     # replay name:"Select by Items"
     lx.eval('select.type item')
     # Select the DATA Container
@@ -227,15 +210,12 @@ if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     lx.eval('paste')
     ############################################################
 
-
-
     ############################################################
-    ### Call Coplanar Cleanup Macro Process ###
+    # Call Coplanar Cleanup Macro Process ###
 
     # replay name:"Use Selection Set"
     lx.eval('select.useSet name:SetSet_CubeFace_Top mode:replace')
     # replay name:"lazySelect.pl"
-
 
     lx.eval('@{kit_SMO_CAD_TOOLS:MacroSmoluck/DeleteEdgeInsidePoly.LXM}')
 
@@ -294,10 +274,7 @@ if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     # replay name:"Item"
     lx.eval('select.type item')
 
-
     # lx.eval('user.value sene_LS_facingRatio 2')
-
-
 
     lx.eval('select.type polygon')
     # replay name:"Use Selection Set"
@@ -336,7 +313,6 @@ if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     lx.eval('!!delete')
     ############################################################
 
-
     ############################################################
     # DELETE the RemoveCoPlanar6Side Assembly
     lx.eval('select.type item')
@@ -345,30 +321,28 @@ if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     lx.eval('!!delete')
     ############################################################
 
-
     ############################################################
     # Select the back the TARGET
     lx.eval('select.useSet name:TARGET_RemoveCoPlanar6Side mode:replace')
     # Delete Selection Set of TARGET
     lx.eval('!select.deleteSet name:TARGET_RemoveCoPlanar6Side all:false')
     ############################################################
-    
+
 elif TotalSafetyCheck != TotalSafetyCheckTrueValue:
     lx.out('script Stopped: your mesh does not match the requirement for that script.')
     sys.exit
-    
-    
-###############COPY/PASTE END Procedure#################
+
+# -------------- COPY/PASTE END Procedure  -------------- #
 # Restore user Preferences:
-if User_Pref_CopyDeselectChangedState == 1 :
+if User_Pref_CopyDeselectChangedState == 1:
     lx.eval('pref.value application.copyDeSelection false')
     lx.out('"Deselect Elements after Copying" have been Restored')
-if User_Pref_PasteSelectionChangedState == 1 :
+if User_Pref_PasteSelectionChangedState == 1:
     lx.eval('pref.value application.pasteSelection false')
     lx.out('"Select Pasted Elements" have been Restored')
-if User_Pref_PasteDeselectChangedState == 1 :
+if User_Pref_PasteDeselectChangedState == 1:
     lx.eval('pref.value application.pasteDeSelection false')
     lx.out('"Deselect Elements Before Pasting" have been Restored')
-########################################################
+# -------------------------------------------- #
 
 lx.out('End of SMO Remove CoPlanar 6 Side')

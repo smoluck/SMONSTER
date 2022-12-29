@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_CAD_RebevelClearSelSetTags_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to test
-#               Clear all Item/Polygon/Edges Selection Set created
-#               by the CAD Rebevel commands
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      05/04/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:           SMO_CAD_RebevelClearSelSetTags_Cmd.py
+
+Purpose:        This script is designed to:
+                test Clear all Item/Polygon/Edges Selection Set created
+                by the CAD Rebevel commands
+
+Author:         Franck ELISABETH
+Website:        https://www.smoluck.com
+Created:        05/04/2021
+Copyright:      (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -62,23 +60,23 @@ class SMO_CAD_RebevelClearSelSetTags_Cmd(lxu.command.BasicCommand):
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
 
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
 
-        ## Vertex
+        # Vertex
         lx.eval("user.defNew name:SMO_SafetyCheck_VertexModeEnabled type:integer life:momentary")
 
-        ## Edges
+        # Edges
         lx.eval("user.defNew name:SMO_SafetyCheck_EdgeModeEnabled type:integer life:momentary")
 
-        ## Polygon
+        # Polygon
         lx.eval("user.defNew name:SMO_SafetyCheck_PolygonModeEnabled type:integer life:momentary")
 
-        ## Item
+        # Item
         lx.eval("user.defNew name:SMO_SafetyCheck_ItemModeEnabled type:integer life:momentary")
 
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
 
         # -------------------------- #
         # <---( SAFETY CHECK 1 )---> #
@@ -144,7 +142,7 @@ class SMO_CAD_RebevelClearSelSetTags_Cmd(lxu.command.BasicCommand):
         # <----( Main Macro )----> #
         # ------------------------ #
 
-        #####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- START
+        # ------------- Compare SafetyCheck value and decide or not to continue the process  --- START
         if SMO_SafetyCheck_VertexModeEnabled == 1:
             lx.eval('select.type polygon')
 

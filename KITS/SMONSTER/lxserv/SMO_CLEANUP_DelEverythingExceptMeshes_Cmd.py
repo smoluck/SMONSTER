@@ -1,18 +1,17 @@
 # python
 """
-# Name:         SMO_CLEANUP_DelEverythingExceptMeshes_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Select everything in the current scene, except Meshes items and delete all other items / materials.
-#               It unparent in place the current Meshes to preserve their position in space in case they were part of a hierarchy.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      11/05/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CLEANUP_DelEverythingExceptMeshes_Cmd.py
+
+Purpose:      This script is designed to:
+              Select everything in the current scene, except Meshes items and
+              delete all other items / materials.
+              It unparent in place the current Meshes to preserve their position
+              in space in case they were part of a hierarchy.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      11/05/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

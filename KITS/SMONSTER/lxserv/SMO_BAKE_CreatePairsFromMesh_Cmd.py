@@ -1,17 +1,16 @@
 # python
 """
-# Name:         SMO_BAKE_CreatePairsFromMesh_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Create a New Bake Pairs from a Single High Poly mesh and Enter into Polygon Editing To Reduce the Mesh Detail
-#
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      https://www.smoluck.com
-#
-# Created:      02/04/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_BAKE_CreatePairsFromMesh_Cmd.py
+
+Purpose:      This script is designed to:
+              Create a New Bake Pairs from a Single High Poly mesh and
+              Enter into Polygon Editing To Reduce the Mesh Detail
+
+
+Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
+Website:      https://www.smoluck.com
+Created:      02/04/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -117,7 +116,7 @@ class SMO_BAKE_CreatePairsFromMesh_Cmd(lxu.command.BasicCommand):
                                         # lx.eval('vertMap.new name:"Vertex Normal" type:norm init:false')
                                     except:
                                         pass
-                # # Create an empty VertexNormalMap if there is no Vertex Normals on Original HighPoly Mesh Source
+                # Create an empty VertexNormalMap if there is no Vertex Normals on Original HighPoly Mesh Source
                 # if len(VertNrnMapList) == 0:
                 #     lx.eval('vertMap.new name:{%s} type:norm init:false' % VNMapName)
 

@@ -1,17 +1,16 @@
 # python
 """
-# Name:         SMO_MIFABOMA_RADIALARRAY_ViaUserPref_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This Command is designed to :
-#               RadialArray current Polygon Selection (or all Poly if no selection)
-#               using Origin Center (World) or Item Center (Local). You need to get at least one Mesh item selected.
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      https://www.smoluck.com
-#
-# Created:      16/09/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_MIFABOMA_RADIALARRAY_ViaUserPref_Cmd.py
+
+Purpose:      This Command is designed to :
+              RadialArray current Polygon Selection (or all Poly if no selection)
+              using Origin Center (World) or Item Center (Local).
+              You need to get at least one Mesh item selected.
+
+Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
+Website:      https://www.smoluck.com
+Created:      16/09/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

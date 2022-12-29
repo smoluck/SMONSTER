@@ -1,18 +1,16 @@
 # python
 """
-# Name:         SMO_GC_RenameMeshesBySceneName_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Get the scene name and add this  name as
-#               a Prefix on every Meshes in the current scene.
-#               Script will save the scene in same places as the current opened scene.
-#
-# Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      https://www.smoluck.com
-#
-# Created:      30/09/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_RenameMeshesBySceneName_Cmd.py
+
+Purpose:      This script is designed to:
+              Get the scene name and add this  name as
+              a Prefix on every Meshes in the current scene.
+              Script will save the scene in same places as the current opened scene.
+
+Author:       Franck ELISABETH (with the help of James O'Hare)
+Website:      https://www.smoluck.com
+Created:      30/09/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 from os import path

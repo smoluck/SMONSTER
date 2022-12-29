@@ -1,18 +1,15 @@
 # python
 """
-# Name:         SMO_CLEANUP_CleanupSolidWorksImport_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Cleanup SolidWorks Import (from McMaster Website Data) in order to save a new scene with only one Mesh
-#               item of the imported asset. It will also convert the VertexNormals Data to HardEdgeWorkflow if needed.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      11/05/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CLEANUP_CleanupSolidWorksImport_Cmd.py
+
+Purpose:      This script is designed to:
+              Cleanup SolidWorks Import (from McMaster Website Data) in order to save a new scene with only one Mesh
+              item of the imported asset. It will also convert the VertexNormals Data to HardEdgeWorkflow if needed.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      11/05/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_GC_GetSceneDetail_Cmd.py
-# Version:      1.00
-#
-# Purpose:      This Command is designed to :
-#               Get Details about the current scene using arguments to specify wich data chunk you need.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Modified:     20/12/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_GetSceneDetail_Cmd.py
+
+Purpose:      This Command is designed to :
+              Get Details about the current scene using arguments to specify wich data chunk you need.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:     20/12/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

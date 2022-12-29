@@ -1,18 +1,16 @@
 # python
 """
-# Name:         SMO_GC_DupAndExplodeByDist_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Duplicate the Current Selected Mesh, Rename the mesh with a Suffix "_EXPLODE"
-#               Create a Relativ e Morph Map called EXPLODE, then Create the Morph Influence out of it
-#               and Freeze the deformation / delete the motrph map in order to export that to PixaFlux
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      https://www.smoluck.com
-#
-# Created:      09/07/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_DupAndExplodeByDist_Cmd.py
+
+Purpose:      This script is designed to
+              Duplicate the Current Selected Mesh, Rename the mesh with a Suffix "_EXPLODE"
+              Create a Relativ e Morph Map called EXPLODE, then Create the Morph Influence out of it
+              and Freeze the deformation / delete the motrph map in order to export that to PixaFlux
+
+Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
+Website:      https://www.smoluck.com
+Created:      09/07/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -71,7 +69,7 @@ class SMO_GC_DupAndExplodeByDist_Cmd(lxu.command.BasicCommand):
         
         
         
-        ###############COPY/PASTE Check Procedure#################
+        # ---------------- COPY/PASTE Check Procedure ---------------- #
         ## create variables
         lx.eval("user.defNew name:User_Pref_CopyDeselectChangedState type:boolean life:momentary")
         lx.eval("user.defNew name:User_Pref_PasteSelectionChangedState type:boolean life:momentary")
@@ -115,7 +113,7 @@ class SMO_GC_DupAndExplodeByDist_Cmd(lxu.command.BasicCommand):
         # Is Paste Deselect True ?
         if User_Pref_PasteDeselect == 1:
             User_Pref_PasteDeselectChangedState = 0
-        ################################################
+        # -------------------------------------------- #
         
         
         
@@ -261,7 +259,7 @@ class SMO_GC_DupAndExplodeByDist_Cmd(lxu.command.BasicCommand):
         # Get the name of UV Seam map available on mesh
         DetectedMorphmapName = lx.eval('vertMap.list morf ?')
         lx.out('Morph Map Name:', DetectedMorphmapName)
-        ##### UV SEAM Map Detection #####
+        # ------------- UV SEAM Map Detection
         
         selection = list(scene.selectedByType('mesh'))
         #meshitems = scene.selected
@@ -279,7 +277,7 @@ class SMO_GC_DupAndExplodeByDist_Cmd(lxu.command.BasicCommand):
         lx.eval('!!vertMap.delete EXPLODED')
         
         
-        ###############COPY/PASTE END Procedure#################
+        # -------------- COPY/PASTE END Procedure  -------------- #
         # Restore user Preferences:
         if User_Pref_CopyDeselectChangedState == 1 :
             lx.eval('pref.value application.copyDeSelection false')
@@ -290,9 +288,9 @@ class SMO_GC_DupAndExplodeByDist_Cmd(lxu.command.BasicCommand):
         if User_Pref_PasteDeselectChangedState == 1 :
             lx.eval('pref.value application.pasteDeSelection false')
             lx.out('"Deselect Elements Before Pasting" have been Restored')
-        ########################################################
+        # -------------------------------------------- #
         
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
     def cmd_Query(self, index, vaQuery):

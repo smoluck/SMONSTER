@@ -1,44 +1,38 @@
 # python
 """
-# Name:         SMO_Bool_Subtract.py
-# Version: 1.0
-#
-# Purpose:  This script is designed to
-#           boolean Subtract the last Polygon Selection
-#           (Connected Polygons) from the current Layer.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      28/12/2018
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:           SMO_Bool_Subtract.py
+
+Purpose:        This script is designed to
+                Boolean Subtract the last Polygon Selection
+                (Connected Polygons) from the current Layer.
+
+Author:         Franck ELISABETH
+Website:        https://www.smoluck.com
+Created:        28/12/2018
+Copyright:      (c) Franck Elisabeth 2017-2022
 """
 
-import modo
 import lx
+import modo
+import sys
 
 scene = modo.scene.current()
 mesh = scene.selectedByType('mesh')[0]
 CsPolys = len(mesh.geometry.polygons.selected)
 
-
-
-
 # ------------------------------ #
 # <----( DEFINE VARIABLES )----> #
 # ------------------------------ #
 
-#####--- Define user value for all the different SafetyCheck --- START ---#####
+# ---------------- Define user value for all the different SafetyCheck --- START
 #####
 lx.eval("user.defNew name:SMO_SafetyCheck_PolygonModeEnabled type:integer life:momentary")
 lx.eval("user.defNew name:SMO_SafetyCheck_min1PolygonSelected type:integer life:momentary")
 #####
-#####--- Define user value for all the different SafetyCheck --- END ---#####
+# ---------------- Define user value for all the different SafetyCheck --- END
 
 
-
-###############COPY/PASTE Check Procedure#################
-## create variables
+# ---------------- COPY/PASTE Check Procedure ---------------- #
 lx.eval("user.defNew name:User_Pref_CopyDeselectChangedState type:boolean life:momentary")
 lx.eval("user.defNew name:User_Pref_PasteSelectionChangedState type:boolean life:momentary")
 lx.eval("user.defNew name:User_Pref_PasteDeselectChangedState type:boolean life:momentary")
@@ -46,7 +40,6 @@ lx.eval("user.defNew name:User_Pref_PasteDeselectChangedState type:boolean life:
 lx.eval("user.defNew name:User_Pref_CopyDeselect type:boolean life:momentary")
 lx.eval("user.defNew name:User_Pref_PasteSelection type:boolean life:momentary")
 lx.eval("user.defNew name:User_Pref_PasteDeselect type:boolean life:momentary")
-###################
 
 # Look at current Copy / Paste user Preferences:
 User_Pref_CopyDeselect = lx.eval('pref.value application.copyDeSelection ?')
@@ -59,31 +52,29 @@ lx.out('User Pref: Deselect Elements Before Pasting', User_Pref_PasteDeselect)
 if User_Pref_CopyDeselect == 0:
     lx.eval('pref.value application.copyDeSelection true')
     User_Pref_CopyDeselectChangedState = 1
-    
+
 # Is Paste Selection False ?
 if User_Pref_PasteSelection == 0:
     lx.eval('pref.value application.pasteSelection true')
     User_Pref_PasteSelectionChangedState = 1
-    
+
 # Is Paste Deselect False ?
 if User_Pref_PasteDeselect == 0:
     lx.eval('pref.value application.pasteDeSelection true')
     User_Pref_PasteDeselectChangedState = 1
-    
+
 # Is Copy Deselect True ?
 if User_Pref_CopyDeselect == 1:
     User_Pref_CopyDeselectChangedState = 0
-    
+
 # Is Paste Selection True ?
 if User_Pref_PasteSelection == 1:
     User_Pref_PasteSelectionChangedState = 0
-    
+
 # Is Paste Deselect True ?
 if User_Pref_PasteDeselect == 1:
     User_Pref_PasteDeselectChangedState = 0
-################################################
-
-
+# -------------------------------------------- #
 
 
 # -------------------------- #
@@ -96,10 +87,10 @@ selType = ""
 # Used to query layerservice for the list of polygons, edges or vertices.
 attrType = ""
 
-if lx.eval1( "select.typeFrom typelist:vertex;polygon;edge;item;ptag ?" ):
+if lx.eval1("select.typeFrom typelist:vertex;polygon;edge;item;ptag ?"):
     selType = "vertex"
     attrType = "vert"
-    
+
     SMO_SafetyCheck_PolygonModeEnabled = 0
     lx.eval('dialog.setup info')
     lx.eval('dialog.title {SMO_BoolSubtract:}')
@@ -107,13 +98,13 @@ if lx.eval1( "select.typeFrom typelist:vertex;polygon;edge;item;ptag ?" ):
     lx.eval('+dialog.open')
     lx.out('script Stopped: You must be in Polygon Mode to run that script')
     sys.exit
-    #sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
-    
-    
-elif lx.eval1( "select.typeFrom typelist:edge;vertex;polygon;item ?" ):
+    # sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
+
+
+elif lx.eval1("select.typeFrom typelist:edge;vertex;polygon;item ?"):
     selType = "edge"
     attrType = "edge"
-    
+
     SMO_SafetyCheck_PolygonModeEnabled = 0
     lx.eval('dialog.setup info')
     lx.eval('dialog.title {SMO_BoolSubtract:}')
@@ -121,12 +112,12 @@ elif lx.eval1( "select.typeFrom typelist:edge;vertex;polygon;item ?" ):
     lx.eval('+dialog.open')
     lx.out('script Stopped: You must be in Polygon Mode to run that script')
     sys.exit
-    #sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
-    
-elif lx.eval1( "select.typeFrom typelist:polygon;vertex;edge;item ?" ):
+    # sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
+
+elif lx.eval1("select.typeFrom typelist:polygon;vertex;edge;item ?"):
     selType = "polygon"
     attrType = "poly"
-    
+
     SMO_SafetyCheck_PolygonModeEnabled = 1
     lx.out('script Running: Correct Component Selection Mode')
 
@@ -143,10 +134,8 @@ else:
     lx.eval('+dialog.open')
     lx.out('script Stopped: You must be in Polygon Mode to run that script')
     sys.exit
-    #sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
+    # sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
 # --------------------  safety check 1: Polygon Selection Mode enabled --- END
-
-
 
 
 # -------------------------- #
@@ -154,7 +143,7 @@ else:
 # -------------------------- #
 
 # at Least 1 Polygons is selected --- START
-lx.out('Count Selected Poly',CsPolys)
+lx.out('Count Selected Poly', CsPolys)
 
 if CsPolys < 1:
     SMO_SafetyCheck_min1PolygonSelected = 0
@@ -171,24 +160,21 @@ elif CsPolys >= 1:
 # at Least 1 Polygons is selected --- END
 
 
-
-#####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
+# ---------------- Define current value for the Prerequisite TotalSafetyCheck --- START
 #####
 TotalSafetyCheckTrueValue = 2
-lx.out('Desired Value',TotalSafetyCheckTrueValue)
+lx.out('Desired Value', TotalSafetyCheckTrueValue)
 TotalSafetyCheck = (SMO_SafetyCheck_PolygonModeEnabled + SMO_SafetyCheck_min1PolygonSelected)
-lx.out('Current Value',TotalSafetyCheck)
+lx.out('Current Value', TotalSafetyCheck)
 #####
-#####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
+# ---------------- Define current value for the Prerequisite TotalSafetyCheck --- END
 
 
-
-
-# -------------------------- #
+# ------------------------ #
 # <----( Main Macro )----> #
-# -------------------------- #
+# ------------------------ #
 
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
+# ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- START
 if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     # replay name:"Edit Selection Set"
     lx.eval('select.editSet name:Bool_Selected_Tag mode:add')
@@ -232,18 +218,16 @@ if TotalSafetyCheck == TotalSafetyCheckTrueValue:
     lx.eval('select.drop item')
     # replay name:"Use Selection Set"
     lx.eval('select.useSet name:Bool_Parent_Tag mode:select')
-    
-    
+
     # -------------------------- #
-    # <----( Main Command )---->
+    # <----( Main Command )----> #
     # -------------------------- #
     # replay name:"Boolean Action SUBTRACT"
     lx.eval('poly.boolean mode:subtract cutmesh:background')
     # -------------------------- #
-    # <----( Main Command )---->
+    # <----( Main Command )----> #
     # -------------------------- #
-    
-    
+
     lx.eval('select.type polygon')
     # replay name:"Selection All"
     lx.eval('select.all')
@@ -276,19 +260,18 @@ elif TotalSafetyCheck != TotalSafetyCheckTrueValue:
     lx.out('script Stopped: your mesh does not match the requirement for that script.')
     sys.exit
 
-
-###############COPY/PASTE END Procedure#################
+# -------------- COPY/PASTE END Procedure  -------------- #
 # Restore user Preferences:
-if User_Pref_CopyDeselectChangedState == 1 :
+if User_Pref_CopyDeselectChangedState == 1:
     lx.eval('pref.value application.copyDeSelection false')
     lx.out('"Deselect Elements after Copying" have been Restored')
-if User_Pref_PasteSelectionChangedState == 1 :
+if User_Pref_PasteSelectionChangedState == 1:
     lx.eval('pref.value application.pasteSelection false')
     lx.out('"Select Pasted Elements" have been Restored')
-if User_Pref_PasteDeselectChangedState == 1 :
+if User_Pref_PasteDeselectChangedState == 1:
     lx.eval('pref.value application.pasteDeSelection false')
     lx.out('"Deselect Elements Before Pasting" have been Restored')
-########################################################
+# -------------------------------------------- #
 
 lx.out('End of SMO_Bool_Subtract Script')
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
+# ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- END

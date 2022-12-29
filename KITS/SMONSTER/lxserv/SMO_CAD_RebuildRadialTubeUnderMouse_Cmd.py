@@ -1,17 +1,16 @@
 # python
 """
-# Name:         SMO_CAD_RebuildRadialTubeUnderMouse_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Select the Item and Polygon under mouse, select similar touching polygons Multiple Times with 40 degree value, then delete and recreate the PolyLoop Patch and update the VertexNormal Map if needed.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      22/09/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CAD_RebuildRadialTubeUnderMouse_Cmd.py
+
+Purpose:      This script is designed to:
+              Select the Item and Polygon under mouse, select similar touching polygons
+              Multiple Times with 40 degree value, then delete and recreate
+              the PolyLoop Patch and update the VertexNormal Map if needed.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      22/09/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -58,16 +57,16 @@ class SMO_CAD_RebuildRadialTubeUnderMouse_Cmd(lxu.command.BasicCommand):
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
 
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
         lx.eval("user.defNew name:SMO_SafetyCheck_PolygonModeEnabled type:integer life:momentary")
 
         lx.eval("user.defNew name:SMO_SafetyCheck_ItemModeEnabled type:integer life:momentary")
         lx.eval("user.defNew name:SMO_SafetyCheck_min1PolygonSelected type:integer life:momentary")
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
 
-        ###############COPY/PASTE Check Procedure#################
+        # ---------------- COPY/PASTE Check Procedure ---------------- #
         ## create variables
         lx.eval("user.defNew name:User_Pref_CopyDeselectChangedState type:boolean life:momentary")
         lx.eval("user.defNew name:User_Pref_PasteSelectionChangedState type:boolean life:momentary")
@@ -111,7 +110,7 @@ class SMO_CAD_RebuildRadialTubeUnderMouse_Cmd(lxu.command.BasicCommand):
         # Is Paste Deselect True ?
         if User_Pref_PasteDeselect == 1:
             User_Pref_PasteDeselectChangedState = 0
-        ################################################
+        # -------------------------------------------- #
 
 
 
@@ -250,7 +249,7 @@ class SMO_CAD_RebuildRadialTubeUnderMouse_Cmd(lxu.command.BasicCommand):
             lx.out('script running: right amount of polygons in selection')
         # at Least 1 Polygons is selected --- END
 
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- START
         #####
         TotalSafetyCheckTrueValue = 2
         lx.out('Desired Value', TotalSafetyCheckTrueValue)
@@ -259,14 +258,14 @@ class SMO_CAD_RebuildRadialTubeUnderMouse_Cmd(lxu.command.BasicCommand):
             lx.out('Current Value', TotalSafetyCheck)
 
         #####
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- END
 
 
         # ------------------------ #
         # <----( Main Macro )----> #
         # ------------------------ #
 
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- START
         if TotalSafetyCheck == TotalSafetyCheckTrueValue:
             # Polygon Undermouse Selection Mode. You must be in Item Mode
             if SMO_SafetyCheck_ItemModeEnabled == 1:
@@ -351,7 +350,7 @@ class SMO_CAD_RebuildRadialTubeUnderMouse_Cmd(lxu.command.BasicCommand):
             if RefSystemActive:
                 lx.eval('item.refSystem %s' % CurrentRefSystemItem)
 
-        ###############COPY/PASTE END Procedure#################
+        # -------------- COPY/PASTE END Procedure  -------------- #
         # Restore user Preferences:
         if User_Pref_CopyDeselectChangedState == 1:
             lx.eval('pref.value application.copyDeSelection false')
@@ -362,7 +361,7 @@ class SMO_CAD_RebuildRadialTubeUnderMouse_Cmd(lxu.command.BasicCommand):
         if User_Pref_PasteDeselectChangedState == 1:
             lx.eval('pref.value application.pasteDeSelection false')
             # lx.out('"Deselect Elements Before Pasting" have been Restored')
-        ########################################################
+        # -------------------------------------------- #
 
 
 lx.bless(SMO_CAD_RebuildRadialTubeUnderMouse_Cmd, Cmd_Name)

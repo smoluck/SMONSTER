@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_GC_ConvertSceneTo_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Save the scene in same places as the current opened scene to a specified FileFormat
-#               and move the files to a Folder related to the file Format if Argument 1 is true.
-#
-# Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      https://www.smoluck.com
-#
-# Created:      30/09/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_ConvertSceneTo_Cmd.py
+
+Purpose:      This script is designed to:
+              Save the scene in same places as the current opened scene to a specified FileFormat
+              and move the files to a Folder related to the file Format if Argument 1 is true.
+
+Author:       Franck ELISABETH (with the help of James O'Hare)
+Website:      https://www.smoluck.com
+Created:      30/09/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 from os import path

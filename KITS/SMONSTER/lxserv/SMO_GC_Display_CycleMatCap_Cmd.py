@@ -1,19 +1,17 @@
 # python
 """
-# Name:         SMO_GC_Display_CycleMatCap_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Cycle Through Matcaps that are located in the Smonster GAME CONTENT MatCaps folder.
-#               SMONSTER\Kits\SMO_GAME_CONTENT\Matcaps
-#
-# Select in Item Mode or in Component Mode
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      14/02/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_Display_CycleMatCap_Cmd.py
+
+Purpose:      This script is designed to:
+              Cycle Through Matcaps that are located in the Smonster GAME CONTENT MatCaps folder.
+              SMONSTER\Kits\SMO_GAME_CONTENT\Matcaps
+
+              Select in Item Mode or in Component Mode
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      14/02/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -60,14 +58,14 @@ class SMO_GC_Display_CycleMatCap_Cmd(lxu.command.BasicCommand):
         return True
     
     def basic_Execute(self, msg, flags):
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         args = lx.args()
         #lx.out(args)
         # ReverseDirection = 0      # Forward Cycle
         # ReverseDirection = 1      # Backward Cycle
         ReverseDirection = self.dyna_Int(0)
         # lx.out('Cycle Direction Mode:',ReverseDirection)
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         SMO_MatCapId = lx.eval('user.value SMO_MatCapId ?')
         # lx.out('MatCap Current Index:', SMO_MatCapId)
 

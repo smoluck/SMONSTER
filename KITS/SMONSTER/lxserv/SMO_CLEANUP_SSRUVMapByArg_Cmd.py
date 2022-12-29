@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_CLEANUP_SSRUVMapByArg_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Search if a specific Vertex Map / UVMap exist, Select it and
-#               Rename it according to Arguments.
-#
-# Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      https://www.smoluck.com
-#
-# Created:      17/02/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CLEANUP_SSRUVMapByArg_Cmd.py
+
+Purpose:      This script is designed to:
+              Search if a specific Vertex Map / UVMap exist, Select it and
+              Rename it according to Arguments.
+
+Author:       Franck ELISABETH (with the help of James O'Hare)
+Website:      https://www.smoluck.com
+Created:      17/02/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -58,11 +56,11 @@ class SMO_Cleanup_SSRUVMapByArg_Cmd(lxu.command.BasicCommand):
     
     def basic_Execute(self, msg, flags):
         scn = modo.Scene()
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         RenameByDefault = self.dyna_Bool (0)
         SearchString = self.dyna_String (1)
         TargetString = self.dyna_String (2)
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         
         DetectedVMapCount = len(lx.evalN('vertMap.list all ?'))
         lx.out('Vmap Count:', DetectedVMapCount)

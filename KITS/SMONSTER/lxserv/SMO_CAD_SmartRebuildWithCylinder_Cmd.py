@@ -1,21 +1,19 @@
 # python
 """
-# Name:         SMO_CAD_SmartRebuildWithCylinder_Cmd.py
-# Version: 1.0
-#
-# Purpose:  This script is designed to Rebuild the
-#           Selected Volume (Polygon Mode) with just a CYLINDER that
-#           got the same Radius and Length as the Source volume it can be:
-#
-#                   a Closed Cylinder (Air Tight)
-#                   an Opened Cylinder on both Side
-#                   a Hole
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      13/04/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CAD_SmartRebuildWithCylinder_Cmd.py
+
+Purpose:  This script is designed to Rebuild the
+          Selected Volume (Polygon Mode) with just a CYLINDER that
+          got the same Radius and Length as the Source volume it can be:
+
+                  a Closed Cylinder (Air Tight)
+                  an Opened Cylinder on both Side
+                  a Hole
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      13/04/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -68,9 +66,9 @@ class SMO_CAD_SmartRebuildWithCylinder_Cmd(lxu.command.BasicCommand):
 
 
 
-        # # ------------------------------ #
-        # # <----( DEFINE ARGUMENTS )----> #
-        # # ------------------------------ #
+        # ------------------------------ #
+        # <----( DEFINE ARGUMENTS )----> #
+        # ------------------------------ #
         CYLINDER_SIDES_COUNT = self.dyna_Int(0)  # Sides Count for the Cylinder as an integer value
         CYLINDER_AXES = self.dyna_Int(1)  # Axes selection:                               X = 0 ### Y = 1 ### Z = 2
         CYLINDER_OPEN = self.dyna_Int(2)  # Open the Cylinder (Via delete NGon):          1 = Enable ### 0 = Disable
@@ -95,16 +93,16 @@ class SMO_CAD_SmartRebuildWithCylinder_Cmd(lxu.command.BasicCommand):
             except:
                 pass
         # lx.out(CYLINDER_SIDES_COUNT, CYLINDER_AXES, CYLINDER_OPEN, CYLINDER_TO_HOLE)
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
 
-        # # -------------------------- #
-        # # <----( TEST ARGUMENTS )----> #
-        # # -------------------------- #
+        # -------------------------- #
+        # <----( TEST ARGUMENTS )----> #
+        # -------------------------- #
         # CYLINDER_SIDES_COUNT = 16
         # CYLINDER_AXES = 0
         # CYLINDER_OPEN = 0
         # CYLINDER_TO_HOLE = 0
-        # # -------------------------- #
+        # -------------------------- #
 
 
 
@@ -132,15 +130,15 @@ class SMO_CAD_SmartRebuildWithCylinder_Cmd(lxu.command.BasicCommand):
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
 
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
         lx.eval("user.defNew name:SMO_SafetyCheck_PolygonModeEnabled type:integer life:momentary")
         lx.eval("user.defNew name:SMO_SafetyCheck_min1PolygonSelected type:integer life:momentary")
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
 
 
-        ###############COPY/PASTE Check Procedure#################
+        # ---------------- COPY/PASTE Check Procedure ---------------- #
         ## create variables
         lx.eval("user.defNew name:User_Pref_CopyDeselectChangedState type:boolean life:momentary")
         lx.eval("user.defNew name:User_Pref_PasteSelectionChangedState type:boolean life:momentary")
@@ -184,7 +182,7 @@ class SMO_CAD_SmartRebuildWithCylinder_Cmd(lxu.command.BasicCommand):
         # Is Paste Deselect True ?
         if User_Pref_PasteDeselect == 1:
             User_Pref_PasteDeselectChangedState = 0
-        ################################################
+        # -------------------------------------------- #
 
 
         # -------------------------- #
@@ -270,14 +268,14 @@ class SMO_CAD_SmartRebuildWithCylinder_Cmd(lxu.command.BasicCommand):
         # at Least 1 Polygons is selected --- END
 
 
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- START
         #####
         TotalSafetyCheckTrueValue = 2
         lx.out('Desired Value', TotalSafetyCheckTrueValue)
         TotalSafetyCheck = (SMO_SafetyCheck_PolygonModeEnabled + SMO_SafetyCheck_min1PolygonSelected)
         lx.out('Current Value', TotalSafetyCheck)
         #####
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- END
 
 
         # ------------------------ #
@@ -285,7 +283,7 @@ class SMO_CAD_SmartRebuildWithCylinder_Cmd(lxu.command.BasicCommand):
         # ------------------------ #
 
         lx.out('Start of SMO REBUILD With CYLINDER CLOSED / CYLINDER OPENED / HOLE')
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- START
         if TotalSafetyCheck == TotalSafetyCheckTrueValue:
             # Tag the Polygon to Rebuild From
             lx.eval('select.editSet name:TEMP_DATA_VOLUME mode:add')
@@ -394,7 +392,7 @@ class SMO_CAD_SmartRebuildWithCylinder_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.drop polygon')
 
             # if CYLINDER_OPEN == "1":              # Cylinder OPENED:      1 = ENABLE
-            # # Deselect the Polygons
+            # Deselect the Polygons
             # lx.eval('select.drop polygon')
             # lx.eval('select.polygon add vertex b-spline 4')
             # lx.eval('!!delete')
@@ -453,7 +451,7 @@ class SMO_CAD_SmartRebuildWithCylinder_Cmd(lxu.command.BasicCommand):
             lx.out('script Stopped: your mesh does not match the requirement for that script.')
             sys.exit
 
-        ###############COPY/PASTE END Procedure#################
+        # -------------- COPY/PASTE END Procedure  -------------- #
         # Restore user Preferences:
         if User_Pref_CopyDeselectChangedState == 1:
             lx.eval('pref.value application.copyDeSelection false')
@@ -464,7 +462,7 @@ class SMO_CAD_SmartRebuildWithCylinder_Cmd(lxu.command.BasicCommand):
         if User_Pref_PasteDeselectChangedState == 1:
             lx.eval('pref.value application.pasteDeSelection false')
             lx.out('"Deselect Elements Before Pasting" have been Restored')
-        ########################################################
+        # -------------------------------------------- #
 
         if not RefSystemActive:
             lx.eval('item.refSystem {}')
@@ -472,7 +470,7 @@ class SMO_CAD_SmartRebuildWithCylinder_Cmd(lxu.command.BasicCommand):
             lx.eval('item.refSystem %s' % CurrentRefSystemItem)
 
         lx.out('End of SMO REBUILD With CYLINDER CLOSED / CYLINDER OPENED / HOLE')
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
     def cmd_Query(self, index, vaQuery):
@@ -482,7 +480,7 @@ class SMO_CAD_SmartRebuildWithCylinder_Cmd(lxu.command.BasicCommand):
 lx.bless(SMO_CAD_SmartRebuildWithCylinder_Cmd, Cmd_Name)
 
 
-#### NOTE ####
+# ------- NOTE ------- #
 
 # import modo, lx
 
@@ -493,7 +491,7 @@ lx.bless(SMO_CAD_SmartRebuildWithCylinder_Cmd, Cmd_Name)
 # ARG_3rd = args[2]	# Function A State: true or false
 # ARG_4th = args[3]	# Function B State: true or false
 
-# # Expose the Result of the Arguments
+# Expose the Result of the Arguments
 # lx.out(ARG_1st,ARG_2nd,ARG_3rd,ARG_4th)
 
 

@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_CB_CreateLocatorOnMesh_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Create a Locator on first selected mesh position and parent all the selected meshes to that Locator.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      13/04/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CB_CreateLocatorOnMesh_Cmd.py
+
+Purpose:      This script is designed to
+              Create a Locator on first selected mesh position and parent all the selected meshes to that Locator.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      13/04/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -58,13 +56,13 @@ class SMO_CB_CreateLocatorOnMesh_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
 
-        # # # ------------- ARGUMENTS Test
+        # ------------- ARGUMENTS Test
         # LocShape = 2
         # LocSolid = 0
         # LocAxis = 0
-        # # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
 
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         args = lx.args()
         lx.out(args)
 
@@ -92,7 +90,7 @@ class SMO_CB_CreateLocatorOnMesh_Cmd(lxu.command.BasicCommand):
         # None = 4
         LocAxis = self.dyna_Int(2)
         # lx.out('Desired Axis:',LocAxis)
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
 
         # ------------------------ #
         # <----( Main Macro )----> #

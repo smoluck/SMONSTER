@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_GC_GetAllMaterialsTag_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Get all the Material Tags in the scene.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      12/08/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_GetAllMaterialsTag_Cmd.py
+
+Purpose:      This script is designed to
+              Get all the Material Tags in the scene.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      12/08/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

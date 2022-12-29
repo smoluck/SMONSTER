@@ -1,17 +1,17 @@
 # python
 """
-# Name:         SMO_GC_SetNewMaterialSmartRename_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Create a New Material Tag, rename the Material Layer in Shader tree according to Group Material name with a "_Mat" Suffix and show up Color Picker for setting Diffuse Color Channel.
-#               It replace default command: "poly.setMaterial"
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      11/10/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_SetNewMaterialSmartRename_Cmd.py
+
+Purpose:      This script is designed to
+              Create a New Material Tag, rename the Material Layer in Shader tree according to
+              Group Material name with a "_Mat" Suffix and show up Color Picker for setting
+              Diffuse Color Channel.
+              It replace default command: "poly.setMaterial" (but you can change this in the preference)
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      11/10/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -22,7 +22,7 @@ Cmd_Name = "smo.GC.SetNewMaterialSmartRename"
 # smo.GC.SetNewMaterialSmartRename true {MetalRust} {0.1 0.5 1.0}
 
 
-# # Bugfix for Shading Nerd compatibility issue. Commented this function creation as it returns a LookupError('attribute 0 not found.')
+# Bugfix for Shading Nerd compatibility issue. Commented this function creation as it returns a LookupError('attribute 0 not found.')
 # def SetMatNameDialog():
 #     output_name = ""
 #     lx.eval('!user.defNew SMO_MatNameStr string momentary')
@@ -221,7 +221,7 @@ class SMO_GC_SetNewMaterialSmartRename_Cmd(lxu.command.BasicCommand):
                         g = TarCol.split(' ')[1]
                         b = TarCol.split(' ')[2]
 
-                # # Bugfix for Shading Nerd compatibility issue. Commented this call
+                # Bugfix for Shading Nerd compatibility issue. Commented this call
                 # elif not self.dyna_String(0):
                 #     material_name = SetMatNameDialog()
 

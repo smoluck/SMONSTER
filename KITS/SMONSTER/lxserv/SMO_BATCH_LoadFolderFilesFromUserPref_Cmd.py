@@ -1,18 +1,15 @@
 # python
 """
-# Name:         SMO_BATCH_LoadFolderFilesFromUserPref_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Batch Load Files stored in a Folder and Process the data using User Defined Preferences.
-#               Input and Output Files Format are took from User Preferences SMO BATCH Panel
-#
-#
-# Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      https://www.smoluck.com
-#
-# Created:      01/10/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_BATCH_LoadFolderFilesFromUserPref_Cmd.py
+
+Purpose:      This script is designed to:
+              Batch Load Files stored in a Folder and Process the data using User Defined Preferences.
+              Input and Output Files Format are took from User Preferences SMO BATCH Panel
+
+Author:       Franck ELISABETH (with the help of James O'Hare)
+Website:      https://www.smoluck.com
+Created:      01/10/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 from os import path

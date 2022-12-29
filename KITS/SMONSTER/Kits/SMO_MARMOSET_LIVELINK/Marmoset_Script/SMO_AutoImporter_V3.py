@@ -1,28 +1,27 @@
 #python
 """
-# Name:         SMO_AutoImporter_V3.py
-# Version:      1.10
-#
-# Purpose:      This Script is designed to :
-#               Load LowPoly/Cage/HighPoly Meshes from current Modo scene,
-#               and create ready to use Bake Project in Marmoset.
-#
-#
-#
-# Author:       Franck ELISABETH
-# Website:      http://www.smoluck.com
-#
-# Created:      15/11/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:               SMO_AutoImporter_V3.py
+
+Purpose:            This Script is designed to:
+                    Load LowPoly/Cage/HighPoly Meshes from current Modo scene,
+                    and create ready to use Bake Project in Marmoset.
+
+Author:             Franck ELISABETH
+Website:            https://www.smoluck.com
+Created:            15/11/2020
+Copyright:          (c) Franck Elisabeth 2017-2022
 """
 
-import mset, os, tempfile, string
 import json as j
 
+import mset
+import os
+import tempfile
+
 print('------------SMO_AutoImporter_V3-----------')
-########### DEFINE VARIABLES ###########
+# ------------- DEFINE VARIABLES
 PathSeparator = "/"
-########################################
+# ---------------------------- #
 
 
 # PART A ########################## Initialization ########################
@@ -287,7 +286,7 @@ if baker != None:
     if (DataFromModo['AO State']) == 0:
         AO_Map.enabled = False
 
-    # # Bug in 3.08 in API
+    # Bug in 3.08 in API
     # AOF_Map = baker.getMap("Ambient Occlusion (2)")
     # print('AO Floor Bake State:', (DataFromModo['AOF State']))
     # if (DataFromModo['AOF State']) == 1:
@@ -306,17 +305,17 @@ if baker != None:
         TSNRM_Map.enabled = True
         TSNRM_Map.resetSuffix()
         TSNRM_Map.suffix = (DataFromModo['TSNRM NameTag'])
-        if (DataFromModo['NRM_FlipX']) == False:
+        if not (DataFromModo['NRM_FlipX']):
             TSNRM_Map.flipX = False
-        if (DataFromModo['NRM_FlipY']) == False:
+        if not (DataFromModo['NRM_FlipY']):
             TSNRM_Map.flipY = False
-        if (DataFromModo['NRM_FlipZ']) == False:
+        if not (DataFromModo['NRM_FlipZ']):
             TSNRM_Map.flipZ = False
-        if (DataFromModo['NRM_FlipX']) == True:
+        if (DataFromModo['NRM_FlipX']):
             TSNRM_Map.flipX = True
-        if (DataFromModo['NRM_FlipY']) == True:
+        if (DataFromModo['NRM_FlipY']):
             TSNRM_Map.flipY = True
-        if (DataFromModo['NRM_FlipZ']) == True:
+        if (DataFromModo['NRM_FlipZ']):
             TSNRM_Map.flipZ = True
     if (DataFromModo['TSNRM State']) == 0:
         TSNRM_Map.enabled = False
@@ -327,17 +326,17 @@ if baker != None:
         OSNRM_Map.enabled = True
         OSNRM_Map.resetSuffix()
         OSNRM_Map.suffix = (DataFromModo['OSNRM NameTag'])
-        if (DataFromModo['NRM_FlipX']) == False:
+        if not (DataFromModo['NRM_FlipX']):
             OSNRM_Map.flipX = False
-        if (DataFromModo['NRM_FlipY']) == False:
+        if not (DataFromModo['NRM_FlipY']):
             OSNRM_Map.flipY = False
-        if (DataFromModo['NRM_FlipZ']) == False:
+        if not (DataFromModo['NRM_FlipZ']):
             OSNRM_Map.flipZ = False
-        if (DataFromModo['NRM_FlipX']) == True:
+        if (DataFromModo['NRM_FlipX']):
             OSNRM_Map.flipX = True
-        if (DataFromModo['NRM_FlipY']) == True:
+        if (DataFromModo['NRM_FlipY']):
             OSNRM_Map.flipY = True
-        if (DataFromModo['NRM_FlipZ']) == True:
+        if (DataFromModo['NRM_FlipZ']):
             OSNRM_Map.flipZ = True
     if (DataFromModo['OSNRM State']) == 0:
         OSNRM_Map.enabled = False

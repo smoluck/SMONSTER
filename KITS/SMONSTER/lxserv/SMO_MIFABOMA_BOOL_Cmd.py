@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_MIFABOMA_BOOL_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               boolean Subtract the last Polygon Selection
-#               (Connected Polygons) from the current Layer.
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      https://www.smoluck.com
-#
-# Created:      27/02/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_MIFABOMA_BOOL_Cmd.py
+
+Purpose:      This script is designed to
+              boolean Subtract the last Polygon Selection
+              (Connected Polygons) from the current Layer.
+
+Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
+Website:      https://www.smoluck.com
+Created:      27/02/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -93,12 +91,12 @@ class SMO_MIFABOMA_Bool_Cmd(lxu.command.BasicCommand):
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
 
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
         lx.eval("user.defNew name:SMO_SafetyCheck_PolygonModeEnabled type:integer life:momentary")
         lx.eval("user.defNew name:SMO_SafetyCheck_min1PolygonSelected type:integer life:momentary")
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
 
         ############### COPY/PASTE Check Procedure #################
         ## create variables
@@ -144,7 +142,7 @@ class SMO_MIFABOMA_Bool_Cmd(lxu.command.BasicCommand):
         # Is Paste Deselect True ?
         if User_Pref_PasteDeselect == 1:
             User_Pref_PasteDeselectChangedState = 0
-        ################################################
+        # -------------------------------------------- #
 
         # -------------------------- #
         # <---( SAFETY CHECK 1 )---> #
@@ -227,14 +225,14 @@ class SMO_MIFABOMA_Bool_Cmd(lxu.command.BasicCommand):
             lx.out('script running: right amount of polygons in selection')
         # at Least 1 Polygons is selected --- END
 
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- START
         #####
         TotalSafetyCheckTrueValue = 2
         lx.out('Desired Value', TotalSafetyCheckTrueValue)
         TotalSafetyCheck = (SMO_SafetyCheck_PolygonModeEnabled + SMO_SafetyCheck_min1PolygonSelected)
         lx.out('Current Value', TotalSafetyCheck)
         #####
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- END
 
         # ------------------------ #
         # <----( Main Macro )----> #
@@ -340,7 +338,7 @@ class SMO_MIFABOMA_Bool_Cmd(lxu.command.BasicCommand):
 
 
 
-        ###############COPY/PASTE END Procedure#################
+        # -------------- COPY/PASTE END Procedure  -------------- #
         # Restore user Preferences:
         if User_Pref_CopyDeselectChangedState == 1:
             lx.eval('pref.value application.copyDeSelection false')
@@ -351,7 +349,7 @@ class SMO_MIFABOMA_Bool_Cmd(lxu.command.BasicCommand):
         if User_Pref_PasteDeselectChangedState == 1:
             lx.eval('pref.value application.pasteDeSelection false')
             lx.out('"Deselect Elements Before Pasting" have been Restored')
-        ########################################################
+        # -------------------------------------------- #
 
 
 
@@ -367,7 +365,7 @@ class SMO_MIFABOMA_Bool_Cmd(lxu.command.BasicCommand):
         lx.eval('select.type polygon')
 
         lx.out('End of SMO_Bool_Subtract Script')
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
     def cmd_Query(self, index, vaQuery):

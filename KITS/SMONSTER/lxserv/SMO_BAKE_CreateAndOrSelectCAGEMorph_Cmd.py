@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_BAKE_CreateAndOrSelectCAGEMorph_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This Command is designed to :
-#               Check if CAGE Map exist on current Mesh. If not, create a new MorphMap, then Select that CAGE Morph.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Modified:     07/04/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_BAKE_CreateAndOrSelectCAGEMorph_Cmd.py
+
+Purpose:      This Command is designed to:
+              Check if CAGE Map exist on current Mesh. If not, create a new MorphMap, then Select that CAGE Morph.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Modified:     07/04/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_GC_UnbevelRing_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Select current Edge Ring and Unbevel the selection.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      11/11/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_UnbevelRing_Cmd.py
+
+Purpose:      This script is designed to:
+              Select current Edge Ring and Unbevel the selection.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      11/11/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

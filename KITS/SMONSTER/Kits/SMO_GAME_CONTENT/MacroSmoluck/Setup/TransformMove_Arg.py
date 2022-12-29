@@ -17,12 +17,12 @@ lx.eval('tool.setAttr tool:xfrm.transform attr:TZ value:{%f}' % arguments[2])
 # lx.eval('tool.flag xfrm.transform auto 1')
 # lx.eval('tool.noChange')
 
-# # Command Block Begin:
+# Command Block Begin:
 # lx.eval('tool.setAttr tool:xfrm.transform attr:TX value:{%s}' %arguments[0])
 # lx.eval('tool.setAttr tool:xfrm.transform attr:TY value:{%s}' %arguments[1])
 # lx.eval('tool.setAttr tool:xfrm.transform attr:TZ value:{%s}' %arguments[2])
-# # Command Block End:
+# Command Block End:
 
-# # Launch the Move Tool
+# Launch the Move Tool
 # lx.eval('tool.doapply')
 # lx.eval('tool.set preset:TransformMove mode:off')

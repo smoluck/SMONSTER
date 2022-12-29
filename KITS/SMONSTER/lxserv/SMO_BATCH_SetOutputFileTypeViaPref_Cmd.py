@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_BATCH_SetOutputFileTypeViaPref_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Set the Input Files Format using User Defined Preferences.
-#
-#
-# Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      https://www.smoluck.com
-#
-# Created:      01/10/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_BATCH_SetOutputFileTypeViaPref_Cmd.py
+
+Purpose:      This script is designed to:
+              Set the Input Files Format using User Defined Preferences.
+
+Author:       Franck ELISABETH (with the help of James O'Hare)
+Website:      https://www.smoluck.com
+Created:      01/10/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -61,9 +58,9 @@ class SMO_BATCH_SetOutputFileTypeViaPref_Cmd(lxu.command.BasicCommand):
         # ------------------------------ #
         
         
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         OutputFileFormat = self.dyna_String (0)
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         
         
         if OutputFileFormat == "DXF" :

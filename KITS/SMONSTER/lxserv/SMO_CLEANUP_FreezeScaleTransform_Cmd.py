@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_CLEANUP_FreezeScaleTransform_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Freeze Scale transform of all meshes in scene but if there is instances,
-#               it retain Instances scale to 100 percent or -100 percent as well.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      02/06/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CLEANUP_FreezeScaleTransform_Cmd.py
+
+Purpose:      This script is designed to:
+              Freeze Scale transform of all meshes in scene but if there is instances,
+              it retains Instances scale to 100 percent or -100 percent as well.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      02/06/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

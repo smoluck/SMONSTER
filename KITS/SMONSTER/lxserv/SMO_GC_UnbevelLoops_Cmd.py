@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_UnbevelLoops.py
-# Version: 1.0
-# 
-# Purpose:      This script is designed to:
-#               Unbevel the Polygon Selection, by using the MouseOver the Edge Ring
-# 
-# 
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-# 
-# Created:      05/02/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_UnbevelLoops.py
+
+Purpose:      This script is designed to:
+              Unbevel the Polygon Selection, by using the MouseOver the Edge Ring
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      05/02/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -69,12 +66,12 @@ class SMO_GC_UnbevelLoops_Cmd(lxu.command.BasicCommand):
         # ------------------------------ #
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
         lx.eval("user.defNew name:SMO_SC_UnbevelPolyLoop_min1PolygonSelected type:integer life:momentary")
         lx.eval("user.defNew name:SMO_SC_UnbevelPolyLoop_1EdgeSelected type:integer life:momentary")
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
 
         # -------------------------- #
         # <---( SAFETY CHECK 3 )---> #
@@ -105,7 +102,7 @@ class SMO_GC_UnbevelLoops_Cmd(lxu.command.BasicCommand):
         lx.out('Modo Version:',Modo_ver)
 
 
-        ############### 5 ARGUMENTS ------------- #
+        # ------------- ARGUMENT ------------- #
         args = lx.args()
         lx.out(args)
 
@@ -116,9 +113,9 @@ class SMO_GC_UnbevelLoops_Cmd(lxu.command.BasicCommand):
         # ------------- ARGUMENTS ------------- #
 
 
-        # # ------------- ARGUMENTS Test
+        # ------------- ARGUMENTS Test
         # CornerMethod = 1
-        # # ------------- ARGUMENTS -------------
+        # ------------- ARGUMENTS -------------
 
 
         if self.SelModePoly:

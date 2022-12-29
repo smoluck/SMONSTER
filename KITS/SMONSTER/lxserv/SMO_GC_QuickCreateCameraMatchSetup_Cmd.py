@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_GC_QuickCreateCameraMatchSetup_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Select the still images (clips) Item of the current scene.
-#
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond)
-# Website:      https://www.smoluck.com
-#
-# Created:      12/08/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_QuickCreateCameraMatchSetup_Cmd.py
+
+Purpose:      This script is designed to
+              Select the still images (clips) Item of the current scene.
+
+Author:       Franck ELISABETH (with the help of Tom Dymond)
+Website:      https://www.smoluck.com
+Created:      12/08/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -64,12 +61,12 @@ class SMO_GC_QuickCreateCameraMatchSetup_Cmd(lxu.command.BasicCommand):
         lx.eval("user.defNew name:Target_Path type:string life:momentary")
         # ------------------------------ #
 
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         InputFileFormat = "jpg"
         OutputFileFormat = ".lxo"
 
         PathSeparator = "/"
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
 
         lx.eval('dialog.setup dir')
         lx.eval('dialog.title "Select the target Folder to Analyse and Process"')
@@ -97,7 +94,7 @@ class SMO_GC_QuickCreateCameraMatchSetup_Cmd(lxu.command.BasicCommand):
                 # print (finalPath)
                 TargetFileListPath.append(finalPath)
 
-                # # Convert String path to Absolute Path using OS formating
+                # Convert String path to Absolute Path using OS formating
                 # finalPath_AbsPath = os.path.abspath(finalPath)
                 # print('Absolute Path: ', finalPath_AbsPath)
                 # TargetFileListPath.append(finalPath_AbsPath)
@@ -142,12 +139,12 @@ class SMO_GC_QuickCreateCameraMatchSetup_Cmd(lxu.command.BasicCommand):
             lx.eval('!scene.close')
 
         # scene_FileName = lx.eval('query sceneservice scene.name ? main') # Select the scene
-        # # lx.out('Scene Name:', scene_FileName)
+        # lx.out('Scene Name:', scene_FileName)
         # if scene_FileName:
         #     Scene_Name = path.splitext( path.basename(scene_FileName) )[0]
         #     lx.out('Scene Name:', Scene_Name)
         #
-        # # Drop layer selection
+        # Drop layer selection
         # lx.eval('select.drop item')
         # lx.eval('select.itemType mesh')
         # MeshItem_List = scene.selectedByType(lx.symbol.sITYPE_MESH)

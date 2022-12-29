@@ -1,18 +1,18 @@
 # python
 """
-# Name:         SMO_GC_onDrop_RotateTool_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Automatically Remove the Shading Group "meshPresetName.lxl" created by Modo when we drop a meshpreset in the scene.
-#               It also setup the Transform tool ON, with Background MeshConstraint, and Action Center to Local mode, for easy adjustment.
-#               (Attach SMO_GC_onDrop_RotateTool.py script to the selected MeshPreset file via PB_View and smo.GC.AttachScriptToPreset command.)
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      01/10/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:           SMO_GC_onDrop_RotateTool_Cmd.py
+
+Purpose:        This script is designed to:
+                Automatically Remove the Shading Group "meshPresetName.lxl" created
+                by Modo when we drop a meshpreset in the scene. It also setup the Transform tool ON,
+                with Background MeshConstraint, and Action Center to Local mode, for easy adjustment.
+                (Attach SMO_GC_onDrop_RotateTool.py script to the selected MeshPreset file via
+                PB_View and smo.GC.AttachScriptToPreset command.)
+
+Author:         Franck ELISABETH
+Website:        https://www.smoluck.com
+Created:        01/10/2020
+Copyright:      (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -24,16 +24,16 @@ scnSrv = lx.service.Scene()
 scn = lxu.select.SceneSelection().current()
 evt = lx.args()[0]
 
-###===
-###=== Executed before the preset is added to the scene, allows us to
-###=== abort the preset application if we need to.
-###===
+#
+#  Executed before the preset is added to the scene, allows us to
+#  abort the preset application if we need to.
+#
 # if evt == 'beforeCreate':
 #    pass
 
-###===
-###=== Executed after the preset is added to the scene
-###===
+#
+#  Executed after the preset is added to the scene
+#
 # elif evt == 'onDo':
 #    pass
 
@@ -51,9 +51,9 @@ evt = lx.args()[0]
     # scene = modo.scene.current()
     # scnSrv = lx.service.Scene()
     # scn = lxu.select.SceneSelection().current()
-    # # select back the dropped MeshItem and rename it to get rid of the "".lxl" tag.
+    # select back the dropped MeshItem and rename it to get rid of the "".lxl" tag.
     # lx.eval('select.type item')
-    # # store the Unique name of the current mesh layer (Mesh item (Preset) that we just dropped on scene)
+    # store the Unique name of the current mesh layer (Mesh item (Preset) that we just dropped on scene)
     # MeshUName = lx.eval('query layerservice layer.id ? fg')
     # lx.out('Item Unique Name:', MeshUName)
     # scene.select(MeshUName)

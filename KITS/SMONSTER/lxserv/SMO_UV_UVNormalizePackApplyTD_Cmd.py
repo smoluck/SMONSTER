@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_UV_UVNormalizePackApplyTD_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               UVNormalize Pack and Apply Texel Density on the current UVMap
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      28/12/2018
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_UV_UVNormalizePackApplyTD_Cmd.py
+
+Purpose:      This script is designed to
+              UVNormalize Pack and Apply Texel Density on the current UVMap
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      28/12/2018
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -54,7 +52,7 @@ class SMO_UV_UVNormalizePackApplyTD_Cmd(lxu.command.BasicCommand):
         
         
         
-        ##### UV SEAM Map Detection #####
+        # ------------- UV SEAM Map Detection
         # MODO version checks.
         # Modo 13.0 and up have UV Seam map.
         # Version below 13.0 haven't
@@ -77,7 +75,7 @@ class SMO_UV_UVNormalizePackApplyTD_Cmd(lxu.command.BasicCommand):
         # Get the name of UV Seam map available on mesh
         DetectedUVSEAMmapName = lx.eval('vertMap.list seam ?')
         lx.out('UV SEAM Map Name:', DetectedUVSEAMmapName)
-        ##### UV SEAM Map Detection #####
+        # ------------- UV SEAM Map Detection
         
         
         
@@ -106,7 +104,7 @@ class SMO_UV_UVNormalizePackApplyTD_Cmd(lxu.command.BasicCommand):
         # ------------------------ #
 
         lx.out('Start of Update UVNormalizePackApplyTexelDensity Script')
-        #####--------------------  Compare SafetyCheck value and decide or not to continue the process  --- START
+        # ------------- Compare SafetyCheck value and decide or not to continue the process  --- START
         
         lx.eval('texeldensity.normalize')
         lx.eval('uv.pack pack:true stretch:false orient:false direction:auto gaps:"0.2" byPixel:false gapsByPixel:"10.24" bbox:false stack:false region:normalized udim:1001 regionX:"-1.0" regionY:"-1.0" regionW:"3.0" regionH:"3.0" tileU:1 tileV:1 polygonTag:material background:false writeNew:false')

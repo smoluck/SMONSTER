@@ -1,17 +1,15 @@
 # python
 """
-# Name:             SMO_LL_PIXAFLUX_SetExePath_Cmd.py
-# Version:          1.95
-#
-# Purpose:      This Command is designed to
-#                   Set the PixaFlux exe path to create the LiveLink.
-#                   It will prompt a File browser to get the EXE file Location.
-#
-# Author:           Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Modified:          22/05/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_LL_PIXAFLUX_SetExePath_Cmd.py
+
+Purpose:      This Command is designed to:
+              Set the PixaFlux exe path to create the LiveLink.
+              It will prompt a File browser to get the EXE file Location.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Modified:     22/05/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx, lxifc, lxu.command, lxu.select, subprocess, os

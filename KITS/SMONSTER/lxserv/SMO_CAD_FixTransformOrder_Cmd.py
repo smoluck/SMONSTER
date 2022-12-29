@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_CAD_FixTransformOrder_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Change the Transform Order of current selected item to XYZ Order.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      07/05/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CAD_FixTransformOrder_Cmd.py
+
+Purpose:      This script is designed to:
+              Change the Transform Order of current selected item to XYZ Order.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      07/05/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

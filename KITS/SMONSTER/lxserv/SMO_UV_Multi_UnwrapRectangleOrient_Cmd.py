@@ -1,18 +1,16 @@
 # python
 """
-# Name:         SMO_UV_Multi_UnwrapRectangleOrient_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               (for Multiple Mesh)
-#               Unwrap the current Polygon Selection
-#               on defined Axis.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      26/08/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_UV_Multi_UnwrapRectangleOrient_Cmd.py
+
+Purpose:      This script is designed to
+              (for Multiple Mesh)
+              Unwrap the current Polygon Selection
+              on defined Axis.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      26/08/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -189,7 +187,7 @@ class SMO_UV_Multi_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
                 lx.eval('smo.UV.NormalizePackByArea 0 0 0 0')
         #####################################################
 
-        # # select back the Polygons
+        # select back the Polygons
         lx.eval('smo.GC.DeselectAll')
         scene.select(mesh)
         lx.eval('select.type polygon')

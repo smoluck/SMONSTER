@@ -7,7 +7,6 @@ Source_PosX = lx.arg()[0]
 Source_PosY = lx.arg()[1]
 Source_PosZ = lx.arg()[2]
 
-
 lx.eval('tool.noChange')
 lx.eval('tool.reset xfrm.transform')
 lx.eval('tool.flag xfrm.transform auto 0')

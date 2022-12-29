@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_DOC_WebLink_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This Command is designed to:
-#               Open a WebLink using a String Argument for address.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      29/08/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_DOC_WebLink_Cmd.py
+
+Purpose:      This Command is designed to:
+              Open a WebLink using a String Argument for address.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      29/08/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

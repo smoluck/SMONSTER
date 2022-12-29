@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_CLEANUP_RenameVNrmMapToDefaultSceneWise_Cmd.py
-# Version:      1.0
-#
-# Purpose:      Check for all Meshes in the current scene and rename their
-#               first detected VertexNormal Map (by Index = 0) to Modo/Preferences/Defaults/Application name.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      21/10/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CLEANUP_RenameVNrmMapToDefaultSceneWise_Cmd.py
+
+Purpose:      Check for all Meshes in the current scene and rename their
+              first detected VertexNormal Map (by Index = 0) to Modo/Preferences/Defaults/Application name.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      21/10/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

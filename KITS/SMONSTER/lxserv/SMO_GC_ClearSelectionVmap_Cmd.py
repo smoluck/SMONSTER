@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_GC_ClearSelectionVmap_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Select all or Deselect all Vmaps based
-#               on specified type via arguments.
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond)
-# Website:      https://www.smoluck.com
-#
-# Created:      12/08/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_ClearSelectionVmap_Cmd.py
+
+Purpose:      This script is designed to
+              Select all or Deselect all Vmaps based
+              on specified type via arguments.
+
+Author:       Franck ELISABETH (with the help of Tom Dymond)
+Website:      https://www.smoluck.com
+Created:      12/08/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -206,7 +204,7 @@ class SMO_GC_ClearSelectionVmap_Cmd(lxu.command.BasicCommand):
 
         del VMap_NameList[:]
         del VMap_TypeList[:]
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
 lx.bless(SMO_GC_ClearSelectionVmap_Cmd, Cmd_Name)

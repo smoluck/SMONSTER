@@ -1,18 +1,18 @@
 # python
 """
-# Name:         SMO_UnmergeUsingHardEdge_AUDIO.py
-# Version: 1.0
-#
-# Purpose:      Select the Mesh in Item Mode
-#               It only cleanup Polygons that are perfectly perpendicular to X Y Z Axis in both direction
-#               (Some of the code is related to the Sceneca  LazySelect script. Thanks to him for let me integrate it here)
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      28/05/2018
-# Modified:		03/06/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:           SMO_UnmergeUsingHardEdge_AUDIO.py
+
+Purpose:        This script is designed to:
+                Cleanup Mesh over 3 axis directions (6 sides)
+                Select the Mesh in Item Mode
+                It only cleanup Polygons that are perfectly perpendicular to X Y Z
+                Axis in both direction (Some of the code is related to the Sceneca
+                LazySelect script. Thanks to him for let me integrate it here)
+
+Author:         Franck ELISABETH
+Website:        https://www.smoluck.com
+Created:        28/05/2018
+Copyright:      (c) Franck Elisabeth 2017-2022
 """
 
 import lx

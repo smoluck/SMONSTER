@@ -1,18 +1,16 @@
 # python
 """
-# Name:             SMO_LL_PIXAFLUX_SendDataAuto_Cmd.py
-# Version:          1.00
-#
-# Purpose:      This Command is designed to :
-#                   Export the Current Mesh as FBX to PixaFlux temp Folder.
-#                   Create a Texture to store the TSNM.
-#                   Resolution defined by Argument in pixel.
-#
-# Author:           Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Modified:          09/07/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:             SMO_LL_PIXAFLUX_SendDataAuto_Cmd.py
+
+Purpose:      This Command is designed to:
+              Export the Current Mesh as FBX to PixaFlux temp Folder.
+              Create a Texture to store the TSNM.
+              Resolution defined by Argument in pixel.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Modified:     09/07/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 # !/usr/bin/env python
@@ -186,7 +184,7 @@ class SMO_LL_PIXAFLUX_SendData_Cmd(lxu.command.BasicCommand):
             lx.out('Requires Modo 901 or newer.')
             return
 
-        # # Get the selected UV names.
+        # Get the selected UV names.
         # selected_uv_names = self.getUVSelection ()
         # if len (selected_uv_names) == 0:
         # lx.out ('No UV maps selected.')
@@ -432,7 +430,7 @@ class SMO_LL_PIXAFLUX_SendData_Cmd(lxu.command.BasicCommand):
         lx.eval('shader.setEffect normal')
 
         image_save_time = os.path.getmtime(image_export_path)
-        ################################################
+        # -------------------------------------------- #
 
         # Restore the FBX preferences.
         self.restoreFBXSettings(fbxSettings)
@@ -473,12 +471,12 @@ class SMO_LL_PIXAFLUX_SendData_Cmd(lxu.command.BasicCommand):
                     lx.eval('!delete')
 
                 # if ExplodePrePass == 0 :
-                # # Get the Unique name of the current Exploded Meshlayer and save it in User Values
+                # Get the Unique name of the current Exploded Meshlayer and save it in User Values
                 # TempExplodedMeshPixaFlux = lx.eval ('!!user.value Smo_PixaFluxTempExplodedMesh ?')
                 # lx.eval('select.subItem {%s} set mesh;replicator;meshInst;camera;light;txtrLocator;backdrop;groupLocator;replicator;surfGen;locator;falloff;deform;locdeform;weightContainer;morphContainer;deformGroup;deformMDD2;ABCStreamingDeformer;morphDeform;itemInfluence;genInfluence;deform.push;deform.wrap;softLag;ABCCurvesDeform.sample;ABCdeform.sample;force.root;baseVolume;chanModify;itemModify;meshoperation;chanEffect;defaultShader;defaultShader 0 0' % TempExplodedMeshPixaFlux)
                 # lx.eval('item.channel locator$visible off')
 
-                # # Get the Unique name of the current Target Meshlayer and save it in User Values
+                # Get the Unique name of the current Target Meshlayer and save it in User Values
                 # TargetMeshPixaFlux = lx.eval ('!!user.value Smo_PixaFluxTargetMesh ?')
                 # lx.eval('select.subItem {%s} set mesh;replicator;meshInst;camera;light;txtrLocator;backdrop;groupLocator;replicator;surfGen;locator;falloff;deform;locdeform;weightContainer;morphContainer;deformGroup;deformMDD2;ABCStreamingDeformer;morphDeform;itemInfluence;genInfluence;deform.push;deform.wrap;softLag;ABCCurvesDeform.sample;ABCdeform.sample;force.root;baseVolume;chanModify;itemModify;meshoperation;chanEffect;defaultShader;defaultShader 0 0' % TargetMeshPixaFlux)
 

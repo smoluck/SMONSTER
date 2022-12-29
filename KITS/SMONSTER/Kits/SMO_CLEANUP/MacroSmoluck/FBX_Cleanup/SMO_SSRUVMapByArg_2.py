@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_SSRUVMapByArg.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Search if a specific UV Map exist, select it and rename it
-#               via String Argument.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      17/02/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_SSRUVMapByArg.py
+
+Purpose:      This script is designed to:
+              Search if a specific UV Map exist, select it and rename it
+              via String Argument.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      17/02/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -19,11 +17,13 @@ import modo
 
 scn = modo.Scene()
 
-# # # ------------- ARGUMENTS Test
+# ------------- ARGUMENTS Test
 # RenameByDefault = 1
 # Searched = "UVChannel_1"
 # OutputName = "TargetUVMap"
-# # ------------- ARGUMENTS ------------- #
+# ------------- ARGUMENTS
+
+# ------------- ARGUMENTS ------------- #
 args = lx.args()
 lx.out(args)
 
@@ -35,7 +35,7 @@ lx.out('Searched String chain:', Searched)
 
 OutputName = str(args[2])
 lx.out('Target String chain:', OutputName)
-# # ------------- ARGUMENTS ------------- #
+# ------------- ARGUMENTS ------------- #
 
 
 DetectedVMapCount = len(lx.evalN('vertMap.list all ?'))

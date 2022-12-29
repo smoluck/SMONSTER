@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_DOC_VideoLink_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This Command is designed to:
-#               Open the Tutorial Videos using a String Argument for Defined Kit and an integer as argument for Video ID.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      14/08/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_DOC_VideoLink_Cmd.py
+
+Purpose:      This Command is designed to:
+              Open the Tutorial Videos using a String Argument for Defined Kit and an integer as argument for Video ID.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      14/08/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

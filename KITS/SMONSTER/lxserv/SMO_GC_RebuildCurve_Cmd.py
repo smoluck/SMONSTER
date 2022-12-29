@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_GC_RebuildCurve_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Rebuild the current selected Mesh layer (curve Data) to Polylines.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      19/12/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_RebuildCurve_Cmd.py
+
+Purpose:      This script is designed to
+              Rebuild the current selected Mesh layer (curve Data) to Polylines.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      19/12/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -53,23 +51,23 @@ class SMO_GC_RebuildCurve_Cmd(lxu.command.BasicCommand):
         return True
     
     def basic_Execute(self, msg, flags):
-        # # # ------------- ARGUMENTS Test
+        # ------------- ARGUMENTS Test
         samplingPrecisionSize = 1
-        # # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         # args = lx.args()
         # lx.out(args)
-        # # Draw Option OFF = 0 
-        # # Draw Option ON Wireframe = 1
-        # # Draw Option ON Shaded = 2
-        # # Draw Option ON Shaded & Wireframe = 3
+        # Draw Option OFF = 0 
+        # Draw Option ON Wireframe = 1
+        # Draw Option ON Shaded = 2
+        # Draw Option ON Shaded & Wireframe = 3
         # samplingPrecisionSize = samplingPrecision
         # lx.out('Desired Resampling maximum size:', samplingPrecisionSize)
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         
         
-        ###############COPY/PASTE Check Procedure#################
+        # ---------------- COPY/PASTE Check Procedure ---------------- #
         ## create variables
         lx.eval("user.defNew name:User_Pref_CopyDeselectChangedState type:boolean life:momentary")
         lx.eval("user.defNew name:User_Pref_PasteSelectionChangedState type:boolean life:momentary")
@@ -113,30 +111,30 @@ class SMO_GC_RebuildCurve_Cmd(lxu.command.BasicCommand):
         # Is Paste Deselect True ?
         if User_Pref_PasteDeselect == 1:
             User_Pref_PasteDeselectChangedState = 0
-        ################################################
+        # -------------------------------------------- #
         
         
         # ------------------------------ #
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
         
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
         
-        ## Vertex
+        # Vertex
         lx.eval("user.defNew name:SMO_SafetyCheckIteCol_VertexModeEnabled type:integer life:momentary")
         
-        ## Edges
+        # Edges
         lx.eval("user.defNew name:SMO_SafetyCheckIteCol_EdgeModeEnabled type:integer life:momentary")
         
-        ## Polygon
+        # Polygon
         lx.eval("user.defNew name:SMO_SafetyCheckIteCol_PolygonModeEnabled type:integer life:momentary")
         
-        ## Item
+        # Item
         lx.eval("user.defNew name:SMO_SafetyCheckIteCol_ItemModeEnabled type:integer life:momentary")
         
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
         
         
         
@@ -306,7 +304,7 @@ class SMO_GC_RebuildCurve_Cmd(lxu.command.BasicCommand):
             lx.eval('!delete')
             # lx.eval('%s' % item.id)
             
-        ###############COPY/PASTE END Procedure#################
+        # -------------- COPY/PASTE END Procedure  -------------- #
         # Restore user Preferences:
         if User_Pref_CopyDeselectChangedState == 1:
             lx.eval('pref.value application.copyDeSelection false')
@@ -317,13 +315,13 @@ class SMO_GC_RebuildCurve_Cmd(lxu.command.BasicCommand):
         if User_Pref_PasteDeselectChangedState == 1:
             lx.eval('pref.value application.pasteDeSelection false')
             lx.out('"Deselect Elements Before Pasting" have been Restored')
-        ########################################################
+        # -------------------------------------------- #
         
         
         lx.eval('select.drop item locator')
         lx.out('End of SMO_RebuildCurve Script')
         lx.out('-------------------------------')
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
     def cmd_Query(self, index, vaQuery):

@@ -1,22 +1,19 @@
 # python
 """
-# Name:         SMO_UnmergeByHardEdge_AUDIO.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Unmerge separate one Mesh ItemCount
-#               using the HardEdge as guide.
-#               (All Vertex Borders will be merged in the process)
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      28/05/2018
-# Modified:     03/06/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_UnmergeByHardEdge_AUDIO.py
+
+Purpose:      This script is designed to:
+              Unmerge separate one Mesh ItemCount
+              using the HardEdge as guide.
+              (All Vertex Borders will be merged in the process)
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      28/05/2018
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
-import modo, lx
+import lx
 
 OriginalTimeCurrentOut = lx.eval("time.range current out:?")
 # lx.out('Original Time Current Out: {%s}' % OriginalTimeCurrentOut )

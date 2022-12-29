@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_MIFABOMA_SLICE_Local_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This Command is designed to Mirror
-#               a Polygon Selection from the current Layer
-#               on a defined Axis (controlled by Argument).
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      https://www.smoluck.com
-#
-# Created:      16/09/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_MIFABOMA_SLICE_Local_Cmd.py
+
+Purpose:      This Command is designed to Mirror
+              a Polygon Selection from the current Layer
+              on a defined Axis (controlled by Argument).
+
+Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
+Website:      https://www.smoluck.com
+Created:      16/09/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -86,12 +84,12 @@ class SMO_MIFABOMA_Slice_Local_Cmd(lxu.command.BasicCommand):
         # ------------------------------ #
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
         lx.eval("user.defNew name:SMO_SafetyCheck_PolygonModeEnabled type:integer life:momentary")
         lx.eval("user.defNew name:SMO_SafetyCheck_min1PolygonSelected type:integer life:momentary")
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
         
         
         
@@ -196,14 +194,14 @@ class SMO_MIFABOMA_Slice_Local_Cmd(lxu.command.BasicCommand):
         
         
         
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- START
         #####
         TotalSafetyCheckTrueValue = 2
         lx.out('Desired Value',TotalSafetyCheckTrueValue)
         TotalSafetyCheck = (SMO_SafetyCheck_PolygonModeEnabled + SMO_SafetyCheck_min1PolygonSelected)
         lx.out('Current Value',TotalSafetyCheck)
         #####
-        #####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
+        # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- END
         
         
         
@@ -213,7 +211,7 @@ class SMO_MIFABOMA_Slice_Local_Cmd(lxu.command.BasicCommand):
         # <----( Main Macro )----> #
         # ------------------------ #
         
-        #####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
+        # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- START
         if TotalSafetyCheck == TotalSafetyCheckTrueValue:
             lx.eval('hide.unsel')
             lx.eval('tool.set actr.auto on 0')

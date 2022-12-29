@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_CLEANUP_DelPreTransform_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Delete all 3DSMAX related PreTransform Channels created at
-#               FBX Export in the current scene. Position / Rotation / Scale
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      03/03/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CLEANUP_DelPreTransform_Cmd.py
+
+Purpose:      This script is designed to:
+              Delete all 3DSMAX related PreTransform Channels created at
+              FBX Export in the current scene. Position / Rotation / Scale
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      03/03/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -58,16 +56,16 @@ class SMO_Cleanup_DelPreTransform_Cmd(lxu.command.BasicCommand):
         IntMergeTransRot = self.dyna_Int (0)
         IntFreezeRot = self.dyna_Int (1)
         
-        # # ------------- ARGUMENTS Test
+        # ------------- ARGUMENTS Test
         # PreTransform = 1
         # FreezeRot = 1
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         args = lx.args()
         lx.out(args)
 
 
 
-        ###############COPY/PASTE Check Procedure#################
+        # ---------------- COPY/PASTE Check Procedure ---------------- #
         ## create variables
         lx.eval("user.defNew name:User_Pref_CopyDeselectChangedState type:boolean life:momentary")
         lx.eval("user.defNew name:User_Pref_PasteSelectionChangedState type:boolean life:momentary")
@@ -111,7 +109,7 @@ class SMO_Cleanup_DelPreTransform_Cmd(lxu.command.BasicCommand):
         # Is Paste Deselect True ?
         if User_Pref_PasteDeselect == 1:
             User_Pref_PasteDeselectChangedState = 0
-        ################################################
+        # -------------------------------------------- #
 
 
         
@@ -120,7 +118,7 @@ class SMO_Cleanup_DelPreTransform_Cmd(lxu.command.BasicCommand):
         
         FreezeRot = IntFreezeRot
         lx.out('Freeze Rotation:', FreezeRot)
-        # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         
         lx.eval('select.drop item')
         lx.eval('select.itemType mesh')
@@ -142,7 +140,7 @@ class SMO_Cleanup_DelPreTransform_Cmd(lxu.command.BasicCommand):
             lx.eval('select.type item')
         lx.eval('select.drop item')
 
-        ###############COPY/PASTE END Procedure#################
+        # -------------- COPY/PASTE END Procedure  -------------- #
         # Restore user Preferences:
         if User_Pref_CopyDeselectChangedState == 1 :
             lx.eval('pref.value application.copyDeSelection false')
@@ -153,7 +151,7 @@ class SMO_Cleanup_DelPreTransform_Cmd(lxu.command.BasicCommand):
         if User_Pref_PasteDeselectChangedState == 1 :
             lx.eval('pref.value application.pasteDeSelection false')
             lx.out('"Deselect Elements Before Pasting" have been Restored')
-        ########################################################
+        # -------------------------------------------- #
         
     
 lx.bless(SMO_Cleanup_DelPreTransform_Cmd, Cmd_Name)
@@ -163,7 +161,7 @@ lx.bless(SMO_Cleanup_DelPreTransform_Cmd, Cmd_Name)
 # Delete all 3DSMAX related PreRotation Channels #
 #------------------------------------------------#
 
-# # Variables
+# Variables
 # DelPreTraList = []
 # DelPreTraList = lx.eval('query sceneservice selected ? mesh') # mesh item layers
 # for mesh in DelPreTraList:
@@ -171,7 +169,7 @@ lx.bless(SMO_Cleanup_DelPreTransform_Cmd, Cmd_Name)
 
 
 # #------------------------------------------------#
-# # Delete all 3DSMAX related PreRotation Channels #
+# Delete all 3DSMAX related PreRotation Channels #
 # #------------------------------------------------#
 
 # PrePos = "*PrePosition*"
@@ -180,18 +178,18 @@ lx.bless(SMO_Cleanup_DelPreTransform_Cmd, Cmd_Name)
 
 # Detected = 0
 
-# # Variables
+# Variables
 # DelPreTraList = []
 # DelPreTraList = lx.eval('query sceneservice selected ? mesh') # mesh item layers
 # for mesh in DelPreTraList:
-    # # mesh.select(True)
+    # mesh.select(True)
     # lx.eval('select.type polygon')
     # lx.eval('select.all')
     # lx.eval('cut')
     # lx.eval('select.type item')
     
     
-    # # NOT VALID I must find a way to select only the related PreTransform item on the current selected Mesh
+    # NOT VALID I must find a way to select only the related PreTransform item on the current selected Mesh
     # try:
         # if PreTransform == 0 :
             # lx.eval('selectPattern.pattern %s' % PrePos)
@@ -207,7 +205,7 @@ lx.bless(SMO_Cleanup_DelPreTransform_Cmd, Cmd_Name)
     # if Detected == 1 :
         # lx.eval('selectPattern.apply set')
         # lx.eval('!delete')
-    # # NOT VALID
+    # NOT VALID
     
     
     # lx.eval('select.type polygon')

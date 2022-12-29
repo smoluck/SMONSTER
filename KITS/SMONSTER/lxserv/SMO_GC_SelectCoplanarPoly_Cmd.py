@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_GC_SelectCoPlanarPoly_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This Command is designed to
-#               (Replace the old Seneca Lazy Select by the Built in Select CoPlanar poly tool.)
-#               
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      https://www.smoluck.com
-#
-# Created:      22/04/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_SelectCoPlanarPoly_Cmd.py
+
+Purpose:      This Command is designed to
+              (Replace the old Seneca Lazy Select by the Built-in Select CoPlanar poly tool.)
+
+Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
+Website:      https://www.smoluck.com
+Created:      22/04/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -98,7 +95,7 @@ class SMO_GC_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
         # ------------------------------ #
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
         lx.eval("user.defNew name:PolyCoPlanarAngle type:angle life:momentary")
         lx.eval("user.defNew name:PolyCoPlanarConnect type:integer life:momentary")
@@ -107,7 +104,7 @@ class SMO_GC_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
         # lx.eval("user.defNew name:MODE type:integer life:momentary")
         # lx.eval("user.defNew name:RANGE type:distance life:momentary")
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
 
         #################################
         # <----( DEFINE ARGUMENTS )----> #

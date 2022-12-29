@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_CLEANUP_LoadPrst3DsMAX_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Load the 3DsMAX Default Channel Preset in the
-#               Preferences to be used by the Batch Cleaner command.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      19/12/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CLEANUP_LoadPrst3DsMAX_Cmd.py
+
+Purpose:      This script is designed to:
+              Load the 3DsMAX Default Channel Preset in the
+              Preferences to be used by the Batch Cleaner command.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      19/12/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

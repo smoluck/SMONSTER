@@ -1,19 +1,19 @@
 # python
 """
-# Name:         SMO_DeleteAllSelSetItemPolyEdgeVert.py
-# Version: 1.00
-#
-# Purpose: This script is designed to Delete any Selection Set
-# in all mode (Item / Polygon / Edges / Vertex).
-# You need to be in Item Mode to launch it.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      25/03/2019
-# Modified:		25/03/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_DeleteAllSelSetItemPolyEdgeVert.py
+
+Purpose:      This script is designed to:
+              Delete any Selection Set in all mode
+              (Item / Polygon / Edges / Vertex).
+              You need to be in Item Mode to launch it.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      25/03/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
+
+import lx
 
 # replay name:"Delete Selection Set"
 lx.eval('!select.deleteSet name:ItemSSET all:true')

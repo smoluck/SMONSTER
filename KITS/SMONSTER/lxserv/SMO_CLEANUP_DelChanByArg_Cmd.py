@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_CLEANUP_DelChanByArg_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Search if a specific channel exist
-#               via String Argument and delete it
-#
-# Author:       Franck ELISABETH (with the help of James O'Hare)
-# Website:      https://www.smoluck.com
-#
-# Created:      17/02/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CLEANUP_DelChanByArg_Cmd.py
+
+Purpose:      This script is designed to:
+              Search if a specific channel exist
+              via String Argument and delete it
+
+Author:       Franck ELISABETH (with the help of James O'Hare)
+Website:      https://www.smoluck.com
+Created:      17/02/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -53,16 +51,16 @@ class SMO_Cleanup_DelChanByArg_Cmd(lxu.command.BasicCommand):
         return True
     
     def basic_Execute(self, msg, flags):
-        # # # ------------- ARGUMENTS Test
+        # ------------- ARGUMENTS Test
         # SearchStringArg = 'FBX_UDP3DSMAX'
-        # # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         SearchString = self.dyna_String (0)
-        # # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         # args = lx.args()
         # lx.out(args)
         # SearchStringArg = SearchString
         # lx.out('Searched String chain:', SearchStringArg)
-        # # # ------------- ARGUMENTS ------------- #
+        # ------------- ARGUMENTS ------------- #
         
         scn = modo.Scene()
         for mesh in scn.items('mesh'):

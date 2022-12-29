@@ -1,19 +1,17 @@
 # python
 """
-# Name:         SMO_GC_Multi_ItemListUnparentInPlaceRightBelowRootParent_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               (for Multiple items)
-#               By default, when we unparent an item (inPlace), the item move at the end of the ItemList.
-#               This command make sure the unparented item can appear right bellow
-#               the Root Parent of it, in the ItemList.
-#
-# Author:       Franck ELISABETH ( Solution by Rouven Miller )
-# Website:      https://www.smoluck.com
-#
-# Created:      24/08/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_Multi_ItemListUnparentInPlaceRightBelowRootParent_Cmd.py
+
+Purpose:      This script is designed to
+              (for Multiple items)
+              By default, when we unparent an item (inPlace), the item move at the end of the ItemList.
+              This command make sure the unparented item can appear right bellow
+              the Root Parent of it, in the ItemList.
+
+Author:       Franck ELISABETH ( Solution by Rouven Miller )
+Website:      https://www.smoluck.com
+Created:      24/08/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

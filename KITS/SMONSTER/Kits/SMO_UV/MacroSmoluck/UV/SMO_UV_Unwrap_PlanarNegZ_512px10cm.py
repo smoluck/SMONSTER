@@ -36,7 +36,7 @@ lx.eval('tool.apply')
 # replay name:"Fit UVs"
 lx.eval('uv.fit sepa:entire gaps:"0.0"')
 
-# # replay name:"Flip UV Island"
+# replay name:"Flip UV Island"
 # lx.eval('tool.set preset:TransformScale mode:on')
 # lx.eval('tool.setAttr tool:"xfrm.transform" attr:SX value:"-1.0"')
 
@@ -44,10 +44,10 @@ lx.eval('uv.fit sepa:entire gaps:"0.0"')
 lx.eval('select.nextMode')
 
 # ###########################
-# # Set specific Texel Density
-# # replay name:"User Value"
+# Set specific Texel Density
+# replay name:"User Value"
 # lx.eval('user.value name:"texeldensity.size3D" value:"0.1"')
-# # replay name:"User Value"
+# replay name:"User Value"
 # lx.eval('user.value name:"texeldensity.sizeUV" value:"512.0"')
 # ###########################
 

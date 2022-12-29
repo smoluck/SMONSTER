@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_MIFABOMA_MIRROR_RelativeToParent_ViaUserPref_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This Command is designed to
-#               Mirror current Polygon Selection (or all Poly
-#               if no selection) relative To Parent center.
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      https://www.smoluck.com
-#
-# Created:      16/09/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_MIFABOMA_MIRROR_RelativeToParent_ViaUserPref_Cmd.py
+
+Purpose:      This Command is designed to
+              Mirror current Polygon Selection (or all Poly
+              if no selection) relative To Parent center.
+
+Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
+Website:      https://www.smoluck.com
+Created:      16/09/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

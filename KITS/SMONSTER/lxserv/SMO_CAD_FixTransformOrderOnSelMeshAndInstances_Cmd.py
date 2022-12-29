@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_CAD_FixTransformOrderOnSelMeshAndInstances_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Change the Transform Order only on Meshes and Instances that have Transform Order different than XYZ.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      07/05/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CAD_FixTransformOrderOnSelMeshAndInstances_Cmd.py
+
+Purpose:      This script is designed to:
+              Change the Transform Order only on Meshes and
+              Instances that have Transform Order different than XYZ.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      07/05/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

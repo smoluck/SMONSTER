@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_GC_CorrectRoundCorner_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Select the EdgeLoop Corner of a Tube mesh and rebuild a correct triangle at this one.
-#
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      https://www.smoluck.com
-#
-# Created:      27/02/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_CorrectRoundCorner_Cmd.py
+
+Purpose:      This script is designed to
+              Select the EdgeLoop Corner of a Tube mesh and rebuild a correct triangle at this one.
+
+Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
+Website:      https://www.smoluck.com
+Created:      27/02/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -59,7 +56,7 @@ class SMO_GC_CorrectRoundCorner_Cmd(lxu.command.BasicCommand):
 
 
 
-        ###############COPY/PASTE Check Procedure#################
+        # ---------------- COPY/PASTE Check Procedure ---------------- #
         ## create variables
         lx.eval("user.defNew name:User_Pref_CopyDeselectChangedState type:boolean life:momentary")
         lx.eval("user.defNew name:User_Pref_PasteSelectionChangedState type:boolean life:momentary")
@@ -103,7 +100,7 @@ class SMO_GC_CorrectRoundCorner_Cmd(lxu.command.BasicCommand):
         # Is Paste Deselect True ?
         if User_Pref_PasteDeselect == 1:
             User_Pref_PasteDeselectChangedState = 0
-        ################################################
+        # -------------------------------------------- #
 
 
         
@@ -456,7 +453,7 @@ class SMO_GC_CorrectRoundCorner_Cmd(lxu.command.BasicCommand):
         
         
         
-        ########################################################
+        # -------------------------------------------- #
         # ------ Mirror Corner Vertex and opposite Poly ------ #
         # Select hypotenuse to Copy the Corner Vertex to opposite side with Mirror tool
         lx.eval('select.drop vertex')
@@ -615,7 +612,7 @@ class SMO_GC_CorrectRoundCorner_Cmd(lxu.command.BasicCommand):
 
 
 
-        ###############COPY/PASTE END Procedure#################
+        # -------------- COPY/PASTE END Procedure  -------------- #
         # Restore user Preferences:
         if User_Pref_CopyDeselectChangedState == 1 :
             lx.eval('pref.value application.copyDeSelection false')
@@ -626,7 +623,7 @@ class SMO_GC_CorrectRoundCorner_Cmd(lxu.command.BasicCommand):
         if User_Pref_PasteDeselectChangedState == 1 :
             lx.eval('pref.value application.pasteDeSelection false')
             lx.out('"Deselect Elements Before Pasting" have been Restored')
-        ########################################################
+        # -------------------------------------------- #
 
 
 lx.bless(SMO_GC_CorrectRoundCorner_Cmd, Cmd_Name)

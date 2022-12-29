@@ -1,18 +1,16 @@
 # python
 """
-# Name:         SMO_GC_ExplodedMorphMapDuplicate_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Duplicate the Current Selected Mesh, Rename the mesh with a Suffix "_EXPLODE"
-#               then Create the Morph Influence out of the current selected Morph Map
-#               and Freeze the deformation / delete the morph map in order to export it.
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      https://www.smoluck.com
-#
-# Created:      09/07/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_ExplodedMorphMapDuplicate_Cmd.py
+
+Purpose:      This script is designed to
+              Duplicate the Current Selected Mesh, Rename the mesh with a Suffix "_EXPLODE"
+              then Create the Morph Influence out of the current selected Morph Map
+              and Freeze the deformation / delete the morph map in order to export it.
+
+Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
+Website:      https://www.smoluck.com
+Created:      09/07/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

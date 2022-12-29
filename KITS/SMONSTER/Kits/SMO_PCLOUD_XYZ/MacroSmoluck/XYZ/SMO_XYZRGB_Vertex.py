@@ -1,19 +1,18 @@
 # python
-# ---------------------------------------
-# Name:         SMO_XYZRGB_Vertex.py
-# Version: 1.0
-#
-# Purpose:	Open a txt file (Target) and create 
-# 			Vertex at current position defined by the target File (3 first float value (separated by a coma))
-#			and set the vertex color value defined by 4th to 6th float in line
-#			Each line is a new Vertex
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      29/11/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
-# ---------------------------------------
+"""
+Name:               SMO_XYZRGB_Vertex.py
+
+Purpose:            This Script is designed to:
+                    Open a txt file (Target) and create
+                    Vertex at current position defined by the target File (3 first float value
+                    (separated by a coma)) and set the vertex color value defined by 4th to 6th
+                    float in line> Each line is a new Vertex
+
+Author:             Franck ELISABETH
+Website:            https://www.smoluck.com
+Created:            29/11/2019
+Copyright:          (c) Franck Elisabeth 2017-2022
+"""
 
 import lx
 import lxu

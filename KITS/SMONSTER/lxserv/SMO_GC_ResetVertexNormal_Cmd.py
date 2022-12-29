@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_GC_ResetVertexNormal_Cmd
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Clear Vertex Normals on current Selection using user preferences VertexNormalMap name string and set it again.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      06/12/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_ResetVertexNormal_Cmd
+
+Purpose:      This script is designed to:
+              Clear Vertex Normals on current Selection using user preferences
+              VertexNormalMap name string and set it again.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      06/12/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

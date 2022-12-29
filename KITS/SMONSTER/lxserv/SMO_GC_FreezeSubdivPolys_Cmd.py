@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_GC_FreezeSubdivPolys_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Freeze the Subdiv or Catmull-Clark polygons in the given Mesh item.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      17/12/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_FreezeSubdivPolys_Cmd.py
+
+Purpose:      This script is designed to
+              Freeze the Subdiv or Catmull-Clark polygons in the given Mesh item.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      17/12/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

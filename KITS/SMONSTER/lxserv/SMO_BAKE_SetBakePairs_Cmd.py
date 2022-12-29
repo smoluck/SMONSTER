@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_BAKE_SetBakePairs_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Set MTyp Tags and Name prefix according to selection order and user preferences. low --> high OR  high --> low.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      06/12/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_BAKE_SetBakePairs_Cmd.py
+
+Purpose:      This script is designed to:
+              Set MTyp Tags and Name prefix according to selection
+              order and user preferences. low --> high OR  high --> low.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      06/12/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -349,7 +347,7 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
 
                 lx.eval('smo.GC.DeselectAll')
 
-                # # Put the HighPoly in a Group (HIGH).
+                # Put the HighPoly in a Group (HIGH).
                 if PutHighInGrpsSetBakePairs:
 
                     lx.eval('select.item {%s} set' % GrpHighName)
@@ -369,7 +367,7 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
 
                 lx.eval('smo.GC.DeselectAll')
 
-                # # Put the LowPoly in a Group (HIGH).
+                # Put the LowPoly in a Group (HIGH).
                 if PutLowInGrpsSetBakePairs:
                     lx.eval('smo.GC.DeselectAll')
                     lx.eval('select.item {%s} set' % GrpLowName)

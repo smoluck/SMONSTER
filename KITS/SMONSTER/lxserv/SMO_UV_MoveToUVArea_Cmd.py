@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_UV_MoveToUVArea_Cmd.py
-# Version:      1.0
-# 
-# Purpose:      This script is designed to
-#               Move selected Polygons to a defined  UV Area (Via Arguments).
-# 
-# 
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-# 
-# Created:      28/12/2018
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_UV_MoveToUVArea_Cmd.py
+
+Purpose:      This script is designed to
+              Move selected Polygons to a defined  UV Area (Via Arguments).
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      28/12/2018
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

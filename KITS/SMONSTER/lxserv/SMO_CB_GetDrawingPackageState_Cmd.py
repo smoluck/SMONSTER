@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_CB_GetDrawingPackageState_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Get the Drawing Package State of the current mesh or Locator. If not present add a Drawing Package.
-#
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond)
-# Website:      https://www.smoluck.com
-#
-# Created:      12/12/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CB_GetDrawingPackageState_Cmd.py
+
+Purpose:      This script is designed to
+              Get the Drawing Package State of the current mesh or Locator. If not present add a Drawing Package.
+
+Author:       Franck ELISABETH (with the help of Tom Dymond)
+Website:      https://www.smoluck.com
+Created:      12/12/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

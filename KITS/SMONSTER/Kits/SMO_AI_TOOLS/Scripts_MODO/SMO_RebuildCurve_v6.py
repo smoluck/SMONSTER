@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_RebuildCurve.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Rebuild the current selected Mesh layer (curve Data)
-#               to Polygon Islands with differnet options like an Unmerge and Recenter.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      19/12/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_RebuildCurve.py
+
+Purpose:      This script is designed to:
+              Rebuild the current selected Mesh layer (curve Data)
+              to Polygon Islands with different options like an Unmerge and Recenter.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      19/12/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -19,13 +17,13 @@ import modo
 
 scene = modo.scene.current()
 
-# # ------------- ARGUMENTS Test ------------- #
+# ------------- ARGUMENTS Test ------------- #
 # CurveRefineAngle = 10
 # UnmergeAllIslands = 1
 # Recenter = 1
 # Cleanup = 1
 # NoUndo = 1
-# # ------------- ARGUMENTS ------------- #
+# ------------- ARGUMENTS ------------- #
 
 
 # ------------- 5 ARGUMENTS ------------- #
@@ -74,14 +72,14 @@ lx.eval('!item.delete')
 lx.eval('select.itemType camera')
 lx.eval('!item.delete')
 
-# -----------------------------------------------#
+# --------------------------------------------- #
 # Delete Empty Mesh Layers (default Mesh Layer) #
-# -----------------------------------------------#
-# # Variables
+# --------------------------------------------- #
+# Variables
 DefaultMeshItemList = []
 numOfVerts = ''
 
-# # First we must select the scene and then all the mesh layers in our scene.
+# First we must select the scene and then all the mesh layers in our scene.
 lx.eval('select.drop item')
 lx.eval('select.layerTree all:1')
 DefaultMeshItemList = lx.eval('query sceneservice selection ? mesh')  # mesh item layers
@@ -135,10 +133,10 @@ lx.eval('select.drop item')
 #################################################################
 
 
-# -----------------------------------------------#
-#		Delete Empty Mesh Layers	NO Vertex	#
+# --------------------------------------------- #
+# -----Delete Empty Mesh Layers NO Vertex ----- #
 # (Curve Mesh that have been cleanup)			#
-# -----------------------------------------------#
+# --------------------------------------------- #
 # Variables
 CleanupCurveList = []
 numOfVerts = ''
@@ -166,9 +164,9 @@ for meshItem in CleanupCurveList:
 # ------------------------------------- #
 
 
-# ----------------------------------#
+# ---------------------------------#
 # Create a Z positive Face Polygon #
-# ----------------------------------#
+# ---------------------------------#
 lx.eval('item.create mesh')
 lx.eval('item.name PlaneZ xfrmcore')
 lx.eval('select.type polygon')
@@ -203,7 +201,7 @@ lx.eval('select.drop item')
 # import modo
 # scene = modo.Scene()
 
-# # Drop layer selection
+# Drop layer selection
 # lx.eval('select.drop item')
 # lx.eval('select.itemType groupLocator')
 
@@ -238,7 +236,7 @@ for mesh in meshes_list:
     lx.eval('poly.freeze face false 2 true true true false %i false Morph' % CurveRefineAngle)
 
     # #################################################
-    # # Delete Colinear Vertex
+    # Delete Colinear Vertex
     # lx.eval('select.type vertex')
     # lx.eval('select.vertex add 4 0 (none)')
 

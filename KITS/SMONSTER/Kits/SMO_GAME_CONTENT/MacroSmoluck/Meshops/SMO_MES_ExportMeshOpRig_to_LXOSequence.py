@@ -1,48 +1,46 @@
 # python
 """
-# Name:         SMO_ExportMeshOpRig_to_LX0Sequence.py
-# Version: 1.01
-#
-# Purpose: This script is designed to test Export MeshOps rig as a freezed Mesh, over time, as a Mesh Preset LXL sequence.
-# Select the MeshOp item and run. 
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      28/02/2018
-# Modified:		02/04/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         	SMO_ExportMeshOpRig_to_LX0Sequence.py
+
+Purpose: 		This script is designed to:
+				Test Export MeshOps rig as a freezed Mesh,
+				over time, as a Mesh Preset LXL sequence.
+				Select the MeshOp item and run.
+
+Author:       	Franck ELISABETH
+Website:      	https://www.smoluck.com
+Created:      	28/02/2018
+Copyright:    	(c) Franck Elisabeth 2017-2022
 """
 
-#import the necessary Python libraries
 import lx
 import os
 import modo
 
 scene = modo.Scene()
 
-# # # Set the Undo to PAUSE Mode during the execution of that Script.
-# # lx.eval('app.undoSuspend')
+# # Set the Undo to PAUSE Mode during the execution of that Script.
+# lx.eval('app.undoSuspend')
 
-# # get modo's temp dir
+# get modo's temp dir
 # temp_dir = lx.eval('query platformservice path.path ? temp')
-# # name our temp file
+# name our temp file
 # temp_file = "SMO_ExportMeshOpRig_ToFBXSequence.lxo"
-# # builds the complete path out of the temp dir and the temp file name
+# builds the complete path out of the temp dir and the temp file name
 # temp_path = os.path.join(temp_dir, "SMO_ExportMeshOpRig_ToFBXSequence", temp_file)
 
-# # make sure the SMO_REBEVEL directory exists, if not create it
+# make sure the SMO_REBEVEL directory exists, if not create it
 # if not os.path.exists(os.path.dirname(temp_path)):
-    # # try to create the directory. 
+    # try to create the directory. 
     # try:
         # os.makedirs(os.path.dirname(temp_path))
     # except:
-        # # if that fails for any reason print out the error
+        # if that fails for any reason print out the error
         # print(traceback.format_exc())
 
-# # replay name:"Save Scene As"
-# # here we just call the save as command with our new custom
-# # path Python style instead of macro style.
+# replay name:"Save Scene As"
+# here we just call the save as command with our new custom
+# path Python style instead of macro style.
 # lx.eval('!scene.saveAs filename:"{}" format:"$LXOB" export:false'.format(temp_path))
 
 
@@ -60,7 +58,7 @@ try:
 except RuntimeError:
 	sys.exit
 
-# # store current scene
+# store current scene
 # oldscene = lx.eval('query sceneservice scene.index ? current')
 
 # manage time frame

@@ -1,19 +1,16 @@
 # python
 """
-# Name:         SMO_GC_GetAngleBetweenThreeVert_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Select 3 vertex. 1st (Extremity A) / 2nd (Corner) / 3rd (Extremity B) to get Corner Angle via query.
-#
-#
-#
-# Author:       Franck ELISABETH
-# GetRotFromThreeVector based on code from  Avatar "rockjail" on https://gist.github.com/rockjail/9e9379c4e52e72cb4cba
-# Website:      https://www.smoluck.com
-#
-# Created:      03/12/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_GetAngleBetweenThreeVert_Cmd.py
+
+Purpose:      This script is designed to:
+              Select 3 vertex. 1st (Extremity A) / 2nd (Corner) /
+              3rd (Extremity B) to get Corner Angle via query.
+
+Author:       Franck ELISABETH
+GetRotFromThreeVector based on code from  Avatar "rockjail" on https://gist.github.com/rockjail/9e9379c4e52e72cb4cba
+Website:      https://www.smoluck.com
+Created:      03/12/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

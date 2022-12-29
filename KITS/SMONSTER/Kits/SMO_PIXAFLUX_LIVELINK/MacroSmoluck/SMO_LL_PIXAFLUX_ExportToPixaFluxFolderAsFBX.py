@@ -1,19 +1,19 @@
 # python
 """
-# Name:         SMO_PixaFlux_ExportToPixaFluxFolderAsFBX.py
-# Version:      1.00
-#
-# Purpose:      This Command is designed to :
-#               
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Modified:     09/07/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_PixaFlux_ExportToPixaFluxFolderAsFBX.py
+
+Purpose:      This Command is designed to :
+              Export current data to PixaFlux Folder as FBX to Temp folder
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Modified:     09/07/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
-import lx, lxifc, lxu.command, lxu.select, subprocess, os
+import lx
+import os
+
 
 ############################ Export FBX Data #############################
 # get modo's temp dir

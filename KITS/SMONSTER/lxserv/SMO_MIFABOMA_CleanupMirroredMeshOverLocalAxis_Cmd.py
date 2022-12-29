@@ -1,18 +1,16 @@
 # python
 """
-# Name:         SMO_MIFABOMA_CleanupMirroredMeshOverLocalAxis_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Cleanup selected Mesh along a given axis Local (x, y, z)
-#               in order to remove Mirrored Opposite Side Argument boolean
-#               (Positive or Negative). Then recreate instances out of that mesh along that axis.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      17/08/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_MIFABOMA_CleanupMirroredMeshOverLocalAxis_Cmd.py
+
+Purpose:      This script is designed to
+              Cleanup selected Mesh along a given axis Local (x, y, z)
+              in order to remove Mirrored Opposite Side Argument boolean
+              (Positive or Negative). Then recreate instances out of that mesh along that axis.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      17/08/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

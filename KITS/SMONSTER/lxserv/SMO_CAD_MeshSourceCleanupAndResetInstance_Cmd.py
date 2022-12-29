@@ -1,17 +1,16 @@
 # python
 """
-# Name:         SMO_CAD_MeshSourceCleanupAndResetInstance_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Select the Source mesh of a given Instanced Mesh, instance it in place, and move it back to Origin with zero transforms.
-#
-#
-# Author:       Franck ELISABETH (with the help of Pavel Efimov)
-# Website:      https://www.smoluck.com
-#
-# Created:      26/03/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_CAD_MeshSourceCleanupAndResetInstance_Cmd.py
+
+Purpose:      This script is designed to
+              Select the Source mesh of a given Instanced Mesh,
+              instance it in place, and move it back to Origin
+              with zero transforms.
+
+Author:       Franck ELISABETH (with the help of Pavel Efimov)
+Website:      https://www.smoluck.com
+Created:      26/03/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_UV_NormalizePackAllArea_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Normalize all the UV Islands and Pack
-#               them on every Areas (Unwrap, Planar, Cylindrical).
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      28/12/2018
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_UV_NormalizePackAllArea_Cmd.py
+
+Purpose:      This script is designed to
+              Normalize all the UV Islands and Pack
+              them on every Areas (Unwrap, Planar, Cylindrical).
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      28/12/2018
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -86,7 +84,7 @@ class SMO_UV_NormalizePackAllArea_Cmd(lxu.command.BasicCommand):
         # ------------------------------ #
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
         
         ## UVmap Selected Count
@@ -94,7 +92,7 @@ class SMO_UV_NormalizePackAllArea_Cmd(lxu.command.BasicCommand):
         ## Selected UVmap Name
         lx.eval("user.defNew name:NPAllArea_UVMapName type:string life:momentary")
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
         
         
         

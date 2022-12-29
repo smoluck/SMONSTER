@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_GC_SelectVertexByLocalAxis_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               select vertex based on their local position.
-#               it use X Y Z axis as argument and Positive or Negative Direction as selection mode.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      17/08/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_SelectVertexByLocalAxis_Cmd.py
+
+Purpose:      This script is designed to
+              select vertex based on their local position.
+              it use X Y Z axis as argument and Positive or Negative Direction as selection mode.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      17/08/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

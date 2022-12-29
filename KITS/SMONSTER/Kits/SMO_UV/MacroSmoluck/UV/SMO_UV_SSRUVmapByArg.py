@@ -1,40 +1,40 @@
 # python
 """
-# Name:         SMO_UV_SSRUVMapByArg.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Search if a specific UV Map exist, select it and rename it
-#               via String Argument.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      17/02/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:           SMO_UV_SSRUVMapByArg.py
+
+Purpose:        This script is designed to:
+                Search if a specific UV Map exist, select it and rename it
+                via String Argument.
+
+Author:         Franck ELISABETH
+Website:        https://www.smoluck.com
+Created:        17/02/2020
+Copyright:      (c) Franck Elisabeth 2017-2022
 """
 
-import lx, lxu, modo
+import lx
+import modo
+
 scn = modo.Scene()
 
 
-# # # ------------- ARGUMENTS ------------- #
+# ------------- ARGUMENTS ------------- #
 # RenameByDefault = 1
 # SearchString = "UVChannel_1"
 # TargetString = "TargetUVMap"
-# # # ------------- ARGUMENTS ------------- #
+# ------------- ARGUMENTS ------------- #
 args = lx.args()
 lx.out(args)
 
 RenameByDefault = bool(args[0])
 lx.out('Rename by user default UVMap name:', RenameByDefault)
 
-SearchString = string(args[1])
+SearchString = str(args[1])
 lx.out('Searched UVMap name:', SearchString)
 
-TargetString = string(args[2])
+TargetString = str(args[2])
 lx.out('Target UVMap name:', TargetString)
-# # # ------------- ARGUMENTS ------------- #
+# ------------- ARGUMENTS ------------- #
 
 
 DetectedVMapCount = len(lx.evalN('vertMap.list all ?'))

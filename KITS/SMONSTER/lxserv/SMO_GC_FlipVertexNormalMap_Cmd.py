@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_GC_FlipVertexNormalMap_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Flip the VertexNormalMap Data on selected Component.
-#
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      https://www.smoluck.com
-#
-# Created:      07/06/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_FlipVertexNormalMap_Cmd.py
+
+Purpose:      This script is designed to
+              Flip the VertexNormalMap Data on selected Component.
+
+Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
+Website:      https://www.smoluck.com
+Created:      07/06/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

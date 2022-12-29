@@ -1,21 +1,20 @@
 # python
 """
-# Name:         SMO_Bool_AxisDrill_Normal_Core.py
-# Version:      1.0
-#
-# Purpose: This script is designed Axis Drill in Core Mode
-# the last Polygon Selection from the current Layer
-# using the Face Orientation.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      28/12/2018
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:           SMO_Bool_AxisDrill_Normal_Core.py
+
+Purpose:        This script is designed to:
+                Axis Drill in Core Mode the last Polygon Selection
+                from the current Layer using the Face Orientation.
+
+Author:         Franck ELISABETH
+Website:        https://www.smoluck.com
+Created:        28/12/2018
+Copyright:      (c) Franck Elisabeth 2017-2022
 """
 
 import modo
 import lx
+import sys
 
 scene = modo.scene.current()
 mesh = scene.selectedByType('mesh')[0]
@@ -25,12 +24,12 @@ CsPolys = len(mesh.geometry.polygons.selected)
 # <----( DEFINE VARIABLES )----> #
 # ------------------------------ #
 
-#####--- Define user value for all the different SafetyCheck --- START ---#####
+# ---------------- Define user value for all the different SafetyCheck --- START
 #####
 lx.eval("user.defNew name:SMO_SafetyCheck_PolygonModeEnabled type:integer life:momentary")
 lx.eval("user.defNew name:SMO_SafetyCheck_min1PolygonSelected type:integer life:momentary")
 #####
-#####--- Define user value for all the different SafetyCheck --- END ---#####
+# ---------------- Define user value for all the different SafetyCheck --- END
 
 
 # -------------------------- #
@@ -116,21 +115,21 @@ elif CsPolys >= 1:
 # at Least 1 Polygons is selected --- END
 
 
-#####--- Define current value for the Prerequisite TotalSafetyCheck --- START ---#####
+# ---------------- Define current value for the Prerequisite TotalSafetyCheck --- START
 #####
 TotalSafetyCheckTrueValue = 2
 lx.out('Desired Value', TotalSafetyCheckTrueValue)
 TotalSafetyCheck = (SMO_SafetyCheck_PolygonModeEnabled + SMO_SafetyCheck_min1PolygonSelected)
 lx.out('Current Value', TotalSafetyCheck)
 #####
-#####--- Define current value for the Prerequisite TotalSafetyCheck --- END ---#####
+# ---------------- Define current value for the Prerequisite TotalSafetyCheck --- END
 
 
-# -------------------------- #
+# ------------------------ #
 # <----( Main Macro )----> #
-# -------------------------- #
+# ------------------------ #
 
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- START
+# ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- START
 if TotalSafetyCheck == TotalSafetyCheckTrueValue:
 
     # replay name:"Set Workplane"
@@ -203,4 +202,4 @@ elif TotalSafetyCheck != TotalSafetyCheckTrueValue:
     sys.exit
 
 lx.out('End of SMO_Bool_AxisDrill_Normal_Core Script')
-#####--------------------  Compare TotalSafetyCheck value and decide or not to continue the process  --- END
+# ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- END

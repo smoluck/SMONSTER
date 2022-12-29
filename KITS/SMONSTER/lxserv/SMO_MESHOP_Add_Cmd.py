@@ -1,15 +1,13 @@
 # python
 """
-# Name:         SMO_MESHOP_Add_Cmd.py
-# Version:      1.0
-#
-# Purpose:      Add a Meshop and add it to the Schematic.
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      06/08/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_MESHOP_Add_Cmd.py
+
+Purpose:      Add a Meshop and add it to the Schematic.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      06/08/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -123,7 +121,7 @@ class SMO_MESHOP_Add_Cmd(lxu.command.BasicCommand):
         #        cName_A = item.ChannelName(chan_idx_A)
         #        lx.eval("schematic.addChannel chanIdx:{%s}" % cName_A)
 
-        ##################################
+        # ------------------------------------ #
         # <----( Stack Operator )----> #
         if modo_ver >= 1500:
             if Name == "Stack" and Added == False:
@@ -133,7 +131,7 @@ class SMO_MESHOP_Add_Cmd(lxu.command.BasicCommand):
                 except:
                     sys.exit
 
-        ##################################
+        # ------------------------------------ #
         # <----( Merge Mesh Operator )----> #
         if Name == "MergeMesh" and Added == False:
             try:
@@ -146,7 +144,7 @@ class SMO_MESHOP_Add_Cmd(lxu.command.BasicCommand):
             except:
                 sys.exit
 
-        ##################################
+        # ------------------------------------ #
         # <----( Primitive Type )----> #
         if Name == "VertexCreate" and Added == False:
             try:
@@ -616,9 +614,9 @@ class SMO_MESHOP_Add_Cmd(lxu.command.BasicCommand):
         #     except:
         #         sys.exit
 
-        ###################################
+        # -------------------------------------------- #
         # <----( Specific Action )----> #
-        ###################################
+        # -------------------------------------------- #
 
         sel_svc_B = lx.service.Selection()
         Item_B = modo.Scene().selected

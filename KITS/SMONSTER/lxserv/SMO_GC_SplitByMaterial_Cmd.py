@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_GC_SplitByMaterial_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to:
-#               Split current selected mesh by Material Tag.
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      03/04/2022
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_SplitByMaterial_Cmd.py
+
+Purpose:      This script is designed to:
+              Split current selected mesh by Material Tag.
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      03/04/2022
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

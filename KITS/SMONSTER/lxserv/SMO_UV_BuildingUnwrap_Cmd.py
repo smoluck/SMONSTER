@@ -1,16 +1,14 @@
 # python
 """
-# Name:         SMO_UV_BuildingUnwrap_Cmd.py
-# Version:      1.0
-# 
-# Purpose:      This script is designed to
-#               Relax the UV's of the current Polygon Selection
-# 
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-# 
-# Created:      10/10/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_UV_BuildingUnwrap_Cmd.py
+
+Purpose:      This script is designed to
+              Relax the UV's of the current Polygon Selection
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      10/10/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -52,18 +50,18 @@ class SMO_UV_BuildingUnwrap_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
 
-        ##### UV SEAM Map Detection #####
+        # ------------- UV SEAM Map Detection
         # MODO version checks.
         # Modo 13.0 and up have UV Seam map.
         # Version below 13.0 haven't
         Modo_ver = int(lx.eval('query platformservice appversion ?'))
         lx.out('Modo Version:', Modo_ver)
-        ##### UV SEAM Map Detection #####
+        # ------------- UV SEAM Map Detection
 
         # ------------------------------ #
         # <----( DEFINE VARIABLES )----> #
         # ------------------------------ #
-        #####--- Define user value for all the different SafetyCheck --- START ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- START
         #####
         lx.eval("user.defNew name:SMO_SafetyCheckUVBuildingUnwrap_UVConstraints type:string life:momentary")
         lx.eval("user.defNew name:SMO_SafetyCheckUVBuildingUnwrap_ReplaceUVSeamFailed type:integer life:momentary")
@@ -72,7 +70,7 @@ class SMO_UV_BuildingUnwrap_Cmd(lxu.command.BasicCommand):
         ## Selected UVmap Name
         lx.eval("user.defNew name:UVRelaxBuildingUnwrap_UVMapName type:string life:momentary")
         #####
-        #####--- Define user value for all the different SafetyCheck --- END ---#####
+        # ---------------- Define user value for all the different SafetyCheck --- END
 
         # lx.eval('smo.GC.ClearSelectionVmap 2 1')
         # lx.eval('smo.GC.ClearSelectionVmap 3 1')
@@ -139,7 +137,7 @@ class SMO_UV_BuildingUnwrap_Cmd(lxu.command.BasicCommand):
         # Get the name of UV Seam map available on mesh
         DetectedVMapPickName = lx.eval('vertMap.list pick ?')
         lx.out('Vmap Pick Name:', DetectedVMapPickName)
-        ##### UV SEAM Map Detection #####
+        # ------------- UV SEAM Map Detection
         ## UV Constraint Map Selection Check To bugfix the UV Constraint VMap creation ##
         lx.out('<--- UV Constraint Map Safety Check --->')
         lx.out('<---------- START ---------->')

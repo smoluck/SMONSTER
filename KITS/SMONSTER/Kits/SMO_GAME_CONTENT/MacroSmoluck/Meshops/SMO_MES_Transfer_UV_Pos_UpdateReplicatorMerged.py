@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_Transfer_UV_Pos_UpdateReplicatorMerged.py
-# Version: 1.00
-#
-# Purpose: This script is designed to Copy and 
-# Transfer Original UV's from a Backup MeshItems to a set of Replicators Merged via MergeMesh 
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      29/03/2019
-# Modified:		01/04/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_Transfer_UV_Pos_UpdateReplicatorMerged.py
+
+Purpose:	  This script is designed to:
+			  Copy and Transfer Original UV's from a Backup
+			  MeshItems to a set of Replicators Merged via MergeMesh
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      29/03/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 #import the necessary Python libraries
@@ -117,7 +115,7 @@ lx.out('<----------- END ----------->')
 
 lx.out('<--- Polygon Sel Set Counter --->')
 lx.out('<------------ START ------------>')
-## Polygon Sel Set Counter / Enumerator ##
+# Polygon Sel Set Counter / Enumerator ##
 ## this step will test the PolySelSet count over the Target Mesh Only
 try:
 	lx.eval('select.useSet TRANSUVPOS_TARGET select')
@@ -167,7 +165,7 @@ for i in range(PolySelSet_COUNT):
 		# if CsPolys < 4:
 			# lx.out('Not enough Polygon selected to perform a Transfer UV Position:')
 		# if CsPolys >= 4:
-			# # Transfer UV Position using the current Selected Polygons
+			# Transfer UV Position using the current Selected Polygons
 			# lx.eval('uv.transfer')														# Transfer UV Position using the current Selected Polygons
 		
 		lx.eval('uv.transfer')	

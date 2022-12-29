@@ -1,4 +1,17 @@
 # python
+"""
+Name:         SMO_SMONSTER_KeymapCommander_Cmd.py
+
+Purpose:      This script is designed to
+              Clear hotkey addressed to specific key
+              commands to then set new ones back, using the smonster commander.
+
+Author:       Franck ELISABETH (with the help of Pavel Efimov)
+Website:      https://www.smoluck.com
+Created:      26/03/2018
+Copyright:    (c) Franck Elisabeth 2017-2022
+"""
+
 import lx, modo, sys
 python_majorver = sys.version_info.major
 # print('the Highest version number 2 for 2.7 release / 3 for 3.7 release')

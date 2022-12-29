@@ -1,17 +1,14 @@
 # python
 """
-# Name:         SMO_GC_SoloInstanceInPlace_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This script is designed to
-#               Duplicate the current item and Unlink the transform from the Source mesh/item.
-#
-#
-# Author:       Franck ELISABETH (with the help of Pavel Efimov)
-# Website:      https://www.smoluck.com
-#
-# Created:      16/04/2021
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_GC_SoloInstanceInPlace_Cmd.py
+
+Purpose:      This script is designed to
+              Duplicate the current item and Unlink the transform from the Source mesh/item.
+
+Author:       Franck ELISABETH (with the help of Pavel Efimov)
+Website:      https://www.smoluck.com
+Created:      16/04/2021
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

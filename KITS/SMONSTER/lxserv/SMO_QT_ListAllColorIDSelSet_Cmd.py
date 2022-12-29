@@ -1,18 +1,15 @@
 # python
 """
-# Name:         SMO_QT_ListAllColorIDSelSet_Cmd.py
-# Version:      1.00
-#
-# Purpose:      This script is designed to
-#               Set a random Diffuse Color override
-#               using Selection Set (polygons) on the selected Mesh Layers
-#
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      17/05/2020
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_QT_ListAllColorIDSelSet_Cmd.py
+
+Purpose:      This script is designed to
+              Set a random Diffuse Color override
+              using Selection Set (polygons) on the selected Mesh Layers
+
+Author:       Franck ELISABETH
+Website:      https://www.smoluck.com
+Created:      17/05/2020
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx

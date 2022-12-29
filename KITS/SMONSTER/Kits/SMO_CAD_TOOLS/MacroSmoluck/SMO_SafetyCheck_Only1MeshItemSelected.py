@@ -1,15 +1,14 @@
 # python
 """
-# Name:         SMO_SafetyCheck_Only1MeshItemSelected
-# Version: 1.0
-#
-# Purpose: This script is designed to test if only one Mesh Item is selected
-#
-# Author:       Franck ELISABETH
-# Website:      https://www.smoluck.com
-#
-# Created:      27/12/2018
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         	SMO_SafetyCheck_Only1MeshItemSelected
+
+Purpose: 		This script is designed to:
+				Test if only one Mesh Item is selected
+
+Author:       	Franck ELISABETH
+Website:      	https://www.smoluck.com
+Created:      	27/12/2018
+Copyright:    	(c) Franck Elisabeth 2017-2022
 """
 
 import modo

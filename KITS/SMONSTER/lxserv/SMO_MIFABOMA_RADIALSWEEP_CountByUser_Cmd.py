@@ -1,17 +1,15 @@
 # python
 """
-# Name:         SMO_MIFABOMA_RADIALSWEEP_CountByUser_Cmd.py
-# Version:      1.0
-#
-# Purpose:      This Command is designed to :
-#               Radial Sweep current Polygon Selection (or all Poly if no selection) / or Selected Edges
-#               using Origin Center (World) or Item Center (Local). You need to get at least one Mesh item selected.
-#
-# Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-# Website:      https://www.smoluck.com
-#
-# Created:      16/09/2019
-# Copyright:    (c) Franck Elisabeth 2017-2022
+Name:         SMO_MIFABOMA_RADIALSWEEP_CountByUser_Cmd.py
+
+Purpose:      This Command is designed to :
+              Radial Sweep current Polygon Selection (or all Poly if no selection) / or Selected Edges
+              using Origin Center (World) or Item Center (Local). You need to get at least one Mesh item selected.
+
+Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
+Website:      https://www.smoluck.com
+Created:      16/09/2019
+Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import lx
@@ -87,7 +85,7 @@ class SMO_MIFABOMA_RadialSweep_CountByUser_Cmd(lxu.command.BasicCommand):
         
 
         
-        #####--- Define User Value for Rebevel Count --- START ---#####
+        # ------------- Define User Value for Rebevel Count --- START
         #####
         #Create a user value that define the EdgeCount for the Rebevel.
         lx.eval("user.defNew name:RadialSweepSideCount type:integer life:momentary")
