@@ -6,7 +6,7 @@ Purpose:      This script is designed to
               Create a New Material Tag, rename the Material Layer in Shader tree according to
               Group Material name with a "_Mat" Suffix and show up Color Picker for setting
               Diffuse Color Channel.
-              It replace default command: "poly.setMaterial" (but you can change this in the preference)
+              It replaces default command: "poly.setMaterial" (but you can change this in the preference)
 
 Author:       Franck ELISABETH
 Website:      https://www.smoluck.com

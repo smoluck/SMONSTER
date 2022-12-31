@@ -17,6 +17,8 @@ import lxu
 import modo
 
 Cmd_Name = "smo.GC.UDIMtoMaterial"
+
+
 # smo.GC.UDIMtoMaterial {Boat} 1001 1013
 
 
@@ -108,14 +110,11 @@ class SMO_GC_UDIMtoMaterial_Cmd(lxu.command.BasicCommand):
             UDIMIndicModeChanged = False
         lx.eval("tool.set util.udim off")
 
-
         for i in meshes:
             # print('----- %s' % i)
             mesh = modo.Mesh(i)
             mesh.select(True)
             lx.eval("select.type polygon")
-
-
 
             for item in UDIMIndexList:
                 # print('item in for loop: %s' % item)
@@ -130,7 +129,7 @@ class SMO_GC_UDIMtoMaterial_Cmd(lxu.command.BasicCommand):
                 if CsPolys > 0:
                     # lx.eval('select.editSet %s add' % item)
                     # lx.eval('poly.setMaterial %s {0.8 0.8 0.8} 0.8 0.04 true false' % (MatName + "_" + item))
-                    lx.eval("smo.GC.SetNewMaterialSmartRename {%s} {1.0 1.0 1.0}" % (MatName + "_" + item))
+                    lx.eval("smo.GC.SetNewMaterialSmartRename false {%s} {1.0 1.0 1.0}" % (MatName + "_" + item))
                 lx.eval("select.drop polygon")
                 lx.eval("tool.set util.udim off")
                 ### Not necessary as the group mask are deselected along the process

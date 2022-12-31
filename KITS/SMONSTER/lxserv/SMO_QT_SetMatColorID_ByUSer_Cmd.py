@@ -381,7 +381,7 @@ def SetMaterial(GC_MatShadingModel, GC_OriginalModoMaterialOverride, ColorIDMatN
     ###### Modo
     if GC_MatShadingModel < 4:
         if not GC_OriginalModoMaterialOverride:
-            lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
+            lx.eval('smo.GC.SetNewMaterialSmartRename false {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
         if GC_OriginalModoMaterialOverride:
             lx.eval('poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false type:default' % (ColorIDMatName, R, G, B))
             lx.eval('material.new {} true false'.format(ColorIDMatName))
@@ -390,7 +390,7 @@ def SetMaterial(GC_MatShadingModel, GC_OriginalModoMaterialOverride, ColorIDMatN
     ###### Unreal
     if GC_MatShadingModel == 4:
         if not GC_OriginalModoMaterialOverride:
-            lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
+            lx.eval('smo.GC.SetNewMaterialSmartRename false {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
         if GC_OriginalModoMaterialOverride:
             lx.eval('poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false type:unreal' % (ColorIDMatName, R, G, B))
             lx.eval('material.new {} true false unreal'.format(ColorIDMatName))
@@ -399,7 +399,7 @@ def SetMaterial(GC_MatShadingModel, GC_OriginalModoMaterialOverride, ColorIDMatN
     ###### Unity
     if GC_MatShadingModel == 5:
         if not GC_OriginalModoMaterialOverride:
-            lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
+            lx.eval('smo.GC.SetNewMaterialSmartRename false {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
         if GC_OriginalModoMaterialOverride:
             lx.eval('poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false false type:unity' % (ColorIDMatName, R, G, B))
             lx.eval('material.new {} true false unity'.format(ColorIDMatName))
@@ -408,7 +408,7 @@ def SetMaterial(GC_MatShadingModel, GC_OriginalModoMaterialOverride, ColorIDMatN
     ###### glTF
     if GC_MatShadingModel == 6:
         if not GC_OriginalModoMaterialOverride:
-            lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
+            lx.eval('smo.GC.SetNewMaterialSmartRename false {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
         if GC_OriginalModoMaterialOverride:
             lx.eval('poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false false type:gltf' % (ColorIDMatName, R, G, B))
             lx.eval('material.new {} true false gltf'.format(ColorIDMatName))
@@ -417,7 +417,7 @@ def SetMaterial(GC_MatShadingModel, GC_OriginalModoMaterialOverride, ColorIDMatN
     ###### AxF
     if GC_MatShadingModel == 7:
         if not GC_OriginalModoMaterialOverride:
-            lx.eval('smo.GC.SetNewMaterialSmartRename 0 {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
+            lx.eval('smo.GC.SetNewMaterialSmartRename false {%s} {%s %s %s}' % (ColorIDMatName, R, G, B))
         if GC_OriginalModoMaterialOverride:
             lx.eval('poly.setMaterial {%s} {%s %s %s} 0.8 0.04 true false type:axf' % (ColorIDMatName, R, G, B))
             lx.eval('material.new {} true false axf'.format(ColorIDMatName))
