@@ -17,6 +17,8 @@ import lxu
 import modo
 
 Cmd_Name = "smo.UV.Multi.UnwrapCylindrical"
+
+
 # smo.UV.Multi.UnwrapCylindrical 2 0 0
 
 
@@ -107,10 +109,10 @@ class SMO_UV_Multi_UnwrapCylindrical_Cmd(lxu.command.BasicCommand):
         # print(MUC_PolysList[3])
         # print('------')
 
-        lx.eval('select.drop polygon')
-        lx.eval('smo.GC.DeselectAll')
-        lx.eval('select.type item')
-        lx.eval('smo.GC.DeselectAll')
+        # lx.eval('select.drop polygon')
+        # lx.eval('smo.GC.DeselectAll')
+        # lx.eval('select.type item')
+        # lx.eval('smo.GC.DeselectAll')
 
         index = -1
         if len(mesh) > 1:
@@ -137,7 +139,6 @@ class SMO_UV_Multi_UnwrapCylindrical_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.drop polygon')
                 lx.eval('select.type item')
                 lx.eval('select.drop item')
-                # GOOOOOOOOOOOOD
         index = -1
 
         if len(mesh) == 1:
@@ -149,7 +150,6 @@ class SMO_UV_Multi_UnwrapCylindrical_Cmd(lxu.command.BasicCommand):
                 selected_mesh.geometry.polygons.select(item)
             # lx.eval('smo.UV.AutoCreateUVMap')
             lx.eval('smo.UV.UnwrapCylindrical %s %s %s' % (MUC_UVProjAxe, MUC_IsRectangle, MUC_SelectByLoop))
-
 
         lx.eval('smo.GC.DeselectAll')
         scene.select(mesh)
@@ -240,6 +240,10 @@ class SMO_UV_Multi_UnwrapCylindrical_Cmd(lxu.command.BasicCommand):
             #     selected_mesh.geometry.polygons.select(item)
             lx.eval('select.useSet UV_DONE select')
             lx.eval('hide.sel')
+
+        # for item in (MUC_PolysList[index]):
+        #     # print(item)
+        #     selected_mesh.geometry.polygons.select(item)
 
         del index
         del MUC_TargetIDList
