@@ -18,6 +18,8 @@ import modo
 import sys
 
 Cmd_Name = "smo.UV.UnwrapCylindrical"
+
+
 # smo.UV.UnwrapCylindrical 2 0 0
 
 
@@ -279,9 +281,8 @@ class SMO_UV_UnwrapCylindrical_Cmd(lxu.command.BasicCommand):
 
         # at Least 1 Polygons is selected --- START
         lx.out('Count Selected Poly', CsPolys)
-
+        SMO_SafetyCheck_UVUnwrapCyl_min1PolygonSelected = 0
         if CsPolys < 1:
-            SMO_SafetyCheck_UVUnwrapCyl_min1PolygonSelected = 0
             lx.eval('dialog.setup info')
             lx.eval('dialog.title {SMONSTER - UV - Unwrap Cylindrical:}')
             lx.eval('dialog.msg {You must select at least 1 polygon to run that script}')
@@ -340,7 +341,7 @@ class SMO_UV_UnwrapCylindrical_Cmd(lxu.command.BasicCommand):
         TotalSafetyCheckTrueValue = 2
         lx.out('Desired Value', TotalSafetyCheckTrueValue)
         TotalSafetyCheck = (
-                    SMO_SafetyCheck_UVUnwrapCyl_PolygonModeEnabled + SMO_SafetyCheck_UVUnwrapCyl_min1PolygonSelected)
+                SMO_SafetyCheck_UVUnwrapCyl_PolygonModeEnabled + SMO_SafetyCheck_UVUnwrapCyl_min1PolygonSelected)
         lx.out('Current Value', TotalSafetyCheck)
         #####
         # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- END
@@ -356,6 +357,21 @@ class SMO_UV_UnwrapCylindrical_Cmd(lxu.command.BasicCommand):
         if TotalSafetyCheck == TotalSafetyCheckTrueValue:
             if SelectByLoop == 1:
                 lx.eval('select.loop')
+
+            # # Store EdgeRing selection in UC_EdgesTuple
+            # lx.eval('select.convert edge')
+            # lx.eval('select.contract')
+            # UC_EdgesTuple = []
+            # # CsEdges = len(item.geometry.edges.selected)
+            # # print('Total selected Edges on this mesh layer', CsEdges)
+            # Edges = mesh.geometry.edges.selected
+            # # print('modo.Mesh list ', Edges)
+            # UC_EdgesTuple.append(Edges)
+            # # print('Tuple (Edge ID and Mesh ID): ---)', UC_EdgesTuple)
+            # MUS_EdgesList = list(UC_EdgesTuple)
+            # # print('List (Poly ID and Mesh ID): ---)', MUS_EdgesList)
+            # scene.select(mesh)
+            # lx.eval('select.type polygon')
 
             # Tag the UV as Done
             lx.eval('select.editSet name:UV_DONE mode:add')
@@ -454,22 +470,22 @@ class SMO_UV_UnwrapCylindrical_Cmd(lxu.command.BasicCommand):
 
                 try:
                     ## Do a Projection on specific axis via Arguments
-                    if UVProjAxe == 0 and RelocateInArea == True:
+                    if UVProjAxe == 0:
                         # Command Block Begin:
                         lx.eval('tool.setAttr tool:"xfrm.transform" attr:U value:"-2.0"')
                         lx.eval('tool.setAttr tool:"xfrm.transform" attr:V value:"-2.0"')
                         # Command Block End:
-                    if UVProjAxe == 1 and RelocateInArea == True:
+                    if UVProjAxe == 1:
                         # Command Block Begin:
                         lx.eval('tool.setAttr tool:"xfrm.transform" attr:U value:"-1.0"')
                         lx.eval('tool.setAttr tool:"xfrm.transform" attr:V value:"-2.0"')
                         # Command Block End:
-                    if UVProjAxe == 2 and RelocateInArea == True:
+                    if UVProjAxe == 2:
                         # Command Block Begin:
                         lx.eval('tool.setAttr tool:"xfrm.transform" attr:U value:"-1.0"')
                         lx.eval('tool.setAttr tool:"xfrm.transform" attr:V value:"-1.0"')
                         # Command Block End:
-                    if UVProjAxe == 3 and RelocateInArea == True:
+                    if UVProjAxe == 3:
                         # Command Block Begin:
                         lx.eval('tool.setAttr tool:"xfrm.transform" attr:U value:"-2.0"')
                         lx.eval('tool.setAttr tool:"xfrm.transform" attr:V value:"-1.0"')
@@ -494,37 +510,38 @@ class SMO_UV_UnwrapCylindrical_Cmd(lxu.command.BasicCommand):
 
             lx.eval('unhide')
 
-            if RePack == True and UVProjAxe == 0 and RelocateInArea == True:
-                lx.eval('smo.UV.SelectUVArea -2 -2')
-                lx.eval('hide.unsel')
-                lx.eval('smo.UV.NormalizePackByArea 0 0 -2 -2')
-                lx.eval('unhide')
+            if RePack:
+                if UVProjAxe == 0 and RelocateInArea:
+                    lx.eval('smo.UV.SelectUVArea -2 -2')
+                    lx.eval('hide.unsel')
+                    lx.eval('smo.UV.NormalizePackByArea 0 0 -2 -2')
+                    lx.eval('unhide')
 
-            if RePack == True and UVProjAxe == 1 and RelocateInArea == True:
-                lx.eval('smo.UV.SelectUVArea -1 -2')
-                lx.eval('hide.unsel')
-                lx.eval('smo.UV.NormalizePackByArea 0 0 -1 -2')
-                lx.eval('unhide')
+                if UVProjAxe == 1 and RelocateInArea:
+                    lx.eval('smo.UV.SelectUVArea -1 -2')
+                    lx.eval('hide.unsel')
+                    lx.eval('smo.UV.NormalizePackByArea 0 0 -1 -2')
+                    lx.eval('unhide')
 
-            if RePack == True and UVProjAxe == 2 and RelocateInArea == True:
-                lx.eval('smo.UV.SelectUVArea -1 -1')
-                lx.eval('hide.unsel')
-                lx.eval('smo.UV.NormalizePackByArea 0 0 -1 -1')
-                lx.eval('unhide')
+                if UVProjAxe == 2 and RelocateInArea:
+                    lx.eval('smo.UV.SelectUVArea -1 -1')
+                    lx.eval('hide.unsel')
+                    lx.eval('smo.UV.NormalizePackByArea 0 0 -1 -1')
+                    lx.eval('unhide')
 
-            if RePack == True and UVProjAxe == 3 and RelocateInArea == True:
-                lx.eval('smo.UV.SelectUVArea -2 -1')
-                lx.eval('hide.unsel')
-                lx.eval('smo.UV.NormalizePackByArea 0 0 -2 -1')
-                lx.eval('unhide')
+                if UVProjAxe == 3 and RelocateInArea:
+                    lx.eval('smo.UV.SelectUVArea -2 -1')
+                    lx.eval('hide.unsel')
+                    lx.eval('smo.UV.NormalizePackByArea 0 0 -2 -1')
+                    lx.eval('unhide')
 
-            if RePack == True and RelocateInArea == False:
-                lx.eval('smo.UV.SelectUVArea 0 0')
-                lx.eval('hide.unsel')
-                lx.eval('smo.UV.NormalizePackByArea 0 0 0 0')
-                lx.eval('unhide')
+                if not RelocateInArea:
+                    lx.eval('smo.UV.SelectUVArea 0 0')
+                    lx.eval('hide.unsel')
+                    lx.eval('smo.UV.NormalizePackByArea 0 0 0 0')
+                    lx.eval('unhide')
 
-            if AutoUpdateUVSeamCutMapState == True and Modo_ver >= 1300:
+            if AutoUpdateUVSeamCutMapState and Modo_ver >= 1300:
                 lx.eval('smo.UV.UpdateUVSeamCutMap')
                 lx.eval('view3d.showUVSeam true active')
 
@@ -543,13 +560,9 @@ class SMO_UV_UnwrapCylindrical_Cmd(lxu.command.BasicCommand):
             lx.eval('item.refSystem %s' % CurrentRefSystemItem)
 
 
-
-
-
         elif TotalSafetyCheck != TotalSafetyCheckTrueValue:
             lx.out('script Stopped: your mesh does not match the requirement for that script.')
             sys.exit
-
         # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- END
 
 
