@@ -4,6 +4,9 @@ Hi. Everyone
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 2.55 -
+        • smo.cleanup.UpdateMaterial - Bugfix for material definition change between Mood 15.1 and 15.2
+
 - 2.50 -
         • PopUp menu updated
         • New Command -->	smo.CLEANUP.ConvertAllSolidWorksShape

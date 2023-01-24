@@ -3,6 +3,14 @@ Hi. Everyone
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 4.50 -
+        • smo.uv.Multi.UnwrapCylindrical - Bugfix on single item process.
+        • Added Keymaps dialog in QuickKeymaps command for keys over UV Viewport:
+        	• A - Align Tools
+        	• P - Normalize and Pack
+        	• R - Rectangle
+        	• C - Cut/Split/UVSeam
+
 - 4.40 -
         • smo.UV.Multi.AutoUnwrapSmartByAngle 88 180 - New command to Auto Unwrap the current Mesh item by using Sharp Edges defined by a Min and Max Angle as Seams.
         	• It use the SmartUnwrap base arguments (4 types):
