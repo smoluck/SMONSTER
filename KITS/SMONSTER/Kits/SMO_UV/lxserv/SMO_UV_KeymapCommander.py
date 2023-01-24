@@ -20,7 +20,7 @@ SMO_UV_HOTKEYS = [
         ],
         "key": "q",
         "command": "attr.formPopover {SMO_UV_SP_PM_SH:sheet}",
-        "name": "UV: Pie Menu from 3D Viewport",
+        "name": "UV: Pie Menu",
         "info": "Q  ---  Over 3D viewport"
     },
 
@@ -31,11 +31,56 @@ SMO_UV_HOTKEYS = [
         ],
         "key": "q",
         "command": "attr.formPopover {SMO_UV_PM_SH:sheet}",
-        "name": "UV: Pie Menu from UVTexture Viewport",
+        "name": "UV: Pie Menu",
         "info": "Q  ---  Over UV Viewport"
+    },
+
+    {
+        "contexts": [
+            ["view3DOverlayUV", "(stateless)", ".anywhere", "(contextless)",
+             "uv.split"]
+        ],
+        "key": "c",
+        "command": "uv.split",
+        "name": "UV: UV Edge Cut/Split/Seam",
+        "info": "C - Over UV Viewport"
+    },
+
+    {
+        "contexts": [
+            ["view3DOverlayUV", "(stateless)", ".anywhere", "(contextless)",
+             "uv.rectangle false"]
+        ],
+        "key": "r",
+        "command": "uv.rectangle false",
+        "name": "UV: UV Rectangle",
+        "info": "R - Over UV Viewport"
+    },
+
+    {
+        "contexts": [
+            ["view3DOverlayUV", "(stateless)", ".anywhere", "(contextless)",
+             "attr.formPopover {UVToolbar:IslandAlignButtons:sheet}"]
+        ],
+        "key": "a",
+        "command": "attr.formPopover {UVToolbar:IslandAlignButtons:sheet}",
+        "name": "UV: UV Align Tools",
+        "info": "A - Over UV Viewport"
+    },
+
+    {
+        "contexts": [
+            ["view3DOverlayUV", "(stateless)", ".anywhere", "(contextless)",
+             "attr.formPopover {SMO_UV_NORMALIZE_and_PACK_POP_SH:sheet}"]
+        ],
+        "key": "p",
+        "command": "attr.formPopover {SMO_UV_NORMALIZE_and_PACK_POP_SH:sheet}",
+        "name": "UV: UV Normalize and Pack",
+        "info": "P - Over UV Viewport"
     }
 
 ]
+
 
 # max = len(SMO_UV_HOTKEYS)
 # lx.out(max)
