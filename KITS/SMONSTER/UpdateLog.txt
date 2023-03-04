@@ -3,6 +3,20 @@
 -------------------------
 
 -------------------------
+v4.80 - 2023/03/4
+GC:
+        • Removed old Configuration files that was setting Preferences by default.
+          Now users have the complete control over their preferences.
+          I didn't noticed that over the years as the large majority of users were using those default settings.
+          I've removed those files from the Kit:
+        	• SMO_GC_Preference.CFG
+        	• SMO_ColorManagement.CFG
+        	• SMO_GC_NetworkRenderingPref.CFG
+        	• SMO_UV_Coverage.CFG
+        	• SMO_LL_MARMOSET_ItemIndexStyle_Preference.CFG
+        	• SMO_MESHOPS_151_DeferredEvaluation.CFG
+
+-------------------------
 v4.75 - 2023/01/24
 UV:
         • smo.uv.Multi.UnwrapCylindrical - Bugfix on single item process.

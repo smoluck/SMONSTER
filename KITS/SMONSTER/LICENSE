@@ -2,8 +2,14 @@ License
 
 Copyright (c) 2018-2022 Franck Elisabeth
 
-# DISCLAIMER
+# LICENSE TERMS
 This software "SMONSTER kit for Modo (Mac, win7, win10)" is expressly provided "AS IS."
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
+FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 THE DEVLOPER MAKES NO WARRANTY OF ANY KIND, EXPRESS, IMPLIED, IN FACT OR ARISING BY OPERATION OF LAW, 
 INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, 
@@ -18,15 +24,15 @@ You are solely responsible for determining the appropriateness of using the soft
 associated with its use, including but not limited to the risks and costs of program errors, compliance with 
 applicable laws, damage to or loss of data, programs or equipment, and the unavailability or interruption of operation.
 
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-# README
-By installing this software you agree to the full extent of the written content below.
-
-
-# LICENSE TERMS
-License is limited to only one user with a maximum of 2 machines per user.
+License is limited to only one user with a maximum of 2 machines per user. But every studio can order as many licensed copy of this software to use it as is.
 You declare by downloading this software to not share, modify, sell any files that "SMONSTER kit" contain.
 
 
 # PRIVACY DECLARATION
-We don't gather any information other than your email address, your license key related to our Gumroad product on your Gumroad account.
+We don't gather any information other than your email address, your license key related to our Gumroad product on your Gumroad account if you got that software from Gumroad platform.
+We don't gather any information if you're cloning the repository from Github.
+
+# README
+By installing this software you agree to the full extent of the written content above.
