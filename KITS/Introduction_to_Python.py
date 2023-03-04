@@ -76,6 +76,30 @@ name = "Allen Hastings"
 print("User\'s Name:", name)
 
 
+
+
+print("\n")
+print("----- about ------ Variables --------------------------")
+"""
+You can write  / declare a variable by different ways:
+"""
+
+brand: str = "MyBrandIsAwesome"
+# or
+brand = str("MyBrandIsAwesome")
+# or
+brand = "MyBrandIsAwesome"
+
+# or for bool:
+toggle: bool = False
+toggle = bool(False)
+toggle = False
+
+# the variable can be undefined (in terms og it's value)
+toggle = bool()
+
+
+
 print("\n")
 print("----- about ------ Raw Strings --------------------------")
 """
@@ -89,9 +113,10 @@ it will print the data like this:
 c:  emp
 ew folder
 
-instead use:
+instead use "raw flag" with "r":
 """
 print(r"c:\temp\new folder")
+
 
 
 print("\n")
@@ -152,9 +177,11 @@ print(math_b)
 
 print("\n")
 print("----- about ------ Booleans --------------------------")
-""" booleans have only 2 states:    True or False
+"""
+booleans have only 2 states:    True or False
 Consider them as a switch button.
 """
+
 print("----- Booleans -----")
 boolean = bool()
 state_on = True
@@ -166,8 +193,10 @@ print("Scripting is awesome ?", "\n", state_on)
 
 print("\n")
 print("----- about ------ Subclass --------------------------")
-""" Subclass are embedded definitions of string / numbers / boolean
-there is already class built in python """
+"""
+Subclass are embedded definitions of string / numbers / boolean
+there is already class built in python
+"""
 
 
 # Class scls
@@ -240,4 +269,63 @@ for x in d:
 
 # if you want a clean list out of those keys, you will still have to get them through this to have a clean list format.
 list(d.keys())
+
+
+
+print("\n")
+print("----- about ------ Format String --------------------------")
+# Use {} do define a position to place the value of client_name variable
+client_name = "Jhon Doe"
+
+email = """
+hi little monsters.
+
+Dear {}, i hope you've enjoyed the latest update of the kit.
+Feel free to give me some feedback through Slack, Twitter, GitHub
+
+Best regards,
+Franck
+"""
+
+print(email.format(client_name))
+
+""" RESULT:
+
+hi little monsters.
+
+Dear Jhon Doe, i hope you've enjoyed the latest update of the kit.
+Feel free to give me some feedback through Slack, Twitter, GitHub
+
+Best regards,
+Franck
+
+"""
+
+# -----------------------------
+
+client_name = "Jhon Doe"
+email = f"""
+hi little monsters.
+
+Dear {client_name}, i hope you've enjoyed the latest update of the kit.
+Feel free to give me some feedback through Slack, Twitter, GitHub
+
+Best regards,
+Franck
+"""
+
+print(email)
+
+
+print("\n")
+print("----- about ------ Keywords --------------------------")
+"""
+Code needs keywords to do defined actions, like "import", "is", "and", "if", "else", etc
+"""
+# this code will print the list of all keywords that we couldn't use as named variable like:
+# name_id = else
+
+import keywords
+print(keywords.kwlist)
+
 
