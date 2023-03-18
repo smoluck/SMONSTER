@@ -3,6 +3,15 @@
 -------------------------
 
 -------------------------
+v4.82 - 2023/03/18
+MARMOSET LIVELINK:
+        • Bugfix on JSON module with Modo (if the Python version choosen was set to 3.9).
+          The Exports of variable will now be exchanged and processed correctly in Marmoset.
+
+UV:
+        • Rectangle command have been changed from "R" key to "Alt - R" to let user scale UV maps data in UVTexture editor.
+
+-------------------------
 v4.80 - 2023/03/4
 GC:
         • Removed old Configuration files that was setting Preferences by default.

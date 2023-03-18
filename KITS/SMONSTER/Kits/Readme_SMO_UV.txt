@@ -3,6 +3,9 @@ Hi. Everyone
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 4.55 -
+        • Rectangle command have been changed from "R" key to "Alt - R" to let user scale UV maps data in UVTexture editor.
+
 - 4.50 -
         • smo.uv.Multi.UnwrapCylindrical - Bugfix on single item process.
         • Added Keymaps dialog in QuickKeymaps command for keys over UV Viewport:

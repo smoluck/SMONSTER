@@ -3,6 +3,10 @@ Hi. Everyone
 ------------------
 --- UPDATE LOG ---
 ------------------
+- 2.60 -
+        • Bugfix on JSON module with Modo (if the Python version choosen was set to 3.9).
+          The Exports of variable will now be exchanged and processed correctly in Marmoset.
+
 - 2.50 -
         • Added option to Auto bake AOF (Floor) map (only available in Marmoset Toolbag 4.03)
         • Added option to define AO/Thickness RaySample count in preferences "Bake settings" --> (128 , 256, 512, 1024, 2048)

@@ -51,10 +51,10 @@ SMO_UV_HOTKEYS = [
             ["view3DOverlayUV", "(stateless)", ".anywhere", "(contextless)",
              "uv.rectangle false"]
         ],
-        "key": "r",
+        "key": "alt-r",
         "command": "uv.rectangle false",
         "name": "UV: UV Rectangle",
-        "info": "R - Over UV Viewport"
+        "info": "Alt R - Over UV Viewport"
     },
 
     {
