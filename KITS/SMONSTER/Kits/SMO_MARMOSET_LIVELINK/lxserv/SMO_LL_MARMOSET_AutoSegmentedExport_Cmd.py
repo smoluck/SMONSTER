@@ -15,7 +15,7 @@ Copyright:    (c) Franck Elisabeth 2017-2022
 """
 
 import json as j
-
+import sys
 import lx
 import lxu.command
 import lxu.select
@@ -23,6 +23,12 @@ import modo
 import os
 import subprocess
 import traceback
+
+
+python_majorver = sys.version_info.major
+# print('the Highest version number 2 for 2.7 release / 3 for 3.7 release')
+# print(python_majorver)
+
 
 Cmd_Name = "smo.LL.MARMOSET.AutoSegmentedExport"
 
@@ -1585,8 +1591,14 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
 
         ################## Save ##################
         ################## Data ##################
-        # "f" is the FileName where we store the Variable Data for Marmoset Pipe.
-        f = open(DataExchangeFilePath, 'wb')
+        if python_majorver < 3:
+            # print("do something for 2.X code")
+            # "f" is the FileName where we store the Variable Data for Marmoset Pipe.
+            f = open(DataExchangeFilePath, 'wb')
+        elif python_majorver >= 3:
+            # print("do something for 3.X code")
+            f = open(DataExchangeFilePath, 'wt')
+
 
         # Create a dictionary of pairs "key: value"
         # Data = {'String name': StringA, 'Valeur': StringB}
@@ -1626,7 +1638,12 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
         # Data = [BaseBakeFilePath, BaseBakeFileName, SceneName, DataExchangeFileName, DataExchangeFilePath, MapSize, ImgFileFrmt, SeparatorStr, OutputFolder, NameTagLP, NameTagCage, NameTagHP, fbx_file_name_LP, fbx_file_name_Cage, fbx_file_name_HP, fbx_export_path_LP, fbx_export_path_Cage, fbx_export_path_HP, Smo_MarmosetToolbag_AO, Smo_MarmosetToolbag_TSNRM, Smo_MarmosetToolbag_OSNRM, Smo_MarmosetToolbag_POS, Smo_MarmosetToolbag_CUR, Smo_MarmosetToolbag_OBJID, Smo_MarmosetToolbag_THI, TagImg_AO, TagImg_TSNRM, TagImg_OSNRM, TagImg_POS, TagImg_CUR, TagImg_OBJID, TagImg_THI, image_file_name_AO, image_file_name_TSNRM, image_file_name_OSNRM, image_file_name_POS, image_file_name_CUR, image_file_name_OBJID, image_file_name_THI, image_export_path_AO, image_export_path_TSNRM, image_export_path_OSNRM, image_export_path_POS, image_export_path_CUR, image_export_path_OBJID, image_export_path_THI]
 
         # write variables to filename [Data] and close it.
-        j.dump(Data, f)
+        if python_majorver < 3:
+            # print("do something for 2.X code")
+            j.dump(Data, f)
+        elif python_majorver >= 3:
+            # print("do something for 3.X code")
+            j.dump(Data, f, ensure_ascii=False)
         f.close()
         # ------------------------------------------ #
 
