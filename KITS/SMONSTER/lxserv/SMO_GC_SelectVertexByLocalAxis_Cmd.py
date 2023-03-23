@@ -98,24 +98,36 @@ class SMO_GC_SelectVertexByLocalAxis_Cmd(lxu.command.BasicCommand):
 
             if not PositiveDir:
                 if Axis == "x":
-                    if vert_pos_x < 0.0:
+                    if vert_pos_x == -0.0000000:
+                        vert_pos_x == 0.0000000
+                    if vert_pos_x < -0.0000001:
                         mylist.append(i)
                 if Axis == "y":
-                    if vert_pos_y < 0.0:
+                    if vert_pos_y == -0.0000000:
+                        vert_pos_y == 0.0000000
+                    if vert_pos_y < -0.0000001:
                         mylist.append(i)
                 if Axis == "z":
-                    if vert_pos_z < 0.0:
+                    if vert_pos_z == -0.0000000:
+                        vert_pos_z == 0.0000000
+                    if vert_pos_z < -0.0000001:
                         mylist.append(i)
 
             if PositiveDir:
                 if Axis == "x":
-                    if vert_pos_x > 0.0:
+                    if vert_pos_x == -0.0000000:
+                        vert_pos_x == 0.0000000
+                    if vert_pos_x > 0.0000001:
                         mylist.append(i)
                 if Axis == "y":
-                    if vert_pos_y > 0.0:
+                    if vert_pos_x == -0.0000000:
+                        vert_pos_x == 0.0000000
+                    if vert_pos_y > 0.0000001:
                         mylist.append(i)
                 if Axis == "z":
-                    if vert_pos_z > 0.0:
+                    if vert_pos_x == -0.0000000:
+                        vert_pos_x == 0.0000000
+                    if vert_pos_z > 0.0000001:
                         mylist.append(i)
         # print(mylist)
         for i in range(len(mylist)):
