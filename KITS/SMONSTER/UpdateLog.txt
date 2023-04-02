@@ -3,9 +3,15 @@
 -------------------------
 
 -------------------------
+v4.85 - 2023/04/02
+GAME CONTENT:
+        • Bugfix on smo.GC.Multi.ExportSelectedMeshesAsMeshPreset
+          Before that bugfix, the Folder destination popup was shown up for every item exported. Now, it won't do this
+
+-------------------------
 v4.82 - 2023/03/18
 MARMOSET LIVELINK:
-        • Bugfix on JSON module with Modo (if the Python version choosen was set to 3.9).
+        • Bugfix on JSON module with Modo (if the Python version chosen was set to 3.9).
           The Exports of variable will now be exchanged and processed correctly in Marmoset.
 
 UV:

@@ -3,6 +3,10 @@ Hi. Everyone
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 12.25 -
+        • Bugfix on smo.GC.Multi.ExportSelectedMeshesAsMeshPreset
+          Before that bugfix, the Folder destination popup was shown up for every item exported. Now, it won't do this
+
 - 12.20 -
         • Exposed the Select / Fix Missing Vertex Normal Data as well in the Item Context Menu.
         • Bugfix smo.GC.SetNewMaterialSmartRename now correctly Assign Mat Tag if already existing in the scene with creating a duplicated one. (As i was using Tim Cowson - Popup Kit in my workflow, that bug passed over my radar, but it was an issue for casual users.)
