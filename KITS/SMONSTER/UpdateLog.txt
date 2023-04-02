@@ -6,7 +6,9 @@
 v4.85 - 2023/04/02
 GAME CONTENT:
         • Bugfix on smo.GC.Multi.ExportSelectedMeshesAsMeshPreset
-          Before that bugfix, the Folder destination popup was shown up for every item exported. Now, it won't do this
+          Before that bugfix, the Folder destination popup was shown up for every item exported. Now, it won't do this.
+        • Bugfix on smo.GC.SelectVertexByLocalAxis
+          Selecting component data that was at pos 0.0 or -0.0 was an issue. Now it's solved.
 
 -------------------------
 v4.82 - 2023/03/18

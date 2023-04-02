@@ -5,7 +5,9 @@ Hi. Everyone
 ----------------------
 - 12.25 -
         • Bugfix on smo.GC.Multi.ExportSelectedMeshesAsMeshPreset
-          Before that bugfix, the Folder destination popup was shown up for every item exported. Now, it won't do this
+          Before that bugfix, the Folder destination popup was shown up for every item exported. Now, it won't do this.
+        • Bugfix on smo.GC.SelectVertexByLocalAxis
+          Selecting component data that was at pos 0.0 or -0.0 was an issue. Now it's solved.
 
 - 12.20 -
         • Exposed the Select / Fix Missing Vertex Normal Data as well in the Item Context Menu.
