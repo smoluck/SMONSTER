@@ -15,6 +15,7 @@ Copyright:    (c) Franck Elisabeth 2017-2022
 import lx
 import lxu
 import modo
+import os
 
 Cmd_Name = "smo.GC.Multi.ExportSelectedMeshesAsMeshPreset"
 # smo.GC.Multi.ExportSelectedMeshesAsMeshPreset {C:\TEMP\Target}
@@ -50,7 +51,32 @@ class SMO_GC_ExportSelectedMeshesAsMeshPreset_Cmd(lxu.command.BasicCommand):
     def basic_Enable(self, msg):
         return True
 
+
     def basic_Execute(self, msg, flags):
+        # define function for Subfolder Name
+        def SetLXLTagDialog():
+            lx.eval('!user.defNew SubFolderName string momentary')
+            lx.eval('user.def SubFolderName username "Set a Subfolder Name for those Presets"')
+            lx.eval('user.def SubFolderName dialogname "Set a Subfolder Name for those Presets"')
+            try:
+                lx.eval('user.value SubFolderName')
+                return lx.eval('user.value SubFolderName ?')
+            except:
+                return ''
+
+        # define function for Specific folder path
+        def SetSpecificPathDialog():
+            lx.eval('!user.defNew SpecificPath string momentary')
+            lx.eval('dialog.setup dir')
+            lx.eval('dialog.title "Select a Path to Export the Meshes as LXL"')
+            lx.eval('dialog.open')
+            SpecificPath = lx.eval('dialog.result ?')
+            lx.out('Path', SpecificPath)
+            try:
+                return SpecificPath
+            except:
+                return ''
+
         # In case a Path is defined directly with the path argument we overwrite the path
         TargetDirPath = ""
 
@@ -58,6 +84,20 @@ class SMO_GC_ExportSelectedMeshesAsMeshPreset_Cmd(lxu.command.BasicCommand):
             TargetDirPath = self.dyna_String(0)
             # print('Destination Path is set by Argument')
 
+        SubFolderState = bool(lx.eval('user.value SMO_UseVal_GC_LXLMeshPresetToSubfolder ?'))
+        SpecificFolderState = bool(lx.eval('user.value SMO_UseVal_GC_LXLMeshPresetToSpecificFolder ?'))
+        print("Export to a Subfolder:", SubFolderState)
+        print("Export to a Specific Folder:", SpecificFolderState)
+
+        if not self.dyna_IsSet(0) and SpecificFolderState:
+            TargetDirPath = SetSpecificPathDialog()
+
+        if not self.dyna_IsSet(0) and not SpecificFolderState:
+            DestinationPath = lx.eval("query platformservice alias ? {kit_SMO_GAME_CONTENT:SMOGC_Presets\Assets\Meshes}")
+            TargetDirPath = DestinationPath
+
+
+        TargetDirPath = os.path.abspath(TargetDirPath)
         scene = modo.scene.current()
 
         mesh = scene.selectedByType('mesh')
@@ -85,7 +125,7 @@ class SMO_GC_ExportSelectedMeshesAsMeshPreset_Cmd(lxu.command.BasicCommand):
             scene.select(m)
             ############### PUT YOUR Command HERE to run over each item Polygons
             try:
-                lx.eval('smo.GC.ExportMeshAsMeshPreset %s' % TargetDirPath)
+                lx.eval('smo.GC.ExportMeshAsMeshPreset {%s}' % TargetDirPath)
                 # lx.eval('smo.GC.ExportSelectedMeshesAsMeshPreset %s' % TargetDirPath)
             except:
                 lx.out('Error on {%s}' % (lx.eval('item.name ? xfrmcore')))

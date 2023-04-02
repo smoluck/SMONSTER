@@ -57,6 +57,7 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
         DestinationPath = ""
         # In case a Path is defined directly with the path argument we overwrite the path
         TargetDirPath = ""
+        Subfolder = ""
 
         if self.dyna_IsSet(0):
             TargetDirPath = self.dyna_String(0)
@@ -89,7 +90,7 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
         def SetSpecificPathDialog():
             lx.eval('!user.defNew SpecificPath string momentary')
             lx.eval('dialog.setup dir')
-            lx.eval('dialog.title "Select a Path to open"')
+            lx.eval('dialog.title "Select a Path to Export the Meshes as LXL"')
             lx.eval('dialog.open')
             SpecificPath = lx.eval('dialog.result ?')
             lx.out('Path', SpecificPath)
@@ -102,23 +103,25 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
         if Good:
             ItemSelected = scene.selected
             selectedMeshes = [item for item in ItemSelected if item.type == 'mesh']
-            print(selectedMeshes)
+            # print(selectedMeshes)
             sceneItem = [item for item in scene.items() if item.type == 'scene']
-            print(sceneItem)
+            # print(sceneItem)
 
             SubFolderState = bool(lx.eval('user.value SMO_UseVal_GC_LXLMeshPresetToSubfolder ?'))
             SpecificFolderState = bool(lx.eval('user.value SMO_UseVal_GC_LXLMeshPresetToSpecificFolder ?'))
-            print(SubFolderState)
-            print(SpecificFolderState)
+            print("Export to a Subfolder:", SubFolderState)
+            print("Export to a Specific Folder:", SpecificFolderState)
 
             # In case a Path is defined directly with the path argument we overwrite the path
             if self.dyna_IsSet(0):
+                print("Solution A - The Path is set by Argument")
                 DestinationPath = TargetDirPath
 
-            if not self.dyna_IsSet(0) and SpecificFolderState == True:
+            if TargetDirPath == "" and not SpecificFolderState:
+                print("Solution B - The Path isn't set by Argument")
                 DestinationPath = SetSpecificPathDialog()
 
-            if not self.dyna_IsSet(0) and SpecificFolderState == False:
+            if not self.dyna_IsSet(0) and not SpecificFolderState:
                 # Create path target , here it's the Kit Folder for Mesh Preset
                 DestinationPath = lx.eval(
                     "query platformservice alias ? {kit_SMO_GAME_CONTENT:SMOGC_Presets\Assets\Meshes}")
@@ -132,12 +135,10 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
                 print('Current Scene ID:', SceneID)
                 lx.eval('select.subItem %s set scene' % SceneID)
                 LXLTag = lx.eval('item.tag mode:string tag:"LXLT" value:?')
-                # print(LXLTag)
+                print("LXL Tag is:", LXLTag)
                 if len(LXLTag) == 0:
                     Subfolder = SetLXLTagDialog()
                     lx.eval('item.tag mode:string tag:LXLT value:"%s"' % Subfolder)
-                elif len(LXLTag) > 0:
-                    print(LXLTag)
                 lx.eval('smo.GC.DeselectAll')
                 if len(LXLTag) == 0 and len(Subfolder) > 0:
                     FinalPath = DestinationPath + "/" + Subfolder
@@ -147,19 +148,12 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
             if not SubFolderState:
                 FinalPath = DestinationPath
 
-            print(FinalPath)
+
+            # print(FinalPath)
             FinalPath_AbsPath = os.path.abspath(FinalPath)
             print("Destination Folder: ", FinalPath_AbsPath)
 
-            # Check / Create Directory
-            # try:
-            #     # Create target Directory
-            #     os.mkdir(FinalPath_AbsPath)
-            #     print("Directory ", FinalPath_AbsPath, " Created ")
-            # except FileExistsError:
-            #     print("Directory ", FinalPath_AbsPath, " already exists")
-
-            # Create target Directory if don't exist
+            # Create target Directory if it doesn't exist
             if not os.path.exists(FinalPath_AbsPath):
                 os.mkdir(FinalPath_AbsPath)
                 print("Directory ", FinalPath_AbsPath, " Created ")
@@ -179,7 +173,7 @@ class SMO_GC_ExportMeshAsMeshPreset_Cmd(lxu.command.BasicCommand):
                 print('current Item Unique name is %s' % ItemIdent)
 
                 TargetPath = FinalPath_AbsPath + "/" + MeshName + ".lxl"
-                print(TargetPath)
+                # print(TargetPath)
 
                 MeshPreset_AbsPath = os.path.abspath(TargetPath)
                 print('destination directory path for the mesh preset ', MeshPreset_AbsPath)
