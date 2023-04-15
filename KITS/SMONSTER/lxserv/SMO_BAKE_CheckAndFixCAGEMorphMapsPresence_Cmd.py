@@ -17,7 +17,7 @@ import modo
 
 Cmd_Name = "smo.BAKE.CheckAndFixCAGEMorphMapsPresence"
 
-
+# OLD NAME OF THAT COMMAND: smo.BAKE.CreateAndOrSelectCAGEMorph
 # smo.BAKE.CheckAndFixCAGEMorphMapsPresence
 
 
@@ -167,6 +167,11 @@ class SMO_BAKE_CheckAndFixCAGEMorphMapsPresence_Cmd(lxu.command.BasicCommand):
             lx.eval('dialog.title {SMO BAKE - Check CAGE Morph:}')
             lx.eval('dialog.msg {"MophMap "CAGE" have been created on selected meshes. Modify and Update that new "CAGE" Morph to match requirements.}')
             lx.eval('+dialog.open')
+
+        if len(TroubleMeshList) == 0:
+            scene.select(MeshItemList)
+            lx.eval('smo.CB.ItemColor 8 0')
+            lx.eval('smo.GC.DeselectAll')
 
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
