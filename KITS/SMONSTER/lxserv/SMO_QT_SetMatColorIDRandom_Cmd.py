@@ -57,6 +57,7 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
         return True
 
     def basic_Execute(self, msg, flags):
+        modo_ver = int(lx.eval('query platformservice appversion ?'))
         scene = modo.scene.current()
         ColorID_Suffix = "ColorID"
         ByItemMode = bool()
@@ -480,6 +481,8 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
                 if item.name.startswith('ColorID_'):
                     SubGrpPresence = True
                     SourceGrpMask.append(item.Ident())
+            if modo_ver < 1530:
+                scene.select(SourceGrpMask[0])
             lx.eval('texture.parent {%s} 99 item:{%s}' % (GrpColorIdent, SourceGrpMask[0]))
         ##########################################################
         ##########################Marker##########################
@@ -494,7 +497,8 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
                 test = ColorIDMatName
                 if item.name.startswith('ColorID_' + str(IDNum)):
                     SourceGrpMask.append(item.Ident())
-                    # print(SourceGrpMask[0])
+            if modo_ver < 1530:
+                scene.select(SourceGrpMask[0])
             lx.eval('texture.parent {%s} {%s} item:{%s}' % (GrpColorIdent, IDNum, SourceGrpMask[0]))
 
         # renderItem = scene.renderItem

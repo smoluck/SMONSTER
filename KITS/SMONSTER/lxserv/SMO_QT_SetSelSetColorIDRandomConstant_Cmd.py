@@ -96,6 +96,7 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         return True
 
     def basic_Execute(self, msg, flags):
+        modo_ver = int(lx.eval('query platformservice appversion ?'))
         scene = modo.scene.current()
         ColorID_Suffix = "ColorID"
         ByItemMode = bool()
@@ -494,11 +495,14 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
             print(GrpColorID.Ident())
             GrpTarget.append(GrpColorID.Ident())
             GrpColorIdent = GrpColorID.Ident()
+            if modo_ver < 1530:
+                scene.select(GrpTarget[0])
             lx.eval('texture.parent {%s} 99 item:{%s}' % (GrpColorIdent, TargetGrpMask))
 
         if GrpPresence:
             GrpColorIdent = GrpTarget[0]
-            # scene.select(GrpTarget[0])
+            if modo_ver < 1530:
+                scene.select(GrpTarget[0])
             lx.eval('texture.parent {%s} {%s} item:{%s}' % (GrpColorIdent, NewID, TargetGrpMask))
 
         renderItem = scene.renderItem
