@@ -16,7 +16,8 @@ import lxu
 import modo
 import sys
 
-if sys.version_info < (3, 0):
+python_majorver = sys.version_info.major
+if python_majorver >= 3:
     xrange = range
 
 Cmd_Name = "smo.GC.ItemListReParentToRootParent"
