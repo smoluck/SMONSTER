@@ -172,7 +172,7 @@ class SMO_BAKE_ExportGameReadyFBXBakes_Cmd(lxu.command.BasicCommand):
 
         # Select target LowPoly Meshes via MTyp Tags and Check their CAGE Morph Map
         lx.eval('smo.GC.SelectMTypMesh 0')
-        lx.eval('smo.BAKE.CreateAndOrSelectCAGEMorph')
+        lx.eval('smo.BAKE.CheckAndFixCAGEMorphMapsPresence')
 
         # create Cage meshes
         lx.eval('smo.GC.CreateCloneCAGEData')
