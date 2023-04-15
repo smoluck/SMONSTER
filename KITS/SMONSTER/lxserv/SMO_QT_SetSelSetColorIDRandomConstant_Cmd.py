@@ -17,7 +17,8 @@ import lxu
 import modo
 import sys
 
-if sys.version_info < (3, 0):
+python_majorver = sys.version_info.major
+if python_majorver >= 3:
     xrange = range
 
 Cmd_Name = "smo.QT.SetSelSetColorIDRandomConstant"
@@ -289,7 +290,7 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
 
         try:
             lx.eval(
-                '!channel.create SelSetColorIDConstantGlobalCount integer useMin:true default:(-1.0) username:SelSetColorIDConstantGlobalCount')
+                '!channel.create SelSetColorIDConstantGlobalCount integer useMin:true default:(-1) username:SelSetColorIDConstantGlobalCount')
             SceneConstantID = (-1)
             QTChannelExist = False
         except RuntimeError:  # diffuse amount is zero.
@@ -299,7 +300,7 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
             pass
 
         if QTChannelExist:
-            SceneConstantID = lx.eval('!item.channel SelSetColorIDConstantGlobalCount ?')
+            SceneConstantID = int(lx.eval('!item.channel SelSetColorIDConstantGlobalCount ?'))
             lx.out('Constant ID Max in scene', SceneConstantID)
         # print(QTChannelExist)
 
@@ -308,7 +309,7 @@ class SMO_QT_SetSelSetColorIDRandomConstant_Cmd(lxu.command.BasicCommand):
         if SceneConstantID == (-1):
             NewID = 0
         if SceneConstantID >= 0:
-            NewID = int(SceneConstantID) + 1
+            NewID = SceneConstantID + 1
         # print(NewID)
         lx.eval('!item.channel SelSetColorIDConstantGlobalCount %i' % NewID)
         ColorIDSelSetName = ("%s_%s" % (ColorID_Suffix, NewID))

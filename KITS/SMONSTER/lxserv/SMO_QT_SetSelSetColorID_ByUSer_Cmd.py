@@ -17,7 +17,8 @@ import lxu
 import modo
 import sys
 
-if sys.version_info < (3, 0):
+python_majorver = sys.version_info.major
+if python_majorver >= 3:
     xrange = range
 
 Cmd_Name = "smo.QT.SetSelSetColorIDByUser"
@@ -157,7 +158,7 @@ def SetColorIDByNumberCheckSceneMaxColorID(IDNum):
     # Test the Base Shader item and check if the needed Channel exist
     try:
         lx.eval(
-            '!channel.create SelSetColorIDConstantGlobalCount integer useMin:true default:(-1.0) username:SelSetColorIDConstantGlobalCount')
+            '!channel.create SelSetColorIDConstantGlobalCount integer useMin:true default:(-1) username:SelSetColorIDConstantGlobalCount')
         SceneConstantID = (-1)
         QTChannelExist = False
     except RuntimeError:  # diffuse amount is zero.
@@ -169,7 +170,7 @@ def SetColorIDByNumberCheckSceneMaxColorID(IDNum):
     # Now that we're sure we have a channel created, we select it
     try:
         lx.eval(
-            '!channel.create SelSetColorIDConstantGlobalCount integer useMin:true default:(-1.0) username:SelSetColorIDConstantGlobalCount')
+            '!channel.create SelSetColorIDConstantGlobalCount integer useMin:true default:(-1) username:SelSetColorIDConstantGlobalCount')
         SceneConstantID = (-1)
         QTChannelExist = False
     except RuntimeError:  # diffuse amount is zero.
@@ -179,7 +180,7 @@ def SetColorIDByNumberCheckSceneMaxColorID(IDNum):
         pass
     if QTChannelExist:
         # print('Quick Tag Channel is defined:', QTChannelExist)
-        SceneConstantID = lx.eval('!item.channel SelSetColorIDConstantGlobalCount ?')
+        SceneConstantID = int(lx.eval('!item.channel SelSetColorIDConstantGlobalCount ?'))
         if SceneConstantID < 0:
             SceneConstantID_Int = 0
         if SceneConstantID >= 0:
@@ -188,7 +189,7 @@ def SetColorIDByNumberCheckSceneMaxColorID(IDNum):
 
     if not QTChannelExist:
         lx.eval(
-            '!channel.create SelSetColorIDConstantGlobalCount integer useMin:true default:(-1.0) username:SelSetColorIDConstantGlobalCount')
+            '!channel.create SelSetColorIDConstantGlobalCount integer useMin:true default:(-1) username:SelSetColorIDConstantGlobalCount')
         lx.eval('!item.channel SelSetColorIDConstantGlobalCount %i' % SceneConstantID_Int)
 
     # Set the Max ColorID to at least the maximum between IDNum and what was set.
@@ -524,7 +525,7 @@ class SMO_QT_SetSelSetColorID_ByUser_Cmd(lxu.command.BasicCommand):
         if self.SelModePoly:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
 
-        print(ListPSelSet())
+        # print(ListPSelSet())
         AllColorIDSelSets = ListPSelSet()
         for item in AllColorIDSelSets:
             if item != getTargetGrpMaskName(IDNum):

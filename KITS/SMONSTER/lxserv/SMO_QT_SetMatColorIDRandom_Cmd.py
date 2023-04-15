@@ -152,7 +152,7 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
 
         try:
             lx.eval(
-                '!channel.create MatColorIDGlobalCount integer useMin:true default:(-1.0) username:MatColorIDGlobalCount')
+                '!channel.create MatColorIDGlobalCount integer useMin:true default:(-1) username:MatColorIDGlobalCount')
             SceneConstantID = (-1)
             QTChannelExist = False
         except RuntimeError:  # diffuse amount is zero.
@@ -162,7 +162,7 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
             pass
 
         if QTChannelExist:
-            SceneConstantID = lx.eval('!item.channel MatColorIDGlobalCount ?')
+            SceneConstantID = int(lx.eval('!item.channel MatColorIDGlobalCount ?'))
             # lx.out('Constant ID Max in scene', SceneConstantID)
         # print(QTChannelExist)
 

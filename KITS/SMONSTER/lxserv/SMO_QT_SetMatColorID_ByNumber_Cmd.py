@@ -17,7 +17,8 @@ import lxu
 import modo
 import sys
 
-if sys.version_info < (3, 0):
+python_majorver = sys.version_info.major
+if python_majorver >= 3:
     xrange = range
 
 Cmd_Name = "smo.QT.SetMatColorIDByNumber"
@@ -178,7 +179,7 @@ def SetColorIDByNumberCheckSceneMaxColorID(IDNum):
     # Now that we're sure we have a channel created, we select it
     try:
         lx.eval(
-            '!channel.create MatColorIDGlobalCount integer useMin:true default:(-1.0) username:MatColorIDGlobalCount')
+            '!channel.create MatColorIDGlobalCount integer useMin:true default:(-1) username:MatColorIDGlobalCount')
         QTChannelExist = False
     except RuntimeError:  # diffuse amount is zero.
         lx.eval('select.channel {%s:MatColorIDGlobalCount@lmb=x} set' % SceneShaderItemName[0])
@@ -188,7 +189,7 @@ def SetColorIDByNumberCheckSceneMaxColorID(IDNum):
 
     if QTChannelExist:
         # print('Quick Tag Channel is defined:', QTChannelExist)
-        SceneCurrentConstantID = lx.eval('!item.channel MatColorIDGlobalCount ?')
+        SceneCurrentConstantID = int(lx.eval('!item.channel MatColorIDGlobalCount ?'))
         if SceneCurrentConstantID < 0:
             SceneCurrentConstantID = 0
         if SceneCurrentConstantID >= 0:
@@ -198,7 +199,7 @@ def SetColorIDByNumberCheckSceneMaxColorID(IDNum):
 
     if not QTChannelExist:
         lx.eval(
-            '!channel.create MatColorIDGlobalCount integer useMin:true default:(-1.0) username:MatColorIDGlobalCount')
+            '!channel.create MatColorIDGlobalCount integer useMin:true default:(-1) username:MatColorIDGlobalCount')
         lx.eval('!item.channel MatColorIDGlobalCount %i' % MaxValue)
     scn.deselect(RenderItemBaseShader[0])
     return QTChannelExist, MaxValue, RenderItemBaseShader[0]
