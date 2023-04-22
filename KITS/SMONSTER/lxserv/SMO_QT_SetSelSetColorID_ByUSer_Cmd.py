@@ -405,7 +405,7 @@ class SMO_QT_SetSelSetColorID_ByUser_Cmd(lxu.command.BasicCommand):
             ByItemMode = False
         meshes = scn.selectedByType('mesh')
 
-        lx.out('MODE USER ACTIVATED: Set you own ID Number')
+        lx.out('MODE USER ACTIVATED: Set your own ID Number')
 
         print(getTargetGrpMaskName(IDNum))
 

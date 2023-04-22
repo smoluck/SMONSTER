@@ -634,18 +634,8 @@ class SMO_GC_SetMatColorID_ByUser_Cmd(lxu.command.BasicCommand):
         if SMO_UseVal_GC_MatNameSuffix != "":
             lx.eval('user.value SMO_UseVal_GC_MatNameSuffix ""')
 
-        ByItemMode = bool()
 
-        if self.SelModeItem:
-            lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
-            lx.eval('select.type polygon')
-            lx.eval('select.all')
-            ByItemMode = True
-
-        if self.SelModePoly:
-            lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
-            ByItemMode = False
-
+        lx.out('MODE USER ACTIVATED: Set your own ID Number')
         try:
             #####--- Define User Value for Count --- START ---#####
             #####
@@ -664,7 +654,19 @@ class SMO_GC_SetMatColorID_ByUser_Cmd(lxu.command.BasicCommand):
         except:
             pass
 
-        lx.out('MODE USER ACTIVATED: Set you own ID Number')
+
+        ByItemMode = bool()
+        if self.SelModeItem:
+            lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
+            lx.eval('select.type polygon')
+            lx.eval('select.all')
+            ByItemMode = True
+
+
+        if self.SelModePoly:
+            lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
+            ByItemMode = False
+
 
         # mesh = scene.selectedByType('mesh')[0]
         # CsPolys = len(mesh.geometry.polygons.selected)
