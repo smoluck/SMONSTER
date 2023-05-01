@@ -4,6 +4,11 @@ Hi. Everyone
 --------------------
 ---- UPDATES ----
 --------------------
+- 1.70 -
+        • COMMAND Name Changed: smo.BAKE.CreateAndOrSelectCAGEMorph is now called smo.BAKE.CheckAndFixCAGEMorphMapsPresence
+        • smo.BAKE.CheckAndFixCAGEMorphMapsPresence is now correctly analyzing all Meshes in the current scene to detect if a "CAGE" MorphMap is present.
+            • If not present , it will create that missing "CAGE" MorphMap and select the meshes that needs to be updated.
+
 - 1.60 -
         • Switched CAD Tools / UV / VeNom Kits from Lazy Select (Seneca Menard scripts) workflow to Built-in Select CoPlanar Polygons command Introduced in recent release of Modo.
             • Better Performance in mentioned Kits.

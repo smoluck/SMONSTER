@@ -3,6 +3,11 @@ Hi. Everyone
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 3.20 -
+        • Reordered the selection of Polygons when creating the PolySelSet in Item mode.
+        • Bugfix for ColorID Random - Regression for Modo15.2 and Previous Release
+            • smo.QT.SetMatColorIDRandom and smo.QT.SetSelSetColorIDRandomConstant was suffering of a regression in 15.2 and previous release of Modo
+
 - 3.00 -
         • Finally completed the Rewrite of those ColorID Commands in order to let the user have more features and freedom. ( smo.QT.SetMatColorIDByNumber / smo.QT.SetMatColorIDByUser / smo.QT.SetSelSetColorIDByNumber / smo.QT.SetSelSetColorIDByUser )
         	• Now you can use whatever ID Value for those. You're not constrained anymore by the creation of those in order. (Start with #2 then add #6. There is no Order constraint on those commands.)

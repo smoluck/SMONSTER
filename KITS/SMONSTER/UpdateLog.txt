@@ -3,6 +3,30 @@
 -------------------------
 
 -------------------------
+v5.00 - 2023/05/01
+RIZOMUV LIVELINK:
+        • Introduction of RizomUVLink Module Support from RizomUV 2022.2 (Development Build)
+        • Addition of Task system to send to RizomUV action from Modo and get back the result automatically using the Link Module.
+        • SmartPack the current Model using a texture map resolution and optimization on given range of distorted UVIsland and get the updated data back in Modo.
+            • mapres: SmartPack the current Model using a target preset texture map resolution / level like the one for LOD.
+              Map size in pixel: 4096 / 2048 / 1024 / 512 / 256 / 128
+            • packiter: Iteration count for the Pack
+            • OptiDistort: FixDistortion by applying a UV Optimize on a range of UV Island that are outside of a specified Distortion Range
+            • Opti_iter: Distortion Optimize iteration count
+            • Dist_Range: Distortion Range span around ideal 1.0 value to select Distorted UV Islands
+
+QUICKTAG:
+        • Reordered the selection of Polygons when creating the PolySelSet in Item mode.
+        • Bugfix for ColorID Random - Regression for Modo15.2 and Previous Release
+            • smo.QT.SetMatColorIDRandom and smo.QT.SetSelSetColorIDRandomConstant was suffering of a regression in 15.2 and previous release of Modo
+
+BAKE:
+        • COMMAND Name Changed: smo.BAKE.CreateAndOrSelectCAGEMorph is now called smo.BAKE.CheckAndFixCAGEMorphMapsPresence
+        • smo.BAKE.CheckAndFixCAGEMorphMapsPresence is now correctly analyzing all Meshes in the current scene to detect if a "CAGE" MorphMap is present.
+            • If not present , it will create that missing "CAGE" MorphMap and select the meshes that needs to be updated.
+
+
+-------------------------
 v4.85 - 2023/04/02
 GAME CONTENT:
         • Bugfix on smo.GC.Multi.ExportSelectedMeshesAsMeshPreset
