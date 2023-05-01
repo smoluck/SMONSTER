@@ -8,6 +8,18 @@ Since 2.2 Release:
 ------------------
 --- UPDATE LOG ---
 ------------------
+- 3.00 -
+        • Introduction of RizomUVLink Module Support from RizomUV 2022.2 (Development Build)
+        • Addition of Task system to send to RizomUV action from Modo and get back the result automatically using the Link Module.
+        • SmartPack the current Model using a texture map resolution and optimization
+            on given range of distorted UVIsland and get the updated data back in Modo.
+                :param mapres:          SmartPack the current Model using a target preset texture map resolution / level like the one for LOD.
+                                        Map size in pixel: 4096 / 2048 / 1024 / 512 / 256 / 128
+                :param packiter:        Iteration count for the Pack
+                :param OptiDistort:     FixDistortion by applying a UV Optimize on a range of UV Island that are outside of a specified Distortion Range
+                :param Opti_iter:       Distortion Optimize iteration count
+                :param Dist_Range:      Distortion Range span around ideal 1.0 value to select Distorted UV Islands
+
 - 2.82 -
         • Bugfix on compilation errors on some platforms (win 11)
 
