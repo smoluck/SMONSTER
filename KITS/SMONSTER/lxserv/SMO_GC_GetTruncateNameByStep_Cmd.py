@@ -110,7 +110,7 @@ class SMO_GC_GetTruncateNameByStep_Cmd(lxu.command.BasicCommand):
                 # lx.out ('User Item Index Style is ', UserItemIndexStyle)
                 
                 # Create the first list of character chains in the Duplicated Mesh : TOTAL CHAINS
-                if UserItemIndexStyle == "uscore" :
+                if UserItemIndexStyle == "uscore":
                     
                     InputStringChain = Mesh_Name.split("_")
                     # lx.out ('String Chains are:', InputStringChain)

@@ -19,6 +19,7 @@ import lxu.command
 import lxu.select
 import modo
 import os
+import traceback
 
 Cmd_Name = "smo.LL.MARMOSET.ExportFBXBakes"
 
