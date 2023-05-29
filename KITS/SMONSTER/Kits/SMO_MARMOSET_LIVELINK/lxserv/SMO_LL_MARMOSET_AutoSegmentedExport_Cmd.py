@@ -23,6 +23,7 @@ import modo
 import os
 import subprocess
 import traceback
+import time
 
 
 python_majorver = sys.version_info.major
@@ -268,15 +269,15 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
         LocalTempFolder = lx.eval('query platformservice path.path ? temp')
         lx.out('Local Temp Path:    ', LocalTempFolder)
 
-        DataExchangeFileName = "SMO_Marmoset_LL_VarData.smo"
+        DataExchangeFileName = "SMO_Marmoset_LL_VarData.json"
         DataExchangeFilePath = (os.path.join(LocalTempFolder + "\\" + DataExchangeFileName))
         lx.out('Store Variable Data to File Path:    ', DataExchangeFilePath)
 
         # DataExchangeFile_AbsPath = os.path.abspath(DataExchangeFilePath)
         # print('Store Variable Data to File Absolute Path: ', DataExchangeFile_AbsPath)
 
-        # create the file in temp folder
-        f = open(DataExchangeFilePath, 'wb')
+        # # create the file in temp folder
+        # f = open(DataExchangeFilePath, 'wb')
         ###################################################################
 
         # ------------------------------------- #
@@ -315,29 +316,29 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
         Bool_AutoSave = lx.eval1('user.value SMO_UseVal_MARMOSET_AutoSaveSceneBeforeProcess ?')
         # lx.out ('AutoSave Scene before Export:    ', Bool_AutoSave)
 
-        Bool_AutoSaveMarmoSceneFile = lx.eval1('user.value SMO_UseVal_MARMOSET_AutoSaveMarmoSceneFile ?')
+        Bool_AutoSaveMarmoSceneFile = bool(lx.eval1('user.value SMO_UseVal_MARMOSET_AutoSaveMarmoSceneFile ?'))
         # lx.out ('AutoSave Marmoset Scene after Bake:    ', Bool_AutoSaveMarmoSceneFile)
 
-        Bool_AutoBakeAtLoad = lx.eval1('user.value SMO_UseVal_MARMOSET_AutoBakeAtLoad ?')
+        Bool_AutoBakeAtLoad = bool(lx.eval1('user.value SMO_UseVal_MARMOSET_AutoBakeAtLoad ?'))
         # lx.out ('Automatically bake in Marmoset:    ', Bool_AutoBakeAtLoad)
 
-        Bool_AutoCloseMarmo = lx.eval1('user.value SMO_UseVal_MARMOSET_AutoCloseMarmo ?')
+        Bool_AutoCloseMarmo = bool(lx.eval1('user.value SMO_UseVal_MARMOSET_AutoCloseMarmo ?'))
         # lx.out ('Automatically Close Marmoset after Autobake:    ', Bool_AutoCloseMarmo)
 
         # Automatically Create and Set Mikk Tanget Space maps
-        Bool_NRMMikkTspace = lx.eval1('user.value SMO_UseVal_MARMOSET_SetMikkTSpace ?')
+        Bool_NRMMikkTspace = bool(lx.eval1('user.value SMO_UseVal_MARMOSET_SetMikkTSpace ?'))
         # NormalMap channel settings
-        Bool_NRMFlipX = lx.eval1('user.value SMO_UseVal_MARMOSET_NRMFlipX ?')
-        Bool_NRMFlipY = lx.eval1('user.value SMO_UseVal_MARMOSET_NRMFlipY ?')
-        Bool_NRMFlipZ = lx.eval1('user.value SMO_UseVal_MARMOSET_NRMFlipZ ?')
+        Bool_NRMFlipX = bool(lx.eval1('user.value SMO_UseVal_MARMOSET_NRMFlipX ?'))
+        Bool_NRMFlipY = bool(lx.eval1('user.value SMO_UseVal_MARMOSET_NRMFlipY ?'))
+        Bool_NRMFlipZ = bool(lx.eval1('user.value SMO_UseVal_MARMOSET_NRMFlipZ ?'))
 
         PerPxSampleCount = lx.eval('user.value SMO_UseVal_MARMOSET_BakingPerPixelSampleCount ?')
         RaysSampleCount = lx.eval('user.value SMO_UseVal_MARMOSET_BakingRaysSampleCount ?')
 
         # the Freeze Subdivided Poly on High in Preferences. Incremental Save in this Mode
-        Smo_Marmoset_FreezeHPSubdiv = lx.eval1('user.value SMO_UseVal_MARMOSET_FreezeHPSubdiv ?')
+        Smo_Marmoset_FreezeHPSubdiv = bool(lx.eval1('user.value SMO_UseVal_MARMOSET_FreezeHPSubdiv ?'))
         # If FBX export are stored Locally in Scene Path Subfolder
-        Smo_Marmoset_ScenePathSubfolder = lx.eval1('user.value SMO_UseVal_MARMOSET_ScenePathSubfolder ?')
+        Smo_Marmoset_ScenePathSubfolder = bool(lx.eval1('user.value SMO_UseVal_MARMOSET_ScenePathSubfolder ?'))
 
         SceneName = lx.eval('smo.GC.GetSceneDetail 5 ?')
         # lx.out('Scene File Name:    ', SceneName)
@@ -1589,62 +1590,108 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
         # stdout, stderr = proc.communicate()
         # rc = proc.returncode
 
+
+
         ################## Save ##################
         ################## Data ##################
-        if python_majorver < 3:
-            # print("do something for 2.X code")
-            # "f" is the FileName where we store the Variable Data for Marmoset Pipe.
-            f = open(DataExchangeFilePath, 'wb')
-        elif python_majorver >= 3:
-            # print("do something for 3.X code")
-            f = open(DataExchangeFilePath, 'wt')
+        # if python_majorver < 3:
+        #     # print("do something for 2.X code")
+        #     # "f" is the FileName where we store the Variable Data for Marmoset Pipe.
+        #     f = open(DataExchangeFilePath, 'wb')
+        # elif python_majorver >= 3:
+        #     # print("do something for 3.X code")
+        #     f = open(DataExchangeFilePath, 'wt')
 
 
         # Create a dictionary of pairs "key: value"
         # Data = {'String name': StringA, 'Valeur': StringB}
-        Data = {'ScenePathSubfolder': Smo_Marmoset_ScenePathSubfolder, 'BaseBakeFilePath': BaseBakeFilePath,
-                'BaseBakeFileName': BaseBakeFileName, 'SceneName': SceneName,
-                'DataExchangeFileName': DataExchangeFileName, 'DataExchangeFilePath': DataExchangeFilePath,
-                'MapSize': MapSize, 'ImgFileFrmt': ImgFileFrmt, 'SeparatorStr': SeparatorStr,
-                'OutputFolder': OutputFolder, 'Lowpoly NameTag': NameTagLP, 'Cage NameTag': NameTagCage,
-                'Highpoly NameTag': NameTagHP, 'Lowpoly FBX Filename': fbx_file_name_LP,
-                'Cage FBX Filename': fbx_file_name_Cage, 'Highpoly FBX Filename': fbx_file_name_HP,
-                'Lowpoly FBX FilePath': fbx_export_path_LP, 'Cage FBX FilePath': fbx_export_path_Cage,
-                'Highpoly FBX FilePath': fbx_export_path_HP, 'AO State': Smo_MarmosetToolbag_AO,
-                'AOF State': Smo_MarmosetToolbag_AOF, 'TSNRM State': Smo_MarmosetToolbag_TSNRM,
-                'OSNRM State': Smo_MarmosetToolbag_OSNRM, 'POS State': Smo_MarmosetToolbag_POS,
-                'CUR State': Smo_MarmosetToolbag_CUR, 'OBJID State': Smo_MarmosetToolbag_OBJID,
-                'THI State': Smo_MarmosetToolbag_THI, 'MATID State': Smo_MarmosetToolbag_MATID,
-                'ALBEDO State': Smo_MarmosetToolbag_ALBEDO, 'UVID State': Smo_MarmosetToolbag_UVID,
-                'AO NameTag': TagImg_AO, 'AOF NameTag': TagImg_AOF, 'TSNRM NameTag': TagImg_TSNRM,
-                'OSNRM NameTag': TagImg_OSNRM, 'POS NameTag': TagImg_POS, 'CUR NameTag': TagImg_CUR,
-                'OBJID NameTag': TagImg_OBJID, 'THI NameTag': TagImg_THI, 'MATID NameTag': TagImg_MATID,
-                'ALBEDO NameTag': TagImg_ALBEDO, 'UVID NameTag': TagImg_UVID, 'AO Filename': image_file_name_AO,
-                'AOF Filename': image_file_name_AOF, 'TSNRM Filename': image_file_name_TSNRM,
-                'OSNRM Filename': image_file_name_OSNRM, 'POS Filename': image_file_name_POS,
-                'CUR Filename': image_file_name_CUR, 'OBJID Filename': image_file_name_OBJID,
-                'THI Filename': image_file_name_THI, 'MATID Filename': image_file_name_MATID,
-                'ALBEDO Filename': image_file_name_ALBEDO, 'UVID Filename': image_file_name_UVID,
-                'AO FilePath': image_export_path_AO, 'AOF FilePath': image_export_path_AOF,
-                'TSNRM FilePath': image_export_path_TSNRM, 'OSNRM FilePath': image_export_path_OSNRM,
-                'POS FilePath': image_export_path_POS, 'CUR FilePath': image_export_path_CUR,
-                'OBJID FilePath': image_export_path_OBJID, 'THI FilePath': image_export_path_THI,
-                'MATID FilePath': image_export_path_MATID, 'ALBEDO FilePath': image_export_path_ALBEDO,
-                'UVID FilePath': image_export_path_UVID, 'AutoSaveMarmoSceneFile': Bool_AutoSaveMarmoSceneFile,
-                'AutoBakeAtLoad': Bool_AutoBakeAtLoad, 'AutoCloseMarmo': Bool_AutoCloseMarmo,
-                'NRM_FlipX': Bool_NRMFlipX, 'NRM_FlipY': Bool_NRMFlipY, 'NRM_FlipZ': Bool_NRMFlipZ,
-                'PerPixelSample': PerPxSampleCount, 'RaysSampleCount': RaysSampleCount}
+        # # bool(StringB) can turn the value to true false scheme
+        Data = {
+            'ScenePathSubfolder': Smo_Marmoset_ScenePathSubfolder,
+            'BaseBakeFilePath': BaseBakeFilePath,
+            'BaseBakeFileName': BaseBakeFileName,
+            'SceneName': SceneName,
+            'DataExchangeFileName': DataExchangeFileName,
+            'DataExchangeFilePath': DataExchangeFilePath,
+            'MapSize': MapSize, 'ImgFileFrmt': ImgFileFrmt,
+            'SeparatorStr': SeparatorStr,
+            'OutputFolder': OutputFolder,
+            'Lowpoly NameTag': NameTagLP,
+            'Cage NameTag': NameTagCage,
+            'Highpoly NameTag': NameTagHP,
+            'Lowpoly FBX Filename': fbx_file_name_LP,
+            'Cage FBX Filename': fbx_file_name_Cage,
+            'Highpoly FBX Filename': fbx_file_name_HP,
+            'Lowpoly FBX FilePath': fbx_export_path_LP,
+            'Cage FBX FilePath': fbx_export_path_Cage,
+            'Highpoly FBX FilePath': fbx_export_path_HP,
+            'AO State': Smo_MarmosetToolbag_AO,
+            'AOF State': Smo_MarmosetToolbag_AOF,
+            'TSNRM State': Smo_MarmosetToolbag_TSNRM,
+            'OSNRM State': Smo_MarmosetToolbag_OSNRM,
+            'POS State': Smo_MarmosetToolbag_POS,
+            'CUR State': Smo_MarmosetToolbag_CUR,
+            'OBJID State': Smo_MarmosetToolbag_OBJID,
+            'THI State': Smo_MarmosetToolbag_THI,
+            'MATID State': Smo_MarmosetToolbag_MATID,
+            'ALBEDO State': Smo_MarmosetToolbag_ALBEDO,
+            'UVID State': Smo_MarmosetToolbag_UVID,
+            'AO NameTag': TagImg_AO,
+            'AOF NameTag': TagImg_AOF,
+            'TSNRM NameTag': TagImg_TSNRM,
+            'OSNRM NameTag': TagImg_OSNRM,
+            'POS NameTag': TagImg_POS,
+            'CUR NameTag': TagImg_CUR,
+            'OBJID NameTag': TagImg_OBJID,
+            'THI NameTag': TagImg_THI,
+            'MATID NameTag': TagImg_MATID,
+            'ALBEDO NameTag': TagImg_ALBEDO,
+            'UVID NameTag': TagImg_UVID,
+            'AO Filename': image_file_name_AO,
+            'AOF Filename': image_file_name_AOF,
+            'TSNRM Filename': image_file_name_TSNRM,
+            'OSNRM Filename': image_file_name_OSNRM,
+            'POS Filename': image_file_name_POS,
+            'CUR Filename': image_file_name_CUR,
+            'OBJID Filename': image_file_name_OBJID,
+            'THI Filename': image_file_name_THI,
+            'MATID Filename': image_file_name_MATID,
+            'ALBEDO Filename': image_file_name_ALBEDO,
+            'UVID Filename': image_file_name_UVID,
+            'AO FilePath': image_export_path_AO,
+            'AOF FilePath': image_export_path_AOF,
+            'TSNRM FilePath': image_export_path_TSNRM,
+            'OSNRM FilePath': image_export_path_OSNRM,
+            'POS FilePath': image_export_path_POS,
+            'CUR FilePath': image_export_path_CUR,
+            'OBJID FilePath': image_export_path_OBJID,
+            'THI FilePath': image_export_path_THI,
+            'MATID FilePath': image_export_path_MATID,
+            'ALBEDO FilePath': image_export_path_ALBEDO,
+            'UVID FilePath': image_export_path_UVID,
+            'AutoSaveMarmoSceneFile': Bool_AutoSaveMarmoSceneFile,
+            'AutoBakeAtLoad': Bool_AutoBakeAtLoad,
+            'AutoCloseMarmo': Bool_AutoCloseMarmo,
+            'NRM_FlipX': Bool_NRMFlipX,
+            'NRM_FlipY': Bool_NRMFlipY,
+            'NRM_FlipZ': Bool_NRMFlipZ,
+            'PerPixelSample': PerPxSampleCount,
+            'RaysSampleCount': RaysSampleCount}
 
         # Data = [BaseBakeFilePath, BaseBakeFileName, SceneName, DataExchangeFileName, DataExchangeFilePath, MapSize, ImgFileFrmt, SeparatorStr, OutputFolder, NameTagLP, NameTagCage, NameTagHP, fbx_file_name_LP, fbx_file_name_Cage, fbx_file_name_HP, fbx_export_path_LP, fbx_export_path_Cage, fbx_export_path_HP, Smo_MarmosetToolbag_AO, Smo_MarmosetToolbag_TSNRM, Smo_MarmosetToolbag_OSNRM, Smo_MarmosetToolbag_POS, Smo_MarmosetToolbag_CUR, Smo_MarmosetToolbag_OBJID, Smo_MarmosetToolbag_THI, TagImg_AO, TagImg_TSNRM, TagImg_OSNRM, TagImg_POS, TagImg_CUR, TagImg_OBJID, TagImg_THI, image_file_name_AO, image_file_name_TSNRM, image_file_name_OSNRM, image_file_name_POS, image_file_name_CUR, image_file_name_OBJID, image_file_name_THI, image_export_path_AO, image_export_path_TSNRM, image_export_path_OSNRM, image_export_path_POS, image_export_path_CUR, image_export_path_OBJID, image_export_path_THI]
 
         # write variables to filename [Data] and close it.
         if python_majorver < 3:
             # print("do something for 2.X code")
-            j.dump(Data, f)
+            with open(DataExchangeFilePath, 'wb') as JsonData:
+                j.dump(Data, JsonData)
         elif python_majorver >= 3:
             # print("do something for 3.X code")
-            j.dump(Data, f, ensure_ascii=False)
-        f.close()
+            with open(DataExchangeFilePath, 'wt') as JsonData:
+                j.dump(Data, JsonData, ensure_ascii=False, indent=4)
+        # f.close()
+
+
         # ------------------------------------------ #
 
         # ------------------------------ #    To set the AutoLoad Method
@@ -1659,6 +1706,7 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
             rc = proc.returncode
 
         if LoadViaPythonMode:
+            time.sleep(1.0)
             proc = subprocess.Popen([Smo_MarmosetToolbagExe_AbsPath, " ", Smo_MarmosetToolbagScript_AbsPath],
                                     executable=Smo_MarmosetToolbagExe_AbsPath, stdout=subprocess.PIPE)
             stdout, stderr = proc.communicate()
@@ -1671,6 +1719,7 @@ class SMO_MARMOSET_LIVELINK_AutoSegmentedExport_Cmd(lxu.command.BasicCommand):
             lx.out('Error Output: %s' % stderr)
 
         if rc != 0 and Bool_AutoCloseMarmo == 1:
+            time.sleep(1.0)
             # Get the modified time of the export file.
             #
             # if Smo_MarmosetToolbag_AO == True:

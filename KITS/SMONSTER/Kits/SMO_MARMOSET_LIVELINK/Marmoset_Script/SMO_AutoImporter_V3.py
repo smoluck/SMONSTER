@@ -13,7 +13,6 @@ Copyright:          (c) Franck Elisabeth 2017-2022
 """
 
 import json as j
-
 import mset
 import os
 import tempfile
@@ -39,7 +38,7 @@ AbsTempDir, MarmoTempFolder = os.path.split(MarmoTempDir)
 print(AbsTempDir, MarmoTempFolder, sep="\n")
 print('Absolute Temp Path: ', AbsTempDir)
 
-DataExchangeFileName = "SMO_Marmoset_LL_VarData.smo"
+DataExchangeFileName = "SMO_Marmoset_LL_VarData.json"
 DataExchangeFilePath = (os.path.join(AbsTempDir + "\\" + DataExchangeFileName))
 print('Store Variable Data to File Path:    ', DataExchangeFilePath)
 ###########################################################################
@@ -49,11 +48,13 @@ print('-----------------------------------------------')
 
 # PART B ###################### Read Data from Modo #######################
 ###########################################################################
-f = open(DataExchangeFilePath, 'rb')
-# load variables from filename
-DataFromModo = j.load(f)
-print(DataFromModo)
-# print(DataFromModo['DataExchangeFileName'])
+# JsonData = open(DataExchangeFilePath, 'rb')
+with open(DataExchangeFilePath, 'rb') as JsonData:
+    # JsonData = open(DataExchangeFilePath, 'rb')
+    # load variables from filename
+    DataFromModo = j.load(JsonData)
+    print(DataFromModo)
+    # print(DataFromModo['DataExchangeFileName'])
 
 print('-----------------------------------------------')
 print('LiveLink ----------------------------- Data')
@@ -150,7 +151,7 @@ print('LiveLink ----------------------------------------- Samples Settings')
 print('Per Pixel Sample count                    State:', (DataFromModo['PerPixelSample']))
 print('Baking AO-Thickness Rays Sample Count     State:', (DataFromModo['RaysSampleCount']))
 
-f.close()
+# JsonData.close()
 ###########################################################################
 
 
@@ -194,10 +195,11 @@ ImageBakeDataFile_AbsPath = os.path.abspath(ImageBakeDataFilePath)
 print('Baked Image Absolute Path: ', ImageBakeDataFile_AbsPath)
 # lx.out ('Baked Image Absolute Path: %s' % ImageBakeDataFile_AbsPath)
 
-# Create the Output Base File and save it.
-print ((DataFromModo['BaseBakeFilePath']))
-b = open((DataFromModo['BaseBakeFilePath']), 'wb')
-b.close()
+# Create the Output Base File PSD and save it.
+with open((DataFromModo['BaseBakeFilePath']), 'wb') as f:
+    print((DataFromModo['BaseBakeFilePath']))
+    # b = open((DataFromModo['BaseBakeFilePath']), 'wb')
+    # b.close()
 
 # mset.groupObjects(Item_Low, Item_Cage, Item_High)
 # Get_LL_Data()
