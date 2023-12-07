@@ -1,6 +1,6 @@
 # python
 """
-Name:         SMO_GC_SplitEachEdgeIndividualy_Cmd.py
+Name:         SMO_GC_SplitEachEdgeIndividually_Cmd.py
 
 Purpose:      This script is designed to
               Separate current Mesh by Edges (to create Polyline of 1 Edge).
@@ -16,15 +16,15 @@ import lx
 import lxu
 import modo
 
-Cmd_Name = "smo.GC.SplitEachEdgeIndividualy"
-# smo.GC.SplitEachEdgeIndividualy 1
+Cmd_Name = "smo.GC.SplitEachEdgeIndividually"
+# smo.GC.SplitEachEdgeIndividually 1
 
 
-class SMO_GC_SplitEachEdgeIndividualy_Cmd(lxu.command.BasicCommand):
+class SMO_GC_SplitEachEdgeIndividually_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Incremental Save Mode", lx.symbol.sTYPE_INTEGER)
-        self.basic_SetFlags (0, lx.symbol.fCMDARG_OPTIONAL)
+        self.basic_SetFlags(0, lx.symbol.fCMDARG_OPTIONAL)
 
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
@@ -53,6 +53,12 @@ class SMO_GC_SplitEachEdgeIndividualy_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
         scene = modo.Scene()
 
+        # -------------- Index Style START Procedure  -------------- #
+        # Bugfix for items that cant be detected when "Index Style" is not using underscore as separator.
+        IndexStyle = lx.eval("pref.value application.indexStyle ?")
+        if IndexStyle is not "uscore":
+            lx.eval("pref.value application.indexStyle uscore")
+        # -------------------------------------------- #
 
         # ---------------- COPY/PASTE Check Procedure ---------------- #
         ## create variables
@@ -100,95 +106,115 @@ class SMO_GC_SplitEachEdgeIndividualy_Cmd(lxu.command.BasicCommand):
             User_Pref_PasteDeselectChangedState = 0
         # -------------------------------------------- #
 
-
-
         Incremental_Save_Mode = 0
         
         lx.eval('select.type item')
         
         # Get the selected layer.
         TargetMesh = lx.eval('query layerservice layers ? selected')
-        #lx.out('Target Mesh Layer:', TargetMesh)
+        # lx.out('Target Mesh Layer:', TargetMesh)
         
-        ItemUniqueName = lx.eval('query layerservice layer.id ? main')# store the Unique name of the current mesh layer
-        #lx.out('Item Unique Name:', ItemUniqueName)
+        ItemUniqueName = lx.eval('query layerservice layer.id ? main')      # store the Unique name of the current mesh layer
+        # lx.out('Item Unique Name:', ItemUniqueName)
         
         Target_Name = lx.eval('item.name ? xfrmcore')
-        #lx.out('Item Name:', Target_Name)
+        # lx.out('Item Name:', Target_Name)
         
         OutputMesh = Target_Name + "_Output"
         
         TotalEdge = lx.eval('query layerservice edge.N ? all')
-        #lx.out('Count Selected Edge',TotalEdge)
-        
+        # lx.out('Count Selected Edge',TotalEdge)
+
+        MeshIn = scene.selectedByType('mesh')[0]
+
         lx.eval('layer.new')
         lx.eval('item.name {%s} xfrmcore' % OutputMesh)
-        OutputUniqueName = lx.eval('query layerservice layer.id ? main')# store the Unique name of the current mesh layer
-        #lx.out('Output Unique Name:', OutputUniqueName)
+        MeshOut = scene.selectedByType('mesh')[0]
+        OutputUniqueName = lx.eval('query layerservice layer.id ? main')    # store the Unique name of the current mesh layer
+        # lx.out('Output Unique Name:', OutputUniqueName)
         lx.eval('select.drop item')
-        
-        
-        lx.eval('select.subItem %s set mesh;replicator;meshInst;camera;light;txtrLocator;backdrop;groupLocator;replicator;surfGen;locator;falloff;deform;locdeform;weightContainer;morphContainer;deformGroup;deformMDD2;ABCStreamingDeformer;morphDeform;itemInfluence;genInfluence;deform.push;deform.wrap;softLag;ABCCurvesDeform.sample;ABCdeform.sample;force.root;baseVolume;chanModify;itemModify;meshoperation;chanEffect;defaultShader;defaultShader 0 0' % ItemUniqueName)
+
+        lx.eval('select.subItem %s set mesh 0 0' % ItemUniqueName)
         
         # Create the monitor item
         m = lx.Monitor()
         m.init(1)
         
         MaxSteps = TotalEdge
-        
-        
-        for steps in range(MaxSteps) :
+        TotalEdgeInMesh = lx.eval('query layerservice edge.N ? all')
+        # lx.out('Count Selected Edge',TotalEdgeInMesh)
+        index = 0
+        for steps in range(MaxSteps):
+
             m.step(1)
             
-            TotalEdgeInMesh = lx.eval('query layerservice edge.N ? all')
-            #lx.out('Count Selected Edge',TotalEdgeInMesh)
-            
-            if TotalEdge > 0 :
+            if TotalEdge > index:
                 lx.eval('select.type edge')
                 lx.eval('select.drop edge')
+
                 # Select the first edge.
-                lx.eval('select.element layer:%s type:edge mode:add index:1' % TargetMesh)
+                lx.eval('select.element layer:{%s} type:edge mode:add index:%s' % (format(TargetMesh), index))
+
+                lx.eval('pmodel.edgeToCurveCMD polyline')
+                lx.eval('select.drop edge')
+                lx.eval('select.type polygon')
+                lx.eval('select.polygon add type line 8')
                 lx.eval('cut')
-                lx.eval('select.subItem %s set mesh;replicator;meshInst;camera;light;txtrLocator;backdrop;groupLocator;replicator;surfGen;locator;falloff;deform;locdeform;weightContainer;morphContainer;deformGroup;deformMDD2;ABCStreamingDeformer;morphDeform;itemInfluence;genInfluence;deform.push;deform.wrap;softLag;ABCCurvesDeform.sample;ABCdeform.sample;force.root;baseVolume;chanModify;itemModify;meshoperation;chanEffect;defaultShader;defaultShader 0 0' % OutputUniqueName)
+
+                # lx.eval('cut')
+                scene.select(MeshOut)
+                lx.eval('select.type polygon')
+                # lx.eval('select.subItem %s set mesh 0 0' % OutputUniqueName)
                 lx.eval('paste')
                 lx.eval('select.type item')
                 lx.eval('select.drop item')
-                lx.eval('select.subItem %s set mesh;replicator;meshInst;camera;light;txtrLocator;backdrop;groupLocator;replicator;surfGen;locator;falloff;deform;locdeform;weightContainer;morphContainer;deformGroup;deformMDD2;ABCStreamingDeformer;morphDeform;itemInfluence;genInfluence;deform.push;deform.wrap;softLag;ABCCurvesDeform.sample;ABCdeform.sample;force.root;baseVolume;chanModify;itemModify;meshoperation;chanEffect;defaultShader;defaultShader 0 0' % ItemUniqueName)
-                if Incremental_Save_Mode == 1 :
-                    lx.eval('@incSaveEXP.py')
+                # lx.eval('select.subItem %s set mesh 0 0' % ItemUniqueName)
+                scene.select(MeshIn)
+            index += 1
+            if Incremental_Save_Mode == 1:
+                lx.eval('@incSaveEXP.py')
         
         lx.eval('select.drop item')
-        lx.eval('select.subItem %s set mesh;replicator;meshInst;camera;light;txtrLocator;backdrop;groupLocator;replicator;surfGen;locator;falloff;deform;locdeform;weightContainer;morphContainer;deformGroup;deformMDD2;ABCStreamingDeformer;morphDeform;itemInfluence;genInfluence;deform.push;deform.wrap;softLag;ABCCurvesDeform.sample;ABCdeform.sample;force.root;baseVolume;chanModify;itemModify;meshoperation;chanEffect;defaultShader;defaultShader 0 0' % OutputUniqueName)
+        scene.select(MeshOut)
         lx.eval('select.type polygon')
         lx.eval('select.all')
         lx.eval('cut')
         lx.eval('select.type item')
-        lx.eval('select.subItem %s set mesh;replicator;meshInst;camera;light;txtrLocator;backdrop;groupLocator;replicator;surfGen;locator;falloff;deform;locdeform;weightContainer;morphContainer;deformGroup;deformMDD2;ABCStreamingDeformer;morphDeform;itemInfluence;genInfluence;deform.push;deform.wrap;softLag;ABCCurvesDeform.sample;ABCdeform.sample;force.root;baseVolume;chanModify;itemModify;meshoperation;chanEffect;defaultShader;defaultShader 0 0' % ItemUniqueName)
+        scene.select(MeshIn)
+        # lx.eval('select.subItem %s set mesh 0 0' % ItemUniqueName)
         lx.eval('select.type polygon')
         lx.eval('paste')
-        
-        
+
+        lx.eval('select.drop polygon')
+        lx.eval('select.polygon add type face 0')
+        lx.eval('delete')
+
         lx.eval('select.type item')
-        lx.eval('select.subItem %s set mesh;replicator;meshInst;camera;light;txtrLocator;backdrop;groupLocator;replicator;surfGen;locator;falloff;deform;locdeform;weightContainer;morphContainer;deformGroup;deformMDD2;ABCStreamingDeformer;morphDeform;itemInfluence;genInfluence;deform.push;deform.wrap;softLag;ABCCurvesDeform.sample;ABCdeform.sample;force.root;baseVolume;chanModify;itemModify;meshoperation;chanEffect;defaultShader;defaultShader 0 0' % OutputUniqueName)
+        scene.select(MeshOut)
         lx.eval('!delete')
         lx.eval('select.type item')
-        lx.eval('select.subItem %s set mesh;replicator;meshInst;camera;light;txtrLocator;backdrop;groupLocator;replicator;surfGen;locator;falloff;deform;locdeform;weightContainer;morphContainer;deformGroup;deformMDD2;ABCStreamingDeformer;morphDeform;itemInfluence;genInfluence;deform.push;deform.wrap;softLag;ABCCurvesDeform.sample;ABCdeform.sample;force.root;baseVolume;chanModify;itemModify;meshoperation;chanEffect;defaultShader;defaultShader 0 0' % ItemUniqueName)
-        if Incremental_Save_Mode == 1 :
+        scene.select(MeshIn)
+
+        # lx.eval('select.subItem %s set mesh 0 0' % ItemUniqueName)
+        if Incremental_Save_Mode == 1:
             lx.eval('@incSaveEXP.py')
-
-
 
         # -------------- COPY/PASTE END Procedure  -------------- #
         # Restore user Preferences:
-        if User_Pref_CopyDeselectChangedState == 1 :
+        if User_Pref_CopyDeselectChangedState == 1:
             lx.eval('pref.value application.copyDeSelection false')
             lx.out('"Deselect Elements after Copying" have been Restored')
-        if User_Pref_PasteSelectionChangedState == 1 :
+        if User_Pref_PasteSelectionChangedState == 1:
             lx.eval('pref.value application.pasteSelection false')
             lx.out('"Select Pasted Elements" have been Restored')
-        if User_Pref_PasteDeselectChangedState == 1 :
+        if User_Pref_PasteDeselectChangedState == 1:
             lx.eval('pref.value application.pasteDeSelection false')
             lx.out('"Deselect Elements Before Pasting" have been Restored')
+        # -------------------------------------------- #
+
+        # -------------- Index Style END Procedure  -------------- #
+        if IndexStyle is not "uscore":
+            lx.eval("pref.value application.indexStyle %s" % IndexStyle)
         # -------------------------------------------- #
 
 
@@ -196,4 +222,4 @@ class SMO_GC_SplitEachEdgeIndividualy_Cmd(lxu.command.BasicCommand):
         lx.notimpl()
 
 
-lx.bless(SMO_GC_SplitEachEdgeIndividualy_Cmd, Cmd_Name)
+lx.bless(SMO_GC_SplitEachEdgeIndividually_Cmd, Cmd_Name)

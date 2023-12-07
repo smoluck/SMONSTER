@@ -1,6 +1,6 @@
 # python
 """
-Name:         SMO_GC_SplitEachPolyIndividualy_Cmd.py
+Name:         SMO_GC_SplitEachPolyIndividually_Cmd.py
 
 Purpose:      This script is designed to
               Separate current Mesh by Polygons.
@@ -16,11 +16,11 @@ import lx
 import lxu
 import modo
 
-Cmd_Name = "smo.GC.SplitEachPolyIndividualy"
-# smo.GC.SplitEachPolyIndividualy 1
+Cmd_Name = "smo.GC.SplitEachPolyIndividually"
+# smo.GC.SplitEachPolyIndividually 1
 
 
-class SMO_GC_SplitEachPolyIndividualy_Cmd(lxu.command.BasicCommand):
+class SMO_GC_SplitEachPolyIndividually_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Incremental Save Mode", lx.symbol.sTYPE_INTEGER)
@@ -54,8 +54,6 @@ class SMO_GC_SplitEachPolyIndividualy_Cmd(lxu.command.BasicCommand):
         scene = modo.Scene()
         
         Incremental_Save_Mode = self.dyna_Int (0)
-
-
 
         # ---------------- COPY/PASTE Check Procedure ---------------- #
         ## create variables
@@ -103,62 +101,91 @@ class SMO_GC_SplitEachPolyIndividualy_Cmd(lxu.command.BasicCommand):
             User_Pref_PasteDeselectChangedState = 0
         # -------------------------------------------- #
 
-
-
         lx.eval('select.type item')
         
         # Get the selected layer.
         TargetMesh = lx.eval('query layerservice layers ? selected')
-        #lx.out('Target Mesh Layer:', TargetMesh)
-        
+        # lx.out('Target Mesh Layer:', TargetMesh)
+
+        MeshIn = scene.selectedByType('mesh')[0]
+
         ItemUniqueName = lx.eval('query layerservice layer.id ? main')# store the Unique name of the current mesh layer
-        #lx.out('Item Unique Name:', ItemUniqueName)
+        # lx.out('Item Unique Name:', ItemUniqueName)
         
         Target_Name = lx.eval('item.name ? xfrmcore')
-        #lx.out('Item Name:', Target_Name)
+        # lx.out('Item Name:', Target_Name)
         
         TotalPoly = lx.eval('query layerservice poly.N ? all')
-        #lx.out('Count Selected Poly',TotalPoly)
-        
-        
-        # Create the monitor item
-        m = lx.Monitor()
-        m.init(1)
-        
-        MaxSteps = (TotalPoly - 1)
-        
-        
-        for steps in range(MaxSteps) :
-            m.step(1)
-        
-            TotalPolyInMesh = lx.eval('query layerservice poly.N ? all')
-            #lx.out('Count Selected Poly',TotalPolyInMesh)
-            
-            if TotalPoly > 0 :
-                lx.eval('select.type polygon')
-                lx.eval('select.drop polygon')
-                # Select the first polygon.
-                lx.eval('select.element layer:%s type:polygon mode:add index:1' % TargetMesh)
-                lx.eval('cut')
-                lx.eval('layer.new')
-                lx.eval('paste')
-                lx.eval('select.type item')
-                lx.eval('item.name {%s} xfrmcore' % Target_Name)
-                lx.eval('select.subItem %s set mesh;replicator;meshInst;camera;light;txtrLocator;backdrop;groupLocator;replicator;surfGen;locator;falloff;deform;locdeform;weightContainer;morphContainer;deformGroup;deformMDD2;ABCStreamingDeformer;morphDeform;itemInfluence;genInfluence;deform.push;deform.wrap;softLag;ABCCurvesDeform.sample;ABCdeform.sample;force.root;baseVolume;chanModify;itemModify;meshoperation;chanEffect;defaultShader;defaultShader 0 0' % ItemUniqueName)
-                if Incremental_Save_Mode == 1 :
-                    lx.eval('@incSaveEXP.py')
+        # lx.out('Count Selected Poly',TotalPoly)
 
+        scene.select(MeshIn)
+        lx.eval('select.type edge')
+        lx.eval('select.all')
+        lx.eval('edge.split false 0.0')
+        lx.eval('select.drop edge')
+        lx.eval('select.type item')
+
+
+        #### Faster Solution via Split by Edge
+        # OutputMesh = Target_Name + "_Output"
+        # lx.eval('layer.new')
+        # lx.eval('item.name {%s} xfrmcore' % OutputMesh)
+        # MeshOut = scene.selectedByType('mesh')[0]
+        # lx.eval('select.drop item')
+        #
+        #
+        # # Create the monitor item
+        # m = lx.Monitor()
+        # m.init(1)
+        #
+        # MaxSteps = (TotalPoly)
+        # index = 0
+        # for steps in range(MaxSteps):
+        #     m.step(1)
+        #
+        #     TotalPolyInMesh = lx.eval('query layerservice poly.N ? all')
+        #     # lx.out('Count Selected Poly',TotalPolyInMesh)
+        #
+        #     if TotalPoly > (index-1):
+        #         lx.eval('select.type polygon')
+        #         lx.eval('select.drop polygon')
+        #         # Select the first polygon.
+        #         lx.eval('select.element layer:{%s} type:polygon mode:add index:0' % format(TargetMesh))
+        #         lx.eval('cut')
+        #
+        #         lx.eval('select.type item')
+        #         scene.select(MeshOut)
+        #         lx.eval('select.type polygon')
+        #         lx.eval('paste')
+        #         lx.eval('select.type item')
+        #         scene.select(MeshIn)
+        #         if Incremental_Save_Mode == 1:
+        #             lx.eval('@incSaveEXP.py')
+        #     print(index)
+        #     index += 1
+        #
+        # scene.select(MeshOut)
+        # lx.eval('select.type polygon')
+        # lx.eval('select.all')
+        # lx.eval('cut')
+        # scene.select(MeshIn)
+        # lx.eval('select.type polygon')
+        # lx.eval('paste')
+        # scene.select(MeshOut)
+        # lx.eval('select.type item')
+        # lx.eval('!delete')
+        # scene.select(MeshIn)
 
 
         # -------------- COPY/PASTE END Procedure  -------------- #
         # Restore user Preferences:
-        if User_Pref_CopyDeselectChangedState == 1 :
+        if User_Pref_CopyDeselectChangedState == 1:
             lx.eval('pref.value application.copyDeSelection false')
             lx.out('"Deselect Elements after Copying" have been Restored')
-        if User_Pref_PasteSelectionChangedState == 1 :
+        if User_Pref_PasteSelectionChangedState == 1:
             lx.eval('pref.value application.pasteSelection false')
             lx.out('"Select Pasted Elements" have been Restored')
-        if User_Pref_PasteDeselectChangedState == 1 :
+        if User_Pref_PasteDeselectChangedState == 1:
             lx.eval('pref.value application.pasteDeSelection false')
             lx.out('"Deselect Elements Before Pasting" have been Restored')
         # -------------------------------------------- #
@@ -168,4 +195,4 @@ class SMO_GC_SplitEachPolyIndividualy_Cmd(lxu.command.BasicCommand):
         lx.notimpl()
 
 
-lx.bless(SMO_GC_SplitEachPolyIndividualy_Cmd, Cmd_Name)
+lx.bless(SMO_GC_SplitEachPolyIndividually_Cmd, Cmd_Name)
