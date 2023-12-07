@@ -64,8 +64,8 @@ class SMO_GC_RebuildSelectedItemsViaPolyline_Cmd(lxu.command.BasicCommand):
         
         lx.eval('pmodel.edgeToCurveCMD polyline true')
         lx.eval('select.drop item')
-        
-        lx.eval('select.subItem %s set mesh;replicator;meshInst;camera;light;txtrLocator;backdrop;groupLocator;replicator;surfGen;locator;falloff;deform;locdeform;weightContainer;morphContainer;deformGroup;deformMDD2;ABCStreamingDeformer;morphDeform;itemInfluence;genInfluence;deform.push;deform.wrap;softLag;ABCCurvesDeform.sample;ABCdeform.sample;force.root;baseVolume;chanModify;itemModify;meshoperation;chanEffect;defaultShader;defaultShader 0 0' % Mesh_ident)
+
+        lx.eval('select.subItem %s set mesh 0 0' % Mesh_ident)
         lx.eval('!delete')
         
     
