@@ -323,7 +323,7 @@ class SMO_QT_Batch_SetMatColorIDRandomKeepCurrentSelection_Cmd(lxu.command.Basic
                 pass
 
         lx.eval('smo.GC.DeselectAll')
-        # lx.eval('select.subItem %s set mesh;replicator;meshInst;camera;light;txtrLocator;backdrop;groupLocator;replicator;surfGen;locator;falloff;deform;locdeform;weightContainer;morphContainer;deformGroup;deformMDD2;ABCStreamingDeformer;morphDeform;itemInfluence;genInfluence;deform.push;deform.wrap;softLag;ABCCurvesDeform.sample;ABCdeform.sample;force.root;baseVolume;chanModify;itemModify;meshoperation;chanEffect;defaultShader;defaultShader 0 0' % ItemUniqueName)
+        # lx.eval('select.subItem %s set mesh 0 0' % ItemUniqueName)
         scene.select(meshes)
         lx.eval('select.type polygon')
 
