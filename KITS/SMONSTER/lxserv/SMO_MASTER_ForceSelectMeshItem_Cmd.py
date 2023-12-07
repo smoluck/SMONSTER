@@ -17,6 +17,8 @@ import lxu
 import modo
 
 Cmd_Name = "smo.MASTER.ForceSelectMeshItemOnly"
+
+
 # smo.MASTER.ForceSelectMeshItemOnly
 
 
@@ -28,7 +30,7 @@ class SMO_MASTER_ForceSelectMeshItem_Cmd(lxu.command.BasicCommand):
         self.SelModePoly = bool(lx.eval1("select.typeFrom typelist:polygon;vertex;edge;item ?"))
         self.SelModeItem = bool(lx.eval1("select.typeFrom typelist:item;pivot;center;edge;polygon;vertex;ptag ?"))
         self.ComponentSelMode = bool()
-        if self.SelModeVert == True or self.SelModeEdge == True or self.SelModePoly == True:
+        if self.SelModeVert is True or self.SelModeEdge is True or self.SelModePoly is True:
             self.ComponentSelMode = True
         else:
             self.ComponentSelMode = False
@@ -60,6 +62,14 @@ class SMO_MASTER_ForceSelectMeshItem_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
         scene = modo.scene.current()
 
+        # -------------- Index Style START Procedure  -------------- #
+        # Bugfix for items that cant be detected when "Index Style" is not using underscore as separator.
+        # Problem caused by item.UniqueName() at line 144
+        IndexStyle = lx.eval("pref.value application.indexStyle ?")
+        if IndexStyle is not "uscore":
+            lx.eval("pref.value application.indexStyle uscore")
+        # -------------------------------------------- #
+
         if not self.ComponentSelMode:
             index = lx.eval('query layerservice layers ? fg')
             activeItem = lx.eval('query layerservice layer.name ? %s' % index)
@@ -81,7 +91,6 @@ class SMO_MASTER_ForceSelectMeshItem_Cmd(lxu.command.BasicCommand):
             sel_svc = lx.service.Selection()
             # print(sel_svc)
 
-
             if SelModePoly:
                 polygon_translation_packet = lx.object.PolygonPacketTranslation(
                     sel_svc.Allocate(lx.symbol.sSELTYP_POLYGON)  # basically passing it the string 'polygon'
@@ -95,7 +104,6 @@ class SMO_MASTER_ForceSelectMeshItem_Cmd(lxu.command.BasicCommand):
                     TargetMesh.append(item.Ident())
                 # scene.select(TargetMesh[0])
 
-
             if SelModeEdge:
                 edge_translation_packet = lx.object.EdgePacketTranslation(
                     sel_svc.Allocate(lx.symbol.sSELTYP_EDGE)  # basically passing it the string 'polygon'
@@ -105,9 +113,8 @@ class SMO_MASTER_ForceSelectMeshItem_Cmd(lxu.command.BasicCommand):
                     item = lx.object.Item(edge_translation_packet.Item(pointer))
                     s.add(item.Ident())
                     TargetMesh.append(item.Ident())
-                #GetItemsFromEdges()
-                #TargetMesh.append(GetItemsFromEdges())
-
+                # GetItemsFromEdges()
+                # TargetMesh.append(GetItemsFromEdges())
 
             if SelModeVert:
                 vertex_translation_packet = lx.object.VertexPacketTranslation(
@@ -121,7 +128,6 @@ class SMO_MASTER_ForceSelectMeshItem_Cmd(lxu.command.BasicCommand):
                     s.add(item.Ident())
                     TargetMesh.append(item.Ident())
                 # scene.select(TargetMesh[0])
-
 
             ListCount = len(TargetMesh)
 
@@ -137,7 +143,6 @@ class SMO_MASTER_ForceSelectMeshItem_Cmd(lxu.command.BasicCommand):
                 if itemType != "mesh":
                     scene.deselect(item_name)
 
-
             if SelModePoly:
                 lx.eval('select.type polygon')
             if SelModeEdge:
@@ -145,12 +150,15 @@ class SMO_MASTER_ForceSelectMeshItem_Cmd(lxu.command.BasicCommand):
             if SelModeVert:
                 lx.eval('select.type vertex')
 
+        # -------------- Index Style END Procedure  -------------- #
+        if IndexStyle is not "uscore":
+            lx.eval("pref.value application.indexStyle %s" % IndexStyle)
+        # -------------------------------------------- #
+
             del TargetMesh
 
 
 lx.bless(SMO_MASTER_ForceSelectMeshItem_Cmd, Cmd_Name)
-
-
 
 ##########
 ## Snippet from robberyman on Slack

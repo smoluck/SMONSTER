@@ -16,6 +16,8 @@ import lxu
 import modo
 
 Cmd_Name = "smo.GC.SelectCoPlanarPoly"
+
+
 # smo.GC.SelectCoPlanarPoly 0 20
 
 
@@ -24,8 +26,9 @@ class SMO_GC_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Mode", lx.symbol.sTYPE_INTEGER)
         self.dyna_Add("Angle", lx.symbol.sTYPE_INTEGER)
-        self.dyna_Add("Range", lx.symbol.sTYPE_FLOAT)         # Set HardCoded to 10000 in order to not filter by distance when Mode is set to 2
-        self.basic_SetFlags (2, lx.symbol.fCMDARG_OPTIONAL)
+        self.dyna_Add("Range",
+                      lx.symbol.sTYPE_FLOAT)  # Set HardCoded to 10000 in order to not filter by distance when Mode is set to 2
+        self.basic_SetFlags(2, lx.symbol.fCMDARG_OPTIONAL)
 
         self.SelModePoly = bool(lx.eval1("select.typeFrom typelist:polygon;vertex;edge;item ?"))
 
@@ -68,16 +71,12 @@ class SMO_GC_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
         if self.SelModePoly:
             lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
 
-
-
         mesh = scene.selectedByType('mesh')[0]
         SelItems = (lx.evalN('query sceneservice selection ? locator'))
-        lx.out('Selected items is:', SelItems)
+        # lx.out('Selected items is:', SelItems)
 
-        def rad(a):                 # (360/2)/pi = 57.295779513082320876798154814105
+        def rad(a):  # (360/2)/pi = 57.295779513082320876798154814105
             return a * 57.2957795130
-
-
 
         # BugFix to preserve the state of the RefSystem (item at origin in viewport)
         # This query only works when an item is selected.
@@ -89,8 +88,6 @@ class SMO_GC_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
         else:
             RefSystemActive = False
         # print(RefSystemActive)
-
-
 
         # ------------------------------ #
         # <----( DEFINE VARIABLES )----> #
@@ -110,9 +107,9 @@ class SMO_GC_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
         # <----( DEFINE ARGUMENTS )----> #
         #################################
         args = lx.args()
-        lx.out(args)
-        MODE = self.dyna_Int(0)         #  select = 0 (similarTouching)   ###   polygon(SimilarOnObject) = 1   ###   none = 2 (SimilarOnLayer)
-        ANGLE = self.dyna_Int(1)  # in degree
+        # lx.out(args)
+        MODE = self.dyna_Int(0)     # select = 0 (similarTouching)   ###   polygon(SimilarOnObject) = 1   ###   none = 2 (SimilarOnLayer)
+        ANGLE = self.dyna_Int(1)    # in degree
         if not self.dyna_IsSet(2):
             RANGE = 10000.0
         else:
@@ -122,7 +119,7 @@ class SMO_GC_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
             RANGE = 0.0
 
         # Expose the Result of the Arguments
-        lx.out(MODE, ANGLE, RANGE)
+        # lx.out(MODE, ANGLE, RANGE)
         #################################
         # <----( DEFINE ARGUMENTS )----> #
         #################################
@@ -149,26 +146,29 @@ class SMO_GC_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
         CountPoly = lx.eval1('user.value SMO_SelectModeDetector_CountPolySelected ?')
         CountItem = lx.eval1('user.value SMO_SelectModeDetector_CountItemSelected ?')
 
-        lx.out('V---------- Selection Mode ----------V')
-        lx.out('Vert Mode', VertMode)
-        lx.out('Edge Mode', EdgeMode)
-        lx.out('Poly Mode', PolyMode)
-        lx.out('Item Mode', ItemMode)
-        lx.out('V---------- Element Not Selected ----------V')
-        lx.out('No Vert Selected', NoVert)
-        lx.out('No Edge Selected', NoEdge)
-        lx.out('No Poly Selected', NoPoly)
-        lx.out('No Item Selected', NoItem)
-        lx.out('V---------- At least one Element Selected ----------V')
-        lx.out('Multi Vert Selected', MultiVert)
-        lx.out('Multi Edge Selected', MultiEdge)
-        lx.out('Multi Poly Selected', MultiPoly)
-        lx.out('Multi Item Selected', MultiItem)
-        lx.out('V---------- At least one Element Selected ----------V')
-        lx.out('Vert Count Selected', CountVert)
-        lx.out('Multi Count Selected', CountEdge)
-        lx.out('Multi Count Selected', CountPoly)
-        lx.out('Multi Count Selected', CountItem)
+        #################
+        # Debug Feedback
+        # lx.out('V---------- Selection Mode ----------V')
+        # lx.out('Vert Mode', VertMode)
+        # lx.out('Edge Mode', EdgeMode)
+        # lx.out('Poly Mode', PolyMode)
+        # lx.out('Item Mode', ItemMode)
+        # lx.out('V---------- Element Not Selected ----------V')
+        # lx.out('No Vert Selected', NoVert)
+        # lx.out('No Edge Selected', NoEdge)
+        # lx.out('No Poly Selected', NoPoly)
+        # lx.out('No Item Selected', NoItem)
+        # lx.out('V---------- At least one Element Selected ----------V')
+        # lx.out('Multi Vert Selected', MultiVert)
+        # lx.out('Multi Edge Selected', MultiEdge)
+        # lx.out('Multi Poly Selected', MultiPoly)
+        # lx.out('Multi Item Selected', MultiItem)
+        # lx.out('V---------- At least one Element Selected ----------V')
+        # lx.out('Vert Count Selected', CountVert)
+        # lx.out('Multi Count Selected', CountEdge)
+        # lx.out('Multi Count Selected', CountPoly)
+        # lx.out('Multi Count Selected', CountItem)
+        #################
 
         # ---------------------------------- #
         # <----( Main Macro - POLYGON )----> #
@@ -191,20 +191,20 @@ class SMO_GC_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
                 ## Set defined Settings and Run the tool ##
                 # ------------------------------------- #
                 lx.eval('tool.attr select.polygonCoplanar angle %s' % ANGLE)
-                if MODE == 0 : # Similar Touching (Filter selection)
+                if MODE == 0:  # Similar Touching (Filter selection)
                     lx.eval('tool.attr select.polygonCoplanar connect select')
-                if MODE == 1 : # Similar On Object (filter connected polygon)
+                if MODE == 1:  # Similar On Object (filter connected polygon)
                     lx.eval('tool.attr select.polygonCoplanar connect polygon')
-                if MODE == 2 : # Similar On Layer (filter none)
+                if MODE == 2:  # Similar On Layer (filter none)
                     lx.eval('tool.attr select.polygonCoplanar connect none')
                 lx.eval('tool.attr select.polygonCoplanar range %s' % RANGE)
                 # Command Block Begin:  ToolAdjustment
                 lx.eval('tool.setAttr select.polygonCoplanar angle %s' % ANGLE)
-                if MODE == 0 : # Similar Touching
+                if MODE == 0:  # Similar Touching
                     lx.eval('tool.setAttr select.polygonCoplanar connect select')
-                if MODE == 1 : # Similar On Object
+                if MODE == 1:  # Similar On Object
                     lx.eval('tool.setAttr select.polygonCoplanar connect polygon')
-                if MODE == 2 : # Similar On Layer
+                if MODE == 2:  # Similar On Layer
                     lx.eval('tool.setAttr select.polygonCoplanar connect none')
                 lx.eval('tool.setAttr select.polygonCoplanar range %s' % RANGE)
                 # Command Block End:  ToolAdjustment
@@ -236,7 +236,6 @@ class SMO_GC_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
         #     lx.eval('item.refSystem {}')
         if RefSystemActive:
             lx.eval('item.refSystem %s' % CurrentRefSystemItem)
-
 
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()

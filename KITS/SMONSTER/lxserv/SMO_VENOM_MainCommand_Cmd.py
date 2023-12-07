@@ -21,6 +21,8 @@ import modo
 import sys
 
 Cmd_Name = "smo.VENOM.MainCommand"
+
+
 # smo.VENOM.MainCommand
 
 
@@ -56,7 +58,7 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
         # print(self.SelModeEdge)
         # print(self.SelModePoly)
         # print(self.SelModeItem)
-        if self.SelModePoly == True or self.SelModeItem == True:
+        if self.SelModePoly is True or self.SelModeItem is True:
             try:
                 self.TargetMeshList = lxu.select.ItemSelection().current()
             except:
@@ -130,22 +132,22 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
         def rad(a):
             return [degrees(a)]
 
-
+        lx.out('VeNom Main command launched')
         # ------------- ARGUMENTS ------------- #
         args = lx.args()
-        #lx.out(args)
+        # lx.out(args)
 
         # 0 = Similar Touching
         # 1 = Similar Object
         # 2 = Similar Layer
         # 3 = Current Polygons Only
         SimilarMode = IntSimilarMode
-        #lx.out('Similar Selection Mode:', SimilarMode)
+        lx.out('Similar Selection Mode:', bool(SimilarMode))
 
         # 0 = Keep current selection
         # 1 = Select Loop
         SelectLoop = IntSelectLoop
-        #lx.out('Select Loop Automatic:', SelectLoop)
+        lx.out('Select Loop Automatic:', bool(SelectLoop))
         # ------------- ARGUMENTS ------------- #
 
         # ------------------------------ #
@@ -174,11 +176,11 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
 
         # Look at current Copy / Paste user Preferences:
         User_Pref_CopyDeselect = lx.eval('pref.value application.copyDeSelection ?')
-        #lx.out('User Pref: Deselect Elements after Copying', User_Pref_CopyDeselect)
+        # lx.out('User Pref: Deselect Elements after Copying', User_Pref_CopyDeselect)
         User_Pref_PasteSelection = lx.eval('pref.value application.pasteSelection ?')
-        #lx.out('User Pref: Select Pasted Elements', User_Pref_PasteSelection)
+        # lx.out('User Pref: Select Pasted Elements', User_Pref_PasteSelection)
         User_Pref_PasteDeselect = lx.eval('pref.value application.pasteDeSelection ?')
-        #lx.out('User Pref: Deselect Elements Before Pasting', User_Pref_PasteDeselect)
+        # lx.out('User Pref: Deselect Elements Before Pasting', User_Pref_PasteDeselect)
         # Is Copy Deselect False ?
         if User_Pref_CopyDeselect == 0:
             lx.eval('pref.value application.copyDeSelection true')
@@ -209,13 +211,13 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
 
         # -------------------------------------------- #
         VMapsName = lx.eval('pref.value application.defaultVertexNormals ?')
-        #lx.out(VMapsName)
+        # lx.out(VMapsName)
 
-        IsolateMode =  lx.eval('user.value SMO_UseVal_VENOM_Isolate ?')
-        #lx.out(IsolateMode)
+        IsolateMode = lx.eval('user.value SMO_UseVal_VENOM_Isolate ?')
+        # lx.out(IsolateMode)
 
         ShowVNVectors = bool(lx.eval('user.value SMO_UseVal_VENOM_ShowVNVectors ?'))
-        #lx.out(ShowVNVectors)
+        # lx.out(ShowVNVectors)
         # -------------------------------------------- #
 
         # -------------------------- #
@@ -263,7 +265,7 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
 
             SMO_SafetyCheck_ItemModeEnabled = 0
             SMO_SafetyCheck_PolygonModeEnabled = 1
-            #lx.out('script Running: Correct Item Selection Mode')
+            # lx.out('script Running: Correct Item Selection Mode')
             # sys.exit( "LXe_FAILED:Must be in polygon selection mode." )
         else:
             # This only fails if none of the three supported selection
@@ -272,7 +274,7 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
             # selection mode.
             SMO_SafetyCheck_ItemModeEnabled = 1
             SMO_SafetyCheck_PolygonModeEnabled = 0
-            #lx.out('script Running: Correct Item Selection Mode')
+            # lx.out('script Running: Correct Item Selection Mode')
         # --------------------  safety check 1: Polygon Selection Mode enabled --- END
 
         #####-------------------------------------------------------------------------------#####
@@ -290,10 +292,10 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
             # edge_under_mouse = lx.eval('query view3dservice element.over ? EDGE ')
             hitpos = lx.eval('query view3dservice mouse.hitpos ?')
 
-            #lx.out('View under mouse:', view_under_mouse)
-            #lx.out('Hit Position:', hitpos)
-            #lx.out('Items under mouse:', Item_under_mouse)
-            #lx.out('Polygon under mouse:', Poly_under_mouse)
+            # lx.out('View under mouse:', view_under_mouse)
+            # lx.out('Hit Position:', hitpos)
+            # lx.out('Items under mouse:', Item_under_mouse)
+            # lx.out('Polygon under mouse:', Poly_under_mouse)
 
             # lx.eval('select.drop polygon')
             # lx.eval('materials.underMouse')
@@ -311,8 +313,7 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
             lx.eval('select.type polygon')
 
         items = scene.selected
-        lx.out('Processed Mesh Item:', items)
-
+        # lx.out('Processed Mesh Item:', items)
 
         ###################################################################################################
         # Bugfix for Mesh items that can have multiple Rotation transform (coming from 3DsMax for instance)
@@ -374,13 +375,9 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
             lx.eval('select.type polygon')
         ####################################################
 
-
-
-
-
         # Get the Transform of the current selected Item.
-        TargetItem = lx.eval1( "query sceneservice selection ? locator" )
-        TargetRotXfrm = lx.eval1( "query sceneservice item.xfrmRot ? " + TargetItem )          # Rotation
+        TargetItem = lx.eval1("query sceneservice selection ? locator")
+        TargetRotXfrm = lx.eval1("query sceneservice item.xfrmRot ? " + TargetItem)  # Rotation
         # TargetXfrm = lx.eval1( "query sceneservice item.xfrmPos ? " + TargetItem )        # Position
         # print(TargetRotXfrm)
 
@@ -418,8 +415,6 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
         if SMO_SafetyCheck_PolygonModeEnabled == 1:
             scene.select(mesh)
 
-
-
         # BugFix to preserve the state of the RefSystem (item at origin in viewport)
         # This query only works when an item is selected.
         RefSystemActive = bool()
@@ -431,27 +426,23 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
             RefSystemActive = False
         # print(RefSystemActive)
 
-
-
         if not RefSystemActive:
             lx.eval('item.refSystem %s' % items[0].id)
 
-
-
         selected_mesh = scene.selected[0]  # gets the current selected object (throws an error if nothing is selected)
-        print(selected_mesh)
+        # print(selected_mesh)
 
         target_positions = selected_mesh.transforms.position.get()
-        lx.out(target_positions)
+        # lx.out(target_positions)
         target_rotations = selected_mesh.transforms.rotation.get()
-        lx.out(target_rotations)
+        # lx.out(target_rotations)
 
         # -------------------------- #
         # <---( SAFETY CHECK 2 )---> #
         # -------------------------- #
         CsPolys = len(selected_mesh.geometry.polygons.selected)
         # at Least 1 Polygons is selected --- START
-        lx.out('Count Selected Poly', CsPolys)
+        # lx.out('Count Selected Poly', CsPolys)
 
         if CsPolys < 1:
             SMO_SafetyCheck_min1PolygonSelected = 0
@@ -464,31 +455,31 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
 
         elif CsPolys >= 1:
             SMO_SafetyCheck_min1PolygonSelected = 1
-            #lx.out('script running: right amount of polygons in selection')
+            # lx.out('script running: right amount of polygons in selection')
         # at Least 1 Polygons is selected --- END
 
         # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- START
         #####
         TotalSafetyCheckTrueValue = 2
-        lx.out('Desired Value', TotalSafetyCheckTrueValue)
+        # lx.out('Desired Value', TotalSafetyCheckTrueValue)
         if SMO_SafetyCheck_ItemModeEnabled == 1:
             TotalSafetyCheck = (SMO_SafetyCheck_ItemModeEnabled + SMO_SafetyCheck_min1PolygonSelected)
-            lx.out('Current Value', TotalSafetyCheck)
+            # lx.out('Current Value', TotalSafetyCheck)
 
         if SMO_SafetyCheck_PolygonModeEnabled == 1:
             TotalSafetyCheck = (SMO_SafetyCheck_PolygonModeEnabled + SMO_SafetyCheck_min1PolygonSelected)
-            lx.out('Current Value', TotalSafetyCheck)
+            # lx.out('Current Value', TotalSafetyCheck)
 
         #####
         # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- END
 
-        Modo_ver = int(lx.eval ('query platformservice appversion ?'))
-        print('Modo Version:',Modo_ver)
+        Modo_ver = int(lx.eval('query platformservice appversion ?'))
+        # print('Modo Version:', Modo_ver)
 
         # ------------------------ #
         # <----( Main Macro )----> #
         # ------------------------ #
-        
+
         # ---------------- Compare TotalSafetyCheck value and decide or not to continue the process  --- START
         if TotalSafetyCheck == TotalSafetyCheckTrueValue:
             #############
@@ -559,7 +550,6 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
                 # bg_mesh.position.set(target_positions)
                 # bg_mesh.rotation.set(target_rotations)
                 lx.eval('select.editSet SelSet_VeNomBG add {}')
-
 
                 lx.eval('select.useSet SelSet_VeNomTempLayer select')
                 lx.eval('hide.unsel')
@@ -645,8 +635,6 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.type polygon')
                 lx.eval('select.all')
                 lx.eval('cut')
-
-
 
             # Manual Selection Mode via a set of Polygons
             if SMO_SafetyCheck_PolygonModeEnabled == 1:
@@ -777,7 +765,6 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
             lx.eval('select.type item')
             scene.select(selected_mesh)
             # lx.eval('smo.GC.DeselectAll') Bugfix to keep current selection active in Item Mode
-
 
         # -------------- COPY/PASTE END Procedure  -------------- #
         # Restore user Preferences:
