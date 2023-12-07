@@ -99,13 +99,13 @@ class SMO_BAKE_PairsLinkConstraint_Cmd(lxu.command.BasicCommand):
                     
                     ########################
                     # Select the High Item (constraint) then the Low (.
-                    lx.eval('select.subItem %s set mesh 0 0' % Mesh_B_Name)
-                    lx.eval('select.subItem %s add mesh 0 0' % Mesh_A_Name)
+                    lx.eval('select.subItem %s set mesh 0 0' % Mesh_B.Ident())
+                    lx.eval('select.subItem %s add mesh 0 0' % Mesh_A.Ident())
                     lx.eval('constraintTransform type:pos')
                     lx.eval('select.drop item')
 
-                    lx.eval('select.subItem %s set mesh 0 0' % Mesh_B_Name)
-                    lx.eval('select.subItem %s add mesh 0 0' % Mesh_A_Name)
+                    lx.eval('select.subItem %s set mesh 0 0' % Mesh_B.Ident())
+                    lx.eval('select.subItem %s add mesh 0 0' % Mesh_A.Ident())
                     lx.eval('constraintTransform type:rot')
                     lx.eval('select.drop item')
                     
@@ -114,13 +114,13 @@ class SMO_BAKE_PairsLinkConstraint_Cmd(lxu.command.BasicCommand):
                     
                     ########################
                     # Select the High Item (constraint) then the Low (.
-                    lx.eval('select.subItem %s set mesh 0 0' % Mesh_A_Name)
-                    lx.eval('select.subItem %s add mesh 0 0' % Mesh_B_Name)
+                    lx.eval('select.subItem %s set mesh 0 0' % Mesh_A.Ident())
+                    lx.eval('select.subItem %s add mesh 0 0' % Mesh_B.Ident())
                     lx.eval('constraintTransform type:pos')
                     lx.eval('select.drop item')
 
-                    lx.eval('select.subItem %s set mesh 0 0' % Mesh_A_Name)
-                    lx.eval('select.subItem %s add mesh 0 0' % Mesh_B_Name)
+                    lx.eval('select.subItem %s set mesh 0 0' % Mesh_A.Ident())
+                    lx.eval('select.subItem %s add mesh 0 0' % Mesh_B.Ident())
                     lx.eval('constraintTransform type:rot')
                     lx.eval('select.drop item')
                     
