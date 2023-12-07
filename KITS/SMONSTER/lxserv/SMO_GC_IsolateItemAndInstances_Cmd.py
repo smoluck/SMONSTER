@@ -69,7 +69,7 @@ class SMO_GC_IsolateItemAndInstances_Cmd(lxu.command.BasicCommand):
                 if itemType == "meshInst":
                     ID = item.Ident()
                     InputInstIDList.append(ID)
-            if InputInstIDList > 0:
+            if len(InputInstIDList) > 0:
                 print(InputInstIDList)
                 print('One or more Instances Selected')
 
@@ -83,7 +83,7 @@ class SMO_GC_IsolateItemAndInstances_Cmd(lxu.command.BasicCommand):
                     ID = item.Ident()
                     InputMeshIDList.append(ID)
 
-            if InputMeshIDList > 0:
+            if len(InputMeshIDList) > 0:
                 print(InputMeshIDList)
                 print('One or more Regular Mesh Selected')
 
