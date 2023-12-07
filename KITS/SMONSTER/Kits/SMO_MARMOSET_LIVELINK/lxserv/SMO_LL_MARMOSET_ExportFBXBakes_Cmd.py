@@ -278,7 +278,7 @@ class SMO_MARMOSET_LIVELINK_ExportFBXBakes_Cmd(lxu.command.BasicCommand):
         lx.eval('user.value sceneio.fbx.save.animationOnly 0')
         lx.eval('user.value sceneio.fbx.save.cameras 0')
         lx.eval('user.value sceneio.fbx.save.lights 0')
-        lx.eval('user.value sceneio.fbx.save.materials 0')
+        lx.eval('user.value sceneio.fbx.save.materials 1')
         lx.eval('user.value sceneio.fbx.save.polygonParts 0')
         lx.eval('user.value sceneio.fbx.save.selectionSets 0')
         lx.eval('user.value sceneio.fbx.save.smoothingGroups 1')
@@ -341,7 +341,7 @@ class SMO_MARMOSET_LIVELINK_ExportFBXBakes_Cmd(lxu.command.BasicCommand):
         lx.eval('user.value sceneio.fbx.save.animationOnly 0')
         lx.eval('user.value sceneio.fbx.save.cameras 0')
         lx.eval('user.value sceneio.fbx.save.lights 0')
-        lx.eval('user.value sceneio.fbx.save.materials 0')  # No material save for Cage
+        lx.eval('user.value sceneio.fbx.save.materials 1')  # No material save for Cage
         lx.eval('user.value sceneio.fbx.save.polygonParts 0')
         lx.eval('user.value sceneio.fbx.save.selectionSets 0')
         lx.eval('user.value sceneio.fbx.save.smoothingGroups 1')
@@ -448,7 +448,7 @@ class SMO_MARMOSET_LIVELINK_ExportFBXBakes_Cmd(lxu.command.BasicCommand):
             else:
                 fbx_export_path_HP = os.path.splitext(fbx_export_path_HP)[0] + '.fbx'
                 fbx_file_name_HP = os.path.splitext(os.path.basename(fbx_export_path_HP))[0]
-
+    
         lx.eval('!scene.saveAs filename:"{}" format:"fbx" export:true'.format(fbx_export_path_HP))
         fbx_save_time_HP = os.path.getmtime(fbx_export_path_HP)
         lx.eval('select.drop item')
