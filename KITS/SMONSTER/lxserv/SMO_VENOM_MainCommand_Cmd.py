@@ -100,6 +100,14 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
 
         scene = modo.scene.current()
 
+        # -------------- Index Style START Procedure  -------------- #
+        # Bugfix for items that cant be detected when "Index Style" is not using underscore as separator.
+        # Problem caused by item.UniqueName() at line 124
+        IndexStyle = lx.eval("pref.value application.indexStyle ?")
+        if IndexStyle is not "uscore":
+            lx.eval("pref.value application.indexStyle uscore")
+        # -------------------------------------------- #
+
         VeNomItemAsRotation = bool()
 
         if self.SelModePoly:
@@ -782,6 +790,11 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
         if User_Pref_PasteDeselectChangedState == 1:
             lx.eval('pref.value application.pasteDeSelection false')
             lx.out('"Deselect Elements Before Pasting" have been Restored')
+        # -------------------------------------------- #
+
+        # -------------- Index Style END Procedure  -------------- #
+        if IndexStyle is not "uscore":
+            lx.eval("pref.value application.indexStyle %s" % IndexStyle)
         # -------------------------------------------- #
 
         if IsolateMode:
