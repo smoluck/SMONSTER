@@ -17,13 +17,15 @@ import lxu
 import modo
 
 Cmd_Name = "smo.BAKE.SetBakePairs"
+
+
 # smo.BAKE.SetBakePairs
 
 
 class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
-        
+
         # Store the currently selected item, or if nothing is selected, an empty list.
         # Wrap this is a try except, the initial launching of Modo will cause this function
         # to perform a shallow execution before the scene state is established.
@@ -33,38 +35,39 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
             self.current_Selection = lxu.select.ItemSelection().current()
         except:
             self.current_Selection = []
-        
+
         # If we do have something selected, put it in self.current_Selection
         if len(self.current_Selection) == 2:
             self.current_Selection = self.current_Selection
         else:
             self.current_Selection = None
-        
+
         # Test the stored selection list, only if it it not empty, instantiate the variables.
+
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
-    
-    def cmd_Interact (self):
+
+    def cmd_Interact(self):
         pass
-    
-    def cmd_UserName (self):
+
+    def cmd_UserName(self):
         return 'SMO BAKE - Set Bake Pairs'
-    
-    def cmd_Desc (self):
+
+    def cmd_Desc(self):
         return 'Set MTyp Tags and Name prefix according to selection order and user preferences. low --> high OR  high --> low.'
-    
-    def cmd_Tooltip (self):
+
+    def cmd_Tooltip(self):
         return 'Set MTyp Tags and Name prefix according to selection order and user preferences. low --> high OR  high --> low.'
-    
-    def cmd_Help (self):
+
+    def cmd_Help(self):
         return 'https://twitter.com/sm0luck'
-    
-    def basic_ButtonName (self):
+
+    def basic_ButtonName(self):
         return 'SMO BAKE - Set Bake Pairs.'
-    
-    def basic_Enable (self, msg):
+
+    def basic_Enable(self, msg):
         return True
-    
+
     def basic_Execute(self, msg, flags):
         if self.current_Selection is not None:
             scene = modo.scene.current()
@@ -90,7 +93,6 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
             CreatePosRotConstraints = lx.eval('user.value SMO_UseVal_BAKE_CreatePosRotConstraints ?')
             lx.out('Create Position/Rotation Constraints on High for Bake Pairs state:', CreatePosRotConstraints)
 
-
             # Get the current selected item count
             selitecnt = lx.eval1('query sceneservice item.N ?')
             for i in range(selitecnt):
@@ -99,7 +101,7 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
                 if itemtype == "group":
                     # Get the item ID
                     SelItemGroups = scene.items(lx.symbol.sITYPE_GROUP)
-                    lx.eval('select.item %s remove' % SelItemGroups )
+                    lx.eval('select.item %s remove' % SelItemGroups)
 
             if selitems == 2:
                 lx.eval('select.drop item')
@@ -120,8 +122,10 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
             GrpHighName = lx.eval('user.value SMO_UseVal_BAKE_SetBakePairsGrpsString_high ?')
             lx.out('Group (HIGH) name:', GrpHighName)
 
-            PutInGrpsSetBakePairsTopDownOrder = lx.eval('user.value SMO_UseVal_BAKE_PutInGrpsSetBakePairsTopDownOrder ?')
-            lx.out('Add in Reverse order --> from TOP To BOTTOM (Last item added at Bottom)', PutInGrpsSetBakePairsTopDownOrder)
+            PutInGrpsSetBakePairsTopDownOrder = lx.eval(
+                'user.value SMO_UseVal_BAKE_PutInGrpsSetBakePairsTopDownOrder ?')
+            lx.out('Add in Reverse order --> from TOP To BOTTOM (Last item added at Bottom)',
+                   PutInGrpsSetBakePairsTopDownOrder)
 
             LP_GrpState = False
             HP_GrpState = False
@@ -223,7 +227,6 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
 
             lx.eval('smo.GC.DeselectAll')
 
-
             ######################################
             # Check Items count in groups
             if PutInGrpsSetBakePairsTopDownOrder:
@@ -248,7 +251,7 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
                 if LP_GrpState:
                     lx.eval('select.item {%s} set' % GrpLowName)
                     LPGrpID = scene.selectedByType(lx.symbol.sITYPE_GROUP)[0]
-                    #print(LPGrpID)
+                    # print(LPGrpID)
                     try:
                         lx.eval('!group.scan sel item')
                         LP_ItemsInGrp = len(lx.evalN('query sceneservice selection ? all'))
@@ -256,15 +259,14 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
                     except:
                         LP_ItemsInGrp = int(0)
                     LP_Pos = int()
-                    if LP_ItemsInGrp >= 1 :
+                    if LP_ItemsInGrp >= 1:
                         LP_Pos = (LP_ItemsInGrp + 1)
-                    if LP_ItemsInGrp == 0 :
+                    if LP_ItemsInGrp == 0:
                         LP_Pos = 0
                     print(LP_Pos)
 
                     lx.eval('smo.GC.DeselectAll')
             ######################################
-
 
             if selitems == 2:
                 if not FirstMeshHighPoly:
@@ -288,7 +290,7 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
                     # Select the 2nd Item.
                     Mesh_B_Name = Mesh_B.name
                     lx.out('(HighPoly) Mesh B name is: ', Mesh_B_Name)
-                    lx.eval('select.subItem %s set mesh 0 0' % Mesh_B_Name)
+                    lx.eval('select.subItem {%s} set mesh 0 0' % format(Mesh_B_Name))
 
                     # Set item name to class "_low"
                     NewName_B = Mesh_A_Name + '_' + "high"
@@ -375,9 +377,9 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
                     lx.eval('smo.GC.DeselectAll')
                     # print(GH)
                     if PutInGrpsSetBakePairsTopDownOrder:
-                        if FirstMeshHighPoly == True and PutInGrpsSetBakePairsTopDownOrder == True :
+                        if FirstMeshHighPoly == True and PutInGrpsSetBakePairsTopDownOrder == True:
                             lx.eval('group.itemPos %s %s %i' % (Mesh_B.name, GL, LP_Pos))
-                        if FirstMeshHighPoly == False and PutInGrpsSetBakePairsTopDownOrder == True :
+                        if FirstMeshHighPoly == False and PutInGrpsSetBakePairsTopDownOrder == True:
                             lx.eval('group.itemPos %s %s %i' % (Mesh_A.name, GL, LP_Pos))
                     if not PutInGrpsSetBakePairsTopDownOrder:
                         if FirstMeshHighPoly:
@@ -399,7 +401,7 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
         del LPGrps[:]
         del LPGrpsIDList[:]
         del LPGrpsNameList[:]
-            
+
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
 
