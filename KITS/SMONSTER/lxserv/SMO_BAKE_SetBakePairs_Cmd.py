@@ -279,7 +279,7 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
                     # Select the First Item.
                     Mesh_A_Name = Mesh_A.name
                     lx.out('(LowPoly) Mesh A name is:', format(Mesh_A_Name))
-                    lx.eval('select.subItem {%s} set mesh 0 0' % format(Mesh_A_Name))
+                    lx.eval('select.subItem {%s} set mesh 0 0' % Mesh_A.Ident())
 
                     # Set item name to class "_low"
                     NewName_A = Mesh_A_Name + '_' + "low"
@@ -294,7 +294,7 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
                     # Select the 2nd Item.
                     Mesh_B_Name = Mesh_B.name
                     lx.out('(HighPoly) Mesh B name is: ', format(Mesh_B_Name))
-                    lx.eval('select.subItem {%s} set mesh 0 0' % format(Mesh_B_Name))
+                    lx.eval('select.subItem {%s} set mesh 0 0' % Mesh_B.Ident())
 
                     # Set item name to class "_low"
                     NewName_B = Mesh_A_Name + '_' + "high"
@@ -307,8 +307,8 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
 
                     ########################
                     if CreatePosRotConstraints:
-                        lx.eval('select.subItem {%s} set mesh 0 0' % format(Mesh_A.name))
-                        lx.eval('select.subItem {%s} add mesh 0 0' % format(Mesh_B.name))
+                        lx.eval('select.subItem {%s} set mesh 0 0' % Mesh_A.Ident())
+                        lx.eval('select.subItem {%s} add mesh 0 0' % Mesh_B.Ident())
                         lx.eval('smo.BAKE.PairsLinkConstraint')
                         lx.eval('smo.GC.DeselectAll')
 
@@ -318,7 +318,7 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
                     # Select the First Item.
                     Mesh_B_Name = Mesh_B.name
                     lx.out('(LowPoly) Mesh B name is: ', format(Mesh_B_Name))
-                    lx.eval('select.subItem {%s} set mesh 0 0' % format(Mesh_B_Name))
+                    lx.eval('select.subItem {%s} set mesh 0 0' % Mesh_B.Ident())
 
                     # Set item name to class "_low"
                     NewName_B = Mesh_B_Name + '_' + "low"
@@ -333,7 +333,7 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
                     # Select the 2nd Item.
                     Mesh_A_Name = Mesh_A.name
                     lx.out('(HighPoly) Mesh A name is: ', format(Mesh_A_Name))
-                    lx.eval('select.subItem {%s} set mesh 0 0' % format(Mesh_A_Name))
+                    lx.eval('select.subItem {%s} set mesh 0 0' % Mesh_A.Ident())
 
                     # Set item name to class "_low"
                     NewName_A = Mesh_B_Name + '_' + "high"
@@ -346,8 +346,8 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
 
                     ########################
                     if CreatePosRotConstraints:
-                        lx.eval('select.subItem {%s} set mesh 0 0' % format(Mesh_A.name))
-                        lx.eval('select.subItem {%s} add mesh 0 0' % format(Mesh_B.name))
+                        lx.eval('select.subItem {%s} set mesh 0 0' % Mesh_A.Ident())
+                        lx.eval('select.subItem {%s} add mesh 0 0' % Mesh_B.Ident())
                         lx.eval('smo.BAKE.PairsLinkConstraint')
                         lx.eval('smo.GC.DeselectAll')
 
@@ -361,14 +361,14 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
                     # print(GH)
                     if PutInGrpsSetBakePairsTopDownOrder:
                         if FirstMeshHighPoly:
-                            lx.eval('group.itemPos {%s} %s %i' % (format(Mesh_A.name), GH, HP_Pos))
+                            lx.eval('group.itemPos {%s} %s %i' % (Mesh_A.Ident(), GH, HP_Pos))
                         if not FirstMeshHighPoly:
-                            lx.eval('group.itemPos {%s} %s %i' % (format(Mesh_B.name), GH, HP_Pos))
+                            lx.eval('group.itemPos {%s} %s %i' % (Mesh_B.Ident(), GH, HP_Pos))
                     if not PutInGrpsSetBakePairsTopDownOrder:
                         if FirstMeshHighPoly:
-                            lx.eval('group.itemPos {%s} %s 0' % (format(Mesh_A.name), GH))
+                            lx.eval('group.itemPos {%s} %s 0' % (Mesh_A.Ident(), GH))
                         if not FirstMeshHighPoly:
-                            lx.eval('group.itemPos {%s} %s 0' % (format(Mesh_B.name), GH))
+                            lx.eval('group.itemPos {%s} %s 0' % (Mesh_B.Ident(), GH))
                 lx.eval('smo.GC.DeselectAll')
 
                 # Put the LowPoly in a Group (HIGH).
@@ -380,20 +380,20 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
                     # print(GH)
                     if PutInGrpsSetBakePairsTopDownOrder:
                         if FirstMeshHighPoly:
-                            lx.eval('group.itemPos {%s} %s %i' % (format(Mesh_B.name), GL, LP_Pos))
+                            lx.eval('group.itemPos {%s} %s %i' % (Mesh_B.Ident(), GL, LP_Pos))
                         if not FirstMeshHighPoly:
-                            lx.eval('group.itemPos {%s} %s %i' % (format(Mesh_A.name), GL, LP_Pos))
+                            lx.eval('group.itemPos {%s} %s %i' % (Mesh_A.Ident(), GL, LP_Pos))
                     if not PutInGrpsSetBakePairsTopDownOrder:
                         if FirstMeshHighPoly:
-                            lx.eval('group.itemPos {%s} %s 0' % (format(Mesh_B.name), GL))
+                            lx.eval('group.itemPos {%s} %s 0' % (Mesh_B.Ident(), GL))
                         if not FirstMeshHighPoly:
-                            lx.eval('group.itemPos {%s} %s 0' % (format(Mesh_A.name), GL))
+                            lx.eval('group.itemPos {%s} %s 0' % (Mesh_A.Ident(), GL))
                 lx.eval('smo.GC.DeselectAll')
 
                 # Autohide mode to declutter scene during Setup.
                 if AutoHide_Set_BakePairs:
-                    lx.eval('select.subItem {%s} set mesh 0 0' % format(Mesh_A.name))
-                    lx.eval('select.subItem {%s} add mesh 0 0' % format(Mesh_B.name))
+                    lx.eval('select.subItem {%s} set mesh 0 0' % Mesh_A.Ident())
+                    lx.eval('select.subItem {%s} add mesh 0 0' % Mesh_B.Ident())
                     lx.eval('hide.sel')
 
             lx.eval('smo.GC.DeselectAll')
