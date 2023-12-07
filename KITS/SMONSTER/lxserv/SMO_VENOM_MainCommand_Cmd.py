@@ -132,7 +132,8 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
         def rad(a):
             return [degrees(a)]
 
-        lx.out('VeNom Main command launched')
+        lx.out('--SMONSTER--')
+        lx.out('smo.VENOM.MainCommand command launched')
         # ------------- ARGUMENTS ------------- #
         args = lx.args()
         # lx.out(args)
