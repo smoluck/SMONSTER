@@ -88,6 +88,7 @@ class SMO_GC_SplitInTwoMeshesByLocalAxisSides_Cmd(lxu.command.BasicCommand):
             lx.eval('smo.MIFABOMA.SliceLocal 2 0 true')
 
         lx.eval('select.type item')
+        Mesh_A = scene.selectedByType(lx.symbol.sITYPE_MESH)
 
         MeshList = []
         MeshList.append(input_mesh.Ident())
@@ -96,12 +97,17 @@ class SMO_GC_SplitInTwoMeshesByLocalAxisSides_Cmd(lxu.command.BasicCommand):
         cloned_mesh = modo.Mesh()
         MeshList.append(cloned_mesh.Ident())
         lx.eval('smo.GC.DeleteByLocalAxisSides %s %s' % (Axis, DirClone))
+        Mesh_B = scene.selectedByType(lx.symbol.sITYPE_MESH)
 
         scene.select(input_mesh.Ident())
         lx.eval('smo.GC.DeleteByLocalAxisSides %s %s' % (Axis, DirSource))
 
+        lx.eval('select.drop item')
+
         for item in MeshList:
-            scene.select(item, add=True)
+            scene.select(item, True)
+
+        # lx.eval('select.drop item')
 
         if not RefSystemActive:
             lx.eval('item.refSystem {}')
