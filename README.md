@@ -72,7 +72,7 @@ Best regards, Franck Elisabeth.
 
 
 # BUILDING from GITHUB
-Python version: `2.7` or `3.7`  
+Python version: `2.7`, `3.7` and `3.9`  
 
 Clone this repository locally on your PC using GitHub Desktop.
 - To install the kit to your appdata kits directory, run: `install.py` under `SMONSTER`

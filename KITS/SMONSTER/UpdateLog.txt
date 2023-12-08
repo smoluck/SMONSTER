@@ -3,6 +3,45 @@
 -------------------------
 
 -------------------------
+v5.10 - 2023/12/09
+
+        • Global Compatibility Update for Modo 17.X
+        • Code reformatting and Event Log print Optimization
+        • Bugfix when user was using another Index Style than the Underscore mode (More to do on this)
+
+QUICKTAG:
+        • Bugfix in smo.QT.Batch.SetMatColorIDRandomKeepCurrentSelection
+
+GAME CONTENT:
+        • New Commands and Menu
+            • SMO GC SPLIT MENU
+            • smo.GC.Multi.SplitInTwoMeshesByLocalAxisSides
+            • smo.GC.SplitEachComponentIndividually
+            • smo.GC.SplitEachEdgeIndividually
+            • smo.GC.SplitEachPolyIndividually
+        • Game Content Kit now have a "Quadruple NGon" in Polygon Context Menu
+        • Code reformatting and Event Log print Optimization
+        • Bugfix in smo.GC.SplitInTwoMeshesByLocalAxisSides to select back the meshes results
+        • Bugfix in smo.GC.SelectCoPlanarPoly
+        • Bugfix in smo.GC.IsolateItemAndInstances
+        • Bugfix in smo.GC.RebuildSelectedItemsViaPolyline
+        • Bugfix in smo.GC.RebuildSelectedItemsViaPolyline
+
+VENOM:
+        • Bugfix in smo.VENOM.MainCommand
+
+BAKE:
+        • Bugfix in smo.BAKE.SetBakePairs
+        • Bugfix in smo.BAKE.PairsLinkConstraint
+
+MARMOSET LIVELINK:
+        • Bugfix to Marmoset LL to support Material on export.
+        • Reformatting SMO_Marmoset_LL_VarData.smo file to indented json for better debug.
+        • Adding a time sleep to give some space for map initialize.
+        • Used "with XX as f" technique for file writing/close for optimization
+
+
+-------------------------
 v5.00 - 2023/05/01
 RIZOMUV LIVELINK:
         • Introduction of RizomUVLink Module Support from RizomUV 2022.2 (Development Build)
