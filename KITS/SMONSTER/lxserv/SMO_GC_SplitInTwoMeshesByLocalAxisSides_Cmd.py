@@ -63,13 +63,50 @@ class SMO_GC_SplitInTwoMeshesByLocalAxisSides_Cmd(lxu.command.BasicCommand):
             DirClone = True
 
         scene = modo.scene.current()
-        mesh = modo.Mesh()
+        input_mesh = modo.Mesh()
+
+        SelItems = (lx.evalN('query sceneservice selection ? locator'))
+
+        RefSystemActive = bool()
+        CurrentRefSystemItem = lx.eval('item.refSystem ?')
+        # print(CurrentRefSystemItem)
+        if len(CurrentRefSystemItem) != 0:
+            RefSystemActive = True
+        else:
+            RefSystemActive = False
+
+        if not RefSystemActive:
+            lx.eval('item.refSystem {%s}' % format(SelItems))
+
+        lx.eval('select.type polygon')
+        lx.eval('select.all')
+        if Axis == "x":
+            lx.eval('smo.MIFABOMA.SliceLocal 0 0 true')
+        if Axis == "y":
+            lx.eval('smo.MIFABOMA.SliceLocal 1 0 true')
+        if Axis == "z":
+            lx.eval('smo.MIFABOMA.SliceLocal 2 0 true')
+
+        lx.eval('select.type item')
+
+        MeshList = []
+        MeshList.append(input_mesh.Ident())
+
         lx.eval('item.duplicate all:false mods:false')
-        clone = modo.Mesh()
+        cloned_mesh = modo.Mesh()
+        MeshList.append(cloned_mesh.Ident())
         lx.eval('smo.GC.DeleteByLocalAxisSides %s %s' % (Axis, DirClone))
-        scene.select(mesh.Ident())
+
+        scene.select(input_mesh.Ident())
         lx.eval('smo.GC.DeleteByLocalAxisSides %s %s' % (Axis, DirSource))
-        scene.select(mesh.Ident())
+
+        for item in MeshList:
+            scene.select(item, add=True)
+
+        if not RefSystemActive:
+            lx.eval('item.refSystem {}')
+        if RefSystemActive:
+            lx.eval('item.refSystem %s' % CurrentRefSystemItem)
 
 
 lx.bless(SMO_GC_SplitInTwoMeshesByLocalAxisSides_Cmd, Cmd_Name)
