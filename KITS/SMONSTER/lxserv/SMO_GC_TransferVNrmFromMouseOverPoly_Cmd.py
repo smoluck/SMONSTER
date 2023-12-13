@@ -140,6 +140,9 @@ class SMO_GC_TransferVNrmFromMouseOverSurface_Cmd(lxu.command.BasicCommand):
         SelModeEdge = bool(lx.eval1("select.typeFrom typelist:edge;vertex;polygon;item ?"))
         SelModePoly = bool(lx.eval1("select.typeFrom typelist:polygon;vertex;edge;item ?"))
         SelModeItem = bool(lx.eval1("select.typeFrom typelist:item;pivot;center;edge;polygon;vertex;ptag ?"))
+
+        VMapsName = lx.eval('pref.value application.defaultVertexNormals ?')
+        # lx.out(VMapsName)
         if SelModeVert == True or SelModeEdge == True or SelModePoly == True:
             try:
                 lx.eval('smo.MASTER.ForceSelectMeshItemOnly')
@@ -238,7 +241,8 @@ class SMO_GC_TransferVNrmFromMouseOverSurface_Cmd(lxu.command.BasicCommand):
                 if SelModePoly:
                     lx.eval('select.type polygon')
                 lx.eval('select.useSet TransfVNrmFromMouseOverSurface select')
-                lx.eval('vertMap.transferNormals false')
+                lx.eval('vertMap.transfer {%s} space:local method:raycast flip:off completion:true' % VMapsName)
+                # lx.eval('vertMap.transferNormals false')
                 if LockElem:
                     lx.eval('lock.sel')
                 lx.eval('select.type item')
@@ -282,7 +286,8 @@ class SMO_GC_TransferVNrmFromMouseOverSurface_Cmd(lxu.command.BasicCommand):
                 if SelModePoly:
                     lx.eval('select.type polygon')
                 lx.eval('select.useSet TransfVNrmFromMouseOverSurface select')
-                lx.eval('vertMap.transferNormals false')
+                lx.eval('vertMap.transfer {%s} space:local method:raycast flip:off completion:true' % VMapsName)
+                # lx.eval('vertMap.transferNormals false')
                 if LockElem:
                     lx.eval('lock.sel')
                 lx.eval('select.type item')

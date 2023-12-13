@@ -1,30 +1,30 @@
 # python
 """
-Name:         SMO_GC_Multi_SplitInTwoMeshesByLocalAxisSides_Cmd.py
+Name:       SMO_BAKE_Multi_CreatePairsFromMesh_Cmd.py
 
-Purpose:      This script is designed to
-              (for Multiple items)
-              unmerge selected mesh in 2 Meshes by Local Axis Side (positive or negative).
+Purpose:    This script is designed to:
+            (for Multiple items)
+            Create a New Bake Pairs from a Single High Poly mesh and
+            Enter into Polygon Editing To Reduce the Mesh Detail
 
-Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
-Created:      19/08/2022
-Copyright:    (c) Franck Elisabeth 2017-2022
+
+Author:     Franck ELISABETH
+Website:    https://www.smoluck.com
+Created:    02/04/2021
+Copyright:  (c) Franck Elisabeth 2017-2022
 """
 
 import lx
 import lxu
 import modo
 
-Cmd_Name = "smo.GC.Multi.SplitInTwoMeshesByLocalAxisSides"
-# smo.GC.Multi.SplitInTwoMeshesByLocalAxisSides z true
+Cmd_Name = "smo.BAKE.Multi.CreatePairsFromMesh"
+# smo.BAKE.Multi.CreatePairsFromMesh
 
 
-class SMO_GC_Multi_SplitInTwoMeshesByLocalAxisSides_Cmd(lxu.command.BasicCommand):
+class SMO_BAKE_Multi_CreatePairsFromMesh_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
-        self.dyna_Add("Axis", lx.symbol.sTYPE_AXIS)
-        self.dyna_Add("Direction", lx.symbol.sTYPE_BOOLEAN)
 
         scenedata = modo.scene.current()
         CheckGrpSelItems = lxu.select.ItemSelection().current()
@@ -43,26 +43,24 @@ class SMO_GC_Multi_SplitInTwoMeshesByLocalAxisSides_Cmd(lxu.command.BasicCommand
         pass
 
     def cmd_UserName(self):
-        return 'SMO GC - (Multi) SplitInTwoMeshesByLocalAxisSides'
+        return 'SMO BAKE - (Multi) Create Bake Pairs from HighPoly'
 
     def cmd_Desc(self):
-        return 'MULTI - unmerge selected mesh in 2 Meshes by Local Axis Side (positive or negative).'
+        return 'Create a New Bake Pairs from a Single High Poly mesh and Enter into Polygon Editing To Reduce the Mesh Detail.'
 
     def cmd_Tooltip(self):
-        return 'MULTI - unmerge selected mesh in 2 Meshes by Local Axis Side (positive or negative).'
+        return 'Create a New Bake Pairs from a Single High Poly mesh and Enter into Polygon Editing To Reduce the Mesh Detail.'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'
 
     def basic_ButtonName(self):
-        return 'SMO GC - (Multi) SplitInTwoMeshesByLocalAxisSides'
+        return 'SMO BAKE - (Multi) Create Bake Pairs from HighPoly'
 
     def basic_Enable(self, msg):
         return True
 
     def basic_Execute(self, msg, flags):
-        Axis = self.dyna_String(0)
-        DirSource = self.dyna_Bool(1)
         scene = modo.scene.current()
         items = modo.Scene().selected
 
@@ -72,7 +70,7 @@ class SMO_GC_Multi_SplitInTwoMeshesByLocalAxisSides_Cmd(lxu.command.BasicCommand
 
         for mesh in selmeshessssa:
             mesh.select(True)
-            lx.eval('smo.GC.SplitInTwoMeshesByLocalAxisSides %s %s' % (Axis, DirSource))
+            lx.eval('smo.BAKE.CreatePairsFromMesh')
             # lx.eval('select.drop item')
             MeshesList.append(scene.selectedByType(lx.symbol.sITYPE_MESH))
 
@@ -81,4 +79,4 @@ class SMO_GC_Multi_SplitInTwoMeshesByLocalAxisSides_Cmd(lxu.command.BasicCommand
             scene.select(item, True)
 
 
-lx.bless(SMO_GC_Multi_SplitInTwoMeshesByLocalAxisSides_Cmd, Cmd_Name)
+lx.bless(SMO_BAKE_Multi_CreatePairsFromMesh_Cmd, Cmd_Name)

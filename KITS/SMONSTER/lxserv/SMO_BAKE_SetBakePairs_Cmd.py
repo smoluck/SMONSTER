@@ -17,8 +17,6 @@ import lxu
 import modo
 
 Cmd_Name = "smo.BAKE.SetBakePairs"
-
-
 # smo.BAKE.SetBakePairs
 
 

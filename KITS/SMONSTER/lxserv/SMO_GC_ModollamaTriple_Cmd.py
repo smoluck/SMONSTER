@@ -65,8 +65,8 @@ class SMO_GC_ModollamaTriple_Cmd(lxu.command.BasicCommand):
 
         func = True
         if ModoLlama_Status:
-            lx.eval('user.value llama_keepuvbounds false')
-            lx.eval('user.value llama_keepmatbounds false')
+            lx.eval('user.value llama_keepuvbounds true')
+            lx.eval('user.value llama_keepmatbounds true')
             lx.eval('user.value llama_iterations %i' % Iteration)
             lx.eval('user.value llama_anglethreshold 0.005')
 
