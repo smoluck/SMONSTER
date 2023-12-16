@@ -1,9 +1,9 @@
-Hi. Everyone
-
-
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 2.30 -
+        • Bugfix in smo.VENOM.MainCommand
+
 - 2.30 -
         • smo.VENOM.MainCommand - Now automatically create a new Vertex Normal Maps if missing.
 

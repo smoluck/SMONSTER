@@ -1,11 +1,12 @@
-Hi. Everyone
-
-After downloading the Zip file, please follow those instructions:
-
-
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 4.10 -
+        • New Commands and Menu
+            • smo.MIFABOMA.FlipSelectedPolys
+            Flip the Polygon selection using the Local Axis but with a workplane
+            offset to current Selected Polygons.(using Item Axis and Selected Poly Center)
+
 - 3.50 -
         • Improvement and Bugfix on RADIAL ARRAY and MIRROR commands that now support:
                 • both Meshes and MeshInstances (instead of only regular Meshes only).

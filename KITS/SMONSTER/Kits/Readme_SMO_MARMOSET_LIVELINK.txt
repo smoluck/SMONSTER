@@ -1,8 +1,12 @@
-Hi. Everyone
-
 ------------------
 --- UPDATE LOG ---
 ------------------
+- 2.70 -
+        • Bugfix to Marmoset LL to support Material on export.
+        • Reformatting SMO_Marmoset_LL_VarData.smo file to indented json for better debug.
+        • Adding a time sleep to give some space for map initialize.
+        • Used "with XX as f" technique for file writing/close for optimization
+
 - 2.60 -
         • Bugfix on JSON module with Modo (if the Python version choosen was set to 3.9).
           The Exports of variable will now be exchanged and processed correctly in Marmoset.

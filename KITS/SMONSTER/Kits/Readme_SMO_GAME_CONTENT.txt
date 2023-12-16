@@ -1,8 +1,25 @@
-Hi. Everyone
-
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+14.00
+        • New Commands and Menu
+            • SMO GC SPLIT MENU
+            • smo.GC.Multi.SplitInTwoMeshesByLocalAxisSides
+            • smo.GC.SplitEachComponentIndividually
+            • smo.GC.SplitEachEdgeIndividually
+            • smo.GC.SplitEachPolyIndividually
+        • Game Content Kit now have a "Quadruple NGon" in Polygon Context Menu
+        • Code reformatting and Event Log print Optimization
+        • Bugfix in smo.GC.SplitInTwoMeshesByLocalAxisSides to select back the meshes results
+        • Bugfix in smo.GC.SelectCoPlanarPoly
+        • Bugfix in smo.GC.IsolateItemAndInstances
+        • Bugfix in smo.GC.RebuildSelectedItemsViaPolyline
+        • Bugfix in smo.GC.RebuildSelectedItemsViaPolyline
+        • Bugfix in smo.GC.ModollamaTriple (adding support to keep UV and Material bounds)
+        • Bugfix in smo.GC.TransferVNrmFromMouseOverSurface failing to work on Modo 16.1v8
+            'vertMap.transfer {%s} space:local method:raycast flip:off completion:true' % VMapsName
+            instead of 'vertMap.transferNormals false'
+
 - 12.25 -
         • Bugfix on smo.GC.Multi.ExportSelectedMeshesAsMeshPreset
           Before that bugfix, the Folder destination popup was shown up for every item exported. Now, it won't do this.

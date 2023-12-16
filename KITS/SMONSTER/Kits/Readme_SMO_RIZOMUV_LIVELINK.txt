@@ -1,9 +1,5 @@
-Hi. Everyone
-
-
 Since 2.2 Release:
 ======> You ALWAYS need to have SMO_MASTER ans SMONSTER Kit up and running to use the commands in the kit <======
-
 
 ------------------
 --- UPDATE LOG ---

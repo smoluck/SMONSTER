@@ -1,9 +1,13 @@
-Hi. Everyone
-
-
 --------------------
 ---- UPDATES ----
 --------------------
+- 1.80 -
+        • New Commands
+            • smo.BAKE.Multi.CreatePairsFromMesh
+        • Bugfix in smo.BAKE.SetBakePairs
+        • Bugfix in smo.BAKE.PairsLinkConstraint
+
+
 - 1.70 -
         • COMMAND Name Changed: smo.BAKE.CreateAndOrSelectCAGEMorph is now called smo.BAKE.CheckAndFixCAGEMorphMapsPresence
         • smo.BAKE.CheckAndFixCAGEMorphMapsPresence is now correctly analyzing all Meshes in the current scene to detect if a "CAGE" MorphMap is present.

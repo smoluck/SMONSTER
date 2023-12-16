@@ -1,9 +1,12 @@
-Hi. Everyone
-
-
 -----------------
 ---- UPDATES ----
 -----------------
+- 2.50 -
+        • New Command
+            • smo.BATCH.LoadFolderFilesFromUserPrefRecursive
+            Batch Load Files stored in a Folder (Recursive search) and Process the data using User Defined Preferences.
+            Input and Output Files Format are took from User Preferences SMO BATCH Panel
+
 - 2.20 -
 	• Updated preset load for Plasticity process
 	• added URL Link for further use of SLDPRT files from McMaster website for testing BATCH kit
