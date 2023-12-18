@@ -278,9 +278,11 @@ class SMO_MIFABOMA_FLIP_SelectedPolys_Cmd(lxu.command.BasicCommand):
                 if RefSystemActive:
                     lx.eval('item.refSystem {}')
                 lx.eval('select.type polygon')
-                lx.eval('workPlane.reset')
+                # lx.eval('workPlane.reset')
+                lx.eval('item.refSystem {%s}' % mesh.Ident())
                 lx.eval('workPlane.fitSelect')
                 lx.eval('workPlane.edit rotX:0.0 rotY:0.0 rotZ:0.0')
+
                 if CsPolys > 0:
                     lx.eval('hide.unsel')
 
@@ -341,6 +343,8 @@ class SMO_MIFABOMA_FLIP_SelectedPolys_Cmd(lxu.command.BasicCommand):
                         lx.eval('tool.attr xfrm.transform normal %s' % OriginalVNormalEditState)
                     lx.eval('select.nextMode')
                     lx.eval('tool.set TransformScale off')
+
+                lx.eval('item.refSystem {}')
 
                 if not RefSystemActive:
                     lx.eval('item.refSystem {}')
