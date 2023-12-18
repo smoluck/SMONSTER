@@ -9,7 +9,7 @@ Purpose:      This Command is designed to :
               Resolution defined by User value in Prefs (in pixel).
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Modified:     09/07/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

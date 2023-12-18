@@ -6,7 +6,7 @@ Purpose:        This Command is designed to:
                 Open the Training Scene using an ID integer as argument
 
 Author:         Franck ELISABETH
-Website:        https://www.smoluck.com
+Website:        https://www.linkedin.com/in/smoluck/
 Created:        14/08/2020
 Copyright:      (c) Franck Elisabeth 2017-2022
 """

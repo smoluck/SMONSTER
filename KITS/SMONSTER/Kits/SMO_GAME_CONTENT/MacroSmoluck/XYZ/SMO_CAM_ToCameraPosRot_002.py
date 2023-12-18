@@ -8,7 +8,7 @@ Purpose:		This script is designed to:
                 Each line is a new Vertex
 
 Author:         Franck ELISABETH
-Website:        https://www.smoluck.com
+Website:        https://www.linkedin.com/in/smoluck/
 Created:        29/11/2019
 Copyright:      (c) Franck Elisabeth 2017-2022
 """

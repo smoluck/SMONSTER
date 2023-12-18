@@ -6,7 +6,7 @@ Purpose:      This script is designed to
               Move Center to Item BBOX Center
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      22/08/2022
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

@@ -7,7 +7,7 @@ Purpose:      This script is designed to:
               Draw Option to the corresponding color.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      04/11/2019
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

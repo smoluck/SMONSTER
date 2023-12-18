@@ -7,7 +7,7 @@ Purpose:	  This script is designed to:
 			  MeshItems to a set of Replicators Merged via MergeMesh
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      29/03/2019
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

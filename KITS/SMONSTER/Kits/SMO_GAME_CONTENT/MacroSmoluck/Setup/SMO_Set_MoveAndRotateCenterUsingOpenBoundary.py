@@ -7,7 +7,7 @@ Purpose:      This script is designed to:
               the Center to Open boundary centroid and rotate it (use it in item mode)
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      20/06/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

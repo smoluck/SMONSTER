@@ -6,7 +6,7 @@ Purpose:      This script is designed to:
               Star Triple Similar Touching (Mouse over a polygon in item mode and launch)
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      22/09/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

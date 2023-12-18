@@ -1,17 +1,17 @@
 # python
 """
-Name:       SMO_BAKE_Multi_CreatePairsFromMesh_Cmd.py
+Name:           SMO_BAKE_Multi_CreatePairsFromMesh_Cmd.py
 
-Purpose:    This script is designed to:
-            (for Multiple items)
-            Create a New Bake Pairs from a Single High Poly mesh and
-            Enter into Polygon Editing To Reduce the Mesh Detail
+Purpose:        This script is designed to:
+                (for Multiple items)
+                Create a New Bake Pairs from a Single High Poly mesh and
+                Enter into Polygon Editing To Reduce the Mesh Detail
 
 
-Author:     Franck ELISABETH
-Website:    https://www.smoluck.com
-Created:    02/04/2021
-Copyright:  (c) Franck Elisabeth 2017-2022
+Author:         Franck ELISABETH
+Website:        https://www.linkedin.com/in/smoluck/
+Created:        02/04/2021
+Copyright:      (c) Franck Elisabeth 2017-2022
 """
 
 import lx

@@ -7,7 +7,7 @@ Purpose:            This Script is designed to:
                     and create ready to use Bake Project in Marmoset.
 
 Author:             Franck ELISABETH
-Website:            https://www.smoluck.com
+Website:            https://www.linkedin.com/in/smoluck/
 Created:            15/11/2020
 Copyright:          (c) Franck Elisabeth 2017-2022
 """

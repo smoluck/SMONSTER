@@ -7,7 +7,7 @@ Purpose:            This Script is designed to:
                     Resolution defined by Argument in pixel.
 
 Author:             Franck ELISABETH (with the help of Tom Dymond)
-Website:            https://www.smoluck.com
+Website:            https://www.linkedin.com/in/smoluck/
 Created:            12/08/2020
 Copyright:          (c) Franck Elisabeth 2017-2022
 """

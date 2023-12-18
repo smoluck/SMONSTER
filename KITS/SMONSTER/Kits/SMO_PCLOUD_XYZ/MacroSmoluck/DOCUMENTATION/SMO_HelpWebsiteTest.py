@@ -6,7 +6,7 @@ Purpose:            This Script is designed to:
                     Open the Smoluck Help Website
 
 Author:             Franck ELISABETH
-Website:            https://www.smoluck.com
+Website:            https://www.linkedin.com/in/smoluck/
 Created:            03/03/2020
 Copyright:          (c) Franck Elisabeth 2017-2022
 """

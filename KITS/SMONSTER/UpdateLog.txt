@@ -1,16 +1,14 @@
 -------------------------
 ---- UPDATES LOG----
 -------------------------
-
--------------------------
 v5.50 - 2023/12/16
 
         • Global Compatibility Update for Modo 17.X
         • Code reformatting and Event Log print Optimization
-        • Bugfix when user was using another Index Style than the Underscore mode (More to do on this)
+        • Bugfix (Special #A1#) when user was using another Index Style than the Underscore mode (More to do on this)
 
 QUICKTAG:
-        • Bugfix in smo.QT.Batch.SetMatColorIDRandomKeepCurrentSelection
+        • Bugfix in smo.QT.Batch.SetMatColorIDRandomKeepCurrentSelection (#A1#)
 
 BATCH:
         • New Command
@@ -28,23 +26,23 @@ GAME CONTENT:
         • Game Content Kit now have a "Quadruple NGon" in Polygon Context Menu
         • Code reformatting and Event Log print Optimization
         • Bugfix in smo.GC.SplitInTwoMeshesByLocalAxisSides to select back the meshes results
-        • Bugfix in smo.GC.SelectCoPlanarPoly
-        • Bugfix in smo.GC.IsolateItemAndInstances
-        • Bugfix in smo.GC.RebuildSelectedItemsViaPolyline
-        • Bugfix in smo.GC.RebuildSelectedItemsViaPolyline
+        • Bugfix in smo.GC.SelectCoPlanarPoly (#A1#)
+        • Bugfix in smo.GC.IsolateItemAndInstances (#A1#)
+        • Bugfix in smo.GC.RebuildSelectedItemsViaPolyline (#A1#)
+        • Bugfix in smo.GC.RebuildSelectedItemsViaPolyline (#A1#)
         • Bugfix in smo.GC.ModollamaTriple (adding support to keep UV and Material bounds)
         • Bugfix in smo.GC.TransferVNrmFromMouseOverSurface failing to work on Modo 16.1v8
             'vertMap.transfer {%s} space:local method:raycast flip:off completion:true' % VMapsName
             instead of 'vertMap.transferNormals false'
 
 VENOM:
-        • Bugfix in smo.VENOM.MainCommand
+        • Bugfix in smo.VENOM.MainCommand (#A1#)
 
 BAKE:
         • New Commands
             • smo.BAKE.Multi.CreatePairsFromMesh
-        • Bugfix in smo.BAKE.SetBakePairs
-        • Bugfix in smo.BAKE.PairsLinkConstraint
+        • Bugfix in smo.BAKE.SetBakePairs (#A1#)
+        • Bugfix in smo.BAKE.PairsLinkConstraint (#A1#)
 
 MIFABOMA:
         • New Commands and Menu

@@ -5,7 +5,7 @@ Name:         SMO_MASTER_GetSelMode_Cmd.py
 Purpose:      Give current Selection Mode Type and set it to String User Value.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      19/10/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

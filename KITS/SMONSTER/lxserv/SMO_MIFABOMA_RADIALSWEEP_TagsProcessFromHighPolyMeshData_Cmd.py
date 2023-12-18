@@ -6,7 +6,7 @@ Purpose:      This script is designed to:
               Create tags for MiFaBoMa RadialSweepLocal from Edges.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      05/02/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

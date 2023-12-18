@@ -6,7 +6,7 @@ Purpose:      This script is designed to:
               Attach SMO_GC_onDrop_RotateTool.py script to the selected MeshPreset file via PB_View and smo.GC.AttachScriptToPreset command.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      03/02/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

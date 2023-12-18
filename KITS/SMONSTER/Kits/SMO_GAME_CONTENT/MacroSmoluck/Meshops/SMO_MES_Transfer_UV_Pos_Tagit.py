@@ -6,7 +6,7 @@ Purpose: 	  This script is designed to:
 			  PreTag a set of 2 polygons on the Source Mesh
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      29/03/2019
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

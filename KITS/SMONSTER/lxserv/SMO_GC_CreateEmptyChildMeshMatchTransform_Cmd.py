@@ -6,7 +6,7 @@ Purpose:      This script is designed to:
               Create a new child Mesh Item (empty) on current selected mesh item.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      20/06/2022
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

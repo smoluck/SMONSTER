@@ -8,7 +8,7 @@ Purpose:      This script is designed to
               (Positive or Negative). Then recreate instances out of that mesh along that axis.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      17/08/2022
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

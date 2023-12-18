@@ -7,7 +7,7 @@ Purpose:      This script is designed to:
               selected Mesh, without or with a Guide Mesh creation.
 
 Author:       Franck ELISABETH (based on William Vaughan Script)
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      19/06/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

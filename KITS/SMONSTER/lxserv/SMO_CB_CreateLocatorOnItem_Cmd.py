@@ -6,7 +6,7 @@ Purpose:      This script is designed to
               Create a Locator on first selected mesh position and parent all the selected meshes to that Locator.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      13/04/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

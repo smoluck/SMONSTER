@@ -8,7 +8,7 @@ Purpose:      This script is designed to
               and Freeze the deformation / delete the morph map in order to export it.
 
 Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      09/07/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

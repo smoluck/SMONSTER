@@ -8,7 +8,7 @@ Purpose:      This script is designed to:
               Edges inside those Polygons.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      22/01/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

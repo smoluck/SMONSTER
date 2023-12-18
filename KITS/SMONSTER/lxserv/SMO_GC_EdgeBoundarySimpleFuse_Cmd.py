@@ -6,7 +6,7 @@ Purpose:      This script is designed to:
               MakePoly + Bevel Inset Outside + applying a VertexNormalTransfer to fuse the border with BG Mesh normals.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      04/12/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

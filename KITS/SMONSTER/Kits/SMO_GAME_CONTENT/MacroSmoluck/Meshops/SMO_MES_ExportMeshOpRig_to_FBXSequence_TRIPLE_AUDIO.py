@@ -7,7 +7,7 @@ Purpose:        This script is designed to:
                 as an FBX sequence. Select the MeshOp item and run.
 
 Author:         Franck ELISABETH
-Website:        https://www.smoluck.com
+Website:        https://www.linkedin.com/in/smoluck/
 Created:        28/05/2018
 Copyright:      (c) Franck Elisabeth 2017-2022
 """

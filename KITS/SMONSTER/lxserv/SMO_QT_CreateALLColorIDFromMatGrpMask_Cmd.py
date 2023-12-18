@@ -8,7 +8,7 @@ Purpose:      This script is designed to
               (Create a new Group Mask on top of the BaseShader with a Contant as Diffuse color (random values))
 
 Author:       Franck ELISABETH (with the help of Pavel Efimov)
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      31/03/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

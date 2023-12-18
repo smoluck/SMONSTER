@@ -6,7 +6,7 @@ Purpose:      This script is designed to:
               Set the current Renaming Method for UVMap by setting User Defined Preferences.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      21/06/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

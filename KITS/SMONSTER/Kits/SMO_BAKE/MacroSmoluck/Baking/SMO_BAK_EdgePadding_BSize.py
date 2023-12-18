@@ -6,7 +6,7 @@ Purpose:      This script is designed to:
               Set the Render Frame Size as well as the Edge Padding for bakes.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      10/09/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

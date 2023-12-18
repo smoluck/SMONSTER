@@ -6,7 +6,7 @@ Purpose:      This script is designed to
               Create a still images (clips) Item of the current scene.
 
 Author:       Franck ELISABETH (with the help of Tom Dymond)
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      12/08/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

@@ -6,7 +6,7 @@ Purpose:      This Command is designed to:
               Select the LowPoly meshes and Create MikkTangent Basis Map.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:     09/07/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

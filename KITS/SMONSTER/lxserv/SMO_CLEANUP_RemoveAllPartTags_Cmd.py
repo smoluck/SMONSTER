@@ -5,7 +5,7 @@ Name:         SMO_CLEANUP_RemoveAllPartTags_Cmd.py
 Purpose:      Check for all Meshes in the current scene remove any part tags in it.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      21/10/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

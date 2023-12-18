@@ -7,7 +7,7 @@ Purpose:        This script is designed to:
                 by the CAD Rebevel commands
 
 Author:         Franck ELISABETH
-Website:        https://www.smoluck.com
+Website:        https://www.linkedin.com/in/smoluck/
 Created:        05/04/2021
 Copyright:      (c) Franck Elisabeth 2017-2022
 """

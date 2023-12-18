@@ -6,7 +6,7 @@ Purpose:      This script is designed to
               get used in Static analysis. It checks if a mesh have a VertexNormal Map.
 
 Author:       Franck ELISABETH (with the help of Tom Dymond)
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      06/12/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

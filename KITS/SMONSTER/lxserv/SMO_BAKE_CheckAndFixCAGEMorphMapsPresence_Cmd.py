@@ -6,7 +6,7 @@ Purpose:      This Command is designed to:
               Check if CAGE Map exist on current Mesh. If not, create a new MorphMap, then Select that CAGE Morph.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Modified:     07/04/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

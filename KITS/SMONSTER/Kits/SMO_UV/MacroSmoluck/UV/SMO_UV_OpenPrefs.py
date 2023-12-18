@@ -6,7 +6,7 @@ Purpose:        This script is designed to:
                 Open the SMO UV Kit Preferences.
 
 Author:         Franck ELISABETH
-Website:        https://www.smoluck.com
+Website:        https://www.linkedin.com/in/smoluck/
 Created:        14/05/2020
 Copyright:      (c) Franck Elisabeth 2017-2022
 """

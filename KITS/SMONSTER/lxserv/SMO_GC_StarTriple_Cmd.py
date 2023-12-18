@@ -6,7 +6,7 @@ Purpose:      This script is designed to:
               Star Triple area using touching polygons and same Facing Ratio.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      15/04/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

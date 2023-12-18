@@ -7,7 +7,7 @@ Purpose:      This script is designed to:
               Input and Output Files Format are took from User Preferences SMO BATCH Panel
 
 Author:       Franck ELISABETH (with the help of James O'Hare)
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      01/10/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

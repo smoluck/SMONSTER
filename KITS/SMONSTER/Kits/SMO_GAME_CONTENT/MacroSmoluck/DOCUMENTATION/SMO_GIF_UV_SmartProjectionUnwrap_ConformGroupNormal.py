@@ -6,7 +6,7 @@ Purpose:		This script is designed to:
                 Open the GIF  as documentation helper
 
 Author:         Franck ELISABETH
-Website:        https://www.smoluck.com
+Website:        https://www.linkedin.com/in/smoluck/
 Created:        30/05/2019
 Copyright:      (c) Franck Elisabeth 2017-2022
 """

@@ -6,7 +6,7 @@ Purpose:		This script is designed to:
                 Quadruple a Ngon base on a selection of 2 Edges Guide and the NGon polygon selection.
 
 Author:       	Franck ELISABETH
-Website:      	https://www.smoluck.com
+Website:      	https://www.linkedin.com/in/smoluck/
 Created:      	21/05/2019
 Copyright:    	(c) Franck Elisabeth 2017-2022
 """

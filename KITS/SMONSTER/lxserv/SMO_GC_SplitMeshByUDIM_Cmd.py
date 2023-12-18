@@ -8,7 +8,7 @@ Purpose:      This script is designed to
               Mesh Name + PrefixName + UDIM ID from selected Mesh.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      23/02/2022
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

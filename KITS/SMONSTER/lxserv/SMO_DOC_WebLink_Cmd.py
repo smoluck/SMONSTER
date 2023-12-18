@@ -6,7 +6,7 @@ Purpose:      This Command is designed to:
               Open a WebLink using a String Argument for address.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      29/08/2022
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

@@ -7,7 +7,7 @@ Purpose:      This script is designed to:
               with the UV - Smart Projection Scripts
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      03/12/2019
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

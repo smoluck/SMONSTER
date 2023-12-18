@@ -6,7 +6,7 @@ Purpose:      This script is designed to:
               Unbevel the Polygon Selection, by using the MouseOver the Edge Ring
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      05/02/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

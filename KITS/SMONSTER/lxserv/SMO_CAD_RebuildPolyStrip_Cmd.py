@@ -8,7 +8,7 @@ Purpose:      This script is designed to:
               rebuild on the selected polystrip band (via 2 set of Edges).
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      31/03/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

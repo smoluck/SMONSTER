@@ -6,7 +6,7 @@ Purpose:      This script is designed to:
               Check Top/Down/Left/Right Side Bars State.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      06/12/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

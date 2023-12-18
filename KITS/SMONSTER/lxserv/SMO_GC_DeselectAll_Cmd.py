@@ -6,7 +6,7 @@ Purpose:      This script is designed to
               Deselect anything in the current scene. Items(Meshes, Lights, etc) / Materials or Schematic Nodes.
 
 Author:       Franck ELISABETH (with the help of Pavel Efimov)
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      26/03/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

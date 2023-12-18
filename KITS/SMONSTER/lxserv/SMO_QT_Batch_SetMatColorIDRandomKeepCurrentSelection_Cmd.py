@@ -8,7 +8,7 @@ Purpose:      This script is designed to
               to hide current Processed polygons
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      10/05/2022
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

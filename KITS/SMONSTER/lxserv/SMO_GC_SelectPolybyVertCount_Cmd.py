@@ -7,7 +7,7 @@ Purpose:      This script is designed to:
               Select Mesh Layers and run.
 
 Author:       Franck ELISABETH (with the help of Tom Dymond)
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      08/07/2019
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

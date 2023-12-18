@@ -5,7 +5,7 @@ Name:         SMO_MESHOP_Add_Cmd.py
 Purpose:      Add a Meshop and add it to the Schematic.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      06/08/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

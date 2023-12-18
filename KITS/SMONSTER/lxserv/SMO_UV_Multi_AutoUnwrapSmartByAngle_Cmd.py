@@ -8,7 +8,7 @@ Purpose:      This script is designed to
               defined by a Min and Max Angle as Seams.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      21/12/2022
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

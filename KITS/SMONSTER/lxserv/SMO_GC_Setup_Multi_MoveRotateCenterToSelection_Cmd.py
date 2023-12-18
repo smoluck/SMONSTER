@@ -6,7 +6,7 @@ Purpose:      This script is designed to:
               Move and / or Rotate the Center to Selection center (use it in item mode or Component mode).
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      22/08/2022
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

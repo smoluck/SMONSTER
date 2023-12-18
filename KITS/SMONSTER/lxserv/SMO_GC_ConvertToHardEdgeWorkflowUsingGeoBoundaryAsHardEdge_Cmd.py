@@ -7,7 +7,7 @@ Purpose:      This script is designed to:
               as "HardEdge" and set all other Edges as "Smooth".
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      11/05/2022
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

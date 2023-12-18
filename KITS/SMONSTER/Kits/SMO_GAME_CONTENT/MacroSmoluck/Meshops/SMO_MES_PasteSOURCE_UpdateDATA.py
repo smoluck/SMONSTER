@@ -6,7 +6,7 @@ Purpose:      This script is designed to:
               Paste the SOURCE DATA (Polygon and UVs) and save the Scene
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      29/03/2019
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

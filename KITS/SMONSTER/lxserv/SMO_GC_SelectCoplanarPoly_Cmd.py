@@ -6,7 +6,7 @@ Purpose:      This Command is designed to
               (Replace the old Seneca Lazy Select by the Built-in Select CoPlanar poly tool.)
 
 Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      22/04/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

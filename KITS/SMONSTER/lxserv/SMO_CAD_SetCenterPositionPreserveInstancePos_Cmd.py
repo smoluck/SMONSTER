@@ -6,7 +6,7 @@ Purpose:      This script is designed to
               Set the Center of the current Mesh item to selected Polygons Center, but preserving the Instances Positions.
 
 Author:       Franck ELISABETH (with the help of Pavel Efimov)
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      26/03/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

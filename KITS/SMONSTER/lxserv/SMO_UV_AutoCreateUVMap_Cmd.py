@@ -6,7 +6,7 @@ Purpose:      This script is designed to
               Automatically Create a UV Map if missing using Default UVMap Name in Preferences.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      11/12/2022
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

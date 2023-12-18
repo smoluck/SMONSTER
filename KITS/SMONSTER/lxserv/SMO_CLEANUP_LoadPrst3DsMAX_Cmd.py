@@ -7,7 +7,7 @@ Purpose:      This script is designed to:
               Preferences to be used by the Batch Cleaner command.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      19/12/2019
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

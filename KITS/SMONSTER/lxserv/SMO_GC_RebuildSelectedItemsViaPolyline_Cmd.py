@@ -7,7 +7,7 @@ Purpose:      This script is designed to
               Delete the original Data.
 
 Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      18/09/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

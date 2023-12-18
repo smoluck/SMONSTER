@@ -6,7 +6,7 @@ Purpose:      This script is designed to
               Get the Drawing Package State of the current mesh or Locator. If not present add a Drawing Package.
 
 Author:       Franck ELISABETH (with the help of Tom Dymond)
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      12/12/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

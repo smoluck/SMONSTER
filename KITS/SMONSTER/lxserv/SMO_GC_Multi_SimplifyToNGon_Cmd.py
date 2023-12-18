@@ -8,7 +8,7 @@ Purpose:      This Command is designed to
               Via argument, you can also update the HardEdges data for a better end result.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      16/06/2022
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

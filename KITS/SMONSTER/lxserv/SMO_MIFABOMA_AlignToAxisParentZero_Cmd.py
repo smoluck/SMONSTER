@@ -7,7 +7,7 @@ Purpose:      This script is designed to
               It use X Y Z axis as argument for the direction.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      17/08/2022
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

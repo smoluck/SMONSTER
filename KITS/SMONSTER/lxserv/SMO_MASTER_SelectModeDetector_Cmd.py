@@ -7,7 +7,7 @@ Purpose:      This Command is designed to Mirror
               user values based on the detection for further use of the tool.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      17/05/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

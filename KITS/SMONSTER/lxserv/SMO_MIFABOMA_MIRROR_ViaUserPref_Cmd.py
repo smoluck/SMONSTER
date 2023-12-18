@@ -9,7 +9,7 @@ Purpose:      This Command is designed to
               and if you clone also the hierarchy.
 
 Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      16/09/2019
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

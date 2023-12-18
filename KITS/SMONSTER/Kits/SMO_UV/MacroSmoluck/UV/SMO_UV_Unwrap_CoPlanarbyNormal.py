@@ -6,7 +6,7 @@ Purpose:		Select one Polygon an is will unwrap all the adjacent
 				polygons based on the Normal of theis CoPlanar Island.
 
 Author:			Franck ELISABETH
-Website:		https://www.smoluck.com
+Website:		https://www.linkedin.com/in/smoluck/
 Created:		11/04/2019
 Copyright:		(c) Franck Elisabeth 2017-2022
 """

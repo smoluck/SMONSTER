@@ -7,7 +7,7 @@ Purpose:      This script is designed to:
               but preserve the Instances Positions in Worldspace.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      19/04/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

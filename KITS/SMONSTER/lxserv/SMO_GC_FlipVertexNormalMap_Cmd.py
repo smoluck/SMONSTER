@@ -6,7 +6,7 @@ Purpose:      This script is designed to
               Flip the VertexNormalMap Data on selected Component.
 
 Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      07/06/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

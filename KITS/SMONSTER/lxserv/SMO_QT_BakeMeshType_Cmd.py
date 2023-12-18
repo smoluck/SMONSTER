@@ -6,7 +6,7 @@ Purpose:      This script is designed to:
               Add an MTyp Tag to the current selected Mesh item. it define it as low or high poly mesh for Baking purpose.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      25/11/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

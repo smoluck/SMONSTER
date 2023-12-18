@@ -6,7 +6,7 @@ Purpose:      This Command is designed to:
               Create Image to PixaFlux Folder to Temp folder
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Modified:     09/07/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

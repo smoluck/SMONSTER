@@ -7,7 +7,7 @@ Purpose:      This script is designed to:
               Filter only the Mesh Item to be selected at the end.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      25/04/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

@@ -6,7 +6,7 @@ Purpose:      This script is designed to
               Get all the Material Tags in the scene.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      12/08/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

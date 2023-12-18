@@ -6,7 +6,7 @@ Purpose:      This script is designed to
               Flip the Polygon selection using the Local Axis (using Item Axis and Selected Poly Center)
 
 Author:       Franck ELISABETH (with the help of Tom Dymond for debug)
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      27/02/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

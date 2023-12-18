@@ -7,7 +7,7 @@ Purpose:		This script is designed to:
                 of a Mesh Item based on Poly, Edge, and Vertex selection
 
 Author:       	Franck ELISABETH
-Website:      	https://www.smoluck.com
+Website:      	https://www.linkedin.com/in/smoluck/
 Created:      	10/03/2019
 Copyright:    	(c) Franck Elisabeth 2017-2022
 """

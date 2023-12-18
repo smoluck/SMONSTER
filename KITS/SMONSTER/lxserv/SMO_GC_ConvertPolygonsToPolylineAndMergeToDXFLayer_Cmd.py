@@ -7,7 +7,7 @@ Purpose:      This script is designed to:
               to Polyline data and then merge all the lines into a single mesh for DXF export.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      28/09/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

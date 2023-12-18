@@ -7,7 +7,7 @@ Purpose:            This Script is designed to:
                     from the current Layer on a defined Axis (controlled by Argument).
 
 Author:             Franck ELISABETH
-Website:            https://www.smoluck.com
+Website:            https://www.linkedin.com/in/smoluck/
 Created:            16/09/2019
 Copyright:          (c) Franck Elisabeth 2017-2022
 """

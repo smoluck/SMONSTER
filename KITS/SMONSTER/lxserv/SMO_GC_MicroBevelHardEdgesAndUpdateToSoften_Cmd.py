@@ -6,7 +6,7 @@ Purpose:      This Command is designed to
               Micro Bevel HardEdges (usually after a SimplyToNgon), then Soften all edges.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      16/06/2022
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

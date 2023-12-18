@@ -6,7 +6,7 @@ Purpose:      This script is designed to:
               Split current selected mesh by Material Tag.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      03/04/2022
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

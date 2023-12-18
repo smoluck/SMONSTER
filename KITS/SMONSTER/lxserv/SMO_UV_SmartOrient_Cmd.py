@@ -7,7 +7,7 @@ Purpose:      This script is designed to:
               based on Poly or Edge Selection.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      28/12/2018
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

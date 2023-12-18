@@ -6,7 +6,7 @@ Purpose:		This script is designed to:
 				set automatically a defined Falloff
 
 Author:       	Franck ELISABETH
-Website:      	https://www.smoluck.com
+Website:      	https://www.linkedin.com/in/smoluck/
 Created:      	16/09/2019
 Copyright:    	(c) Franck Elisabeth 2017-2022
 """

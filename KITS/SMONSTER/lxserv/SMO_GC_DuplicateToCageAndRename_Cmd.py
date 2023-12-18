@@ -7,7 +7,7 @@ Purpose:      This script is designed to:
               It applies different method for renaming based on User Index Style defined in Modo Preferences
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      03/12/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

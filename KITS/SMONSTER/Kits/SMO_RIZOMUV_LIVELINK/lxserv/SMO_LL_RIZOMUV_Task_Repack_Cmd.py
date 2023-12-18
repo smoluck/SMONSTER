@@ -7,7 +7,7 @@ Purpose:        This Command is designed to:
                 on given range of distorted UVIsland and get the updated data back in Modo.
 
 Author:         Franck ELISABETH
-Website:        https://www.smoluck.com
+Website:        https://www.linkedin.com/in/smoluck/
 Created:        23/04/2023
 Copyright:      (c) Franck Elisabeth 2017-2022
 """

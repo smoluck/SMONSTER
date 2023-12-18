@@ -7,7 +7,7 @@ Purpose:		This script is designed to:
                 is sharing the same normal in a range of 40 Degree
 
 Author:         Franck ELISABETH
-Website:        https://www.smoluck.com
+Website:        https://www.linkedin.com/in/smoluck/
 Created:        01/07/2019
 Copyright:      (c) Franck Elisabeth 2017-2022
 """

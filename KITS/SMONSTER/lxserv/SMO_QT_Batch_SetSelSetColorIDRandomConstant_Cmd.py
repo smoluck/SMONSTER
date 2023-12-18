@@ -7,7 +7,7 @@ Purpose:      This script is designed to:
               It can run over Selected Meshes or SceneWide, By Items or by Polygon Islands.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      12/04/2022
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

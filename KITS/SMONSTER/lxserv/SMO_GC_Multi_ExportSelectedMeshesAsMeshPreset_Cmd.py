@@ -7,7 +7,7 @@ Purpose:      This script is designed to:
               (optional: Define Path destination as argument)
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      12/05/2022
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

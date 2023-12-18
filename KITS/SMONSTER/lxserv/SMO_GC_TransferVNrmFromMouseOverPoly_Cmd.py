@@ -7,7 +7,7 @@ Purpose:      This script is designed to:
               from the Surface under mouse pointer (mouseOver).
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      31/12/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

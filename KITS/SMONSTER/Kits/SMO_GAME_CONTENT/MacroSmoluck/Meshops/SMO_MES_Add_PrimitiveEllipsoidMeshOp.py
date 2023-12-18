@@ -6,7 +6,7 @@ Purpose:		This script is designed to:
                 Add an Ellipsoid Meshop and add it to the Schematic.
 
 Author:         Franck ELISABETH
-Website:        https://www.smoluck.com
+Website:        https://www.linkedin.com/in/smoluck/
 Created:        07/03/2019
 Copyright:      (c) Franck Elisabeth 2017-2022
 """

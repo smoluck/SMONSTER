@@ -6,7 +6,7 @@ Purpose:            This Script is designed to:
                     Align a set of item on their position based on the first selected
 
 Author:       		Franck ELISABETH
-Website:      		https://www.smoluck.com
+Website:      		https://www.linkedin.com/in/smoluck/
 Created:      		28/12/2018
 Copyright:    		(c) Franck Elisabeth 2017-2022
 """

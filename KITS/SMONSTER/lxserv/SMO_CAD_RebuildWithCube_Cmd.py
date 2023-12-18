@@ -5,7 +5,7 @@ Name:           SMO_CAD_RebuildWithCube_Cmd.py
 Purpose:        This script is designed to Rebuild the Selected Volume (Polygon Mode) with just a Cube
 
 Author:         Franck ELISABETH
-Website:        https://www.smoluck.com
+Website:        https://www.linkedin.com/in/smoluck/
 Created:        13/04/2019
 Copyright:      (c) Franck Elisabeth 2017-2022
 """

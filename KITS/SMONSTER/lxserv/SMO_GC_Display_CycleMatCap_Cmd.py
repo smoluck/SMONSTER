@@ -9,7 +9,7 @@ Purpose:      This script is designed to:
               Select in Item Mode or in Component Mode
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      14/02/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

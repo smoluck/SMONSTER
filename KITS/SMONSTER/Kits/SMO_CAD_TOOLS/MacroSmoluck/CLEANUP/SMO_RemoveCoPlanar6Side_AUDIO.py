@@ -8,7 +8,7 @@ Purpose:      Select the Mesh in Item Mode
               (Some of the code is related to the Seneca LazySelect script. Thanks to him for let me integrate it here)
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      28/05/2018
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

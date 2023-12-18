@@ -8,7 +8,7 @@ Purpose:      This script is designed to:
               You need to be in Item Mode to launch it.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      25/03/2019
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

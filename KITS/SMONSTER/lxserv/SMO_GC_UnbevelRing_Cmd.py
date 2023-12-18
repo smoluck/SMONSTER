@@ -6,7 +6,7 @@ Purpose:      This script is designed to:
               Select current Edge Ring and Unbevel the selection.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      11/11/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

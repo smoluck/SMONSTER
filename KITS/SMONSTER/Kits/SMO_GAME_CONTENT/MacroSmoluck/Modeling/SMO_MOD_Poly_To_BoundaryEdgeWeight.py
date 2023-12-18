@@ -6,7 +6,7 @@ Purpose:		This script is designed to:
 				Apply a specific edge weight to Subdivision weights map
 
 Author:       	Franck ELISABETH
-Website:      	https://www.smoluck.com
+Website:      	https://www.linkedin.com/in/smoluck/
 Created:      	10/03/2018
 Copyright:    	(c) Franck Elisabeth 2017-2022
 """

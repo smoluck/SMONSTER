@@ -12,7 +12,7 @@ Purpose:      This script is designed to:
               Select one Mesh Fusion Item and run.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      21/09/2019
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

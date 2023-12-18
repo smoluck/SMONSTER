@@ -8,7 +8,7 @@ Purpose:        This Command is designed to:
                 (original file overwritted by RizomUV).
 
 Author:         Franck ELISABETH (With the help of James O'Hare (Farfarer)
-Website:        https://www.smoluck.com
+Website:        https://www.linkedin.com/in/smoluck/
 Created:        22/05/2017
 Copyright:      (c) Franck Elisabeth 2017-2022
 """

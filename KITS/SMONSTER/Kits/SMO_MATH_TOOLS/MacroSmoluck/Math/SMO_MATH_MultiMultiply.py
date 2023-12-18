@@ -7,7 +7,7 @@ Purpose:        This script is designed to:
                 link and divide it by 2 by default.
 
 Author:         Franck ELISABETH
-Website:        https://www.smoluck.com
+Website:        https://www.linkedin.com/in/smoluck/
 Created:        28/10/2019
 Copyright:      (c) Franck Elisabeth 2017-2022
 """

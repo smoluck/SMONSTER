@@ -7,7 +7,7 @@ Purpose:      This script is designed to:
               item of the imported asset. It will also convert the VertexNormals Data to HardEdgeWorkflow if needed.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      11/05/2022
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

@@ -9,7 +9,7 @@ Purpose:      This script is designed to:
               All Colinear Vertex and finaly Triple the resulting Ngon.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      03/06/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

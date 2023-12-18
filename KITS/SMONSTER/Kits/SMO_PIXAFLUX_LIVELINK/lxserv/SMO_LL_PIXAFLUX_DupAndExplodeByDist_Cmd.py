@@ -10,7 +10,7 @@ Purpose:            This Script is designed to:
                     if smo.LL.PIXAFLUX.DupAndExplodeByDist 0    ==> Mode is asking user Distance value
 
 Author:             Franck ELISABETH (with the help of Tom Dymond for debug)
-Website:            https://www.smoluck.com
+Website:            https://www.linkedin.com/in/smoluck/
 Created:            09/07/2020
 Copyright:          (c) Franck Elisabeth 2017-2022
 """

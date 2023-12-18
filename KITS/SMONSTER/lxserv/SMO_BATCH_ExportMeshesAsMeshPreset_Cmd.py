@@ -6,7 +6,7 @@ Purpose:      This script is designed to:
               Batch Export Meshes As MeshPreset LXL file into Target Path.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      27/10/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

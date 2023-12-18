@@ -7,7 +7,7 @@ Purpose:      This script is designed to:
               FBX Export in the current scene. Position / Rotation / Scale
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      03/03/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

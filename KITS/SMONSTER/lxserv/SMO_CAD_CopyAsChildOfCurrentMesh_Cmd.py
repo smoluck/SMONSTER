@@ -6,7 +6,7 @@ Purpose:      This script is designed to:
               Copy selected Polygons to a new mesh as a child of the current mesh item.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      07/05/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

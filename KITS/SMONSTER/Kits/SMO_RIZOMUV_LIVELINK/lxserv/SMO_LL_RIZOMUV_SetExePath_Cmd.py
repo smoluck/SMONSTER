@@ -7,7 +7,7 @@ Purpose:      This Command is designed to
               It will prompt a File browser to get the EXE file Location.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Modified:     22/05/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

@@ -6,7 +6,7 @@ Purpose:      This script is designed to:
               Select corresponding LowPoly / Cage / HighPoly meshes for further FBX Export.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      30/11/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

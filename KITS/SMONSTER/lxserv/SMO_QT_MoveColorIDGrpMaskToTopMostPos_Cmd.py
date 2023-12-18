@@ -6,7 +6,7 @@ Purpose:      This script is designed to
               Select BaseShader Item in current Scene (Assuming there is only one)
 
 Author:       Franck ELISABETH (with the help of Mateusz Losinski )
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      13/12/2022
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

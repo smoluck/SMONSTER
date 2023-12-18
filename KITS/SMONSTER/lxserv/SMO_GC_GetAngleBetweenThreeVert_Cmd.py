@@ -8,7 +8,7 @@ Purpose:      This script is designed to:
 
 Author:       Franck ELISABETH
 GetRotFromThreeVector based on code from  Avatar "rockjail" on https://gist.github.com/rockjail/9e9379c4e52e72cb4cba
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      03/12/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

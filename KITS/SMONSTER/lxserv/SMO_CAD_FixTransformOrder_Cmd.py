@@ -6,7 +6,7 @@ Purpose:      This script is designed to:
               Change the Transform Order of current selected item to XYZ Order.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      07/05/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

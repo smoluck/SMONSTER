@@ -6,7 +6,7 @@ Purpose:        This script is designed to:
                 Add a Sub node to the current link.
 
 Author:         Franck ELISABETH
-Website:        https://www.smoluck.com
+Website:        https://www.linkedin.com/in/smoluck/
 Created:        28/10/2019
 Copyright:      (c) Franck Elisabeth 2017-2022
 """

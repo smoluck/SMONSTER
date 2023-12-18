@@ -8,7 +8,7 @@ Purpose:      This script is designed to
               the Root Parent of it, in the ItemList.
 
 Author:       Franck ELISABETH ( Solution by Rouven Miller )
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      18/08/2022
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

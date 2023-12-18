@@ -7,7 +7,7 @@ Purpose:      This script is designed to:
               Delete the empty meshes in the process as well.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      11/05/2022
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

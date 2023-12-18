@@ -7,7 +7,7 @@ Purpose:      This script is designed to
               using Selection Set (polygons) on the selected Mesh Layers
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      17/05/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

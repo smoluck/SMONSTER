@@ -7,7 +7,7 @@ Purpose:      This script is designed to:
 
 Author:       (Code by Ivo Grigull -- CmdSetTag.py command)
               Adapted to kit needs:     Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      30/11/2020
 """
 

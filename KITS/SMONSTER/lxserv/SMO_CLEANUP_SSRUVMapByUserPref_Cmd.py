@@ -7,7 +7,7 @@ Purpose:      This script is designed to:
                and Rename it to default or Target UVMap.
 
 Author:       Franck ELISABETH (with the help of James O'Hare)
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      21/06/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

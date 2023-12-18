@@ -7,7 +7,7 @@ Purpose:      This script is designed to
               and Orient the UV Island on defined direction (Via Arguments).
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      01/07/2018
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

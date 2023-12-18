@@ -8,7 +8,7 @@ Purpose:      Select the Mesh in Item Mode
               LazySelect script. Thanks to him for let me integrate it here)
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      14/04/2019
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

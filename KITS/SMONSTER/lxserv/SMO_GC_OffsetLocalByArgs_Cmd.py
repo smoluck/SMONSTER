@@ -6,7 +6,7 @@ Purpose:      This script is designed to:
               Move the current Selection by a specific distance in Float on X Y Z.
 
 Author:       Franck ELISABETH (with the help of James O'Hare)
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      28/03/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

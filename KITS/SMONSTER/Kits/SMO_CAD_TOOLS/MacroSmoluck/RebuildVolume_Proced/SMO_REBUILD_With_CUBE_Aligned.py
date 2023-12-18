@@ -8,7 +8,7 @@ Purpose: 		This script is designed to:
                 the Bounding Box of this Volume.
 
 Author:       	Franck ELISABETH
-Website:      	https://www.smoluck.com
+Website:      	https://www.linkedin.com/in/smoluck/
 Created:      	13/03/2019
 Copyright:    	(c) Franck Elisabeth 2017-2022
 """

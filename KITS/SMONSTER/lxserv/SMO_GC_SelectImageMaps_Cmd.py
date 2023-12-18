@@ -7,7 +7,7 @@ Purpose:      This script is designed to
               scene and set is Effect mode via arguments.
 
 Author:       Franck ELISABETH (with the help of Tom Dymond)
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      12/08/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

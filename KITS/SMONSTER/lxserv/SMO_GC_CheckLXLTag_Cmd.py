@@ -6,7 +6,7 @@ Purpose:      This script is designed to:
               Check Scene LXLT tag state and give the ability to change the Mesh Preset Tag name.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      08/11/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

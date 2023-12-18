@@ -8,7 +8,7 @@ Purpose:      This script is designed to
               If you add the argument True it will automatically fix those vertex.
 
 Author:       Franck ELISABETH (with the help of Andreas Ranman (aka Roberyman))
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      07/12/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

@@ -9,7 +9,7 @@ Purpose:      This script is designed to
               It replaces default command: "poly.setMaterial" (but you can change this in the preference)
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      11/10/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

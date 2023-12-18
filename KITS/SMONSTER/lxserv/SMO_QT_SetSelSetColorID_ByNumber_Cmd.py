@@ -7,7 +7,7 @@ Purpose:      This script is designed to
               Named the new Mat using "ColorID" as Prefix. Color ID Number set by Argument.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      17/01/2022
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

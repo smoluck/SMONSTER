@@ -7,7 +7,7 @@ Purpose:      This script is designed to:
               it retains Instances scale to 100 percent or -100 percent as well.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      02/06/2022
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

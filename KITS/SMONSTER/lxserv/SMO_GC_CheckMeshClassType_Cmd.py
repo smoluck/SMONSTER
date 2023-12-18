@@ -7,7 +7,7 @@ Purpose:      This script is designed to:
               and if it has the corresponding MTyp tag set.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      03/12/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

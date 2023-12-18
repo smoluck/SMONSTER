@@ -7,7 +7,7 @@ Purpose:      This script is designed to
               commands to then set new ones back, using the smonster commander.
 
 Author:       Franck ELISABETH (with the help of Pavel Efimov)
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      26/03/2018
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

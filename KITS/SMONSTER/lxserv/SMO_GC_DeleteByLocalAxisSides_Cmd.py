@@ -6,7 +6,7 @@ Purpose:      This script is designed to
               Delete vertex by Local Axis Side (positive or negative).
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      17/08/2022
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

@@ -6,7 +6,7 @@ Purpose:      This script is designed to:
               Replace the current Preset Thumbnail by SMO ThumbnailMaker_Template scene Render.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      03/02/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

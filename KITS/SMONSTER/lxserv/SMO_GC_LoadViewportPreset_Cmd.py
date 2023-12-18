@@ -6,7 +6,7 @@ Purpose:      This Command is designed to :
               Load Corresponding Viewport Preset based on Modo Version to limit struggle with Preset form changes.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:     13/10/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

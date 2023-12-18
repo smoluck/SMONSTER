@@ -6,7 +6,7 @@ Purpose:      This script is designed to:
               Extend the current Opened Boundary Edge Loop to nearest BG Mesh using BG Constraint.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      04/12/2021
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

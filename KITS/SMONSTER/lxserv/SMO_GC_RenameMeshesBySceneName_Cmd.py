@@ -8,7 +8,7 @@ Purpose:      This script is designed to:
               Script will save the scene in same places as the current opened scene.
 
 Author:       Franck ELISABETH (with the help of James O'Hare)
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      30/09/2020
 Copyright:    (c) Franck Elisabeth 2017-2022
 """

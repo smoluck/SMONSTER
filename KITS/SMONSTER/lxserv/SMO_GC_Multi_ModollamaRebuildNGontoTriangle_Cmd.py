@@ -7,7 +7,7 @@ Purpose:      This Command is designed to
               Rebuild all NGons via Modollama Triangulation command to output Triangles.
 
 Author:       Franck ELISABETH
-Website:      https://www.smoluck.com
+Website:      https://www.linkedin.com/in/smoluck/
 Created:      16/06/2022
 Copyright:    (c) Franck Elisabeth 2017-2022
 """
