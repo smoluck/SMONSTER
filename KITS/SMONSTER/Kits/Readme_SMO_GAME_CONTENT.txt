@@ -1,7 +1,14 @@
 ----------------------
 --- UPDATE LOG ---
 ----------------------
-14.00
+- 14.50 -
+        • New Command
+            • Select Regular Meshes or Procedural Meshes (Mesh Items that does or doesn't have Meshops attached to them, and that can be edited directly)
+            • smo.GC.FilterMeshesByType - DirectModeling Meshes or Procedural Meshes (scenewise)
+            • smo.GC.FilterMeshesByType - DirectModeling Meshes or Procedural Meshes (from selection)
+            • Command available from SMO Item Context Menu
+
+- 14.00 -
         • New Commands and Menu
             • SMO GC SPLIT MENU
             • smo.GC.Multi.SplitInTwoMeshesByLocalAxisSides

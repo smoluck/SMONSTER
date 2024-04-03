@@ -250,7 +250,7 @@ class SMO_QT_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
         # print('Blue Color is: %s' % B)
 
         Modo_ver = int(lx.eval('query platformservice appversion ?'))
-        lx.out('Modo Version:', Modo_ver)
+        # lx.out('Modo Version:', Modo_ver)
 
         def SetColorOnNode(IDNum):
             if IDNum == PrstColorIDRed:

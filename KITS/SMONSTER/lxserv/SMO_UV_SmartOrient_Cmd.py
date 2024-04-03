@@ -218,7 +218,7 @@ class SMO_UV_SmartOrient_Cmd(lxu.command.BasicCommand):
         # Modo 13.0 and up have UV Seam map.
         # Version below 13.0 haven't
         Modo_ver = int(lx.eval('query platformservice appversion ?'))
-        lx.out('Modo Version:', Modo_ver)
+        # lx.out('Modo Version:', Modo_ver)
 
         # Define the UV Seam vmap name Search case.
         lx.eval("user.defNew name:UVOrient_DesiredUVSEAMmapName type:string life:momentary")

@@ -22,7 +22,7 @@ class SMO_Cleanup_UpdateMat_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.Modo_ver = int(lx.eval('query platformservice appversion ?'))
-        lx.out('Modo Version:', self.Modo_ver)
+        # lx.out('Modo Version:', self.Modo_ver)
 
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO

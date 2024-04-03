@@ -475,7 +475,7 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
         # ---------------- Define current value for the Prerequisite TotalSafetyCheck --- END
 
         Modo_ver = int(lx.eval('query platformservice appversion ?'))
-        # print('Modo Version:', Modo_ver)
+        # lx.out('Modo Version:', Modo_ver)
 
         # ------------------------ #
         # <----( Main Macro )----> #

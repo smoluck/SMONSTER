@@ -1,6 +1,32 @@
 -------------------------
 ---- UPDATES LOG----
 -------------------------
+v5.65 - 2024/04/03
+GAME CONTENT:
+        • New Command
+            • Select Regular Meshes or Procedural Meshes (Mesh Items that does or doesn't have Meshops attached to them, and that can be edited directly)
+            • smo.GC.FilterMeshesByType - DirectModeling Meshes or Procedural Meshes (scenewise)
+            • smo.GC.FilterMeshesByType - DirectModeling Meshes or Procedural Meshes (from selection)
+            • Command available from SMO Item Context Menu
+
+CLEANUP:
+        • smo.CLEANUP.DelEmptyMeshItem now skip Procedural Meshes on his process (reducing false issues)
+        • smo.CLEANUP.ConvertHardEdge now skip Procedural Meshes on his process (reducing false issues)
+
+
+-------------------------
+v5.60 - 2024/03/21
+
+        • Release of updates for Compatibility with Modo 17.X
+
+
+-------------------------
+v5.52 - 2023/12/18
+MIFABOMA:
+        • Bugfix on smo.MIFABOMA.FlipSelectedPolys when object got rotation in worldspace
+
+
+-------------------------
 v5.50 - 2023/12/16
 
         • Global Compatibility Update for Modo 17.X

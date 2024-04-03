@@ -1,6 +1,10 @@
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 2.60 -
+        • smo.CLEANUP.DelEmptyMeshItem now skip Procedural Meshes on his process (reducing false issues)
+        • smo.CLEANUP.ConvertHardEdge now skip Procedural Meshes on his process (reducing false issues)
+
 - 2.55 -
         • smo.cleanup.UpdateMaterial - Bugfix for material definition change between Mood 15.1 and 15.2
 

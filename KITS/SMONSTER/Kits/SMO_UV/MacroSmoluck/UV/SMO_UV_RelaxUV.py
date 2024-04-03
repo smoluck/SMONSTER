@@ -29,7 +29,7 @@ lx.out('Relax UV iteration Count: %s' % RelaxUV_Iter)
 # Modo 13.0 and up have UV Seam map.
 # Version below 13.0 haven't
 Modo_ver = int(lx.eval('query platformservice appversion ?'))
-lx.out('Modo Version:', Modo_ver)
+# lx.out('Modo Version:', Modo_ver)
 # ------------- UV SEAM Map Detection
 
 # Define the vmap name Search case.

@@ -24,9 +24,9 @@ class SMO_Cleanup_ConvertHardEdge_Cmd(lxu.command.BasicCommand):
     def __init__(self):
         lxu.command.BasicCommand.__init__(self)
         self.dyna_Add("Soften All Edge", lx.symbol.sTYPE_INTEGER)
-        self.basic_SetFlags (0, lx.symbol.fCMDARG_OPTIONAL)				# here the (0) define the argument index.
+        self.basic_SetFlags(0, lx.symbol.fCMDARG_OPTIONAL)				# here the (0) define the argument index.
         self.dyna_Add("Align All Polygons", lx.symbol.sTYPE_INTEGER)
-        self.basic_SetFlags (1, lx.symbol.fCMDARG_OPTIONAL)				# here the (1) define the argument index.
+        self.basic_SetFlags(1, lx.symbol.fCMDARG_OPTIONAL)				# here the (1) define the argument index.
     
     def cmd_Flags(self):
         return lx.symbol.fCMD_MODEL | lx.symbol.fCMD_UNDO
@@ -38,10 +38,10 @@ class SMO_Cleanup_ConvertHardEdge_Cmd(lxu.command.BasicCommand):
         return 'SMO CLEANUP -  Convert to HardEdge Workflow'
     
     def cmd_Desc (self):
-        return 'Update Materials Smoothing Angle to 179 Degree and set ON the Weight by Polygon Area according to SMO Modo Workflow, set ON the Weight by Polygon Area, Process a MeshCleanup pass and a Polygon Align'
+        return "Update Materials Smoothing Angle to 179 Degree and set ON the Weight by Polygon Area according to SMO Modo Workflow, set ON the Weight by Polygon Area, Process a MeshCleanup pass and a Polygon Align"
     
     def cmd_Tooltip (self):
-        return 'Update Materials Smoothing Angle to 179 Degree and set ON the Weight by Polygon Area according to SMO Modo Workflow, set ON the Weight by Polygon Area, Process a MeshCleanup pass and a Polygon Align'
+        return "Update Materials Smoothing Angle to 179 Degree and set ON the Weight by Polygon Area according to SMO Modo Workflow, set ON the Weight by Polygon Area, Process a MeshCleanup pass and a Polygon Align"
     
     def cmd_Help (self):
         return 'https://twitter.com/sm0luck'
@@ -54,40 +54,39 @@ class SMO_Cleanup_ConvertHardEdge_Cmd(lxu.command.BasicCommand):
 
     def basic_Execute(self, msg, flags):
         scn = modo.Scene()
-        IntSoften = self.dyna_Int (0)
-        IntAlign = self.dyna_Int (1)
-        
-        
+        IntSoften = self.dyna_Int(0)
+        IntAlign = self.dyna_Int(1)
+
         # ------------- 5 ARGUMENTS ------------- #
         args = lx.args()
-        lx.out(args)
-        
+        # lx.out(args)
+
         # 0 = Simple Ngon
         # 1 = Radial Triple
         Soften = IntSoften
-        lx.out('Soften all Edges:', Soften)
-        
+        lx.out('SMO CLEANUP - Soften all Edges:', Soften)
+
         # 0 TriRadial by Polygon Bevel
         # 1 TriRadial by EdgeExtend
         Align = IntAlign
-        lx.out('Align all polygons', Align)
+        lx.out('SMO CLEANUP - Align all polygons', Align)
         # ------------- ARGUMENTS ------------- #
-        
-        
+
         lx.eval('select.drop item')
-        lx.eval('select.itemType mesh')
-        for mesh in scn.items('mesh'):
-            mesh.select(True)
+        lx.eval('smo.GC.FilterMeshesByType 1 1')
+        DefaultMeshItemList = lx.eval('query sceneservice selection ? mesh')
+        for item in DefaultMeshItemList:
+            scn.select(item)
             lx.eval('hardedge.convert true true')
-            if Soften == 1 :
+            if Soften == 1:
                 lx.eval('select.type edge')
                 lx.eval('hardedge.set soft')
-            if Align == 1 :
+            if Align == 1:
                 lx.eval('select.type polygon')
                 lx.eval('!poly.align')
             lx.eval('select.type item')
             lx.eval('!mesh.cleanup true mergeVertex:false')
-            
+
         lx.eval('select.drop item')
         
     

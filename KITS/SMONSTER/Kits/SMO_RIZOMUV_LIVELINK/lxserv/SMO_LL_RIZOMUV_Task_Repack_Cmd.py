@@ -28,9 +28,9 @@ Cmd_Name = "smo.LL.RIZOMUV.Task.SmartPack"
 ###############################################################################################
 py_majorver = sys.version_info.major
 py_minorver = sys.version_info.minor
-print("-------------------------")
-print("Python version is:\n", py_majorver, py_minorver)
-print("-------------------------")
+# print("-------------------------")
+# print("Python version is:\n", py_majorver, py_minorver)
+# print("-------------------------")
 # Get Modo Preferences User Values for the Packing options
 RUVL_UserVal_PackMapRes = int(lx.eval("!user.value SMO_UseVal_RUVL_Task_PackingMapRes ?"))
 RUVL_UserVal_PackIteration = int(lx.eval("!user.value SMO_UseVal_RUVL_Task_PackingIteration ?"))
@@ -81,7 +81,9 @@ def ruvl_module_path(ruvl_path):
         return None
 
 
-print("RizomUV 2022.2 Livelink Python Module is located in:\n", ruvl_module_path(get_ruvpath()))
+print("SMO RIZOMUV LIVELINK - RizomUV Livelink Python Module is located in:\n", ruvl_module_path(get_ruvpath()))
+print("\n")
+
 #################
 
 

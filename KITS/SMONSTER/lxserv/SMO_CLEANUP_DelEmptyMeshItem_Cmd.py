@@ -54,7 +54,7 @@ class SMO_Cleanup_DelEmptyMeshItem_Cmd(lxu.command.BasicCommand):
 
         # First we must select the scene and then all the mesh layers in our scene.
         lx.eval('select.drop item')
-        lx.eval('select.itemType mesh')
+        lx.eval('smo.GC.FilterMeshesByType 1 1')  # Select Regular Meshes (scenewise)
         # lx.eval('select.layerTree all:1')
         ItemCount = lx.eval('query layerservice layer.N ? fg')
         # lx.out('Selected Item count:', ItemCount)
@@ -65,9 +65,9 @@ class SMO_Cleanup_DelEmptyMeshItem_Cmd(lxu.command.BasicCommand):
 
         if ItemCount == 1:
             numOfPoly = lx.eval('query layerservice poly.N ? all')
-            # lx.out('Poly Count:', numOfPoly)
-            # If there are no verts, we delete the mesh item layer.
-            if numOfPoly == 0:
+            numOfVertex = lx.eval('query layerservice vert.N ? all')
+            # If there are no Verts and no Polygons, we delete the mesh item layer.
+            if numOfPoly == 0 and numOfVertex == 0:
                 lx.eval('!item.delete')
 
         elif ItemCount > 1:
@@ -85,10 +85,9 @@ class SMO_Cleanup_DelEmptyMeshItem_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.item %s' % mesh)
                 lx.eval('query layerservice layer.index ? selected')  # scene
                 numOfPoly = lx.eval('query layerservice poly.N ? all')
-                # lx.out('Poly Count:', numOfPoly)
-
+                numOfVertex = lx.eval('query layerservice vert.N ? all')
                 # If there are no verts, we delete the mesh item layer.
-                if numOfPoly == 0:
+                if numOfPoly == 0 and numOfVertex == 0:
                     lx.eval('!item.delete')
 
                 # Increare progress monitor

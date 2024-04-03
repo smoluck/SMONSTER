@@ -67,7 +67,7 @@ class SMO_GC_Unbevel_Cmd(lxu.command.BasicCommand):
         # print(items)
 
         Modo_ver = int(lx.eval ('query platformservice appversion ?'))
-        #lx.out('Modo Version:',Modo_ver)
+        # lx.out('Modo Version:',Modo_ver)
 
 
         if self.SelModeEdge:

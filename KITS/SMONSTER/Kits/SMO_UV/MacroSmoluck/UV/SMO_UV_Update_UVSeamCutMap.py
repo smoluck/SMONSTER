@@ -56,7 +56,7 @@ lx.eval("user.defNew name:SMO_SafetyCheck_ItemModeEnabled type:integer life:mome
 # Modo 13.0 and up have UV Seam map.
 # Version below 13.0 haven't
 Modo_ver = int(lx.eval ('query platformservice appversion ?'))
-lx.out('Modo Version:',Modo_ver)
+# lx.out('Modo Version:',Modo_ver)
 
 #Define the UV Seam vmap name Search case.
 lx.eval("user.defNew name:DesiredUVSEAMmapName type:string life:momentary")

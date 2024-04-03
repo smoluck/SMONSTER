@@ -42,8 +42,8 @@ SMO_UV_Status = lx.eval("kit.toggleEnable " + SMO_KitsList[17] + " ?")
 SMO_VENOM_Status = lx.eval("kit.toggleEnable " + SMO_KitsList[18] + " ?")
 SMO_TRAINING_Status = lx.eval("kit.toggleEnable " + SMO_KitsList[19] + " ?")
 
-lx.out("-------- SMO Kits List: LOADED --------")
-lx.out("V-VV-VVV-----------------------VVV-VV-V")
+lx.out("\n")
+lx.out("-------- SMONSTER Kit: LOADED Kits --------")
 
 if SMONSTER_Status:
     kit_folder_SMONSTER = lx.eval("query platformservice alias ? {kit_SMONSTER:}")
@@ -53,8 +53,10 @@ if SMONSTER_Status:
     r = r'<[ ]*configuration[^>]*version[ =]*[\"\']([^\"\']*)[\"\']'
     m = re.search(r, xml_as_string)
     SMO_SMONSTER_version_installed = m.group(1)
-    lx.out("SMONSTER - version: %s" % SMO_SMONSTER_version_installed)
+    lx.out("SMONSTER Kit - version: %s" % SMO_SMONSTER_version_installed)
     index_file_data_SMONSTER.close()
+
+lx.out("V-VV-VVV-----------------------VVV-VV-V")
 
 if SMO_AI_TOOLS_Status:
     kit_folder_SMO_AI_TOOLS = lx.eval("query platformservice alias ? {kit_SMO_AI_TOOLS:}")

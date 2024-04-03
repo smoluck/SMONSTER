@@ -30,7 +30,7 @@ items = scene.selected
 lx.out(items)
 
 Modo_ver = int(lx.eval ('query platformservice appversion ?'))
-lx.out('Modo Version:',Modo_ver)
+# lx.out('Modo Version:',Modo_ver)
 
 
 if success:
