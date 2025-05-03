@@ -18,7 +18,7 @@ ZomSet({Path="Prefs.UI.DisplayPx", Value=true})
 -- ZomSet({Path="Prefs.UI.DefaultSceneUnit", Value="m"})
 
 -- Set the Default IDE executable
-ZomSet({Path="Prefs.ExternalTextEditor.Path", Value="C:/Program Files/JetBrains/PyCharm 2020.3/bin/pycharm64.exe"})
+--ZomSet({Path="Prefs.ExternalTextEditor.Path", Value="C:/Program Files/JetBrains/PyCharm 2020.3/bin/pycharm64.exe"})
 
 -- Set the default FBX release used for Saving. Modo Rizom UV Livelink use FBX 2013 for Data exchange
 -- and Disable the AutoSave function as we want to update the same File as the one exported from Modo
