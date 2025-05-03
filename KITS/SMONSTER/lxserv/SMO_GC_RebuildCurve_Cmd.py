@@ -279,7 +279,8 @@ class SMO_GC_RebuildCurve_Cmd(lxu.command.BasicCommand):
             # Freeze the curve to Polygons
             lx.eval('poly.freeze face false 2 true true true false 20.0 false Morph')
             lx.eval('select.type polygon')
-            lx.eval('@SmartTriangulation.pl')
+            lx.eval('poly.cdt constraint split1to3 ratio 0.5 0.5 20.7')
+            # lx.eval('@SmartTriangulation.pl')
             lx.eval('select.drop polygon')
             lx.eval('paste')
             lx.eval('select.drop polygon')

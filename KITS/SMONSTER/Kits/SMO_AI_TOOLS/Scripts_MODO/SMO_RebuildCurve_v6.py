@@ -263,7 +263,9 @@ for mesh in meshes_list:
 
     polygons = lx.eval('query layerservice poly.N ? selected')
     if polygons >= 1:
-        lx.eval('poly.triple')
+        # lx.eval('poly.triple')
+        lx.eval('poly.cdt constraint split1to3 ratio 0.5 0.5 20.7')
+        # lx.eval('@SmartTriangulation.pl')
 
     # Modollama Triangulation
     # lx.eval('@SmartTriangulation.pl')
