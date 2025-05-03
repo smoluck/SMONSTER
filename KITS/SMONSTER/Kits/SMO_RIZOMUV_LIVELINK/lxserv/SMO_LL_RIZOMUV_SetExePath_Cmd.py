@@ -55,7 +55,7 @@ class SMO_LL_RIZOMUV_SetExePath_Cmd(lxu.command.BasicCommand):
         modo_ver = int(lx.eval ('query platformservice appversion ?'))
         
         lx.eval ('dialog.setup fileOpen')
-        lx.eval ('dialog.title "Select RizomUV 2018.X or 2019.X or 2020.X executable file"')
+        lx.eval ('dialog.title "Select RizomUV 2018.X, 2019.X, 2022.X, 2023.X, 2024.X executable file"')
 
         system = platform.system()
         if system == "Windows":

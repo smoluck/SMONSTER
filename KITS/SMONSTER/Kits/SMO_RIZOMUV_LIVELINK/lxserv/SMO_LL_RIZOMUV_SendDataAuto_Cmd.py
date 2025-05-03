@@ -21,6 +21,7 @@ import lxu.select
 import os
 import subprocess
 import traceback
+import platform
 
 Cmd_Name = "smo.LL.RIZOMUV.SendDataAuto"
 
@@ -91,21 +92,28 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd(lxu.command.BasicCommand):
 
     # Ask the user for the path to RizomUV.
     def findRizomUVPath(self):
-        # default_path = 'C:\Program Files\Rizom Lab\RizomUV 2018\\rizomuv.exe'
-        # default_path = 'C:\Program Files\Rizom Lab\RizomUV 2019\\rizomuv.exe'
-        default_path = 'C:\Program Files\Rizom Lab\RizomUV 2020\\rizomuv.exe'
+        system = platform.system()
+        default_path = ""
+        if system == "Windows":
+            default_path = 'C:\Program Files\Rizom Lab\RizomUV 2020\\rizomuv.exe'
+        elif system == "Darwin":
+            default_path  = '/Applications/RizomUV.2024.1.app'
         if self.setRizomUVPath(default_path):
             return True
         else:
             try:
                 lx.eval('dialog.setup fileOpen')
-                lx.eval('dialog.title "Select RizomUV 2018.X or 2019.X or 2022.X executable file"')
-                lx.eval('dialog.fileTypeCustom format:exe username:{EXE} loadPattern:{*.exe} saveExtension:exe')
+                lx.eval('dialog.title "Select RizomUV 2018.X, 2019.X, 2022.X, 2023.X, 2024.X executable file"')
+                if system == "Windows":
+                    lx.eval('dialog.fileTypeCustom format:exe username:{EXE} loadPattern:{*.exe} saveExtension:exe')
+                elif system == "Darwin":  # MacOS
+                    lx.eval('dialog.fileTypeCustom format:app username:{APP} loadPattern:{*.app} saveExtension:app')
                 if self.modo_ver == 801:
                     lx.eval('+dialog.open')
                 else:
                     lx.eval('dialog.open')
-                rizomuv_exe_path = lx.eval1('dialog.result ?')
+                # rizomuv_exe_path = lx.eval1('dialog.result ?')
+                rizomuv_exe_path = lx.eval1('dialog.result ?') + "/Contents/MacOS/rizomuv"
             except:
                 pass
             else:
@@ -114,6 +122,40 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd(lxu.command.BasicCommand):
 
         lx.out('Failed to define path to RizomUV.')
         return False
+
+    def get_ruvpath(self):
+        """
+        Returns the path to the most recent version
+        of the RizomUV installation directory on the system using
+        the windows registry or the MacOS Registry.
+
+        Try versions from 2019.10 to 2022.2 included
+        """
+        system = platform.system()
+        if system == "Windows":
+            import winreg
+            for i in range(9, 1, -1):
+                for j in range(10, -1, -1):
+                    if i == 2 and j < 2:
+                        continue
+                    # path = "SOFTWARE\\Rizom Lab\\RizomUV VS RS 202" + str(i) + "." + str(j)
+                    path = f"SOFTWARE\\Rizom Lab\\RizomUV VS RS 202{i}.{j}"
+                    try:
+                        key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, path)
+                        exePath = winreg.QueryValue(key, "rizomuv.exe")
+                        return os.path.dirname(exePath)
+                    except FileNotFoundError:
+                        pass
+        elif system == "Darwin":  # MacOS
+            for i in range(9, 1, -1):
+                for j in range(10, -1, -1):
+                    if i == 2 and j < 2:
+                        continue
+                    app_path = f"/Applications/RizomUV.202{i}.{j}.app" + "/Contents/MacOS/rizomuv"
+                    if os.path.exists(app_path):
+                        return app_path
+
+        return None
 
     def recurseToFindFBXMeshes(self, fbx_item, fbx_meshes, mesh_items):
         fbx_item_child_count = fbx_item.SubCount()
@@ -159,6 +201,7 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd(lxu.command.BasicCommand):
             lx.eval('user.value %s %s' % (name, value))
 
     def basic_Execute(self, msg, flags):
+        system = platform.system()
 
         fbxSettings = self.storeFBXSettings()
         print(fbxSettings)
@@ -356,8 +399,15 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd(lxu.command.BasicCommand):
         # Restore the FBX preferences.
         self.restoreFBXSettings(fbxSettings)
 
-        # Call RizomUV.
-        proc = subprocess.Popen([Smo_RizomUVPath, fbx_export_path], stdout=subprocess.PIPE)
+        if system == 'Windows':
+            # Call RizomUV on windows
+            proc = subprocess.Popen([Smo_RizomUVPath, fbx_export_path], stdout=subprocess.PIPE)
+
+        elif system == "Darwin":
+            # Call RizomUV on macOS
+            # proc = subprocess.Popen([Smo_RizomUVPath, fbx_export_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            proc = subprocess.Popen(["open", "-a", Smo_RizomUVPath, fbx_export_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
         stdout, stderr = proc.communicate()
         rc = proc.returncode
 
