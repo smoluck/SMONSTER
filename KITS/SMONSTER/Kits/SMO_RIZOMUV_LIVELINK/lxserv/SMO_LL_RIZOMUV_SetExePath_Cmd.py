@@ -15,6 +15,9 @@ Copyright:    (c) Franck Elisabeth 2017-2022
 import lx
 import lxu.command
 import lxu.select
+import sys
+import platform
+from pathlib import Path
 
 Cmd_Name = "smo.LL.RIZOMUV.SetExePath"
 
@@ -53,7 +56,13 @@ class SMO_LL_RIZOMUV_SetExePath_Cmd(lxu.command.BasicCommand):
         
         lx.eval ('dialog.setup fileOpen')
         lx.eval ('dialog.title "Select RizomUV 2018.X or 2019.X or 2020.X executable file"')
-        lx.eval ('dialog.fileTypeCustom format:exe username:{EXE} loadPattern:{*.exe} saveExtension:exe')
+
+        system = platform.system()
+        if system == "Windows":
+            lx.eval ('dialog.fileTypeCustom format:exe username:{EXE} loadPattern:{*.exe} saveExtension:exe')
+        elif system == "Darwin":  # MacOS
+            lx.eval('dialog.fileTypeCustom format:app username:{APP} loadPattern:{*.app} saveExtension:app')
+
         if modo_ver == 801:
             lx.eval ('+dialog.open')
         else:

@@ -8,4 +8,4 @@ build_SourceEdition/
 build_StandardEdition/
 
 # Mac crap
-#.DS_Store
+.DS_Store

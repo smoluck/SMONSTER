@@ -56,7 +56,7 @@ class SMO_GC_SplitEachEdgeIndividually_Cmd(lxu.command.BasicCommand):
         # -------------- Index Style START Procedure  -------------- #
         # Bugfix for items that cant be detected when "Index Style" is not using underscore as separator.
         IndexStyle = lx.eval("pref.value application.indexStyle ?")
-        if IndexStyle is not "uscore":
+        if IndexStyle != "uscore":
             lx.eval("pref.value application.indexStyle uscore")
         # -------------------------------------------- #
 
@@ -213,7 +213,7 @@ class SMO_GC_SplitEachEdgeIndividually_Cmd(lxu.command.BasicCommand):
         # -------------------------------------------- #
 
         # -------------- Index Style END Procedure  -------------- #
-        if IndexStyle is not "uscore":
+        if IndexStyle != "uscore":
             lx.eval("pref.value application.indexStyle %s" % IndexStyle)
         # -------------------------------------------- #
 
