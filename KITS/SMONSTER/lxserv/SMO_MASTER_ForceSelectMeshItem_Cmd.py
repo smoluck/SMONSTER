@@ -66,7 +66,7 @@ class SMO_MASTER_ForceSelectMeshItem_Cmd(lxu.command.BasicCommand):
         # Bugfix for items that cant be detected when "Index Style" is not using underscore as separator.
         # Problem caused by item.UniqueName() at line 144
         IndexStyle = lx.eval("pref.value application.indexStyle ?")
-        if IndexStyle is not "uscore":
+        if IndexStyle != "uscore":
             lx.eval("pref.value application.indexStyle uscore")
         # -------------------------------------------- #
 
@@ -151,7 +151,7 @@ class SMO_MASTER_ForceSelectMeshItem_Cmd(lxu.command.BasicCommand):
                 lx.eval('select.type vertex')
 
         # -------------- Index Style END Procedure  -------------- #
-        if IndexStyle is not "uscore":
+        if IndexStyle != "uscore":
             lx.eval("pref.value application.indexStyle %s" % IndexStyle)
         # -------------------------------------------- #
 

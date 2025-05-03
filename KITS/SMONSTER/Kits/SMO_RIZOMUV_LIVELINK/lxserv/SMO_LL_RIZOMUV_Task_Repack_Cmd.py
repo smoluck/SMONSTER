@@ -21,6 +21,8 @@ import subprocess
 import traceback
 import os
 import sys
+import platform
+from pathlib import Path
 
 Cmd_Name = "smo.LL.RIZOMUV.Task.SmartPack"
 
@@ -47,27 +49,35 @@ def get_ruvpath():
     """ 
     Returns the path to the most recent version
     of the RizomUV installation directory on the system using
-    the windows registry.
+    the windows registry or the MacOS Registry.
     
     Try versions from 2029.10 to 2022.2 included
     """
-    import os
-    import winreg
-
-    for i in range(9, 1, -1):
-        for j in range(10, -1, -1):
-            if i == 2 and j < 2:
-                continue
-            path = "SOFTWARE\\Rizom Lab\\RizomUV VS RS 202" + str(i) + "." + str(j)
-            try:
-                key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, path)
-                exePath = winreg.QueryValue(key, "rizomuv.exe")
-                return os.path.dirname(exePath)
-            except FileNotFoundError:
-                pass
+    system = platform.system()
+    if system == "Windows":
+        import winreg
+        for i in range(9, 1, -1):
+            for j in range(10, -1, -1):
+                if i == 2 and j < 2:
+                    continue
+                path = "SOFTWARE\\Rizom Lab\\RizomUV VS RS 202" + str(i) + "." + str(j)
+                try:
+                    key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, path)
+                    exePath = winreg.QueryValue(key, "rizomuv.exe")
+                    return os.path.dirname(exePath)
+                except FileNotFoundError:
+                    pass
+    elif system == "Darwin":  # MacOS
+        for i in range(9, 1, -1):
+            for j in range(10, -1, -1):
+                if i == 2 and j < 2:
+                    continue
+                app_path = f"/Applications/RizomUV.202{i}.{j}.app"
+                if os.path.exists(app_path):
+                    return app_path
 
     return None
-# print(RizomUVWinRegisterInstallPath())
+# print(get_ruvpath())
 #################
 
 
