@@ -15,9 +15,9 @@ Copyright:    (c) Franck Elisabeth 2017-2022
 import lx
 import lxu.command
 import lxu.select
-import sys
+import os
+import subprocess
 import platform
-from pathlib import Path
 
 Cmd_Name = "smo.LL.RIZOMUV.SetExePath"
 
@@ -33,19 +33,19 @@ class SMO_LL_RIZOMUV_SetExePath_Cmd(lxu.command.BasicCommand):
         pass
     
     def cmd_UserName (self):
-        return 'SMO LL RIZOMUV - Set EXE Path'
+        return 'SMO LL RIZOMUV - Set EXE/APP Path'
     
     def cmd_Desc (self):
-        return 'Set the RizomUV exe path to create the LiveLink. It will prompt a File browser to get the EXE file Location.'
+        return 'Set the RizomUV exe or app path to create the LiveLink. It will prompt a File browser to get the exe/app file Location.'
     
     def cmd_Tooltip (self):
-        return 'Set the RizomUV exe path to create the LiveLink. It will prompt a File browser to get the EXE file Location.'
+        return 'Set the RizomUV exe or app path to create the LiveLink. It will prompt a File browser to get the exe/app file Location.'
     
     def cmd_Help (self):
         return 'https://twitter.com/sm0luck'
     
     def basic_ButtonName (self):
-        return 'SMO LL RIZOMUV - Set EXE Path'
+        return 'SMO LL RIZOMUV - Set EXE/APP Path'
     
     def basic_Enable (self, msg):
         return True
@@ -53,9 +53,9 @@ class SMO_LL_RIZOMUV_SetExePath_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
         # MODO version checks. Different versions have different FBX options.
         modo_ver = int(lx.eval ('query platformservice appversion ?'))
-        
+
         lx.eval ('dialog.setup fileOpen')
-        lx.eval ('dialog.title "Select RizomUV 2018.X, 2019.X, 2022.X, 2023.X, 2024.X executable file"')
+        lx.eval ('dialog.title "Select RizomUV executable or application file"')
 
         system = platform.system()
         if system == "Windows":
@@ -67,9 +67,15 @@ class SMO_LL_RIZOMUV_SetExePath_Cmd(lxu.command.BasicCommand):
             lx.eval ('+dialog.open')
         else:
             lx.eval ('dialog.open')
-        rizomuv_exe_path = lx.eval1 ('dialog.result ?')
+
+        rizomuv_exe_path = ""
+        if system == "Windows":
+            rizomuv_exe_path = lx.eval1 ('dialog.result ?')
+            print("Windows - Rizom UV path set by user:", rizomuv_exe_path)
+        elif system == "Darwin":
+            rizomuv_exe_path = os.path.join(lx.eval1 ('dialog.result ?'), "Contents/MacOS/rizomuv")
+            print("macOS - Rizom UV path set by user:", rizomuv_exe_path)
         lx.eval ('user.value Smo_RizomUVPath {%s}' % rizomuv_exe_path)
-        
 
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
