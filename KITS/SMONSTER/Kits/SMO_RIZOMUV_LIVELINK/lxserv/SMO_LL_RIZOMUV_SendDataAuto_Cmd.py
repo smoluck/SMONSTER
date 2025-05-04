@@ -41,10 +41,10 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd(lxu.command.BasicCommand):
         return 'SMO LL RIZOMUV - Send Data Auto'
 
     def cmd_Desc(self):
-        return 'Send as an FBX file, the current selected Meshes as FBX 2013 to RizomUV and get back the UV data updated in Modo, once the FBX file is saved back (original file overwritted by RizomUV).'
+        return 'Send as an FBX file, the current selected Meshes as FBX 2013 to RizomUV and get back the UV data updated in Modo, once the FBX file is saved back (original file overwritten by RizomUV).'
 
     def cmd_Tooltip(self):
-        return 'Send as an FBX file, the current selected Meshes as FBX 2013 to RizomUV and get back the UV data updated in Modo, once the FBX file is saved back (original file overwritted by RizomUV).'
+        return 'Send as an FBX file, the current selected Meshes as FBX 2013 to RizomUV and get back the UV data updated in Modo, once the FBX file is saved back (original file overwritten by RizomUV).'
 
     def cmd_Help(self):
         return 'https://twitter.com/sm0luck'
@@ -60,8 +60,14 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd(lxu.command.BasicCommand):
 
     # Validate the path to RizomUV is good.
     def validRizomUVPath(self, rizomuv_exe_path):
-        return ((rizomuv_exe_path != None) and os.path.lexists(rizomuv_exe_path) and (
+        system = platform.system()
+        if system == "Windows":
+            return ((rizomuv_exe_path is not None) and os.path.lexists(rizomuv_exe_path) and (
                     os.path.splitext(rizomuv_exe_path)[1].lower() == '.exe'))
+        elif system == "Darwin":
+            return ((rizomuv_exe_path is not None) and os.path.lexists(rizomuv_exe_path) and (
+                    os.path.splitext(rizomuv_exe_path)[1].lower() == '.app'))
+        return None
 
     def getUVSelection(self):
         uv_selection = []
@@ -94,14 +100,16 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd(lxu.command.BasicCommand):
     def findRizomUVPath(self):
         system = platform.system()
         default_path = ""
+        rizomuv_exe_path = ""
         if system == "Windows":
-            default_path = 'C:\Program Files\Rizom Lab\RizomUV 2020\\rizomuv.exe'
+            default_path = 'C:\\Program Files\\Rizom Lab\\RizomUV 2024.1\\rizomuv.exe'
         elif system == "Darwin":
             default_path  = '/Applications/RizomUV.2024.1.app'
         if self.setRizomUVPath(default_path):
             return True
         else:
             try:
+                lx.out('Failed to define path to RizomUV. Searching for it.')
                 lx.eval('dialog.setup fileOpen')
                 lx.eval('dialog.title "Select RizomUV 2018.X, 2019.X, 2022.X, 2023.X, 2024.X executable file"')
                 if system == "Windows":
@@ -113,21 +121,23 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd(lxu.command.BasicCommand):
                 else:
                     lx.eval('dialog.open')
                 # rizomuv_exe_path = lx.eval1('dialog.result ?')
-                rizomuv_exe_path = lx.eval1('dialog.result ?') + "/Contents/MacOS/rizomuv"
+                if system == "Windows":
+                    rizomuv_exe_path = lx.eval1('dialog.result ?')
+                elif system == "Darwin":
+                    rizomuv_exe_path = lx.eval1('dialog.result ?') + "/Contents/MacOS/rizomuv"
             except:
                 pass
             else:
                 if self.setRizomUVPath(rizomuv_exe_path):
                     return True
-
-        lx.out('Failed to define path to RizomUV.')
+        lx.out('Failed to define path to RizomUV. Process aborted')
         return False
 
-    def get_ruvpath(self):
+    def get_ruv_path_via_regedit(self):
         """
         Returns the path to the most recent version
         of the RizomUV installation directory on the system using
-        the windows registry or the MacOS Registry.
+        Windows registry (regedit) or MacOS.
 
         Try versions from 2019.10 to 2022.2 included
         """
@@ -147,14 +157,28 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd(lxu.command.BasicCommand):
                     except FileNotFoundError:
                         pass
         elif system == "Darwin":  # MacOS
-            for i in range(9, 1, -1):
-                for j in range(10, -1, -1):
-                    if i == 2 and j < 2:
-                        continue
-                    app_path = f"/Applications/RizomUV.202{i}.{j}.app" + "/Contents/MacOS/rizomuv"
-                    if os.path.exists(app_path):
-                        return app_path
+            # for i in range(9, 1, -1):
+            #     for j in range(10, -1, -1):
+            #         if i == 2 and j < 2:
+            #             continue
+            #         app_path = f"/Applications/RizomUV.202{i}.{j}.app" + "/Contents/MacOS/rizomuv"
+            #         if os.path.exists(app_path):
+            #             return app_path
+            try:
+                # Use mdfind to dynamically locate RizomUV installations on MacOS Sequoia (v15.X.X)
+                # result = subprocess.run(["mdfind", "kMDItemKind == 'Application' && RizomUV"], capture_output=True, text=True)
+                # result = subprocess.run(["ls", "/Applications | grep RizomUV"], capture_output=True, text=True)
+                result = subprocess.run(["mdfind", "kind:application RizomUV"], capture_output=True, text=True)
+                app_paths = result.stdout.split("\n")
 
+                # Check for valid installations
+                for app_path in app_paths:
+                    print(app_path)
+                    if app_path and os.path.exists(app_path):
+                        return os.path.join(app_path, "Contents/MacOS/rizomuv")
+
+            except Exception as e:
+                print(f"Error locating RizomUV: {e}")
         return None
 
     def recurseToFindFBXMeshes(self, fbx_item, fbx_meshes, mesh_items):
@@ -370,8 +394,13 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd(lxu.command.BasicCommand):
             except RuntimeError:
                 pass
 
-        # get modo's temp dir
-        temp_dir = lx.eval('query platformservice path.path ? temp')
+        # get modo's temp dir according the OS
+        system = platform.system()
+        temp_dir = ""
+        if system == "Windows":
+            temp_dir = lx.eval('query platformservice path.path ? temp')
+        elif system == "Darwin":
+            temp_dir = os.getenv("TMPDIR")
         # name our temp file
         fbx_file_name = "RizomUV_DATA.fbx"
         # builds the complete path out of the temp dir and the temp file name
@@ -386,7 +415,7 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd(lxu.command.BasicCommand):
                 # if that fails for any reason print out the error
                 print(traceback.format_exc())
         else:
-            if fbx_export_path == None:
+            if fbx_export_path is None:
                 lx.out('Didn\'t save FBX for RizomUV.')
                 return
             else:
@@ -399,17 +428,20 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd(lxu.command.BasicCommand):
         # Restore the FBX preferences.
         self.restoreFBXSettings(fbxSettings)
 
+        rc = int()
         if system == 'Windows':
             # Call RizomUV on windows
             proc = subprocess.Popen([Smo_RizomUVPath, fbx_export_path], stdout=subprocess.PIPE)
+            stdout, stderr = proc.communicate()
+            rc = proc.returncode
 
         elif system == "Darwin":
             # Call RizomUV on macOS
             # proc = subprocess.Popen([Smo_RizomUVPath, fbx_export_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             proc = subprocess.Popen(["open", "-a", Smo_RizomUVPath, fbx_export_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            stdout, stderr = proc.communicate()
+            rc = proc.returncode
 
-        stdout, stderr = proc.communicate()
-        rc = proc.returncode
 
         if rc != 0:
             # RizomUV crashed or threw an error.
@@ -445,7 +477,7 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd(lxu.command.BasicCommand):
                     lx.out('Failed to load scene with new UVs.')
                     return
                 else:
-                    if fbx_import_path == None:
+                    if fbx_import_path is None:
                         return
                     else:
                         fbx_file_name = os.path.splitext(os.path.basename(fbx_import_path))[0]
