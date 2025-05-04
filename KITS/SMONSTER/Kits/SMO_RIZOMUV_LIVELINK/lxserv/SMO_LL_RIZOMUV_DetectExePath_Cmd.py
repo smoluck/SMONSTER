@@ -129,7 +129,15 @@ class SMO_LL_RIZOMUV_DetectExePath_Cmd(lxu.command.BasicCommand):
                 for app_path in app_paths:
                     print("macOS - Detected Rizom UV path:", app_path)
                     if app_path and os.path.exists(app_path):
-                        return os.path.join(app_path, "Contents/MacOS/rizomuv")
+                        if "RizomUV.2022.1" in app_path:
+                            return (app_path + "/Contents/MacOS/RizomUV.2022.1")
+                        if "RizomUV.2023.1" in app_path:
+                            return (app_path + "/Contents/MacOS/RizomUV.2023.1")
+                        if "RizomUV.2024.0" in app_path:
+                            return (app_path + "/Contents/MacOS/RizomUV.2024.0")
+                        if "RizomUV.2024.1" in app_path:
+                            return (app_path + "/Contents/MacOS/RizomUV.2024.1")
+                        # return app_path # Removed the Sub-Directory addition.
 
             except Exception as e:
                 print(f"Error locating RizomUV: {e}")

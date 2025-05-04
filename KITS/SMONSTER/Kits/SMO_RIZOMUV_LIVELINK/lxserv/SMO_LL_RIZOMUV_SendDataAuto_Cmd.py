@@ -66,7 +66,7 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd(lxu.command.BasicCommand):
                     os.path.splitext(rizomuv_exe_path)[1].lower() == '.exe'))
         elif system == "Darwin":
             return ((rizomuv_exe_path is not None) and os.path.lexists(rizomuv_exe_path) and (
-                    os.path.splitext(rizomuv_exe_path)[1].lower() == '.app'))
+                    os.path.splitext(rizomuv_exe_path)[1].lower() == '.app/Contents/MacOS/rizomuv'))
         return None
 
     def getUVSelection(self):
@@ -80,106 +80,115 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd(lxu.command.BasicCommand):
                 uv_selection.append(vmap_pkt_trans.Name(pkt))
         return uv_selection
 
-    # Set the path to RizomUV in a user variable.
-    def setRizomUVPath(self, rizomuv_exe_path):
-        if self.validRizomUVPath(rizomuv_exe_path):
-            # try:
-            # lx.eval ('!!user.defNew name:Smo_RizomUVPath type:string life:config')
-            # except:
-            # pass
+    # # Set the path to RizomUV in a user variable.
+    # def setRizomUVPath(self, rizomuv_exe_path):
+    #     """
+    #     Set the path in Modo's Preferences, under the 'Rizom UV Livelink Options', to be able to call the software.
+    #     """
+    #     if self.validRizomUVPath(rizomuv_exe_path):
+    #         # try:
+    #         # lx.eval ('!!user.defNew name:Smo_RizomUVPath type:string life:config')
+    #         # except:
+    #         # pass
+    #
+    #         try:
+    #             lx.eval('!!user.value Smo_RizomUVPath {%s}' % rizomuv_exe_path)
+    #         except:
+    #             pass
+    #
+    #         return lx.eval1('user.value Smo_RizomUVPath ?') == rizomuv_exe_path
+    #     return False
+    #
+    # # Ask the user for the path to RizomUV.
+    # def findRizomUVPath(self):
+    #     system = platform.system()
+    #     default_path = ""
+    #     rizomuv_exe_path = ""
+    #     if system == "Windows":
+    #         default_path = 'C:\\Program Files\\Rizom Lab\\RizomUV 2024.1\\rizomuv.exe'
+    #     elif system == "Darwin":
+    #         default_path  = '/Applications/RizomUV.2024.1.app'
+    #     if self.setRizomUVPath(default_path):
+    #         return True
+    #     else:
+    #         try:
+    #             lx.out('Failed to define path to RizomUV. Searching for it.')
+    #             lx.eval('dialog.setup fileOpen')
+    #             lx.eval('dialog.title "Select RizomUV 2018.X, 2019.X, 2022.X, 2023.X, 2024.X executable file"')
+    #             if system == "Windows":
+    #                 lx.eval('dialog.fileTypeCustom format:exe username:{EXE} loadPattern:{*.exe} saveExtension:exe')
+    #             elif system == "Darwin":  # MacOS
+    #                 lx.eval('dialog.fileTypeCustom format:app username:{APP} loadPattern:{*.app} saveExtension:app')
+    #             if self.modo_ver == 801:
+    #                 lx.eval('+dialog.open')
+    #             else:
+    #                 lx.eval('dialog.open')
+    #             # rizomuv_exe_path = lx.eval1('dialog.result ?')
+    #             if system == "Windows":
+    #                 rizomuv_exe_path = lx.eval1('dialog.result ?')
+    #             elif system == "Darwin":
+    #                 rizomuv_exe_path = lx.eval1('dialog.result ?') + "/Contents/MacOS/rizomuv"
+    #         except:
+    #             pass
+    #         else:
+    #             if self.setRizomUVPath(rizomuv_exe_path):
+    #                 return True
+    #     lx.out('Failed to define path to RizomUV. Process aborted')
+    #     return False
 
-            try:
-                lx.eval('!!user.value Smo_RizomUVPath {%s}' % rizomuv_exe_path)
-            except:
-                pass
-
-            return lx.eval1('user.value Smo_RizomUVPath ?') == rizomuv_exe_path
-        return False
-
-    # Ask the user for the path to RizomUV.
-    def findRizomUVPath(self):
-        system = platform.system()
-        default_path = ""
-        rizomuv_exe_path = ""
-        if system == "Windows":
-            default_path = 'C:\\Program Files\\Rizom Lab\\RizomUV 2024.1\\rizomuv.exe'
-        elif system == "Darwin":
-            default_path  = '/Applications/RizomUV.2024.1.app'
-        if self.setRizomUVPath(default_path):
-            return True
-        else:
-            try:
-                lx.out('Failed to define path to RizomUV. Searching for it.')
-                lx.eval('dialog.setup fileOpen')
-                lx.eval('dialog.title "Select RizomUV 2018.X, 2019.X, 2022.X, 2023.X, 2024.X executable file"')
-                if system == "Windows":
-                    lx.eval('dialog.fileTypeCustom format:exe username:{EXE} loadPattern:{*.exe} saveExtension:exe')
-                elif system == "Darwin":  # MacOS
-                    lx.eval('dialog.fileTypeCustom format:app username:{APP} loadPattern:{*.app} saveExtension:app')
-                if self.modo_ver == 801:
-                    lx.eval('+dialog.open')
-                else:
-                    lx.eval('dialog.open')
-                # rizomuv_exe_path = lx.eval1('dialog.result ?')
-                if system == "Windows":
-                    rizomuv_exe_path = lx.eval1('dialog.result ?')
-                elif system == "Darwin":
-                    rizomuv_exe_path = lx.eval1('dialog.result ?') + "/Contents/MacOS/rizomuv"
-            except:
-                pass
-            else:
-                if self.setRizomUVPath(rizomuv_exe_path):
-                    return True
-        lx.out('Failed to define path to RizomUV. Process aborted')
-        return False
-
-    def get_ruv_path_via_regedit(self):
-        """
-        Returns the path to the most recent version
-        of the RizomUV installation directory on the system using
-        Windows registry (regedit) or MacOS.
-
-        Try versions from 2019.10 to 2022.2 included
-        """
-        system = platform.system()
-        if system == "Windows":
-            import winreg
-            for i in range(9, 1, -1):
-                for j in range(10, -1, -1):
-                    if i == 2 and j < 2:
-                        continue
-                    # path = "SOFTWARE\\Rizom Lab\\RizomUV VS RS 202" + str(i) + "." + str(j)
-                    path = f"SOFTWARE\\Rizom Lab\\RizomUV VS RS 202{i}.{j}"
-                    try:
-                        key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, path)
-                        exePath = winreg.QueryValue(key, "rizomuv.exe")
-                        return os.path.dirname(exePath)
-                    except FileNotFoundError:
-                        pass
-        elif system == "Darwin":  # MacOS
-            # for i in range(9, 1, -1):
-            #     for j in range(10, -1, -1):
-            #         if i == 2 and j < 2:
-            #             continue
-            #         app_path = f"/Applications/RizomUV.202{i}.{j}.app" + "/Contents/MacOS/rizomuv"
-            #         if os.path.exists(app_path):
-            #             return app_path
-            try:
-                # Use mdfind to dynamically locate RizomUV installations on MacOS Sequoia (v15.X.X)
-                # result = subprocess.run(["mdfind", "kMDItemKind == 'Application' && RizomUV"], capture_output=True, text=True)
-                # result = subprocess.run(["ls", "/Applications | grep RizomUV"], capture_output=True, text=True)
-                result = subprocess.run(["mdfind", "kind:application RizomUV"], capture_output=True, text=True)
-                app_paths = result.stdout.split("\n")
-
-                # Check for valid installations
-                for app_path in app_paths:
-                    print(app_path)
-                    if app_path and os.path.exists(app_path):
-                        return os.path.join(app_path, "Contents/MacOS/rizomuv")
-
-            except Exception as e:
-                print(f"Error locating RizomUV: {e}")
-        return None
+    # # Checking installation of RizomUV by either looking at Windows Registry or via App indexing on macOS
+    # def get_ruv_path(self):
+    #     """
+    #     Returns the path to the most recent version
+    #     of the RizomUV installation directory on the system using
+    #     Windows registry (regedit) or MacOS (mdfind).
+    #
+    #     Try versions from 2019.10 to 2022.2 included
+    #     """
+    #     system = platform.system()
+    #     if system == "Windows":
+    #         import winreg
+    #         for i in range(9, 1, -1):
+    #             for j in range(10, -1, -1):
+    #                 if i == 2 and j < 2:
+    #                     continue
+    #                 # path = "SOFTWARE\\Rizom Lab\\RizomUV VS RS 202" + str(i) + "." + str(j)
+    #                 path = f"SOFTWARE\\Rizom Lab\\RizomUV VS RS 202{i}.{j}"
+    #                 try:
+    #                     key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, path)
+    #                     exePath = winreg.QueryValue(key, "rizomuv.exe")
+    #                     print("Windows - Detected Rizom UV path:", exePath)
+    #                     return os.path.dirname(exePath)
+    #                 except FileNotFoundError:
+    #                     pass
+    #     elif system == "Darwin":  # MacOS
+    #         # for i in range(9, 1, -1):
+    #         #     for j in range(10, -1, -1):
+    #         #         if i == 2 and j < 2:
+    #         #             continue
+    #         #         app_path = f"/Applications/RizomUV.202{i}.{j}.app" + "/Contents/MacOS/rizomuv"
+    #         #         if os.path.exists(app_path):
+    #         #             return app_path
+    #         try:
+    #             # Adjust search strategy based on macOS version
+    #             mac_version, _, _ = platform.mac_ver()
+    #             major_version = int(mac_version.split(".")[0])  # Get major macOS version (e.g., "15")
+    #             if major_version >= 15: # macOS Sequoia
+    #                 # Use mdfind to dynamically locate RizomUV installations on MacOS Sequoia (v15.X.X)
+    #                 result = subprocess.run(["mdfind", "kind:application RizomUV"], capture_output=True, text=True)
+    #             else:  # macOS Sonoma and earlier release of macOS
+    #                 result = subprocess.run(["mdfind", "RizomUV"], capture_output=True, text=True)
+    #             app_paths = result.stdout.split("\n")
+    #
+    #             # Check for valid installations
+    #             for app_path in app_paths:
+    #                 print("macOS - Detected Rizom UV path:", app_path)
+    #                 if app_path and os.path.exists(app_path):
+    #                     return os.path.join(app_path, "Contents/MacOS/rizomuv")
+    #
+    #         except Exception as e:
+    #             print(f"Error locating RizomUV: {e}")
+    #     return None
 
     def recurseToFindFBXMeshes(self, fbx_item, fbx_meshes, mesh_items):
         fbx_item_child_count = fbx_item.SubCount()
@@ -304,23 +313,19 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd(lxu.command.BasicCommand):
             else:
                 lx.eval('select.subItem %s add mesh 0 0' % mesh_item.Ident())
 
-        # Get RizomUV executable path.
+        # Get RizomUV executable path from preferences.
         Smo_RizomUVPath = None
+
         try:
             Smo_RizomUVPath = lx.eval1('!!user.value Smo_RizomUVPath ?')
-        except:
-            if not self.findRizomUVPath():
-                return
-        else:
-            if not self.validRizomUVPath(Smo_RizomUVPath):
-                if not self.findRizomUVPath():
-                    return
-                else:
-                    Smo_RizomUVPath = lx.eval1('!!user.value Smo_RizomUVPath ?')
+        except: # If failed Detect the RizomUV application path by checking automatically the installation of RizomUV by either looking at Windows Registry or via App indexing on macOS
+            lx.eval('smo.LL.RIZOMUV.SetExePath')
+            Smo_RizomUVPath = lx.eval1('!!user.value Smo_RizomUVPath ?')
+            return
 
         if Smo_RizomUVPath is None:
             lx.out('Invalid RizomUV path.')
-            return
+
         # Store user's FBX preferences for restoring later.
         fbxSettings = self.storeFBXSettings()
 
@@ -388,7 +393,7 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd(lxu.command.BasicCommand):
                 lx.eval('user.value sceneio.fbx.save.format FBX2013')
             except RuntimeError:
                 pass
-        if 1510 <= self.modo_ver <= 1699:
+        if 1510 <= self.modo_ver <= 1799:
             try:
                 lx.eval('user.value sceneio.fbx.save.embedMedia false')
             except RuntimeError:
@@ -408,7 +413,7 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd(lxu.command.BasicCommand):
 
         # make sure the SMO_RizomUVLiveLink directory exists, if not create it
         if not os.path.exists(os.path.dirname(fbx_export_path)):
-            # try to create the directory. 
+            # try to create the directory.
             try:
                 os.makedirs(os.path.dirname(fbx_export_path))
             except:
@@ -423,6 +428,9 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd(lxu.command.BasicCommand):
                 fbx_file_name = os.path.splitext(os.path.basename(fbx_export_path))[0]
 
         lx.eval('!scene.saveAs filename:"{}" format:"fbx" export:true'.format(fbx_export_path))
+        print("Temp FBX file, exported to:", fbx_export_path)
+        if system == "Darwin":
+            subprocess.run(["open", os.path.join(temp_dir, "SMO_RizomUVLiveLink")])
         fbx_save_time = os.path.getmtime(fbx_export_path)
 
         # Restore the FBX preferences.
@@ -430,7 +438,7 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd(lxu.command.BasicCommand):
 
         rc = int()
         if system == 'Windows':
-            # Call RizomUV on windows
+            # Call RizomUV on Windows
             proc = subprocess.Popen([Smo_RizomUVPath, fbx_export_path], stdout=subprocess.PIPE)
             stdout, stderr = proc.communicate()
             rc = proc.returncode
@@ -441,7 +449,6 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd(lxu.command.BasicCommand):
             proc = subprocess.Popen(["open", "-a", Smo_RizomUVPath, fbx_export_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             stdout, stderr = proc.communicate()
             rc = proc.returncode
-
 
         if rc != 0:
             # RizomUV crashed or threw an error.

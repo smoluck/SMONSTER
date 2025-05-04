@@ -53,7 +53,8 @@ class SMO_LL_RIZOMUV_SetExePath_Cmd(lxu.command.BasicCommand):
     def basic_Execute(self, msg, flags):
         # MODO version checks. Different versions have different FBX options.
         modo_ver = int(lx.eval ('query platformservice appversion ?'))
-
+        rizomuv_path = ""
+        rizomuv_exe_path = ""
         lx.eval ('dialog.setup fileOpen')
         lx.eval ('dialog.title "Select RizomUV executable or application file"')
 
@@ -68,14 +69,22 @@ class SMO_LL_RIZOMUV_SetExePath_Cmd(lxu.command.BasicCommand):
         else:
             lx.eval ('dialog.open')
 
-        rizomuv_exe_path = ""
         if system == "Windows":
             rizomuv_exe_path = lx.eval1 ('dialog.result ?')
             print("Windows - Rizom UV path set by user:", rizomuv_exe_path)
+
         elif system == "Darwin":
-            rizomuv_exe_path = os.path.join(lx.eval1 ('dialog.result ?'), "Contents/MacOS/rizomuv")
-            print("macOS - Rizom UV path set by user:", rizomuv_exe_path)
-        lx.eval ('user.value Smo_RizomUVPath {%s}' % rizomuv_exe_path)
+            rizomuv_exe_path = lx.eval1('dialog.result ?')
+            if "RizomUV.2022.1" in rizomuv_exe_path:
+                rizomuv_path = (rizomuv_exe_path + "/Contents/MacOS/RizomUV.2022.1")
+            if "RizomUV.2023.1" in rizomuv_exe_path:
+                rizomuv_path = (rizomuv_exe_path + "/Contents/MacOS/RizomUV.2023.1")
+            if "RizomUV.2024.0" in rizomuv_exe_path:
+                rizomuv_path = (rizomuv_exe_path + "/Contents/MacOS/RizomUV.2024.0")
+            if "RizomUV.2024.1" in rizomuv_exe_path:
+                rizomuv_path = (rizomuv_exe_path + "/Contents/MacOS/RizomUV.2024.1")
+            print("macOS - Rizom UV path set by user:", rizomuv_path)
+        lx.eval ('user.value Smo_RizomUVPath {%s}' % rizomuv_path)
 
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
