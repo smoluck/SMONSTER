@@ -1,6 +1,20 @@
 -------------------------
 ---- UPDATES LOG----
 -------------------------
+v6.0.1 - 2025/05/04
+RIZOMUV LIVELINK:
+        • macOS support engaged. (working at 80% of the Windows behaviour)
+            This should run, correctly on both macOS and Windows.
+            On MacOS, a finder will be open to load the temp fbx data, into RizomUV,
+            as for now i don't know how to load it directly in RizomUV,
+            despite opening the main window of RizomUV.
+        • smo.LL.RIZOMUV.DetectExePath (New cmd)
+            Detect the RizomUV exe path to create the LiveLink.
+            Set RizomUV path to the most recent version of the RizomUV installation directory
+            on the system using Windows registry (regedit) or MacOS (mdfind) detection method
+
+
+
 v5.65 - 2024/04/03
 GAME CONTENT:
         • New Command

@@ -4,6 +4,17 @@ Since 2.2 Release:
 ------------------
 --- UPDATE LOG ---
 ------------------
+- 3.20 -
+        • macOS support engaged. (working at 80% of the Windows behaviour)
+            This should run, correctly on both macOS and Windows.
+            On MacOS, a finder will be open to load the temp fbx data, into RizomUV,
+            as for now i don't know how to load it directly in RizomUV,
+            despite opening the main window of RizomUV.
+        • smo.LL.RIZOMUV.DetectExePath (New cmd)
+            Detect the RizomUV exe path to create the LiveLink.
+            Set RizomUV path to the most recent version of the RizomUV installation directory
+            on the system using Windows registry (regedit) or MacOS (mdfind) detection method
+
 - 3.00 -
         • Introduction of RizomUVLink Module Support from RizomUV 2022.2 (Development Build)
         • Addition of Task system to send to RizomUV action from Modo and get back the result automatically using the Link Module.
