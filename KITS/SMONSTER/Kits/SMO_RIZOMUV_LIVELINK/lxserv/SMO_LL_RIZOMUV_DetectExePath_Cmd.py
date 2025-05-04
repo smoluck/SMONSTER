@@ -55,10 +55,10 @@ class SMO_LL_RIZOMUV_DetectExePath_Cmd(lxu.command.BasicCommand):
     def validRizomUVPath(self, rizomuv_exe_path):
         system = platform.system()
         if system == "Windows":
-            print("Windows RIZOMUV")
+            print("Windows version of RIZOMUV is installed and have been detected")
             return (rizomuv_exe_path is not None) and os.path.lexists(rizomuv_exe_path) and (os.path.splitext(rizomuv_exe_path)[1].lower() == '.exe')
         elif system == "Darwin":
-            print("Mac RIZOMUV")
+            print("Mac version of RIZOMUV is installed and have been detected")
             return rizomuv_exe_path is not None
         return None
 
@@ -139,12 +139,6 @@ class SMO_LL_RIZOMUV_DetectExePath_Cmd(lxu.command.BasicCommand):
         # print(self.get_ruv_path())
         self.setRizomUVPath(self.get_ruv_path())
         print(lx.eval ('user.value Smo_RizomUVPath ?'))
-
-
-
-
-
-
 
         # # Get RizomUV executable path from preferences.
         # Smo_RizomUVPath = None
