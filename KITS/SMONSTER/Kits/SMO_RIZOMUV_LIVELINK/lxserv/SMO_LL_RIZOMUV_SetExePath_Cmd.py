@@ -72,6 +72,7 @@ class SMO_LL_RIZOMUV_SetExePath_Cmd(lxu.command.BasicCommand):
         if system == "Windows":
             rizomuv_exe_path = lx.eval1 ('dialog.result ?')
             print("Windows - Rizom UV path set by user:", rizomuv_exe_path)
+            lx.eval('user.value Smo_RizomUVPath {%s}' % rizomuv_exe_path)
 
         elif system == "Darwin":
             rizomuv_exe_path = lx.eval1('dialog.result ?')
@@ -84,7 +85,7 @@ class SMO_LL_RIZOMUV_SetExePath_Cmd(lxu.command.BasicCommand):
             if "RizomUV.2024.1" in rizomuv_exe_path:
                 rizomuv_path = (rizomuv_exe_path + "/Contents/MacOS/RizomUV.2024.1")
             print("macOS - Rizom UV path set by user:", rizomuv_path)
-        lx.eval ('user.value Smo_RizomUVPath {%s}' % rizomuv_path)
+            lx.eval ('user.value Smo_RizomUVPath {%s}' % rizomuv_path)
 
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()

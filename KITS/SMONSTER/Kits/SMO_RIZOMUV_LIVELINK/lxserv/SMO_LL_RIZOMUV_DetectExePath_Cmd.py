@@ -56,7 +56,7 @@ class SMO_LL_RIZOMUV_DetectExePath_Cmd(lxu.command.BasicCommand):
         system = platform.system()
         if system == "Windows":
             print("Windows version of RIZOMUV is installed and have been detected")
-            return (rizomuv_exe_path is not None) and os.path.lexists(rizomuv_exe_path) and (os.path.splitext(rizomuv_exe_path)[1].lower() == '.exe')
+            return rizomuv_exe_path is not None
         elif system == "Darwin":
             print("Mac version of RIZOMUV is installed and have been detected")
             return rizomuv_exe_path is not None
@@ -102,8 +102,8 @@ class SMO_LL_RIZOMUV_DetectExePath_Cmd(lxu.command.BasicCommand):
                     try:
                         key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, path)
                         exePath = winreg.QueryValue(key, "rizomuv.exe")
-                        print("Windows - Detected Rizom UV path:", exePath)
-                        return os.path.dirname(exePath)
+                        print("Windows - Detected Rizom UV path:", (os.path.dirname(exePath) + "\\rizomuv.exe"))
+                        return (os.path.dirname(exePath) + "\\rizomuv.exe")
                     except FileNotFoundError:
                         pass
         elif system == "Darwin":  # MacOS
