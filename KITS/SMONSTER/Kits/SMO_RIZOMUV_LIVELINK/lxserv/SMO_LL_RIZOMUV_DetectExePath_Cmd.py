@@ -107,14 +107,8 @@ class SMO_LL_RIZOMUV_DetectExePath_Cmd(lxu.command.BasicCommand):
                         return (os.path.dirname(exePath) + "\\rizomuv.exe")
                     except FileNotFoundError:
                         pass
+
         elif system == "Darwin":  # MacOS
-            # for i in range(9, 1, -1):
-            #     for j in range(10, -1, -1):
-            #         if i == 2 and j < 2:
-            #             continue
-            #         app_path = f"/Applications/RizomUV.202{i}.{j}.app" + "/Contents/MacOS/rizomuv"
-            #         if os.path.exists(app_path):
-            #             return app_path
             try:
                 # Adjust search strategy based on macOS version
                 mac_version, _, _ = platform.mac_ver()
@@ -144,20 +138,6 @@ class SMO_LL_RIZOMUV_DetectExePath_Cmd(lxu.command.BasicCommand):
                     latest_release = None
                     updated_path = None
 
-                # # Check for valid installations
-                # for app_path in app_paths:
-                #     print("macOS - Detected Rizom UV path:", app_path)
-                #     if app_path and os.path.exists(app_path):
-                #         if "RizomUV.2022.1" in app_path:
-                #             return (app_path + "/Contents/MacOS/RizomUV.2022.1")
-                #         if "RizomUV.2023.1" in app_path:
-                #             return (app_path + "/Contents/MacOS/RizomUV.2023.1")
-                #         if "RizomUV.2024.0" in app_path:
-                #             return (app_path + "/Contents/MacOS/RizomUV.2024.0")
-                #         if "RizomUV.2024.1" in app_path:
-                #             return (app_path + "/Contents/MacOS/RizomUV.2024.1")
-                #         # return app_path # Removed the Sub-Directory addition.
-
                 return updated_path
             except Exception as e:
                 print(f"Error locating RizomUV: {e}")
@@ -167,42 +147,6 @@ class SMO_LL_RIZOMUV_DetectExePath_Cmd(lxu.command.BasicCommand):
         # print(self.get_ruv_path())
         self.setRizomUVPath(self.get_ruv_path())
         print(lx.eval ('user.value Smo_RizomUVPath ?'))
-
-        # # Get RizomUV executable path from preferences.
-        # Smo_RizomUVPath = None
-        # print("Status", Smo_RizomUVPath)
-        #
-        # try:
-        #     Smo_RizomUVPath = lx.eval1('!!user.value Smo_RizomUVPath ?')
-        #     # print("Status 2", Smo_RizomUVPath)
-        # except: # If failed Detect the RizomUV application path by checking automatically the installation of RizomUV by either looking at Windows Registry or via App indexing on macOS
-        #     try:
-        #         self.setRizomUVPath(self.get_ruv_path())
-        #         Smo_RizomUVPath = lx.eval1('!!user.value Smo_RizomUVPath ?')
-        #         print("Status 3", self.get_ruv_path())
-        #         return
-        #     except Exception as e:
-        #         print(e)
-        #         # if not self.get_ruv_path():
-        #         #     try:
-        #         #         Smo_RizomUVPath = lx.eval1('!!user.value Smo_RizomUVPath ?')
-        #         #     except:  # If failed Set RizomUV executable path by asking the user to search for it in Explorer (Win) or Finder (macOS) to set it up.
-        #         #         if not self.findRizomUVPath():
-        #         #             return
-        #         #     return
-        #         return
-        #
-        # else:
-        #     if not self.validRizomUVPath(Smo_RizomUVPath):
-        #         if not self.findRizomUVPath():
-        #             return
-        #         else:
-        #             Smo_RizomUVPath = lx.eval1('!!user.value Smo_RizomUVPath ?')
-        #
-        # if Smo_RizomUVPath is None:
-        #     lx.out('Invalid RizomUV path.')
-        #     return
-        
 
     def cmd_Query(self, index, vaQuery):
         lx.notimpl()
