@@ -19,6 +19,7 @@ import lxu.select
 import os
 import subprocess
 import platform
+import re
 
 Cmd_Name = "smo.LL.RIZOMUV.DetectExePath"
 
@@ -125,20 +126,39 @@ class SMO_LL_RIZOMUV_DetectExePath_Cmd(lxu.command.BasicCommand):
                     result = subprocess.run(["mdfind", "RizomUV"], capture_output=True, text=True)
                 app_paths = result.stdout.split("\n")
 
-                # Check for valid installations
-                for app_path in app_paths:
-                    print("macOS - Detected Rizom UV path:", app_path)
-                    if app_path and os.path.exists(app_path):
-                        if "RizomUV.2022.1" in app_path:
-                            return (app_path + "/Contents/MacOS/RizomUV.2022.1")
-                        if "RizomUV.2023.1" in app_path:
-                            return (app_path + "/Contents/MacOS/RizomUV.2023.1")
-                        if "RizomUV.2024.0" in app_path:
-                            return (app_path + "/Contents/MacOS/RizomUV.2024.0")
-                        if "RizomUV.2024.1" in app_path:
-                            return (app_path + "/Contents/MacOS/RizomUV.2024.1")
-                        # return app_path # Removed the Sub-Directory addition.
+                pattern = re.compile(r"RizomUV\.(\d+)\.(\d+)")
+                # Extract versions and sort
+                rizuv_versions = sorted(
+                    [(int(match.group(1)), int(match.group(2)), path)
+                     for path in app_paths if (match := pattern.search(path))],
+                    reverse=True
+                )
+                latest_release = rizuv_versions[0][2] if rizuv_versions else None
+                print("Detected base path", latest_release)
 
+                if rizuv_versions:
+                    latest_version = f"{rizuv_versions[0][0]}.{rizuv_versions[0][1]}"
+                    latest_release = rizuv_versions[0][2]
+                    updated_path = f"{latest_release}/Contents/MacOS/RizomUV.{latest_version}"
+                else:
+                    latest_release = None
+                    updated_path = None
+
+                # # Check for valid installations
+                # for app_path in app_paths:
+                #     print("macOS - Detected Rizom UV path:", app_path)
+                #     if app_path and os.path.exists(app_path):
+                #         if "RizomUV.2022.1" in app_path:
+                #             return (app_path + "/Contents/MacOS/RizomUV.2022.1")
+                #         if "RizomUV.2023.1" in app_path:
+                #             return (app_path + "/Contents/MacOS/RizomUV.2023.1")
+                #         if "RizomUV.2024.0" in app_path:
+                #             return (app_path + "/Contents/MacOS/RizomUV.2024.0")
+                #         if "RizomUV.2024.1" in app_path:
+                #             return (app_path + "/Contents/MacOS/RizomUV.2024.1")
+                #         # return app_path # Removed the Sub-Directory addition.
+
+                return updated_path
             except Exception as e:
                 print(f"Error locating RizomUV: {e}")
         return None
