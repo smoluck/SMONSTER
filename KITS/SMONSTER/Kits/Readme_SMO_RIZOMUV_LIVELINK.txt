@@ -4,7 +4,7 @@ Since 2.2 Release:
 ------------------
 --- UPDATE LOG ---
 ------------------
-- 3.20 -
+- 3.22 -
         • macOS support engaged. (working at 80% of the Windows behaviour)
             This should run, correctly on both macOS and Windows.
             On MacOS, a finder will be open to load the temp fbx data, into RizomUV,
