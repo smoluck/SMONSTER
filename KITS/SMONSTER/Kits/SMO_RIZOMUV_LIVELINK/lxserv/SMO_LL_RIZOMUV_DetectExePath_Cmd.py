@@ -20,6 +20,7 @@ import os
 import subprocess
 import platform
 import re
+import sys
 
 Cmd_Name = "smo.LL.RIZOMUV.DetectExePath"
 
@@ -83,6 +84,7 @@ class SMO_LL_RIZOMUV_DetectExePath_Cmd(lxu.command.BasicCommand):
         return False
 
     # Checking installation of RizomUV by either looking at Windows Registry or via App indexing on macOS
+    @property
     def get_ruv_path(self):
         """
         Returns the path to the most recent version
@@ -92,14 +94,14 @@ class SMO_LL_RIZOMUV_DetectExePath_Cmd(lxu.command.BasicCommand):
         Try versions from 2019.10 to 2029.10 included
         """
         system = platform.system()
-        if system == "Windows":
+        if system.lower == "windows":
             import winreg
             for i in range(9, 1, -1):
                 for j in range(10, -1, -1):
                     if i == 2 and j < 2:
                         continue
-                    # path = "SOFTWARE\\Rizom Lab\\RizomUV VS RS 202" + str(i) + "." + str(j)
-                    path = f"SOFTWARE\\Rizom Lab\\RizomUV VS RS 202{i}.{j}"
+                    path = "SOFTWARE\\Rizom Lab\\RizomUV VS RS 202" + str(i) + "." + str(j)
+                    # path = f"SOFTWARE\\Rizom Lab\\RizomUV VS RS 202{i}.{j}"
                     try:
                         key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, path)
                         exePath = winreg.QueryValue(key, "rizomuv.exe")
@@ -108,7 +110,7 @@ class SMO_LL_RIZOMUV_DetectExePath_Cmd(lxu.command.BasicCommand):
                     except FileNotFoundError:
                         pass
 
-        elif system == "Darwin":  # MacOS
+        elif system.lower == "darwin":  # MacOS
             try:
                 # Adjust search strategy based on macOS version
                 mac_version, _, _ = platform.mac_ver()
@@ -121,10 +123,32 @@ class SMO_LL_RIZOMUV_DetectExePath_Cmd(lxu.command.BasicCommand):
                 app_paths = result.stdout.split("\n")
 
                 pattern = re.compile(r"RizomUV\.(\d+)\.(\d+)")
-                # Extract versions and sort
+
+                # # Extract versions and sort in Python 2.7
+                # if (2, 7, 0) <= sys.version_info < (3, 7, 0):
+                # rizuv_versions = []
+                #     for path in app_paths:
+                #         match = pattern.search(path)
+                #         if match:
+                #             rizuv_versions.append((int(match.group(1)), int(match.group(2)), path))
+                #             rizuv_versions.sort(reverse=True)
+
+                # elif sys.version_info >= (3, 8, 0):
+                #     # Extract versions and sort in Python 3.8 and up (":=" run in Python 3.8 and up)
+                #     rizuv_versions = sorted(
+                #         [(int(match.group(1)), int(match.group(2)), path)
+                #          for path in app_paths if (match := pattern.search(path))],
+                #         reverse=True
+                #     )
+
+                # Extract versions and sort in Python 3.7
                 rizuv_versions = sorted(
-                    [(int(match.group(1)), int(match.group(2)), path)
-                     for path in app_paths if (match := pattern.search(path))],
+                    [
+                        (int(match.group(1)), int(match.group(2)), path)
+                        for path in app_paths
+                        if pattern.search(path)
+                    ],
+                    key=lambda x: (x[0], x[1]),  # Sort by version numbers
                     reverse=True
                 )
                 latest_release = rizuv_versions[0][2] if rizuv_versions else None
@@ -145,7 +169,7 @@ class SMO_LL_RIZOMUV_DetectExePath_Cmd(lxu.command.BasicCommand):
 
     def basic_Execute(self, msg, flags):
         # print(self.get_ruv_path())
-        self.setRizomUVPath(self.get_ruv_path())
+        self.setRizomUVPath(self.get_ruv_path)
         print(lx.eval ('user.value Smo_RizomUVPath ?'))
 
     def cmd_Query(self, index, vaQuery):

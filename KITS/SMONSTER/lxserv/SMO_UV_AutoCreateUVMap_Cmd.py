@@ -53,6 +53,11 @@ class SMO_UV_AutoCreateUVMap_Cmd(lxu.command.BasicCommand):
         DefaultUVMapName = lx.eval('pref.value application.defaultTexture ?')
         # print(DefaultUVMapName)
 
+        # Modo_ver = int(lx.eval('query platformservice appversion ?'))
+        #
+        # # The line 64 cause crash in script on 17.1 and up due to breaking release of Foundry.
+        # # This disable a lot of script that works with VertexMaps
+        # if Modo_ver < 1710:
         m = modo.Mesh()
         # print(m.name)
         maps = m.geometry.vmaps.getMapsByType([lx.symbol.i_VMAP_TEXTUREUV])  # same as m.geometry.vmaps.uvMaps
