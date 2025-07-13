@@ -1,6 +1,22 @@
 -------------------------
 ---- UPDATES LOG----
 -------------------------
+v6.0.5 - 2025/07/13
+GAME CONTENT:
+    Added to Polygon Context Menu
+        •smo.GC.FloodSelectByPolyPartTag
+           From selected Polygons, flood select by detected polygon parts
+
+UV:
+    Added to UV Tools Menu
+        •smo.UV.UVIslandToPolyPartTags
+           Create polygon part tags that are related to their UVIsland by connectivity
+
+        •smo.UV.Multi.UVIslandToPolyPartTags
+           MULTI - Create polygon part tags that are related to their UVIsland by connectivity
+
+
+
 v6.0.2 - 2025/05/06
 RIZOMUV LIVELINK:
         • macOS support engaged. (working at 80% of the Windows behaviour)

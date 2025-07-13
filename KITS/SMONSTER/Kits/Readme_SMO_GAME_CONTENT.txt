@@ -1,6 +1,11 @@
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 15.00 -
+    Added to Polygon Context Menu
+        •smo.GC.FloodSelectByPolyPartTag
+           From selected Polygons, flood select by detected polygon parts
+
 - 14.50 -
         • New Command
             • Select Regular Meshes or Procedural Meshes (Mesh Items that does or doesn't have Meshops attached to them, and that can be edited directly)

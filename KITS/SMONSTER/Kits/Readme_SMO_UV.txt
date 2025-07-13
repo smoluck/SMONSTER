@@ -1,6 +1,14 @@
 ----------------------
 --- UPDATE LOG ---
 ----------------------
+- 4.60 -
+    Added to UV Tools Menu
+        •smo.UV.UVIslandToPolyPartTags
+           Create polygon part tags that are related to their UVIsland by connectivity
+
+        •smo.UV.Multi.UVIslandToPolyPartTags
+           MULTI - Create polygon part tags that are related to their UVIsland by connectivity
+
 - 4.55 -
         • Rectangle command have been changed from "R" key to "Alt - R" to let user scale UV maps data in UVTexture editor.
 
