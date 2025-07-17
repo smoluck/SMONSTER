@@ -48,7 +48,7 @@ class SMO_AI_RebuildStrokeRoundExtremity_Cmd(lxu.command.BasicCommand):
         return 'Rebuild the topology of the current selected Vertex set (Stroke Round Extremity) to a better Polygon topology.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO RebuildStroke'

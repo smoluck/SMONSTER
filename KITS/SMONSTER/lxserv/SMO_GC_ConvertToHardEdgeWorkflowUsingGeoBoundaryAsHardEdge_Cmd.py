@@ -44,7 +44,7 @@ class SMO_GC_ConvertToHardEdgeWorkflowUsingGeoBoundaryAsHardEdge_Cmd(lxu.command
         return 'On current Mesh item, convert Shading Method to HardEdge Workflow using geometry boundary as "HardEdge" and set all other Edges as "Smooth".'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Convert to HardEdge Workflow using geometry boundary as HardEdge'

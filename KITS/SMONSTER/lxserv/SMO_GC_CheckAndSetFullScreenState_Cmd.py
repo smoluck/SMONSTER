@@ -38,7 +38,7 @@ class SMO_GC_CheckAndSetFullScreenState_Cmd(lxu.command.BasicCommand):
         return 'Check Top/Down/Left/Right Side Bars State.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Check FullScreen Mode State'

@@ -47,7 +47,7 @@ class SMO_GC_PrimGenCylinder_Cmd(lxu.command.BasicCommand):
         return 'SMO Primitive Generator Cylinder: Create a Cylinder or disk based on Arguments'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Primitive Cylinder'

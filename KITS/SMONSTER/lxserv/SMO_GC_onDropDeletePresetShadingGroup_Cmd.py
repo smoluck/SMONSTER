@@ -43,7 +43,7 @@ class SMO_GC_onDropDeletePresetShadingGroup_Cmd(lxu.command.BasicCommand):
         return 'Automatically Remove the Shading Group "meshPresetName.lxl" created by Modo when we drop a meshpreset in the scene. It also setup the Transform tool ON, with Background MeshConstraint, and Action Center to Local mode, for easy adjustment. (Attach SMO_GC_onDrop_RotateTool.py script to the selected MeshPreset file via PB_View and smo.GC.AttachScriptToPreset command.)'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - OnDrop Delete Preset Shading Group'

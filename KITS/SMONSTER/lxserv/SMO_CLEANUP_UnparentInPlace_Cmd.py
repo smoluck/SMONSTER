@@ -39,7 +39,7 @@ class SMO_Cleanup_UnparentInPlace_Cmd(lxu.command.BasicCommand):
         return 'Unparent all Meshes in current Scene.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO CLEANUP - Unparent in place'

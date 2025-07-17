@@ -39,7 +39,7 @@ class SMO_DOC_WebLink_Cmd(lxu.command.BasicCommand):
         return 'Open a WebLink using a String Argument for address.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO DOC - Open Documentation WebLink'

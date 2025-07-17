@@ -66,7 +66,7 @@ class SMO_GC_GetMeshUniqueName_Cmd(lxu.command.BasicCommand):
         return 'Get the Mesh Unique Name of the current mesh item selected.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Get Mesh Unique Name'

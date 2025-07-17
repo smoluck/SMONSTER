@@ -58,7 +58,7 @@ class SMO_UV_AutoUnwrapSmartByAngle_Cmd(lxu.command.BasicCommand):
         return 'Auto Unwrap the current Mesh item by using Sharp Edges defined by a Min and Max Angle as Seams.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO UV - Auto Unwrap Smart By Angle'

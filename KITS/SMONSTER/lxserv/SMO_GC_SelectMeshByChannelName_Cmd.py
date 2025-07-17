@@ -44,7 +44,7 @@ class SMO_GC_SelectMeshByChannelName_Cmd(lxu.command.BasicCommand):
         return 'Search in all Mesh items in the Scene, if a specific channel exist via String Argument #1, Reselect the items that have that channel via rgument #2.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Select Mesh By Channel Name'

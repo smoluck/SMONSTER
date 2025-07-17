@@ -41,7 +41,7 @@ class SMO_GC_FlipVertexNormalMap_Cmd(lxu.command.BasicCommand):
         return 'Flip the VertexNormalMap Data on selected Component.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Flip Vertex Normal Map'

@@ -43,7 +43,7 @@ class SMO_GC_MergeTransByArg_Cmd(lxu.command.BasicCommand):
         return 'Merge the multiple Pos/Rot/Sca Transform into only one Transform Matrix via String Argument to define wich Transform to update: POSition / ROTation / SCAle.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Merge Transforms by Arguments'

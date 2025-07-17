@@ -40,7 +40,7 @@ class SMO_GC_RenderThumbPreset_Cmd(lxu.command.BasicCommand):
         return 'Replace the current Preset Thumbnail by SMO ThumbnailMaker_Template scene Render.)'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Render Thumbnail Preset'

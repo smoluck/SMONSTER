@@ -44,7 +44,7 @@ class SMO_MIFABOMA_FLIP_SelectedPolys_Cmd(lxu.command.BasicCommand):
         return 'Flip the Polygon selection using the Local Axis (using Item Axis and Selected Poly Center).'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO MIFABOMA - Flip Selected Polys (using Item Axis and Selected Poly Center)'

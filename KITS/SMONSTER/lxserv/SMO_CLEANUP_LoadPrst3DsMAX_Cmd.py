@@ -37,7 +37,7 @@ class SMO_Cleanup_LoadPrst3DsMAX_Cmd(lxu.command.BasicCommand):
         return 'Load the 3DsMAX Default Channel Preset in the Preferences to be used by the Batch Cleaner command.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO CLEANUP - Load 3DsMAX Default Channel Preset'

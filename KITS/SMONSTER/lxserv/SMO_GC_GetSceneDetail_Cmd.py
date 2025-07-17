@@ -47,7 +47,7 @@ class SMO_GC_GetSceneDetail_Cmd(lxu.command.BasicCommand):
         return 'Get Details about the current scene using arguments to specify wich data chunk you need.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Get Scene Detail'

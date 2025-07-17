@@ -117,7 +117,7 @@ class SMO_GC_FixVertexWithNullVNormData_Cmd(lxu.command.BasicCommand):
         return 'Check current selected mesh, analyse the vertex data of Vertex Normal Maps. If those value are Null, it select the vertex and apply a Set Vertex Normal command. If you add the argument True it will automatically fix those vertex.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Select or  AutoFix Vertex with Null Vertex Normal Data'

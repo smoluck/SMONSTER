@@ -41,7 +41,7 @@ class SMO_Cleanup_ConvertItemIndexStyleSceneWise_Cmd(lxu.command.BasicCommand):
         return 'Check if the current Modo Item Index Style set in Preferences and Rename all the items (Locator, GroupLocators, Meshes), if they use mixed Index Style or if they use a different Index Style than the one in Modo Preferences.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO CLEANUP - (SceneWise) Convert Item Index Style'

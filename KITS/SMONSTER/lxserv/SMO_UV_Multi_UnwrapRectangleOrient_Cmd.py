@@ -52,7 +52,7 @@ class SMO_UV_Multi_UnwrapRectangleOrient_Cmd(lxu.command.BasicCommand):
         return 'MULTI - Unwrap the current Polygon Selection using Rectangle method and Orient the UV Island on defined direction (Via Arguments).'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO UV - Unwrap Rectangle and Orient'

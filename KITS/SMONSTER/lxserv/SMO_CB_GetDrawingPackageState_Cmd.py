@@ -45,7 +45,7 @@ class SMO_CB_GetDrawingPackageState_Cmd(lxu.command.BasicCommand):
         return 'Get the Drawing Package State of the current mesh or Locator. If not present add a Drawing Package.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO CB - Get Drawing Package State'

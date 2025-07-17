@@ -41,7 +41,7 @@ class SMO_GC_StarTriple_Cmd(lxu.command.BasicCommand):
         return 'Star Triple area using touching polygons and same Facing Ratio.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Star Triple'

@@ -66,7 +66,7 @@ class SMO_GC_GetItemUniqueName_Cmd(lxu.command.BasicCommand):
         return 'Get the Item Unique Name of the current selected item.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Get Item Unique Name'

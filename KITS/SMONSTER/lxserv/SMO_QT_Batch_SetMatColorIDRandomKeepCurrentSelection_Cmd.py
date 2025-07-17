@@ -49,7 +49,7 @@ class SMO_QT_Batch_SetMatColorIDRandomKeepCurrentSelection_Cmd(lxu.command.Basic
         return 'Set a random Diffuse Color using Material Tag (polygons) on the selected Mesh Layers. Named the new Mat using "ColorID" as Prefix.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO QT - Set ColorID Random (by Material)'

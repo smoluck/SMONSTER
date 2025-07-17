@@ -42,7 +42,7 @@ class SMO_CAD_RebuildRadialTubeUnderMouse_Cmd(lxu.command.BasicCommand):
         return 'Select the Item and Polygon under mouse, select similar touching polygons Multiple Times with 40 degree value, then delete and recreate the PolyLoop Patch and update the VertexNormal Map if needed.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO CAD - Rebuild Radial Tube'

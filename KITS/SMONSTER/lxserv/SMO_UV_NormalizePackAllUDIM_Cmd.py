@@ -43,7 +43,7 @@ class SMO_UV_NormalizePackAllUDIM_Cmd(lxu.command.BasicCommand):
         return 'Normalize all the UV Islands and Pack them on every UDIM Tiles from UDIM 1001 to 1100.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO UV - Normalize Pack All UDIM Tiles'

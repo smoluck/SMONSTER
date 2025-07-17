@@ -49,7 +49,7 @@ class SMO_GC_ReadTags_Cmd(lxu.command.BasicCommand):
         return 'Read value of defined Tags (by Args)'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Read Tags by Arguments'

@@ -39,7 +39,7 @@ class SMO_BATCH_ProcessByPref_Cmd(lxu.command.BasicCommand):
         return 'Batch Process a set of files stored in a Folder, using User Defined Preferences..'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO BATCH - Process By Pref'

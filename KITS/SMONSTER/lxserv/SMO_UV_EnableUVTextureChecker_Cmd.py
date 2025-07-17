@@ -40,7 +40,7 @@ class SMO_UV_EnableUVTextureChecker_Cmd(lxu.command.BasicCommand):
         return 'Enable the UV Texture Checker in the current Viewport using the UVGrid PNG files from the UV kit. (Argument define the file resolution)'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO UV - Enable UV Texture Checker'

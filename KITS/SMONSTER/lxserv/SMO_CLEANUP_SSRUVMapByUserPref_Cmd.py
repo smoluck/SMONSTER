@@ -42,7 +42,7 @@ class SMO_Cleanup_SSRUVMapByUserPref_Cmd(lxu.command.BasicCommand):
         return 'Search if the user preferences Source UVMap exist, Select it and Rename it to default or Target UVMap.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO CLEANUP - Search and Select UVMap by user Prefs'

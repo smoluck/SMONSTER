@@ -46,7 +46,7 @@ class SMO_GC_SplitEachComponentIndividually_Cmd(lxu.command.BasicCommand):
         return 'Separate current Mesh by Component. It Split each Vertex OR Polyline Edges OR Polygons into an individual piece. You can separate all Component by an individual mesh too.'
 
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName (self):
         return 'SMO GC - Split each Component Individually'

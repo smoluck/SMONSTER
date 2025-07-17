@@ -89,8 +89,11 @@ on internet without your permission.
 -----------------
 ---- CONTACT ----
 -----------------
-on Twitter:
-https://twitter.com/sm0luck
+WebSite:
+https://www.smoluck.com
+
+BlueSky:
+https://bsky.app/profile/smoluck.bsky.social
 
 on the Foundry Slack server:
 foundry-modo.slack.com

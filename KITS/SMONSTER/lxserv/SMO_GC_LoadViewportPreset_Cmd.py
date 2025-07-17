@@ -36,7 +36,7 @@ class SMO_GC_LoadViewportPreset_Cmd(lxu.command.BasicCommand):
         return 'Check if CAGE Map exist on current Mesh. If not, create a new MorphMap, then Select that CAGE Morph.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Load Viewport Preset'

@@ -47,7 +47,7 @@ class SMO_MIFABOMA_Flip_Cmd(lxu.command.BasicCommand):
         return 'Flip the Mesh or the Polygon selection (using Item Axis and Item Center).'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO MIFABOMA - Flip (using Item Axis and Item Center)'

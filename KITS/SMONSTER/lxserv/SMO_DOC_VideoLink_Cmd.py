@@ -40,7 +40,7 @@ class SMO_DOC_VideoLink_Cmd(lxu.command.BasicCommand):
         return 'Open the Tutorial Videos using a String Argument for Defined Kit and an integer as argument for Video ID.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO DOC - Open Documentation Video'

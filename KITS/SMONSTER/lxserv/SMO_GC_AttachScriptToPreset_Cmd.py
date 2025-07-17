@@ -37,7 +37,7 @@ class SMO_GC_AttachScriptToPreset_Cmd(lxu.command.BasicCommand):
         return 'Attach SMO_GC_onDrop_RotateTool.py script to the selected MeshPreset file via PB_View and smo.GC.AttachScriptToPreset command.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Attach Script to Preset'

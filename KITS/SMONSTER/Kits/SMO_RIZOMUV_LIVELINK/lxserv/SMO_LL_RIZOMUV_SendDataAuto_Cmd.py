@@ -47,7 +47,7 @@ class SMO_LL_RIZOMUV_SendDataAuto_Cmd(lxu.command.BasicCommand):
         return 'Send as an FBX file, the current selected Meshes as FBX 2013 to RizomUV and get back the UV data updated in Modo, once the FBX file is saved back (original file overwritten by RizomUV).'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO LL RIZOMUV - Send Data Auto'

@@ -42,7 +42,7 @@ class SMO_GC_SelectChanByArg_Cmd(lxu.command.BasicCommand):
         return 'Search if a specific channel exist via String Argument and select it.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Select Channel by Arguments'

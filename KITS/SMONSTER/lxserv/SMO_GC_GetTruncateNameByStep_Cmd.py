@@ -70,7 +70,7 @@ class SMO_GC_GetTruncateNameByStep_Cmd(lxu.command.BasicCommand):
         return 'Get the Truncate Name of the current mesh item selected. It applies different method for renaming based on User Index Style defined in Modo Preferences.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Get Truncated Name by Step'

@@ -361,7 +361,7 @@ class SMO_QT_SetSelSetColorID_ByUser_Cmd(lxu.command.BasicCommand):
         return 'Set a Diffuse Color override using Selection Set (polygons) on the selected Mesh Layers. Named the new Mat using "ColorID" as Prefix. Color ID Number set by User value in Popup field.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO QT - Set ColorID ByUser (by SelSet and Constant)'

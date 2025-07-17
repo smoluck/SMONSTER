@@ -43,7 +43,7 @@ class SMO_MIFABOMA_SetRadialSweepAnglePreset_Cmd(lxu.command.BasicCommand):
         return 'Set the current Angle Preset for Radial Sweep.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO MIFABOMA - Set Radial Sweep Angle Preset'

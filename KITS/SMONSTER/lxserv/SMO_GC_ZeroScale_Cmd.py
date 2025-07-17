@@ -46,7 +46,7 @@ class SMO_GC_ZeroScale_Cmd(lxu.command.BasicCommand):
         return 'Check Axis Scale value and modify the lowest scale to ZERO.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Zero Out Lowest Scale'

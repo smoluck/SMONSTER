@@ -48,7 +48,7 @@ class SMO_GC_CreateDeleteSelSetFromMTypTag_Cmd(lxu.command.BasicCommand):
         return 'Read current defined Tags for Livelink Exports, then Create OR Delete the Selection Set related to that tag for LowPoly / Cage / HighPoly.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Create or Delete SelSet from Bake Mesh Type Tag'

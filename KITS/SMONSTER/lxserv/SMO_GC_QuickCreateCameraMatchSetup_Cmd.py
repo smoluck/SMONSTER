@@ -40,7 +40,7 @@ class SMO_GC_QuickCreateCameraMatchSetup_Cmd(lxu.command.BasicCommand):
         return 'Load images of specific type and create a scene with CameraMatch setup on camera. It save the scene using the Image filename.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Quick Create Camera Match Setup'

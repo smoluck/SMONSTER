@@ -43,7 +43,7 @@ class SMO_GC_FilterMeshesByTpe_Cmd(lxu.command.BasicCommand):
         return "Select DirectModeling Meshes or Procedural Meshes (Mesh Items that does or doesn't have Meshops attached to them, and that can be edited directly)"
     
     def cmd_Help (self):
-        return "https://twitter.com/sm0luck"
+        return "https://www.smoluck.com"
     
     def basic_ButtonName (self):
         return "SMO GC - Select Meshes by Type"

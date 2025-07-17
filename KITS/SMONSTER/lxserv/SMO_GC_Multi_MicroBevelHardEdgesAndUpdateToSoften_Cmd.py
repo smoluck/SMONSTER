@@ -52,7 +52,7 @@ class SMO_GC_Multi_MicroBevelHardEdgesAndUpdateToSoften_Cmd(lxu.command.BasicCom
         return 'MULTI - Micro Bevel HardEdges (usually after a SimplyToNgon), then Soften all edges.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - (Multi) MicroBevel HardEdges and and Soften everything'

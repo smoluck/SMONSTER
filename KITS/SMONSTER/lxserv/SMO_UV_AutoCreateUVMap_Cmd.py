@@ -38,7 +38,7 @@ class SMO_UV_AutoCreateUVMap_Cmd(lxu.command.BasicCommand):
         return 'Automatically Create a UV Map if missing using Default UVMap Name in Preferences.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO UV - Auto Create UVMap'

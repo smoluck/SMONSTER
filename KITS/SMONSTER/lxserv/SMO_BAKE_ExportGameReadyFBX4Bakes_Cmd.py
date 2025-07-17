@@ -51,7 +51,7 @@ class SMO_BAKE_ExportGameReadyFBXBakes_Cmd(lxu.command.BasicCommand):
         return 'Export LowPoly/Cage/HighPoly Meshes from current scene, based on MTyp Tag, as FBX to Temp Scene Path SubFolder.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO BAKE - Export Game Ready FBX For Bakes'

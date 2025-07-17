@@ -45,7 +45,7 @@ class SMO_GC_GetMaterialsTagInSelection_Cmd(lxu.command.BasicCommand):
         return 'Get the Material Tags on current selection.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Get Materials Tag on Selection'

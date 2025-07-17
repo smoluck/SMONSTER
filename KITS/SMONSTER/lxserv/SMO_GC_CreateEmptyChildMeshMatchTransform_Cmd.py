@@ -43,7 +43,7 @@ class SMO_GC_CreateEmptyChildMatchTransform_Cmd(lxu.command.BasicCommand):
         return 'Create a new child Mesh Item (empty) on current selected mesh item.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Create Empty Child Mesh and Match Transforms'

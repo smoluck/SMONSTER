@@ -48,7 +48,7 @@ class SMO_GC_ConvertSceneTo_Cmd(lxu.command.BasicCommand):
         return 'Save the scene in same places as the current opened scene to a specified FileFormat and move the files to a Folder related to the file Format if Argument 1 is true.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Convert Scene To ...'

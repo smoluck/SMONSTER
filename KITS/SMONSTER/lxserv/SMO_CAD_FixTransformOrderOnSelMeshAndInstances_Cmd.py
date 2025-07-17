@@ -42,7 +42,7 @@ class SMO_CAD_FixTransformOrderOnSelMeshAndInstances_Cmd(lxu.command.BasicComman
         return 'Change the Transform Order only on Meshes and Instances that have Transform Order different than XYZ.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO CAD - Fix Transform Order on Selected Mesh and Instances'

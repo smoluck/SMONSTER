@@ -51,7 +51,7 @@ class SMO_MASTER_ForceSelectMeshItem_Cmd(lxu.command.BasicCommand):
         return 'Select the Mesh Item related to current Selected Component when it is the Foreground Mesh. Filter only the Mesh Item to be selected at the end.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO MASTER - Force Select Foreground Mesh Item Only'

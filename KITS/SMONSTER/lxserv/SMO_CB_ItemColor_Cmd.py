@@ -44,7 +44,7 @@ class SMO_CB_ItemColor_Cmd(lxu.command.BasicCommand):
         return 'Define the itemList Color and Drawing option for the current selected Item.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO CB - ItemColor'

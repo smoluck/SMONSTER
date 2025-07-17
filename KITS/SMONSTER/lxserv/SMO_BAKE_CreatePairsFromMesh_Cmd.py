@@ -40,7 +40,7 @@ class SMO_BAKE_CreatePairsFromMesh_Cmd(lxu.command.BasicCommand):
         return 'Create a New Bake Pairs from a Single High Poly mesh and Enter into Polygon Editing To Reduce the Mesh Detail.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO BAKE - Create Bake Pairs from HighPoly'

@@ -38,7 +38,7 @@ class SMO_UV_UVNormalizePackApplyTD_Cmd(lxu.command.BasicCommand):
         return 'UVNormalize Pack and Apply Texel Density on the current UVMap'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO UV - Normalize Pack Apply Texel Density'

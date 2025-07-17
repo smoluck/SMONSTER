@@ -50,7 +50,7 @@ class SMO_MIFABOMA_RadialSweepRelativeToParent_Cmd(lxu.command.BasicCommand):
         return 'Radial Sweep current Polygon Selection (or all Poly if no selection) / or Selected Edges using Origin Center (World) or Item Center (Local).'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO MIFABOMA - Radial Sweep Relative to Parent'

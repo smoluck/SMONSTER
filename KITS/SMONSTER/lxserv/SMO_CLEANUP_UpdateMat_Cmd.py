@@ -40,7 +40,7 @@ class SMO_Cleanup_UpdateMat_Cmd(lxu.command.BasicCommand):
         return 'Update Materials Smoothing Angle to User defined value (via Preferences) and set ON the Weight by Polygon Area according to SMO Modo Workflow.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO CLEANUP - Update All Materials to SMO MicroBevel Workflow'

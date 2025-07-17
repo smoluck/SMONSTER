@@ -45,7 +45,7 @@ class SMO_GC_RenameMeshesBySceneName_Cmd(lxu.command.BasicCommand):
         return 'Get the scene name and add this  name as a Prefix on every Meshes in the current scene. Script will save the scene in same places as the current opened scene.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Rename Meshes By Scene Name'

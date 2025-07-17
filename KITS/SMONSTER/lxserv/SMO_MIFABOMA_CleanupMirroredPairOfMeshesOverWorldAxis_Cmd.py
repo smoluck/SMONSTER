@@ -48,7 +48,7 @@ class SMO_MIFABOMA_CleanupMirroredPairOfMeshesOverWorldAxis_Cmd(lxu.command.Basi
         return 'Cleanup selected Mirrored Mesh in order to align it over world axis and recreate instances out of that mesh. It use X Y Z axis as argument and Positive or Negative Direction to define what is the Side part that we preserve.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO MIFABOMA - CleanupMirroredPairOfMeshesOverWorldAxis'

@@ -56,7 +56,7 @@ class SMO_MIFABOMA_Mirror_ViaUserPref_Cmd(lxu.command.BasicCommand):
         return 'Mirror current Polygon Selection (or all Poly if no selection) using Origin Center (World) or Item Center (Local). It use the User Preferences to define wich clone type you do and if you clone also the hierarchy.'
 
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName (self):
         return 'SMO MIFABOMA - Mirror via User Prefs'

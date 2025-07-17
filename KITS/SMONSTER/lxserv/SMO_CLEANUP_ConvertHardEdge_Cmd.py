@@ -44,7 +44,7 @@ class SMO_Cleanup_ConvertHardEdge_Cmd(lxu.command.BasicCommand):
         return "Update Materials Smoothing Angle to 179 Degree and set ON the Weight by Polygon Area according to SMO Modo Workflow, set ON the Weight by Polygon Area, Process a MeshCleanup pass and a Polygon Align"
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO CLEANUP -  Convert to HardEdge Workflow'

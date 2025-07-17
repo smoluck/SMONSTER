@@ -75,7 +75,7 @@ class SMO_CAD_CopyCutAsChildOfCurrentMesh_Cmd(lxu.command.BasicCommand):
         return 'Copy selected Polygons to a new mesh as a child of the current mesh item.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO CAD - Copy as Child of Current Mesh'

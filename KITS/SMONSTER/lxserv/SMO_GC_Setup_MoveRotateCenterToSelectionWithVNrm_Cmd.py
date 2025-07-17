@@ -48,7 +48,7 @@ class SMO_GC_Setup_MoveRotateCenterToSelectionWithNNrm_Cmd(lxu.command.BasicComm
         return 'Create New Mesh Layers, using target Mesh Name + PrefixName + UDIM ID from selected Mesh with VertexNormal Data update support.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Setup - Move and Rotate Center to Selection (VNrm support)'

@@ -42,7 +42,7 @@ class SMO_GC_ModollamaTriple_Cmd(lxu.command.BasicCommand):
         return 'Triangulate current Polygon selection using Modollama Kit using arguments as Iteration count.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Modollama Triple'

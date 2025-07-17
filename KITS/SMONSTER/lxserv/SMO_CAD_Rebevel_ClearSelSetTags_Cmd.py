@@ -40,7 +40,7 @@ class SMO_CAD_RebevelClearSelSetTags_Cmd(lxu.command.BasicCommand):
         return 'Clear all Item/Polygon/Edges Selection Set created by the CAD Rebevel commands.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO CAD - Rebevel Clear Selection Set Tags'

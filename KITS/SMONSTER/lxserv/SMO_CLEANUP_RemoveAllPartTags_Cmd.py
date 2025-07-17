@@ -38,7 +38,7 @@ class SMO_CLEANUP_RemoveAllPartTags_Cmd(lxu.command.BasicCommand):
         return 'Check for all Meshes in the current scene remove any part tags in it.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO CLEANUP - Remove All Part Tags'

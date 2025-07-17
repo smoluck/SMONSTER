@@ -44,7 +44,7 @@ class SMO_CAD_StarTripleFlatUnderMouse_Cmd(lxu.command.BasicCommand):
         return 'Star Triple Similar Touching (Mouse over a polygon in item mode and launch).'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO CAD - Star Triple Flat'

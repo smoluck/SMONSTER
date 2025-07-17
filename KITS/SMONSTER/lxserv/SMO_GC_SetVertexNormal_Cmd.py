@@ -39,7 +39,7 @@ class SMO_GC_SetVertexNormal_Cmd(lxu.command.BasicCommand):
         return 'Set Vertex Normals on current Selection using user preferences VertexNormalMap name string.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Set Vertex Normal'

@@ -63,9 +63,14 @@ on internet without your permission.
 I'm sure you'll understand that point.
 
 
-Contact me
-on Twitter:
-https://twitter.com/sm0luck
+-----------------
+---- CONTACT ----
+-----------------
+WebSite:
+https://www.smoluck.com
+
+BlueSky:
+https://bsky.app/profile/smoluck.bsky.social
 
 on the Foundry Slack server:
 foundry-modo.slack.com

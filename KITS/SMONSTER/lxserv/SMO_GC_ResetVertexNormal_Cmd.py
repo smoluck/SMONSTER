@@ -40,7 +40,7 @@ class SMO_GC_ResetVertexNormal_Cmd(lxu.command.BasicCommand):
         return 'Clear Vertex Normals on current Selection using user preferences VertexNormalMap name string and set it again.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Reset Vertex Normal Map'

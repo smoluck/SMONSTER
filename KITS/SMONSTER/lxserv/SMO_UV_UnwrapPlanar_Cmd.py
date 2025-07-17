@@ -54,7 +54,7 @@ class SMO_UV_UnwrapPlanar_Cmd(lxu.command.BasicCommand):
         return 'Unwrap the current Polygon Selection on defined Axis.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO UV - Unwrap Planar'

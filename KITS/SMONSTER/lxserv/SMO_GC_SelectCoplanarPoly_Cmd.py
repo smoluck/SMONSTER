@@ -57,7 +57,7 @@ class SMO_GC_SelectCoPlanarPoly_Cmd(lxu.command.BasicCommand):
         return 'Replace the old Seneca Lazy Select by the Built in Select CoPlanar poly tool.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Select CoPlanar Poly'

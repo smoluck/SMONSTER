@@ -63,7 +63,7 @@ class SMO_GC_EdgeSlideProjectToBG_Cmd(lxu.command.BasicCommand):
         return 'Extend the current Opened Boundary Edge Loop to nearest BG Mesh using BG Constraint.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Edge Slide Project to BG'

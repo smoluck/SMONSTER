@@ -132,7 +132,7 @@ class SMO_BATCH_LoadFolderFilesFromUserPrefRecursive_Cmd(lxu.command.BasicComman
         return 'Batch Load Files stored in a Folder (Recursive Search) and Process the data using User Defined Preferences.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO BATCH - Load Folder Files (Recursive Search) from User Prefs'

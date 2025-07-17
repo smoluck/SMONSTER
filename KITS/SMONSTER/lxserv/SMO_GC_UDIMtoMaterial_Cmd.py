@@ -49,7 +49,7 @@ class SMO_GC_UDIMtoMaterial_Cmd(lxu.command.BasicCommand):
         return 'Create a New Material Tag, using MatName + UDIM ID on selected Mesh. It select Poly via UDIM index, then create a material for those.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - UDIM to Material'

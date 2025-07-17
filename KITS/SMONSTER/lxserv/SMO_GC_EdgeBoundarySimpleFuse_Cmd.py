@@ -64,7 +64,7 @@ class SMO_GC_EdgeBoundarySimpleFuse_Cmd(lxu.command.BasicCommand):
         return 'MakePoly + Bevel Inset Outside + applying a VertexNormalTransfer to fuse the border with BG Mesh normals.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - EdgeBoundary Simple Fuse'

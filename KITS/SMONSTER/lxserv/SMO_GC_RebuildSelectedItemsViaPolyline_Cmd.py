@@ -42,7 +42,7 @@ class SMO_GC_RebuildSelectedItemsViaPolyline_Cmd(lxu.command.BasicCommand):
         return 'Merge Selected Items and recreate a Polyline from the resulting edges. Delete the original Data.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Rebuild selected Items Via Polyline'

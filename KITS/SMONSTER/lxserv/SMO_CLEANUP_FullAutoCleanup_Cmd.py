@@ -37,7 +37,7 @@ class SMO_Cleanup_FullAutoCleanup_Cmd(lxu.command.BasicCommand):
         return 'Cleanup all the scene using User Defined Preferences.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO CLEANUP - Full Auto Cleanup'

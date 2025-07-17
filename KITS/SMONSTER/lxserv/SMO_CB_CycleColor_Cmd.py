@@ -42,7 +42,7 @@ class SMO_CB_CycleColor_Cmd(lxu.command.BasicCommand):
         return 'Define the itemList Color and Drawing option for the current selected Item in a Cycle mode.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO CB - Cycle Color'

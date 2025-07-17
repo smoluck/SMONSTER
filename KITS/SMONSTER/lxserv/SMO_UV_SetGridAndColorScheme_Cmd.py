@@ -41,7 +41,7 @@ class SMO_UV_SetGridAndColorScheme_Cmd(lxu.command.BasicCommand):
         return 'Activate the Dark Color Scheme in current UV View and set the Grid Settings for the Smart Unwrap Tools.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO UV - Set Grid And Color Scheme'

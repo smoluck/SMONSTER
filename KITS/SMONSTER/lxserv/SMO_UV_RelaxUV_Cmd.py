@@ -41,7 +41,7 @@ class SMO_UV_RelaxUV_Cmd(lxu.command.BasicCommand):
         return 'Relax the UVs of the current Polygon Selection.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO UV - Relax'

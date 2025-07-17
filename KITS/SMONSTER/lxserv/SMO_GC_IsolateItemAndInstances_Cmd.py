@@ -39,7 +39,7 @@ class SMO_GC_IsolateItemAndInstances_Cmd(lxu.command.BasicCommand):
         return 'Isolate current Item and his Instances.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Isolate Item And Instances'

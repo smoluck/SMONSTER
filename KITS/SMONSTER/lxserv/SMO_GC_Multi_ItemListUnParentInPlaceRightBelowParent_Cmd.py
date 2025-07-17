@@ -42,7 +42,7 @@ class SMO_GC_Multi_ItemListUnparentInPlaceRightBelowRootParent_Cmd(lxu.command.B
         return 'MULTI - By default, when we unparent an item (inPlace), the item move at the end of the ItemList. This command make sure the unparented item can appear right bellow the Root Parent of it, in the ItemList.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - (Multi) ItemListUnparentInPlaceRightBelowRootParent'

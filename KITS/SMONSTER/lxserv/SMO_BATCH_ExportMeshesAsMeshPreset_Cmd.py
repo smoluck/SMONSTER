@@ -38,7 +38,7 @@ class SMO_BATCH_ExportMeshesAsMeshPreset_Cmd(lxu.command.BasicCommand):
         return 'Batch Export Meshes As MeshPreset LXL file into Target Path.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO BATCH - Export Meshes As MeshPreset LXL files'

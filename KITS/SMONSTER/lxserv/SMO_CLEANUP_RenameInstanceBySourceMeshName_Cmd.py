@@ -39,7 +39,7 @@ class SMO_CLEANUP_RenameInstanceBySourceMeshName_Cmd(lxu.command.BasicCommand):
         return 'Select all the Mesh instances of the current scene and rename them all to use the name of the Source Mesh.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO CLEANUP - Rename Instances by Source Mesh Name'

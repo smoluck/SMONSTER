@@ -40,7 +40,7 @@ class SMO_QT_CreateAllColorIDFromMatGrpMask_Cmd(lxu.command.BasicCommand):
         return 'Create a ColorID on All Material Group Mask in the current Scene. (Create a new Group Mask on top of the BaseShader with a Contant as Diffuse color (random values))'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO QT - Create All ColorID From Material Group Mask'

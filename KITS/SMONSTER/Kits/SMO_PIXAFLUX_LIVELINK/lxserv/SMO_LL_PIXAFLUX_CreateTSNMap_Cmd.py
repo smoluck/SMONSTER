@@ -45,7 +45,7 @@ class SMO_PixaFlux_CreateTSNMap_Cmd(lxu.command.BasicCommand):
         return 'Create a new Texture file to save the PixaFlux Data. Resolution defined by Argument in pixel.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO LL PIXAFLUX - Create Tangent Space NormalMap'

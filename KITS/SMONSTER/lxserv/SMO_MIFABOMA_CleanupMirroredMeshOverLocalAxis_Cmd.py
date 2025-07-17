@@ -47,7 +47,7 @@ class SMO_MIFABOMA_CleanupMirroredMeshOverLocalAxis_Cmd(lxu.command.BasicCommand
         return 'Cleanup selected Mesh along a given axis Local (x, y, z) in order to remove Mirrored Opposite Side Argument boolean (Positive or Negative). Then recreate instances out of that mesh along that axis.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO MIFABOMA - CleanupMirroredMeshOverLocalAxis'

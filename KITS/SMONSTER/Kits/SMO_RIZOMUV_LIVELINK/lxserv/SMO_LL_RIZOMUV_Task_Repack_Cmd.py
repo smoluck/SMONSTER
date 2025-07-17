@@ -417,7 +417,7 @@ class SMO_LL_RIZOMUV_Task_SmartPack_Cmd(lxu.command.BasicCommand):
         return "SmartPack the current Model using a texture map resolution and optimization on given range of distorted UVIsland and get the updated data back in Modo."
 
     def cmd_Help(self):
-        return "https://twitter.com/sm0luck"
+        return "https://www.smoluck.com"
 
     def basic_ButtonName(self):
         return "SMO LL RIZOMUV 2022.2 - Task - SmartPack"

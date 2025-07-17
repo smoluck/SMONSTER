@@ -42,7 +42,7 @@ class SMO_QT_Batch_SetMatColorIDRandom_Cmd(lxu.command.BasicCommand):
         return 'Set a random Diffuse Color override using Material Tag. It can runs over Selected Meshes or SceneWide, By Items or by Polygon Islands.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO QT - Set ColorID Random (by Material Tag) - SceneWide and/or By Islands'

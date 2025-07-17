@@ -39,7 +39,7 @@ class SMO_CAD_SetCenterPositionPreserveInstancePos_Cmd(lxu.command.BasicCommand)
         return 'Set the Center of the current Mesh item to selected Polygons Center, but preserving the Instances Positions.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO CAD - Set Center Position but Preserve Instance Position'

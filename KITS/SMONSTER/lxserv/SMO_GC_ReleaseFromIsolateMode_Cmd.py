@@ -39,7 +39,7 @@ class SMO_GC_ReleaseFromIsolateMode_Cmd(lxu.command.BasicCommand):
         return 'Release from Isolate Mode by clearing the Reference System state, and fit the view on current selected mesh.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Release from Isolate Mode'

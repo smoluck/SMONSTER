@@ -40,7 +40,7 @@ class SMO_GC_Set_MoveAndRotateCenterUsingOpenBoundary_Cmd(lxu.command.BasicComma
         return 'Select an Opened Mesh Move and Rotate the Center to Open boundary centroid and rotate it (use it in item mode)'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Setup - Move and Rotate Center using Open Boundary'

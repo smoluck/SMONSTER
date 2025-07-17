@@ -43,7 +43,7 @@ class SMO_GC_ExportSelectedMeshesAsMeshPreset_Cmd(lxu.command.BasicCommand):
         return 'MULTI - Export Selected Meshes As MeshPreset LXL file into Target Path. (optional: Define Path destination as argument)'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Export Selected Meshes as MeshPreset LXL files'

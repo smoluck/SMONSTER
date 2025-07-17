@@ -43,7 +43,7 @@ class SMO_BATCH_LoadFolderFiles_Cmd(lxu.command.BasicCommand):
         return 'Batch Load Files stored in a Folder and Process the data using User Defined Preferences.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO BATCH - Load Folder Files'

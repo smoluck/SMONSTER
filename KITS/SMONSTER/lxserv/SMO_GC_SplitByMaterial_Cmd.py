@@ -39,7 +39,7 @@ class SMO_GC_SplitByMaterial_Cmd(lxu.command.BasicCommand):
         return 'Split current selected mesh by Material Tag.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Split by Material Tag'

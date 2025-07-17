@@ -47,7 +47,7 @@ class SMO_GC_SelectPolyRenderItem_Cmd(lxu.command.BasicCommand):
         return 'Select the PolyRender Item of the current scene.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Select PolyRender Item'

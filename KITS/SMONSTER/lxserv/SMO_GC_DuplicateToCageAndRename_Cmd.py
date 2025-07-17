@@ -94,7 +94,7 @@ class SMO_GC_DuplicateToCageAndRename_Cmd(lxu.command.BasicCommand):
         return 'Duplicate the current mesh, Create a morph influence set to Cage, rename it to "cage" and freeze deformers. It applies different method for renaming based on User Index Style defined in Modo Preferences.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Duplicate Mesh to Cage and Rename it'

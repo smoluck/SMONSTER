@@ -46,7 +46,7 @@ class SMO_CAD_RebevelProcedByUser_Cmd(lxu.command.BasicCommand):
         return 'With 1 Item selected and if more than 2 Polygons selected, Process a rebevel on the selected patch of Quads.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO CAD - Rebevel Proced by User'

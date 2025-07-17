@@ -39,7 +39,7 @@ class SMO_CLEANUP_CleanupSolidWorksImport_Cmd(lxu.command.BasicCommand):
         return 'Cleanup SolidWorks Import (from McMaster Website Data) in order to save a new scene with only one Mesh item of the imported asset. It will also convert the VertexNormals Data to HardEdgeWorkflow if needed.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO CLEANUP - Cleanup SolidWorks Import'

@@ -167,11 +167,11 @@ As usual if you found a bug, please reach me out on SNS and i will do my best to
 
 
 # CONTACT:
-[My Website](https://smoluck.com)
+[Website](https://smoluck.com)
 
-[My Gumroad](https://smoluck.gumroad.com)
+[Gumroad](https://smoluck.gumroad.com)
 
-[My Twitter](https://twitter.com/sm0luck)
+[BlueSky](https://bsky.app/profile/smoluck.bsky.social)
 
 [SMONSTER Discord Server](https://discord.gg/fqgWnbC)
 

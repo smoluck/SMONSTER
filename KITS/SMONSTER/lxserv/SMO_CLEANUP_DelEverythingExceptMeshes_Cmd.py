@@ -42,7 +42,7 @@ class SMO_CLEANUP_DelEverythingExceptMeshes_Cmd(lxu.command.BasicCommand):
         return 'Select everything in the current scene, except Meshes items and delete all other items / materials. It unparent in place the current Meshes to preserve their position in space in case they were part of a hierarchy.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO CLEANUP - Delete everything Except Meshes items.'

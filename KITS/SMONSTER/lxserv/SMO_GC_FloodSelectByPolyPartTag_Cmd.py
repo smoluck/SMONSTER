@@ -38,7 +38,7 @@ class SMO_GC_FloodSelectByPolyPartTag_Cmd(lxu.command.BasicCommand):
         return 'From selected Polygons, flood select by detected polygon parts'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Flood Select by Polygon Part Tag'

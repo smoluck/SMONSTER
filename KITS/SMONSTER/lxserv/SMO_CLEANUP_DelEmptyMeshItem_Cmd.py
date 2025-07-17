@@ -38,7 +38,7 @@ class SMO_Cleanup_DelEmptyMeshItem_Cmd(lxu.command.BasicCommand):
         return 'Delete Empty Mesh Layers (default Mesh Layer) in current scene.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO CLEANUP - Delete Empty Mesh Item'

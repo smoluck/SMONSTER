@@ -57,7 +57,7 @@ class SMO_MIFABOMA_RadialArray_ViaUserPref_Cmd(lxu.command.BasicCommand):
         return 'RadialArray current Polygon Selection (or all Poly if no selection) using Origin Center (World) or Item Center (Local).'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO MIFABOMA - RadialArray'

@@ -39,7 +39,7 @@ class SMO_GC_ClearTransformLink_Cmd(lxu.command.BasicCommand):
         return 'Remove any link between Sources and Instances Transform / Order.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Clear Transform Link'

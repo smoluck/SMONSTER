@@ -44,7 +44,7 @@ class SMO_GC_ConvertPolygonsToPolylineAndMergeToDXFLayer_Cmd(lxu.command.BasicCo
         return 'Convert all the current Meshes (Unique Polygons by Layer) in scene to Polyline data and then merge all the lines into a single mesh for DXF export.'
 
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName (self):
         return 'SMO GC - Convert Polygons to Polyline and Merge to DXF Layer'

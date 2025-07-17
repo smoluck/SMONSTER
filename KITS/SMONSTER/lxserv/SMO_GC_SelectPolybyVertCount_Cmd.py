@@ -40,7 +40,7 @@ class SMO_GC_SelectPolyByVertCount_Cmd(lxu.command.BasicCommand):
         return 'SMO GC - Select poly by Vertex Count'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_Execute(self, msg, flags):
         lx.out('basic execute')

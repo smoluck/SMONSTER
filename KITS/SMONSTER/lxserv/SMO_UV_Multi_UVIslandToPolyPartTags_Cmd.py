@@ -46,7 +46,7 @@ class SMO_UV_Multi_UVIslandToPolyPartTags_Cmd(lxu.command.BasicCommand):
         return 'MULTI - Create polygon part tags that are related to their UVIsland by connectivity'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO UV - (Multi) UVIsland to Polygon Part Tags'

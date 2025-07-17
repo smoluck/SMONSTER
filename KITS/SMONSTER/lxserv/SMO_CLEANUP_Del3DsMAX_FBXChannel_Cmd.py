@@ -39,7 +39,7 @@ class SMO_Cleanup_Del3DsMAX_FBXChannel_Cmd(lxu.command.BasicCommand):
         return 'Delete all 3DS Max Channels.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO CLEANUP - Delete 3DsMAX FBXChannel'

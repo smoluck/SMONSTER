@@ -39,7 +39,7 @@ class SMO_MARMOSET_LIVELINK_SetExePath_Cmd(lxu.command.BasicCommand):
         return 'Set the Marmoset Toolbag exe path to create the LiveLink. It will prompt a File browser to get the EXE file Location.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO LL MARMOSET - Set EXE Path'

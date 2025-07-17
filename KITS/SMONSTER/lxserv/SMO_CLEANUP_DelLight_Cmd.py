@@ -37,7 +37,7 @@ class SMO_Cleanup_DelLight_Cmd(lxu.command.BasicCommand):
         return 'Search for all Light in the scene and Delete them.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO CLEANUP - Delete all Lights'

@@ -41,7 +41,7 @@ class SMO_Cleanup_ConvertItemIndexStyle_Cmd(lxu.command.BasicCommand):
         return 'Check if the current Modo Item Index Style set in Preferences and Rename all the selected items, if they use mixed Index Style or if they use a different Index Style than the one in Modo Preferences.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO CLEANUP - Convert Item Index Style'

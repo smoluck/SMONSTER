@@ -61,7 +61,7 @@ class SMO_GC_StraightenEdgeBoundary_Cmd(lxu.command.BasicCommand):
         return 'Flatten the selected Edge Boundary to fix squeeze.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Straighten Edge Boundary'

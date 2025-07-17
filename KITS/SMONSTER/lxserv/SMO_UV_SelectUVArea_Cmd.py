@@ -43,7 +43,7 @@ class SMO_UV_SelectUVArea_Cmd(lxu.command.BasicCommand):
         return 'Select the Polygons in a defined UV Area (Via Arguments).'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO UV - Select UV Area'

@@ -41,7 +41,7 @@ class SMO_CAD_RebuildWithCube_Cmd(lxu.command.BasicCommand):
         return 'Selected Volume (Polygon Mode) with just a Cube.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO CAD - Rebuild with Cube'

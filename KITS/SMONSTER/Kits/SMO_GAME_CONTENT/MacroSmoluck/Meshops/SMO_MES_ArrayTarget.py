@@ -46,7 +46,7 @@ class SMO_ArrayTarget_Cmd(lxu.command.BasicCommand):
         return 'Load FBX as Reference and Array it.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMOLUCK - Create ArrayTarget Setup'

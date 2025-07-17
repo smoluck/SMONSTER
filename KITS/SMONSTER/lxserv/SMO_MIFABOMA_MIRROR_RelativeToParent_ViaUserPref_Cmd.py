@@ -52,7 +52,7 @@ class SMO_MIFABOMA_Mirror_RelativeToParent_ViaUserPref_Cmd(lxu.command.BasicComm
         return 'Mirror current Polygon Selection (or all Poly if no selection) relative To Parent center. It use the User Preferences to define wich clone type you do and if you clone also the hierarchy.'
 
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName (self):
         return 'SMO MIFABOMA - Mirror Relative To Parent via User Prefs'

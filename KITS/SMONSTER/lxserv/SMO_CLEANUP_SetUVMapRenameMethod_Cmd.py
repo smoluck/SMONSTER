@@ -39,7 +39,7 @@ class SMO_Cleanup_SetUVMapRenameMethod_Cmd(lxu.command.BasicCommand):
         return 'Set the current Renaming Method for UVMap by setting User Defined Preferences.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO CLEANUP - Set UVMap Rename Method'

@@ -45,7 +45,7 @@ class SMO_GC_ReplaceTargetByInstance_Cmd(lxu.command.BasicCommand):
         return 'From selected targets, create a copy or an instance of the last selected Mesh, without or with a Guide Mesh creation.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Replace By Instance'

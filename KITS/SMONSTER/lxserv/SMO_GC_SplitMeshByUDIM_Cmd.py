@@ -47,7 +47,7 @@ class SMO_GC_SplitMeshByUDIM_Cmd(lxu.command.BasicCommand):
         return 'Create New Mesh Layers, using target Mesh Name + PrefixName + UDIM ID from selected Mesh.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Split Mesh by UDIM'

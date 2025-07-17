@@ -159,9 +159,11 @@ on internet without your permission.
 -----------------
 ---- CONTACT ----
 -----------------
+WebSite:
+https://www.smoluck.com
 
-on Twitter:
-https://twitter.com/sm0luck
+BlueSky:
+https://bsky.app/profile/smoluck.bsky.social
 
 on the Foundry Slack server:
 foundry-modo.slack.com

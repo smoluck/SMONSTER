@@ -46,7 +46,7 @@ class SMO_CAD_RebuildRadialFlatUnderMouse_Cmd(lxu.command.BasicCommand):
         return 'Select the Item and Polygon under mouse, select similar touching polygons, then delete and recreate the PolyLoop Patch and update the VertexNormal Map if needed.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO CAD - Rebuild Radial Flat'

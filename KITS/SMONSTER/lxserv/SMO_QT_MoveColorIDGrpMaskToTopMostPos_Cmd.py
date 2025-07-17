@@ -39,7 +39,7 @@ class SMO_QT_MoveColorIDGrpMaskToTopMostPosCmd(lxu.command.BasicCommand):
         return 'Move the ColorID GrpMask from Quick Tag commands to top-most position in the Shader Tree.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO QT - MoveColorIDGrpMaskToTopMostPosition'

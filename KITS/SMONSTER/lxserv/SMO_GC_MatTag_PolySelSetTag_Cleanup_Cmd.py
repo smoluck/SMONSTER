@@ -45,7 +45,7 @@ class SMO_GC_MatTag_and_PolySelSetTags_Cleanup_Cmd(lxu.command.BasicCommand):
         return 'Select one or multiple Mesh Layer and run. Rebuild Material Tag and Polygon Selection Set Tags of current Mesh Layer selected.'
 
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName (self):
         return 'SMO GC - Mat and PolySelSet Tags Cleanup'

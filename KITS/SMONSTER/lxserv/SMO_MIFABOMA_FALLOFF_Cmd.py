@@ -43,7 +43,7 @@ class SMO_MIFABOMA_FallOff_Cmd(lxu.command.BasicCommand):
         return 'Setup the corresponding FallOff to the current Selection.'
 
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName (self):
         return 'SMO MIFABOMA - FallOff'

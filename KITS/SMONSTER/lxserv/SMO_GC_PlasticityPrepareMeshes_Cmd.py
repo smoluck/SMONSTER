@@ -66,7 +66,7 @@ class SMO_GC_PlasticityPrepareMeshes_Cmd(lxu.command.BasicCommand):
         return 'Cleanup Meshes data from Plasticity creating Polygons Parts, Unwrapped UVMaps and Merging Solid items.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Plasticity Prepare Meshes'

@@ -41,7 +41,7 @@ class SMO_UV_FixFlipped_Cmd(lxu.command.BasicCommand):
         return 'Fix the Flipped UVs in the current UVMap.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO UV - Fix Flipped'

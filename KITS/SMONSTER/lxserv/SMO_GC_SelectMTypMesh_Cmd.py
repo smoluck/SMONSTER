@@ -45,7 +45,7 @@ class SMO_GC_SelectMTypMesh_Cmd(lxu.command.BasicCommand):
         return 'Select corresponding LowPoly / Cage / HighPoly meshes for further FBX Export.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Select Mesh Type for Game Export'

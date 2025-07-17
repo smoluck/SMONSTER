@@ -39,7 +39,7 @@ class SMO_GC_CheckLXLTag_Cmd(lxu.command.BasicCommand):
         return 'Check Scene LXLT tag state and give the ability to change the Mesh Preset Tag name.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Check Scene LXLTag'

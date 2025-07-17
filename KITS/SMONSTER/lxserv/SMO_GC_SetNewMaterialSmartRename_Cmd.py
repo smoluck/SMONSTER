@@ -66,7 +66,7 @@ class SMO_GC_SetNewMaterialSmartRename_Cmd(lxu.command.BasicCommand):
         return 'Create a New Material Tag, rename the Material Layer in Shader tree according to Group Material name with a "_Mat" Suffix and show up Color Picker for setting Diffuse Color Channel.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Set New Material Smart Rename'

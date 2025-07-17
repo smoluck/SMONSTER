@@ -56,7 +56,7 @@ class SMO_MIFABOMA_Mirror_RelativeToParent_Cmd(lxu.command.BasicCommand):
         return 'Mirror current Polygon Selection (or all Poly if no selection) relative To Parent center.'
 
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName (self):
         return 'SMO MIFABOMA - Mirror Relative To Parent'

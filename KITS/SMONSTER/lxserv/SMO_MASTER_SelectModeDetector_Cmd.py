@@ -44,7 +44,7 @@ class SMO_MASTER_SelectModeDetector_Cmd(lxu.command.BasicCommand):
         return 'Detect the current Component Mode and iterate user values based on the detection for further use of the tool.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO MASTER - Component Mode Detector'

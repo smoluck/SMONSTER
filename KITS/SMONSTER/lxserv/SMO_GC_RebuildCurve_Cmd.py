@@ -42,7 +42,7 @@ class SMO_GC_RebuildCurve_Cmd(lxu.command.BasicCommand):
         return 'Rebuild the current selected Mesh layer (curve Data) to Polylines'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Rebuild Curve Data to Polyline'

@@ -39,7 +39,7 @@ class SMO_GC_SoloInstanceInPlace_Cmd(lxu.command.BasicCommand):
         return 'Instance the current item and Unlink the transform from the Source mesh/item then select back the Source Mesh.'
     
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName(self):
         return 'SMO GC - Solo Instance In Place'

@@ -57,7 +57,7 @@ class SMO_BAKE_PairsLinkConstraint_Cmd(lxu.command.BasicCommand):
         return 'Create a Position/Rotation Constraint according to selection order and user preferences. low --> high OR  high --> low.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO BAKE - Pairs Link Constraint.'

@@ -46,7 +46,7 @@ class SMO_GC_MF_Sources_MatTag_PolySelSetTags_Cleanup_Cmd(lxu.command.BasicComma
         return 'Select the MF Item and run. Rebuild the Sources Material Tag and Polygon Selection Set Tags of current MF Item.'
 
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName (self):
         return 'SMO GC - MeshFusion - Sources Mat & PolySelSet Tags Cleanup'

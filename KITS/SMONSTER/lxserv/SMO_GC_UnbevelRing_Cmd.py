@@ -39,7 +39,7 @@ class SMO_GC_UnbevelRing_Cmd(lxu.command.BasicCommand):
         return 'Select current Edge Ring and Unbevel the selection.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - UnBevel Ring'

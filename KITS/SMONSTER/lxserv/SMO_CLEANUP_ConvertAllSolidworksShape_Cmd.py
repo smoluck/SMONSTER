@@ -40,7 +40,7 @@ class SMO_CLEANUP_ConvertAllSolidWorksShape_Cmd(lxu.command.BasicCommand):
         return 'Search for all Solidworks Shape Items in the scene and convert them to regular Meshes. Delete the empty meshes in the process as well.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO CLEANUP - Convert All SolidWorks Shapes to Meshes'

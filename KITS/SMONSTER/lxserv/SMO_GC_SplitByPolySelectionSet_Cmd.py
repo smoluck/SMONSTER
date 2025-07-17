@@ -52,7 +52,7 @@ class SMO_GC_SplitByPolySelectionSet_Cmd(lxu.command.BasicCommand):
         return 'Split the current MeshLayer by reading the Polygon Selection Sets and using their names to split the mesh in multiple mesh Layers, with corresponding names. Previous name of this command was "smo.GC.AffinitySVGRebuild" for cleaning up SVG data from Affinity Designer.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Split by Poly Selection Set'

@@ -66,7 +66,7 @@ class SMO_GC_EdgeBoundaryProjectToBGnFuse_Cmd(lxu.command.BasicCommand):
         return 'Extend the current Opened Boundary Edge Loop to nearest BG Mesh using BG Constraint and setting an Edge Bevel + applying a VertexNormalTransfer to fuse the border with BG Mesh normals.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - EdgeBoundary Project to BG and Fuse'

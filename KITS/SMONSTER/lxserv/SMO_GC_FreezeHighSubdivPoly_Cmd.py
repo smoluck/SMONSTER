@@ -38,7 +38,7 @@ class SMO_GC_FreezeHighSubdivPoly_Cmd(lxu.command.BasicCommand):
         return 'Freeze the Subdiv or Catmull-Clark polygons in the HighPoly Meshes.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Freeze High Subdiv Poly'

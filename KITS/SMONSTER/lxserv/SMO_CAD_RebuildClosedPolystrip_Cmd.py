@@ -46,7 +46,7 @@ class SMO_CAD_RebuildClosedPolyStrip_Cmd(lxu.command.BasicCommand):
         return 'Test if 1 Item is selected and if more than 3 Edges are selected, then process a rebuild on the selected polystrip band (via 2 set of Edges). The Middle Edge will be used to create an in between Width with a regular size all accross the ring.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO CAD - Rebuild Closed PolyStrip'

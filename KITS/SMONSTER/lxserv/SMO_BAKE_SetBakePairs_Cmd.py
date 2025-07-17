@@ -58,7 +58,7 @@ class SMO_BAKE_SetBakePairs_Cmd(lxu.command.BasicCommand):
         return 'Set MTyp Tags and Name prefix according to selection order and user preferences. low --> high OR  high --> low.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO BAKE - Set Bake Pairs.'

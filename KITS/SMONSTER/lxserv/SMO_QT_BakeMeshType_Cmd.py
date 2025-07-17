@@ -41,7 +41,7 @@ class SMO_QT_TagBakeMeshType_Cmd(lxu.command.BasicCommand):
         return 'Add an MTyp Tag to the current selected Mesh item. it define it as low or high poly mesh for Baking purpose.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO QT - Bake Mesh Type'

@@ -41,7 +41,7 @@ class SMO_GC_Multi_RebuildCurve_Cmd(lxu.command.BasicCommand):
         return 'MULTI - Rebuild the current selected Mesh layer (curve Data) to Polylines'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - (Multi) Rebuild Curve Data to Polyline'

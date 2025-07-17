@@ -87,7 +87,7 @@ class SMO_VENOM_MainCommand_Cmd(lxu.command.BasicCommand):
         return 'Hard Set Vertex Normal on current Mesh layer using Facing Ratio to flatten the area and fix jagged Vertex Normals. Mouse over a polygon in item mode and launch'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO VENOM - Main Command'

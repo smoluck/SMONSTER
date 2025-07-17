@@ -90,7 +90,7 @@ class SMO_GC_GetAngleBetweenThreeVert_Cmd(lxu.command.BasicCommand):
         return 'Select 3 vertex. 1st (Extremity A) / 2nd (Corner) / 3rd (Extremity B) to get Corner Angle via query.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Get Angle between 3 Vertex'

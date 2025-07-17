@@ -71,7 +71,7 @@ class SMO_GC_CheckMeshBakeName_Cmd(lxu.command.BasicCommand):
         return 'Check if the current Mesh item have low / cage / high strings in is name.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Check Mesh Bake Name for low/cage/high'

@@ -42,7 +42,7 @@ class SMO_LL_RIZOMUV_SetExePath_Cmd(lxu.command.BasicCommand):
         return 'Set the RizomUV exe or app path to create the LiveLink. It will prompt a File browser to get the exe/app file Location.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO LL RIZOMUV - Set EXE/APP Path'

@@ -51,7 +51,7 @@ class SMO_MIFABOMA_Multi_AlignToAxisWorldZero_Cmd(lxu.command.BasicCommand):
         return 'MULTI - Align selected Mesh/Instances/Locator/GroupLocator items to World Axis. It use X Y Z axis as argument for the direction.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO MIFABOMA - (Multi) AlignToAxisWorldZero'

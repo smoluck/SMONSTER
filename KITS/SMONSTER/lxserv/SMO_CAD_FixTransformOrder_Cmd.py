@@ -41,7 +41,7 @@ class SMO_CAD_FixTransformOrder_Cmd(lxu.command.BasicCommand):
         return 'Change the Transform Order of current selected item to XYZ Order.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO CAD - Fix Transform Order'

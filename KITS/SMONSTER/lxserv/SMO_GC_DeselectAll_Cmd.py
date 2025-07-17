@@ -38,7 +38,7 @@ class SMO_GC_DeselectAll_Cmd(lxu.command.BasicCommand):
         return 'Deselect anything in the current scene. Items(Meshes, Lights, etc) / Materials or Schematic Nodes.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Deselect Anything'

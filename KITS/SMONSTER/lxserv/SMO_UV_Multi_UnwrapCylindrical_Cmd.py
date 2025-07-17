@@ -54,7 +54,7 @@ class SMO_UV_Multi_UnwrapCylindrical_Cmd(lxu.command.BasicCommand):
         return 'MULTI - Unwrap the current Polygon Selection using Cylindrical Mode on Defined Axis.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO UV - (Multi) Unwrap Cylindrical'

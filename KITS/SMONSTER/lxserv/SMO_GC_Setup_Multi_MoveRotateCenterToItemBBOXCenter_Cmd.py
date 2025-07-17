@@ -56,7 +56,7 @@ class SMO_GC_Setup_Multi_MoveRotateCenterToItemBBOXCenter_Cmd(lxu.command.BasicC
         return 'MULTI - Move Center to Item BBOX Center.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Setup - (Multi) - Move Center to Item BBOX Center'

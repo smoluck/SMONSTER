@@ -42,7 +42,7 @@ class SMO_GC_SplitEachPolyIndividually_Cmd(lxu.command.BasicCommand):
         return 'Separate current Mesh by Polygons. It Split each polygon into an individual item.'
 
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName (self):
         return 'SMO GC - Split each Polygon Individually'

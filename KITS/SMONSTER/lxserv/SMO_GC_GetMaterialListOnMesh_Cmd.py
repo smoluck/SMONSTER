@@ -45,7 +45,7 @@ class SMO_GC_GetMaterialListOnMesh_Cmd(lxu.command.BasicCommand):
         return 'Get the Material List applied on current selected Mesh.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Get Material List on Mesh'

@@ -40,7 +40,7 @@ class SMO_GC_CreateCAGEDataGroup_Cmd(lxu.command.BasicCommand):
         return 'Select the Tagged LowPoly Meshes and create A new CAGE Data group out of their current Cage Morph map.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Create CAGE Data Group.'

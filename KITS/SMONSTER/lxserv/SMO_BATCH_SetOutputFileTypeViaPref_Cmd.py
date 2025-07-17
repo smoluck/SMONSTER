@@ -40,7 +40,7 @@ class SMO_BATCH_SetOutputFileTypeViaPref_Cmd(lxu.command.BasicCommand):
         return 'Set the Output Files Format using User Defined Preferences.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO BATCH - Set Output File Type via Pref'

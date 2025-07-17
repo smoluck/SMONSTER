@@ -56,7 +56,7 @@ class SMO_GC_Setup_OffsetCenterPosPreserveInstancesPos_Cmd(lxu.command.BasicComm
         return 'Offset Center Position on selected Mesh Item, but preserve the Instances Positions in Worldspace.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Setup - Offset Center Position and Preserve Instances Position'

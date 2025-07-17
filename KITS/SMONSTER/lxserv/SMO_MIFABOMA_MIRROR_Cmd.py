@@ -58,7 +58,7 @@ class SMO_MIFABOMA_Mirror_Cmd(lxu.command.BasicCommand):
         return 'Mirror current Polygon Selection (or all Poly if no selection) using Origin Center (World) or Item Center (Local).'
 
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName (self):
         return 'SMO MIFABOMA - Mirror'

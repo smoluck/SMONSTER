@@ -39,7 +39,7 @@ class SMO_GC_FreezeSubdivPolys_Cmd(lxu.command.BasicCommand):
         return 'Freeze the Subdiv or Catmull-Clark polygons in the given Mesh item.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC -Freeze Subdiv Polys'

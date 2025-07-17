@@ -37,7 +37,7 @@ class SMO_Cleanup_DelCam_Cmd(lxu.command.BasicCommand):
         return 'Search for all camera in the scene and Delete them.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO CLEANUP - Delete all Cameras'

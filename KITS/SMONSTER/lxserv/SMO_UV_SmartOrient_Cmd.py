@@ -50,7 +50,7 @@ class SMO_UV_SmartOrient_Cmd(lxu.command.BasicCommand):
         return 'Orient the current UV Island (Horizontally or Vertically) based on Poly or Edge Selection.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO UV - Smart Orient'

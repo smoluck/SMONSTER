@@ -46,7 +46,7 @@ class SMO_GC_GetShaderItemPosIndex_Cmd(lxu.command.BasicCommand):
         return 'Get the Position Index of the Shader Item (in the Shader Tree of the current scene).'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Get Shader Item Position Index'

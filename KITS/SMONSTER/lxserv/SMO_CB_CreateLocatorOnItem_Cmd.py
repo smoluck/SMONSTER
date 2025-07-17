@@ -45,7 +45,7 @@ class SMO_CB_CreateLocatorOnMesh_Cmd(lxu.command.BasicCommand):
         return 'Create a Locator on first selected mesh position and parent all the selected meshes to that Locator.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO CB - Create Locator on Mesh'

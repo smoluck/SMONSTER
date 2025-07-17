@@ -37,7 +37,7 @@ class SMO_PixaFluxLL_SetExePath_Cmd(lxu.command.BasicCommand):
         return 'Set the PixaFlux exe path to create the LiveLink. It will prompt a File browser to get the EXE file Location.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO LL PIXAFLUX - Set EXE Path'

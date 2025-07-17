@@ -37,7 +37,7 @@ class SMONSTER_CLUB_SetAllKeymaps_Cmd(lxu.command.BasicCommand):
         return 'Launch all the Popup Window dialog to set all the default keymaps for Smonster Kits.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO SMONSTER - Quick Set All Default Keymaps'

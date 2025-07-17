@@ -53,7 +53,7 @@ class SMO_LL_PIXAFLUX_SendData_Cmd(lxu.command.BasicCommand):
         return 'Export the Current Mesh as FBX to PixaFlux temp Folder. Create a Texture to store the TSNM. Resolution defined by Argument in pixel.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO LL PIXAFLUX - Send Data Auto'

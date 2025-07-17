@@ -39,7 +39,7 @@ class SMO_SMONSTER_SetAllKeymapsToOn_Cmd(lxu.command.BasicCommand):
         return 'Set all the Smonster Keymaps Options to TRUE. Setting all Keymap in one Click.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO SMONSTER - Set All Keymaps to On'

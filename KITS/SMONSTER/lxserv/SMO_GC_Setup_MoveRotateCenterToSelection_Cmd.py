@@ -46,7 +46,7 @@ class SMO_GC_Setup_MoveRotateCenterToSelection_Cmd(lxu.command.BasicCommand):
         return 'Move and / or Rotate the Center to Selection center (use it in item mode or Component mode).'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Setup - Move And Rotate Center'

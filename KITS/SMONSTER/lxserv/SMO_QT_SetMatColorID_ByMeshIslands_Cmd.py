@@ -91,7 +91,7 @@ class SMO_QT_SetMatColorID_ByMeshIslands_Cmd(lxu.command.BasicCommand):
         return 'Set a Diffuse Color override using Material Tag on the selected Mesh Layers by Polygons Continuity (Islands). Named the new Mat using "ColorID" as Prefix.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO QT - Set ColorID ByUser (by Material) - By Mesh Islands'

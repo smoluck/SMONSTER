@@ -43,7 +43,7 @@ class SMO_GC_ChamferEdgesByUnit_Cmd(lxu.command.BasicCommand):
         return 'Chamfer currently selected Edges (or Selection Boundary Edges if in Polygon Mode) with a Chamfer set to 1 Side, using arguments by unit and width.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Chamfer Edges by Unit'

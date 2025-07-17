@@ -58,7 +58,7 @@ class SMO_QT_ListAllColorIDSelSet_Cmd(lxu.command.BasicCommand):
         return 'Set a random Diffuse Color override using Selection Set (polygons) on the selected Mesh Layers.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO QT - Set ColorID'

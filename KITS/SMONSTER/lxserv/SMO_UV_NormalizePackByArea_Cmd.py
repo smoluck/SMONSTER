@@ -48,7 +48,7 @@ class SMO_UV_NormalizePackByArea_Cmd(lxu.command.BasicCommand):
         return 'Normalize all the UV Islands and Pack them in defined UV Space by Arguments.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO UV - Normalize Pack by Area'

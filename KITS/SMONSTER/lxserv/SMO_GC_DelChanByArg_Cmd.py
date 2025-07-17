@@ -42,7 +42,7 @@ class SMO_GC_DelChanByArg_Cmd(lxu.command.BasicCommand):
         return 'Search if a specific channel exist via String Argument and delete it.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Delete Channel by Arguments'

@@ -40,7 +40,7 @@ class SMO_BATCH_SetInputFileTypeViaPref_Cmd(lxu.command.BasicCommand):
         return 'Set the Input Files Format using User Defined Preferences.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO BATCH - Set Input File Type via Pref'

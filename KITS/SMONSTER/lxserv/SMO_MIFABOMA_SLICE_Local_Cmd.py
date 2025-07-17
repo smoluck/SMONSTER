@@ -48,7 +48,7 @@ class SMO_MIFABOMA_Slice_Local_Cmd(lxu.command.BasicCommand):
         return 'Slice current Polygon Selection using Item Center.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO MIFABOMA - Slice Local'

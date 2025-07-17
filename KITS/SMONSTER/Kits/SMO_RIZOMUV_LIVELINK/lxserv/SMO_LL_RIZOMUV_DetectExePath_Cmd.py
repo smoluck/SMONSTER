@@ -45,7 +45,7 @@ class SMO_LL_RIZOMUV_DetectExePath_Cmd(lxu.command.BasicCommand):
         return 'Set RizomUV path to the most recent version of the RizomUV installation directory on the system using Windows registry (regedit) or MacOS (mdfind) detection method.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO LL RIZOMUV - Detect Software Path'

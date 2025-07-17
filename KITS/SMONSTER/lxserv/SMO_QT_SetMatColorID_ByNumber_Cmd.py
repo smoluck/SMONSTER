@@ -607,7 +607,7 @@ class SMO_GC_SetMatColorID_ByNumber_Cmd(lxu.command.BasicCommand):
         return 'Set a random Diffuse Color using Material Tag (polygons) on the selected Mesh Layers. Named the new Mat using "ColorID" as Prefix. Color ID Number set by Argument.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO QT - Set ColorID ByNumber (by Material)'

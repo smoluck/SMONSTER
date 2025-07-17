@@ -49,7 +49,7 @@ class SMO_MIFABOMA_AlignToAxisParentZero_Cmd(lxu.command.BasicCommand):
         return 'Align a given Mesh item to Parent Axis. It use X Y Z axis as argument for the direction.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO MIFABOMA - AlignToAxisParentZero'

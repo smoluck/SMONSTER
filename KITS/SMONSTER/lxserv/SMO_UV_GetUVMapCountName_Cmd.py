@@ -49,7 +49,7 @@ class SMO_UV_GetUVMapCountName_Cmd(lxu.command.BasicCommand):
         return 'Query UV Map count and name in all the scene and query UV Map count and name in selected meshes.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO UV - Get UVMap Count and Name'

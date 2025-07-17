@@ -35,7 +35,7 @@ class SMO_BAKE_CreateMikkTangentBasis_Cmd(lxu.command.BasicCommand):
         return 'Select the LowPoly meshes and Create MikkTangent Basis Map.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO BAKE - Set Mikk Tangent Basis'

@@ -68,7 +68,7 @@ class SMO_GC_SelectVertexByLocalAxis_Cmd(lxu.command.BasicCommand):
         return 'Select vertex based on their local position. It use X Y Z axis as argument and Positive or Negative Direction as selection mode.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - SelectVertexByLocalAxis'

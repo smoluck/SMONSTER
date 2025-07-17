@@ -51,7 +51,7 @@ class SMO_CAD_SmartRebuildWithCylinder_Cmd(lxu.command.BasicCommand):
         return 'Selected Volume (Polygon Mode) with just a CYLINDER that got the same Radius and Length as the Source volume it can be.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO CAD - Smart Rebuild with Cylinder Hole'

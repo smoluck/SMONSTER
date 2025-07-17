@@ -49,7 +49,7 @@ class SMO_GC_Display_CycleMatCap_Cmd(lxu.command.BasicCommand):
         return 'Cycle Through Matcaps that are located in the Smonster GAME CONTENT MatCaps folder.'
     
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName(self):
         return 'SMO GC - Cycle MatCap'

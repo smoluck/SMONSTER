@@ -40,7 +40,7 @@ class SMO_GC_CorrectRoundCorner_Cmd(lxu.command.BasicCommand):
         return 'Select the EdgeLoop Corner of a Tube mesh and rebuild a correct triangle at this one.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Correct Round Corner'

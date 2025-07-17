@@ -50,7 +50,7 @@ class SMO_UV_SmartProjection_ClearTag_Cmd(lxu.command.BasicCommand):
         return 'Remove all Polygon Selection Set created with the UV - Smart Projection Command.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO UV - SmartProjection ClearTag'

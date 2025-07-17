@@ -39,7 +39,7 @@ class SMO_QT_CreateColorIDFromMaterialGroupMask_Cmd(lxu.command.BasicCommand):
         return 'Select the Source mesh of a given Instanced Mesh, instance it in place and move it back to Origin with zero transforms. (Create a new Group Mask on top of the BaseShader with a Contant as Diffuse color (random values))'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO QT - Create ColorID From Material Group Mask'

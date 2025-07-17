@@ -40,7 +40,7 @@ class SMO_SMONSTER_OpenTrainingScene_Cmd(lxu.command.BasicCommand):
         return 'Open the Training Scene using an ID integer as argument.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO TRAINING - Open Training Scene'

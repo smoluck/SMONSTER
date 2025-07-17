@@ -52,7 +52,7 @@ class SMO_GC_Multi_DeleteByLocalAxisSides_Cmd(lxu.command.BasicCommand):
         return 'MULTI - Delete vertex by Local Axis Side (positive or negative).'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - (Multi) DeleteByLocalAxisSides'

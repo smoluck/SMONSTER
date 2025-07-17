@@ -125,7 +125,7 @@ class SMO_GC_TransferVNrmFromMouseOverSurface_Cmd(lxu.command.BasicCommand):
         return 'Transfer Vertex Normal Data from Polygon under Mouse onto current selected elements.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO GC - Transfer Vertex Normal Data from Polygon under Mouse'

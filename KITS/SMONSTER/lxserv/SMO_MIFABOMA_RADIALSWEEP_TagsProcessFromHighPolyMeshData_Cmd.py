@@ -40,7 +40,7 @@ class SMO_MIFABOMA_RADIALSWEEP_TagsProcessFromHighPolyMeshData_Cmd(lxu.command.B
         return 'Create tags for MiFaBoMa RadialSweepLocal from Edges.'
 
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName (self):
         return 'SMO MIFABOMA - Tags Process for Radial Sweep from HighPoly Mesh Data'

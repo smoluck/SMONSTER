@@ -49,7 +49,7 @@ class SMO_UV_NormalizePackByUDIM_Cmd(lxu.command.BasicCommand):
         return 'Normalize all the UV Islands and Pack them in defined UDIM UV Space.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO UV - Normalize Pack By UDIM'

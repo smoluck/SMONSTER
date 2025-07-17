@@ -48,7 +48,7 @@ class SMO_PixaFlux_DupAndExplodeByDist_Cmd(lxu.command.BasicCommand):
         return 'Duplicate the Current Selected Mesh, Rename the mesh with a Suffix "_EXPLODE" Create a Relativ e Morph Map called EXPLODE, then Create the Morph Influence out of it and Freeze the deformation / delete the morph map in order to export that to PixaFlux.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO LL PIXAFLUX - Duplicate and Explode by Distance'

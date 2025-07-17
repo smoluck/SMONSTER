@@ -38,7 +38,7 @@ class SMO_PCLOUD_XYZ_VertexRoundValue_Cmd(lxu.command.BasicCommand):
         return 'Open a txt file (Target) and create Vertex at current position defined by the target File 3 float value (separated by a coma) Each line is a new Vertex and round the value to the Centimeter (2 Decimals).'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO XYZ Vertex Rounded Value'

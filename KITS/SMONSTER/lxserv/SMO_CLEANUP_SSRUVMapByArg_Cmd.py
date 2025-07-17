@@ -46,7 +46,7 @@ class SMO_Cleanup_SSRUVMapByArg_Cmd(lxu.command.BasicCommand):
         return 'Search if a specific UVMap exist, Select it and Rename it according to Arguments.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO CLEANUP - Search and Select UVMap by Arg'

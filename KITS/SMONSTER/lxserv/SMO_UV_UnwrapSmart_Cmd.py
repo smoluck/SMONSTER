@@ -58,7 +58,7 @@ class SMO_UV_UnwrapSmart_Cmd(lxu.command.BasicCommand):
         return 'MULTI - Unwrap the current Polygon Selection or via a set of Edges with various Unwrap Method, Rectangle Mode and Autoloop function using Arguments.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO UV - Unwrap Smart'

@@ -42,7 +42,7 @@ class SMO_GC_SplitEachEdgeIndividually_Cmd(lxu.command.BasicCommand):
         return 'Separate current Mesh by Edges (to create Polyline of 1 Edge). It Split each Polyline Edges into an individual item.'
 
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName (self):
         return 'SMO GC - Split each Edge individually'

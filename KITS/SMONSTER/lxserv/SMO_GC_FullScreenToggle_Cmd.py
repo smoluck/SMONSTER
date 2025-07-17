@@ -38,7 +38,7 @@ class SMO_GC_FullScreenToggle_Cmd(lxu.command.BasicCommand):
         return 'Toggle the Side Bars On or Off.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - FullScreen Toggle'

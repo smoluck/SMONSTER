@@ -39,7 +39,7 @@ class SMO_QT_SelectBaseShaderCmd(lxu.command.BasicCommand):
         return 'Select BaseShader Item in current Scene (Assuming there is only one).'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO QT - Select BaseShader'

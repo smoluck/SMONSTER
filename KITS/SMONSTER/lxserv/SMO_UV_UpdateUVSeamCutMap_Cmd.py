@@ -39,7 +39,7 @@ class SMO_UV_UpdateUVSeamCutMap_Cmd(lxu.command.BasicCommand):
         return 'Update the UVseam Cut Map based on the current UVMap'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO UV - Update UVSeam CutMap'

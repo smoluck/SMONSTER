@@ -39,7 +39,7 @@ class SMO_MASTER_GetSelMode_Cmd(lxu.command.BasicCommand):
         return 'Give current Selection Mode Type and set it to String User Value.'
 
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
 
     def basic_ButtonName(self):
         return 'SMO MASTER - Get Selection Mode'

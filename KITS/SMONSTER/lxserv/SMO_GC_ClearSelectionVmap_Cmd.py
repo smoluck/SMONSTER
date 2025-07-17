@@ -43,7 +43,7 @@ class SMO_GC_ClearSelectionVmap_Cmd(lxu.command.BasicCommand):
         return 'Select all or Deselect all Vmaps based on specified type via arguments.'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO GC - Clear Selection VertexMap'

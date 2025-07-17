@@ -52,7 +52,7 @@ class SMO_GC_SimplifyToNGon_Cmd(lxu.command.BasicCommand):
         return 'Merge every polygons that have same coplanar polygon direction to simplify a given set of meshes. Via argument you can also update the HardEdges data for a better end result.'
         
     def cmd_Help(self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
         
     def basic_ButtonName(self):
         return 'SMO GC - Simplify to NGon'

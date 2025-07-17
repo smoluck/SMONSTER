@@ -44,7 +44,7 @@ class SMO_UV_MoveToUVArea_Cmd(lxu.command.BasicCommand):
         return 'Move selected Polygons to a defined  UV Area (Via Arguments).'
     
     def cmd_Help (self):
-        return 'https://twitter.com/sm0luck'
+        return 'https://www.smoluck.com'
     
     def basic_ButtonName (self):
         return 'SMO UV - Move to UV Area'
