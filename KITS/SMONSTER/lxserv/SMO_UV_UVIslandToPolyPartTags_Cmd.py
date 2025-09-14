@@ -31,10 +31,10 @@ class SMO_UV_UVIslandToPolyPartTags_Cmd(lxu.command.BasicCommand):
         return 'SMO UV - UVIsland to Polygon Part Tags'
 
     def cmd_Desc(self):
-        return 'Create polygon part tags that are related to their UVIsland by connectivity'
+        return 'Create polygon part tags that are related to their UVIsland by connectivity. (Be careful as you have to select and launch the command from within the UV Viewport context)'
 
     def cmd_Tooltip(self):
-        return 'Create polygon part tags that are related to their UVIsland by connectivity'
+        return 'Create polygon part tags that are related to their UVIsland by connectivity. (Be careful as you have to select and launch the command from within the UV Viewport context)'
 
     def cmd_Help(self):
         return 'https://www.smoluck.com'
@@ -102,6 +102,7 @@ class SMO_UV_UVIslandToPolyPartTags_Cmd(lxu.command.BasicCommand):
                 part_index += 1
 
             lx.out(f'Assigned {part_index - 1} polygon part tags based on UV Island.')
+            # lx.out('Assigned', (part_index - 1), 'polygon part tags based on UV Island.')
 
             lx.eval('select.type item')
 
